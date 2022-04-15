@@ -2,7 +2,7 @@
   "id": "MAP_PETALBURG_CITY_POKEMON_CENTER_1F",
   "name": "PetalburgCity_PokemonCenter_1F",
   "layout": "LAYOUT_POKEMON_CENTER_1F",
-  "music": "MUS_POKECEN",
+  "music": "MUS_POKE_CENTER",
   "region_map_section": "MAPSEC_PETALBURG_CITY",
   "requires_flash": false,
   "weather": "WEATHER_NONE",
@@ -37,7 +37,7 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "MysteryEventClub_EventScript_Man",
+      "script": "ProfileMan_EventScript_Man",
       "flag": "0"
     },
     {

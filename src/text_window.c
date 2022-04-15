@@ -6,7 +6,6 @@
 #include "bg.h"
 #include "graphics.h"
 
-// const rom data
 const u8 gTextWindowFrame1_Gfx[] = INCBIN_U8("graphics/text_window/1.4bpp");
 static const u8 sTextWindowFrame2_Gfx[] = INCBIN_U8("graphics/text_window/2.4bpp");
 static const u8 sTextWindowFrame3_Gfx[] = INCBIN_U8("graphics/text_window/3.4bpp");
@@ -49,7 +48,7 @@ static const u16 sTextWindowFrame18_Pal[] = INCBIN_U16("graphics/text_window/18.
 static const u16 sTextWindowFrame19_Pal[] = INCBIN_U16("graphics/text_window/19.gbapal");
 static const u16 sTextWindowFrame20_Pal[] = INCBIN_U16("graphics/text_window/20.gbapal");
 
-static const u16 sUnknown_0851017C[][16] =
+static const u16 sTextWindowPalettes[][16] =
 {
     INCBIN_U16("graphics/text_window/message_box.gbapal"),
     INCBIN_U16("graphics/text_window/text_pal1.gbapal"),
@@ -160,7 +159,7 @@ void rbox_fill_rectangle(u8 windowId)
     FillBgTilemapBufferRect(bgLayer, 0, tilemapLeft - 1, tilemapTop - 1, width + 2, height + 2, 0x11);
 }
 
-const u16 *stdpal_get(u8 id)
+const u16 *GetTextWindowPalette(u8 id)
 {
     switch (id)
     {
@@ -182,7 +181,7 @@ const u16 *stdpal_get(u8 id)
         break;
     }
 
-    return (const u16 *)(sUnknown_0851017C) + id;
+    return (const u16 *)(sTextWindowPalettes) + id;
 }
 
 const u16 *GetOverworldTextboxPalettePtr(void)
@@ -190,7 +189,8 @@ const u16 *GetOverworldTextboxPalettePtr(void)
     return gMessageBox_Pal;
 }
 
-void sub_8098C6C(u8 bg, u16 destOffset, u8 palOffset)
+// Effectively LoadUserWindowBorderGfx but specifying the bg directly instead of a window from that bg
+void LoadUserWindowBorderGfxOnBg(u8 bg, u16 destOffset, u8 palOffset)
 {
     LoadBgTiles(bg, sWindowFrames[gSaveBlock2Ptr->optionsWindowFrameType].tiles, 0x120, destOffset);
     LoadPalette(GetWindowFrameTilesPal(gSaveBlock2Ptr->optionsWindowFrameType)->pal, palOffset, 0x20);

@@ -20,14 +20,11 @@
 #include "decompress.h"
 #include "constants/rgb.h"
 
-// this file's functions
 static void CB2_MysteryEventMenu(void);
 static void PrintMysteryMenuText(u8 windowId, const u8 *text, u8 x, u8 y, s32 speed);
 
-// EWRAM vars
-static EWRAM_DATA u8 sUnknown_0203BCF8 = 0; // set but unused
+static EWRAM_DATA u8 sUnused = 0; // set but unused
 
-// const rom data
 static const struct BgTemplate sBgTemplates[] =
 {
     {
@@ -114,16 +111,16 @@ static bool8 GetEventLoadMessage(u8 *dest, u32 status)
 {
     bool8 retVal = TRUE;
 
-    if (status == 0)
+    if (status == MEVENT_STATUS_LOAD_OK)
     {
         StringCopy(dest, gText_EventSafelyLoaded);
         retVal = FALSE;
     }
 
-    if (status == 2)
+    if (status == MEVENT_STATUS_SUCCESS)
         retVal = FALSE;
 
-    if (status == 1)
+    if (status == MEVENT_STATUS_LOAD_ERROR)
         StringCopy(dest, gText_LoadErrorEndingSession);
 
     return retVal;
@@ -136,9 +133,9 @@ static void CB2_MysteryEventMenu(void)
     case 0:
         DrawStdFrameWithCustomTileAndPalette(0, 1, 1, 0xD);
         PutWindowTilemap(0);
-        CopyWindowToVram(0, 3);
+        CopyWindowToVram(0, COPYWIN_FULL);
         ShowBg(0);
-        BeginNormalPaletteFade(0xFFFFFFFF, 0, 0x10, 0, RGB_BLACK);
+        BeginNormalPaletteFade(PALETTES_ALL, 0, 0x10, 0, RGB_BLACK);
         gMain.state++;
         break;
     case 1:
@@ -163,7 +160,7 @@ static void CB2_MysteryEventMenu(void)
             PrintMysteryMenuText(0, gText_PressAToLoadEvent, 1, 2, 1);
             gMain.state++;
         }
-        if (gMain.newKeys & B_BUTTON)
+        if (JOY_NEW(B_BUTTON))
         {
             PlaySE(SE_SELECT);
             CloseLink();
@@ -177,17 +174,17 @@ static void CB2_MysteryEventMenu(void)
     case 5:
         if (GetLinkPlayerCount_2() == 2)
         {
-            if (gMain.newKeys & A_BUTTON)
+            if (JOY_NEW(A_BUTTON))
             {
                 PlaySE(SE_SELECT);
                 CheckShouldAdvanceLinkState();
                 DrawStdFrameWithCustomTileAndPalette(1, 1, 1, 0xD);
                 PrintMysteryMenuText(1, gText_LoadingEvent, 1, 2, 0);
                 PutWindowTilemap(1);
-                CopyWindowToVram(1, 3);
+                CopyWindowToVram(1, COPYWIN_FULL);
                 gMain.state++;
             }
-            else if (gMain.newKeys & B_BUTTON)
+            else if (JOY_NEW(B_BUTTON))
             {
                 PlaySE(SE_SELECT);
                 CloseLink();
@@ -196,7 +193,7 @@ static void CB2_MysteryEventMenu(void)
         }
         else
         {
-            GetEventLoadMessage(gStringVar4, 1);
+            GetEventLoadMessage(gStringVar4, MEVENT_STATUS_LOAD_ERROR);
             PrintMysteryMenuText(0, gStringVar4, 1, 2, 1);
             gMain.state = 13;
         }
@@ -208,8 +205,8 @@ static void CB2_MysteryEventMenu(void)
             {
                 if (GetLinkPlayerDataExchangeStatusTimed(2, 2) == EXCHANGE_DIFF_SELECTIONS)
                 {
-                    sub_800AC34();
-                    GetEventLoadMessage(gStringVar4, 1);
+                    SetCloseLinkCallback();
+                    GetEventLoadMessage(gStringVar4, MEVENT_STATUS_LOAD_ERROR);
                     PrintMysteryMenuText(0, gStringVar4, 1, 2, 1);
                     gMain.state = 13;
                 }
@@ -221,13 +218,13 @@ static void CB2_MysteryEventMenu(void)
                 else
                 {
                     CloseLink();
-                    GetEventLoadMessage(gStringVar4, 1);
+                    GetEventLoadMessage(gStringVar4, MEVENT_STATUS_LOAD_ERROR);
                     PrintMysteryMenuText(0, gStringVar4, 1, 2, 1);
                     gMain.state = 13;
                 }
             }
         }
-        else if (gMain.newKeys & B_BUTTON)
+        else if (JOY_NEW(B_BUTTON))
         {
             PlaySE(SE_SELECT);
             CloseLink();
@@ -249,15 +246,15 @@ static void CB2_MysteryEventMenu(void)
         gMain.state++;
         break;
     case 10:
-        sub_800AC34();
+        SetCloseLinkCallback();
         gMain.state++;
         break;
     case 11:
         if (gReceivedRemoteLinkPlayers == 0)
         {
-            u16 unkVal = RunMysteryEventScript(gDecompressionBuffer);
+            u16 status = RunMysteryEventScript(gDecompressionBuffer);
             CpuFill32(0, gDecompressionBuffer, 0x7D4);
-            if (!GetEventLoadMessage(gStringVar4, unkVal))
+            if (!GetEventLoadMessage(gStringVar4, status))
                 TrySavingData(SAVE_NORMAL);
             gMain.state++;
         }
@@ -270,18 +267,18 @@ static void CB2_MysteryEventMenu(void)
         if (!IsTextPrinterActive(0))
         {
             gMain.state++;
-            sUnknown_0203BCF8 = 0;
+            sUnused = 0;
         }
         break;
     case 14:
-        if (gMain.newKeys & A_BUTTON)
+        if (JOY_NEW(A_BUTTON))
         {
             PlaySE(SE_SELECT);
             gMain.state++;
         }
         break;
     case 15:
-        BeginNormalPaletteFade(0xFFFFFFFF, 0, 0, 0x10, RGB_BLACK);
+        BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 0x10, RGB_BLACK);
         gMain.state++;
         break;
     case 16:
@@ -293,7 +290,7 @@ static void CB2_MysteryEventMenu(void)
     if (gLinkStatus & 0x40 && !IsLinkMaster())
     {
         CloseLink();
-        GetEventLoadMessage(gStringVar4, 1);
+        GetEventLoadMessage(gStringVar4, MEVENT_STATUS_LOAD_ERROR);
         PrintMysteryMenuText(0, gStringVar4, 1, 2, 1);
         gMain.state = 13;
     }
@@ -315,5 +312,5 @@ static void PrintMysteryMenuText(u8 windowId, const u8 *text, u8 x, u8 y, s32 sp
     textColor[2] = 3;
 
     FillWindowPixelBuffer(windowId, PIXEL_FILL(textColor[0]));
-    AddTextPrinterParameterized4(windowId, 1, x, y, letterSpacing, lineSpacing, textColor, speed, text);
+    AddTextPrinterParameterized4(windowId, FONT_NORMAL, x, y, letterSpacing, lineSpacing, textColor, speed, text);
 }
