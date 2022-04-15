@@ -1067,7 +1067,6 @@ static void BuyMenuTryMakePurchase(u8 taskId)
     {
         if (AddBagItem(tItemId, tItemCount) == TRUE)
         {
-            RedrawListMenu(tListTaskId);
             RecordItemPurchase(taskId);
             BuyMenuDisplayMessage(taskId, gText_HereYouGoThankYou, BuyMenuSubtractMoney);
         }
@@ -1141,6 +1140,7 @@ static void BuyMenuReturnToItemList(u8 taskId)
     s16 *data = gTasks[taskId].data;
 
     ClearDialogWindowAndFrameToTransparent(5, 0);
+    RedrawListMenu(tListTaskId);
     BuyMenuPrintCursor(tListTaskId, 1);
     PutWindowTilemap(1);
     PutWindowTilemap(2);
