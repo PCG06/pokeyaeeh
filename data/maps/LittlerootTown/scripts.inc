@@ -958,9 +958,11 @@ LittlerootTown_Text_ComeHomeIfAnythingHappens:
 	.string "Go on, go get them, honey!$"
 
 LittlerootTown_Text_CanUsePCToStoreItems:
-	.string "If you use a PC, you can store items\n"
-	.string "and POKéMON.\p"
-	.string "The power of science is staggering!$"
+	.string "Technology is so awesome!\n"
+	.string "I can talk to my friend\n"
+        .string "using the PokéNav.\p"
+	.string "The power of science is staggering,\n"
+        .string "isn't it?$
 
 LittlerootTown_Text_BirchSpendsDaysInLab:
 	.string "PROF. BIRCH spends days in his LAB\n"
