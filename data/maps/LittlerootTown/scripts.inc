@@ -962,7 +962,7 @@ LittlerootTown_Text_CanUsePCToStoreItems:
 	.string "I can talk to my friend\n"
         .string "using the PokéNav.\p"
 	.string "The power of science is staggering,\n"
-        .string "isn't it?$
+        .string "isn't it?$"
 
 LittlerootTown_Text_BirchSpendsDaysInLab:
 	.string "PROF. BIRCH spends days in his LAB\n"
