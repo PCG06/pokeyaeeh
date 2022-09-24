@@ -959,8 +959,8 @@ LittlerootTown_Text_ComeHomeIfAnythingHappens:
 
 LittlerootTown_Text_CanUsePCToStoreItems:
 	.string "Technology is so awesome!\n"
-	.string "I can talk to my friend\n"
-        .string "using the PokéNav.\p"
+	.string "I can talk to my friend using\l"
+        .string "the PokéNav.\p"
 	.string "The power of science is staggering,\n"
         .string "isn't it?$"
 
