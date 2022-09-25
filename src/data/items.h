@@ -747,6 +747,7 @@ const struct Item gItems[] =
 
     [ITEM_SACRED_ASH] =
     {
+
         .name = _("Sacred Ash"),
         .itemId = ITEM_SACRED_ASH,
         .price = 50000,
@@ -1850,6 +1851,7 @@ const struct Item gItems[] =
 
     [ITEM_BIG_MUSHROOM] =
     {
+
         .name = _("Big Mushroom"),
         .itemId = ITEM_BIG_MUSHROOM,
         .price = 5000,
@@ -2062,6 +2064,7 @@ const struct Item gItems[] =
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .flingPower = 80,
+
     },
 
     [ITEM_PRETTY_FEATHER] =
@@ -2074,6 +2077,7 @@ const struct Item gItems[] =
         .type = ITEM_USE_BAG_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .flingPower = 20,
+
     },
 
     [ITEM_RELIC_COPPER] =
@@ -2212,6 +2216,7 @@ const struct Item gItems[] =
 
     [ITEM_OLD_AMBER] =
     {
+
         .name = _("Old Amber"),
         .itemId = ITEM_OLD_AMBER,
         .description = sOldAmberDesc,
@@ -3980,6 +3985,7 @@ const struct Item gItems[] =
 
     [ITEM_KANGASKHANITE] =
     {
+
         .name = _("Kangaskhanite"),
         .itemId = ITEM_KANGASKHANITE,
         .price = 0,

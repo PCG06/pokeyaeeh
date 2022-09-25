@@ -2,6 +2,11 @@
 
 ## What is the pokeemerald Expansion?
 
+
+# About this branch
+This is a decapitalized (all-caps text replaced with proper capitalization) version of the [**pokeemerald**](https://travis-ci.org/pret/pokeemerald) dissasembly, originally made by [**Wyrserth**](https://github.com/Wyrserth) and adapted to the current structure of the project.
+
+
 The Pokeemerald Expansion is a collection of feature branches that can be integrated into existing [pokeemerald](https://github.com/pret/pokeemerald) projects.
 
 ## What features are included?
@@ -19,6 +24,7 @@ The Pokeemerald Expansion is a collection of feature branches that can be integr
     - New evolution methods.
     - Hidden Abilities data (How to make them available is up to the user).
 - Items from newer Generations and updated item effects for battle and field use.
+* pokeemerald.gba `sha1: 8C19F2555E10DFF32A9914CEAC360B018AF42E6C`
 
 Certain mechanics, moves, abilities and species sprites are missing. For more information, see [the project's milestones](https://github.com/rh-hideout/pokeemerald-expansion/milestones).
 
