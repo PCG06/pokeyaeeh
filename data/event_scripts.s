@@ -1060,3 +1060,7 @@ Common_EventScript_LegendaryFlewAway::
 	.include "data/text/birch_speech.inc"
 
 	.include "data/maps/BerryShop/scripts.inc"
+
+gText_LittlerootTown_Text_BerryShopSign::
+    .string "Berry Shop$"
+	end
