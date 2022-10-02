@@ -84,7 +84,7 @@
             "mons": [
               {
                 "min_level": 2,
-                "max_level": 5,
+                "max_level": 2,
                 "species": "SPECIES_WURMPLE"
               },
               {
@@ -123,7 +123,7 @@
                 "species": "SPECIES_POOCHYENA"
               },
               {
-                "min_level": 1,
+                "min_level": 2,
                 "max_level": 2,
                 "species": "SPECIES_ZIGZAGOON"
               },
