@@ -562,7 +562,5 @@ static bool8 IsCombat()
 
 static bool8 IsLightActive()
 {
-    if (gLocalTime.hours >= LIGHTNING_START_HOUR || gLocalTime.hours < LIGHTNING_END_HOUR)
-        return TRUE;
     return FALSE;
 }
