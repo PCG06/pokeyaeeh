@@ -1,3 +1,16 @@
+## NAME BOXES LOL
+The "msgbox" has been edited to allow a 3rd optional parameter that creates a name box with the given text.
+
+To use it, its quite simple e.g
+
+msgbox("Its quite easy to make a namebox", --This slot is used for the type of msgbox to use. Leave this slot as an empty gap if you're still unsure-- , "The Creator")
+
+The position of the name box is editable in scrcmd.c at the function "Scrcmd_message".
+
+THAT'S ALL FOLKS!!
+
+
+
 # Pokémon Emerald
 
 This is a decompilation of Pokémon Emerald.
