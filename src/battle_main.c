@@ -393,6 +393,32 @@ const struct TrainerMoney gTrainerMoneyTable[] =
     {0xFF, 5}, // Any trainer class not listed above uses this
 };
 
+#if B_TRAINER_CLASS_POKE_BALLS >= GEN_7
+static const u16 sTrainerBallTable[TRAINER_CLASS_COUNT] =
+{
+#if B_TRAINER_CLASS_POKE_BALLS == GEN_7
+    [TRAINER_CLASS_PKMN_BREEDER] = ITEM_FRIEND_BALL,
+#elif B_TRAINER_CLASS_POKE_BALLS == GEN_8
+    [TRAINER_CLASS_PKMN_BREEDER] = ITEM_HEAL_BALL,
+#endif
+    [TRAINER_CLASS_COOLTRAINER] = ITEM_ULTRA_BALL,
+    [TRAINER_CLASS_COLLECTOR] = ITEM_PREMIER_BALL,
+    [TRAINER_CLASS_SWIMMER_M] = ITEM_DIVE_BALL,
+    [TRAINER_CLASS_BLACK_BELT] = ITEM_ULTRA_BALL,
+    [TRAINER_CLASS_AQUA_LEADER] = ITEM_MASTER_BALL,
+    [TRAINER_CLASS_GENTLEMAN] = ITEM_LUXURY_BALL,
+    [TRAINER_CLASS_ELITE_FOUR] = ITEM_ULTRA_BALL,
+#if B_TRAINER_CLASS_POKE_BALLS == GEN_7
+    [TRAINER_CLASS_FISHERMAN] = ITEM_LURE_BALL,
+#elif B_TRAINER_CLASS_POKE_BALLS == GEN_8
+    [TRAINER_CLASS_FISHERMAN] = ITEM_DIVE_BALL,
+#endif
+    [TRAINER_CLASS_SWIMMER_F] = ITEM_DIVE_BALL,
+    [TRAINER_CLASS_COOLTRAINER_2] = ITEM_ULTRA_BALL,
+    [TRAINER_CLASS_MAGMA_LEADER] = ITEM_MASTER_BALL,
+};
+#endif
+
 #include "data/text/abilities.h"
 
 static void (* const sTurnActionsFuncsTable[])(void) =
@@ -546,7 +572,7 @@ static void CB2_InitBattleInternal(void)
     ResetTasks();
     DrawBattleEntryBackground();
     FreeAllSpritePalettes();
-    gReservedSpritePaletteCount = 4;
+    gReservedSpritePaletteCount = MAX_BATTLERS_COUNT;
     SetVBlankCallback(VBlankCB_Battle);
     SetUpBattleVarsAndBirchZigzagoon();
 
@@ -869,7 +895,7 @@ static void CB2_HandleStartBattle(void)
     case 1:
         if (gBattleTypeFlags & BATTLE_TYPE_LINK)
         {
-            if (gReceivedRemoteLinkPlayers != 0)
+            if (gReceivedRemoteLinkPlayers)
             {
                 if (IsLinkTaskFinished())
                 {
@@ -1076,7 +1102,7 @@ static void CB2_HandleStartMultiPartnerBattle(void)
     case 1:
         if (gBattleTypeFlags & BATTLE_TYPE_LINK)
         {
-            if (gReceivedRemoteLinkPlayers != 0)
+            if (gReceivedRemoteLinkPlayers)
             {
                 u8 language;
 
@@ -1343,7 +1369,7 @@ static void CB2_PreInitMultiBattle(void)
     switch (gBattleCommunication[MULTIUSE_STATE])
     {
     case 0:
-        if (gReceivedRemoteLinkPlayers != 0 && IsLinkTaskFinished())
+        if (gReceivedRemoteLinkPlayers && IsLinkTaskFinished())
         {
             sMultiPartnerPartyBuffer = Alloc(sizeof(gMultiPartnerParty));
             SetMultiPartnerMenuParty(0);
@@ -1479,7 +1505,7 @@ static void CB2_HandleStartMultiBattle(void)
     case 1:
         if (gBattleTypeFlags & BATTLE_TYPE_LINK)
         {
-            if (gReceivedRemoteLinkPlayers != 0)
+            if (gReceivedRemoteLinkPlayers)
             {
                 if (IsLinkTaskFinished())
                 {
@@ -1849,6 +1875,7 @@ static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum, bool8 fir
     u8 fixedIV;
     s32 i, j;
     u8 monsCount;
+    u16 ball;
 
     if (trainerNum == TRAINER_SECRET_BASE)
         return 0;
@@ -1952,6 +1979,11 @@ static u8 CreateNPCTrainerParty(struct Pokemon *party, u16 trainerNum, bool8 fir
                 break;
             }
             }
+
+        #if B_TRAINER_CLASS_POKE_BALLS >= GEN_7
+            ball = (sTrainerBallTable[gTrainers[trainerNum].trainerClass]) ? sTrainerBallTable[gTrainers[trainerNum].trainerClass] : ITEM_POKE_BALL;
+            SetMonData(&party[i], MON_DATA_POKEBALL, &ball);
+        #endif
         }
 
         gBattleTypeFlags |= gTrainers[trainerNum].doubleBattle;
@@ -2115,7 +2147,7 @@ void CB2_InitEndLinkBattle(void)
         DrawBattleEntryBackground();
         SetGpuReg(REG_OFFSET_WINOUT, WINOUT_WIN01_BG0 | WINOUT_WIN01_BG1 | WINOUT_WIN01_BG2 | WINOUT_WIN01_OBJ | WINOUT_WIN01_CLR);
         FreeAllSpritePalettes();
-        gReservedSpritePaletteCount = 4;
+        gReservedSpritePaletteCount = MAX_BATTLERS_COUNT;
         SetVBlankCallback(VBlankCB_Battle);
 
         // Show end Vs screen with battle results
@@ -2319,7 +2351,7 @@ static void CB2_InitAskRecordBattle(void)
     ResetSpriteData();
     ResetTasks();
     FreeAllSpritePalettes();
-    gReservedSpritePaletteCount = 4;
+    gReservedSpritePaletteCount = MAX_BATTLERS_COUNT;
     SetVBlankCallback(VBlankCB_Battle);
     SetMainCallback2(CB2_AskRecordBattle);
     BeginNormalPaletteFade(PALETTES_ALL, 0, 0x10, 0, RGB_BLACK);
@@ -2942,6 +2974,7 @@ static void BattleStartClearSetData(void)
         gBattleStruct->lastTakenMoveFrom[i][3] = MOVE_NONE;
         gBattleStruct->AI_monToSwitchIntoId[i] = PARTY_SIZE;
         gBattleStruct->skyDropTargets[i] = 0xFF;
+        gBattleStruct->overwrittenAbilities[i] = ABILITY_NONE;
     }
 
     gLastUsedMove = 0;
@@ -2970,6 +3003,7 @@ static void BattleStartClearSetData(void)
 	gBattleScripting.monCaught = FALSE;
 
     gMultiHitCounter = 0;
+    gBattleScripting.savedDmg = 0;
     gBattleOutcome = 0;
     gBattleControllerExecFlags = 0;
     gPaydayMoney = 0;
@@ -3129,9 +3163,9 @@ void SwitchInClearSetData(void)
     gSpecialStatuses[gActiveBattler].physicalDmg = 0;
     gSpecialStatuses[gActiveBattler].specialDmg = 0;
 
-    ClearBattlerMoveHistory(gActiveBattler);
-    ClearBattlerAbilityHistory(gActiveBattler);
-    ClearBattlerItemEffectHistory(gActiveBattler);
+    gBattleStruct->overwrittenAbilities[gActiveBattler] = ABILITY_NONE;
+
+    Ai_UpdateSwitchInData(gActiveBattler);
 }
 
 void FaintClearSetData(void)
@@ -3227,12 +3261,12 @@ void FaintClearSetData(void)
     gBattleMons[gActiveBattler].type2 = gBaseStats[gBattleMons[gActiveBattler].species].type2;
     gBattleMons[gActiveBattler].type3 = TYPE_MYSTERY;
 
-    ClearBattlerMoveHistory(gActiveBattler);
-    ClearBattlerAbilityHistory(gActiveBattler);
-    ClearBattlerItemEffectHistory(gActiveBattler);
+    Ai_UpdateFaintData(gActiveBattler);
     UndoFormChange(gBattlerPartyIndexes[gActiveBattler], GET_BATTLER_SIDE(gActiveBattler), FALSE);
     if (GetBattlerSide(gActiveBattler) == B_SIDE_PLAYER)
         UndoMegaEvolution(gBattlerPartyIndexes[gActiveBattler]);
+
+    gBattleStruct->overwrittenAbilities[gActiveBattler] = ABILITY_NONE;
 
     // If the fainted mon was involved in a Sky Drop
     if (gBattleStruct->skyDropTargets[gActiveBattler] != 0xFF)
@@ -3272,6 +3306,11 @@ void FaintClearSetData(void)
             }
         }
     }
+
+    // Clear Z-Move data
+    gBattleStruct->zmove.active = FALSE;
+    gBattleStruct->zmove.toBeUsed[gActiveBattler] = MOVE_NONE;
+    gBattleStruct->zmove.effect = EFFECT_HIT;
 }
 
 static void DoBattleIntro(void)
@@ -3592,7 +3631,8 @@ static void DoBattleIntro(void)
             gBattleStruct->switchInAbilitiesCounter = 0;
             gBattleStruct->switchInItemsCounter = 0;
             gBattleStruct->overworldWeatherDone = FALSE;
-
+            GetAiLogicData(); // get assumed abilities, hold effects, etc of all battlers
+            Ai_InitPartyStruct(); // Save mons party counts, and first 2/4 mons on the battlefield.
             gBattleMainFunc = TryDoEventsBeforeFirstTurn;
         }
         break;
@@ -3936,7 +3976,8 @@ static void HandleTurnActionSelectionState(void)
             gBattleCommunication[gActiveBattler] = STATE_BEFORE_ACTION_CHOSEN;
 
             // Do AI score computations here so we can use them in AI_TrySwitchOrUseItem
-            if ((gBattleTypeFlags & BATTLE_TYPE_HAS_AI || IsWildMonSmart()) && IsBattlerAIControlled(gActiveBattler)) {
+            if ((gBattleTypeFlags & BATTLE_TYPE_HAS_AI || IsWildMonSmart())
+                && (IsBattlerAIControlled(gActiveBattler) && !(gBattleTypeFlags & BATTLE_TYPE_PALACE))) {
                 gBattleStruct->aiMoveOrAction[gActiveBattler] = ComputeBattleAiScores(gActiveBattler);
             }
             break;
@@ -4804,6 +4845,8 @@ static void TurnValuesCleanUp(bool8 var0)
 
         if (gDisableStructs[gActiveBattler].substituteHP == 0)
             gBattleMons[gActiveBattler].status2 &= ~STATUS2_SUBSTITUTE;
+
+        gSpecialStatuses[gActiveBattler].parentalBondState = PARENTAL_BOND_OFF;
     }
 
     gSideStatuses[0] &= ~(SIDE_STATUS_QUICK_GUARD | SIDE_STATUS_WIDE_GUARD | SIDE_STATUS_CRAFTY_SHIELD | SIDE_STATUS_MAT_BLOCK);
@@ -5308,7 +5351,7 @@ static void ReturnFromBattleToOverworld(void)
         PartySpreadPokerus(gPlayerParty);
     }
 
-    if (gBattleTypeFlags & BATTLE_TYPE_LINK && gReceivedRemoteLinkPlayers != 0)
+    if (gBattleTypeFlags & BATTLE_TYPE_LINK && gReceivedRemoteLinkPlayers)
         return;
 
     gSpecialVar_Result = gBattleOutcome;

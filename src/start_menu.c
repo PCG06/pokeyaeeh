@@ -324,7 +324,7 @@ static void BuildNormalStartMenu(void)
 }
 
 static void BuildDebugStartMenu(void)
-{    
+{
     AddStartMenuAction(MENU_ACTION_DEBUG);
     if (FlagGet(FLAG_SYS_POKEDEX_GET) == TRUE)
         AddStartMenuAction(MENU_ACTION_POKEDEX);
@@ -761,6 +761,7 @@ static bool8 StartMenuDebugCallback(void)
     HideStartMenuDebug(); // Hide start menu without enabling movement
 
 #if DEBUG_SYSTEM_ENABLE == TRUE
+    FreezeObjectEvents();
     Debug_ShowMainMenu();
 #endif
 
@@ -1311,7 +1312,7 @@ static void Task_SaveAfterLinkBattle(u8 taskId)
             }
             else
             {
-                gSoftResetDisabled = 1;
+                gSoftResetDisabled = TRUE;
                 *state = 1;
             }
             break;
@@ -1325,7 +1326,7 @@ static void Task_SaveAfterLinkBattle(u8 taskId)
             {
                 ClearContinueGameWarpStatus2();
                 *state = 3;
-                gSoftResetDisabled = 0;
+                gSoftResetDisabled = FALSE;
             }
             break;
         case 3:
