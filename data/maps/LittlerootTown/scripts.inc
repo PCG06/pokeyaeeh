@@ -251,7 +251,7 @@ LittlerootTown_EventScript_FatMan::
 	end
 
 LittlerootTown_EventScript_Boy::
-	msgbox LittlerootTown_Text_BirchSpendsDaysInLab, MSGBOX_NPC
+	msgbox LittlerootTown_Text_BirchSpendsDaysInLab, MSGBOX_NPC, LittlerootTown_Text_TestDummy
 	end
 
 LittlerootTown_EventScript_Twin::
@@ -970,6 +970,9 @@ LittlerootTown_Text_BirchSpendsDaysInLab:
 	.string "the wild to do more research…\p"
 	.string "When does Prof. Birch spend time\n"
 	.string "at home?$"
+
+LittlerootTown_Text_TestDummy:
+	.string "Test Dummy$"
 
 LittlerootTown_Text_IfYouGoInGrassPokemonWillJumpOut:
 	.string "Um, um, um!\p"
