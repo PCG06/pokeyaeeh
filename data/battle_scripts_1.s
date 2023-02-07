@@ -3055,6 +3055,7 @@ BattleScript_EffectHitEscape:
 	jumpifbyte CMP_NOT_EQUAL gBattleOutcome 0, BattleScript_HitEscapeEnd
 	jumpifbattletype BATTLE_TYPE_ARENA, BattleScript_HitEscapeEnd
 	jumpifcantswitch SWITCH_IGNORE_ESCAPE_PREVENTION | BS_ATTACKER, BattleScript_HitEscapeEnd
+        jumpifemergencyexited BS_TARGET, BattleScript_HitEscapeEnd
 	openpartyscreen BS_ATTACKER, BattleScript_HitEscapeEnd
 	switchoutabilities BS_ATTACKER
 	waitstate
@@ -4138,6 +4139,7 @@ BattleScript_EffectParalyze:
 BattleScript_BattleScript_EffectParalyzeNoTypeCalc:
 	jumpifmovehadnoeffect BattleScript_ButItFailed
 	jumpifstatus BS_TARGET, STATUS1_PARALYSIS, BattleScript_AlreadyParalyzed
+	jumpifabsorbaffected BS_TARGET, BattleScript_VoltAbsorbHeal
 	tryparalyzetype BS_ATTACKER, BS_TARGET, BattleScript_NotAffected
 	jumpifstatus BS_TARGET, STATUS1_ANY, BattleScript_ButItFailed
 	jumpifterrainaffected BS_TARGET, STATUS_FIELD_MISTY_TERRAIN, BattleScript_MistyTerrainPrevents
@@ -4151,6 +4153,11 @@ BattleScript_BattleScript_EffectParalyzeNoTypeCalc:
 	resultmessage
 	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_MoveEnd
+	
+BattleScript_VoltAbsorbHeal:
+	copybyte gBattlerAbility, gBattlerTarget
+	tryhealquarterhealth BS_TARGET BattleScript_MonMadeMoveUseless @ Check if max hp
+	goto BattleScript_MoveHPDrain
 
 BattleScript_AlreadyParalyzed:
 	setalreadystatusedmoveattempt BS_ATTACKER
@@ -7892,6 +7899,16 @@ BattleScript_AftermathDmg::
 	printstring STRINGID_AFTERMATHDMG
 	waitmessage B_WAIT_TIME_LONG
 	tryfaintmon BS_ATTACKER
+	return
+	
+BattleScript_DampPreventsAftermath::
+	pause B_WAIT_TIME_SHORT
+	call BattleScript_AbilityPopUp
+	pause 40
+	copybyte gBattlerAbility, sBATTLER
+	call BattleScript_AbilityPopUp
+	printstring STRINGID_PKMNSABILITYPREVENTSABILITY
+	waitmessage B_WAIT_TIME_LONG
 	return
 
 BattleScript_MoveUsedIsAsleep::

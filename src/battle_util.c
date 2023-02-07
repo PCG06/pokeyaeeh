@@ -515,9 +515,11 @@ void HandleAction_UseMove(void)
     if (gBattleTypeFlags & BATTLE_TYPE_ARENA)
         BattleArena_AddMindPoints(gBattlerAttacker);
 
-    // Record HP of each battler
     for (i = 0; i < MAX_BATTLERS_COUNT; i++)
+    {
         gBattleStruct->hpBefore[i] = gBattleMons[i].hp;
+        gSpecialStatuses[i].emergencyExited = FALSE;
+    }
 
     gCurrentActionFuncId = B_ACTION_EXEC_SCRIPT;
 }
@@ -3812,7 +3814,7 @@ u8 AtkCanceller_UnableToUseMove(void)
                 {
                     SetRandomMultiHitCounter();
                 }
-                
+
                 PREPARE_BYTE_NUMBER_BUFFER(gBattleScripting.multihitString, 1, 0)
             }
             else if (gBattleMoves[gCurrentMove].flags & FLAG_TWO_STRIKES)
@@ -3839,7 +3841,7 @@ u8 AtkCanceller_UnableToUseMove(void)
                     party = gPlayerParty;
                 else
                     party = gEnemyParty;
-                
+
                 for (i = 0; i < PARTY_SIZE; i++)
                 {
                     if (GetMonData(&party[i], MON_DATA_HP)
@@ -5485,7 +5487,7 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u16 ability, u8 special, u16 move
                         RecordItemEffectBattle(gBattlerAttacker, HOLD_EFFECT_ABILITY_SHIELD);
                         break;
                     }
-                
+
                     gLastUsedAbility = gBattleMons[gBattlerAttacker].ability;
                     gBattleMons[gBattlerAttacker].ability = gBattleStruct->overwrittenAbilities[gBattlerAttacker] = gBattleMons[gBattlerTarget].ability;
                     gBattleMons[gBattlerTarget].ability = gBattleStruct->overwrittenAbilities[gBattlerTarget] = gLastUsedAbility;
@@ -5564,17 +5566,26 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u16 ability, u8 special, u16 move
             }
             break;
         case ABILITY_AFTERMATH:
-            if (!IsAbilityOnField(ABILITY_DAMP)
-             && !(gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
+            if (!(gMoveResultFlags & MOVE_RESULT_NO_EFFECT)
              && gBattleMons[gBattlerTarget].hp == 0
              && IsBattlerAlive(gBattlerAttacker)
              && IsMoveMakingContact(move, gBattlerAttacker))
             {
-                gBattleMoveDamage = gBattleMons[gBattlerAttacker].maxHP / 4;
-                if (gBattleMoveDamage == 0)
-                    gBattleMoveDamage = 1;
-                BattleScriptPushCursor();
-                gBattlescriptCurrInstr = BattleScript_AftermathDmg;
+                u8 battler;
+                if ((battler = IsAbilityOnField(ABILITY_DAMP)))
+                {
+                    gBattleScripting.battler = battler - 1;
+                    BattleScriptPushCursor();
+                    gBattlescriptCurrInstr = BattleScript_DampPreventsAftermath;
+                }
+                else
+                {
+                    gBattleMoveDamage = gBattleMons[gBattlerAttacker].maxHP / 4;
+                    if (gBattleMoveDamage == 0)
+                        gBattleMoveDamage = 1;
+                    BattleScriptPushCursor();
+                    gBattlescriptCurrInstr = BattleScript_AftermathDmg;
+                }
                 effect++;
             }
             break;
@@ -5623,7 +5634,7 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u16 ability, u8 special, u16 move
              && gBattleMons[gBattlerAttacker].hp != 0
              && !gProtectStructs[gBattlerAttacker].confusionSelfDmg
              && TARGET_TURN_DAMAGED
-             && CanBePoisoned(gBattlerAttacker, gBattlerTarget)
+             && CanBePoisoned(gBattlerTarget, gBattlerAttacker)
              && IsMoveMakingContact(move, gBattlerAttacker)
              && (Random() % 3) == 0)
             {
@@ -5756,11 +5767,9 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u16 ability, u8 special, u16 move
                 {
                     gStatuses3[battler] |= STATUS3_PERISH_SONG;
                     gDisableStructs[battler].perishSongTimer = 3;
-                    gDisableStructs[battler].perishSongTimerStartValue = 3;
                 }
                 gStatuses3[gBattlerAttacker] |= STATUS3_PERISH_SONG;
                 gDisableStructs[gBattlerAttacker].perishSongTimer = 3;
-                gDisableStructs[gBattlerAttacker].perishSongTimerStartValue = 3;
                 BattleScriptPushCursor();
                 gBattlescriptCurrInstr = BattleScript_PerishBodyActivates;
                 effect++;
@@ -5862,7 +5871,7 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u16 ability, u8 special, u16 move
              && !gProtectStructs[gBattlerAttacker].confusionSelfDmg
              && IS_MOVE_PHYSICAL(gCurrentMove)
              && TARGET_TURN_DAMAGED
-             && !(gSideStatuses[gBattlerAttacker] & SIDE_STATUS_TOXIC_SPIKES)
+             && !(gSideStatuses[GetBattlerSide(gBattlerAttacker)] & SIDE_STATUS_TOXIC_SPIKES)
              && IsBattlerAlive(gBattlerTarget))
             {
                 gBattlerTarget = gBattlerAttacker;
@@ -5954,6 +5963,7 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u16 ability, u8 special, u16 move
             switch (GetBattlerAbility(battler))
             {
             case ABILITY_IMMUNITY:
+            case ABILITY_PASTEL_VEIL:
                 if (gBattleMons[battler].status1 & (STATUS1_POISON | STATUS1_TOXIC_POISON | STATUS1_TOXIC_COUNTER))
                 {
                     StringCopy(gBattleTextBuff1, gStatusConditionString_PoisonJpn);
@@ -6812,7 +6822,7 @@ static bool32 GetMentalHerbEffect(u8 battlerId)
     // Check taunt
     if (gDisableStructs[battlerId].tauntTimer != 0)
     {
-        gDisableStructs[battlerId].tauntTimer = gDisableStructs[battlerId].tauntTimer2 = 0;
+        gDisableStructs[battlerId].tauntTimer = 0;
         gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_MENTALHERBCURE_TAUNT;
         PREPARE_MOVE_BUFFER(gBattleTextBuff1, MOVE_TAUNT);
         ret = TRUE;
@@ -6821,7 +6831,7 @@ static bool32 GetMentalHerbEffect(u8 battlerId)
     if (gDisableStructs[battlerId].encoreTimer != 0)
     {
         gDisableStructs[battlerId].encoredMove = 0;
-        gDisableStructs[battlerId].encoreTimerStartValue = gDisableStructs[battlerId].encoreTimer = 0;
+        gDisableStructs[battlerId].encoreTimer = 0;
         gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_MENTALHERBCURE_ENCORE;   // STRINGID_PKMNENCOREENDED
         ret = TRUE;
     }
@@ -6842,7 +6852,7 @@ static bool32 GetMentalHerbEffect(u8 battlerId)
     // Check disable
     if (gDisableStructs[battlerId].disableTimer != 0)
     {
-        gDisableStructs[battlerId].disableTimer = gDisableStructs[battlerId].disableTimerStartValue = 0;
+        gDisableStructs[battlerId].disableTimer = 0;
         gDisableStructs[battlerId].disabledMove = 0;
         gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_MENTALHERBCURE_DISABLE;
         ret = TRUE;
@@ -6855,7 +6865,7 @@ static u8 ItemEffectMoveEnd(u32 battlerId, u16 holdEffect)
 {
     u8 effect = 0;
     u32 i;
-    
+
     switch (holdEffect)
     {
 #if B_HP_BERRIES >= GEN_4
@@ -7024,7 +7034,7 @@ static u8 ItemEffectMoveEnd(u32 battlerId, u16 holdEffect)
             && !(gBattleMons[battlerId].status2 & STATUS2_FOCUS_ENERGY)
             && HasEnoughHpToEatBerry(battlerId, GetBattlerItemHoldEffectParam(battlerId, gLastUsedItem), gLastUsedItem))
         {
-            gBattleMons[battlerId].status2 |= STATUS2_FOCUS_ENERGY;            
+            gBattleMons[battlerId].status2 |= STATUS2_FOCUS_ENERGY;
             gBattleScripting.battler = battlerId;
             gPotentialItemEffectBattler = battlerId;
             BattleScriptPushCursor();
@@ -7033,7 +7043,7 @@ static u8 ItemEffectMoveEnd(u32 battlerId, u16 holdEffect)
         }
         break;
     }
-    
+
     return effect;
 }
 
@@ -7050,7 +7060,7 @@ u8 ItemBattleEffects(u8 caseID, u8 battlerId, bool8 moveTurn)
         gLastUsedItem = gBattleMons[battlerId].item;
         battlerHoldEffect = GetBattlerHoldEffect(battlerId, TRUE);
     }
-    
+
     atkItem = gBattleMons[gBattlerAttacker].item;
     atkHoldEffect = GetBattlerHoldEffect(gBattlerAttacker, TRUE);
     atkHoldEffectParam = GetBattlerHoldEffectParam(gBattlerAttacker);
@@ -8181,7 +8191,7 @@ u32 GetBattlerHoldEffect(u8 battlerId, bool32 checkNegating)
         return ItemId_GetHoldEffect(gBattleMons[battlerId].item);
 }
 
-// 
+//
 static u32 GetBattlerItemHoldEffectParam(u8 battlerId, u16 item)
 {
     if (item == ITEM_ENIGMA_BERRY)
@@ -8201,7 +8211,7 @@ u32 GetBattlerHoldEffectParam(u8 battlerId)
 bool32 IsMoveMakingContact(u16 move, u8 battlerAtk)
 {
     u16 atkHoldEffect = GetBattlerHoldEffect(battlerAtk, TRUE);
-    
+
     if (!(gBattleMoves[move].flags & FLAG_MAKES_CONTACT))
     {
         if (gBattleMoves[move].effect == EFFECT_SHELL_SIDE_ARM && gBattleStruct->swapDamageCategory)
@@ -8209,11 +8219,9 @@ bool32 IsMoveMakingContact(u16 move, u8 battlerAtk)
         else
             return FALSE;
     }
-    else if (GetBattlerAbility(battlerAtk) == ABILITY_LONG_REACH || atkHoldEffect == HOLD_EFFECT_PUNCHING_GLOVE)
-    {
-        return FALSE;
-    }
-    else if (atkHoldEffect == HOLD_EFFECT_PROTECTIVE_PADS)
+    else if ((atkHoldEffect == HOLD_EFFECT_PUNCHING_GLOVE && (gBattleMoves[move].flags & FLAG_IRON_FIST_BOOST))
+           || atkHoldEffect == HOLD_EFFECT_PROTECTIVE_PADS
+           || GetBattlerAbility(battlerAtk) == ABILITY_LONG_REACH)
     {
         return FALSE;
     }
@@ -8233,7 +8241,7 @@ bool32 IsBattlerProtected(u8 battlerId, u16 move)
         else if (gProtectStructs[battlerId].protected)
             return FALSE;
     }
-    
+
         if (move == MOVE_TEATIME)
     {
             return FALSE;
@@ -10108,18 +10116,12 @@ bool32 CanMegaEvolve(u8 battlerId)
 
         // Can Mega Evolve via Mega Stone.
         if (holdEffect == HOLD_EFFECT_MEGA_STONE)
-        {
-            gBattleStruct->mega.isWishMegaEvo = FALSE;
             return TRUE;
-        }
     }
 
     // Check if there is an entry in the evolution table for Wish Mega Evolution.
     if (GetWishMegaEvolutionSpecies(species, GetMonData(mon, MON_DATA_MOVE1), GetMonData(mon, MON_DATA_MOVE2), GetMonData(mon, MON_DATA_MOVE3), GetMonData(mon, MON_DATA_MOVE4)))
-    {
-        gBattleStruct->mega.isWishMegaEvo = TRUE;
         return TRUE;
-    }
 
     // No checks passed, the mon CAN'T mega evolve.
     return FALSE;

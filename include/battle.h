@@ -70,20 +70,15 @@ struct DisableStruct
     s8 stockpileBeforeDef;
     s8 stockpileBeforeSpDef;
     u8 substituteHP;
-    u8 disableTimer:4;
-    u8 disableTimerStartValue:4;
     u8 encoredMovePos;
+    u8 disableTimer:4;
     u8 encoreTimer:4;
-    u8 encoreTimerStartValue:4;
     u8 perishSongTimer:4;
-    u8 perishSongTimerStartValue:4;
     u8 furyCutterCounter;
     u8 rolloutTimer:4;
     u8 rolloutTimerStartValue:4;
     u8 chargeTimer:4;
-    u8 chargeTimerStartValue:4;
     u8 tauntTimer:4;
-    u8 tauntTimer2:4;
     u8 battlerPreventingEscape;
     u8 battlerWithSureHit;
     u8 isFirstTurn;
@@ -99,8 +94,8 @@ struct DisableStruct
     u8 healBlockTimer;
     u8 laserFocusTimer;
     u8 throatChopTimer;
-    u8 usedMoves:4;
     u8 wrapTurns;
+    u8 usedMoves:4;
     u8 noRetreat:1;
     u8 tarShot:1;
     u8 octolock:1;
@@ -195,6 +190,7 @@ struct SpecialStatus
     // End of byte
     u8 weatherAbilityDone:1;
     u8 terrainAbilityDone:1;
+    u8 emergencyExited:1;
 };
 
 struct SideTimer
@@ -488,7 +484,6 @@ struct MegaEvolutionData
     u8 battlerId;
     bool8 playerSelect;
     u8 triggerSpriteId;
-    bool8 isWishMegaEvo;
 };
 
 struct Illusion
