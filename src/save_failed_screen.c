@@ -419,9 +419,9 @@ void CB2_FlashNotDetectedScreen(void)
     static const char errorMsg[] = _(
         "{COLOR RED}ERROR!\n"
         "{COLOR DARK_GRAY}Flash memory not detected!\n\n"
-        "Set your emulator's save type\nto Flash 1MB / 128K.\n"
-        "{COLOR BLUE}Recommended emulators: mGBA\n"
-        "and My Boy!"
+        "Set your emulator's save type\nto Flash 1Mb / 128K.\n\n"
+        "{FONT_SMALL}{COLOR BLUE}Highly Recommended emulators: mGBA\n"
+        "and My Boy!\n"
     );
 
     if (!gMain.state){
