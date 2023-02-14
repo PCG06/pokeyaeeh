@@ -126,6 +126,7 @@ static void LoadTMTypePalettes(void);
 static void DrawPartyMonIcons(void);
 static void TintPartyMonIcons(u8 tm);
 static void DestroyPartyMonIcons(void);
+static u8 CanTeachMove(struct Pokemon *, u16);
 
 static const struct BgTemplate sBGTemplates[] = {
     {
@@ -1097,6 +1098,7 @@ static void SpriteCb_MonIcon(struct Sprite *sprite)
 #define MON_ICON_START_Y  0x2a
 #define MON_ICON_PADDING  0x20
 
+#define CanTeachMove
 
 void LoadMonIconPalettesTinted(void)
 {
@@ -1170,7 +1172,7 @@ static void TintPartyMonIcons(u8 tm)
     for (i = 0; i < gPlayerPartyCount; i++)
     {
         species = GetMonData(&gPlayerParty[i], MON_DATA_SPECIES);
-        if (!CanSpeciesLearnTMHM(species, tm))
+        if (!CanTeachMove(species, tm))
         {
             gSprites[spriteIdData[i]].oam.paletteNum = 7 + spriteIdPalette[i];
         }
