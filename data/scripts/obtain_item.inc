@@ -50,7 +50,15 @@ EventScript_BufferBerriesPocket::
 	return
 
 EventScript_ObtainedItem::
+EventScript_ObtainedItem:: @ 8271B95
+	compare VAR_0x8001, TRUE
+	goto_if_eq EventScript_ObtainedItemMessage
+	buffernumberstring 0, VAR_0x8001
+	message gText_ObtainedTheItems
+	goto EventScript_ContinueObtainedItem
+EventScript_ObtainedItemMessage:
 	message gText_ObtainedTheItem
+EventScript_ContinueObtainedItem:
 	waitfanfare
 	msgbox gText_PutItemInPocket, MSGBOX_DEFAULT
 	setvar VAR_RESULT, TRUE
@@ -133,8 +141,15 @@ EventScript_FoundTMHM::
 	return
 
 EventScript_FoundItem::
-	message gText_PlayerFoundOneItem
-	return
+EventScript_FoundItem:: @ 8271C9B
+    compare VAR_0x8001, TRUE
+    goto_if_eq EventScript_FoundItemMessage
+    buffernumberstring 0, VAR_0x8001
+    message gText_PlayerFoundItems
+    return
+EventScript_FoundItemMessage::
+    message gText_PlayerFoundOneItem
+    return
 
 EventScript_NoRoomToPickUpItem::
 	msgbox gText_ObtainedTheItem, MSGBOX_DEFAULT
