@@ -1172,16 +1172,19 @@ static void TintPartyMonIcons(u16 tm)
     for (i = 0; i < gPlayerPartyCount; i++)
     {
         species = GetMonData(&gPlayerParty[i], MON_DATA_SPECIES);
-        if (!CanLearnTeachableMove(species, ItemIdToBattleMoveId(tm)))
+        SetGpuReg(REG_OFFSET_BLDCNT, BLDCNT_TGT2_ALL);
+        SetGpuReg(REG_OFFSET_BLDALPHA, BLDALPHA_BLEND(7, 11));
+        if (!CanLearnTeachableMove(species, ItemIdToBattleMoveId(tm))) 
         {
-            gSprites[spriteIdData[i]].oam.paletteNum = 7 + spriteIdPalette[i];
+            gSprites[spriteIdData[i]].oam.objMode = ST_OAM_OBJ_BLEND;
         }
         else
         {
-            gSprites[spriteIdData[i]].oam.paletteNum = spriteIdPalette[i];//gMonIconPaletteIndices[species];
+            gSprites[spriteIdData[i]].oam.objMode = ST_OAM_OBJ_NORMAL;//gMonIconPaletteIndices[species];
         }
+
     }
-    
+
 }
 
 static void DestroyPartyMonIcons(void)
