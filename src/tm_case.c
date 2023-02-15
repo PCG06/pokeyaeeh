@@ -1173,7 +1173,7 @@ static void TintPartyMonIcons(u16 tm)
     {
         species = GetMonData(&gPlayerParty[i], MON_DATA_SPECIES);
         SetGpuReg(REG_OFFSET_BLDCNT, BLDCNT_TGT2_ALL);
-        SetGpuReg(REG_OFFSET_BLDALPHA, BLDALPHA_BLEND(7, 11));
+        SetGpuReg(REG_OFFSET_BLDALPHA, BLDALPHA_BLEND(7, 5));
         if (!CanLearnTeachableMove(species, ItemIdToBattleMoveId(tm))) 
         {
             gSprites[spriteIdData[i]].oam.objMode = ST_OAM_OBJ_BLEND;
