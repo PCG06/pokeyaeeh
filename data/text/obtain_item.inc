@@ -35,3 +35,5 @@ gText_ObtainedTheItems::
 
 	gText_PlayerFoundItems::
     .string "{PLAYER} found {STR_VAR_1} {STR_VAR_2}!$"
+
+	
