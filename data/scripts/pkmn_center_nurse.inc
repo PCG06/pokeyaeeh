@@ -118,3 +118,4 @@ Movement_PkmnCenterNurse_Bow:
    waitmovement 0
    release
    end
+   
