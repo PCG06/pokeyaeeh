@@ -4,13 +4,10 @@ Common_EventScript_PkmnCenterNurse::
 	setvar VAR_0x8004, 0
 	specialvar VAR_RESULT, CountPlayerTrainerStars
 	goto_if_eq VAR_RESULT, 4, EventScript_PkmnCenterNurse_GoldCard
-	msgbox gText_WouldYouLikeToRestYourPkmn, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, YES, EventScript_PkmnCenterNurse_HealPkmn
-	goto_if_eq VAR_RESULT, NO, EventScript_PkmnCenterNurse_Goodbye
+	goto EventScript_PkmnCenterNurse_HealPkmn
 	end
 
 EventScript_PkmnCenterNurse_Goodbye::
-	message gText_WeHopeToSeeYouAgain
 	return
 
 @ VAR_0x8004 is 1 when player has Gold Card; jumps are identical
@@ -25,11 +22,9 @@ EventScript_PkmnCenterNurse_HealPkmn::
 	end
 
 EventScript_PkmnCenterNurse_IllTakeYourPkmn::
-	message gText_IllTakeYourPkmn
 	return
 
 EventScript_PkmnCenterNurse_IllTakeYourPkmn2::
-	message gText_IllTakeYourPkmn2
 	return
 
 EventScript_PkmnCenterNurse_TakeAndHealPkmn::
@@ -54,19 +49,17 @@ EventScript_PkmnCenterNurse_CheckTrainerHillAndUnionRoom::
 @ VAR_0x8004 is 1 when player has Gold Card
 EventScript_PkmnCenterNurse_ReturnPkmn::
 	goto_if_eq VAR_0x8004, 1, EventScript_PkmnCenterNurse_ReturnPkmn2
-	message gText_RestoredPkmnToFullHealth
 	waitmessage
 	applymovement VAR_0x800B, Movement_PkmnCenterNurse_Bow
 	waitmovement 0
-	message gText_WeHopeToSeeYouAgain
+	goto EventScript_PkmnCenterNurse_PlayerTurn
 	return
 
 EventScript_PkmnCenterNurse_ReturnPkmn2::
-	message gText_ThankYouForWaiting
 	waitmessage
 	applymovement VAR_0x800B, Movement_PkmnCenterNurse_Bow
 	waitmovement 0
-	message gText_WeHopeToSeeYouAgain2
+	goto EventScript_PkmnCenterNurse_PlayerTurn
 	return
 
 EventScript_PkmnCenterNurse_PlayerWaitingInUnionRoom::
@@ -102,13 +95,11 @@ EventScript_PkmnCenterNurse_GoldCard::
 	waitmovement 0
 	msgbox gText_NoticesGoldCard, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, YES, EventScript_PkmnCenterNurse_GoldCardHealPkmn
-	message gText_WeHopeToSeeYouAgain2
 	return
 
 EventScript_PkmnCenterNurse_AskForUsual::
 	msgbox gText_YouWantTheUsual, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, YES, EventScript_PkmnCenterNurse_GoldCardHealPkmn
-	message gText_WeHopeToSeeYouAgain2
 	return
 
 EventScript_PkmnCenterNurse_GoldCardHealPkmn::
@@ -120,3 +111,10 @@ Movement_PkmnCenterNurse_Bow:
 	nurse_joy_bow
 	delay_4
 	step_end
+
+ EventScript_PkmnCenterNurse_PlayerTurn::
+   closemessage
+   applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
+   waitmovement 0
+   release
+   end
