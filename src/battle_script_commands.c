@@ -14993,12 +14993,22 @@ static void Cmd_pickup(void)
                 && species != SPECIES_EGG
                 && heldItem == ITEM_NONE
                 && (Random() % 10) == 0)
-            {
+           {
                 if (isInPyramid)
                 {
                     heldItem = GetBattlePyramidPickupItemId();
                     SetMonData(&gPlayerParty[i], MON_DATA_HELD_ITEM, &heldItem);
                 }
+                else if (species == SPECIES_SHUCKLE
+               && heldItem >= FIRST_BERRY_INDEX
+               && heldItem <= LAST_BERRY_INDEX)
+           {
+               if (!(Random() % 16))
+               {
+                   heldItem = ITEM_BERRY_JUICE;
+                   SetMonData(&gPlayerParty[i], MON_DATA_HELD_ITEM, &heldItem);
+               }
+           }
                 else
                 {
                     u32 rand = Random() % 100;
@@ -15028,6 +15038,16 @@ static void Cmd_pickup(void)
                     heldItem = ITEM_HONEY;
                     SetMonData(&gPlayerParty[i], MON_DATA_HELD_ITEM, &heldItem);
                 }
+                else if (species == SPECIES_SHUCKLE
+               && heldItem >= FIRST_BERRY_INDEX
+               && heldItem <= LAST_BERRY_INDEX)
+           {
+               if (!(Random() % 16))
+               {
+                   heldItem = ITEM_BERRY_JUICE;
+                   SetMonData(&gPlayerParty[i], MON_DATA_HELD_ITEM, &heldItem);
+               }
+           }
             }
             #if P_SHUCKLE_BERRY_JUICE == TRUE
             else if (species == SPECIES_SHUCKLE
