@@ -6,7 +6,7 @@ ASSUMPTIONS
     ASSUME(gBattleMoves[MOVE_TACKLE].split == SPLIT_PHYSICAL);
 }
 
-SINGLE_BATTLE_TEST("Intimidate (opponent) lowers player's attack after switch out", s16 damage)
+SINGLE_BATTLE_TEST("Intimidate (opponent) lowers player's Attack after switch out", s16 damage)
 {
     u32 ability;
     PARAMETRIZE { ability = ABILITY_INTIMIDATE; }
@@ -23,7 +23,7 @@ SINGLE_BATTLE_TEST("Intimidate (opponent) lowers player's attack after switch ou
         {
             ABILITY_POPUP(opponent, ABILITY_INTIMIDATE);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-            MESSAGE("Foe Staraptor's Intimidate cuts Wobbuffet's ATTACK!");
+            MESSAGE("Foe Staraptor's Intimidate cuts Wobbuffet's Attack!");
         }
         HP_BAR(opponent, captureDamage: &results[i].damage);
     } FINALLY {
@@ -31,7 +31,7 @@ SINGLE_BATTLE_TEST("Intimidate (opponent) lowers player's attack after switch ou
     }
 }
 
-SINGLE_BATTLE_TEST("Intimidate (opponent) lowers player's attack after KO", s16 damage)
+SINGLE_BATTLE_TEST("Intimidate (opponent) lowers player's Attack after KO", s16 damage)
 {
     u32 ability;
     PARAMETRIZE { ability = ABILITY_INTIMIDATE; }
@@ -49,7 +49,7 @@ SINGLE_BATTLE_TEST("Intimidate (opponent) lowers player's attack after KO", s16 
         {
             ABILITY_POPUP(opponent, ABILITY_INTIMIDATE);
             ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, player);
-            MESSAGE("Foe Staraptor's Intimidate cuts Wobbuffet's ATTACK!");
+            MESSAGE("Foe Staraptor's Intimidate cuts Wobbuffet's Attack!");
         }
         HP_BAR(opponent, captureDamage: &results[i].damage);
     } FINALLY {
@@ -84,14 +84,14 @@ DOUBLE_BATTLE_TEST("Intimidate doesn't activate on an empty field in a double ba
 
         ABILITY_POPUP(playerLeft, ABILITY_INTIMIDATE);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentLeft);
-        MESSAGE("Staravia's Intimidate cuts Foe Staraptor's ATTACK!");
+        MESSAGE("Staravia's Intimidate cuts Foe Staraptor's Attack!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, opponentRight);
-        MESSAGE("Staravia's Intimidate cuts Foe Wynaut's ATTACK!");
+        MESSAGE("Staravia's Intimidate cuts Foe Wynaut's Attack!");
 
         ABILITY_POPUP(opponentLeft, ABILITY_INTIMIDATE);
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerLeft);
-        MESSAGE("Foe Staraptor's Intimidate cuts Staravia's ATTACK!");
+        MESSAGE("Foe Staraptor's Intimidate cuts Staravia's Attack!");
         ANIMATION(ANIM_TYPE_GENERAL, B_ANIM_STATS_CHANGE, playerRight);
-        MESSAGE("Foe Staraptor's Intimidate cuts Abra's ATTACK!");
+        MESSAGE("Foe Staraptor's Intimidate cuts Abra's Attack!");
     }
 }
