@@ -957,7 +957,7 @@ static void GetItemName(s8 *dest, u16 itemId)
         StringExpandPlaceholders(dest, gText_NumberItem_TMBerry);
         break;
     default:
-        if (itemId == ITEM_TM_CASE)
+        if (itemId == TMHM_POCKET)
         {
             CopyItemName(itemId, gStringVar2);
             StringExpandPlaceholders(dest, gText_TMCase_Blue);
@@ -1371,9 +1371,7 @@ static u8 GetSwitchBagPocketDirection(void)
 
 static void ChangeBagPocketId(u8 *bagPocketId, s8 deltaBagPocketId)
 {
-    if ((deltaBagPocketId == MENU_CURSOR_DELTA_RIGHT && *bagPocketId == BALLS_POCKET) || (deltaBagPocketId == MENU_CURSOR_DELTA_LEFT && *bagPocketId == BERRIES_POCKET))
-        *bagPocketId += deltaBagPocketId*2;
-    else if (deltaBagPocketId == MENU_CURSOR_DELTA_RIGHT && *bagPocketId == POCKETS_COUNT - 1)
+    if (deltaBagPocketId == MENU_CURSOR_DELTA_RIGHT && *bagPocketId == POCKETS_COUNT - 1)
         *bagPocketId = 0;
     else if (deltaBagPocketId == MENU_CURSOR_DELTA_LEFT && *bagPocketId == 0)
         *bagPocketId = POCKETS_COUNT - 1;
@@ -3216,11 +3214,15 @@ static void AddBagSortSubMenu(void)
     switch (gBagPosition.pocket + 1)
     {
         case POCKET_KEY_ITEMS:
+        case POCKET_TM_HM:
             gBagMenu->contextMenuItemsPtr = sBagMenuSortKeyItems;
             memcpy(&gBagMenu->contextMenuItemsBuffer, &sBagMenuSortKeyItems, NELEMS(sBagMenuSortKeyItems));
             gBagMenu->contextMenuNumItems = NELEMS(sBagMenuSortKeyItems);
             break;
         case POCKET_POKE_BALLS:
+        case POCKET_MEGA_STONES:
+        case POCKET_Z_CRYSTALS:
+        case POCKET_TREASURES:
             gBagMenu->contextMenuItemsPtr = sBagMenuSortPokeBalls;
             memcpy(&gBagMenu->contextMenuItemsBuffer, &sBagMenuSortPokeBalls, NELEMS(sBagMenuSortPokeBalls));
             gBagMenu->contextMenuNumItems = NELEMS(sBagMenuSortPokeBalls);

@@ -283,8 +283,8 @@ bool8 AddBagItem(u16 itemId, u16 count)
 
         if (pocket == TMHM_POCKET)
         {
-            if (!CheckBagHasItem(ITEM_TM_CASE, 1))
-                AddBagItem(ITEM_TM_CASE, 1);
+            if (!CheckBagHasItem(TMHM_POCKET, 1))
+                AddBagItem(TMHM_POCKET, 1);
         }
 
         for (i = 0; i < itemPocket->capacity; i++)

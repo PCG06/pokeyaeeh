@@ -14,6 +14,7 @@
 #define POCKET_TM_HM        9
 #define POCKET_KEY_ITEMS    10
 
+
 #define ITEMS_POCKET        0
 #define MEDICINE_POCKET     1
 #define BALLS_POCKET        2
