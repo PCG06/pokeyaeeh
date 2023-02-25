@@ -307,7 +307,7 @@ static const struct MenuAction sItemMenuActions[] = {
     [ACTION_BY_NAME]           = {sMenuText_ByName,   ItemMenu_SortByName},
     [ACTION_BY_TYPE]           = {sMenuText_ByType,   ItemMenu_SortByType},
     [ACTION_BY_AMOUNT]         = {sMenuText_ByAmount, ItemMenu_SortByAmount},
-    [ACTION_DUMMY]             = {gText_EmptyString2, NULL}
+    [ACTION_DUMMY]             = {gText_EmptyString3, NULL},
 };
 
 // these are all 2D arrays with a width of 2 but are represented as 1D arrays
@@ -2718,12 +2718,19 @@ static const u8 sBagMenuSortKeyItems[] =
     ACTION_CANCEL,
 };
 
-static const u8 sBagMenuSortPokeBallsBerries[] =
+static const u8 sBagMenuSortPokeBalls[] =
 {
     ACTION_BY_NAME,
     ACTION_BY_AMOUNT,
     ACTION_DUMMY,
     ACTION_CANCEL,
+};
+
+/// @brief 
+static const u8 sNoBagSort[] =
+{
+    ACTION_CANCEL,
+    ACTION_DUMMY,
 };
 
 static const u16 sItemsByType[ITEMS_COUNT] =
@@ -3183,11 +3190,15 @@ static void AddBagSortSubMenu(void)
             gBagMenu->contextMenuNumItems = NELEMS(sBagMenuSortKeyItems);
             break;
         case POCKET_POKE_BALLS:
+            gBagMenu->contextMenuItemsPtr = sBagMenuSortPokeBalls;
+            memcpy(&gBagMenu->contextMenuItemsBuffer, &sBagMenuSortPokeBalls, NELEMS(sBagMenuSortPokeBalls));
+            gBagMenu->contextMenuNumItems = NELEMS(sBagMenuSortPokeBalls);
+            break;
         case POCKET_BERRIES:
         case POCKET_TM_HM:
-            gBagMenu->contextMenuItemsPtr = sBagMenuSortPokeBallsBerries;
-            memcpy(&gBagMenu->contextMenuItemsBuffer, &sBagMenuSortPokeBallsBerries, NELEMS(sBagMenuSortPokeBallsBerries));
-            gBagMenu->contextMenuNumItems = NELEMS(sBagMenuSortPokeBallsBerries);
+            gBagMenu->contextMenuItemsPtr = sNoBagSort;
+            memcpy(&gBagMenu->contextMenuItemsBuffer, &sNoBagSort, NELEMS(sNoBagSort));
+            gBagMenu->contextMenuNumItems = NELEMS(sNoBagSort);
             break;
         default:
             gBagMenu->contextMenuItemsPtr = sBagMenuSortItems;
