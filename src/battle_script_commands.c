@@ -7126,6 +7126,7 @@ static void Cmd_switchineffects(void)
                 gBattlerFainted++;
             }
         }
+        gBattleStruct->forcedSwitch &= ~(gBitTable[gActiveBattler]);
         gBattlescriptCurrInstr = cmd->nextInstr;
     }
 }
@@ -12313,6 +12314,7 @@ static void Cmd_forcerandomswitch(void)
         {
             *(gBattleStruct->battlerPartyIndexes + gBattlerTarget) = gBattlerPartyIndexes[gBattlerTarget];
             gBattlescriptCurrInstr = BattleScript_RoarSuccessSwitch;
+            gBattleStruct->forcedSwitch |= gBitTable[gBattlerTarget];
             *(gBattleStruct->monToSwitchIntoId + gBattlerTarget) = validMons[Random() % validMonsCount];
 
             if (!IsMultiBattle())
