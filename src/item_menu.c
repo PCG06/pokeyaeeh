@@ -2729,7 +2729,7 @@ static const u8 sBagMenuSortPokeBalls[] =
 /// @brief 
 static const u8 sNoBagSort[] =
 {
-    ACTION_CANCEL,
+    ACTION_CHECK_TAG,
     ACTION_CANCEL,
 };
 
@@ -3195,7 +3195,6 @@ static void AddBagSortSubMenu(void)
             gBagMenu->contextMenuNumItems = NELEMS(sBagMenuSortPokeBalls);
             break;
         case POCKET_BERRIES:
-        case POCKET_TM_HM:
             gBagMenu->contextMenuItemsPtr = sNoBagSort;
             memcpy(&gBagMenu->contextMenuItemsBuffer, &sNoBagSort, NELEMS(sNoBagSort));
             gBagMenu->contextMenuNumItems = NELEMS(sNoBagSort);
