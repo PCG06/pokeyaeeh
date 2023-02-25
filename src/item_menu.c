@@ -2730,7 +2730,7 @@ static const u8 sBagMenuSortPokeBalls[] =
 static const u8 sNoBagSort[] =
 {
     ACTION_CANCEL,
-    ACTION_DUMMY,
+    ACTION_CANCEL,
 };
 
 static const u16 sItemsByType[ITEMS_COUNT] =
