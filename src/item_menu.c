@@ -65,7 +65,7 @@
                             max(BAG_BATTLEITEMS_COUNT,       \
                             max(BAG_MEGASTONES_COUNT,        \
                             max(BAG_ZCRYSTALS_COUNT,         \
-                            max(BAG_TREASURES_COUNT,         \
+                            max(BAG_POWERUP_COUNT,           \
                             max(BAG_MEDICINE_COUNT,          \
                             max(BAG_KEYITEMS_COUNT,          \
                                 BAG_POKEBALLS_COUNT)))))))))) + 1)
@@ -1412,8 +1412,7 @@ static void SwitchBagPocket(u8 taskId, s16 deltaBagPocketId, bool16 skipEraseLis
     DrawPocketIndicatorSquare(newPocket, TRUE);
     FillBgTilemapBufferRect_Palette0(2, 11, 14, 2, 15, 16);
     ScheduleBgCopyTilemapToVram(2);
-    SetBagVisualPocketId(newPocket, 1);
-    //SetBagVisualPocketId(-1, 1);
+    SetBagVisualPocketId(newPocket, TRUE);
     RemoveBagSprite(ITEMMENUSPRITE_BALL);
     AddSwitchPocketRotatingBallSprite(deltaBagPocketId);
     SetTaskFuncWithFollowupFunc(taskId, Task_SwitchBagPocket, gTasks[taskId].func);
@@ -1714,7 +1713,7 @@ static void OpenContextMenu(u8 taskId)
                 gBagMenu->contextMenuItemsPtr = sContextMenuItems_ItemsPocket;
                 gBagMenu->contextMenuNumItems = ARRAY_COUNT(sContextMenuItems_ItemsPocket);
                 break;
-            case TREASURES_POCKET:
+            case POWERUP_POCKET:
                 gBagMenu->contextMenuItemsPtr = sContextMenuItems_ItemsPocket;
                 gBagMenu->contextMenuNumItems = ARRAY_COUNT(sContextMenuItems_ItemsPocket);
                 break;
@@ -3222,10 +3221,10 @@ static void AddBagSortSubMenu(void)
         case POCKET_POKE_BALLS:
         case POCKET_MEGA_STONES:
         case POCKET_Z_CRYSTALS:
-        case POCKET_TREASURES:
-            gBagMenu->contextMenuItemsPtr = sBagMenuSortPokeBalls;         // This tells what set of options to display
-            memcpy(&gBagMenu->contextMenuItemsBuffer, &sBagMenuSortPokeBalls, NELEMS(sBagMenuSortPokeBalls));  // Copies the contents of sBagMenuSortPokeBalls and stores in the buffer
-            gBagMenu->contextMenuNumItems = NELEMS(sBagMenuSortPokeBalls);  // This tells the number of elements to display
+        case POCKET_POWER_UP:
+            gBagMenu->contextMenuItemsPtr = sBagMenuSortPokeBalls;
+            memcpy(&gBagMenu->contextMenuItemsBuffer, &sBagMenuSortPokeBalls, NELEMS(sBagMenuSortPokeBalls));
+            gBagMenu->contextMenuNumItems = NELEMS(sBagMenuSortPokeBalls);
             break;
         case POCKET_BERRIES:
             gBagMenu->contextMenuItemsPtr = sNoBagSort;
@@ -3347,9 +3346,9 @@ static void SortItemsInBag(u8 pocket, u8 type)
         itemMem = gSaveBlock1Ptr->bagPocket_BattleItems;
         itemAmount = BAG_BATTLEITEMS_COUNT;
         break;
-    case TREASURES_POCKET:
-        itemMem = gSaveBlock1Ptr->bagPocket_Treasures;
-        itemAmount = BAG_TREASURES_COUNT;
+    case POWERUP_POCKET:
+        itemMem = gSaveBlock1Ptr->bagPocket_PowerUp;
+        itemAmount = BAG_POWERUP_COUNT;
         break;
     case MEDICINE_POCKET:
         itemMem = gSaveBlock1Ptr->bagPocket_Medicine;
