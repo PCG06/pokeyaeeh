@@ -3223,9 +3223,9 @@ static void AddBagSortSubMenu(void)
         case POCKET_MEGA_STONES:
         case POCKET_Z_CRYSTALS:
         case POCKET_TREASURES:
-            gBagMenu->contextMenuItemsPtr = sBagMenuSortPokeBalls;
-            memcpy(&gBagMenu->contextMenuItemsBuffer, &sBagMenuSortPokeBalls, NELEMS(sBagMenuSortPokeBalls));
-            gBagMenu->contextMenuNumItems = NELEMS(sBagMenuSortPokeBalls);
+            gBagMenu->contextMenuItemsPtr = sBagMenuSortPokeBalls;         // This tells what set of options to display
+            memcpy(&gBagMenu->contextMenuItemsBuffer, &sBagMenuSortPokeBalls, NELEMS(sBagMenuSortPokeBalls));  // Copies the contents of sBagMenuSortPokeBalls and stores in the buffer
+            gBagMenu->contextMenuNumItems = NELEMS(sBagMenuSortPokeBalls);  // This tells the number of elements to display
             break;
         case POCKET_BERRIES:
             gBagMenu->contextMenuItemsPtr = sNoBagSort;
@@ -3239,10 +3239,12 @@ static void AddBagSortSubMenu(void)
             break;
     }
     
+    // Print the options
     StringExpandPlaceholders(gStringVar4, sText_SortItemsHow);
     FillWindowPixelBuffer(1, PIXEL_FILL(0));
     BagMenu_Print(1, 1, gStringVar4, 3, 1, 0, 0, 0, 0);
     
+    // Print appropriate window
     if (gBagMenu->contextMenuNumItems == 2)
         PrintContextMenuItems(BagMenu_AddWindow(ITEMWIN_1x2));
     else if (gBagMenu->contextMenuNumItems == 4)
@@ -3280,6 +3282,7 @@ static void ItemMenu_SortByAmount(u8 taskId)
     gTasks[taskId].func = SortBagItems;
 }
 
+// This is where the real sorting takes place
 static void SortBagItems(u8 taskId)
 {
     s16 *data = gTasks[taskId].data;
@@ -3288,6 +3291,7 @@ static void SortBagItems(u8 taskId)
 
     RemoveContextWindow();
     
+    // Actually its this next line that sorts it lol
     SortItemsInBag(gBagPosition.pocket, tSortType);
     DestroyListMenuTask(data[0], scrollPos, cursorPos);
     UpdatePocketListPosition(gBagPosition.pocket);
@@ -3338,6 +3342,26 @@ static void SortItemsInBag(u8 pocket, u8 type)
     case TMHM_POCKET:
         itemMem = gSaveBlock1Ptr->bagPocket_TMHM;
         itemAmount = BAG_TMHM_COUNT;
+        break;
+    case BATTLEITEMS_POCKET:
+        itemMem = gSaveBlock1Ptr->bagPocket_BattleItems;
+        itemAmount = BAG_BATTLEITEMS_COUNT;
+        break;
+    case TREASURES_POCKET:
+        itemMem = gSaveBlock1Ptr->bagPocket_Treasures;
+        itemAmount = BAG_TREASURES_COUNT;
+        break;
+    case MEDICINE_POCKET:
+        itemMem = gSaveBlock1Ptr->bagPocket_Medicine;
+        itemAmount = BAG_MEDICINE_COUNT;
+        break;
+    case MEGASTONES_POCKET:
+        itemMem = gSaveBlock1Ptr->bagPocket_MegaStones;
+        itemAmount = BAG_MEGASTONES_COUNT;
+        break;
+    case ZCRYSTALS_POCKET:
+        itemMem = gSaveBlock1Ptr->bagPocket_ZCrystals;
+        itemAmount = BAG_ZCRYSTALS_COUNT;
         break;
     default:
         return;
