@@ -3978,10 +3978,5 @@ u32 ShouldDoTrainerSlide(u32 battlerId, u32 which)
         }
     }
 
-<<<<<<< HEAD
     return FALSE;
 }
-=======
-    return 0;
-}
->>>>>>> e537be76eae85f21c6cdac20028f1070bdf3c877
