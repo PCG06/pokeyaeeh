@@ -3221,7 +3221,6 @@ static void AddBagSortSubMenu(void)
         case POCKET_POKE_BALLS:
         case POCKET_MEGA_STONES:
         case POCKET_Z_CRYSTALS:
-        case POCKET_POWER_UP:
             gBagMenu->contextMenuItemsPtr = sBagMenuSortPokeBalls;
             memcpy(&gBagMenu->contextMenuItemsBuffer, &sBagMenuSortPokeBalls, NELEMS(sBagMenuSortPokeBalls));
             gBagMenu->contextMenuNumItems = NELEMS(sBagMenuSortPokeBalls);
