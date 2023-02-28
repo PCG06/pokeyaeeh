@@ -52,7 +52,6 @@ void PlayTimeCounter_Update(void)
 
     gSaveBlock2Ptr->playTimeSeconds = 0;
     gSaveBlock2Ptr->playTimeMinutes++;
-    RtcCalcLocalTime(); //Forces gLocalTime refresh once per minute (useful for DNS)
 
     if (gSaveBlock2Ptr->playTimeMinutes < 60)
         return;
