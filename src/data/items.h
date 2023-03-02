@@ -9189,7 +9189,7 @@ const struct Item gItems[] =
         .description = sRotomCatalogDesc,
         .pocket = POCKET_KEY_ITEMS,
         .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse, // Todo
+        .fieldUseFunc = ItemUseOutOfBattle_RotomCatalog,
     },
 
     [ITEM_GRACIDEA] =
@@ -10037,7 +10037,6 @@ const struct Item gItems[] =
 
     [ITEM_LOADED_DICE] =
     {
-                 //YellwApricorn
         .name = _("Loaded Dice"),
         .itemId = ITEM_LOADED_DICE,
         .price = 20000,

@@ -1059,5 +1059,5 @@ Common_EventScript_LegendaryFlewAway::
 	.include "data/text/frontier_brain.inc"
 	.include "data/text/save.inc"
 	.include "data/text/birch_speech.inc"
-
+	.include "data/scripts/item_scripts.inc"
 	.include "data/maps/BerryShop/scripts.inc"

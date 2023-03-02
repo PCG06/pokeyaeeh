@@ -3052,4 +3052,13 @@ extern const u8 gText_FontSmall[];
 extern const u8 gText_FontShort[];
 extern const u8 gText_TMCase_Blue[];
 
+// Rotom Catalog multichoice text
+extern const u8 gText_LightBulb[];
+extern const u8 gText_MicrowaveOven[];
+extern const u8 gText_WashingMachine[];
+extern const u8 gText_Refrigerator[];
+extern const u8 gText_ElectricFan[];
+extern const u8 gText_LawnMower[];
+extern const u8 gText_Exit[];
+
 #endif // GUARD_STRINGS_H

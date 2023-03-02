@@ -1342,6 +1342,14 @@ void ItemUseOutOfBattle_Honey(u8 taskId)
     Task_FadeAndCloseBagMenu(taskId);
 }
 
+void ItemUseOutOfBattle_RotomCatalog(u8 taskId)
+{
+    PlaySE(SE_SELECT);
+    ChoosePartyMon();
+    LockPlayerFieldControls();
+    ScriptContext_SetupScript(ItemScript_RotomCatalog);
+}
+
 void ItemUseOutOfBattle_CannotUse(u8 taskId)
 {
     DisplayDadsAdviceCannotUseItemMessage(taskId, gTasks[taskId].tUsingRegisteredKeyItem);

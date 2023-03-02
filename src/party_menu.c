@@ -7034,3 +7034,16 @@ void ItemUseCB_PokeBall(u8 taskId, TaskFunc task)
         RemoveBagItem(newBall, 1);
     }
 }
+
+void GetBaseSpecies(void)
+{
+    gSpecialVar_Result = GET_BASE_SPECIES_ID(GetMonData(&gPlayerParty[gSpecialVar_0x8004], MON_DATA_SPECIES));
+}
+
+void SetCurrentSpecies(void) // Reads the mon stored in VAR_0x8004 and sets its species according to the value in VAR_0x8005
+{
+    struct Pokemon *mon = &gPlayerParty[gSpecialVar_0x8004]; 
+
+    SetMonData(mon, MON_DATA_SPECIES, &gSpecialVar_0x8005);
+    CalculateMonStats(mon);
+}
