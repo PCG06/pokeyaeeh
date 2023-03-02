@@ -1346,7 +1346,7 @@ void ItemUseOutOfBattle_RotomCatalog(u8 taskId)
 {
     PlaySE(SE_SELECT);
     ChoosePartyMon();
-    LockPlayerFieldControls();
+    ScriptContext_Enable();
     ScriptContext_SetupScript(ItemScript_RotomCatalog);
 }
 
