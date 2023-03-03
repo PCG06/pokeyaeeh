@@ -962,21 +962,6 @@ u16 determineEvolution(struct Pokemon *mon)
                 }
             }
             break;
-        case EVO_LEVEL_DARK_TYPE_MON_IN_PARTY:
-            if (gEvolutionTable[species][i].param <= level)
-            {
-                for (j = 0; j < PARTY_SIZE; j++)
-                {
-                    u16 currSpecies = GetMonData(&gPlayerParty[j], MON_DATA_SPECIES, NULL);
-                    if (gSpeciesInfo[currSpecies].type1 == TYPE_DARK
-                     || gSpeciesInfo[currSpecies].type2 == TYPE_DARK)
-                    {
-                        targetSpecies = gEvolutionTable[species][i].targetSpecies;
-                        break;
-                    }
-                }
-            }
-            break;
         case EVO_LEVEL_RAIN:
             j = GetCurrentWeather();
             if (j == WEATHER_RAIN || j == WEATHER_RAIN_THUNDERSTORM || j == WEATHER_DOWNPOUR)
@@ -1230,13 +1215,6 @@ u16 GetValidWonderTradeItem(u16 item)
     else if (ItemId_GetPocket(item) == POCKET_KEY_ITEMS)
         goto ROLL;
     else if (item >= ITEM_HM01 && item <= ITEM_HM08)
-        goto ROLL;
-    else if ((ItemId_GetHoldEffect(item) == HOLD_EFFECT_MEMORY
-           || ItemId_GetHoldEffect(item) == HOLD_EFFECT_DRIVE
-           || ItemId_GetHoldEffect(item) == HOLD_EFFECT_PLATE
-           || ItemId_GetHoldEffect(item) == HOLD_EFFECT_GEMS)
-           && (gSpeciesInfo[species].type1 != ItemId_GetHoldEffectParam(item)
-            || gSpeciesInfo[species].type2 != ItemId_GetHoldEffectParam(item)))
         goto ROLL;
     else if (item >= ITEM_NORMALIUM_Z && item <= ITEM_ULTRANECROZIUM_Z)
         goto ROLL;
