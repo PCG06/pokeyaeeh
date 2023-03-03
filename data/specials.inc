@@ -538,3 +538,4 @@ gSpecials::
 	def_special TrySpecialOverworldEvo
 	def_special GetBaseSpecies
 	def_special SetCurrentSpecies
+	def_special CreateWonderTradePokemon
