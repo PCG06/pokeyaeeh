@@ -23,6 +23,7 @@ static u16 FontFunc_ShortCopy2(struct TextPrinter *);
 static u16 FontFunc_ShortCopy3(struct TextPrinter *);
 static u16 FontFunc_Narrow(struct TextPrinter *);
 static u16 FontFunc_SmallNarrow(struct TextPrinter *);
+static u16 FontFunc_Tiny(struct TextPrinter *);
 static void DecompressGlyph_Small(u16, bool32);
 static void DecompressGlyph_Normal(u16, bool32);
 static void DecompressGlyph_Short(u16, bool32);
@@ -221,7 +222,17 @@ static const struct FontInfo sFontInfos[] =
         .fgColor = 1,
         .bgColor = 2,
         .shadowColor = 15,
-    }
+    },
+    [FONT_TINY] = {
+        .fontFunction = FontFunc_Tiny,
+        .maxLetterWidth = 6,
+        .maxLetterHeight = 14,
+        .letterSpacing = 0,
+        .lineSpacing = 0,
+        .fgColor = 2,
+        .bgColor = 1,
+        .shadowColor = 3,
+    },
 };
 
 static const u8 sMenuCursorDimensions[][2] =
@@ -235,7 +246,8 @@ static const u8 sMenuCursorDimensions[][2] =
     [FONT_BRAILLE]      = { 8,  16 },
     [FONT_NARROW]       = { 8,  15 },
     [FONT_SMALL_NARROW] = { 8,   8 },
-    [FONT_BOLD]         = {}
+    [FONT_BOLD]         = {},
+    [FONT_TINY]         = { 8,  12 },
 };
 
 static const u16 sFontBoldJapaneseGlyphs[] = INCBIN_U16("graphics/fonts/bold.hwjpnfont");
@@ -769,6 +781,18 @@ static u16 FontFunc_SmallNarrow(struct TextPrinter *textPrinter)
     if (subStruct->hasFontIdBeenSet == FALSE)
     {
         subStruct->fontId = FONT_SMALL_NARROW;
+        subStruct->hasFontIdBeenSet = TRUE;
+    }
+    return RenderText(textPrinter);
+}
+
+static u16 FontFunc_Tiny(struct TextPrinter *textPrinter)
+{
+    struct TextPrinterSubStruct *subStruct = (struct TextPrinterSubStruct *)(&textPrinter->subStructFields);
+
+    if (subStruct->hasFontIdBeenSet == FALSE)
+    {
+        subStruct->fontId = FONT_TINY;
         subStruct->hasFontIdBeenSet = TRUE;
     }
     return RenderText(textPrinter);
