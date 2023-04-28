@@ -328,6 +328,7 @@ void RunTextPrinters(void)
     {
         int numEmpty = 0;
         if (gDisableTextPrinters == 0)
+        for (i = 0; i < WINDOWS_MAX; ++i)
         {
             for (i = 0; i < 0x20; ++i)
             {
