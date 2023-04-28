@@ -3044,7 +3044,7 @@ extern const u8 gText_TellHimTheWords[];
 extern const u8 gText_ExpShareOn[];
 extern const u8 gText_ExpShareOff[];
 
-// frlg_tm_case_port
+// FRLG TM Case
 extern const u8 gText_TMCase[];
 extern const u8 gText_Close[];
 extern const u8 gText_TMCaseWillBePutAway[];
@@ -3060,5 +3060,8 @@ extern const u8 gText_Refrigerator[];
 extern const u8 gText_ElectricFan[];
 extern const u8 gText_LawnMower[];
 extern const u8 gText_Exit[];
+
+// Ash Quantity (Soot Sack)
+extern const u8 gText_AshQty[];
 
 #endif // GUARD_STRINGS_H

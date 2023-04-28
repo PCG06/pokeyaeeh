@@ -39,6 +39,10 @@ u8 CanUseDigOrEscapeRopeOnCurMap(void);
 u8 CheckIfItemIsTMHMOrEvolutionStone(u16 itemId);
 void ItemUseOutOfBattle_PokeBall(u8);
 void ItemUseOutOfBattle_RotomCatalog(u8);
+bool32 CanThrowBall(void);
+void ItemUseOutOfBattle_ExpShare(u8);
+void ItemUseOutOfBattle_SootSack(u8);
+u16 GetAshCount(void);
 
 enum {
     BALL_THROW_UNABLE_TWO_MONS,
@@ -47,8 +51,5 @@ enum {
     BALL_THROW_ABLE,
     BALL_THROW_UNABLE_DISABLED_FLAG,
 };
-
-bool32 CanThrowBall(void);
-void ItemUseOutOfBattle_ExpShare(u8);
 
 #endif // GUARD_ITEM_USE_H

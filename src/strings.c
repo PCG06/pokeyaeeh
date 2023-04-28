@@ -1853,6 +1853,7 @@ const u8 gText_Answer[] = _("Answer");
 const u8 gText_PokeBalls[] = _("Poké Balls");
 const u8 gText_Berry[] = _("Berry");
 const u8 gText_Berries[] = _("Berries");
+const u8 gText_AshQty[] = _("Ash Quantity:\n{STR_VAR_1}{PAUSE_UNTIL_PRESS}");
 
 // Exp. Share
 const u8 gText_ExpShareOn[] = _("Turned on the Exp. Share.\pParty will now gain a portion\nof the Experience Points.{PAUSE_UNTIL_PRESS}");
