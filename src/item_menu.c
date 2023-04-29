@@ -972,7 +972,7 @@ static void BagMenu_MoveCursorCallback(s32 itemIndex, bool8 onInit, struct ListM
 {
     if (onInit != TRUE)
     {
-        PlaySE(SE_SELECT);
+        PlaySE(SE_RG_BAG_CURSOR);
         ShakeBagSprite();
     }
     if (gBagMenu->toSwapPos == NOT_SWAPPING)
@@ -1277,7 +1277,7 @@ static void Task_BagMenu_HandleInput(u8 taskId)
                     ListMenuGetScrollAndRow(tListTaskId, scrollPos, cursorPos);
                     if ((*scrollPos + *cursorPos) != gBagMenu->numItemStacks[gBagPosition.pocket] - 1)
                     {
-                        PlaySE(SE_SELECT);
+                        PlaySE(SE_RG_BAG_POCKET);
                         StartItemSwap(taskId);
                     }
                 }
