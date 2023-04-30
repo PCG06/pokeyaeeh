@@ -28,6 +28,7 @@
 #include "window.h"
 #include "constants/rgb.h"
 #include "constants/songs.h"
+#include "pokedex_plus_hgss.h"
 
 enum
 {
@@ -1586,8 +1587,15 @@ static void ResetPokedexView(struct PokedexView *pokedexView)
         pokedexView->unkArr3[i] = 0;
 }
 
+#define HGSS_DEX TRUE
+
 void CB2_OpenPokedex(void)
 {
+    if (HGSS_DEX)
+    {
+        CB2_OpenPokedexPlusHGSS();
+        return;
+    }
     switch (gMain.state)
     {
     case 0:

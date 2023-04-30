@@ -100,5 +100,6 @@ void BufferMoveDeleterNicknameAndMove(void);
 void GetNumMovesSelectedMonHas(void);
 void MoveDeleterChooseMoveToForget(void);
 void ItemUseCB_PokeBall(u8 taskId, TaskFunc task);
+u16 GetTMHMMoves(u16 position);
 
 #endif // GUARD_PARTY_MENU_H

@@ -7166,3 +7166,8 @@ void SetCurrentSpecies(void) // Reads the mon stored in VAR_0x8004 and sets its 
     SetMonData(mon, MON_DATA_SPECIES, &gSpecialVar_0x8005);
     CalculateMonStats(mon);
 }
+
+u16 GetTMHMMoves(u16 position)
+{
+    return sTMHMMoves[position];
+}
