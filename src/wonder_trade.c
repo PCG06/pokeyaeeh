@@ -19,6 +19,7 @@
 #include "party_menu.h"
 #include "field_weather.h"
 #include "constants/weather.h"
+#include "constants/form_change_types.h"
 #endif
 
 extern struct Evolution gEvolutionTable[][EVOS_PER_MON];
@@ -1183,7 +1184,7 @@ bool32 IsMegaPreEvolution(u16 species, u16 heldStone, bool32 found)
     {
         if (gEvolutionTable[species][i].targetSpecies != SPECIES_NONE)
         {
-            if (gEvolutionTable[species][i].method == EVO_MEGA_EVOLUTION && gEvolutionTable[species][i].param == heldStone)
+            if (gEvolutionTable[species][i].method == FORM_CHANGE_ITEM_HOLD && gEvolutionTable[species][i].param == heldStone)
                 found = TRUE;
 
             found = IsMegaPreEvolution(gEvolutionTable[species][i].targetSpecies, heldStone, found);
