@@ -312,6 +312,8 @@
 #define EVO_DARK_SCROLL                   37     // interacts with Scroll of Darkness
 #define EVO_WATER_SCROLL                  38     // interacts with Scroll of Waters
 #define EVO_ITEM_NIGHT                    39     // specified item is used on Pokémon at night
+#define EVO_ITEM_ALOLA                    40     // specified item is used on Pokémon while holding a Strange Souvenir
+#define EVO_LEVEL_NIGHT_ALOLA             41     // Pokémon reaches the specified level, is night, holding Strange Souvenir
 
 #define EVOS_PER_MON 10
 
