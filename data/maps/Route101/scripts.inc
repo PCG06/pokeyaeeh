@@ -300,3 +300,26 @@ Route101_Text_RouteSign:
 	.string "Route 101\n"
 	.string "{UP_ARROW} Oldale Town$"
 
+Route101_EventScript_DoWonderTradeScript::
+    lockall
+	faceplayer
+	msgbox Route101_Text_DoWonderTrade_Start, MSGBOX_YESNO
+	compare VAR_RESULT, NO
+	goto_if_eq Route101_EventScript_DoWonderTrade_VisitAgain
+	msgbox Route101_Text_DoWonderTrade_SelectMon, MSGBOX_DEFAULT
+	goto EventScript_DoWonderTrade
+	end
+
+Route101_EventScript_DoWonderTrade_VisitAgain::
+    msgbox Route101_Text_DoWonderTrade_VistAgain, MSGBOX_DEFAULT
+	releaseall
+	end
+
+Route101_Text_DoWonderTrade_Start:
+    .string "Would you like to start a Wonder Trade?$"
+
+Route101_Text_DoWonderTrade_VistAgain:
+    .string "Please visit again!$"
+
+Route101_Text_DoWonderTrade_SelectMon:
+    .string "Please select a Pokemon.$"
