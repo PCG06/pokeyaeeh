@@ -1005,8 +1005,6 @@ Common_EventScript_LegendaryFlewAway::
 	end
 
 EventScript_DoWonderTrade::
-    lockall
-	faceplayer
 	special ChoosePartyMon
 	waitstate
 	compare VAR_0x8004, PARTY_SIZE
@@ -1019,9 +1017,11 @@ EventScript_DoWonderTrade::
 	faceplayer
 	msgbox EventScript_DoWonderTrade_Text_WannaDoAnotherWonderTrade, MSGBOX_YESNO
 	compare VAR_RESULT, YES
+	lockall
+	faceplayer
 	goto_if_eq EventScript_DoWonderTrade
 	msgbox EventScript_DoWonderTrade_Text_Done, MSGBOX_DEFAULT
-	closemessage
+
 EventScript_End:
     msgbox EventScript_DoWonderTrade_Text_Done, MSGBOX_DEFAULT
 	releaseall
