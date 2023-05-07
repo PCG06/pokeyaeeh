@@ -661,9 +661,9 @@
 #define STRINGID_PKMNFROSTBITEHEALEDBY                659
 #define STRINGID_PKMNDROPPEDITEM                      660
 #define STRINGID_BAGISFULL                            661
-#define STRINGID_MIRRORHERBCOPIED                     660
+#define STRINGID_MIRRORHERBCOPIED                     662
 
-#define BATTLESTRINGS_COUNT                           662
+#define BATTLESTRINGS_COUNT                           663
 
 // This is the string id that gBattleStringsTable starts with.
 // String ids before this (e.g. STRINGID_INTROMSG) are not in the table,
