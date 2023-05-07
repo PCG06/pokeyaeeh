@@ -661,6 +661,7 @@
 #define STRINGID_PKMNFROSTBITEHEALEDBY                659
 #define STRINGID_PKMNDROPPEDITEM                      660
 #define STRINGID_BAGISFULL                            661
+#define STRINGID_MIRRORHERBCOPIED                     660
 
 #define BATTLESTRINGS_COUNT                           662
 

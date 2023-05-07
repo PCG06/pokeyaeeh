@@ -6789,6 +6789,26 @@ static bool32 GetMentalHerbEffect(u8 battlerId)
     return ret;
 }
 
+static u8 TryConsumeMirrorHerb(u8 battlerId, bool32 execute)
+{
+    u8 effect = 0;
+    
+    if (gProtectStructs[battlerId].eatMirrorHerb) {
+        gLastUsedItem = gBattleMons[battlerId].item;
+        gBattleScripting.savedBattler = gBattlerAttacker;
+        gBattleScripting.battler = gBattlerAttacker = battlerId;
+        gProtectStructs[battlerId].eatMirrorHerb = 0;
+        if (execute) {
+            BattleScriptExecute(BattleScript_MirrorHerbCopyStatChangeEnd2);
+        } else {
+            BattleScriptPushCursor();
+            gBattlescriptCurrInstr = BattleScript_MirrorHerbCopyStatChange;
+        }
+        effect = ITEM_STATS_CHANGE;
+    }
+    return effect;
+}
+
 static u8 ItemEffectMoveEnd(u32 battlerId, u16 holdEffect)
 {
     u8 effect = 0;
@@ -6991,6 +7011,9 @@ static u8 ItemEffectMoveEnd(u32 battlerId, u16 holdEffect)
 
         BattleScriptPushCursorAndCallback(BattleScript_BerserkGeneRet);
         effect = ITEM_STATS_CHANGE;
+        break;
+    case HOLD_EFFECT_MIRROR_HERB:
+        effect = TryConsumeMirrorHerb(battlerId, FALSE);
         break;
     }
 
@@ -7555,6 +7578,9 @@ u8 ItemBattleEffects(u8 caseID, u8 battlerId, bool8 moveTurn)
 
                 BattleScriptPushCursorAndCallback(BattleScript_BerserkGeneRet);
                 effect = ITEM_STATS_CHANGE;
+                break;
+            case HOLD_EFFECT_MIRROR_HERB:
+                effect = TryConsumeMirrorHerb(battlerId, TRUE);
                 break;
             }
 
