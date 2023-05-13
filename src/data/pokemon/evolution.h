@@ -59,8 +59,7 @@ const struct Evolution gEvolutionTable[NUM_SPECIES][EVOS_PER_MON] =
                                        {EVO_ITEM, ITEM_KINGS_ROCK, SPECIES_SLOWKING}},
     [SPECIES_MAGNEMITE]             = {{EVO_LEVEL, 30, SPECIES_MAGNETON}},
 #if P_GEN_4_POKEMON == TRUE
-    [SPECIES_MAGNETON]              = {{EVO_MAPSEC, MAPSEC_NEW_MAUVILLE, SPECIES_MAGNEZONE},
-                                       {EVO_ITEM, ITEM_THUNDER_STONE, SPECIES_MAGNEZONE}},
+    [SPECIES_MAGNETON]              = {{EVO_ITEM, ITEM_THUNDER_STONE, SPECIES_MAGNEZONE}},
 #endif
     [SPECIES_DODUO]                 = {{EVO_LEVEL, 31, SPECIES_DODRIO}},
     [SPECIES_SEEL]                  = {{EVO_LEVEL, 34, SPECIES_DEWGONG}},
@@ -112,9 +111,7 @@ const struct Evolution gEvolutionTable[NUM_SPECIES][EVOS_PER_MON] =
                                        {EVO_FRIENDSHIP_DAY, 0, SPECIES_ESPEON},
                                        {EVO_FRIENDSHIP_NIGHT, 0, SPECIES_UMBREON},
                                     #if P_GEN_4_POKEMON == TRUE
-                                       {EVO_SPECIFIC_MAP, MAP_PETALBURG_WOODS, SPECIES_LEAFEON},
                                        {EVO_ITEM, ITEM_LEAF_STONE, SPECIES_LEAFEON},
-                                       {EVO_SPECIFIC_MAP, MAP_SHOAL_CAVE_LOW_TIDE_ICE_ROOM, SPECIES_GLACEON},
                                        {EVO_ITEM, ITEM_ICE_STONE, SPECIES_GLACEON},
                                     #endif
                                     #if P_GEN_6_POKEMON == TRUE
@@ -216,7 +213,7 @@ const struct Evolution gEvolutionTable[NUM_SPECIES][EVOS_PER_MON] =
     [SPECIES_SKITTY]                = {{EVO_ITEM, ITEM_MOON_STONE, SPECIES_DELCATTY}},
     [SPECIES_BALTOY]                = {{EVO_LEVEL, 36, SPECIES_CLAYDOL}},
 #if P_GEN_4_POKEMON == TRUE
-    [SPECIES_NOSEPASS]              = {{EVO_MAPSEC, MAPSEC_NEW_MAUVILLE, SPECIES_PROBOPASS}},
+    [SPECIES_NOSEPASS]              = {{EVO_ITEM, ITEM_METAL_COAT, SPECIES_PROBOPASS}},
 #endif
     [SPECIES_BARBOACH]              = {{EVO_LEVEL, 30, SPECIES_WHISCASH}},
     [SPECIES_CORPHISH]              = {{EVO_LEVEL, 30, SPECIES_CRAWDAUNT}},
@@ -445,12 +442,12 @@ const struct Evolution gEvolutionTable[NUM_SPECIES][EVOS_PER_MON] =
     [SPECIES_TRUMBEAK]              = {{EVO_LEVEL, 28, SPECIES_TOUCANNON}},
     [SPECIES_YUNGOOS]               = {{EVO_LEVEL_DAY, 20, SPECIES_GUMSHOOS}},
     [SPECIES_GRUBBIN]               = {{EVO_LEVEL, 20, SPECIES_CHARJABUG}},
-    [SPECIES_CHARJABUG]             = {{EVO_MAPSEC, MAPSEC_NEW_MAUVILLE, SPECIES_VIKAVOLT},
-                                       {EVO_ITEM, ITEM_THUNDER_STONE, SPECIES_VIKAVOLT}},
-    [SPECIES_CRABRAWLER]            = {{EVO_SPECIFIC_MAP, MAP_SHOAL_CAVE_LOW_TIDE_ICE_ROOM, SPECIES_CRABOMINABLE}},
+    [SPECIES_CHARJABUG]             = {{EVO_ITEM, ITEM_THUNDER_STONE, SPECIES_VIKAVOLT}},
+    [SPECIES_CRABRAWLER]            = {{EVO_ITEM, ITEM_ICE_STONE, SPECIES_CRABOMINABLE}},
     [SPECIES_CUTIEFLY]              = {{EVO_LEVEL, 25, SPECIES_RIBOMBEE}},
     [SPECIES_ROCKRUFF]              = {{EVO_LEVEL_DAY, 25, SPECIES_LYCANROC},
-                                       {EVO_LEVEL_NIGHT, 25, SPECIES_LYCANROC_MIDNIGHT}},
+                                       {EVO_LEVEL_NIGHT, 25, SPECIES_LYCANROC_MIDNIGHT},
+                                       {EVO_LEVEL_DUSK, 25, SPECIES_LYCANROC_DUSK}},
     [SPECIES_MAREANIE]              = {{EVO_LEVEL, 38, SPECIES_TOXAPEX}},
     [SPECIES_MUDBRAY]               = {{EVO_LEVEL, 30, SPECIES_MUDSDALE}},
     [SPECIES_DEWPIDER]              = {{EVO_LEVEL, 22, SPECIES_ARAQUANID}},
