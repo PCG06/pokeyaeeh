@@ -1976,6 +1976,10 @@ const u8 gText_EVO_SPECIFIC_MON_IN_PARTY[]          = _("LvlUp with {STR_VAR_2} 
 const u8 gText_EVO_LEVEL_DARK_TYPE_MON_IN_PARTY[]   = _("LvlUp with dark type in party");
 const u8 gText_EVO_TRADE_SPECIFIC_MON[]             = _("Traded for {STR_VAR_2}");
 const u8 gText_EVO_SPECIFIC_MAP[]                   = _("LvlUp on {STR_VAR_2}");
+const u8 gText_EVO_ITEM_ALOLA[]                     = _("Same method, holds Strange \nSouvenir");
+const u8 gText_EVO_LEVEL_NIGHT_ALOLA[]              = _("Lvlup, holds Strange Souvenir, \nnight");
+const u8 gText_EVO_MOVE_FEMALE[]                    = _("LvlUp, knows {STR_VAR_2}, female");
+const u8 gText_EVO_MOVE_MALE[]                      = _("LvlUp, knows {STR_VAR_2}, male");
 const u8 gText_EVO_UNKNOWN[]                        = _("Method unknown");
 const u8 gText_EVO_NONE[]                           = _("{STR_VAR_1} has no evolution.");
 
