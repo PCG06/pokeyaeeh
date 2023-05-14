@@ -6819,14 +6819,6 @@ static u8 PrintEvolutionTargetSpeciesAndMethod(u8 taskId, u16 species, u8 depth,
                 GetMapName(gStringVar2, mapHeader->regionMapSectionId, 0);
                 StringExpandPlaceholders(gStringVar4, gText_EVO_SPECIFIC_MAP );
                 break;
-            case EVO_ITEM_ALOLA:
-                StringCopy(gStringVar2, gSpeciesNames[gEvolutionTable[species][i].param]); //mon name
-                StringExpandPlaceholders(gStringVar4, gText_EVO_ITEM_ALOLA );
-                break;
-            case EVO_LEVEL_NIGHT_ALOLA:
-                StringCopy(gStringVar2, gSpeciesNames[gEvolutionTable[species][i].param]); //mon name
-                StringExpandPlaceholders(gStringVar4, gText_EVO_LEVEL_NIGHT_ALOLA );
-                break;
             case EVO_MOVE_FEMALE:
                 StringCopy(gStringVar2, gSpeciesNames[gEvolutionTable[species][i].param]); //mon name
                 StringExpandPlaceholders(gStringVar4, gText_EVO_MOVE_FEMALE );
