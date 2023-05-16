@@ -313,8 +313,9 @@
 #define EVO_DARK_SCROLL                   37     // interacts with Scroll of Darkness
 #define EVO_WATER_SCROLL                  38     // interacts with Scroll of Waters
 #define EVO_ITEM_NIGHT                    39     // specified item is used on Pokémon at night
-#define EVO_MOVE_FEMALE                   40     // Pokémon learn specific move, evolves, female (for Basculegion)
-#define EVO_MOVE_MALE                     41     // Pokémon learn specific move, evolves, male   (for Basculegion)
+#define EVO_ITEM_DAY                      40     // specified item is used on Pokémon at day
+#define EVO_MOVE_FEMALE                   41     // Pokémon learn specific move, evolves, female (for Basculegion)
+#define EVO_MOVE_MALE                     42    // Pokémon learn specific move, evolves, male   (for Basculegion)
 
 #define EVOS_PER_MON 10
 

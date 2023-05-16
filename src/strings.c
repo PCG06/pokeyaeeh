@@ -1983,6 +1983,7 @@ const u8 gText_EVO_CRITICAL_HITS[]                  = _("Land {STR_VAR_2} critic
 const u8 gText_EVO_DARK_SCROLL[]                    = _("Interact with Dark Scroll");
 const u8 gText_EVO_WATER_SCROLL[]                   = _("Interact with Water Scroll");*/
 const u8 gText_EVO_ITEM_NIGHT[]                     = _("{STR_VAR_2} is used, night");
+const u8 gText_EVO_ITEM_DAY[]                       = _("{STR_VAR_2} is used, day");
 const u8 gText_EVO_MOVE_FEMALE[]                    = _("LvlUp, knows {STR_VAR_2}, female");
 const u8 gText_EVO_MOVE_MALE[]                      = _("LvlUp, knows {STR_VAR_2}, male");
 const u8 gText_EVO_UNKNOWN[]                        = _("Method unknown");
