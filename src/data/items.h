@@ -6509,8 +6509,8 @@ const struct Item gItems[] =
         .holdEffect = HOLD_EFFECT_SCOPE_LENS,
         .description = sRazorClawDesc,
         .pocket = POCKET_BATTLE_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_EvolutionStone,
         .flingPower = 80,
     },
 
@@ -6523,8 +6523,8 @@ const struct Item gItems[] =
         .holdEffectParam = 10,
         .description = sRazorFangDesc,
         .pocket = POCKET_BATTLE_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_EvolutionStone,
         .flingPower = 30,
     },
 
