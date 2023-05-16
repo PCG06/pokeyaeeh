@@ -3174,6 +3174,13 @@ extern const u8 gText_EVO_SPECIFIC_MON_IN_PARTY[];
 extern const u8 gText_EVO_LEVEL_DARK_TYPE_MON_IN_PARTY[];
 extern const u8 gText_EVO_TRADE_SPECIFIC_MON[];
 extern const u8 gText_EVO_SPECIFIC_MAP[];
+extern const u8 gText_EVO_LEVEL_NATURE_AMPED[];
+extern const u8 gText_EVO_LEVEL_NATURE_LOW_KEY[];
+extern const u8 gText_EVO_CRITICAL_HITS[];
+extern const u8 gText_EVO_SCRIPT_TRIGGER_DMG[];
+/*extern const u8 gText_EVO_DARK_SCROLL[];
+extern const u8 gText_EVO_WATER_SCROLL[];*/
+extern const u8 gText_EVO_ITEM_NIGHT[];
 extern const u8 gText_EVO_MOVE_FEMALE[];
 extern const u8 gText_EVO_MOVE_MALE[];
 extern const u8 gText_EVO_UNKNOWN[];
