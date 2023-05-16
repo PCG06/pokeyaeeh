@@ -92,7 +92,7 @@
 #define MAX_STAT_STAGE    12
 
 // Shiny odds
-#define SHINY_ODDS 8 // Actual probability is SHINY_ODDS/65536
+#define SHINY_ODDS 64 // Actual probability is SHINY_ODDS/65536 (Current shiny odds are 1/1024 / 0.0009765625)
 
 // Ribbon IDs used by TV and Pokénav
 #define CHAMPION_RIBBON       0
@@ -313,8 +313,9 @@
 #define EVO_DARK_SCROLL                   37     // interacts with Scroll of Darkness
 #define EVO_WATER_SCROLL                  38     // interacts with Scroll of Waters
 #define EVO_ITEM_NIGHT                    39     // specified item is used on Pokémon at night
-#define EVO_ITEM_ALOLA                    40     // specified item is used on Pokémon while holding a Strange Souvenir
-#define EVO_LEVEL_NIGHT_ALOLA             41     // Pokémon reaches the specified level, is night, holding Strange Souvenir
+#define EVO_ITEM_DAY                      40     // specified item is used on Pokémon at day
+#define EVO_MOVE_FEMALE                   41     // Pokémon learn specific move, evolves, female (for Basculegion)
+#define EVO_MOVE_MALE                     42    // Pokémon learn specific move, evolves, male   (for Basculegion)
 
 #define EVOS_PER_MON 10
 

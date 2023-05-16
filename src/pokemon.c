@@ -6467,6 +6467,14 @@ u16 GetEvolutionTargetSpecies(struct Pokemon *mon, u8 mode, u16 evolutionItem, s
                 if (gEvolutionTable[species][i].param <= level && GetMonGender(mon) == MON_MALE)
                     targetSpecies = gEvolutionTable[species][i].targetSpecies;
                 break;
+            case EVO_MOVE_FEMALE:
+                if (MonKnowsMove(mon, gEvolutionTable[species][i].param) && GetMonGender(mon) == MON_FEMALE)
+                    targetSpecies = gEvolutionTable[species][i].targetSpecies;
+                break;
+            case EVO_MOVE_MALE:
+                if (MonKnowsMove(mon, gEvolutionTable[species][i].param) && GetMonGender(mon) == MON_MALE)
+                    targetSpecies = gEvolutionTable[species][i].targetSpecies;
+                break;
             case EVO_LEVEL_ATK_GT_DEF:
                 if (gEvolutionTable[species][i].param <= level)
                     if (GetMonData(mon, MON_DATA_ATK, 0) > GetMonData(mon, MON_DATA_DEF, 0))
@@ -6550,11 +6558,6 @@ u16 GetEvolutionTargetSpecies(struct Pokemon *mon, u8 mode, u16 evolutionItem, s
             case EVO_SPECIFIC_MAP:
                 currentMap = ((gSaveBlock1Ptr->location.mapGroup) << 8 | gSaveBlock1Ptr->location.mapNum);
                 if (currentMap == gEvolutionTable[species][i].param)
-                    targetSpecies = gEvolutionTable[species][i].targetSpecies;
-                break;
-                case EVO_LEVEL_NIGHT_ALOLA:
-                RtcCalcLocalTime();
-                if (gLocalTime.hours >= 0 && gLocalTime.hours < 12 && gEvolutionTable[species][i].param <= level && heldItem == ITEM_STRANGE_SOUVENIR)
                     targetSpecies = gEvolutionTable[species][i].targetSpecies;
                 break;
             case EVO_LEVEL_NATURE_AMPED:
@@ -6648,13 +6651,14 @@ u16 GetEvolutionTargetSpecies(struct Pokemon *mon, u8 mode, u16 evolutionItem, s
                 if (GetMonGender(mon) == MON_MALE && gEvolutionTable[species][i].param == evolutionItem)
                     targetSpecies = gEvolutionTable[species][i].targetSpecies;
                 break;
-            case EVO_ITEM_ALOLA:
-                if (gEvolutionTable[species][i].param == evolutionItem && heldItem == ITEM_STRANGE_SOUVENIR)
-                    targetSpecies = gEvolutionTable[species][i].targetSpecies;
-                break;
             case EVO_ITEM_NIGHT:
                 RtcCalcLocalTime();
                 if (gLocalTime.hours >= 0 && gLocalTime.hours < 12 && gEvolutionTable[species][i].param == evolutionItem)
+                    targetSpecies = gEvolutionTable[species][i].targetSpecies;
+                break;
+            case EVO_ITEM_DAY:
+                RtcCalcLocalTime();
+                if (gLocalTime.hours >= 12 && gLocalTime.hours < 24 && gEvolutionTable[species][i].param == evolutionItem)
                     targetSpecies = gEvolutionTable[species][i].targetSpecies;
                 break;
             }
