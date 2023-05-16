@@ -77,6 +77,13 @@ enum
     SAVE_ERROR
 };
 
+// Clock Mode
+enum
+{
+    TWELVE_HOUR_MODE,
+    TWENTYFOUR_HOUR_MODE,
+};
+
 // IWRAM common
 bool8 (*gMenuCallback)(void);
 
@@ -93,6 +100,7 @@ EWRAM_DATA static u8 sSaveDialogTimer = 0;
 EWRAM_DATA static bool8 sSavingComplete = FALSE;
 EWRAM_DATA static u8 sSaveInfoWindowId = 0;
 EWRAM_DATA static u8 sCurrentTimeWindowId = 0;
+EWRAM_DATA u8 gClockMode = TWELVE_HOUR_MODE;
 
 // Menu action callbacks
 static bool8 StartMenuPokedexCallback(void);
@@ -452,13 +460,13 @@ static void RemoveExtraStartMenuWindows(void)
         ClearStdWindowAndFrameToTransparent(sBattlePyramidFloorWindowId, FALSE);
         RemoveWindow(sBattlePyramidFloorWindowId);
     }
-	if (FlagGet(FLAG_SYS_CLOCK_SET))
-	{
+	//if (FlagGet(FLAG_SYS_CLOCK_SET))
+	//{
 		ClearStdWindowAndFrameToTransparent(sCurrentTimeWindowId, FALSE);
         CopyWindowToVram(sCurrentTimeWindowId, 2);
         RemoveWindow(sCurrentTimeWindowId);
 		FlagClear(FLAG_TEMP_5);
-	}
+	//}
 }
 
 static bool32 PrintStartMenuActions(s8 *pIndex, u32 count)
@@ -516,7 +524,7 @@ static bool32 InitStartMenuStep(void)
             ShowSafariBallsWindow();
         if (InBattlePyramid())
             ShowPyramidFloorWindow();
-		if (FlagGet(FLAG_SYS_CLOCK_SET))
+		//if (FlagGet(FLAG_SYS_CLOCK_SET))
 			ShowCurrentTimeWindow();
         sInitStartMenuData[0]++;
         break;
@@ -1479,29 +1487,73 @@ void AppendToList(u8 *list, u8 *pos, u8 newEntry)
 
 static void ShowCurrentTimeWindow(void)
 {
+    u8 analogHour;
+    struct WindowTemplate timeWindowTemplate = sCurrentTimeWindowTemplate;
+
 	RtcCalcLocalTime();
-	sCurrentTimeWindowId = AddWindow(&sCurrentTimeWindowTemplate);
+    analogHour = (gLocalTime.hours >= 13 && gLocalTime.hours <= 24) ? gLocalTime.hours - 12 : gLocalTime.hours;
+    if (gClockMode == TWELVE_HOUR_MODE)
+        timeWindowTemplate.width = 6;
+	sCurrentTimeWindowId = AddWindow(&timeWindowTemplate);
+
 	PutWindowTilemap(sCurrentTimeWindowId);
 	DrawStdWindowFrame(sCurrentTimeWindowId, FALSE);
 	FlagSet(FLAG_TEMP_5);
+
 	ConvertIntToDecimalStringN(gStringVar1, gLocalTime.hours, STR_CONV_MODE_LEADING_ZEROS, 2);
 	ConvertIntToDecimalStringN(gStringVar2, gLocalTime.minutes, STR_CONV_MODE_LEADING_ZEROS, 2);
+    if (gClockMode == TWELVE_HOUR_MODE)
+	    ConvertIntToDecimalStringN(gStringVar1, analogHour, STR_CONV_MODE_LEADING_ZEROS, 2);
+    
 	StringExpandPlaceholders(gStringVar4, gText_CurrentTime);
+    if (gClockMode == TWELVE_HOUR_MODE)
+    {
+        if (gLocalTime.hours >= 13 && gLocalTime.hours <= 24)
+            StringExpandPlaceholders(gStringVar4, gText_CurrentTimePM); 
+        else
+            StringExpandPlaceholders(gStringVar4, gText_CurrentTimeAM);  
+    }
 	AddTextPrinterParameterized(sCurrentTimeWindowId, 1, gStringVar4, 0, 1, 0xFF, NULL);
 	CopyWindowToVram(sCurrentTimeWindowId, 2);
 }
 
 void UpdateClockDisplay(void)
 {
+    u8 analogHour;
+
 	if (!FlagGet(FLAG_TEMP_5))
 		return;
 	RtcCalcLocalTime();
+    analogHour = (gLocalTime.hours >= 13 && gLocalTime.hours <= 24) ? gLocalTime.hours - 12 : gLocalTime.hours;
+    
 	ConvertIntToDecimalStringN(gStringVar1, gLocalTime.hours, STR_CONV_MODE_LEADING_ZEROS, 2);
 	ConvertIntToDecimalStringN(gStringVar2, gLocalTime.minutes, STR_CONV_MODE_LEADING_ZEROS, 2);
+    if (gClockMode == TWELVE_HOUR_MODE)
+	    ConvertIntToDecimalStringN(gStringVar1, analogHour, STR_CONV_MODE_LEADING_ZEROS, 2);
+
 	if (gLocalTime.seconds % 2)
-		StringExpandPlaceholders(gStringVar4, gText_CurrentTime);
+	{
+        StringExpandPlaceholders(gStringVar4, gText_CurrentTime);
+        if (gClockMode == TWELVE_HOUR_MODE)
+        {
+            if (gLocalTime.hours >= 13 && gLocalTime.hours <= 24)
+                StringExpandPlaceholders(gStringVar4, gText_CurrentTimePM); 
+            else
+                StringExpandPlaceholders(gStringVar4, gText_CurrentTimeAM);  
+        } 
+    }
 	else
-		StringExpandPlaceholders(gStringVar4, gText_CurrentTimeOff);
+	{
+        StringExpandPlaceholders(gStringVar4, gText_CurrentTimeOff);
+        if (gClockMode == TWELVE_HOUR_MODE)
+        {
+            if (gLocalTime.hours >= 13 && gLocalTime.hours <= 24)
+                StringExpandPlaceholders(gStringVar4, gText_CurrentTimePMOff); 
+            else
+                StringExpandPlaceholders(gStringVar4, gText_CurrentTimeAMOff);  
+        } 
+    }
+
 	AddTextPrinterParameterized(sCurrentTimeWindowId, 1, gStringVar4, 0, 1, 0xFF, NULL);
 	CopyWindowToVram(sCurrentTimeWindowId, 2);
 }

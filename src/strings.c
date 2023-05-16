@@ -1989,6 +1989,7 @@ const u8 gText_FORMS_NONE[]                         = _("{STR_VAR_1} has no alte
 const u8 gText_CurrentTime[] = _(" {STR_VAR_1}:{STR_VAR_2}");
 const u8 gText_CurrentTimeOff[] = _(" {STR_VAR_1} {STR_VAR_2}");
 // Edit this later Mistah Snom. Also remove this commented line :)
+// Sure ;3
 const u8 gText_CurrentTimeAM[] = _(" {STR_VAR_1}:{STR_VAR_2} a.m.");
 const u8 gText_CurrentTimeAMOff[] = _(" {STR_VAR_1} {STR_VAR_2} a.m.");
 const u8 gText_CurrentTimePM[] = _(" {STR_VAR_1}:{STR_VAR_2} p.m.");
