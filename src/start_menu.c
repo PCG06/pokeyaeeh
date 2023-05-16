@@ -77,13 +77,6 @@ enum
     SAVE_ERROR
 };
 
-// Clock Mode
-enum
-{
-    TWELVE_HOUR_MODE,
-    TWENTYFOUR_HOUR_MODE,
-};
-
 // IWRAM common
 bool8 (*gMenuCallback)(void);
 

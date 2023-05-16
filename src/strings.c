@@ -1994,4 +1994,11 @@ const u8 gText_CurrentTimeAM[] = _(" {STR_VAR_1}:{STR_VAR_2} a.m.");
 const u8 gText_CurrentTimeAMOff[] = _(" {STR_VAR_1} {STR_VAR_2} a.m.");
 const u8 gText_CurrentTimePM[] = _(" {STR_VAR_1}:{STR_VAR_2} p.m.");
 const u8 gText_CurrentTimePMOff[] = _(" {STR_VAR_1} {STR_VAR_2} p.m.");
-const u8 gText_ClockOption[] = _("12 HOUR CLOCK");
+const u8 gText_ClockMode[] = _("Clock Mode");
+const u8 gText_ClockOption1[] = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}12 Hour"); // Using them without the {COLOR GREEN}{SHADOW LIGHT_GREEN} causes corruption :(
+const u8 gText_ClockOption2[] = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}24 Hour");
+
+// Multi option menu
+const u8 gText_SmallDot[] = _("·");
+const u8 gText_LargeDot[] = _("{EMOJI_CIRCLE}");
+const u8 gText_PageNav[] = _("{L_BUTTON}{R_BUTTON} PAGE");

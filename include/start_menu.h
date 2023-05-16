@@ -14,6 +14,11 @@ void HideStartMenu(void);
 void AppendToList(u8 *list, u8 *pos, u8 newEntry);
 
 // Start Menu Clock
+enum
+{
+    TWELVE_HOUR_MODE,
+    TWENTYFOUR_HOUR_MODE,
+};
 extern u8 gClockMode;
 
 #endif // GUARD_START_MENU_H
