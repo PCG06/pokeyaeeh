@@ -1986,6 +1986,7 @@ const u8 gText_EVO_ITEM_NIGHT[]                     = _("{STR_VAR_2} is used, ni
 const u8 gText_EVO_ITEM_DAY[]                       = _("{STR_VAR_2} is used, day");
 const u8 gText_EVO_MOVE_FEMALE[]                    = _("LvlUp, knows {STR_VAR_2}, female");
 const u8 gText_EVO_MOVE_MALE[]                      = _("LvlUp, knows {STR_VAR_2}, male");
+const u8 gText_EVO_ITEM_HOLD[]                      = _("LvlUp, holds {STR_VAR_2}");
 const u8 gText_EVO_UNKNOWN[]                        = _("Method unknown");
 const u8 gText_EVO_NONE[]                           = _("{STR_VAR_1} has no evolution.");
 

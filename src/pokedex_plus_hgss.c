@@ -6863,6 +6863,11 @@ static u8 PrintEvolutionTargetSpeciesAndMethod(u8 taskId, u16 species, u8 depth,
                 StringCopy(gStringVar2, gMoveNames[gEvolutionTable[species][i].param]);
                 StringExpandPlaceholders(gStringVar4, gText_EVO_MOVE_MALE );
                 break;
+            case EVO_ITEM_HOLD:
+                item = gEvolutionTable[species][i].param; //item
+                CopyItemName(item, gStringVar2); //item
+                StringExpandPlaceholders(gStringVar4, gText_EVO_ITEM_HOLD );
+                break;
         #endif
         default:
             StringExpandPlaceholders(gStringVar4, gText_EVO_UNKNOWN );
