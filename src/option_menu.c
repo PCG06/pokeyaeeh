@@ -59,6 +59,7 @@ enum
 #define PAGE_COUNT 2
 #define RefreshOptionMenu                               \
 {                                                       \
+    SaveOptionMenuDataFromTask(taskId);                 \
     FillWindowPixelBuffer(WIN_OPTIONS, PIXEL_FILL(1));  \
     ClearStdWindowAndFrame(WIN_OPTIONS, FALSE);         \
     sCurrentPage = Process_ChangePage(sCurrentPage);    \
@@ -96,6 +97,8 @@ static void ButtonMode_DrawChoices(u8 selection);
 // Add new functions for options here
 static u8 ClockMode_ProcessInput(u8 selection);
 static void ClockMode_DrawChoices(u8 selection);
+
+static void SaveOptionMenuDataFromTask(u8 taskId);
 //
 static void DrawHeaderText(void);
 static void DrawTextOption(void);
@@ -207,13 +210,20 @@ static void VBlankCB(void)
 static void ReadAllCurrentSettings(u8 taskId)
 {
     gTasks[taskId].tMenuSelection = 0;
-    gTasks[taskId].tTextSpeed = gSaveBlock2Ptr->optionsTextSpeed;
-    gTasks[taskId].tBattleSceneOff = gSaveBlock2Ptr->optionsBattleSceneOff;
-    gTasks[taskId].tBattleStyle = gSaveBlock2Ptr->optionsBattleStyle;
-    gTasks[taskId].tSound = gSaveBlock2Ptr->optionsSound;
-    gTasks[taskId].tButtonMode = gSaveBlock2Ptr->optionsButtonMode;
-    gTasks[taskId].tWindowFrameType = gSaveBlock2Ptr->optionsWindowFrameType;
-    gTasks[taskId].data[MENUITEM_CLOCKMODE] = gClockMode;
+    
+    switch (sCurrentPage){
+        case PAGE_1:
+            gTasks[taskId].tTextSpeed = gSaveBlock2Ptr->optionsTextSpeed;
+            gTasks[taskId].tBattleSceneOff = gSaveBlock2Ptr->optionsBattleSceneOff;
+            gTasks[taskId].tBattleStyle = gSaveBlock2Ptr->optionsBattleStyle;
+            gTasks[taskId].tSound = gSaveBlock2Ptr->optionsSound;
+            gTasks[taskId].tButtonMode = gSaveBlock2Ptr->optionsButtonMode;
+            gTasks[taskId].tWindowFrameType = gSaveBlock2Ptr->optionsWindowFrameType;
+            break;
+        case PAGE_2:
+            gTasks[taskId].data[MENUITEM_CLOCKMODE] = gClockMode;
+            break;
+    }
 }
 
 static void DrawOptions(u8 taskId)
@@ -468,7 +478,7 @@ static void Task_OptionMenuProcessInput_Page2(u8 taskId)
     }
     else if (JOY_NEW(A_BUTTON))
     {
-       if (gTasks[taskId].data[CURRENT_MENU_SELECTION] == MENUITEM_CANCEL_PAGE2)
+       if (gTasks[taskId].tMenuSelection == MENUITEM_CANCEL_PAGE2)
             gTasks[taskId].func = Task_OptionMenuSave;
     }
     else if (JOY_NEW(B_BUTTON))
@@ -515,19 +525,33 @@ static void Task_OptionMenuProcessInput_Page2(u8 taskId)
     }
 }
 
+// Edit this to account for saving the data of your options
+static void SaveOptionMenuDataFromTask(u8 taskId)
+{
+    switch (sCurrentPage){
+        case PAGE_1:
+            gSaveBlock2Ptr->optionsTextSpeed = gTasks[taskId].tTextSpeed;
+            gSaveBlock2Ptr->optionsBattleSceneOff = gTasks[taskId].tBattleSceneOff;
+            gSaveBlock2Ptr->optionsBattleStyle = gTasks[taskId].tBattleStyle;
+            gSaveBlock2Ptr->optionsSound = gTasks[taskId].tSound;
+            gSaveBlock2Ptr->optionsButtonMode = gTasks[taskId].tButtonMode;
+            gSaveBlock2Ptr->optionsWindowFrameType = gTasks[taskId].tWindowFrameType;
+            break;
+        case PAGE_2:
+            if (gTasks[taskId].data[MENUITEM_CLOCKMODE] == 0)
+                gClockMode = TWELVE_HOUR_MODE;
+            else
+                gClockMode = TWENTYFOUR_HOUR_MODE;
+
+            break;
+    }
+
+    return;
+}
+
 static void Task_OptionMenuSave(u8 taskId)
 {
-    gSaveBlock2Ptr->optionsTextSpeed = gTasks[taskId].tTextSpeed;
-    gSaveBlock2Ptr->optionsBattleSceneOff = gTasks[taskId].tBattleSceneOff;
-    gSaveBlock2Ptr->optionsBattleStyle = gTasks[taskId].tBattleStyle;
-    gSaveBlock2Ptr->optionsSound = gTasks[taskId].tSound;
-    gSaveBlock2Ptr->optionsButtonMode = gTasks[taskId].tButtonMode;
-    gSaveBlock2Ptr->optionsWindowFrameType = gTasks[taskId].tWindowFrameType;
-    if (gTasks[taskId].data[MENUITEM_CLOCKMODE] == 0)
-        gClockMode = TWELVE_HOUR_MODE;
-    else
-        gClockMode = TWENTYFOUR_HOUR_MODE;
-
+    SaveOptionMenuDataFromTask(taskId);
     BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 16, RGB_BLACK);
     gTasks[taskId].func = Task_OptionMenuFadeOut;
 }
