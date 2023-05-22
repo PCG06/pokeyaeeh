@@ -544,6 +544,7 @@ const u8 *const gItemEffectTable[ITEMS_COUNT] =
     [ITEM_SHINY_STONE]        = gItemEffect_EvoItem,
     [ITEM_DUSK_STONE]         = gItemEffect_EvoItem,
     [ITEM_DAWN_STONE]         = gItemEffect_EvoItem,
+    [ITEM_OVAL_STONE]         = gItemEffect_EvoItem,
     [ITEM_METAL_COAT]         = gItemEffect_EvoItem,
     [ITEM_DRAGON_SCALE]       = gItemEffect_EvoItem,
     [ITEM_UPGRADE]            = gItemEffect_EvoItem,

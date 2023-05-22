@@ -3184,6 +3184,7 @@ extern const u8 gText_EVO_ITEM_NIGHT[];
 extern const u8 gText_EVO_ITEM_DAY[];
 extern const u8 gText_EVO_MOVE_FEMALE[];
 extern const u8 gText_EVO_MOVE_MALE[];
+extern const u8 gText_EVO_ITEM_HOLD[];
 extern const u8 gText_EVO_UNKNOWN[];
 extern const u8 gText_EVO_NONE[];
 
