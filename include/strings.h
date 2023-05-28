@@ -3178,8 +3178,8 @@ extern const u8 gText_EVO_LEVEL_NATURE_AMPED[];
 extern const u8 gText_EVO_LEVEL_NATURE_LOW_KEY[];
 extern const u8 gText_EVO_CRITICAL_HITS[];
 extern const u8 gText_EVO_SCRIPT_TRIGGER_DMG[];
-/*extern const u8 gText_EVO_DARK_SCROLL[];
-extern const u8 gText_EVO_WATER_SCROLL[];*/
+extern const u8 gText_EVO_DARK_SCROLL[];
+extern const u8 gText_EVO_WATER_SCROLL[];
 extern const u8 gText_EVO_ITEM_NIGHT[];
 extern const u8 gText_EVO_ITEM_DAY[];
 extern const u8 gText_EVO_MOVE_FEMALE[];

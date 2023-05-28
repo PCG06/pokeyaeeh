@@ -6831,7 +6831,7 @@ static u8 PrintEvolutionTargetSpeciesAndMethod(u8 taskId, u16 species, u8 depth,
                 ConvertIntToDecimalStringN(gStringVar2, gEvolutionTable[species][i].param, STR_CONV_MODE_LEADING_ZEROS, EVO_SCREEN_LVL_DIGITS); //level
                 StringExpandPlaceholders(gStringVar4, gText_EVO_CRITICAL_HITS );
                 break;
-            /*case EVO_SCRIPT_TRIGGER_DMG:
+            case EVO_SCRIPT_TRIGGER_DMG:
                 StringCopy(gStringVar2, gSpeciesNames[gEvolutionTable[species][i].param]);
                 StringExpandPlaceholders(gStringVar4, gText_EVO_SCRIPT_TRIGGER_DMG );
                 break;
@@ -6844,7 +6844,7 @@ static u8 PrintEvolutionTargetSpeciesAndMethod(u8 taskId, u16 species, u8 depth,
                 item = gEvolutionTable[species][i].param;
                 CopyItemName(item, gStringVar2);
                 StringExpandPlaceholders(gStringVar4, gText_EVO_WATER_SCROLL );
-                break;*/
+                break;
             case EVO_ITEM_NIGHT:
                 item = gEvolutionTable[species][i].param;
                 CopyItemName(item, gStringVar2);
