@@ -13,5 +13,6 @@ struct EvIvScreen
 };
 
 extern EWRAM_DATA struct EvIvScreen gEvIvScreen;
+void ShowEvIvScreen(void);
 
 #endif // GUARD_EV_IV_SCREEN_H

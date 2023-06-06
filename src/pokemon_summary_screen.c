@@ -41,6 +41,7 @@
 #include "text.h"
 #include "tv.h"
 #include "window.h"
+#include "ev_iv_screen.h"
 #include "constants/battle_move_effects.h"
 #include "constants/items.h"
 #include "constants/moves.h"
@@ -1625,9 +1626,11 @@ static void Task_HandleInput(u8 taskId)
         }
         else if (JOY_NEW(A_BUTTON))
         {
-            if (sMonSummaryScreen->currPageIndex != PSS_PAGE_SKILLS)
+            if (sMonSummaryScreen->currPageIndex == PSS_PAGE_SKILLS)
             {
-                if (sMonSummaryScreen->currPageIndex == PSS_PAGE_INFO)
+                    ShowEvIvScreen();
+            }
+                else if (sMonSummaryScreen->currPageIndex == PSS_PAGE_INFO)
                 {
                     StopPokemonAnimations();
                     PlaySE(SE_SELECT);
@@ -1656,7 +1659,6 @@ static void Task_HandleInput(u8 taskId)
         }
     #endif
     }
-}
 
 static void ChangeSummaryPokemon(u8 taskId, s8 delta)
 {
