@@ -151,3 +151,4 @@
 	.include "src/debug.o"
 	.include "src/tm_case.o"
 	.include "src/pokedex_plus_hgss.o"
+	.include "src/ev_iv_screen.o"

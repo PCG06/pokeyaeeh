@@ -539,3 +539,4 @@ gSpecials::
 	def_special GetBaseSpecies
 	def_special SetCurrentSpecies
 	def_special CreateWonderTradePokemon
+	def_special ShowEvIvScreen
