@@ -297,7 +297,6 @@ static u8 EvIvLoadGfx(void)
 */
 
 static const ALIGNED(4) u8 sBlackTextColor[3]  = {0, 2, 3};  //paleta 15 usada en plantilaWindow
-static const ALIGNED(4) u8 sGreyTextColor[3]   = {0, 3, 2};  //paleta 15 usada en plantilaWindow
 
 /**
  * COLOR_HIGHLIGHT_SHADOW = FC 04 @ takes 3 bytes
@@ -320,7 +319,7 @@ static const u8 sText_Newline[] = _("\n");
 static const u8 sText_BsEvIv[] = _("  BS   EV   IV"); // Base Stats, Effort Values, Individual Values
 
 static const u8 sText_Your[] = _("Your ");
-static const u8 sText_Is[] = _(" is ");
+static const u8 sText_Is[] = _(" is");
 static const u8 sText_Happy[] = _("% happy!");
 
 static const u8 sText_LessThan[] = _("Less than ");
@@ -347,7 +346,7 @@ static void EvIvPrintText(struct Pokemon *mon)
     temp = gPlayerPartyCount;
     ConvertIntToDecimalStringN(gStringVar1, temp, 2, 1);
     StringAppend(gStringVar4, gStringVar1);
-    AddTextPrinterParameterized3(1, 2, 12, 2, sGreyTextColor, 0, gStringVar4);
+    AddTextPrinterParameterized3(1, 2, 12, 2, sBlackTextColor, 0, gStringVar4);
 
     // Print "BS EV IV" on screen followed by the name/nickname of the species.
     // If what's currently being checked is a Pokémon Egg, it'll only display that string.
@@ -362,7 +361,7 @@ static void EvIvPrintText(struct Pokemon *mon)
         StringAppend(gStringVar4, gText_Space);
         GetMonNickname(mon, gStringVar1);
         StringAppend(gStringVar4, gStringVar1);
-        AddTextPrinterParameterized3(1, 2, 68, 2, sGreyTextColor, 0, gStringVar4);    
+        AddTextPrinterParameterized3(1, 2, 68, 2, sBlackTextColor, 0, gStringVar4);    
     }
     else
     {
@@ -374,7 +373,7 @@ static void EvIvPrintText(struct Pokemon *mon)
         StringAppend(gStringVar4, gText_Space);
         GetMonNickname(mon, gStringVar1);
         StringAppend(gStringVar4, gStringVar1);
-        AddTextPrinterParameterized3(1, 2, 128, 2, sGreyTextColor, 0, gStringVar4);    
+        AddTextPrinterParameterized3(1, 2, 128, 2, sBlackTextColor, 0, gStringVar4);    
     }
 
     // Print the different stats' names on screen, unless what's currently being checked is a Pokémon Egg.
@@ -524,8 +523,6 @@ static void EvIvPrintText(struct Pokemon *mon)
         StringAppend(gStringVar4, gText_Total);
         StringAppend(gStringVar4, gText_Colon2);
         StringAppend(gStringVar4, gText_Space);
-        StringAppend(gStringVar4, sText_TwoEmptySpaces);
-        StringAppend(gStringVar4, sText_TwoEmptySpaces);
         StringAppend(gStringVar4, sText_TwoEmptySpaces);
         StringAppend(gStringVar4, sText_TwoEmptySpaces);
         StringAppend(gStringVar4, gText_Space);
