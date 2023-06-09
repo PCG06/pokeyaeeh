@@ -1626,20 +1626,22 @@ static void Task_HandleInput(u8 taskId)
         }
         else if (JOY_NEW(A_BUTTON))
         {
-            if (sMonSummaryScreen->currPageIndex != PSS_PAGE_SKILLS)
-            {
-                if (sMonSummaryScreen->currPageIndex == PSS_PAGE_INFO)
+            if (sMonSummaryScreen->currPageIndex == PSS_PAGE_INFO)
+            {    
+                StopPokemonAnimations();
+                PlaySE(SE_SELECT);
+                BeginCloseSummaryScreen(taskId);
+            }
+                else if (sMonSummaryScreen->currPageIndex == PSS_PAGE_SKILLS)
                 {
-                    StopPokemonAnimations();
                     PlaySE(SE_SELECT);
-                    BeginCloseSummaryScreen(taskId);
+                    ShowEvIvScreen();
                 }
                 else // Contest or Battle Moves
                 {
                     PlaySE(SE_SELECT);
                     SwitchToMoveSelection(taskId);
                 }
-            }
         }
         else if (JOY_NEW(B_BUTTON))
         {
