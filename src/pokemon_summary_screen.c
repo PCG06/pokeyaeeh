@@ -1626,11 +1626,9 @@ static void Task_HandleInput(u8 taskId)
         }
         else if (JOY_NEW(A_BUTTON))
         {
-            if (sMonSummaryScreen->currPageIndex == PSS_PAGE_SKILLS)
+            if (sMonSummaryScreen->currPageIndex != PSS_PAGE_SKILLS)
             {
-                    ShowEvIvScreen();
-            }
-                else if (sMonSummaryScreen->currPageIndex == PSS_PAGE_INFO)
+                if (sMonSummaryScreen->currPageIndex == PSS_PAGE_INFO)
                 {
                     StopPokemonAnimations();
                     PlaySE(SE_SELECT);
@@ -1659,6 +1657,7 @@ static void Task_HandleInput(u8 taskId)
         }
     #endif
     }
+}
 
 static void ChangeSummaryPokemon(u8 taskId, s8 delta)
 {
