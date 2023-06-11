@@ -7181,6 +7181,8 @@ void SetCurrentSpecies(void) // Reads the mon stored in VAR_0x8004 and sets its 
 u16 GetTMHMMoves(u16 position)
 {
     return sTMHMMoves[position];
+}
+    
 static void FieldCallback_RockClimb(void)
 {
     gFieldEffectArguments[0] = GetCursorSelectionMonId();
