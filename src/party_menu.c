@@ -1533,7 +1533,7 @@ static u16 PartyMenuButtonHandler(s8 *slotPtr)
     if (JOY_NEW(START_BUTTON))
         return START_BUTTON;
 
-    if (JOY_NEW(SELECT_BUTTON) && CalculatePlayerPartyCount() >= 2 && !IsInvalidPartyMenuActionType(gPartyMenu.action))
+    if (JOY_NEW(SELECT_BUTTON) && CalculatePlayerPartyCount() >= 2)
     {
         if (gPartyMenu.menuType != PARTY_MENU_TYPE_FIELD)
             return 0;
