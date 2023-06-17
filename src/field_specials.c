@@ -67,6 +67,7 @@
 #include "constants/metatile_labels.h"
 #include "palette.h"
 #include "battle_util.h"
+#include "item.h"
 
 #define TAG_ITEM_ICON 5500
 
@@ -3568,8 +3569,18 @@ bool32 IsTrainerRegistered(void)
 bool32 ShouldDistributeEonTicket(void)
 {
     if (!VarGet(VAR_DISTRIBUTE_EON_TICKET))
-        return FALSE;
-
+	{
+		if (FlagGet(FLAG_SYS_GAME_CLEAR) && !CheckBagHasItem(ITEM_EON_TICKET, 1))
+		{
+			VarSet(VAR_DISTRIBUTE_EON_TICKET, 1);
+			return TRUE;
+		}
+		else
+		{
+			return FALSE;
+		}
+	}
+    
     return TRUE;
 }
 
