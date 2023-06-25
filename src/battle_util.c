@@ -8350,7 +8350,7 @@ u32 GetMoveTargetCount(u16 move, u8 battlerAtk, u8 battlerDef)
     }
 }
 
-static void MulModifier(u16 *modifier, u16 val)
+void MulModifier(u16 *modifier, u16 val)
 {
     *modifier = UQ_4_12_TO_INT((*modifier * val) + UQ_4_12_ROUND);
 }
@@ -10945,4 +10945,9 @@ u32 CalcSecondaryEffectChance(u8 battlerId, u8 secondaryEffectChance)
         secondaryEffectChance *= 2;
 
     return secondaryEffectChance;
+}
+
+bool32 IsAlly(u32 battlerAtk, u32 battlerDef)
+{
+    return (GetBattlerSide(battlerAtk) == GetBattlerSide(battlerDef));
 }
