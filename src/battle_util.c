@@ -4280,10 +4280,10 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u16 ability, u8 special, u16 move
                     }
                     break;
                 case WEATHER_SNOW:
-                    if (!(gBattleWeather & B_WEATHER_HAIL))
+                    if (!(gBattleWeather & B_WEATHER_SNOW))
                     {
-                        gBattleWeather = B_WEATHER_HAIL;
-                        gBattleScripting.animArg1 = B_ANIM_HAIL_CONTINUES;
+                        gBattleWeather = B_WEATHER_SNOW;
+                        gBattleScripting.animArg1 = B_ANIM_SNOW_CONTINUES;
                         gBattleScripting.battler = battler;
                         effect++;
                     }
