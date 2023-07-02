@@ -154,3 +154,4 @@
 	.include "src/ev_iv_screen.o"
     .include "src/map_preview.o"
 	.include "src/sound_check_menu.o"
+	.include "src/dexnav.o"

@@ -1090,3 +1090,4 @@ EventScript_DoWonderTrade_Text_Done:
 	.include "data/text/birch_speech.inc"
 	.include "data/scripts/item_scripts.inc"
 	.include "data/maps/BerryShop/scripts.inc"
+	.include "data/scripts/dexnav.inc"
