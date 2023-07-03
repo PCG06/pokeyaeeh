@@ -11,7 +11,6 @@
 #include "battle_tower.h"
 #include "battle_z_move.h"
 #include "data.h"
-#include "dexnav.h"
 #include "event_data.h"
 #include "evolution_scene.h"
 #include "field_specials.h"
@@ -3461,33 +3460,10 @@ void CreateBoxMon(struct BoxPokemon *boxMon, u16 species, u8 level, u8 fixedIV, 
     }
     else // Player is the OT
     {
-        u32 shinyRolls = (CheckBagHasItem(ITEM_SHINY_CHARM, 1)) ? 3 : 1;
-        u32 i;
         value = gSaveBlock2Ptr->playerTrainerId[0]
               | (gSaveBlock2Ptr->playerTrainerId[1] << 8)
               | (gSaveBlock2Ptr->playerTrainerId[2] << 16)
               | (gSaveBlock2Ptr->playerTrainerId[3] << 24);
-
-        for (i = 0; i < shinyRolls; i++)
-        {
-            if (Random() < SHINY_ODDS)
-                FlagSet(FLAG_SHINY_CREATION);   // use a flag bc of CreateDexNavWildMon
-        }
-
-         if (FlagGet(FLAG_SHINY_CREATION))
-        {
-            u8 nature = personality % NUM_NATURES;  // keep current nature
-            do {
-                personality = Random32();
-                personality = ((((Random() % SHINY_ODDS) ^ (HIHALF(value) ^ LOHALF(value))) ^ LOHALF(personality)) << 16) | LOHALF(personality);
-            } while (nature != GetNatureFromPersonality(personality));
-
-            // clear the flag after use
-            FlagClear(FLAG_SHINY_CREATION);
-        }
-    }
-
-    SetBoxMonData(boxMon, MON_DATA_PERSONALITY, &personality);
 
 #if P_FLAG_FORCE_NO_SHINY != 0
         if (FlagGet(P_FLAG_FORCE_NO_SHINY))
@@ -3522,6 +3498,7 @@ void CreateBoxMon(struct BoxPokemon *boxMon, u16 species, u8 level, u8 fixedIV, 
                 totalRerolls--;
             }
         }
+    }
 
     SetBoxMonData(boxMon, MON_DATA_PERSONALITY, &personality);
     SetBoxMonData(boxMon, MON_DATA_OT_ID, &value);
@@ -7964,8 +7941,7 @@ static s32 GetWildMonTableIdInAlteringCave(u16 species)
 
 void SetWildMonHeldItem(void)
 {
-    if (!(gBattleTypeFlags & (BATTLE_TYPE_LEGENDARY | BATTLE_TYPE_TRAINER | BATTLE_TYPE_PYRAMID | BATTLE_TYPE_PIKE))
-      && !gDexnavBattle)
+    if (!(gBattleTypeFlags & (BATTLE_TYPE_LEGENDARY | BATTLE_TYPE_TRAINER | BATTLE_TYPE_PYRAMID | BATTLE_TYPE_PIKE)))
     {
         u16 rnd;
         u16 species;
@@ -8270,8 +8246,6 @@ void HandleSetPokedexFlag(u16 nationalNum, u8 caseId, u32 personality)
         if (NationalPokedexNumToSpecies(nationalNum) == SPECIES_SPINDA)
             gSaveBlock2Ptr->pokedex.spindaPersonality = personality;
     }
-    if (caseId == FLAG_SET_SEEN)
-        TryIncrementSpeciesSearchLevel(nationalNum);    // encountering pokemon increments its search level
 }
 
 const u8 *GetTrainerClassNameFromId(u16 trainerId)

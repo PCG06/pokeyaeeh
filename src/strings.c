@@ -828,7 +828,6 @@ const u8 gText_BattleTrainers[] = _("Battle Trainers");
 const u8 gText_GoOn[] = _("Go on");
 const u8 gText_Record2[] = _("Record");
 const u8 gText_Rest[] = _("Rest");
-const u8 gText_MenuDexNav[] = _("DexNav");
 const u8 gText_Retire[] = _("Retire");
 const u8 gText_99TimesPlus[] = _("99 times +");
 const u8 gText_1MinutePlus[] = _("1 minute +");
