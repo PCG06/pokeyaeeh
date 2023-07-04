@@ -4212,7 +4212,7 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u16 ability, u8 special, u16 move
             case WEATHER_SANDSTORM:
                 if (!(gBattleWeather & B_WEATHER_SANDSTORM))
                 {
-                    gBattleWeather = B_WEATHER_SANDSTORM;
+                    gBattleWeather = (B_WEATHER_SANDSTORM_TEMPORARY | B_WEATHER_SANDSTORM_PERMANENT);
                     gBattleScripting.animArg1 = B_ANIM_SANDSTORM_CONTINUES;
                     effect++;
                 }
@@ -4220,7 +4220,7 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u16 ability, u8 special, u16 move
             case WEATHER_DROUGHT:
                 if (!(gBattleWeather & B_WEATHER_SUN))
                 {
-                    gBattleWeather = (B_WEATHER_SUN_PERMANENT | B_WEATHER_SUN_TEMPORARY);
+                    gBattleWeather = (B_WEATHER_SUN_TEMPORARY | B_WEATHER_SUN_PERMANENT);
                     gBattleScripting.animArg1 = B_ANIM_SUN_CONTINUES;
                     effect++;
                 }
@@ -4228,9 +4228,8 @@ u8 AbilityBattleEffects(u8 caseID, u8 battler, u16 ability, u8 special, u16 move
             case WEATHER_SNOW:
                 if (!(gBattleWeather & B_WEATHER_SNOW))
                 {
-                    gBattleWeather = B_WEATHER_SNOW;
+                    gBattleWeather = (B_WEATHER_SNOW_TEMPORARY | B_WEATHER_SNOW_PERMANENT);
                     gBattleScripting.animArg1 = B_ANIM_SNOW_CONTINUES;
-                    gBattleScripting.battler = battler;
                     effect++;
                 }
                 break;
