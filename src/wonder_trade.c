@@ -20,6 +20,7 @@
 #include "field_weather.h"
 #include "constants/weather.h"
 #include "constants/form_change_types.h"
+#include "string_util.h"
 #endif
 
 extern struct Evolution gEvolutionTable[][EVOS_PER_MON];
@@ -649,7 +650,7 @@ void CreateWonderTradePokemon(u8 whichPlayerMon)
         CreateMon(pokemon, species, level, 0, FALSE, 0, TRUE, (Random() << 16) | Random());
     }
 
-    GetSpeciesName(name, species);
+    StringCopy(name, GetSpeciesName(species));
 
     // 10% chance of having the generated Wonder Traded 'mon carry an item.
     if ((Random() % 99) < 10)

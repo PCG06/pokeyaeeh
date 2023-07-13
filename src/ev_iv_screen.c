@@ -540,7 +540,7 @@ static void EvIvPrintText(struct Pokemon *mon)
         StringCopy(gStringVar4, sText_Newline);
         StringAppend(gStringVar4, sText_TwoEmptySpaces);
         StringAppend(gStringVar4, sText_Your);
-        GetSpeciesName(gStringVar1, species);
+        StringCopy(gStringVar1, GetSpeciesName(species));
         StringAppend(gStringVar4, gStringVar1);
         StringAppend(gStringVar4, sText_Is);
         temp = (GetMonData(mon, MON_DATA_FRIENDSHIP, NULL) * 100) / 0xFF;
