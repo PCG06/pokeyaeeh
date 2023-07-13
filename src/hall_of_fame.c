@@ -639,6 +639,8 @@ u16 getHallofFameSpecies(u8 num){
             for(i = 0; i < MAX_MON_MOVES; i++){
                 if(GetMonData(&gPlayerParty[num], MON_DATA_MOVE1 + i) == MOVE_DRAGON_ASCENT)
                     return SPECIES_RAYQUAZA_MEGA;
+                else
+                    return SPECIES_RAYQUAZA;
             }
         break;
     return species;
