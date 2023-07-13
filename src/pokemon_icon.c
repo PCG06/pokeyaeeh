@@ -2698,7 +2698,7 @@ const u8 gMonIconPaletteIndicesFemale[] =
     [SPECIES_SNEASEL_HISUIAN] = 2,
 };
 
-const struct SpritePalette gMonIconPaletteTable[6] =
+const struct SpritePalette gMonIconPaletteTable[] =
 {
     { gMonIconPalettes[0], POKE_ICON_BASE_PAL_TAG + 0 },
     { gMonIconPalettes[1], POKE_ICON_BASE_PAL_TAG + 1 },

@@ -9343,7 +9343,7 @@ const struct Item gItems[] =
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
     },
 
-    /*[ITEM_TM_CASE] =
+    [ITEM_TM_CASE] =
     {
         .name = _("TM Case"),
         .itemId = ITEM_TM_CASE,
@@ -9353,8 +9353,8 @@ const struct Item gItems[] =
         .registrability = TRUE,
         .pocket = POCKET_KEY_ITEMS,
         .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_TmCase,
-    },*/
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+    },
 
     [ITEM_BERRY_POUCH] =
     {
@@ -9750,7 +9750,7 @@ const struct Item gItems[] =
         .importance = 1,
         .pocket = POCKET_KEY_ITEMS,
         .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_TmCase,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
     },
 
     [ITEM_BIKE_VOUCHER] =

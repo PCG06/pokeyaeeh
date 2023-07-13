@@ -957,13 +957,7 @@ static void GetItemName(s8 *dest, u16 itemId)
         StringExpandPlaceholders(dest, gText_NumberItem_TMBerry);
         break;
     default:
-        if (itemId == TMHM_POCKET)
-        {
-            CopyItemName(itemId, gStringVar2);
-            StringExpandPlaceholders(dest, gText_TMCase_Blue);
-        }
-        else
-            CopyItemName(itemId, dest);
+        CopyItemName(itemId, dest);
         break;
     }
 }

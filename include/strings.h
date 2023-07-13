@@ -3045,14 +3045,6 @@ extern const u8 gText_TellHimTheWords[];
 extern const u8 gText_ExpShareOn[];
 extern const u8 gText_ExpShareOff[];
 
-// FRLG TM Case
-extern const u8 gText_TMCase[];
-extern const u8 gText_Close[];
-extern const u8 gText_TMCaseWillBePutAway[];
-extern const u8 gText_FontSmall[];
-extern const u8 gText_FontShort[];
-extern const u8 gText_TMCase_Blue[];
-
 // Rotom Catalog multichoice text
 extern const u8 gText_LightBulb[];
 extern const u8 gText_MicrowaveOven[];
