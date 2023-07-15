@@ -6793,7 +6793,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
     [MOVE_DARK_PULSE] =
     {
         .effect = EFFECT_FLINCH_HIT,
-        .power = 80,
+        .power = 90,
         .type = TYPE_DARK,
         .accuracy = 100,
         .pp = 15,
@@ -6907,10 +6907,10 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
 
     [MOVE_DRAGON_PULSE] =
     {
-        #if B_UPDATED_MOVE_DATA >= GEN_6
-            .power = 85,
-        #else
+        #if B_UPDATED_MOVE_DATA >= GEN_5
             .power = 90,
+        #else
+            .power = 85,
         #endif
         .effect = EFFECT_HIT,
         .type = TYPE_DRAGON,
@@ -6944,7 +6944,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
     [MOVE_POWER_GEM] =
     {
         #if B_UPDATED_MOVE_DATA >= GEN_6
-            .power = 80,
+            .power = 90,
         #else
             .power = 70,
         #endif
@@ -7307,7 +7307,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
     [MOVE_FLASH_CANNON] =
     {
         .effect = EFFECT_SPECIAL_DEFENSE_DOWN_HIT,
-        .power = 80,
+        .power = 90,
         .type = TYPE_STEEL,
         .accuracy = 100,
         .pp = 10,
@@ -7531,9 +7531,9 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
     [MOVE_STONE_EDGE] =
     {
         .effect = EFFECT_HIT,
-        .power = 100,
+        .power = 110,
         .type = TYPE_ROCK,
-        .accuracy = 80,
+        .accuracy = 90,
         .pp = 5,
         .secondaryEffectChance = 0,
         .target = MOVE_TARGET_SELECTED,
