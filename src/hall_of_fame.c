@@ -643,10 +643,6 @@ u16 getHallofFameSpecies(u8 num){
                     return SPECIES_RAYQUAZA;
             }
         break;
-        case SPECIES_NECROZMA:
-            if(item == ITEM_ULTRANECROZIUM_Z)
-                return SPECIES_NECROZMA_ULTRA;
-        break;
         case SPECIES_ZACIAN:
             if(item == ITEM_RUSTED_SWORD)
                 return SPECIES_ZACIAN_CROWNED_SWORD;
