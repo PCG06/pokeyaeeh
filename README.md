@@ -21,16 +21,17 @@ The Pokeemerald Expansion is a collection of feature branches that can be integr
 - Items from newer Generations and updated item effects for battle and field use.
 * pokeemerald.gba `sha1: 8C19F2555E10DFF32A9914CEAC360B018AF42E6C`
 
-This is a decompilation of Pokémon Emerald.
+Certain mechanics, moves, abilities and species sprites are missing. For more information, see [the project's milestones](https://github.com/rh-hideout/pokeemerald-expansion/milestones).
 
-It builds the following ROM:
+### [Documentation on features can be found here](https://github.com/rh-hideout/pokeemerald-expansion/wiki)
 
-* [**pokeemerald.gba**](https://datomatic.no-intro.org/index.php?page=show_record&s=23&n=1961) `sha1: f3ae088181bf583e55daf962a92bb46f4f1d07b7`
+## Who maintains the project?
 
 The project was originally started by DizzyEgg alongside other contributors.
 
+The project has now gotten larger and DizzyEgg is now maintaining the project as part of the ROM Hacking Hideout community. Some members of this community are taking on larger roles to help maintain the project.
 
-## See also
+### Please consider crediting the entire [list of contributors](https://github.com/rh-hideout/pokeemerald-expansion/wiki/Credits) in your project, as they have all worked hard to develop this project :)
 
 ## Can I contribute even if I'm not a member of ROM Hacking Hideout?
 
@@ -38,6 +39,6 @@ Yes! Contributions are welcome via Pull Requests and they will be reviewed by ma
 
 ## What is ROM Hacking Hideout?
 
-You can find us on [Discord](https://discord.gg/d5dubZ3) and [IRC](https://web.libera.chat/?#pret).
+A Discord-based ROM hacking community that has many members who hack using the disassembly and decompilation projects for Pokémon. Quite a few contributors to the original feature branches by DizzyEgg were members of ROM Hacking Hideout. You can call it RHH for short!
 
 [Click here to join the RHH Discord Server!](https://discord.gg/6CzjAG6GZk)

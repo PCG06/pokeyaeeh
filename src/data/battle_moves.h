@@ -6316,7 +6316,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
     [MOVE_U_TURN] =
     {
         .effect = EFFECT_HIT_ESCAPE,
-        .power = 70,
+        .power = 60,
         .type = TYPE_BUG,
         .accuracy = 100,
         .pp = 20,
