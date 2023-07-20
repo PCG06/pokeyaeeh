@@ -44,6 +44,10 @@ prefabs.json
 *.ss9
 *.a
 .fuse_hidden*
+.ccls-cache/*
+.ropeproject/
+/overworld/
+/icons/
 *.sna
 *.diff
 *.sym

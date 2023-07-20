@@ -251,9 +251,9 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
     [MOVE_CUT] =
     {
         .effect = EFFECT_HIT,
-        .power = 50,
-        .type = TYPE_NORMAL,
-        .accuracy = 95,
+        .power = 60,
+        .type = TYPE_BUG,
+        .accuracy = 100,
         .pp = 30,
         .secondaryEffectChance = 0,
         .target = MOVE_TARGET_SELECTED,
@@ -4249,7 +4249,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
     [MOVE_SHADOW_BALL] =
     {
         .effect = EFFECT_SPECIAL_DEFENSE_DOWN_HIT,
-        .power = 80,
+        .power = 90,
         .type = TYPE_GHOST,
         .accuracy = 100,
         .pp = 15,
@@ -4291,7 +4291,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
     [MOVE_ROCK_SMASH] =
     {
         #if B_UPDATED_MOVE_DATA >= GEN_4
-            .power = 40,
+            .power = 60,
         #else
             .power = 20,
         #endif
