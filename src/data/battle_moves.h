@@ -9817,11 +9817,11 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
     [MOVE_MOONBLAST] =
     {
         .effect = EFFECT_SPECIAL_ATTACK_DOWN_HIT,
-        .power = 95,
+        .power = 90,
         .type = TYPE_FAIRY,
         .accuracy = 100,
         .pp = 15,
-        .secondaryEffectChance = 30,
+        .secondaryEffectChance = 15,
         .target = MOVE_TARGET_SELECTED,
         .priority = 0,
         .split = SPLIT_SPECIAL,
