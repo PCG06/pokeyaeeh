@@ -1140,7 +1140,7 @@ const struct LevelUpMove *const gLevelUpLearnsets[NUM_SPECIES] =
 #if P_GEN_5_POKEMON == TRUE
     // Basculin
     [SPECIES_BASCULIN_BLUE_STRIPED] = sBasculinLevelUpLearnset,
-    [SPECIES_BASCULIN_WHITE_STRIPED] = sBasculinLevelUpLearnset,
+    [SPECIES_BASCULIN_WHITE_STRIPED] = sBasculinWhiteStripedLevelUpLearnset,
     // Darmanitan
     [SPECIES_DARMANITAN_ZEN_MODE] = sDarmanitanLevelUpLearnset,
     [SPECIES_DARMANITAN_ZEN_MODE_GALARIAN] = sDarmanitanGalarianLevelUpLearnset,
