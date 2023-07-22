@@ -385,7 +385,7 @@ const struct LevelUpMove *const gLevelUpLearnsets[NUM_SPECIES] =
     [SPECIES_LATIAS] = sLatiasLevelUpLearnset,
     [SPECIES_LATIOS] = sLatiosLevelUpLearnset,
     [SPECIES_JIRACHI] = sJirachiLevelUpLearnset,
-    [SPECIES_DEOXYS] = sDeoxysLevelUpLearnset,
+    [SPECIES_DEOXYS] = sDeoxysNormalLevelUpLearnset,
     [SPECIES_CHIMECHO] = sChimechoLevelUpLearnset,
 #if P_GEN_4_POKEMON == TRUE
     [SPECIES_TURTWIG] = sTurtwigLevelUpLearnset,
