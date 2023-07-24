@@ -3056,9 +3056,9 @@ static const u8 sTM06Desc[] = _(
     "gradually worsens.");
 
 static const u8 sTM07Desc[] = _(
-    "Creates a hailstorm\n"
-    "that damages all\n"
-    "types except Ice.");
+    "Creates a snowsto-\n"
+    "rm that boosts def-\n"
+    "ence of Ice-types.");
 
 static const u8 sTM08Desc[] = _(
     "Bulks up the body\n"
