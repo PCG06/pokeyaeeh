@@ -8044,10 +8044,10 @@ const struct Item gItems[] =
         .fieldUseFunc = ItemUseOutOfBattle_TMHM,
     },
 
-    [ITEM_TM27_RETURN] =
+    [ITEM_TM27_BLIZZARD] =
     {
         .name = _("TM27"),
-        .itemId = ITEM_TM27_RETURN,
+        .itemId = ITEM_TM27_BLIZZARD,
         .price = 1000,
         .description = sTM27Desc,
         .importance = I_REUSABLE_TMS,
@@ -8056,10 +8056,10 @@ const struct Item gItems[] =
         .fieldUseFunc = ItemUseOutOfBattle_TMHM,
     },
 
-    [ITEM_TM28_DIG] =
+    [ITEM_TM28_HYPER_BEAM] =
     {
         .name = _("TM28"),
-        .itemId = ITEM_TM28_DIG,
+        .itemId = ITEM_TM28_HYPER_BEAM,
         .price = 2000,
         .description = sTM28Desc,
         .importance = I_REUSABLE_TMS,
@@ -8068,10 +8068,10 @@ const struct Item gItems[] =
         .fieldUseFunc = ItemUseOutOfBattle_TMHM,
     },
 
-    [ITEM_TM29_PSYCHIC] =
+    [ITEM_TM29_RETURN] =
     {
         .name = _("TM29"),
-        .itemId = ITEM_TM29_PSYCHIC,
+        .itemId = ITEM_TM29_RETURN,
         .price = 2000,
         .description = sTM29Desc,
         .importance = I_REUSABLE_TMS,
@@ -8080,10 +8080,10 @@ const struct Item gItems[] =
         .fieldUseFunc = ItemUseOutOfBattle_TMHM,
     },
 
-    [ITEM_TM30_SHADOW_BALL] =
+    [ITEM_TM30_FRUSTRATION] =
     {
         .name = _("TM30"),
-        .itemId = ITEM_TM30_SHADOW_BALL,
+        .itemId = ITEM_TM30_FRUSTRATION,
         .price = 3000,
         .description = sTM30Desc,
         .importance = I_REUSABLE_TMS,
@@ -8092,10 +8092,10 @@ const struct Item gItems[] =
         .fieldUseFunc = ItemUseOutOfBattle_TMHM,
     },
 
-    [ITEM_TM31_BRICK_BREAK] =
+    [ITEM_TM31_PROTECT] =
     {
         .name = _("TM31"),
-        .itemId = ITEM_TM31_BRICK_BREAK,
+        .itemId = ITEM_TM31_PROTECT,
         .price = 3000,
         .description = sTM31Desc,
         .importance = I_REUSABLE_TMS,
@@ -8104,10 +8104,10 @@ const struct Item gItems[] =
         .fieldUseFunc = ItemUseOutOfBattle_TMHM,
     },
 
-    [ITEM_TM32_DOUBLE_TEAM] =
+    [ITEM_TM32_SWORDS_DANCE] =
     {
         .name = _("TM32"),
-        .itemId = ITEM_TM32_DOUBLE_TEAM,
+        .itemId = ITEM_TM32_SWORDS_DANCE,
         .price = 2000,
         .description = sTM32Desc,
         .importance = I_REUSABLE_TMS,
@@ -8116,10 +8116,10 @@ const struct Item gItems[] =
         .fieldUseFunc = ItemUseOutOfBattle_TMHM,
     },
 
-    [ITEM_TM33_REFLECT] =
+    [ITEM_TM33_NASTY_PLOT] =
     {
         .name = _("TM33"),
-        .itemId = ITEM_TM33_REFLECT,
+        .itemId = ITEM_TM33_NASTY_PLOT,
         .price = 3000,
         .description = sTM33Desc,
         .importance = I_REUSABLE_TMS,
@@ -8128,10 +8128,10 @@ const struct Item gItems[] =
         .fieldUseFunc = ItemUseOutOfBattle_TMHM,
     },
 
-    [ITEM_TM34_SHOCK_WAVE] =
+    [ITEM_TM34_DRAGON_DANCE] =
     {
         .name = _("TM34"),
-        .itemId = ITEM_TM34_SHOCK_WAVE,
+        .itemId = ITEM_TM34_DRAGON_DANCE,
         .price = 3000,
         .description = sTM34Desc,
         .importance = I_REUSABLE_TMS,
@@ -8140,10 +8140,10 @@ const struct Item gItems[] =
         .fieldUseFunc = ItemUseOutOfBattle_TMHM,
     },
 
-    [ITEM_TM35_FLAMETHROWER] =
+    [ITEM_TM35_IRON_TAIL] =
     {
         .name = _("TM35"),
-        .itemId = ITEM_TM35_FLAMETHROWER,
+        .itemId = ITEM_TM35_IRON_TAIL,
         .price = 3000,
         .description = sTM35Desc,
         .importance = I_REUSABLE_TMS,
@@ -8152,10 +8152,10 @@ const struct Item gItems[] =
         .fieldUseFunc = ItemUseOutOfBattle_TMHM,
     },
 
-    [ITEM_TM36_SLUDGE_BOMB] =
+    [ITEM_TM36_THUNDER] =
     {
         .name = _("TM36"),
-        .itemId = ITEM_TM36_SLUDGE_BOMB,
+        .itemId = ITEM_TM36_THUNDER,
         .price = 1000,
         .description = sTM36Desc,
         .importance = I_REUSABLE_TMS,
@@ -8164,10 +8164,10 @@ const struct Item gItems[] =
         .fieldUseFunc = ItemUseOutOfBattle_TMHM,
     },
 
-    [ITEM_TM37_SANDSTORM] =
+    [ITEM_TM37_DIG] =
     {
         .name = _("TM37"),
-        .itemId = ITEM_TM37_SANDSTORM,
+        .itemId = ITEM_TM37_DIG,
         .price = 2000,
         .description = sTM37Desc,
         .importance = I_REUSABLE_TMS,
@@ -8176,10 +8176,10 @@ const struct Item gItems[] =
         .fieldUseFunc = ItemUseOutOfBattle_TMHM,
     },
 
-    [ITEM_TM38_FIRE_BLAST] =
+    [ITEM_TM38_BRICK_BREAK] =
     {
         .name = _("TM38"),
-        .itemId = ITEM_TM38_FIRE_BLAST,
+        .itemId = ITEM_TM38_BRICK_BREAK,
         .price = 5500,
         .description = sTM38Desc,
         .importance = I_REUSABLE_TMS,
@@ -8188,10 +8188,10 @@ const struct Item gItems[] =
         .fieldUseFunc = ItemUseOutOfBattle_TMHM,
     },
 
-    [ITEM_TM39_ROCK_TOMB] =
+    [ITEM_TM39_REFLECT] =
     {
         .name = _("TM39"),
-        .itemId = ITEM_TM39_ROCK_TOMB,
+        .itemId = ITEM_TM39_REFLECT,
         .price = 3000,
         .description = sTM39Desc,
         .importance = I_REUSABLE_TMS,
@@ -8200,10 +8200,10 @@ const struct Item gItems[] =
         .fieldUseFunc = ItemUseOutOfBattle_TMHM,
     },
 
-    [ITEM_TM40_AERIAL_ACE] =
+    [ITEM_TM40_LIGHT_SCREEN] =
     {
         .name = _("TM40"),
-        .itemId = ITEM_TM40_AERIAL_ACE,
+        .itemId = ITEM_TM40_LIGHT_SCREEN,
         .price = 3000,
         .description = sTM40Desc,
         .importance = I_REUSABLE_TMS,
@@ -8212,10 +8212,10 @@ const struct Item gItems[] =
         .fieldUseFunc = ItemUseOutOfBattle_TMHM,
     },
 
-    [ITEM_TM41_TORMENT] =
+    [ITEM_TM41_SAFEGUARD] =
     {
         .name = _("TM41"),
-        .itemId = ITEM_TM41_TORMENT,
+        .itemId = ITEM_TM41_SAFEGUARD,
         .price = 3000,
         .description = sTM41Desc,
         .importance = I_REUSABLE_TMS,
@@ -8224,10 +8224,10 @@ const struct Item gItems[] =
         .fieldUseFunc = ItemUseOutOfBattle_TMHM,
     },
 
-    [ITEM_TM42_FACADE] =
+    [ITEM_TM42_GIGA_DRAIN] =
     {
         .name = _("TM42"),
-        .itemId = ITEM_TM42_FACADE,
+        .itemId = ITEM_TM42_GIGA_DRAIN,
         .price = 3000,
         .description = sTM42Desc,
         .importance = I_REUSABLE_TMS,
@@ -8236,10 +8236,10 @@ const struct Item gItems[] =
         .fieldUseFunc = ItemUseOutOfBattle_TMHM,
     },
 
-    [ITEM_TM43_SECRET_POWER] =
+    [ITEM_TM43_DOUBLE_TEAM] =
     {
         .name = _("TM43"),
-        .itemId = ITEM_TM43_SECRET_POWER,
+        .itemId = ITEM_TM43_DOUBLE_TEAM,
         .price = 3000,
         .description = sTM43Desc,
         .importance = I_REUSABLE_TMS,
@@ -8248,10 +8248,10 @@ const struct Item gItems[] =
         .fieldUseFunc = ItemUseOutOfBattle_TMHM,
     },
 
-    [ITEM_TM44_REST] =
+    [ITEM_TM44_ROCK_TOMB] =
     {
         .name = _("TM44"),
-        .itemId = ITEM_TM44_REST,
+        .itemId = ITEM_TM44_ROCK_TOMB,
         .price = 3000,
         .description = sTM44Desc,
         .importance = I_REUSABLE_TMS,
@@ -8260,10 +8260,10 @@ const struct Item gItems[] =
         .fieldUseFunc = ItemUseOutOfBattle_TMHM,
     },
 
-    [ITEM_TM45_ATTRACT] =
+    [ITEM_TM45_AERIAL_ACE] =
     {
         .name = _("TM45"),
-        .itemId = ITEM_TM45_ATTRACT,
+        .itemId = ITEM_TM45_AERIAL_ACE,
         .price = 3000,
         .description = sTM45Desc,
         .importance = I_REUSABLE_TMS,
@@ -8272,10 +8272,10 @@ const struct Item gItems[] =
         .fieldUseFunc = ItemUseOutOfBattle_TMHM,
     },
 
-    [ITEM_TM46_THIEF] =
+    [ITEM_TM46_STEEL_WING] =
     {
         .name = _("TM46"),
-        .itemId = ITEM_TM46_THIEF,
+        .itemId = ITEM_TM46_STEEL_WING,
         .price = 3000,
         .description = sTM46Desc,
         .importance = I_REUSABLE_TMS,
@@ -8284,10 +8284,10 @@ const struct Item gItems[] =
         .fieldUseFunc = ItemUseOutOfBattle_TMHM,
     },
 
-    [ITEM_TM47_STEEL_WING] =
+    [ITEM_TM47_THIEF] =
     {
         .name = _("TM47"),
-        .itemId = ITEM_TM47_STEEL_WING,
+        .itemId = ITEM_TM47_THIEF,
         .price = 3000,
         .description = sTM47Desc,
         .importance = I_REUSABLE_TMS,
@@ -8296,10 +8296,10 @@ const struct Item gItems[] =
         .fieldUseFunc = ItemUseOutOfBattle_TMHM,
     },
 
-    [ITEM_TM48_SKILL_SWAP] =
+    [ITEM_TM48_SHOCK_WAVE] =
     {
         .name = _("TM48"),
-        .itemId = ITEM_TM48_SKILL_SWAP,
+        .itemId = ITEM_TM48_SHOCK_WAVE,
         .price = 3000,
         .description = sTM48Desc,
         .importance = I_REUSABLE_TMS,
@@ -8308,10 +8308,10 @@ const struct Item gItems[] =
         .fieldUseFunc = ItemUseOutOfBattle_TMHM,
     },
 
-    [ITEM_TM49_SNATCH] =
+    [ITEM_TM49_SOLAR_BEAM] =
     {
         .name = _("TM49"),
-        .itemId = ITEM_TM49_SNATCH,
+        .itemId = ITEM_TM49_SOLAR_BEAM,
         .price = 3000,
         .description = sTM49Desc,
         .importance = I_REUSABLE_TMS,
@@ -8320,10 +8320,10 @@ const struct Item gItems[] =
         .fieldUseFunc = ItemUseOutOfBattle_TMHM,
     },
 
-    [ITEM_TM50_OVERHEAT] =
+    [ITEM_TM50_FACADE] =
     {
         .name = _("TM50"),
-        .itemId = ITEM_TM50_OVERHEAT,
+        .itemId = ITEM_TM50_FACADE,
         .price = 3000,
         .description = sTM50Desc,
         .importance = I_REUSABLE_TMS,
