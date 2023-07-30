@@ -3525,6 +3525,256 @@ static const u8 sTM100Desc[] = _(
     "with scythe, claws.\n"
     "High crit-hit ratio.");
 
+static const u8 sTM101Desc[] = _(
+    "?\n"
+    "?\n"
+    "?");
+
+static const u8 sTM102Desc[] = _(
+    "?\n"
+    "?\n"
+    "?");
+
+static const u8 sTM103Desc[] = _(
+    "?\n"
+    "?\n"
+    "?");
+
+static const u8 sTM104Desc[] = _(
+    "?\n"
+    "?\n"
+    "?");
+
+static const u8 sTM105Desc[] = _(
+    "?\n"
+    "?\n"
+    "?");
+
+static const u8 sTM106Desc[] = _(
+    "?\n"
+    "?\n"
+    "?");
+
+static const u8 sTM107Desc[] = _(
+    "?\n"
+    "?\n"
+    "?");
+
+static const u8 sTM108Desc[] = _(
+    "?\n"
+    "?\n"
+    "?");
+
+static const u8 sTM109Desc[] = _(
+    "?\n"
+    "?\n"
+    "?");
+
+static const u8 sTM110Desc[] = _(
+    "?\n"
+    "?\n"
+    "?");
+
+static const u8 sTM111Desc[] = _(
+    "?\n"
+    "?\n"
+    "?");
+
+static const u8 sTM112Desc[] = _(
+    "?\n"
+    "?\n"
+    "?");
+
+static const u8 sTM113Desc[] = _(
+    "?\n"
+    "?\n"
+    "?");
+
+static const u8 sTM114Desc[] = _(
+    "?\n"
+    "?\n"
+    "?");
+
+static const u8 sTM115Desc[] = _(
+    "?\n"
+    "?\n"
+    "?");
+
+static const u8 sTM116Desc[] = _(
+    "?\n"
+    "?\n"
+    "?");
+
+static const u8 sTM117Desc[] = _(
+    "?\n"
+    "?\n"
+    "?");
+
+static const u8 sTM118Desc[] = _(
+    "?\n"
+    "?\n"
+    "?");
+
+static const u8 sTM119Desc[] = _(
+    "?\n"
+    "?\n"
+    "?");
+
+static const u8 sTM120Desc[] = _(
+    "?\n"
+    "?\n"
+    "?");
+
+static const u8 sTM121Desc[] = _(
+    "?\n"
+    "?\n"
+    "?");
+
+static const u8 sTM122Desc[] = _(
+    "?\n"
+    "?\n"
+    "?");
+
+static const u8 sTM123Desc[] = _(
+    "?\n"
+    "?\n"
+    "?");
+
+static const u8 sTM124Desc[] = _(
+    "?\n"
+    "?\n"
+    "?");
+
+static const u8 sTM125Desc[] = _(
+    "?\n"
+    "?\n"
+    "?");
+
+static const u8 sTM126Desc[] = _(
+    "?\n"
+    "?\n"
+    "?");
+
+static const u8 sTM127Desc[] = _(
+    "?\n"
+    "?\n"
+    "?");
+
+static const u8 sTM128Desc[] = _(
+    "?\n"
+    "?\n"
+    "?");
+
+static const u8 sTM129Desc[] = _(
+    "?\n"
+    "?\n"
+    "?");
+
+static const u8 sTM130Desc[] = _(
+    "?\n"
+    "?\n"
+    "?");
+
+static const u8 sTM131Desc[] = _(
+    "?\n"
+    "?\n"
+    "?");
+
+static const u8 sTM132Desc[] = _(
+    "?\n"
+    "?\n"
+    "?");
+
+static const u8 sTM133Desc[] = _(
+    "?\n"
+    "?\n"
+    "?");
+
+static const u8 sTM134Desc[] = _(
+    "?\n"
+    "?\n"
+    "?");
+
+static const u8 sTM135Desc[] = _(
+    "?\n"
+    "?\n"
+    "?");
+
+static const u8 sTM136Desc[] = _(
+    "?\n"
+    "?\n"
+    "?");
+
+static const u8 sTM137Desc[] = _(
+    "?\n"
+    "?\n"
+    "?");
+
+static const u8 sTM138Desc[] = _(
+    "?\n"
+    "?\n"
+    "?");
+
+static const u8 sTM139Desc[] = _(
+    "?\n"
+    "?\n"
+    "?");
+
+static const u8 sTM140Desc[] = _(
+    "?\n"
+    "?\n"
+    "?");
+
+static const u8 sTM141Desc[] = _(
+    "?\n"
+    "?\n"
+    "?");
+
+static const u8 sTM142Desc[] = _(
+    "?\n"
+    "?\n"
+    "?");
+
+static const u8 sTM143Desc[] = _(
+    "?\n"
+    "?\n"
+    "?");
+
+static const u8 sTM144Desc[] = _(
+    "?\n"
+    "?\n"
+    "?");
+
+static const u8 sTM145Desc[] = _(
+    "?\n"
+    "?\n"
+    "?");
+
+static const u8 sTM146Desc[] = _(
+    "?\n"
+    "?\n"
+    "?");
+
+static const u8 sTM147Desc[] = _(
+    "?\n"
+    "?\n"
+    "?");
+
+static const u8 sTM148Desc[] = _(
+    "?\n"
+    "?\n"
+    "?");
+
+static const u8 sTM149Desc[] = _(
+    "?\n"
+    "?\n"
+    "?");
+
+static const u8 sTM150Desc[] = _(
+    "?\n"
+    "?\n"
+    "?");
+
 static const u8 sHM01Desc[] = _(
     "Attacks the foe\n"
     "with sharp blades\n"
