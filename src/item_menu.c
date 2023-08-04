@@ -121,7 +121,7 @@ struct ListBuffer1 {
 };
 
 struct ListBuffer2 {
-    s8 name[MAX_POCKET_ITEMS][ITEM_NAME_LENGTH + 10];
+    s8 name[MAX_POCKET_ITEMS][ITEM_NAME_LENGTH + 11];
 };
 
 struct TempWallyBag {
