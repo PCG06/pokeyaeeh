@@ -5279,11 +5279,11 @@ static bool8 CalculateMoves(void)
     //TMHM moves
     for (j = 0; j < NUM_TECHNICAL_MACHINES + NUM_HIDDEN_MACHINES; j++)
     {
-        if (CanSpeciesLearnTMHM(species, j))
+        if (CanLearnTeachableMove(species, j))
         {
-            sStatsMoves[movesTotal] = ItemIdToBattleMoveId(ITEM_TM01_FOCUS_PUNCH + j);
+            sStatsMoves[movesTotal] = ItemIdToBattleMoveId(ITEM_TM01_HIDDEN_POWER + j);
             movesTotal++;
-            sStatsMovesTMHM_ID[numTMHMMoves] = (ITEM_TM01_FOCUS_PUNCH + j);
+            sStatsMovesTMHM_ID[numTMHMMoves] = (ITEM_TM01_HIDDEN_POWER + j);
             numTMHMMoves++;
         }
     }
@@ -5306,7 +5306,7 @@ static bool8 CalculateMoves(void)
         {
             if (GetTMHMMoves(j) == move)
             {
-                sStatsMovesTMHM_ID[numTMHMMoves] = (ITEM_TM01_FOCUS_PUNCH + j);
+                sStatsMovesTMHM_ID[numTMHMMoves] = (ITEM_TM01_HIDDEN_POWER + j);
                 numTMHMMoves++;
                 break;
             }
@@ -5393,7 +5393,7 @@ static void PrintStatsScreen_Moves_Top(u8 taskId)
         ConvertIntToDecimalStringN(gStringVar1, level, STR_CONV_MODE_LEFT_ALIGN, 3); //Move learn lvl
         PrintStatsScreenTextSmall(WIN_STATS_MOVES_TOP, gText_Stats_MoveLevel, moves_x + 113, moves_y + 3); //Level text
         PrintStatsScreenTextSmall(WIN_STATS_MOVES_TOP, gStringVar1, moves_x + 113, moves_y + 14); //Print level
-        item = ITEM_EXP_SHARE;
+        item = ITEM_RARE_CANDY;
     }
     else if (selected < (numEggMoves + numLevelUpMoves + numTMHMMoves))
     {
