@@ -261,6 +261,9 @@ $(TILESETGFXDIR)/secondary/mystery_events_house/tiles.4bpp: %.4bpp: %.png
 $(FONTGFXDIR)/tiny.latfont: $(FONTGFXDIR)/latin_tiny.png
 	$(GFX) $< $@
 
+$(FONTGFXDIR)/tinyNarrow.latfont: $(FONTGFXDIR)/latin_tiny_narrow.png
+	$(GFX) $< $@
+
 $(FONTGFXDIR)/small.latfont: $(FONTGFXDIR)/latin_small.png
 	$(GFX) $< $@
 
