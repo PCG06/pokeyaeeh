@@ -1411,7 +1411,7 @@ static void Cmd_attackcanceler(void)
         return;
     }
 
-    // Z-moves and Max Moves bypass protection, but deal reduced damage (factored in CalcFinalDmg)
+    // Z-moves and Max Moves bypass protection, but deal reduced damage (factored in AccumulateOtherModifiers)
     if (gBattleStruct->zmove.active && IS_BATTLER_PROTECTED(gBattlerTarget))
     {
         BattleScriptPush(cmd->nextInstr);

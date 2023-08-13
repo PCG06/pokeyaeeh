@@ -9943,7 +9943,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .priority = 0,
         .split = SPLIT_SPECIAL,
         .zMoveEffect = Z_EFFECT_NONE,
-        .soundMove = TRUE,
+        .sheerForceBoost = TRUE,
         .thawsUser = TRUE,
         .metronomeBanned = TRUE,
     },
