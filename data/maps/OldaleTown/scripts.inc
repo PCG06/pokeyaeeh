@@ -35,6 +35,7 @@ OldaleTown_EventScript_TownSign::
 
 OldaleTown_EventScript_Girl::
 	msgbox OldaleTown_Text_SavingMyProgress, MSGBOX_NPC
+	setflag FLAG_BADGE03_GET
 	end
 
 OldaleTown_EventScript_MartEmployee::
