@@ -1124,6 +1124,9 @@ static bool8 EnableAutoRun(void)
         return FALSE;   //auto run unusable until you get running shoes
 
     PlaySE(SE_SELECT);
+    if (TestPlayerAvatarFlags(PLAYER_AVATAR_FLAG_MACH_BIKE | PLAYER_AVATAR_FLAG_ACRO_BIKE))
+        return FALSE;   //auto run unusable while riding a bike
+
     if (gSaveBlock2Ptr->autoRun)
     {
         gSaveBlock2Ptr->autoRun = FALSE;
