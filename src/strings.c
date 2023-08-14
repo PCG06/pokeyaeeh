@@ -1861,6 +1861,12 @@ const u8 gText_AshQty[] = _("Ash Quantity:\n{STR_VAR_1}{PAUSE_UNTIL_PRESS}");
 const u8 gText_ExpShareOn[] = _("Turned on the Exp. Share.\pParty will now gain a portion\nof the Experience Points.{PAUSE_UNTIL_PRESS}");
 const u8 gText_ExpShareOff[] = _("Turned off the Exp. Share.\pParty will no longer gain a portion\nof any Experience Points.{PAUSE_UNTIL_PRESS}");
 
+//Move item
+const u8 gMenuText_Move[] = _("Move");
+const u8 gText_MoveItemWhere[] = _("Move item to where?");
+const u8 gText_XsYAnd[] = _("{STR_VAR_1}'s {STR_VAR_2}\nand\l");
+const u8 gText_XsYWereSwapped[] = _("{STR_VAR_1}'s {STR_VAR_2}\lwere swapped!{PAUSE_UNTIL_PRESS}");
+
 //HGSS_Ui PokedexPlus
 const u8 gText_Stats_Buttons[]  = _("{A_BUTTON}TOGGLE   {DPAD_UPDOWN}MOVES");
 const u8 gText_Stats_Buttons_Decapped[]  = _("{A_BUTTON}Toggle   {DPAD_UPDOWN}Moves");
@@ -1992,8 +1998,6 @@ const u8 gText_FORMS_NONE[]                         = _("{STR_VAR_1} has no alte
 // Start Menu clock
 const u8 gText_CurrentTime[] = _(" {STR_VAR_1}:{STR_VAR_2}");
 const u8 gText_CurrentTimeOff[] = _(" {STR_VAR_1} {STR_VAR_2}");
-// Edit this later Mistah Snom. Also remove this commented line :)
-// Sure ;3
 const u8 gText_CurrentTimeAM[] = _(" {STR_VAR_1}:{STR_VAR_2} a.m.");
 const u8 gText_CurrentTimeAMOff[] = _(" {STR_VAR_1} {STR_VAR_2} a.m.");
 const u8 gText_CurrentTimePM[] = _(" {STR_VAR_1}:{STR_VAR_2} p.m.");

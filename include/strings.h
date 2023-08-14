@@ -3055,6 +3055,12 @@ extern const u8 gText_ElectricFan[];
 extern const u8 gText_LawnMower[];
 extern const u8 gText_Exit[];
 
+// Move item
+extern const u8 gMenuText_Move[];
+extern const u8 gText_MoveItemWhere[];
+extern const u8 gText_XsYAnd[];
+extern const u8 gText_XsYWereSwapped[];
+
 // Ash Quantity (Soot Sack)
 extern const u8 gText_AshQty[];
 
