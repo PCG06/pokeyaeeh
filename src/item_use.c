@@ -720,6 +720,12 @@ u16 GetAshCount(void)
 	return *ashGatherCount;
 }
 
+void ItemUseOutOfBattle_HiddenPowerCrystals(u8 taskId)
+{
+    gItemUseCB = ItemUseCB_HiddenPowerCrystals;
+    SetUpItemUseCallback(taskId);
+}
+
 void ItemUseOutOfBattle_Berry(u8 taskId)
 {
     if (IsPlayerFacingEmptyBerryTreePatch() == TRUE)

@@ -10963,4 +10963,196 @@ const struct Item gItems[] =
         .flingPower = 10,
     },
 
+    [ITEM_FIRE_CRYSTAL] =
+    {
+        .name = _("Fire Crystal"),
+        .itemId = ITEM_FIRE_CRYSTAL,
+        .price = 5000,
+        .description = sFireCrystalDesc,
+        .pocket = POCKET_ITEMS,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .secondaryId = TYPE_FIRE,
+    },
+
+    [ITEM_WATER_CRYSTAL] =
+    {
+        .name = _("Water Crystal"),
+        .itemId = ITEM_WATER_CRYSTAL,
+        .price = 5000,
+        .description = sWaterCrystalDesc,
+        .pocket = POCKET_POWER_UP,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_HiddenPowerCrystals,
+        .secondaryId = TYPE_WATER,
+    },
+
+    [ITEM_ELECTRIC_CRYSTAL] =
+    {
+        .name = _("ElectrCrystl"),
+        .itemId = ITEM_ELECTRIC_CRYSTAL,
+        .price = 5000,
+        .description = sElectricCrystalDesc,
+        .pocket = POCKET_POWER_UP,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_HiddenPowerCrystals,
+        .secondaryId = TYPE_ELECTRIC,
+    },
+
+    [ITEM_GRASS_CRYSTAL] =
+    {
+        .name = _("Grass Crystal"),
+        .itemId = ITEM_GRASS_CRYSTAL,
+        .price = 5000,
+        .description = sGrassCrystalDesc,
+        .pocket = POCKET_POWER_UP,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_HiddenPowerCrystals,
+        .secondaryId = TYPE_GRASS,
+    },
+
+    [ITEM_ICE_CRYSTAL] =
+    {
+        .name = _("Ice Crystal"),
+        .itemId = ITEM_ICE_CRYSTAL,
+        .price = 5000,
+        .description = sIceCrystalDesc,
+        .pocket = POCKET_POWER_UP,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_HiddenPowerCrystals,
+        .secondaryId = TYPE_ICE,
+    },
+
+    [ITEM_FIGHTING_CRYSTAL] =
+    {
+        .name = _("FightCrystal"),
+        .itemId = ITEM_FIGHTING_CRYSTAL,
+        .price = 5000,
+        .description = sFightingCrystalDesc,
+        .pocket = POCKET_POWER_UP,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_HiddenPowerCrystals,
+        .secondaryId = TYPE_FIGHTING,
+    },
+
+    [ITEM_POISON_CRYSTAL] =
+    {
+        .name = _("PoisnCrystl"),
+        .itemId = ITEM_POISON_CRYSTAL,
+        .price = 5000,
+        .description = sPoisonCrystalDesc,
+        .pocket = POCKET_POWER_UP,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_HiddenPowerCrystals,
+        .secondaryId = TYPE_POISON,
+    },
+
+    [ITEM_GROUND_CRYSTAL] =
+    {
+        .name = _("GroundCrystl"),
+        .itemId = ITEM_GROUND_CRYSTAL,
+        .price = 5000,
+        .description = sGroundCrystalDesc,
+        .pocket = POCKET_POWER_UP,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_HiddenPowerCrystals,
+        .secondaryId = TYPE_GROUND,
+    },
+
+    [ITEM_FLYING_CRYSTAL] =
+    {
+        .name = _("FlyingCrystl"),
+        .itemId = ITEM_FLYING_CRYSTAL,
+        .price = 5000,
+        .description = sFlyingCrystalDesc,
+        .pocket = POCKET_POWER_UP,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_HiddenPowerCrystals,
+        .secondaryId = TYPE_FLYING,
+    },
+
+    [ITEM_PSYCHIC_CRYSTAL] =
+    {
+        .name = _("PsychcCrystl"),
+        .itemId = ITEM_PSYCHIC_CRYSTAL,
+        .price = 5000,
+        .description = sPsychicCrystalDesc,
+        .pocket = POCKET_POWER_UP,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_HiddenPowerCrystals,
+        .secondaryId = TYPE_PSYCHIC,
+    },
+
+    [ITEM_BUG_CRYSTAL] =
+    {
+        .name = _("Bug Crystal"),
+        .itemId = ITEM_BUG_CRYSTAL,
+        .price = 5000,
+        .description = sBugCrystalDesc,
+        .pocket = POCKET_POWER_UP,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_HiddenPowerCrystals,
+        .secondaryId = TYPE_BUG,
+    },
+
+    [ITEM_ROCK_CRYSTAL] =
+    {
+        .name = _("Rock Crystal"),
+        .itemId = ITEM_ROCK_CRYSTAL,
+        .price = 5000,
+        .description = sRockCrystalDesc,
+        .pocket = POCKET_POWER_UP,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_HiddenPowerCrystals,
+        .secondaryId = TYPE_ROCK,
+    },
+
+    [ITEM_GHOST_CRYSTAL] =
+    {
+        .name = _("Ghost Crystal"),
+        .itemId = ITEM_GHOST_CRYSTAL,
+        .price = 5000,
+        .description = sGhostCrystalDesc,
+        .pocket = POCKET_POWER_UP,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_HiddenPowerCrystals,
+        .secondaryId = TYPE_GHOST,
+    },
+
+    [ITEM_DRAGON_CRYSTAL] =
+    {
+        .name = _("DragonCrystl"),
+        .itemId = ITEM_DRAGON_CRYSTAL,
+        .price = 5000,
+        .description = sDragonCrystalDesc,
+        .pocket = POCKET_POWER_UP,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_HiddenPowerCrystals,
+        .secondaryId = TYPE_DRAGON,
+    },
+
+    [ITEM_DARK_CRYSTAL] =
+    {
+        .name = _("Dark Crystal"),
+        .itemId = ITEM_DARK_CRYSTAL,
+        .price = 5000,
+        .description = sDarkCrystalDesc,
+        .pocket = POCKET_POWER_UP,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_HiddenPowerCrystals,
+        .secondaryId = TYPE_DARK,
+    },
+
+    [ITEM_STEEL_CRYSTAL] =
+    {
+        .name = _("Steel Crystal"),
+        .itemId = ITEM_STEEL_CRYSTAL,
+        .price = 5000,
+        .description = sSteelCrystalDesc,
+        .pocket = POCKET_POWER_UP,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_HiddenPowerCrystals,
+        .secondaryId = TYPE_STEEL,
+    },
+
 };

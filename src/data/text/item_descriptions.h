@@ -4262,3 +4262,83 @@ static const u8 sBerserkGene[] = _(
     "Sharply boosts\n"
     "Attack, but causes\n"
     "lasting confusion.");
+
+static const u8 sFireCrystalDesc[] =_(
+    "Changes Pokémon's\n"
+    "hidden potential\n"
+    "to Fire.");
+
+static const u8 sWaterCrystalDesc[] =_(
+    "Changes Pokémon's\n"
+    "hidden potential\n"
+    "to Water.");
+
+static const u8 sElectricCrystalDesc[] =_(
+    "Changes Pokémon's\n"
+    "hidden potential\n"
+    "to Electric.");
+
+static const u8 sGrassCrystalDesc[] =_(
+    "Changes Pokémon's\n"
+    "hidden potential\n"
+    "to Grass.");
+
+static const u8 sIceCrystalDesc[] =_(
+    "Changes Pokémon's\n"
+    "hidden potential\n"
+    "to Ice.");
+
+static const u8 sFightingCrystalDesc[] =_(
+    "Changes Pokémon's\n"
+    "hidden potential\n"
+    "to Fighting.");
+
+static const u8 sPoisonCrystalDesc[] =_(
+    "Changes Pokémon's\n"
+    "hidden potential\n"
+    "to Poison.");
+
+static const u8 sGroundCrystalDesc[] =_(
+    "Changes Pokémon's\n"
+    "hidden potential\n"
+    "to Ground.");
+
+static const u8 sFlyingCrystalDesc[] =_(
+    "Changes Pokémon's\n"
+    "hidden potential\n"
+    "to Flying.");
+
+static const u8 sPsychicCrystalDesc[] =_(
+    "Changes Pokémon's\n"
+    "hidden potential\n"
+    "to Psychic.");
+
+static const u8 sBugCrystalDesc[] =_(
+    "Changes Pokémon's\n"
+    "hidden potential\n"
+    "to Bug.");
+
+static const u8 sRockCrystalDesc[] =_(
+    "Changes Pokémon's\n"
+    "hidden potential\n"
+    "to Rock.");
+
+static const u8 sGhostCrystalDesc[] =_(
+    "Changes Pokémon's\n"
+    "hidden potential\n"
+    "to Ghost.");
+
+static const u8 sDragonCrystalDesc[] =_(
+    "Changes Pokémon's\n"
+    "hidden potential\n"
+    "to Dragon.");
+
+static const u8 sDarkCrystalDesc[] =_(
+    "Changes Pokémon's\n"
+    "hidden potential\n"
+    "to Dark.");
+
+static const u8 sSteelCrystalDesc[] =_(
+    "Changes Pokémon's\n"
+    "hidden potential\n"
+    "to Steel.");

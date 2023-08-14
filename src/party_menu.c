@@ -7251,3 +7251,242 @@ void CursorCb_MoveItem(u8 taskId)
         gTasks[taskId].func = Task_UpdateHeldItemSprite;
     }
 }
+#define tState        	  data[0]
+#define tMonId        	  data[1]
+#define tnewHPIV       	  data[2]
+#define tnewAtkIV    	  data[3]
+#define tnewDefIV    	  data[4]
+#define tnewSpAtkIV    	  data[5]
+#define tnewSpDefIV    	  data[6]
+#define tnewSpdIV    	  data[7]
+#define tOldFunc    	  8
+
+void Task_HiddenPowerCrystals(u8 taskId)
+{
+    static const u8 askText[] = _("Would you like to change {STR_VAR_1}'s\nHidden Power Type to {STR_VAR_2}?");
+    static const u8 doneText[] = _("{STR_VAR_1}'s Hidden Power Type became\n{STR_VAR_2}!{PAUSE_UNTIL_PRESS}");
+    s16 *data = gTasks[taskId].data;
+    u16 item = gSpecialVar_ItemId;
+
+    switch (tState)
+    {
+    case 0:
+        gPartyMenuUseExitCallback = TRUE;
+        GetMonNickname(&gPlayerParty[tMonId], gStringVar1);
+
+        StringCopy(gStringVar2, gTypeNames[ItemId_GetSecondaryId(gSpecialVar_ItemId)]);
+        StringExpandPlaceholders(gStringVar4, askText);
+
+        PlaySE(SE_SELECT);
+        DisplayPartyMenuMessage(gStringVar4, 1);
+        ScheduleBgCopyTilemapToVram(2);
+        tState++;
+        break;
+    case 1:
+        if (!IsPartyMenuTextPrinterActive())
+        {
+            PartyMenuDisplayYesNoMenu();
+            tState++;
+        }
+        break;
+    case 2:
+        switch (Menu_ProcessInputNoWrapClearOnChoose())
+        {
+        case 0:
+            tState++;
+            break;
+        case 1:
+        case MENU_B_PRESSED:
+            gPartyMenuUseExitCallback = FALSE;
+            PlaySE(SE_SELECT);
+            ScheduleBgCopyTilemapToVram(2);
+            // Don't exit party selections screen, return to choosing a mon.
+            ClearStdWindowAndFrameToTransparent(6, 0);
+            ClearWindowTilemap(6);
+            DisplayPartyMenuStdMessage(5);
+            gTasks[taskId].func = (void *)GetWordTaskArg(taskId, tOldFunc);
+            return;
+        }
+        break;
+    case 3:
+        PlaySE(SE_USE_ITEM);
+        StringExpandPlaceholders(gStringVar4, doneText);
+        DisplayPartyMenuMessage(gStringVar4, 1);
+        ScheduleBgCopyTilemapToVram(2);
+        tState++;
+        break;
+    case 4:
+        if (!IsPartyMenuTextPrinterActive())
+            tState++;
+        break;
+    case 5:
+        SetMonData(&gPlayerParty[tMonId], MON_DATA_HP_IV, 	    &tnewHPIV);
+		SetMonData(&gPlayerParty[tMonId], MON_DATA_ATK_IV, 	    &tnewAtkIV);
+		SetMonData(&gPlayerParty[tMonId], MON_DATA_DEF_IV, 	    &tnewDefIV);
+		SetMonData(&gPlayerParty[tMonId], MON_DATA_SPATK_IV, 	&tnewSpAtkIV);
+		SetMonData(&gPlayerParty[tMonId], MON_DATA_SPDEF_IV, 	&tnewSpDefIV);
+		SetMonData(&gPlayerParty[tMonId], MON_DATA_SPEED_IV, 	&tnewSpdIV);
+        RemoveBagItem(gSpecialVar_ItemId, 1);
+        gTasks[taskId].func = Task_ClosePartyMenu;
+        break;
+    }
+}
+
+void ItemUseCB_HiddenPowerCrystals(u8 taskId, TaskFunc task)
+{
+    s16 *data = gTasks[taskId].data;
+
+    tState = 0;
+    tMonId = gPartyMenu.slotId;
+    switch(ItemId_GetSecondaryId(gSpecialVar_ItemId)){
+		case TYPE_BUG:
+			tnewHPIV	= 31;
+			tnewAtkIV	= 30;
+			tnewDefIV	= 30;
+			tnewSpAtkIV	= 31;
+			tnewSpDefIV	= 30;
+			tnewSpdIV	= 31;
+		break;
+		case TYPE_DARK:
+			tnewHPIV	= 31;
+			tnewAtkIV	= 31;
+			tnewDefIV	= 31;
+			tnewSpAtkIV	= 31;
+			tnewSpDefIV	= 31;
+			tnewSpdIV	= 31;
+		break;
+		case TYPE_DRAGON:
+			tnewHPIV	= 31;
+			tnewAtkIV	= 30;
+			tnewDefIV	= 31;
+			tnewSpAtkIV	= 31;
+			tnewSpDefIV	= 31;
+			tnewSpdIV	= 31;
+		break;
+		case TYPE_ELECTRIC:
+			tnewHPIV	= 31;
+			tnewAtkIV	= 31;
+			tnewDefIV	= 31;
+			tnewSpAtkIV	= 30;
+			tnewSpDefIV	= 31;
+			tnewSpdIV	= 31;
+		break;
+		case TYPE_FIGHTING:
+			tnewHPIV	= 31;
+			tnewAtkIV	= 31;
+			tnewDefIV	= 30;
+			tnewSpAtkIV	= 30;
+			tnewSpDefIV	= 30;
+			tnewSpdIV	= 30;
+		break;
+		case TYPE_FIRE:
+			tnewHPIV	= 31;
+			tnewAtkIV	= 30;
+			tnewDefIV	= 31;
+			tnewSpAtkIV	= 30;
+			tnewSpDefIV	= 31;
+			tnewSpdIV	= 30;
+		break;
+		case TYPE_FLYING:
+			tnewHPIV	= 30;
+			tnewAtkIV	= 30;
+			tnewDefIV	= 30;
+			tnewSpAtkIV	= 30;
+			tnewSpDefIV	= 30;
+			tnewSpdIV	= 31;
+		break;
+		case TYPE_GHOST:
+			tnewHPIV	= 31;
+			tnewAtkIV	= 30;
+			tnewDefIV	= 31;
+			tnewSpAtkIV	= 31;
+			tnewSpDefIV	= 30;
+			tnewSpdIV	= 31;
+		break;
+		case TYPE_GRASS:
+			tnewHPIV	= 31;
+			tnewAtkIV	= 30;
+			tnewDefIV	= 31;
+			tnewSpAtkIV	= 30;
+			tnewSpDefIV	= 31;
+			tnewSpdIV	= 31;
+		break;
+		case TYPE_GROUND:
+			tnewHPIV	= 31;
+			tnewAtkIV	= 31;
+			tnewDefIV	= 31;
+			tnewSpAtkIV	= 30;
+			tnewSpDefIV	= 30;
+			tnewSpdIV	= 31;
+		break;
+		case TYPE_ICE:
+			tnewHPIV	= 31;
+			tnewAtkIV	= 30;
+			tnewDefIV	= 30;
+			tnewSpAtkIV	= 31;
+			tnewSpDefIV	= 31;
+			tnewSpdIV	= 31;
+		break;
+		case TYPE_POISON:
+			tnewHPIV	= 31;
+			tnewAtkIV	= 31;
+			tnewDefIV	= 30;
+			tnewSpAtkIV	= 30;
+			tnewSpDefIV	= 30;
+			tnewSpdIV	= 31;
+		break;
+		case TYPE_PSYCHIC:
+			tnewHPIV	= 31;
+			tnewAtkIV	= 30;
+			tnewDefIV	= 31;
+			tnewSpAtkIV	= 31;
+			tnewSpDefIV	= 31;
+			tnewSpdIV	= 30;
+		break;
+		case TYPE_ROCK:
+			tnewHPIV	= 31;
+			tnewAtkIV	= 31;
+			tnewDefIV	= 30;
+			tnewSpAtkIV	= 31;
+			tnewSpDefIV	= 30;
+			tnewSpdIV	= 30;
+		break;
+		case TYPE_STEEL:
+			tnewHPIV	= 31;
+			tnewAtkIV	= 31;
+			tnewDefIV	= 31;
+			tnewSpAtkIV	= 31;
+			tnewSpDefIV	= 30;
+			tnewSpdIV	= 31;
+		break;
+		case TYPE_WATER:
+			tnewHPIV	= 31;
+			tnewAtkIV	= 30;
+			tnewDefIV	= 30;
+			tnewSpAtkIV	= 30;
+			tnewSpDefIV	= 31;
+			tnewSpdIV	= 31;
+		break;
+		default:
+			tnewHPIV	= 31;
+			tnewAtkIV	= 31;
+			tnewDefIV	= 31;
+			tnewSpAtkIV	= 31;
+			tnewSpDefIV	= 31;
+			tnewSpdIV	= 31;
+		break;
+	}
+    SetWordTaskArg(taskId, tOldFunc, (uintptr_t)(gTasks[taskId].func));
+    gTasks[taskId].func = Task_HiddenPowerCrystals;
+}
+
+#undef tState
+#undef tMonId
+#undef tnewHPIV
+#undef tnewAtkIV
+#undef tnewDefIV
+#undef tnewSpAtkIV
+#undef tnewSpDefIV
+#undef tnewSpdIV
+#undef tOldIVs
+#undef tOldFunc
