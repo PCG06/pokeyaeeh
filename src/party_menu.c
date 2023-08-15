@@ -7251,6 +7251,7 @@ void CursorCb_MoveItem(u8 taskId)
         gTasks[taskId].func = Task_UpdateHeldItemSprite;
     }
 }
+
 #define tState        	  data[0]
 #define tMonId        	  data[1]
 #define tnewHPIV       	  data[2]
@@ -7263,8 +7264,8 @@ void CursorCb_MoveItem(u8 taskId)
 
 void Task_HiddenPowerCrystals(u8 taskId)
 {
-    static const u8 askText[] = _("Would you like to change {STR_VAR_1}'s\nHidden Power Type to {STR_VAR_2}?");
-    static const u8 doneText[] = _("{STR_VAR_1}'s Hidden Power Type became\n{STR_VAR_2}!{PAUSE_UNTIL_PRESS}");
+    static const u8 askText[] = _("Would you like to change {STR_VAR_1}'s\nhidden potential to {STR_VAR_2}?");
+    static const u8 doneText[] = _("{STR_VAR_1}'s hidden potential became\n{STR_VAR_2}!{PAUSE_UNTIL_PRESS}");
     s16 *data = gTasks[taskId].data;
     u16 item = gSpecialVar_ItemId;
 
