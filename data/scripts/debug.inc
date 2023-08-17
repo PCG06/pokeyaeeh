@@ -70,6 +70,8 @@ Debug_BoxFilledMessage_Text:
 	.string "Storage boxes filled!$"
 
 Debug_Script_1::
+    cleartrainerflag TRAINER_JOEY
+	trainerbattle_single TRAINER_JOEY, Route116_Text_JoeyIntro, Route116_Text_JoeyDefeat
 	end
 
 Debug_Script_2::
