@@ -2672,9 +2672,12 @@ static void SetPartyMonFieldMoveSelectionActions(struct Pokemon *mons, u8 slotId
 {
     u32 i,j, move;
 
-    // Let any Pokemon that learns Fly or Flash use it without knowing the move
+    // Adds Fly and Flash to the Pokémon's field moves list without knowing them
+    if (CheckBagHasItem(ITEM_HM02_FLY, 1))
     AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, FIELD_MOVE_FLY + MENU_FIELD_MOVES);
+    if (CheckBagHasItem(ITEM_TM85_FLASH, 1))
     AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, FIELD_MOVE_FLASH + MENU_FIELD_MOVES);
+    
     // Add field moves to action list
     for (i = 0; i < MAX_MON_MOVES; i++)
     {
