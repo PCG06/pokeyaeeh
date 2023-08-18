@@ -3371,9 +3371,9 @@ static const u8 sTM69Desc[] = _(
     "May lower Atk.");
 
 static const u8 sTM70Desc[] = _(
-    "Steals the effects\n"
-    "of the move the foe\n"
-    "is trying to use.");
+    "An attack that\n"
+    "steals half of the\n"
+    "damage inflicted.");
 
 static const u8 sTM71Desc[] = _(
     "Prevents the foe\n"
@@ -3631,9 +3631,9 @@ static const u8 sTM121Desc[] = _(
     "Can't fall asleep.");
 
 static const u8 sTM122Desc[] = _(
-    "Creates a mist that\n"
-    "blocks stat redu-\n"
-    "ction for 5 turns.");
+    "A punch that drains\n"
+    "half the damage\n"
+    "inflicted.");
 
 static const u8 sTM123Desc[] = _(
     "Slams a barrage of\n"
@@ -3716,9 +3716,9 @@ static const u8 sTM138Desc[] = _(
     "se user's stats.");
 
 static const u8 sTM139Desc[] = _(
-    "Swaps items with\n"
-    "the foe faster than\n"
-    "the eye can follow.");
+    "The user sleeps for\n"
+    "2 turns to restore\n"
+    "health and status.");
 
 static const u8 sTM140Desc[] = _(
     "Strikes the foe\n"

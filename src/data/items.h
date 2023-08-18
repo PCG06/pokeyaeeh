@@ -8566,10 +8566,10 @@ const struct Item gItems[] =
         .fieldUseFunc = ItemUseOutOfBattle_TMHM,
     },
 
-    [ITEM_TM70_SNATCH] =
+    [ITEM_TM70_LEECH_LIFE] =
     {
         .name = _("TM70"),
-        .itemId = ITEM_TM70_SNATCH,
+        .itemId = ITEM_TM70_LEECH_LIFE,
         .price = 3000,
         .description = sTM70Desc,
         .importance = I_REUSABLE_TMS,
@@ -9189,10 +9189,10 @@ const struct Item gItems[] =
         .fieldUseFunc = ItemUseOutOfBattle_TMHM,
     },
 
-    [ITEM_TM122_MIST] =
+    [ITEM_TM122_DRAIN_PUNCH] =
     {
         .name = _("TM122"),
-        .itemId = ITEM_TM122_MIST,
+        .itemId = ITEM_TM122_DRAIN_PUNCH,
         .price = 3000,
         .description = sTM122Desc,
         .importance = I_REUSABLE_TMS,
@@ -9393,10 +9393,10 @@ const struct Item gItems[] =
         .fieldUseFunc = ItemUseOutOfBattle_TMHM,
     },
 
-    [ITEM_TM139_SWITCHEROO] =
+    [ITEM_TM139_REST] =
     {
         .name = _("TM139"),
-        .itemId = ITEM_TM139_SWITCHEROO,
+        .itemId = ITEM_TM139_REST,
         .price = 3000,
         .description = sTM139Desc,
         .importance = I_REUSABLE_TMS,
