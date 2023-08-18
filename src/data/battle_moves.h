@@ -11337,14 +11337,8 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
 
     [MOVE_BOUNCY_BUBBLE] =
     {
-        #if B_UPDATED_MOVE_DATA >= GEN_8
-            .power = 60,
-            .pp = 20,
-            .argument = 100, // restores 100% HP instead of 50% HP
-        #else
-            .power = 90,
-            .pp = 15,
-        #endif
+        .power = 90,
+        .pp = 15,
         .effect = EFFECT_ABSORB,
         .type = TYPE_WATER,
         .accuracy = 100,
@@ -11359,13 +11353,8 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
 
     [MOVE_BUZZY_BUZZ] =
     {
-        #if B_UPDATED_MOVE_DATA >= GEN_8
-            .power = 60,
-            .pp = 20,
-        #else
-            .power = 90,
-            .pp = 15,
-        #endif
+        .power = 90,
+        .pp = 15,
         .effect = EFFECT_PARALYZE_HIT,
         .type = TYPE_ELECTRIC,
         .accuracy = 100,
@@ -11380,13 +11369,8 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
 
     [MOVE_SIZZLY_SLIDE] =
     {
-        #if B_UPDATED_MOVE_DATA >= GEN_8
-            .power = 60,
-            .pp = 20,
-        #else
-            .power = 90,
-            .pp = 15,
-        #endif
+        .power = 90,
+        .pp = 15,
         .effect = EFFECT_BURN_HIT,
         .type = TYPE_FIRE,
         .accuracy = 100,
@@ -11403,13 +11387,8 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
 
     [MOVE_GLITZY_GLOW] =
     {
-        #if B_UPDATED_MOVE_DATA >= GEN_8
-            .power = 80,
-            .accuracy = 95,
-        #else
-            .power = 90,
-            .accuracy = 100,
-        #endif
+        .power = 90,
+        .accuracy = 100,
         .effect = EFFECT_GLITZY_GLOW,
         .type = TYPE_PSYCHIC,
         .pp = 15,
@@ -11424,13 +11403,8 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
 
     [MOVE_BADDY_BAD] =
     {
-        #if B_UPDATED_MOVE_DATA >= GEN_8
-            .power = 80,
-            .accuracy = 95,
-        #else
-            .power = 90,
-            .accuracy = 100,
-        #endif
+        .power = 90,
+        .accuracy = 100,
         .effect = EFFECT_BADDY_BAD,
         .type = TYPE_DARK,
         .pp = 15,
@@ -11445,15 +11419,9 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
 
     [MOVE_SAPPY_SEED] =
     {
-        #if B_UPDATED_MOVE_DATA >= GEN_8
-            .power = 100,
-            .accuracy = 90,
-            .pp = 10,
-        #else
-            .power = 90,
-            .accuracy = 100,
-            .pp = 15,
-        #endif
+        .power = 90,
+        .accuracy = 100,
+        .pp = 15,
         .effect = EFFECT_SAPPY_SEED,
         .type = TYPE_GRASS,
         .secondaryEffectChance = 0,
@@ -11468,15 +11436,9 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
 
     [MOVE_FREEZY_FROST] =
     {
-        #if B_UPDATED_MOVE_DATA >= GEN_8
-            .power = 100,
-            .accuracy = 90,
-            .pp = 10,
-        #else
-            .power = 90,
-            .accuracy = 100,
-            .pp = 15,
-        #endif
+        .power = 90,
+        .accuracy = 100,
+        .pp = 15,
         .effect = EFFECT_FREEZY_FROST,
         .type = TYPE_ICE,
         .secondaryEffectChance = 0,
@@ -11490,15 +11452,9 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
 
     [MOVE_SPARKLY_SWIRL] =
     {
-        #if B_UPDATED_MOVE_DATA >= GEN_8
-            .power = 120,
-            .accuracy = 85,
-            .pp = 5,
-        #else
-            .power = 90,
-            .accuracy = 100,
-            .pp = 15,
-        #endif
+        .power = 90,
+        .accuracy = 100,
+        .pp = 15,
         .effect = EFFECT_SPARKLY_SWIRL,
         .type = TYPE_FAIRY,
         .secondaryEffectChance = 0,

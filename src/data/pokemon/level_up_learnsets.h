@@ -1,5 +1,4 @@
 #define LEVEL_UP_MOVE(lvl, moveLearned) {.move = moveLearned, .level = lvl}
-#define LEVEL_UP_END (0xffff)
 
 static const struct LevelUpMove sBulbasaurLevelUpLearnset[] = {
     LEVEL_UP_MOVE( 1, MOVE_TACKLE),
@@ -3629,6 +3628,7 @@ static const struct LevelUpMove sVaporeonLevelUpLearnset[] = {
     LEVEL_UP_MOVE(43, MOVE_DOUBLE_EDGE),
     LEVEL_UP_MOVE(45, MOVE_HYDRO_PUMP),
     LEVEL_UP_MOVE(51, MOVE_LAST_RESORT),
+    LEVEL_UP_MOVE(60, MOVE_BOUNCY_BUBBLE),
     LEVEL_UP_END
 };
 
@@ -3667,6 +3667,7 @@ static const struct LevelUpMove sJolteonLevelUpLearnset[] = {
     LEVEL_UP_MOVE(43, MOVE_DOUBLE_EDGE),
     LEVEL_UP_MOVE(45, MOVE_THUNDER),
     LEVEL_UP_MOVE(51, MOVE_LAST_RESORT),
+    LEVEL_UP_MOVE(60, MOVE_BUZZY_BUZZ),
     LEVEL_UP_END
 };
 
@@ -3706,6 +3707,7 @@ static const struct LevelUpMove sFlareonLevelUpLearnset[] = {
     LEVEL_UP_MOVE(43, MOVE_DOUBLE_EDGE),
     LEVEL_UP_MOVE(45, MOVE_FLARE_BLITZ),
     LEVEL_UP_MOVE(51, MOVE_LAST_RESORT),
+    LEVEL_UP_MOVE(60, MOVE_SIZZLY_SLIDE),
     LEVEL_UP_END
 };
 
@@ -5257,6 +5259,7 @@ static const struct LevelUpMove sEspeonLevelUpLearnset[] = {
     LEVEL_UP_MOVE(43, MOVE_DOUBLE_EDGE),
     LEVEL_UP_MOVE(44, MOVE_FUTURE_SIGHT),
     LEVEL_UP_MOVE(51, MOVE_LAST_RESORT),
+    LEVEL_UP_MOVE(60, MOVE_GLITZY_GLOW),
     LEVEL_UP_END
 };
 
@@ -5294,6 +5297,7 @@ static const struct LevelUpMove sUmbreonLevelUpLearnset[] = {
     LEVEL_UP_MOVE(43, MOVE_DOUBLE_EDGE),
     LEVEL_UP_MOVE(47, MOVE_MEAN_LOOK),
     LEVEL_UP_MOVE(51, MOVE_LAST_RESORT),
+    LEVEL_UP_MOVE(60, MOVE_BADDY_BAD),
     LEVEL_UP_END
 };
 
@@ -12330,6 +12334,7 @@ static const struct LevelUpMove sLeafeonLevelUpLearnset[] = {
     LEVEL_UP_MOVE(43, MOVE_DOUBLE_EDGE),
     LEVEL_UP_MOVE(44, MOVE_LEAF_BLADE),
     LEVEL_UP_MOVE(51, MOVE_LAST_RESORT),
+    LEVEL_UP_MOVE(60, MOVE_SAPPY_SEED),
     LEVEL_UP_END
 };
 
@@ -12366,6 +12371,7 @@ static const struct LevelUpMove sGlaceonLevelUpLearnset[] = {
     LEVEL_UP_MOVE(43, MOVE_DOUBLE_EDGE),
     LEVEL_UP_MOVE(48, MOVE_BLIZZARD),
     LEVEL_UP_MOVE(51, MOVE_LAST_RESORT),
+    LEVEL_UP_MOVE(60, MOVE_FREEZY_FROST),
     LEVEL_UP_END
 };
 
@@ -17889,6 +17895,7 @@ static const struct LevelUpMove sSylveonLevelUpLearnset[] = {
     LEVEL_UP_MOVE(45, MOVE_PSYCH_UP),
     LEVEL_UP_MOVE(46, MOVE_MOONBLAST),
     LEVEL_UP_MOVE(50, MOVE_LAST_RESORT),
+    LEVEL_UP_MOVE(60, MOVE_SPARKLY_SWIRL),
     LEVEL_UP_END
 };
 
