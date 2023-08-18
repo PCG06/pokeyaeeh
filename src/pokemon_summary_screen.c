@@ -327,7 +327,6 @@ static void SpriteCB_MoveSelector(struct Sprite *);
 static void DestroyMoveSelectorSprites(u8);
 static void SetMainMoveSelectorColor(u8);
 static void KeepMoveSelectorVisible(u8);
-static void BufferStat(u8 *dst, s8 natureMod, u32 stat, u32 strId, u32 n);
 static void SummaryScreen_DestroyAnimDelayTask(void);
 static void CreateHealthBarSprites(u16 tileTag, u16 palTag);
 static void ConfigureHealthBarSprites(void);
@@ -1660,18 +1659,22 @@ static void Task_HandleInput(u8 taskId)
     {
         if (JOY_NEW(DPAD_UP))
         {
+            data[3] = 0;
             ChangeSummaryPokemon(taskId, -1);
         }
         else if (JOY_NEW(DPAD_DOWN))
         {
+            data[3] = 0;
             ChangeSummaryPokemon(taskId, 1);
         }
         else if ((JOY_NEW(DPAD_LEFT)) || GetLRKeysPressed() == MENU_L_PRESSED)
         {
+            data[3] = 0;
             ChangePage(taskId, -1);
         }
         else if ((JOY_NEW(DPAD_RIGHT)) || GetLRKeysPressed() == MENU_R_PRESSED)
         {
+            data[3] = 0;
             ChangePage(taskId, 1);
         }
         else if (JOY_NEW(A_BUTTON))
@@ -1871,9 +1874,6 @@ static void Task_ChangeSummaryMon(u8 taskId)
 static s8 AdvanceMonIndex(s8 delta)
 {
     struct Pokemon *mon = sMonSummaryScreen->monList.mons;
-    u8 index = sMonSummaryScreen->curMonIndex;
-    u8 numMons = sMonSummaryScreen->maxMonIndex + 1;
-    delta += numMons;
 
     if (sMonSummaryScreen->currPageIndex == PSS_PAGE_MEMO)
     {
