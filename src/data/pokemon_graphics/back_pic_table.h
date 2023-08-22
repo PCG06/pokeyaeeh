@@ -1145,7 +1145,7 @@ const struct CompressedSpriteSheet gMonBackPicTable[NUM_SPECIES + 1] =
     SPECIES_SPRITE(BASCULIN_WHITE_STRIPED, gMonBackPic_BasculinWhiteStriped),
 
     SPECIES_SPRITE(DARMANITAN_ZEN_MODE, gMonBackPic_DarmanitanZenMode),
-    SPECIES_SPRITE(DARMANITAN_ZEN_MODE_GALARIAN, gMonBackPic_DarmanitanZenModeGalarian),
+    SPECIES_SPRITE(DARMANITAN_GALARIAN_ZEN_MODE, gMonBackPic_DarmanitanZenModeGalarian),
 
     SPECIES_SPRITE(DEERLING_SUMMER, gMonBackPic_Deerling),
     SPECIES_SPRITE(DEERLING_AUTUMN, gMonBackPic_Deerling),

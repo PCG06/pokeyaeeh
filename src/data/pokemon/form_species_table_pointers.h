@@ -413,7 +413,7 @@ const u16 *const gFormSpeciesIdTables[NUM_SPECIES] =
     [SPECIES_BASCULIN_WHITE_STRIPED] = sBasculinFormSpeciesIdTable,
     // Darmanitan
     [SPECIES_DARMANITAN_ZEN_MODE] = sDarmanitanFormSpeciesIdTable,
-    [SPECIES_DARMANITAN_ZEN_MODE_GALARIAN] = sDarmanitanFormSpeciesIdTable,
+    [SPECIES_DARMANITAN_GALARIAN_ZEN_MODE] = sDarmanitanFormSpeciesIdTable,
     // Deerling
     [SPECIES_DEERLING_SUMMER] = sDeerlingFormSpeciesIdTable,
     [SPECIES_DEERLING_AUTUMN] = sDeerlingFormSpeciesIdTable,

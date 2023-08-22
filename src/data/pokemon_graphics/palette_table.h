@@ -1145,7 +1145,7 @@ const struct CompressedSpritePalette gMonPaletteTable[NUM_SPECIES + 1] =
     SPECIES_PAL(BASCULIN_WHITE_STRIPED, gMonPalette_BasculinWhiteStriped),
 
     SPECIES_PAL(DARMANITAN_ZEN_MODE, gMonPalette_DarmanitanZenMode),
-    SPECIES_PAL(DARMANITAN_ZEN_MODE_GALARIAN, gMonPalette_DarmanitanZenModeGalarian),
+    SPECIES_PAL(DARMANITAN_GALARIAN_ZEN_MODE, gMonPalette_DarmanitanZenModeGalarian),
 
     SPECIES_PAL(DEERLING_SUMMER, gMonPalette_DeerlingSummer),
     SPECIES_PAL(DEERLING_AUTUMN, gMonPalette_DeerlingAutumn),

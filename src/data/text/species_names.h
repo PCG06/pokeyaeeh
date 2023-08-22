@@ -1255,7 +1255,7 @@ const u8 gSpeciesNames[NUM_SPECIES][POKEMON_NAME_LENGTH + 1] = {
     [SPECIES_BASCULIN_WHITE_STRIPED] = _("Basculin"),
     // Darmanitan
     [SPECIES_DARMANITAN_ZEN_MODE] = _("Darmanitan"),
-    [SPECIES_DARMANITAN_ZEN_MODE_GALARIAN] = _("Darmanitan"),
+    [SPECIES_DARMANITAN_GALARIAN_ZEN_MODE] = _("Darmanitan"),
     // Deerling
     [SPECIES_DEERLING_SUMMER] = _("Deerling"),
     [SPECIES_DEERLING_AUTUMN] = _("Deerling"),

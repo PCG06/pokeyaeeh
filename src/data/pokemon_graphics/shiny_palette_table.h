@@ -1144,7 +1144,7 @@ const struct CompressedSpritePalette gMonShinyPaletteTable[NUM_SPECIES + 1] =
     SPECIES_SHINY_PAL(BASCULIN_WHITE_STRIPED, gMonShinyPalette_BasculinWhiteStriped),
 
     SPECIES_SHINY_PAL(DARMANITAN_ZEN_MODE, gMonShinyPalette_DarmanitanZenMode),
-    SPECIES_SHINY_PAL(DARMANITAN_ZEN_MODE_GALARIAN, gMonShinyPalette_DarmanitanZenModeGalarian),
+    SPECIES_SHINY_PAL(DARMANITAN_GALARIAN_ZEN_MODE, gMonShinyPalette_DarmanitanZenModeGalarian),
 
     SPECIES_SHINY_PAL(DEERLING_SUMMER, gMonShinyPalette_DeerlingSummer),
     SPECIES_SHINY_PAL(DEERLING_AUTUMN, gMonShinyPalette_DeerlingAutumn),
