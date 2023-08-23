@@ -344,6 +344,20 @@ OldaleTown_Movement_ReturnToOriginalPosition:
 	walk_left
 	step_end
 
+OldaleTown_EventScript_Testgivecustommon::
+    lock
+	faceplayer
+    msgbox OldaleTown_Text_SavingMyProgress, MSGBOX_NPC
+    givecustommon SPECIES_CHARIZARD, 55, ITEM_CHARIZARDITE_Y, ITEM_CHERISH_BALL, NATURE_TIMID, 3, 6, 0, 0, 252, 0, 252, 31, 0, 31, 31, 31, 31, MOVE_FIRE_BLAST, MOVE_SOLAR_BEAM, MOVE_AEROBLAST, MOVE_ROOST, TRUE
+    playfanfare MUS_OBTAIN_ITEM
+    msgbox OldaleTown_Text_Got_Charizard, MSGBOX_AUTOCLOSE
+    waitfanfare
+	release
+    end
+
+OldaleTown_Text_Got_Charizard::
+    .string "{PLAYER} got a {COLOR GREEN}Charizard{COLOR DARK_GRAY} as a gift!$"
+
 OldaleTown_Text_SavingMyProgress:
 	.string "I want to take a rest, so I'm saving my\n"
 	.string "progress.$"
