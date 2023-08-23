@@ -1252,7 +1252,7 @@ const u16 *const gTeachableLearnsets[NUM_SPECIES] =
     [SPECIES_BASCULIN_WHITE_STRIPED] = sBasculinTeachableLearnset,
     // Darmanitan
     [SPECIES_DARMANITAN_ZEN_MODE] = sDarmanitanTeachableLearnset,
-    [SPECIES_DARMANITAN_GALARIAN_ZEN_MODE] = sDarmanitanGalarianTeachableLearnset,
+    [SPECIES_DARMANITAN_ZEN_MODE_GALARIAN] = sDarmanitanGalarianTeachableLearnset,
     // Deerling
     [SPECIES_DEERLING_SUMMER] = sDeerlingTeachableLearnset,
     [SPECIES_DEERLING_AUTUMN] = sDeerlingTeachableLearnset,

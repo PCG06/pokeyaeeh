@@ -1252,7 +1252,7 @@ const struct LevelUpMove *const gLevelUpLearnsets[NUM_SPECIES] =
     [SPECIES_BASCULIN_WHITE_STRIPED] = sBasculinLevelUpLearnset,
     // Darmanitan
     [SPECIES_DARMANITAN_ZEN_MODE] = sDarmanitanLevelUpLearnset,
-    [SPECIES_DARMANITAN_GALARIAN_ZEN_MODE] = sDarmanitanGalarianLevelUpLearnset,
+    [SPECIES_DARMANITAN_ZEN_MODE_GALARIAN] = sDarmanitanGalarianLevelUpLearnset,
     // Deerling
     [SPECIES_DEERLING_SUMMER] = sDeerlingLevelUpLearnset,
     [SPECIES_DEERLING_AUTUMN] = sDeerlingLevelUpLearnset,

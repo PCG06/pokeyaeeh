@@ -1238,7 +1238,7 @@ const struct MonCoords gMonBackPicCoords[NUM_SPECIES + 1] =
     [SPECIES_BASCULIN_WHITE_STRIPED]       = { .size = MON_COORDS_SIZE(64, 40), .y_offset = 16 },
     // Darmanitan
     [SPECIES_DARMANITAN_ZEN_MODE]          = { .size = MON_COORDS_SIZE(56, 48), .y_offset = 11 },
-    [SPECIES_DARMANITAN_GALARIAN_ZEN_MODE] = { .size = MON_COORDS_SIZE(64, 64), .y_offset =  1 },
+    [SPECIES_DARMANITAN_ZEN_MODE_GALARIAN] = { .size = MON_COORDS_SIZE(64, 64), .y_offset =  1 },
     // Deerling
     [SPECIES_DEERLING_SUMMER]              = DEERLING_BACK_PIC_COORDS,
     [SPECIES_DEERLING_AUTUMN]              = DEERLING_BACK_PIC_COORDS,

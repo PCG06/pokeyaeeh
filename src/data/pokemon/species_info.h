@@ -23862,7 +23862,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .noFlip = FALSE,
     },
 
-    [SPECIES_DARMANITAN_GALARIAN_ZEN_MODE] =
+    [SPECIES_DARMANITAN_ZEN_MODE_GALARIAN] =
     {
         .baseHP        = 105,
         .baseAttack    = 160,
