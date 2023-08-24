@@ -4067,8 +4067,10 @@ static const struct TrainerMon sParty_Tommy[] = {
 
 static const struct TrainerMon sParty_Joey[] = {
     {
-    .lvl = 9,
+    .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
+    .lvl = 25,
     .species = SPECIES_MACHOP,
+    .moves = {MOVE_KARATE_CHOP, MOVE_BODY_SLAM, MOVE_BULK_UP, MOVE_FIRE_PUNCH}
     }
 };
 
