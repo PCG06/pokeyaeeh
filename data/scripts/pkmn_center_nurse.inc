@@ -1,16 +1,32 @@
 Common_EventScript_PkmnCenterNurse::
-	lock
-	faceplayer
-	setvar VAR_0x8004, 0
-	specialvar VAR_RESULT, CountPlayerTrainerStars
-	goto_if_eq VAR_RESULT, 4, EventScript_PkmnCenterNurse_GoldCard
-	msgbox gText_WouldYouLikeToRestYourPkmn, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, YES, EventScript_PkmnCenterNurse_HealPkmn
-	goto_if_eq VAR_RESULT, NO, EventScript_PkmnCenterNurse_Goodbye
-	end
+    lock
+    faceplayer
+    setvar VAR_0x8004, 0
+    specialvar VAR_RESULT, CountPlayerTrainerStars
+    goto_if_ge VAR_RESULT, 4, EventScript_PkmnCenterNurse_GoldCard
+	gettime
+	call_if_eq VAR_0x8003, TIME_MORNING, EventScript_PkmnCenterNurse_IntroMorning
+	call_if_eq VAR_0x8003, TIME_DAY, EventScript_PkmnCenterNurse_IntroDay
+	call_if_eq VAR_0x8003, TIME_NIGHT, EventScript_PkmnCenterNurse_IntroNight
+    msgbox gText_WouldYouLikeToRestYourPkmn, MSGBOX_YESNO
+    goto_if_eq VAR_RESULT, YES, EventScript_PkmnCenterNurse_HealPkmn
+    goto_if_eq VAR_RESULT, NO, EventScript_PkmnCenterNurse_Goodbye
+    end
+
+EventScript_PkmnCenterNurse_IntroMorning:
+	msgbox gText_NurseIntro_Morning, MSGBOX_DEFAULT
+	return
+
+EventScript_PkmnCenterNurse_IntroDay:
+	msgbox gText_NurseIntro_Day, MSGBOX_DEFAULT
+	return
+
+EventScript_PkmnCenterNurse_IntroNight:
+	msgbox gText_NurseIntro_Night, MSGBOX_DEFAULT
+	return
 
 EventScript_PkmnCenterNurse_Goodbye::
-	message gText_WeHopeToSeeYouAgain
+	msgbox gText_WeHopeToSeeYouAgain, MSGBOX_DEFAULT
 	return
 
 @ VAR_0x8004 is 1 when player has Gold Card; jumps are identical
@@ -58,7 +74,7 @@ EventScript_PkmnCenterNurse_ReturnPkmn::
 	waitmessage
 	applymovement VAR_0x800B, Movement_PkmnCenterNurse_Bow
 	waitmovement 0
-	message gText_WeHopeToSeeYouAgain
+	msgbox gText_WeHopeToSeeYouAgain, MSGBOX_DEFAULT
 	goto EventScript_PkmnCenterNurse_PlayerTurn
 	return
 
@@ -68,6 +84,7 @@ EventScript_PkmnCenterNurse_ReturnPkmn2::
 	applymovement VAR_0x800B, Movement_PkmnCenterNurse_Bow
 	waitmovement 0
 	message gText_WeHopeToSeeYouAgain2
+	goto EventScript_PkmnCenterNurse_PlayerTurn
 	return
 
 EventScript_PkmnCenterNurse_PlayerWaitingInUnionRoom::
@@ -79,6 +96,7 @@ EventScript_PkmnCenterNurse_PlayerWaitingInUnionRoom::
 	applymovement VAR_0x800B, Movement_PkmnCenterNurse_Bow
 	waitmovement 0
 	message gText_WeHopeToSeeYouAgain
+	goto EventScript_PkmnCenterNurse_PlayerTurn
 	return
 
 EventScript_PkmnCenterNurse_CheckPokerus::
@@ -104,12 +122,28 @@ EventScript_PkmnCenterNurse_GoldCard::
 	msgbox gText_NoticesGoldCard, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, YES, EventScript_PkmnCenterNurse_GoldCardHealPkmn
 	message gText_WeHopeToSeeYouAgain2
+	goto EventScript_PkmnCenterNurse_PlayerTurn
 	return
 
 EventScript_PkmnCenterNurse_AskForUsual::
-	msgbox gText_YouWantTheUsual, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, YES, EventScript_PkmnCenterNurse_GoldCardHealPkmn
-	message gText_WeHopeToSeeYouAgain2
+	gettime
+	goto_if_eq VAR_0x8003, TIME_MORNING, EventScript_PkmnCenterNurse_UsualIntroMorning
+	goto_if_eq VAR_0x8003, TIME_DAY, EventScript_PkmnCenterNurse_UsualIntroDay
+	goto_if_eq VAR_0x8003, TIME_NIGHT, EventScript_PkmnCenterNurse_UsualIntroNight
+    goto_if_eq VAR_RESULT, YES, EventScript_PkmnCenterNurse_GoldCardHealPkmn
+    message gText_WeHopeToSeeYouAgain2
+    return
+
+EventScript_PkmnCenterNurse_UsualIntroMorning::
+    msgbox gText_YouWantTheUsual_Morning, MSGBOX_YESNO
+	return
+
+EventScript_PkmnCenterNurse_UsualIntroDay::
+    msgbox gText_YouWantTheUsual, MSGBOX_YESNO
+	return
+
+EventScript_PkmnCenterNurse_UsualIntroNight::
+    msgbox gText_YouWantTheUsual_Night, MSGBOX_YESNO
 	return
 
 EventScript_PkmnCenterNurse_GoldCardHealPkmn::
@@ -117,14 +151,14 @@ EventScript_PkmnCenterNurse_GoldCardHealPkmn::
 	goto EventScript_PkmnCenterNurse_HealPkmn
 	end
 
+EventScript_PkmnCenterNurse_PlayerTurn::
+	closemessage
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
+	waitmovement 0
+	release
+	end
+
 Movement_PkmnCenterNurse_Bow:
 	nurse_joy_bow
 	delay_4
 	step_end
-
-EventScript_PkmnCenterNurse_PlayerTurn::
-   closemessage
-   applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceDown
-   waitmovement 0
-   release
-   end

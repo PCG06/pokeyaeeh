@@ -1,27 +1,32 @@
+gText_NurseIntro_Morning::
+	.string "Good morning!\n"
+	.string "Welcome to our Pokémon Center.$"
+
+gText_NurseIntro_Day::
+	.string "Hello!\n"
+	.string "Welcome to our Pokémon Center.$"
+
+gText_NurseIntro_Night::
+	.string "Good evening! You're out late.\n"
+	.string "Welcome to our Pokémon Center.$"
+
 gText_WouldYouLikeToRestYourPkmn::
-    .string "Hello, and welcome to\n"
-    .string "the Pokémon Center.\p"
-    .string "We restore your tired Pokémon\n"
-    .string "to full health.\p"
-    .string "Would you like to rest your Pokémon?$"
+	.string "Would you like to rest your Pokémon?$"
 
 gText_IllTakeYourPkmn::
     .string "Okay, I'll take your Pokémon\n"
     .string "for a few seconds.$"
 
 gText_RestoredPkmnToFullHealth::
-    .string "Thank you for waiting.\p"
-    .string "We've restored your Pokémon\n"
-    .string "to full health.$"
+    .string "Thank you for waiting.\n"
+    .string "You're Pokémon are at full health!$"
 
 gText_WeHopeToSeeYouAgain::
 	.string "Take care out there!$"
 
 gText_WelcomeCutShort::
-    .string "Hello, and welcome to\n"
-    .string "the Pokémon Center.\p"
-    .string "We restore your tired Pokémon\n"
-    .string "to full health.\p"
+	.string "Hello!\n"
+	.string "Welcome to our Pokémon Center.\p$"
     .string "Would you like to…$"
 
 gText_NoticesGoldCard::
@@ -36,9 +41,18 @@ gText_NoticesGoldCard::
     .string "Okay, {PLAYER}, please allow me\n"
     .string "the honor of resting your Pokémon!$"
 
+gText_YouWantTheUsual_Morning::
+    .string "I hope you're having\n"
+	.string "a great morning, {PLAYER}!\p"
+    .string "You want the usual, am I right?$"
+
 gText_YouWantTheUsual::
 	.string "I'm delighted to see you, {PLAYER}!\n"
 	.string "You want the usual, am I right?$"
+
+gText_YouWantTheUsual_Night::
+    .string "How's your night going, {PLAYER}?\n"
+    .string "You want the usual, am I right?$"
 
 gText_IllTakeYourPkmn2::
     .string "Okay, I'll take your Pokémon\n"
