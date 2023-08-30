@@ -805,12 +805,18 @@ static void HandleInputChooseMove(u32 battler)
     }
     else if (JOY_NEW(R_BUTTON) || gPlayerDpadHoldFrames > 59)
     {
-        if(!FlagGet(FLAG_SYS_MOVE_INFO)){
+        if(!FlagGet(FLAG_SYS_MOVE_INFO))
+        {
+            MoveSelectionDestroyCursorAt(gMoveSelectionCursor[battler]);
+            MoveSelectionCreateCursorAt(0, 0);
             ChangeMoveDisplayMode();
             FlagSet(FLAG_SYS_MOVE_INFO);
         }
-        else{
+        else
+        {
+            MoveSelectionDestroyCursorAt(0);
             MoveSelectionDisplayMoveNames(battler);
+            MoveSelectionCreateCursorAt(gMoveSelectionCursor[battler], 0);
             FlagClear(FLAG_SYS_MOVE_INFO);
         }
     }
@@ -2274,7 +2280,8 @@ static void PlayerHandleBattleDebug(u32 battler)
     gBattlerControllerFuncs[battler] = Controller_WaitForDebug;
 }
 
-static void ChangeMoveDisplayMode(){
+static void ChangeMoveDisplayMode()
+{
     static const u8 gPowerText[] =  _("Power: {STR_VAR_1}");
     static const u8 gAccuracyText[] =  _("Acc: {STR_VAR_1}");
     static const u8 gContactText[] =  _("Contact");
@@ -2301,7 +2308,7 @@ static void ChangeMoveDisplayMode(){
     PutWindowTilemap(B_WIN_MOVE_NAME_3 );
 	CopyWindowToVram(B_WIN_MOVE_NAME_3 , 3);
 
-    //Move Power
+    //Move Accuracy
     accuracy = gBattleMoves[move].accuracy;
 	ConvertIntToDecimalStringN(gStringVar1, accuracy, STR_CONV_MODE_RIGHT_ALIGN, 4);
 	StringExpandPlaceholders(gStringVar4, gAccuracyText);
