@@ -1065,7 +1065,6 @@ static const u16 sPickupItems[] =
     ITEM_SUPER_POTION,
     ITEM_GREAT_BALL,
     ITEM_REPEL,
-    ITEM_ESCAPE_ROPE,
     ITEM_X_ATTACK,
     ITEM_FULL_HEAL,
     ITEM_ULTRA_BALL,
