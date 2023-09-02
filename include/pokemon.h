@@ -385,6 +385,7 @@ struct BattleMove
     u32 sleepTalkBanned:1;
     u32 instructBanned:1;
     u32 kickingMove:1;
+    u32 spinningMove:1;
 };
 
 #define SPINDA_SPOT_WIDTH 16
