@@ -5281,9 +5281,9 @@ static bool8 CalculateMoves(void)
     {
         if (CanLearnTeachableMove(species, j))
         {
-            sStatsMoves[movesTotal] = ItemIdToBattleMoveId(ITEM_TM01_HIDDEN_POWER + j);
+            sStatsMoves[movesTotal] = ItemIdToBattleMoveId(ITEM_TM_HIDDEN_POWER + j);
             movesTotal++;
-            sStatsMovesTMHM_ID[numTMHMMoves] = (ITEM_TM01_HIDDEN_POWER + j);
+            sStatsMovesTMHM_ID[numTMHMMoves] = (ITEM_TM_HIDDEN_POWER + j);
             numTMHMMoves++;
         }
     }
@@ -5306,7 +5306,7 @@ static bool8 CalculateMoves(void)
         {
             if (GetTMHMMoves(j) == move)
             {
-                sStatsMovesTMHM_ID[numTMHMMoves] = (ITEM_TM01_HIDDEN_POWER + j);
+                sStatsMovesTMHM_ID[numTMHMMoves] = (ITEM_TM_HIDDEN_POWER + j);
                 numTMHMMoves++;
                 break;
             }
