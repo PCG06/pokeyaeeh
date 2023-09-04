@@ -1030,6 +1030,9 @@ static bool8 ShouldUseItem(void)
     u8 validMons = 0;
     bool8 shouldUse = FALSE;
 
+    if (IsAiVsAiBattle())
+        return FALSE;
+
     // If teaming up with player and Pokemon is on the right, or Pokemon is currently held by Sky Drop
     if ((gBattleTypeFlags & BATTLE_TYPE_INGAME_PARTNER && GetBattlerPosition(gActiveBattler) == B_POSITION_PLAYER_RIGHT)
        || gStatuses3[gActiveBattler] & STATUS3_SKY_DROPPED)
@@ -1074,7 +1077,7 @@ static bool8 ShouldUseItem(void)
             shouldUse = AI_ShouldHeal(0);
             break;
         case EFFECT_ITEM_RESTORE_HP:
-            shouldUse = AI_ShouldHeal(itemEffects[GetItemEffectParamOffset(item, 4, 4)]);
+            shouldUse = AI_ShouldHeal(itemEffects[GetItemEffectParamOffset(item, 4, ITEM4_HEAL_HP)]);
             break;
         case EFFECT_ITEM_CURE_STATUS:
             if (itemEffects[3] & ITEM3_SLEEP && gBattleMons[gActiveBattler].status1 & STATUS1_SLEEP)
@@ -1125,7 +1128,7 @@ static bool8 ShouldUseItem(void)
                 gBattleStruct->itemPartyIndex[gActiveBattler] = gBattlerPartyIndexes[gActiveBattler];
             BtlController_EmitTwoReturnValues(BUFFER_B, B_ACTION_USE_ITEM, 0);
             gBattleStruct->chosenItem[gActiveBattler] = item;
-            gBattleResources->battleHistory->trainerItems[i] = 0;
+            gBattleResources->battleHistory->trainerItems[i] = ITEM_NONE;
             return shouldUse;
         }
     }
