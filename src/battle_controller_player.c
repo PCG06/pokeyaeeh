@@ -91,7 +91,7 @@ static void Task_SetControllerToWaitForString(u8);
 static void Task_GiveExpWithExpBar(u8);
 static void Task_UpdateLvlInHealthbox(u8);
 static void PrintLinkStandbyMsg(void);
-static void ChangeMoveDisplayMode();
+static void ChangeMoveDisplayMode(u32 battler);
 static void ReloadMoveNames(u32 battler);
 
 static void (*const sPlayerBufferCommands[CONTROLLER_CMDS_COUNT])(u32 battler) =
@@ -809,7 +809,7 @@ static void HandleInputChooseMove(u32 battler)
         {
             MoveSelectionDestroyCursorAt(gMoveSelectionCursor[battler]);
             MoveSelectionCreateCursorAt(0, 0);
-            ChangeMoveDisplayMode();
+            ChangeMoveDisplayMode(battler);
             FlagSet(FLAG_SYS_MOVE_INFO);
         }
         else
@@ -2272,14 +2272,13 @@ static void PlayerHandleBattleDebug(u32 battler)
     gBattlerControllerFuncs[battler] = Controller_WaitForDebug;
 }
 
-static void ChangeMoveDisplayMode()
+static void ChangeMoveDisplayMode(u32 battler)
 {
     static const u8 gPowerText[] =  _("Power: {STR_VAR_1}");
     static const u8 gAccuracyText[] =  _("Acc: {STR_VAR_1}");
     static const u8 gContactText[] =  _("Contact");
     static const u8 gNoContactText[] =  _("No Contact");
-    
-    u32 battler = 0;
+
     u8 *txtPtr;
     u8 power = 0;
     u8 accuracy = 0;
