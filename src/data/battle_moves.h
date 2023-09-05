@@ -12910,7 +12910,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
             .power = 95,
             .pp = 5,
         #endif
-        .effect = EFFECT_SPEED_DOWN_HIT,
+        .effect = EFFECT_FROSTBITE_HIT,
         .type = TYPE_FLYING,
         .accuracy = 80,
         .secondaryEffectChance = 30,
