@@ -6543,8 +6543,9 @@ static u8 DamagedStatBoostBerryEffect(u8 battler, u8 statId, u8 split)
     if (IsBattlerAlive(battler)
      && TARGET_TURN_DAMAGED
      && CompareStat(battler, statId, MAX_STAT_STAGE, CMP_LESS_THAN)
-     && !DoesSubstituteBlockMove(gBattlerAttacker, battler, gCurrentMove)
-     && GetBattleMoveSplit(gCurrentMove) == split)
+     && (gBattleScripting.overrideBerryRequirements
+         || (!DoesSubstituteBlockMove(gBattlerAttacker, battler, gCurrentMove) && GetBattleMoveSplit(gCurrentMove) == split))
+        )
     {
         BufferStatChange(battler, statId, STRINGID_STATROSE);
 
@@ -6749,6 +6750,12 @@ static u8 ItemEffectMoveEnd(u32 battler, u16 holdEffect)
         break;
     case HOLD_EFFECT_SP_DEFENSE_UP:
         effect = StatRaiseBerry(battler, gLastUsedItem, STAT_SPDEF, FALSE);
+        break;
+    case HOLD_EFFECT_KEE_BERRY:  // consume and boost defense if used physical move
+        effect = DamagedStatBoostBerryEffect(battler, STAT_DEF, SPLIT_PHYSICAL);
+        break;
+    case HOLD_EFFECT_MARANGA_BERRY:  // consume and boost sp. defense if used special move
+        effect = DamagedStatBoostBerryEffect(battler, STAT_SPDEF, SPLIT_SPECIAL);
         break;
     case HOLD_EFFECT_RANDOM_STAT_UP:
         effect = RandomStatRaiseBerry(battler, gLastUsedItem, FALSE);
@@ -10617,11 +10624,9 @@ static u8 GetFlingPowerFromItemId(u16 itemId)
         return ItemId_GetFlingPower(itemId);
 }
 
-// Make sure the input bank is any bank on the specific mon's side
-bool32 CanFling(u8 battler)
+bool32 CanFling(u32 battler)
 {
     u16 item = gBattleMons[battler].item;
-    u16 itemEffect = ItemId_GetHoldEffect(item);
 
     if (item == ITEM_NONE
       #if B_KLUTZ_FLING_INTERACTION >= GEN_5
@@ -11092,4 +11097,13 @@ u32 CalcSecondaryEffectChance(u8 battler, u8 secondaryEffectChance)
 bool32 IsAlly(u32 battlerAtk, u32 battlerDef)
 {
     return (GetBattlerSide(battlerAtk) == GetBattlerSide(battlerDef));
+}
+
+bool32 IsGen6ExpShareEnabled(void)
+{
+#if I_EXP_SHARE_ITEM < GEN_6
+    return FALSE;
+#else
+    return FlagGet(I_EXP_SHARE_FLAG);
+#endif
 }
