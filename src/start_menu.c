@@ -242,7 +242,25 @@ static const struct WindowTemplate sSaveInfoWindowTemplate = {
     .baseBlock = 8
 };
 
-static const struct WindowTemplate sCurrentTimeWindowTemplate = {0, 1, 17, 4, 2, 0xF, 48};
+static const struct WindowTemplate sCurrentTime12WindowTemplate = {
+    .bg = 0,
+    .tilemapLeft = 1,
+    .tilemapTop = 1,
+    .width = 6,
+    .height = 2,
+    .paletteNum = 15,
+    .baseBlock = 48
+};
+
+static const struct WindowTemplate sCurrentTime24WindowTemplate = {
+    .bg = 0,
+    .tilemapLeft = 1,
+    .tilemapTop = 1,
+    .width = 4,
+    .height = 2,
+    .paletteNum = 15,
+    .baseBlock = 48
+};
 
 // Local functions
 static void BuildStartMenuActions(void);
@@ -1506,17 +1524,17 @@ void AppendToList(u8 *list, u8 *pos, u8 newEntry)
 static void ShowCurrentTimeWindow(void)
 {
     u8 analogHour;
-    struct WindowTemplate timeWindowTemplate = sCurrentTimeWindowTemplate;
 
 	RtcCalcLocalTime();
-    analogHour = (gLocalTime.hours >= 13 && gLocalTime.hours <= 24) ? gLocalTime.hours - 12 : gLocalTime.hours;
     if (gClockMode == TWELVE_HOUR_MODE)
-        timeWindowTemplate.width = 6;
-	sCurrentTimeWindowId = AddWindow(&timeWindowTemplate);
-
+		sCurrentTimeWindowId = AddWindow(&sCurrentTime12WindowTemplate);
+	else
+		sCurrentTimeWindowId = AddWindow(&sCurrentTime24WindowTemplate);
 	PutWindowTilemap(sCurrentTimeWindowId);
 	DrawStdWindowFrame(sCurrentTimeWindowId, FALSE);
 	FlagSet(FLAG_TEMP_5);
+
+    analogHour = (gLocalTime.hours >= 13 && gLocalTime.hours <= 24) ? gLocalTime.hours - 12 : gLocalTime.hours;
 
 	ConvertIntToDecimalStringN(gStringVar1, gLocalTime.hours, STR_CONV_MODE_LEADING_ZEROS, 2);
 	ConvertIntToDecimalStringN(gStringVar2, gLocalTime.minutes, STR_CONV_MODE_LEADING_ZEROS, 2);
@@ -1548,6 +1566,10 @@ void UpdateClockDisplay(void)
 	ConvertIntToDecimalStringN(gStringVar2, gLocalTime.minutes, STR_CONV_MODE_LEADING_ZEROS, 2);
     if (gClockMode == TWELVE_HOUR_MODE)
 	    ConvertIntToDecimalStringN(gStringVar1, analogHour, STR_CONV_MODE_LEADING_ZEROS, 2);
+    if (gLocalTime.hours == 12)
+		ConvertIntToDecimalStringN(gStringVar1, 12, STR_CONV_MODE_LEADING_ZEROS, 2);
+    if (gLocalTime.hours == 0)
+		ConvertIntToDecimalStringN(gStringVar1, 12, STR_CONV_MODE_LEADING_ZEROS, 2);
 
 	if (gLocalTime.seconds % 2)
 	{

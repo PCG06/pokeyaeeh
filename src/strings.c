@@ -1525,6 +1525,9 @@ const u8 gText_FrameTypeNumber[] = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}");
 const u8 gText_ButtonTypeNormal[] = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}Normal");
 const u8 gText_ButtonTypeLR[] = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}LR");
 const u8 gText_ButtonTypeLEqualsA[] = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}L=A");
+const u8 gText_ClockMode[] = _("Clock Mode");
+const u8 gText_ClockOption1[] = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}12 Hour"); // Using them without the {COLOR GREEN}{SHADOW LIGHT_GREEN} causes corruption :(
+const u8 gText_ClockOption2[] = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}24 Hour");
 const u8 gText_NumPlayerLink[] = _("{STR_VAR_1}P Link");
 const u8 gText_BronzeCard[] = _("Bronze");
 const u8 gText_CopperCard[] = _("Copper");
@@ -1999,13 +2002,10 @@ const u8 gText_FORMS_NONE[]                         = _("{STR_VAR_1} has no alte
 // Start Menu clock
 const u8 gText_CurrentTime[] = _(" {STR_VAR_1}:{STR_VAR_2}");
 const u8 gText_CurrentTimeOff[] = _(" {STR_VAR_1} {STR_VAR_2}");
-const u8 gText_CurrentTimeAM[] = _(" {STR_VAR_1}:{STR_VAR_2} a.m.");
-const u8 gText_CurrentTimeAMOff[] = _(" {STR_VAR_1} {STR_VAR_2} a.m.");
-const u8 gText_CurrentTimePM[] = _(" {STR_VAR_1}:{STR_VAR_2} p.m.");
-const u8 gText_CurrentTimePMOff[] = _(" {STR_VAR_1} {STR_VAR_2} p.m.");
-const u8 gText_ClockMode[] = _("Clock Mode");
-const u8 gText_ClockOption1[] = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}12 Hour"); // Using them without the {COLOR GREEN}{SHADOW LIGHT_GREEN} causes corruption :(
-const u8 gText_ClockOption2[] = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}24 Hour");
+const u8 gText_CurrentTimeAM[] = _(" {STR_VAR_1}:{STR_VAR_2} AM");
+const u8 gText_CurrentTimeAMOff[] = _(" {STR_VAR_1} {STR_VAR_2} AM");
+const u8 gText_CurrentTimePM[] = _(" {STR_VAR_1}:{STR_VAR_2} PM");
+const u8 gText_CurrentTimePMOff[] = _(" {STR_VAR_1} {STR_VAR_2} PM");
 
 // Multi option menu
 const u8 gText_SmallDot[] = _("·");
