@@ -240,6 +240,8 @@
 #define OBJ_EVENT_GFX_LINK_RS_MAY                236
 #define OBJ_EVENT_GFX_LUGIA                      237
 #define OBJ_EVENT_GFX_HOOH                       238
+#define OBJ_EVENT_GFX_TMHM_BALL                  239
+#define OBJ_EVENT_GFX_MEGA_STONE                 240
 
 // NOTE: By default, the max value for NUM_OBJ_EVENT_GFX is 239.
 //
