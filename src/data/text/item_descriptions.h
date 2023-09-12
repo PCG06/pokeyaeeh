@@ -3092,9 +3092,9 @@ static const u8 sTM12Desc[] = _(
     "cause paralysis.");
 
 static const u8 sTM13Desc[] = _(
-    "!! Bubble for now!\n"
-    "Create a new Water\n"
-    "type move!!");
+    "Fires an icy cold\n"
+    "beam that may\n"
+    "cause a frostbite.");
 
 static const u8 sTM14Desc[] = _(
     "Draws natural power\n"
@@ -3102,9 +3102,9 @@ static const u8 sTM14Desc[] = _(
     "May lower Sp. Def.");
 
 static const u8 sTM15Desc[] = _(
-    "Fires an icy cold\n"
-    "beam that may\n"
-    "cause a frostbite.");
+    "Spray of bubbles is\n"
+    "ejected at the foe.\n"
+    "May lower Spd.");
 
 static const u8 sTM16Desc[] = _(
     "A powerful psychic\n"

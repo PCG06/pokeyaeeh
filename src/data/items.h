@@ -7896,7 +7896,7 @@ const struct Item gItems[] =
         .secondaryId = MOVE_THUNDERBOLT,
     },
 
-    [ITEM_TM_BUBBLE] =
+    [ITEM_TM_ICE_BEAM] =
     {
         .name = _("TM13"),
         .itemId = ITEM_TM13,
@@ -7906,7 +7906,7 @@ const struct Item gItems[] =
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_TMHM,
-        .secondaryId = MOVE_BUBBLE,
+        .secondaryId = MOVE_ICE_BEAM,
     },
 
     [ITEM_TM_ENERGY_BALL] =
@@ -7922,7 +7922,7 @@ const struct Item gItems[] =
         .secondaryId = MOVE_ENERGY_BALL,
     },
 
-    [ITEM_TM_ICE_BEAM] =
+    [ITEM_TM_BUBBLE_BEAM] =
     {
         .name = _("TM15"),
         .itemId = ITEM_TM15,
@@ -7932,7 +7932,7 @@ const struct Item gItems[] =
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_TMHM,
-        .secondaryId = MOVE_ICE_BEAM,
+        .secondaryId = MOVE_BUBBLE_BEAM,
     },
 
     [ITEM_TM_PSYCHIC] =

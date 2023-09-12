@@ -14,10 +14,9 @@ BerryShop_EventScript_Lady::
 
 	.align 2
 BerryShop_Basic:
-	.2byte ITEM_ORAN_BERRY
-	.2byte ITEM_PECHA_BERRY
-	.2byte ITEM_CHERI_BERRY
-	.2byte ITEM_CHESTO_BERRY
+	.2byte ITEM_TM11
+	.2byte ITEM_TM12
+	.2byte ITEM_TM15
 	.2byte ITEM_NONE
 	release
 	end
@@ -30,13 +29,16 @@ BerryShop_ExpandedItems::
 
 	.align 2
 BerryShop_Expanded:
-	.2byte ITEM_ORAN_BERRY
-	.2byte ITEM_PECHA_BERRY
-	.2byte ITEM_CHERI_BERRY
-	.2byte ITEM_CHESTO_BERRY
-	.2byte ITEM_RAWST_BERRY
-        .2byte ITEM_ASPEAR_BERRY
-        .2byte ITEM_SITRUS_BERRY
+	.2byte ITEM_TM11
+	.2byte ITEM_TM12
+	.2byte ITEM_TM13
+	.2byte ITEM_TM14
+	.2byte ITEM_TM15
+	.2byte ITEM_TM16
+	.2byte ITEM_TM17
+	.2byte ITEM_TM18
+	.2byte ITEM_TM19
+	.2byte ITEM_TM20
 	.2byte ITEM_NONE
 	release
 	end

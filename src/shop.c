@@ -799,7 +799,14 @@ static void BuyMenuBuildListMenuTemplate(void)
 static void BuyMenuSetListEntry(struct ListMenuItem *menuItem, u16 item, u8 *name)
 {
     if (sMartInfo.martType == MART_TYPE_NORMAL)
+    {
         CopyItemName(item, name);
+        if (ItemId_GetPocket(item) == POCKET_TM_HM)
+        {
+            const u8 space[] = _(" ");
+            StringAppend(StringAppend(name, space), gMoveNames[ItemIdToBattleMoveId(item)]);
+        }
+    }
     else
         StringCopy(name, gDecorations[item].name);
 
