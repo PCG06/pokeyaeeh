@@ -1849,7 +1849,11 @@ const u16 gWeatherStartsStringIds[] =
     [WEATHER_SUNNY_CLOUDS]       = STRINGID_ITISRAINING,
     [WEATHER_SUNNY]              = STRINGID_ITISRAINING,
     [WEATHER_RAIN]               = STRINGID_ITISRAINING,
+#if B_OVERWORLD_SNOW >= GEN_9
     [WEATHER_SNOW]               = STRINGID_STARTEDSNOW,
+#else
+    [WEATHER_SNOW]               = STRINGID_STARTEDHAIL,
+#endif
     [WEATHER_RAIN_THUNDERSTORM]  = STRINGID_ITISRAINING,
     [WEATHER_FOG_HORIZONTAL]     = STRINGID_ITISRAINING,
     [WEATHER_VOLCANIC_ASH]       = STRINGID_ITISRAINING,
@@ -2986,7 +2990,7 @@ static void GetBattlerNick(u32 battler, u8 *dst)
 {
     struct Pokemon *mon, *illusionMon;
 
-    if (GET_BATTLER_SIDE(battler) == B_SIDE_PLAYER)
+    if (GetBattlerSide(battler) == B_SIDE_PLAYER)
         mon = &gPlayerParty[gBattlerPartyIndexes[battler]];
     else
         mon = &gEnemyParty[gBattlerPartyIndexes[battler]];
