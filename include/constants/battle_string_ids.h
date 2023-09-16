@@ -670,8 +670,11 @@
 #define STRINGID_ULTRABURSTREACTING                   668
 #define STRINGID_ULTRABURSTCOMPLETED                  669
 #define STRINGID_TEAMGAINEDEXP                        670
+#define STRINGID_CURRENTMOVECANTSELECT                671
+#define STRINGID_TARGETISBEINGSALTCURED               672
+#define STRINGID_TARGETISHURTBYSALTCURE               673
 
-#define BATTLESTRINGS_COUNT                           671
+#define BATTLESTRINGS_COUNT                           674
 
 // This is the string id that gBattleStringsTable starts with.
 // String ids before this (e.g. STRINGID_INTROMSG) are not in the table,
