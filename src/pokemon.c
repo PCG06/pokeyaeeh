@@ -6635,6 +6635,16 @@ u16 GetEvolutionTargetSpecies(struct Pokemon *mon, u8 mode, u16 evolutionItem, s
                 if (currentMap == gEvolutionTable[species][i].param)
                     targetSpecies = gEvolutionTable[species][i].targetSpecies;
                 break;
+            case EVO_MOVE_SPECIFIC_MAP:
+                currentMap = ((gSaveBlock1Ptr->location.mapGroup) << 8 | gSaveBlock1Ptr->location.mapNum);
+                if (MonKnowsMove(mon, gEvolutionTable[species][i].param) && gEvolutionTable[species][i].param2 == currentMap)
+                    targetSpecies = gEvolutionTable[species][i].targetSpecies;
+                break;
+            case EVO_LEVEL_SPECIFIC_MAP:
+                currentMap = ((gSaveBlock1Ptr->location.mapGroup) << 8 | gSaveBlock1Ptr->location.mapNum);
+                if (gEvolutionTable[species][i].param <= level && gEvolutionTable[species][i].param2 == currentMap)
+                    targetSpecies = gEvolutionTable[species][i].targetSpecies;
+                break;
             case EVO_LEVEL_NATURE_AMPED:
                 if (gEvolutionTable[species][i].param <= level)
                 {
@@ -6690,6 +6700,12 @@ u16 GetEvolutionTargetSpecies(struct Pokemon *mon, u8 mode, u16 evolutionItem, s
                     targetSpecies = gEvolutionTable[species][i].targetSpecies;
                 }
                 break;
+            case EVO_NIGHT_SPECIFIC_MAP:
+                RtcCalcLocalTime();
+                currentMap = ((gSaveBlock1Ptr->location.mapGroup) << 8 | gSaveBlock1Ptr->location.mapNum);
+                if ((gLocalTime.hours >= NIGHT_START || gLocalTime.hours < DAY_START) && gEvolutionTable[species][i].param <= level && gEvolutionTable[species][i].param2 == currentMap)
+                    targetSpecies = gEvolutionTable[species][i].targetSpecies;
+                break;
             }
         }
         break;
@@ -6742,6 +6758,11 @@ u16 GetEvolutionTargetSpecies(struct Pokemon *mon, u8 mode, u16 evolutionItem, s
             case EVO_ITEM_DAY:
                 RtcCalcLocalTime();
                 if (gLocalTime.hours >= DAY_START && gLocalTime.hours < NIGHT_START && gEvolutionTable[species][i].param == evolutionItem)
+                    targetSpecies = gEvolutionTable[species][i].targetSpecies;
+                break;
+            case EVO_ITEM_SPECIFIC_MAP:
+               currentMap = ((gSaveBlock1Ptr->location.mapGroup) << 8 | gSaveBlock1Ptr->location.mapNum);
+               if (gEvolutionTable[species][i].param == evolutionItem && gEvolutionTable[species][i].param2 == currentMap)
                     targetSpecies = gEvolutionTable[species][i].targetSpecies;
                 break;
             }

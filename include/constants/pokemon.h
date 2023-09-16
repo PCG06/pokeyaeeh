@@ -283,8 +283,12 @@
 #define EVO_ITEM_NIGHT                    39     // specified item is used on Pokémon, is night
 #define EVO_ITEM_DAY                      40     // specified item is used on Pokémon, is day
 #define EVO_MOVE_FEMALE                   41     // Pokémon learn specific move, evolves, female (for Basculegion)
-#define EVO_MOVE_MALE                     42    // Pokémon learn specific move, evolves, male   (for Basculegion)
+#define EVO_MOVE_MALE                     42     // Pokémon learn specific move, evolves, male   (for Basculegion)
 #define EVO_ITEM_HOLD                     43     // Pokémon levels up, holds specified item
+#define EVO_ITEM_SPECIFIC_MAP             44     // Alolan cross-evolutions (like Alolan Exeggutor)
+#define EVO_LEVEL_SPECIFIC_MAP            45     // Galarian Weezing
+#define EVO_MOVE_SPECIFIC_MAP             46     // Galarian Mr. Mime
+#define EVO_NIGHT_SPECIFIC_MAP            47     // Alolan Marowak
 
 #define EVOS_PER_MON 10
 
