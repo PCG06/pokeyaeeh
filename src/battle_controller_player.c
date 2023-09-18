@@ -8,6 +8,7 @@
 #include "battle_message.h"
 #include "battle_setup.h"
 #include "battle_tv.h"
+#include"battle_util.h"
 #include "battle_z_move.h"
 #include "bg.h"
 #include "data.h"
@@ -2296,6 +2297,10 @@ static void ChangeMoveDisplayMode(u32 battler)
     u8 power = 0;
     u8 accuracy = 0;
     u16 move = MOVE_NONE;
+    u8 battlerAtk;
+    u8 battlerDef;
+    u8 moveType;
+    bool32 updateFlags;
 
 	struct ChooseMoveStruct *moveInfo = (struct ChooseMoveStruct*)(&gBattleResources->bufferA[battler][4]);
 
@@ -2308,7 +2313,7 @@ static void ChangeMoveDisplayMode(u32 battler)
 	CopyWindowToVram(B_WIN_MOVE_NAME_1 , 3);
 
     //Move Power
-    power = gBattleMoves[move].power;
+    power = CalcMoveBasePowerAfterModifiers(move, battlerAtk, battlerDef, moveType, updateFlags);
 	ConvertIntToDecimalStringN(gStringVar1, power, STR_CONV_MODE_RIGHT_ALIGN, 4);
 	StringExpandPlaceholders(gStringVar4, gPowerText);
     BattlePutTextOnWindow(gStringVar4, B_WIN_MOVE_NAME_3);

@@ -8786,10 +8786,11 @@ static u16 CalcMoveBasePower(u16 move, u8 battlerAtk, u8 battlerDef)
     return basePower;
 }
 
-static u32 CalcMoveBasePowerAfterModifiers(u16 move, u8 battlerAtk, u8 battlerDef, u8 moveType, bool32 updateFlags)
+u32 CalcMoveBasePowerAfterModifiers(u16 move, u8 battlerAtk, u8 battlerDef, u8 moveType, bool32 updateFlags)
 {
     u32 i;
     u32 holdEffectAtk, holdEffectParamAtk;
+    u32 speed;
     u16 basePower = CalcMoveBasePower(move, battlerAtk, battlerDef);
     uq4_12_t holdEffectModifier;
     uq4_12_t modifier = UQ_4_12(1.0);
