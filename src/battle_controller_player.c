@@ -2306,11 +2306,12 @@ static void MoveSelectionDisplaySplitIcon(u32 battler)
 static void ChangeMoveDisplayMode(u32 battler)
 {
     static const u8 gPowerText[] =  _("Power: {STR_VAR_1}");
+    static const u8 gPowerZeroText[] =  _("   0");
     static const u8 gAccuracyText[] =  _("Acc: {STR_VAR_1}");
+    static const u8 gNoMissText[] = _("No Miss");
     static const u8 gContactText[] =  _("Contact");
     static const u8 gNoContactText[] =  _("No Contact");
 
-    u8 *txtPtr;
     u8 power = 0;
     u8 accuracy = 0;
     u16 move = MOVE_NONE;
@@ -2331,7 +2332,14 @@ static void ChangeMoveDisplayMode(u32 battler)
 
     //Move Power
     power = CalcMoveBasePowerAfterModifiers(move, battlerAtk, battlerDef, moveType, updateFlags);
-	ConvertIntToDecimalStringN(gStringVar1, power, STR_CONV_MODE_RIGHT_ALIGN, 4);
+    if (gBattleMoves[move].power == 0)
+    {
+        StringExpandPlaceholders(gStringVar1, gPowerZeroText);
+    }
+    else
+    {
+        ConvertIntToDecimalStringN(gStringVar1, power, STR_CONV_MODE_RIGHT_ALIGN, 4);
+    }
 	StringExpandPlaceholders(gStringVar4, gPowerText);
     BattlePutTextOnWindow(gStringVar4, B_WIN_MOVE_NAME_3);
     PutWindowTilemap(B_WIN_MOVE_NAME_3 );
@@ -2339,7 +2347,14 @@ static void ChangeMoveDisplayMode(u32 battler)
 
     //Move Accuracy
     accuracy = gBattleMoves[move].accuracy;
-	ConvertIntToDecimalStringN(gStringVar1, accuracy, STR_CONV_MODE_RIGHT_ALIGN, 4);
+    if (gBattleMoves[move].accuracy == 0)
+    {
+        StringExpandPlaceholders(gStringVar1, gNoMissText);
+    }
+    else
+    {
+        ConvertIntToDecimalStringN(gStringVar1, accuracy, STR_CONV_MODE_RIGHT_ALIGN, 4);
+    }
 	StringExpandPlaceholders(gStringVar4, gAccuracyText);
     BattlePutTextOnWindow(gStringVar4, B_WIN_MOVE_NAME_4);
     PutWindowTilemap(B_WIN_MOVE_NAME_4 );
