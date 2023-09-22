@@ -2308,7 +2308,7 @@ static void ChangeMoveDisplayMode(u32 battler)
     static const u8 gPowerText[] =  _("Power: {STR_VAR_1}");
     static const u8 gPowerZeroText[] =  _("   0");
     static const u8 gAccuracyText[] =  _("Acc: {STR_VAR_1}");
-    static const u8 gNoMissText[] = _("No Miss");
+    static const u8 gNoMissText[] = _("  No Miss");
     static const u8 gContactText[] =  _("Contact");
     static const u8 gNoContactText[] =  _("No Contact");
 
