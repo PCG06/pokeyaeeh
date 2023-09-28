@@ -2155,7 +2155,7 @@ gCryTable::
 .endif
 .if P_GEN_7_POKEMON == TRUE
 	@ Oricorio
-	cry Cry_OricorioPomPom
+	cry_uncomp Cry_OricorioPomPom
 	cry Cry_OricorioPau
 	cry Cry_OricorioSensu
 	@ Rockruff
@@ -4682,7 +4682,7 @@ gCryTable_Reverse::
 .endif
 .if P_GEN_7_POKEMON == TRUE
 	@ Oricorio
-	cry_reverse Cry_OricorioPomPom
+	cry_reverse_uncomp Cry_OricorioPomPom
 	cry_reverse Cry_OricorioPau
 	cry_reverse Cry_OricorioSensu
 	@ Rockruff
