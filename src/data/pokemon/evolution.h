@@ -414,8 +414,10 @@ const struct Evolution gEvolutionTable[NUM_SPECIES][EVOS_PER_MON] =
     [SPECIES_AMAURA]                = {{EVO_LEVEL_NIGHT, 39, SPECIES_AURORUS}},
     [SPECIES_GOOMY]                 = {{EVO_LEVEL, 40, SPECIES_SLIGGOO},
                                        {EVO_LEVEL_SPECIFIC_MAP, 40, SPECIES_SLIGGOO_HISUIAN, MAP_FIERY_PATH}}, // hisui
-    [SPECIES_SLIGGOO]               = {{EVO_LEVEL_RAIN, 50, SPECIES_GOODRA}},
-    [SPECIES_SLIGGOO_HISUIAN]       = {{EVO_LEVEL_RAIN, 40, SPECIES_GOODRA_HISUIAN}},
+    [SPECIES_SLIGGOO]               = {{EVO_LEVEL_RAIN, 50, SPECIES_GOODRA},
+                                       {EVO_LEVEL_FOG, 50, SPECIES_GOODRA}},
+    [SPECIES_SLIGGOO_HISUIAN]       = {{EVO_LEVEL_RAIN, 50, SPECIES_GOODRA_HISUIAN},
+                                       {EVO_LEVEL_FOG, 50, SPECIES_GOODRA_HISUIAN}},
     [SPECIES_PHANTUMP]              = {{EVO_TRADE, 0, SPECIES_TREVENANT},
                                        {EVO_ITEM, ITEM_LINKING_CORD, SPECIES_TREVENANT}},
     [SPECIES_PUMPKABOO]             = {{EVO_TRADE, 0, SPECIES_GOURGEIST},
