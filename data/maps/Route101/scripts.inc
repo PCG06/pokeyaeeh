@@ -300,6 +300,13 @@ Route101_Text_RouteSign:
 	.string "Route 101\n"
 	.string "{UP_ARROW} Oldale Town$"
 
+Route101_EventScript_LifeIsRoblox::
+	msgbox Route101_Text_LifeIsRoblox, MSGBOX_NPC
+	end
+
+Route101_Text_LifeIsRoblox:
+	.string "Life is Roblox.$"
+
 /*  Route101_EventScript_DoWonderTradeScript::
     lockall
 	faceplayer
