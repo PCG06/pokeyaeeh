@@ -2331,7 +2331,7 @@ static void ChangeMoveDisplayMode(u32 battler)
 	CopyWindowToVram(B_WIN_MOVE_NAME_1 , 3);
 
     //Move Power
-    power = CalcMoveBasePowerAfterModifiers(move, battlerAtk, battlerDef, moveType, updateFlags);
+    power = gBattleMoves[move].power; //I'll change this
     if (gBattleMoves[move].power == 0)
     {
         StringExpandPlaceholders(gStringVar1, gPowerZeroText);
