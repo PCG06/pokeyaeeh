@@ -2313,26 +2313,29 @@ static void ChangeMoveDisplayMode(u32 battler)
     static const u8 gContactText[] =  _("Contact");
     static const u8 gNoContactText[] =  _("No Contact");
 
-    u8 power = 0;
-    u8 accuracy = 0;
-    u16 move = MOVE_NONE;
-    u8 battlerAtk;
-    u8 battlerDef;
-    u8 moveType;
-    bool32 updateFlags;
-
-	struct ChooseMoveStruct *moveInfo = (struct ChooseMoveStruct*)(&gBattleResources->bufferA[battler][4]);
+    u32 power;
+    struct ChooseMoveStruct *moveInfo = (struct ChooseMoveStruct*)(&gBattleResources->bufferA[battler][4]);
+    u32 move = moveInfo->moves[gMoveSelectionCursor[battler]];
+    u32 battlerAtk = battler;
+    u32 battlerDef = BATTLE_OPPOSITE(battlerAtk);
+    u32 moveType = gBattleMoves[move].type;
+    u32 atkAbility = GetBattlerAbility(battlerAtk);
+    u32 defAbility = GetBattlerAbility(battlerDef);
+    u32 holdEffectAtk = GetBattlerHoldEffect(battlerAtk, TRUE);
+    u32 holdEffectDef = GetBattlerHoldEffect(battlerDef, TRUE);
+    u32 accuracy = GetTotalAccuracy(battlerAtk, battlerDef, move, atkAbility, defAbility, holdEffectAtk, holdEffectDef);
+    u32 weather = gBattleWeather;
+    bool32 updateFlags = FALSE;
 
     //Move Name
-    move = moveInfo->moves[gMoveSelectionCursor[battler]];
     StringCopy(gDisplayedStringBattle, gMoveNames[move]);
 
     BattlePutTextOnWindow(gDisplayedStringBattle, B_WIN_MOVE_NAME_1);
     PutWindowTilemap(B_WIN_MOVE_NAME_1 );
-	CopyWindowToVram(B_WIN_MOVE_NAME_1 , 3);
+    CopyWindowToVram(B_WIN_MOVE_NAME_1 , 3);
 
     //Move Power
-    power = gBattleMoves[move].power; //I'll change this
+    power = CalcMoveBasePowerAfterModifiers(move, battlerAtk, battlerDef, moveType, updateFlags, atkAbility, defAbility, holdEffectAtk, weather);
     if (gBattleMoves[move].power == 0)
     {
         StringExpandPlaceholders(gStringVar1, gPowerZeroText);
@@ -2347,7 +2350,6 @@ static void ChangeMoveDisplayMode(u32 battler)
 	CopyWindowToVram(B_WIN_MOVE_NAME_3 , 3);
 
     //Move Accuracy
-    accuracy = gBattleMoves[move].accuracy;
     if (gBattleMoves[move].accuracy == 0)
     {
         StringExpandPlaceholders(gStringVar1, gNoMissText);

@@ -75,7 +75,8 @@ Debug_Script_1::
 	end
 
 Debug_Script_2::
-	end
+   cleartrainerflag TRAINER_NOLEN
+		trainerbattle_single TRAINER_NOLEN, Route125_Text_NolenIntro, Route125_Text_NolenDefeat
 
 Debug_Script_3::
 	end
