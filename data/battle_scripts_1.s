@@ -10372,6 +10372,7 @@ BattleScript_ItemDropped::
 	playse SE_BALL_BOUNCE_1
 	printfromtable gItemDroppedStringIds
 	return
+
 BattleScript_EffectSnow::
 	attackcanceler
 	attackstring
@@ -10381,3 +10382,13 @@ BattleScript_EffectSnow::
 	jumpifhalfword CMP_COMMON_BITS, gBattleWeather, B_WEATHER_STRONG_WINDS, BattleScript_MysteriousAirCurrentBlowsOn
 	setsnow
 	goto BattleScript_MoveWeatherChange
+
+BattleScript_TailstreamActivated::
+	copybyte gBattlerAbility, gBattlerAttacker
+	sethword sABILITY_OVERWRITE, ABILITY_TAILSTREAM
+	showabilitypopup BS_ABILITY_BATTLER
+	printstring STRINGID_TAILSTREAMACTIVATED
+	waitmessage B_WAIT_TIME_LONG
+	sethword sABILITY_OVERWRITE, 0
+	call BattleScript_TryTailwindAbilitiesLoop
+	end3

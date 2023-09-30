@@ -291,6 +291,7 @@ static const u8 sEarthEaterDescription[] = _("Eats ground to heal HP.");
 static const u8 sMyceliumMightDescription[] = _("Status moves never fail.");
 static const u8 sBrutalLegsDescription[] = _("Boosts kicking moves.");
 static const u8 sHardSpinnerDescription[] = _("Boosts spinning moves.");
+static const u8 sTailstreamDescription[] = _("Sets up tailwind.");
 
 #if B_EXPANDED_ABILITY_NAMES == TRUE
 const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
@@ -596,6 +597,7 @@ const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
     [ABILITY_MYCELIUM_MIGHT] = _("Mycelium Might"),
     [ABILITY_BRUTAL_LEGS] = _("Brutal Legs"),
     [ABILITY_HARD_SPINNER] = _("Hard Spinner"),
+    [ABILITY_TAILSTREAM] = _("Tailstream"),
 };
 #else   // 12 characters
 const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
@@ -901,6 +903,7 @@ const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
     [ABILITY_MYCELIUM_MIGHT] = _("MceliumMight"),
     [ABILITY_BRUTAL_LEGS] = _("Brutal Legs"),
     [ABILITY_HARD_SPINNER] = _("Hard Spinner"),
+    [ABILITY_TAILSTREAM] = _("Tailstream"),
 };
 #endif
 
@@ -1207,4 +1210,5 @@ const u8 *const gAbilityDescriptionPointers[ABILITIES_COUNT] =
     [ABILITY_MYCELIUM_MIGHT] = sMyceliumMightDescription,
     [ABILITY_BRUTAL_LEGS] = sBrutalLegsDescription,
     [ABILITY_HARD_SPINNER] = sHardSpinnerDescription,
+    [ABILITY_TAILSTREAM] = sTailstreamDescription,
 };

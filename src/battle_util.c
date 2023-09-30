@@ -4763,6 +4763,18 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                 effect++;
             }
             break;
+        case ABILITY_TAILSTREAM:
+            if (!gSpecialStatuses[battler].switchInAbilityDone &&
+                !(gSideStatuses[GetBattlerSide(battler)] & SIDE_STATUS_TAILWIND))
+            {
+				gBattleScripting.abilityPopupOverwrite = ABILITY_TAILSTREAM;
+				gLastUsedAbility = ABILITY_TAILSTREAM;
+				gSideStatuses[GetBattlerSide(battler)] |= SIDE_STATUS_TAILWIND;
+				gSideTimers[GetBattlerSide(battler)].tailwindTimer = 4;
+				BattleScriptPushCursorAndCallback(BattleScript_TailstreamActivated);
+				effect++;
+			}
+			break;
         }
         break;
     case ABILITYEFFECT_ENDTURN: // 1
