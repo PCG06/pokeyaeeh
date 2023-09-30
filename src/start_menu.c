@@ -1566,17 +1566,18 @@ void UpdateClockDisplay(void)
 	ConvertIntToDecimalStringN(gStringVar2, gLocalTime.minutes, STR_CONV_MODE_LEADING_ZEROS, 2);
     if (gClockMode == TWELVE_HOUR_MODE)
 	    ConvertIntToDecimalStringN(gStringVar1, analogHour, STR_CONV_MODE_LEADING_ZEROS, 2);
-    if (gLocalTime.hours == 12)
-		ConvertIntToDecimalStringN(gStringVar1, 12, STR_CONV_MODE_LEADING_ZEROS, 2);
     if (gLocalTime.hours == 0)
 		ConvertIntToDecimalStringN(gStringVar1, 12, STR_CONV_MODE_LEADING_ZEROS, 2);
+    if (gLocalTime.hours == 12)
+		ConvertIntToDecimalStringN(gStringVar1, 12, STR_CONV_MODE_LEADING_ZEROS, 2);
+        
 
 	if (gLocalTime.seconds % 2)
 	{
         StringExpandPlaceholders(gStringVar4, gText_CurrentTime);
         if (gClockMode == TWELVE_HOUR_MODE)
         {
-            if (gLocalTime.hours >= 13 && gLocalTime.hours <= 24)
+            if (gLocalTime.hours >= 12 && gLocalTime.hours <= 24)
                 StringExpandPlaceholders(gStringVar4, gText_CurrentTimePM); 
             else
                 StringExpandPlaceholders(gStringVar4, gText_CurrentTimeAM);  
@@ -1587,7 +1588,7 @@ void UpdateClockDisplay(void)
         StringExpandPlaceholders(gStringVar4, gText_CurrentTimeOff);
         if (gClockMode == TWELVE_HOUR_MODE)
         {
-            if (gLocalTime.hours >= 13 && gLocalTime.hours <= 24)
+            if (gLocalTime.hours >= 12 && gLocalTime.hours <= 24)
                 StringExpandPlaceholders(gStringVar4, gText_CurrentTimePMOff); 
             else
                 StringExpandPlaceholders(gStringVar4, gText_CurrentTimeAMOff);  
