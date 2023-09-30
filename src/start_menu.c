@@ -1570,7 +1570,6 @@ void UpdateClockDisplay(void)
 		ConvertIntToDecimalStringN(gStringVar1, 12, STR_CONV_MODE_LEADING_ZEROS, 2);
     if (gLocalTime.hours == 12)
 		ConvertIntToDecimalStringN(gStringVar1, 12, STR_CONV_MODE_LEADING_ZEROS, 2);
-        
 
 	if (gLocalTime.seconds % 2)
 	{
