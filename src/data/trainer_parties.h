@@ -1869,8 +1869,17 @@ static const struct TrainerMon sParty_Roland[] = {
 
 static const struct TrainerMon sParty_Nolen[] = {
     {
-    .lvl = 34,
-    .species = SPECIES_TENTACRUEL,
+    .species = SPECIES_JELLICENT,
+    .ability = ABILITY_CURSED_BODY,
+    .gender = TRAINER_MON_FEMALE,
+    .heldItem = ITEM_ASSAULT_VEST,
+    .isShiny = TRUE,
+    .iv = TRAINER_PARTY_IVS(31,31,31,31,31,31),
+    .ev = TRAINER_PARTY_EVS(252, 0, 126, 0, 126, 0),
+    .lvl = 50,
+    .moves = {MOVE_SCALD, MOVE_SHADOW_BALL, MOVE_RECOVER, MOVE_CALM_MIND},
+    .nature = TRAINER_PARTY_NATURE(NATURE_MODEST),
+    .nickname = COMPOUND_STRING("Jelly")
     }
 };
 
@@ -8733,16 +8742,31 @@ static const struct TrainerMon sParty_JohnAndJay1[] = {
 
 static const struct TrainerMon sParty_JohnAndJay2[] = {
     {
-    .iv = TRAINER_PARTY_IVS(25, 25, 25, 25, 25, 25),
-    .lvl = 43,
-    .species = SPECIES_MEDICHAM,
-    .moves = {MOVE_PSYCHIC, MOVE_FIRE_PUNCH, MOVE_PSYCH_UP, MOVE_PROTECT}
+    .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
+    .ev = TRAINER_PARTY_EVS(252, 252, 4, 0, 0, 0),
+    .lvl = 50,
+    .species = SPECIES_RILLABOOM,
+    .ability = ABILITY_GRASSY_SURGE,
+    .nature = TRAINER_PARTY_NATURE(NATURE_ADAMANT),
+    .moves = {MOVE_WOOD_HAMMER, MOVE_GRASSY_GLIDE, MOVE_CLOSE_COMBAT, MOVE_KNOCK_OFF}
     },
     {
-    .iv = TRAINER_PARTY_IVS(25, 25, 25, 25, 25, 25),
-    .lvl = 43,
-    .species = SPECIES_HARIYAMA,
-    .moves = {MOVE_FOCUS_PUNCH, MOVE_ROCK_TOMB, MOVE_REST, MOVE_BELLY_DRUM}
+    .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
+    .ev = TRAINER_PARTY_EVS(0, 252, 126, 130, 0, 0),
+    .lvl = 50,
+    .species = SPECIES_BRELOOM,
+    .ability = ABILITY_TECHNICIAN,
+    .nature = TRAINER_PARTY_NATURE(NATURE_ADAMANT),
+    .moves = {MOVE_GRASSY_GLIDE, MOVE_SPORE, MOVE_MACH_PUNCH, MOVE_BULLET_SEED}
+    },
+    {
+    .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
+    .ev = TRAINER_PARTY_EVS(0, 0, 0, 252, 252, 4),
+    .lvl = 50,
+    .species = SPECIES_EXPLOUD,
+    .ability = ABILITY_SCRAPPY,
+    .nature = TRAINER_PARTY_NATURE(NATURE_MODEST),
+    .moves = {MOVE_TERRAIN_PULSE, MOVE_BOOMBURST, MOVE_FLAMETHROWER, MOVE_HYDRO_PUMP}
     }
 };
 

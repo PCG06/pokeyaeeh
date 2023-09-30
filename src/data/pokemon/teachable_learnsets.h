@@ -420,6 +420,7 @@ static const u16 sCharizardTeachableLearnset[] = {
     MOVE_TAILWIND,
     MOVE_TAKE_DOWN,
     MOVE_TERA_BLAST,
+    MOVE_TERRAIN_PULSE,
     MOVE_THUNDER_PUNCH,
     MOVE_TOXIC,
     MOVE_WEATHER_BALL,

@@ -79,6 +79,8 @@ Debug_Script_2::
 		trainerbattle_single TRAINER_NOLEN, Route125_Text_NolenIntro, Route125_Text_NolenDefeat
 
 Debug_Script_3::
+	cleartrainerflag TRAINER_JOHN_AND_JAY_2
+		trainerbattle_double TRAINER_JOHN_AND_JAY_2, MeteorFalls_1F_2R_Text_JayIntro, MeteorFalls_1F_2R_Text_JayDefeat, MeteorFalls_1F_2R_Text_JayNotEnoughMons, MeteorFalls_1F_2R_EventScript_RegisterJay
 	end
 
 Debug_Script_4::
