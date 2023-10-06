@@ -135,8 +135,8 @@ static const u8 sText_TenDashes2[] = _("----------");
 
 
 #define SCROLLING_MON_X 146
-#define HGSS_DECAPPED FALSE
-#define HGSS_DARK_MODE FALSE
+#define HGSS_DECAPPED TRUE
+#define HGSS_DARK_MODE TRUE
 #define HGSS_HIDE_UNSEEN_EVOLUTION_NAMES FALSE
 
 // For scrolling search parameter
@@ -6581,6 +6581,40 @@ static u8 PrintEvolutionTargetSpeciesAndMethod(u8 taskId, u16 species, u8 depth,
                 CopyItemName(item, gStringVar2);
                 StringExpandPlaceholders(gStringVar4, gText_EVO_ITEM_HOLD );
                 break;
+            case EVO_MOVE_FEMALE:
+                StringCopy(gStringVar2, gMoveNames[gEvolutionTable[species][i].param]);
+                StringExpandPlaceholders(gStringVar4, gText_EVO_MOVE_FEMALE );
+                break;
+            case EVO_MOVE_MALE:
+                StringCopy(gStringVar2, gMoveNames[gEvolutionTable[species][i].param]);
+                StringExpandPlaceholders(gStringVar4, gText_EVO_MOVE_MALE );
+                break;
+            case EVO_ITEM_SPECIFIC_MAP:
+                item = gEvolutionTable[species][i].param;
+                mapHeader = Overworld_GetMapHeaderByGroupAndId(gEvolutionTable[species][i].param >> 8, gEvolutionTable[species][i].param & 0xFF);
+                CopyItemName(item, gStringVar2);
+                GetMapName(gStringVar3, mapHeader->regionMapSectionId, 0);
+                StringExpandPlaceholders(gStringVar4, gText_EVO_ITEM_SPECIFIC_MAP );
+                break;
+            case EVO_LEVEL_SPECIFIC_MAP:
+                ConvertIntToDecimalStringN(gStringVar2, gEvolutionTable[species][i].param, STR_CONV_MODE_LEADING_ZEROS, EVO_SCREEN_LVL_DIGITS); //level
+                mapHeader = Overworld_GetMapHeaderByGroupAndId(gEvolutionTable[species][i].param >> 8, gEvolutionTable[species][i].param & 0xFF);
+                GetMapName(gStringVar3, mapHeader->regionMapSectionId, 0);
+                StringExpandPlaceholders(gStringVar4, gText_EVO_LEVEL_SPECIFIC_MAP );
+                break;
+            case EVO_MOVE_SPECIFIC_MAP:
+                StringCopy(gStringVar2, gMoveNames[gEvolutionTable[species][i].param]);
+                mapHeader = Overworld_GetMapHeaderByGroupAndId(gEvolutionTable[species][i].param >> 8, gEvolutionTable[species][i].param & 0xFF);
+                GetMapName(gStringVar3, mapHeader->regionMapSectionId, 0);
+                StringExpandPlaceholders(gStringVar4, gText_EVO_MOVE_SPECIFIC_MAP );
+                break;
+            case EVO_NIGHT_SPECIFIC_MAP:
+                ConvertIntToDecimalStringN(gStringVar2, gEvolutionTable[species][i].param, STR_CONV_MODE_LEADING_ZEROS, EVO_SCREEN_LVL_DIGITS); //level
+                mapHeader = Overworld_GetMapHeaderByGroupAndId(gEvolutionTable[species][i].param >> 8, gEvolutionTable[species][i].param & 0xFF);
+                GetMapName(gStringVar3, mapHeader->regionMapSectionId, 0);
+                StringExpandPlaceholders(gStringVar4, gText_EVO_NIGHT_SPECIFIC_MAP );
+                break;
+            
         default:
             StringExpandPlaceholders(gStringVar4, gText_EVO_UNKNOWN );
             break;
