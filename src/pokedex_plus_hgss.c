@@ -6234,6 +6234,10 @@ static void HandlePreEvolutionSpeciesPrint(u8 taskId, u16 preSpecies, u16 specie
         StringExpandPlaceholders(gStringVar3, gText_EVO_PreEvo_PE_Mega);
     else
     {
+
+        if (seen || !HGSS_HIDE_UNSEEN_EVOLUTION_NAMES)
+            StringCopy(gStringVar2, gSpeciesNames[preSpecies]); //evolution mon name
+        else
             StringCopy(gStringVar2, gText_ThreeQuestionMarks); //show questionmarks instead of name
 
         StringExpandPlaceholders(gStringVar3, gText_EVO_PreEvo); //evolution mon name
