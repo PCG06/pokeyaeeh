@@ -84,6 +84,8 @@ Debug_Script_3::
 	end
 
 Debug_Script_4::
+	cleartrainerflag TRAINER_JOHN_AND_JAY_3
+		trainerbattle_double TRAINER_JOHN_AND_JAY_3, MeteorFalls_1F_2R_Text_JayIntro, MeteorFalls_1F_2R_Text_JayDefeat, MeteorFalls_1F_2R_Text_JayNotEnoughMons, MeteorFalls_1F_2R_EventScript_RegisterJay
 	end
 
 Debug_Script_5::

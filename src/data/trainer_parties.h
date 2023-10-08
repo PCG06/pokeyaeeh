@@ -8772,16 +8772,25 @@ static const struct TrainerMon sParty_JohnAndJay2[] = {
 
 static const struct TrainerMon sParty_JohnAndJay3[] = {
     {
-    .iv = TRAINER_PARTY_IVS(26, 26, 26, 26, 26, 26),
+    .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
+    .ev = TRAINER_PARTY_EVS(252, 0, 0, 0, 252, 4),
     .lvl = 46,
-    .species = SPECIES_MEDICHAM,
-    .moves = {MOVE_PSYCHIC, MOVE_FIRE_PUNCH, MOVE_PSYCH_UP, MOVE_PROTECT}
+    .species = SPECIES_HONCHKROW,
+    .ability = ABILITY_TAILSTREAM,
+    .gender = TRAINER_MON_FEMALE,
+    .nature = TRAINER_PARTY_NATURE(NATURE_MODEST),
+    .moves = {MOVE_DARK_PULSE, MOVE_HURRICANE, MOVE_KNOCK_OFF, MOVE_PROTECT}
     },
     {
-    .iv = TRAINER_PARTY_IVS(26, 26, 26, 26, 26, 26),
+    .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
+    .ev = TRAINER_PARTY_EVS(0, 252, 62, 126, 0, 62),
     .lvl = 46,
-    .species = SPECIES_HARIYAMA,
-    .moves = {MOVE_FOCUS_PUNCH, MOVE_ROCK_TOMB, MOVE_REST, MOVE_BELLY_DRUM}
+    .species = SPECIES_SHIFTRY,
+    .heldItem = ITEM_FLYING_GEM,
+    .ability = ABILITY_TAILSTREAM,
+    .gender = TRAINER_MON_MALE,
+    .nature = TRAINER_PARTY_NATURE(NATURE_ADAMANT),
+    .moves = {MOVE_LEAF_BLADE, MOVE_KNOCK_OFF, MOVE_ACROBATICS, MOVE_SUCKER_PUNCH}
     }
 };
 
