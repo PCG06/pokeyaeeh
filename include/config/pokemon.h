@@ -24,6 +24,9 @@
 #define P_HIPPO_GENDER_DIFF_ICONS   TRUE        // If TRUE, will give Hippopotas and Hippowdon custom icons for their female forms.
 #define P_SHUCKLE_BERRY_JUICE       TRUE        // In Gen 2, Shuckle had a 1/16 chance of converting Berry that it's holding into Berry Juice. Setting this to TRUE will allow to do this with an Oran Berry, which is the spiritual succesor of the Berry item.
 
+// Pokédex settings
+#define P_DEX_FOUR_DIGITS_AMOUNT    TRUE        // Since Gen 9, National Pokédex numbers are four digits long.
+
 // Other settings
 #define B_PERFECT_IVS               TRUE        // If set to TRUE, the stat calculation makes it as if the Pokémon has perfect IVs.
 #define P_LEGENDARY_PERFECT_IVS     GEN_LATEST  // Since Gen 6, Legendaries, Mythicals and Ultra Beasts found in the wild or given through gifts have at least 3 perfect IVs.
@@ -44,5 +47,6 @@
 #define P_GEN_6_POKEMON             TRUE        // Generation 6 Pokémon (XY, ORAS)
 #define P_GEN_7_POKEMON             TRUE        // Generation 7 Pokémon (SM, USUM, LGPE)
 #define P_GEN_8_POKEMON             TRUE        // Generation 8 Pokémon (SwSh, BDSP, LA)
+#define P_GEN_9_POKEMON             TRUE        // Generation 9 Pokémon (SV)
 
 #endif // GUARD_CONFIG_POKEMON_H
