@@ -26,13 +26,13 @@
   ],
   "object_events": [
     {
-      "graphics_id": "OBJ_EVENT_GFX_WOMAN_1",
-      "x": 14,
-      "y": 10,
+      "graphics_id": "OBJ_EVENT_GFX_YOUNGSTER",
+      "x": 16,
+      "y": 8,
       "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_WALK_RIGHT_AND_LEFT",
-      "movement_range_x": 5,
-      "movement_range_y": 5,
+      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Route101_EventScript_Youngster",
@@ -92,8 +92,8 @@
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_BOY_2",
-      "x": 4,
-      "y": 4,
+      "x": 2,
+      "y": 13,
       "elevation": 3,
       "movement_type": "MOVEMENT_TYPE_WANDER_LEFT_AND_RIGHT",
       "movement_range_x": 1,
@@ -102,76 +102,9 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "Route101_EventScript_Boy",
       "flag": "FLAG_HIDE_ROUTE_101_BOY"
-    },
-    {
-      "graphics_id": "OBJ_EVENT_GFX_MEGA_STONE",
-      "x": 10,
-      "y": 8,
-      "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_ROTATE_CLOCKWISE",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "ITEM_CHARIZARDITE_X",
-      "script": "Common_EventScript_FindItem",
-      "flag": "FLAG_ITEM_MT_PYRE_5F_LAX_INCENSE"
-    },
-    {
-      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
-      "x": 8,
-      "y": 8,
-      "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_NONE",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "ITEM_POKE_BALL",
-      "script": "Common_EventScript_FindItem",
-      "flag": "FLAG_ITEM_ROUTE_127_CARBOS"
-    },
-    {
-      "graphics_id": "OBJ_EVENT_GFX_TMHM_BALL",
-      "x": 9,
-      "y": 8,
-      "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_NONE",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "ITEM_TM01",
-      "script": "Common_EventScript_FindItem",
-      "flag": "FLAG_ITEM_METEOR_FALLS_1F_1R_FULL_HEAL"
-    },
-    {
-      "graphics_id": "OBJ_EVENT_GFX_ANABEL",
-      "x": 10,
-      "y": 10,
-      "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_NONE",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "NULL",
-      "flag": "0"
-    },
-    {
-      "graphics_id": "OBJ_EVENT_GFX_WOMAN_3",
-      "x": 17,
-      "y": 9,
-      "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_WALK_UP_AND_DOWN",
-      "movement_range_x": 5,
-      "movement_range_y": 5,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "Route101_EventScript_LifeIsRoblox",
-      "flag": "0"
     }
   ],
-  "warp_events": [
-
-  ],
+  "warp_events": [],
   "coord_events": [
     {
       "type": "trigger",
@@ -258,8 +191,8 @@
   "bg_events": [
     {
       "type": "sign",
-      "x": 7,
-      "y": 10,
+      "x": 5,
+      "y": 9,
       "elevation": 0,
       "player_facing_dir": "BG_EVENT_PLAYER_FACING_ANY",
       "script": "Route101_EventScript_RouteSign"

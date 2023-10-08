@@ -35,7 +35,6 @@ OldaleTown_EventScript_TownSign::
 
 OldaleTown_EventScript_Girl::
 	msgbox OldaleTown_Text_SavingMyProgress, MSGBOX_NPC
-	setflag FLAG_BADGE03_GET
 	end
 
 OldaleTown_EventScript_MartEmployee::
@@ -76,7 +75,7 @@ OldaleTown_EventScript_GoToMartEast::
 
 OldaleTown_EventScript_ExplainPokemonMart::
 	msgbox OldaleTown_Text_ThisIsAPokemonMart, MSGBOX_DEFAULT
-	giveitem ITEM_POTION, 5
+	giveitem ITEM_POTION
 	goto_if_eq VAR_RESULT, FALSE, OldaleTown_EventScript_BagIsFull
 	msgbox OldaleTown_Text_PotionExplanation, MSGBOX_DEFAULT
 	setflag FLAG_RECEIVED_POTION_OLDALE
@@ -344,72 +343,59 @@ OldaleTown_Movement_ReturnToOriginalPosition:
 	walk_left
 	step_end
 
-OldaleTown_EventScript_Testgivecustommon::
-    lock
-	faceplayer
-    msgbox OldaleTown_Text_SavingMyProgress, MSGBOX_NPC
-    givecustommon SPECIES_CHARIZARD, 55, ITEM_CHARIZARDITE_Y, ITEM_CHERISH_BALL, NATURE_TIMID, 3, 6, 0, 0, 252, 0, 252, 31, 0, 31, 31, 31, 31, MOVE_FIRE_BLAST, MOVE_SOLAR_BEAM, MOVE_AEROBLAST, MOVE_ROOST, TRUE
-    playfanfare MUS_OBTAIN_ITEM
-    msgbox OldaleTown_Text_Got_Charizard, MSGBOX_AUTOCLOSE
-    waitfanfare
-	release
-    end
-
-OldaleTown_Text_Got_Charizard::
-    .string "{PLAYER} got a {COLOR GREEN}Charizard{COLOR DARK_GRAY} as a gift!$"
-
 OldaleTown_Text_SavingMyProgress:
 	.string "I want to take a rest, so I'm saving my\n"
 	.string "progress.$"
 
 OldaleTown_Text_IWorkAtPokemonMart:
 	.string "Hi!\n"
-	.string "I work at a Pokémon Mart.\p"
+	.string "I work at a POKéMON MART.\p"
 	.string "Can I get you to come with me?$"
 
 OldaleTown_Text_ThisIsAPokemonMart:
-	.string "This is a Pokémon Mart.\n"
+	.string "This is a POKéMON MART.\n"
 	.string "Just look for our blue roof.\p"
 	.string "We sell a variety of goods including\n"
-	.string "Poké Balls for catching Pokémon.\p"
+	.string "POKé BALLS for catching POKéMON.\p"
 	.string "Here, I'd like you to have this as\n"
 	.string "a promotional item.$"
 
 OldaleTown_Text_PotionExplanation:
-	.string "A Potion can be used anytime, so it's\n"
-	.string "even more useful than a Pokémon Center\l"
+	.string "A POTION can be used anytime, so it's\n"
+	.string "even more useful than a POKéMON CENTER\l"
 	.string "in certain situations.$"
 
 OldaleTown_Text_WaitDontComeInHere:
 	.string "Aaaaah! Wait!\n"
 	.string "Please don't come in here.\p"
 	.string "I just discovered the footprints of\n"
-	.string "a rare Pokémon!\p"
+	.string "a rare POKéMON!\p"
 	.string "Wait until I finish sketching\n"
 	.string "them, okay?$"
 
 OldaleTown_Text_DiscoveredFootprints:
 	.string "I just discovered the footprints of\n"
-	.string "a rare Pokémon!\p"
+	.string "a rare POKéMON!\p"
 	.string "Wait until I finish sketching\n"
 	.string "them, okay?$"
 
 OldaleTown_Text_FinishedSketchingFootprints:
 	.string "I finished sketching the footprints of\n"
-	.string "a rare Pokémon.\p"
+	.string "a rare POKéMON.\p"
 	.string "But it turns out they were only my\n"
 	.string "own footprints…$"
 
 OldaleTown_Text_MayLetsGoBack:
-	.string "May: {PLAYER}{KUN}!\n"
+	.string "MAY: {PLAYER}{KUN}!\n"
 	.string "Over here!\l"
 	.string "Let's hurry home!$"
 
 OldaleTown_Text_BrendanLetsGoBack:
-	.string "Brendan: I'm heading back to my dad's\n"
-	.string "Lab now.\l"
+	.string "BRENDAN: I'm heading back to my dad's\n"
+	.string "LAB now.\l"
 	.string "{PLAYER}, you should hustle back, too.$"
 
 OldaleTown_Text_TownSign:
-	.string "Oldale Town\n"
+	.string "OLDALE TOWN\n"
 	.string "“Where things start off scarce.”$"
+

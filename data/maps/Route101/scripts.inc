@@ -266,68 +266,37 @@ Route101_Text_HelpMe:
 Route101_Text_PleaseHelp:
 	.string "Hello! You over there!\n"
 	.string "Please! Help!\p"
-	.string "In my Bag!\n"
-	.string "There's a Poké Ball!$"
+	.string "In my BAG!\n"
+	.string "There's a POKé BALL!$"
 
 Route101_Text_DontLeaveMe:
 	.string "Wh-Where are you going?!\n"
 	.string "Don't leave me like this!$"
 
 Route101_Text_YouSavedMe:
-	.string "Prof. Birch: Whew…\p"
+	.string "PROF. BIRCH: Whew…\p"
 	.string "I was in the tall grass studying wild\n"
-	.string "Pokémon when I was jumped.\p"
+	.string "POKéMON when I was jumped.\p"
 	.string "You saved me.\n"
 	.string "Thanks a lot!\p"
 	.string "Oh?\p"
 	.string "Hi, you're {PLAYER}{KUN}!\p"
 	.string "This is not the place to chat, so come\n"
-	.string "by my Pokémon Lab later, okay?$"
+	.string "by my POKéMON LAB later, okay?$"
 
 Route101_Text_TakeTiredPokemonToPokeCenter:
-	.string "If Pokémon get tired, take them to\n"
-	.string "a Pokémon Center.\p"
-	.string "There's a Pokémon Center in Oldale\n"
-	.string "Town right close by.$"
+	.string "If POKéMON get tired, take them to\n"
+	.string "a POKéMON CENTER.\p"
+	.string "There's a POKéMON CENTER in OLDALE\n"
+	.string "TOWN right close by.$"
 
 Route101_Text_WildPokemonInTallGrass:
-	.string "Wild Pokémon will jump out at you in\n"
+	.string "Wild POKéMON will jump out at you in\n"
 	.string "tall grass.\p"
-	.string "If you want to catch Pokémon, you have\n"
+	.string "If you want to catch POKéMON, you have\n"
 	.string "to go into the tall grass and search.$"
 
 Route101_Text_RouteSign:
-	.string "Route 101\n"
-	.string "{UP_ARROW} Oldale Town$"
+	.string "ROUTE 101\n"
+	.string "{UP_ARROW} OLDALE TOWN$"
 
-Route101_EventScript_LifeIsRoblox::
-	msgbox Route101_Text_LifeIsRoblox, MSGBOX_NPC
-	end
-
-Route101_Text_LifeIsRoblox:
-	.string "Life is Roblox.$"
-
-/*  Route101_EventScript_DoWonderTradeScript::
-    lockall
-	faceplayer
-	msgbox Route101_Text_DoWonderTrade_Start, MSGBOX_YESNO
-	compare VAR_RESULT, NO
-	goto_if_eq Route101_EventScript_DoWonderTrade_VisitAgain
-	msgbox Route101_Text_DoWonderTrade_SelectMon, MSGBOX_DEFAULT
-	goto EventScript_DoWonderTrade
-	releaseall
-	end
-
-Route101_EventScript_DoWonderTrade_VisitAgain::
-    msgbox Route101_Text_DoWonderTrade_VistAgain, MSGBOX_DEFAULT
-	releaseall
-	end
-
-Route101_Text_DoWonderTrade_Start:
-    .string "Would you like to start a Wonder Trade?$"
-
-Route101_Text_DoWonderTrade_VistAgain:
-    .string "Please visit again!$"
-
-Route101_Text_DoWonderTrade_SelectMon:
-    .string "Please select a Pokemon.$" */
