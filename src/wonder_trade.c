@@ -808,13 +808,13 @@ u16 determineEvolution(struct Pokemon *mon)
             }
             else if (species == SPECIES_TOXEL && level >= 30)
             {
-                if (GetNature(mon) == NATURE_HARDY || GetNature(mon) == NATURE_BRAVE
-                 || GetNature(mon) == NATURE_ADAMANT || GetNature(mon) == NATURE_NAUGHTY
-                 || GetNature(mon) == NATURE_DOCILE || GetNature(mon) == NATURE_IMPISH
-                 || GetNature(mon) == NATURE_LAX || GetNature(mon) == NATURE_HASTY
-                 || GetNature(mon) == NATURE_JOLLY || GetNature(mon) == NATURE_NAIVE
-                 || GetNature(mon) == NATURE_RASH || GetNature(mon) == NATURE_SASSY
-                 || GetNature(mon) == NATURE_QUIRKY)
+                if (GetNature(mon, FALSE) == NATURE_HARDY || GetNature(mon, FALSE) == NATURE_BRAVE
+                 || GetNature(mon, FALSE) == NATURE_ADAMANT || GetNature(mon, FALSE) == NATURE_NAUGHTY
+                 || GetNature(mon, FALSE) == NATURE_DOCILE || GetNature(mon, FALSE) == NATURE_IMPISH
+                 || GetNature(mon, FALSE) == NATURE_LAX || GetNature(mon, FALSE) == NATURE_HASTY
+                 || GetNature(mon, FALSE) == NATURE_JOLLY || GetNature(mon, FALSE) == NATURE_NAIVE
+                 || GetNature(mon, FALSE) == NATURE_RASH || GetNature(mon, FALSE) == NATURE_SASSY
+                 || GetNature(mon, FALSE) == NATURE_QUIRKY)
                     targetSpecies = SPECIES_TOXTRICITY;
                 else
                     targetSpecies = SPECIES_TOXTRICITY_LOW_KEY;

@@ -100,5 +100,6 @@ void MoveDeleterChooseMoveToForget(void);
 void ItemUseCB_PokeBall(u8 taskId, TaskFunc task);
 void ItemUseCB_HiddenPowerCrystals(u8 taskId, TaskFunc task);
 u16 GetTMHMMoves(u16 position);
+void ItemUseCB_Mints(u8 taskId, TaskFunc task);
 
 #endif // GUARD_PARTY_MENU_H

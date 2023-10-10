@@ -173,6 +173,7 @@ static EWRAM_DATA struct PokemonSummaryScreenData
         bool8 fatefulEncounter;
         u8 OTName[17];
         u32 OTID;
+        u8 hiddenNature;
         u8 sheen;
         u8 cool;
         u8 beauty;
@@ -526,6 +527,7 @@ static void (*const sTextPrinterFunctions[])(void) =
 };
 
 static const u8 sMemoNatureTextColor[] = _("{COLOR 5}{SHADOW 6}");
+static const u8 sMemoHiddenNatureTextColor[] = _("{COLOR RED}{SHADOW DARK_GRAY}");
 static const u8 sMemoMiscTextColor[] = _("{COLOR 7}{SHADOW 8}");
 
 #define TAG_MOVE_SELECTOR   30000
@@ -1545,7 +1547,8 @@ static bool8 ExtractMonDataToSummaryStruct(struct Pokemon *mon)
     case 2:
         if (sMonSummaryScreen->monList.mons == gPlayerParty || sMonSummaryScreen->mode == SUMMARY_MODE_BOX || sMonSummaryScreen->handleDeoxys == TRUE)
         {
-            sum->nature = GetNature(mon);
+            sum->nature = GetNature(mon, FALSE);
+            sum->hiddenNature = GetNature(mon, TRUE);
             sum->currentHP = GetMonData(mon, MON_DATA_HP);
             sum->maxHP = GetMonData(mon, MON_DATA_MAX_HP);
             sum->atk = GetMonData(mon, MON_DATA_ATK);
@@ -1556,7 +1559,8 @@ static bool8 ExtractMonDataToSummaryStruct(struct Pokemon *mon)
         }
         else
         {
-            sum->nature = GetNature(mon);
+            sum->nature = GetNature(mon, FALSE);
+            sum->hiddenNature = GetNature(mon, TRUE);
             sum->currentHP = GetMonData(mon, MON_DATA_HP);
             sum->maxHP = GetMonData(mon, MON_DATA_MAX_HP);
             sum->atk = GetMonData(mon, MON_DATA_ATK2);
@@ -2884,6 +2888,8 @@ static void BufferMonTrainerMemo(void)
 
     DynamicPlaceholderTextUtil_Reset();
     DynamicPlaceholderTextUtil_SetPlaceholderPtr(0, sMemoNatureTextColor);
+    if (sum->hiddenNature && sum->hiddenNature != GetNature(mon, FALSE))
+        DynamicPlaceholderTextUtil_SetPlaceholderPtr(6, sMemoHiddenNatureTextColor);
     DynamicPlaceholderTextUtil_SetPlaceholderPtr(1, sMemoMiscTextColor);
     BufferNatureString();
     BufferCharacteristicString();
@@ -3005,7 +3011,14 @@ static void BufferMonTrainerMemo(void)
 static void BufferNatureString(void)
 {
     struct PokemonSummaryScreenData *sumStruct = sMonSummaryScreen;
-    DynamicPlaceholderTextUtil_SetPlaceholderPtr(2, gNatureNamePointers[sumStruct->summary.nature]);
+    struct PokeSummary *sum = &sMonSummaryScreen->summary;
+    struct Pokemon *mon = &sMonSummaryScreen->currentMon;
+
+    if (sum->hiddenNature)
+        DynamicPlaceholderTextUtil_SetPlaceholderPtr(2, gNatureNamePointers[sum->hiddenNature]);
+    else
+        DynamicPlaceholderTextUtil_SetPlaceholderPtr(2, gNatureNamePointers[sumStruct->summary.nature]);
+    DynamicPlaceholderTextUtil_SetPlaceholderPtr(5, gText_EmptyString5);
 }
 
 static void BufferCharacteristicString(void)
@@ -3238,7 +3251,12 @@ static void PrintSkillsPage(void)
     u16 *dst;
     struct Pokemon *mon = &sMonSummaryScreen->currentMon;
     struct PokeSummary *summary = &sMonSummaryScreen->summary;
-    const s8 *natureMod = gNatureStatTable[sMonSummaryScreen->summary.nature];
+    const s8 *natureMod;
+    
+    if (summary->hiddenNature)
+        natureMod = gNatureStatTable[sMonSummaryScreen->summary.hiddenNature];
+    else
+        natureMod = gNatureStatTable[sMonSummaryScreen->summary.nature];
 
     FillWindowPixelBuffer(PSS_LABEL_PANE_RIGHT, PIXEL_FILL(0));
 

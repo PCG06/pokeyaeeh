@@ -332,7 +332,7 @@ static void EvIvPrintText(struct Pokemon *mon)
 {
     u8 temp     = 0;
     u16 species = GetMonData(mon, MON_DATA_SPECIES, NULL);
-    u8 nature   = GetNature(mon);
+    u8 nature   = GetNature(mon, FALSE);
     u8 isEgg    = GetMonData(mon, MON_DATA_IS_EGG, NULL);
 
     FillWindowPixelBuffer(0, 0);

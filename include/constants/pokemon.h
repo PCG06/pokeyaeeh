@@ -71,6 +71,9 @@
 #define NATURE_CAREFUL  23
 #define NATURE_QUIRKY   24
 #define NUM_NATURES     25
+// Hidden (Mint) Natures. 0-25.
+// No hidden nature is represented with 26 to preserve space.
+#define HIDDEN_NATURE_NONE 26
 
 // Pokemon Stats
 #define STAT_HP      0
