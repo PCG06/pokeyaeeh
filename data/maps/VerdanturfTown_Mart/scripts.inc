@@ -6,25 +6,8 @@ VerdanturfTown_Mart_EventScript_Clerk::
 	faceplayer
 	message gText_HowMayIServeYou
 	waitmessage
-	pokemart VerdanturfTown_Mart_Pokemart
+	pokemart 0
 	msgbox gText_PleaseComeAgain, MSGBOX_DEFAULT
-	release
-	end
-
-	.align 2
-VerdanturfTown_Mart_Pokemart:
-	.2byte ITEM_GREAT_BALL
-	.2byte ITEM_NEST_BALL
-	.2byte ITEM_SUPER_POTION
-	.2byte ITEM_ANTIDOTE
-	.2byte ITEM_PARALYZE_HEAL
-	.2byte ITEM_AWAKENING
-	.2byte ITEM_BURN_HEAL
-	.2byte ITEM_ICE_HEAL
-	.2byte ITEM_REPEL
-	.2byte ITEM_X_SP_ATK
-	.2byte ITEM_FLUFFY_TAIL
-	.2byte ITEM_NONE
 	release
 	end
 
@@ -41,20 +24,20 @@ VerdanturfTown_Mart_EventScript_Lass::
 	end
 
 VerdanturfTown_Mart_Text_XSpecialIsCrucial:
-	.string "For any POKéMON match, X SPECIAL\n"
+	.string "For any Pokémon match, X Special\n"
 	.string "is crucial.\p"
 	.string "It jacks up the power of some moves\n"
 	.string "even though it's only for one battle.$"
 
 VerdanturfTown_Mart_Text_NoStrategyGuidesForBattleTent:
 	.string "They don't seem to sell any winning\n"
-	.string "strategy guides for the BATTLE TENT…\p"
+	.string "strategy guides for the Battle Tent…\p"
 	.string "It seems one must rely on one's\n"
 	.string "own wits after all…$"
 
 VerdanturfTown_Mart_Text_NestBallOnWeakenedPokemon:
-	.string "The NEST BALL works better on\n"
-	.string "weakened POKéMON.\p"
-	.string "VERDANTURF is the only place you can\n"
+	.string "The Nest Ball works better on\n"
+	.string "weakened Pokémon.\p"
+	.string "Verdanturf is the only place you can\n"
 	.string "buy it.$"
 
