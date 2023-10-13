@@ -34,6 +34,7 @@
 #undef Q_4_12
 #define Q_4_12(n) (s32)((n) * 4096)
 
+static EWRAM_DATA struct AILogLine sAILogLines[MAX_BATTLERS_COUNT][MAX_MON_MOVES][MAX_AI_LOG_LINES] = {0};
 EWRAM_DATA struct BattleTestRunnerState *gBattleTestRunnerState = NULL;
 
 static void CB2_BattleTest_NextParameter(void);
@@ -215,7 +216,7 @@ static void PrintTestName(void)
 // modifiers.
 static void SetImplicitSpeeds(void)
 {
-    s32 i, j;
+    s32 i;
     u32 speed = 12;
     u32 hasSpeeds = 0;
     u32 allSpeeds = ((1 << DATA.playerPartySize) - 1) | (((1 << DATA.opponentPartySize) - 1) << 6);
@@ -538,6 +539,7 @@ const void *RandomElementArray(enum RandomTag tag, const void *array, size_t siz
         STATE->trialRatio = Q_4_12(1) / count;
         return (const u8 *)array + size * STATE->runTrial;
     }
+    return (const u8 *)array + size * index;
 }
 
 static s32 TryAbilityPopUp(s32 i, s32 n, u32 battlerId, u32 ability)
@@ -698,10 +700,10 @@ static s32 TryHP(s32 i, s32 n, u32 battlerId, u32 oldHP, u32 newHP)
                 switch (event->type)
                 {
                 case HP_EVENT_NEW_HP:
-                    *(u16 *)event->address = newHP;
+                    *(u16 *)(u32)(event->address) = newHP;
                     break;
                 case HP_EVENT_DELTA_HP:
-                    *(s16 *)event->address = oldHP - newHP;
+                    *(s16 *)(u32)(event->address) = oldHP - newHP;
                     break;
                 }
                 return i;
@@ -787,7 +789,7 @@ void TestRunner_Battle_CheckChosenMove(u32 battlerId, u32 moveId, u32 target)
 
     if (!expectedAction->pass)
     {
-        u32 i, expectedMoveId, countExpected;
+        u32 i, expectedMoveId = 0, countExpected;
         bool32 movePasses = FALSE;
 
         if (expectedAction->type != B_ACTION_USE_MOVE)
@@ -937,7 +939,7 @@ static void PrintAiMoveLog(u32 battlerId, u32 moveSlot, u32 moveId, s32 totalSco
     MgbaPrintf_("Score Log for move %S:\n", gMoveNames[moveId]);
     for (i = 0; i < MAX_AI_LOG_LINES; i++)
     {
-        struct AILogLine *log = &DATA.aiLogLines[battlerId][moveSlot][i];
+        struct AILogLine *log = &sAILogLines[battlerId][moveSlot][i];
         if (log->file)
         {
             if (log->set)
@@ -973,7 +975,7 @@ static void ClearAiLog(u32 battlerId)
     u32 i, j;
     for (i = 0; i < MAX_MON_MOVES; i++)
     {
-        struct AILogLine *logs = DATA.aiLogLines[battlerId][i];
+        struct AILogLine *logs = sAILogLines[battlerId][i];
         for (j = 0; j < MAX_AI_LOG_LINES; j++)
             memset(&logs[j], 0, sizeof(struct AILogLine));
     }
@@ -1074,10 +1076,10 @@ static s32 TryExp(s32 i, s32 n, u32 battlerId, u32 oldExp, u32 newExp)
                 switch (event->type)
                 {
                 case EXP_EVENT_NEW_EXP:
-                    *(u32 *)event->address = newExp;
+                    *(u32 *)(u32)(event->address) = newExp;
                     break;
                 case EXP_EVENT_DELTA_EXP:
-                    *(s32 *)event->address = oldExp - newExp;
+                    *(s32 *)(u32)(event->address) = oldExp - newExp;
                     break;
                 }
                 return i;
@@ -1525,7 +1527,6 @@ static const u16 sNaturePersonalities[NUM_NATURES] =
 
 static u32 GenerateNature(u32 nature, u32 offset)
 {
-    int i;
     if (offset <= nature)
         nature -= offset;
     else
@@ -1990,7 +1991,6 @@ void MoveGetIdAndSlot(s32 battlerId, struct MoveContext *ctx, u32 *moveId, u32 *
 
 void Move(u32 sourceLine, struct BattlePokemon *battler, struct MoveContext ctx)
 {
-    s32 i;
     s32 battlerId = battler - gBattleMons;
     u32 moveId, moveSlot;
     s32 target;
@@ -2092,7 +2092,6 @@ void ExpectSendOut(u32 sourceLine, struct BattlePokemon *battler, u32 partyIndex
     }
     if (!(DATA.actionBattlers & (1 << battlerId)))
     {
-        const struct BattleTest *test = GetBattleTest();
         if (IsAITest() && (battlerId & BIT_SIDE) == B_SIDE_OPPONENT) // If Move was not specified, allow any move used.
             SetAiActionToPass(sourceLine, battlerId);
         else
@@ -2547,11 +2546,11 @@ u32 TestRunner_Battle_GetForcedAbility(u32 side, u32 partyIndex)
 // to improve performance.
 struct AILogLine *GetLogLine(u32 battlerId, u32 moveIndex)
 {
-    s32 i, j;
+    s32 i;
 
     for (i = 0; i < MAX_AI_LOG_LINES; i++)
     {
-        struct AILogLine *log = &DATA.aiLogLines[battlerId][moveIndex][i];
+        struct AILogLine *log = &sAILogLines[battlerId][moveIndex][i];
         if (log->file == NULL)
         {
             return log;
@@ -2559,11 +2558,11 @@ struct AILogLine *GetLogLine(u32 battlerId, u32 moveIndex)
     }
 
     Test_ExitWithResult(TEST_RESULT_ERROR, "Too many AI log lines");
+    return NULL;
 }
 
 void TestRunner_Battle_AILogScore(const char *file, u32 line, u32 battlerId, u32 moveIndex, s32 score, bool32 setScore)
 {
-    s32 i;
     struct AILogLine *log;
 
     if (!DATA.logAI) return;
