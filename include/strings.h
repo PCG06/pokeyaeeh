@@ -3343,6 +3343,17 @@ extern const u8 gText_ClockOption2[];
 extern const u8 gText_SmallDot[];
 extern const u8 gText_LargeDot[];
 extern const u8 gText_PageNav[];
+
 extern const u8 gText_BasePointsResetToZero[];
+
+// Region names
+extern const u8 gText_Kanto[];
+extern const u8 gText_Johto[];
+extern const u8 gText_Sinnoh[];
+extern const u8 gText_Unova[];
+extern const u8 gText_Kalos[];
+extern const u8 gText_Alola[];
+extern const u8 gText_Galar[];
+extern const u8 gText_Paldea[];
 
 #endif // GUARD_STRINGS_H

@@ -157,6 +157,8 @@ LittlerootTown_BrendansHouse_1F_EventScript_MeetRival::
 	call_if_eq VAR_0x8008, 1, LittlerootTown_BrendansHouse_1F_EventScript_BrendanApproachPlayer1
 	call_if_eq VAR_0x8008, 2, LittlerootTown_BrendansHouse_1F_EventScript_BrendanApproachPlayer2
 	msgbox RivalsHouse_1F_Text_BrendanWhoAreYou, MSGBOX_DEFAULT
+	call LittlerootTown_BrendansHouse_1F_EventScript_ChooseStarterSet
+	msgbox RivalsHouse_1F_Text_BrendanSomeOtherTime, MSGBOX_DEFAULT
 	closemessage
 	call_if_eq VAR_0x8008, 0, LittlerootTown_BrendansHouse_1F_EventScript_BrendanGoUpstairs0
 	call_if_eq VAR_0x8008, 1, LittlerootTown_BrendansHouse_1F_EventScript_BrendanGoUpstairs1
@@ -286,6 +288,89 @@ LittlerootTown_BrendansHouse_1F_Movement_BrendanGoUpstairs2:
 	walk_up
 	walk_up
 	step_end
+
+LittlerootTown_BrendansHouse_1F_EventScript_ChooseStarterSet::
+	setvar VAR_0x8004, SCROLL_MULTI_REGION_NAMES
+	special ShowScrollableMultichoice
+	waitstate
+	switch VAR_RESULT
+	case 0, LittlerootTown_BrendansHouse_1F_EventScript_Kanto
+	case 1, LittlerootTown_BrendansHouse_1F_EventScript_Johto
+	case 2, LittlerootTown_BrendansHouse_1F_EventScript_Hoenn
+	case 3, LittlerootTown_BrendansHouse_1F_EventScript_Sinnoh
+	case 4, LittlerootTown_BrendansHouse_1F_EventScript_Unova
+	case 5, LittlerootTown_BrendansHouse_1F_EventScript_Kalos
+	case 6, LittlerootTown_BrendansHouse_1F_EventScript_Alola
+	case 7, LittlerootTown_BrendansHouse_1F_EventScript_Galar
+	case 8, LittlerootTown_MaysHouse_1F_EventScript_Paldea
+	goto LittlerootTown_BrendansHouse_1F_EventScript_Hoenn
+	end
+
+LittlerootTown_BrendansHouse_1F_EventScript_Kanto:
+	msgbox RivalsHouse_1F_Text_SureAboutRegion, MSGBOX_YESNO
+	compare VAR_RESULT, NO
+	goto_if_eq LittlerootTown_BrendansHouse_1F_EventScript_ChooseStarterSet
+	setvar VAR_STARTER_GEN, 1
+	bufferstring 1, StarterRegionStringKanto
+	return
+LittlerootTown_BrendansHouse_1F_EventScript_Johto:
+	msgbox RivalsHouse_1F_Text_SureAboutRegion, MSGBOX_YESNO
+	compare VAR_RESULT, NO
+	goto_if_eq LittlerootTown_BrendansHouse_1F_EventScript_ChooseStarterSet
+	setvar VAR_STARTER_GEN, 2
+	bufferstring 1, StarterRegionStringJohto
+	return
+LittlerootTown_BrendansHouse_1F_EventScript_Hoenn:
+	msgbox RivalsHouse_1F_Text_SureAboutRegion, MSGBOX_YESNO
+	compare VAR_RESULT, NO
+	goto_if_eq LittlerootTown_BrendansHouse_1F_EventScript_ChooseStarterSet
+	setvar VAR_STARTER_GEN, 3
+	bufferstring 1, StarterRegionStringHoenn
+	return
+LittlerootTown_BrendansHouse_1F_EventScript_Sinnoh:
+	msgbox RivalsHouse_1F_Text_SureAboutRegion, MSGBOX_YESNO
+	compare VAR_RESULT, NO
+	goto_if_eq LittlerootTown_BrendansHouse_1F_EventScript_ChooseStarterSet
+	setvar VAR_STARTER_GEN, 4
+	bufferstring 1, StarterRegionStringSinnoh
+	return
+LittlerootTown_BrendansHouse_1F_EventScript_Unova:
+	msgbox RivalsHouse_1F_Text_SureAboutRegion, MSGBOX_YESNO
+	compare VAR_RESULT, NO
+	goto_if_eq LittlerootTown_BrendansHouse_1F_EventScript_ChooseStarterSet
+	setvar VAR_STARTER_GEN, 5
+	bufferstring 1, StarterRegionStringUnova
+	return
+LittlerootTown_BrendansHouse_1F_EventScript_Kalos:
+	msgbox RivalsHouse_1F_Text_SureAboutRegion, MSGBOX_YESNO
+	compare VAR_RESULT, NO
+	goto_if_eq LittlerootTown_BrendansHouse_1F_EventScript_ChooseStarterSet
+	setvar VAR_STARTER_GEN, 6
+	bufferstring 1, StarterRegionStringKalos
+	return
+LittlerootTown_BrendansHouse_1F_EventScript_Alola:
+	msgbox RivalsHouse_1F_Text_SureAboutRegion, MSGBOX_YESNO
+	compare VAR_RESULT, NO
+	goto_if_eq LittlerootTown_BrendansHouse_1F_EventScript_ChooseStarterSet
+	setvar VAR_STARTER_GEN, 7
+	bufferstring 1, StarterRegionStringAlola
+	return
+
+LittlerootTown_BrendansHouse_1F_EventScript_Galar:
+	msgbox RivalsHouse_1F_Text_SureAboutRegion, MSGBOX_YESNO
+	compare VAR_RESULT, NO
+	goto_if_eq LittlerootTown_BrendansHouse_1F_EventScript_ChooseStarterSet
+	setvar VAR_STARTER_GEN, 8
+	bufferstring 1, StarterRegionStringGalar
+	return
+
+LittlerootTown_BrendansHouse_1F_EventScript_Paldea:
+	msgbox RivalsHouse_1F_Text_SureAboutRegion, MSGBOX_YESNO
+	compare VAR_RESULT, NO
+	goto_if_eq LittlerootTown_BrendansHouse_1F_EventScript_ChooseStarterSet
+	setvar VAR_STARTER_GEN, 9
+	bufferstring 1, StarterRegionStringPaldea
+	return
 
 PlayersHouse_1F_Text_IsntItNiceInHere:
 	.string "Mom: See, {PLAYER}?\n"

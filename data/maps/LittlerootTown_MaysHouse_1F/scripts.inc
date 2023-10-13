@@ -190,6 +190,8 @@ LittlerootTown_MaysHouse_1F_EventScript_MeetRival::
 	call_if_eq VAR_0x8008, 1, LittlerootTown_MaysHouse_1F_EventScript_MayApproachPlayer1
 	call_if_eq VAR_0x8008, 2, LittlerootTown_MaysHouse_1F_EventScript_MayApproachPlayer2
 	msgbox RivalsHouse_1F_Text_MayWhoAreYou, MSGBOX_DEFAULT
+	call LittlerootTown_MaysHouse_1F_EventScript_ChooseStarterSet
+	msgbox RivalsHouse_1F_Text_MayCatchYouLater, MSGBOX_DEFAULT
 	closemessage
 	call_if_eq VAR_0x8008, 0, LittlerootTown_MaysHouse_1F_EventScript_MayGoUpstairs0
 	call_if_eq VAR_0x8008, 1, LittlerootTown_MaysHouse_1F_EventScript_MayGoUpstairs1
@@ -320,6 +322,89 @@ LittlerootTown_MaysHouse_1F_Movement_MayGoUpstairs2:
 	walk_up
 	step_end
 
+LittlerootTown_MaysHouse_1F_EventScript_ChooseStarterSet::
+	setvar VAR_0x8004, SCROLL_MULTI_REGION_NAMES
+	special ShowScrollableMultichoice
+	waitstate
+	switch VAR_RESULT
+	case 0, LittlerootTown_MaysHouse_1F_EventScript_Kanto
+	case 1, LittlerootTown_MaysHouse_1F_EventScript_Johto
+	case 2, LittlerootTown_MaysHouse_1F_EventScript_Hoenn
+	case 3, LittlerootTown_MaysHouse_1F_EventScript_Sinnoh
+	case 4, LittlerootTown_MaysHouse_1F_EventScript_Unova
+	case 5, LittlerootTown_MaysHouse_1F_EventScript_Kalos
+	case 6, LittlerootTown_MaysHouse_1F_EventScript_Alola
+	case 7, LittlerootTown_MaysHouse_1F_EventScript_Galar
+	case 8, LittlerootTown_MaysHouse_1F_EventScript_Paldea
+	goto LittlerootTown_MaysHouse_1F_EventScript_Hoenn
+	end
+
+LittlerootTown_MaysHouse_1F_EventScript_Kanto:
+	msgbox RivalsHouse_1F_Text_SureAboutRegion, MSGBOX_YESNO
+	compare VAR_RESULT, NO
+	goto_if_eq LittlerootTown_MaysHouse_1F_EventScript_ChooseStarterSet
+	setvar VAR_STARTER_GEN, 1
+	bufferstring 1, StarterRegionStringKanto
+	return
+LittlerootTown_MaysHouse_1F_EventScript_Johto:
+	msgbox RivalsHouse_1F_Text_SureAboutRegion, MSGBOX_YESNO
+	compare VAR_RESULT, NO
+	goto_if_eq LittlerootTown_MaysHouse_1F_EventScript_ChooseStarterSet
+	setvar VAR_STARTER_GEN, 2
+	bufferstring 1, StarterRegionStringJohto
+	return
+LittlerootTown_MaysHouse_1F_EventScript_Hoenn:
+	msgbox RivalsHouse_1F_Text_SureAboutRegion, MSGBOX_YESNO
+	compare VAR_RESULT, NO
+	goto_if_eq LittlerootTown_MaysHouse_1F_EventScript_ChooseStarterSet
+	setvar VAR_STARTER_GEN, 3
+	bufferstring 1, StarterRegionStringHoenn
+	return
+LittlerootTown_MaysHouse_1F_EventScript_Sinnoh:
+	msgbox RivalsHouse_1F_Text_SureAboutRegion, MSGBOX_YESNO
+	compare VAR_RESULT, NO
+	goto_if_eq LittlerootTown_MaysHouse_1F_EventScript_ChooseStarterSet
+	setvar VAR_STARTER_GEN, 4
+	bufferstring 1, StarterRegionStringSinnoh
+	return
+LittlerootTown_MaysHouse_1F_EventScript_Unova:
+	msgbox RivalsHouse_1F_Text_SureAboutRegion, MSGBOX_YESNO
+	compare VAR_RESULT, NO
+	goto_if_eq LittlerootTown_MaysHouse_1F_EventScript_ChooseStarterSet
+	setvar VAR_STARTER_GEN, 5
+	bufferstring 1, StarterRegionStringUnova
+	return
+LittlerootTown_MaysHouse_1F_EventScript_Kalos:
+	msgbox RivalsHouse_1F_Text_SureAboutRegion, MSGBOX_YESNO
+	compare VAR_RESULT, NO
+	goto_if_eq LittlerootTown_MaysHouse_1F_EventScript_ChooseStarterSet
+	setvar VAR_STARTER_GEN, 6
+	bufferstring 1, StarterRegionStringKalos
+	return
+LittlerootTown_MaysHouse_1F_EventScript_Alola:
+	msgbox RivalsHouse_1F_Text_SureAboutRegion, MSGBOX_YESNO
+	compare VAR_RESULT, NO
+	goto_if_eq LittlerootTown_MaysHouse_1F_EventScript_ChooseStarterSet
+	setvar VAR_STARTER_GEN, 7
+	bufferstring 1, StarterRegionStringAlola
+	return
+
+LittlerootTown_MaysHouse_1F_EventScript_Galar:
+	msgbox RivalsHouse_1F_Text_SureAboutRegion, MSGBOX_YESNO
+	compare VAR_RESULT, NO
+	goto_if_eq LittlerootTown_MaysHouse_1F_EventScript_ChooseStarterSet
+	setvar VAR_STARTER_GEN, 8
+	bufferstring 1, StarterRegionStringGalar
+	return
+
+LittlerootTown_MaysHouse_1F_EventScript_Paldea:
+	msgbox RivalsHouse_1F_Text_SureAboutRegion, MSGBOX_YESNO
+	compare VAR_RESULT, NO
+	goto_if_eq LittlerootTown_MaysHouse_1F_EventScript_ChooseStarterSet
+	setvar VAR_STARTER_GEN, 9
+	bufferstring 1, StarterRegionStringPaldea
+	return
+
 RivalsHouse_1F_Text_OhYoureTheNewNeighbor:
 	.string "Oh, hello. And you are?\p"
 	.string "… … … … … … … … …\n"
@@ -381,6 +466,15 @@ RivalsHouse_1F_Text_MayWhoAreYou:
 	.string "Oh, no! I forgot!\p"
 	.string "I was supposed to go help Dad catch\n"
 	.string "some wild Pokémon!\p"
+	.string "Oh, hey, that reminds me!\n"
+	.string "You should go see Dad's newest Pokémon!\p"
+	.string "He just got three really rare ones\n"
+	.string "from the, um…\p"
+	.string "Oh, darn. Which region was it again?$"
+
+RivalsHouse_1F_Text_MayCatchYouLater:
+	.string "Huh? The {STR_VAR_2} region?\n"
+	.string "Wow, I think that was it!\p"
 	.string "{PLAYER}{KUN}, I'll catch you later!$"
 
 RivalsHouse_1F_Text_BrendanWhoAreYou:
@@ -400,10 +494,51 @@ RivalsHouse_1F_Text_BrendanWhoAreYou:
 	.string "Do you want me to go catch you one?\p"
 	.string "Aw, darn, I forgot…\p"
 	.string "I'm supposed to go help my dad catch\n"
-	.string "some wild Pokémon.\p"
+	.string "Oh, you should go check out the three\n"
+	.string "new Pokémon my dad just got.\p"
+	.string "They're very rare, and they're all\n"
+	.string "from the, uh…\p"
+	.string "Hmm. Which region was it again?$"
+
+RivalsHouse_1F_Text_BrendanSomeOtherTime:
+	.string "The {STR_VAR_2} region?\n"
+	.string "Huh, I think that was it, actually.\p"
 	.string "Some other time, okay?$"
 
 RivalsHouse_1F_Text_DoYouHavePokemon:
 	.string "Hi, neighbor!\p"
 	.string "Do you already have your\n"
 	.string "own Pokémon?$"
+
+StarterRegionStringKanto::
+	.string "Kanto$"
+
+StarterRegionStringJohto::
+	.string "Johto$"
+
+StarterRegionStringHoenn::
+	.string "Hoenn$"
+
+StarterRegionStringSinnoh::
+	.string "Sinnoh$"
+
+StarterRegionStringUnova::
+	.string "Unova$"
+
+StarterRegionStringKalos::
+	.string "Kalos$"
+
+StarterRegionStringAlola::
+	.string "Alola$"
+
+StarterRegionStringGalar::
+	.string "Galar$"
+
+StarterRegionStringPaldea::
+    .string "Paldea$"
+
+RivalsHouse_1F_Text_SureAboutRegion::
+	.string "Are you sure about the region?$"
+
+RivalsHouse_1F_Text_Which_Region::
+	.string "Oh, darn. Which region was it again?$"

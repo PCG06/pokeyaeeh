@@ -2019,3 +2019,14 @@ const u8 gText_CurrentTimePMOff[] = _(" {STR_VAR_1} {STR_VAR_2} PM");
 const u8 gText_SmallDot[] = _("·");
 const u8 gText_LargeDot[] = _("{EMOJI_CIRCLE}");
 const u8 gText_PageNav[] = _("{L_BUTTON}{R_BUTTON} PAGE");
+
+
+// Region names
+const u8 gText_Kanto[] =    _("Kanto");
+const u8 gText_Johto[] =    _("Johto");
+const u8 gText_Sinnoh[] =   _("Sinnoh");
+const u8 gText_Unova[] =    _("Unova");
+const u8 gText_Kalos[] =    _("Kalos");
+const u8 gText_Alola[] =    _("Alola");
+const u8 gText_Galar[] =    _("Galar");
+const u8 gText_Paldea[] =   _("Paldea");
