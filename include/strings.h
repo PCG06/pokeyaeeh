@@ -3209,6 +3209,14 @@ extern const u8 gText_CurrentTimePMOff[];
 extern const u8 gText_ClockMode[];
 extern const u8 gText_ClockOption1[];
 extern const u8 gText_ClockOption2[];
+extern const u8 gText_DayNameMON[];
+extern const u8 gText_DayNameTUE[];
+extern const u8 gText_DayNameWED[];
+extern const u8 gText_DayNameTHU[];
+extern const u8 gText_DayNameFRI[];
+extern const u8 gText_DayNameSAT[];
+extern const u8 gText_DayNameSUN[];
+extern const u8 *const gDayNamesStringsTable[];
 
 // Multi option menu
 extern const u8 gText_SmallDot[];
