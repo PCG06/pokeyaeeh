@@ -32,7 +32,9 @@
 #include "text.h"
 #include "util.h"
 #include "window.h"
+#include "constants/abilities.h"
 #include "constants/battle_anim.h"
+#include "constants/battle_move_effects.h"
 #include "constants/items.h"
 #include "constants/moves.h"
 #include "constants/party_menu.h"
@@ -2309,7 +2311,9 @@ static void MoveSelectionDisplaySplitIcon(u32 battler)
 static void ChangeMoveDisplayMode(u32 battler)
 {
     static const u8 gPowerText[] =  _("Power: {STR_VAR_1}");
-    static const u8 gPowerZeroText[] =  _("   0");
+    static const u8 gPower0Text[] =  _("   0");
+    static const u8 gPower30Text[] =  _("  30");
+    static const u8 gPower45Text[] =  _("  45");
     static const u8 gAccuracyText[] =  _("Acc: {STR_VAR_1}");
     static const u8 gNoMissText[] = _("  No Miss");
     static const u8 gContactText[] =  _("Contact");
@@ -2340,11 +2344,19 @@ static void ChangeMoveDisplayMode(u32 battler)
     power = CalcMoveBasePowerAfterModifiers(move, battlerAtk, battlerDef, moveType, updateFlags, atkAbility, defAbility, holdEffectAtk, weather);
     if (gBattleMoves[move].power == 0)
     {
-        StringExpandPlaceholders(gStringVar1, gPowerZeroText);
+        StringExpandPlaceholders(gStringVar1, gPower0Text);
     }
     else
     {
         ConvertIntToDecimalStringN(gStringVar1, power, STR_CONV_MODE_RIGHT_ALIGN, 4);
+    }
+    if (gBattleMoves[move].effect == EFFECT_ROLLOUT)
+    {
+        StringExpandPlaceholders(gStringVar1, gPower30Text);
+    }
+    if (gBattleMoves[move].effect == EFFECT_ROLLOUT && atkAbility == ABILITY_HARD_SPINNER)
+    {
+        StringExpandPlaceholders(gStringVar1, gPower45Text);
     }
 	StringExpandPlaceholders(gStringVar4, gPowerText);
     BattlePutTextOnWindow(gStringVar4, B_WIN_MOVE_NAME_3);
