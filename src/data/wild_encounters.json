@@ -4462,7 +4462,7 @@
         },
         {
           "map": "MAP_ROUTE114",
-          "base_label": "gRoute114",
+          "base_label": "gRoute114_Morning",
           "land_mons": {
             "encounter_rate": 20,
             "mons": [
@@ -7062,7 +7062,7 @@
         },
         {
           "map": "MAP_PETALBURG_WOODS",
-          "base_label": "gPetalburgWoods",
+          "base_label": "gPetalburgWoods_Morning",
           "land_mons": {
             "encounter_rate": 20,
             "mons": [
@@ -7683,7 +7683,7 @@
         },
         {
           "map": "MAP_SAFARI_ZONE_SOUTH",
-          "base_label": "gSafariZone_South",
+          "base_label": "gSafariZone_South_Morning",
           "land_mons": {
             "encounter_rate": 25,
             "mons": [
@@ -8095,7 +8095,7 @@
         },
         {
           "map": "MAP_ABANDONED_SHIP_ROOMS_B1F",
-          "base_label": "gAbandonedShip_Rooms_B1F",
+          "base_label": "gAbandonedShip_Rooms_B1F_Morning",
           "water_mons": {
             "encounter_rate": 4,
             "mons": [
@@ -8619,7 +8619,7 @@
         },
         {
           "map": "MAP_METEOR_FALLS_B1F_2R",
-          "base_label": "gMeteorFalls_B1F_2R",
+          "base_label": "gMeteorFalls_B1F_2R_Morning",
           "land_mons": {
             "encounter_rate": 10,
             "mons": [
@@ -9235,7 +9235,7 @@
         },
         {
           "map": "MAP_JAGGED_PASS",
-          "base_label": "gJaggedPass",
+          "base_label": "gJaggedPass_Morning",
           "land_mons": {
             "encounter_rate": 20,
             "mons": [
@@ -17132,7 +17132,7 @@
         },
         {
           "map": "MAP_ROUTE132",
-          "base_label": "gRoute132",
+          "base_label": "gRoute132_Morning",
           "water_mons": {
             "encounter_rate": 4,
             "mons": [
@@ -18200,7 +18200,7 @@
         },
         {
           "map": "MAP_ABANDONED_SHIP_HIDDEN_FLOOR_CORRIDORS",
-          "base_label": "gAbandonedShip_HiddenFloorCorridors",
+          "base_label": "gAbandonedShip_HiddenFloorCorridors_Morning",
           "water_mons": {
             "encounter_rate": 4,
             "mons": [
@@ -19781,7 +19781,7 @@
         },
         {
           "map": "MAP_SAFARI_ZONE_SOUTHWEST",
-          "base_label": "gSafariZone_Southwest",
+          "base_label": "gSafariZone_Southwest_Morning",
           "land_mons": {
             "encounter_rate": 25,
             "mons": [
@@ -20397,7 +20397,7 @@
         },
         {
           "map": "MAP_SAFARI_ZONE_NORTH",
-          "base_label": "gSafariZone_North",
+          "base_label": "gSafariZone_North_Morning",
           "land_mons": {
             "encounter_rate": 25,
             "mons": [
@@ -20793,7 +20793,7 @@
         },
         {
           "map": "MAP_SAFARI_ZONE_NORTHWEST",
-          "base_label": "gSafariZone_Northwest",
+          "base_label": "gSafariZone_Northwest_Morning",
           "land_mons": {
             "encounter_rate": 25,
             "mons": [
@@ -21662,7 +21662,7 @@
         },
         {
           "map": "MAP_METEOR_FALLS_1F_1R",
-          "base_label": "gMeteorFalls_1F_1R",
+          "base_label": "gMeteorFalls_1F_1R_Morning",
           "land_mons": {
             "encounter_rate": 10,
             "mons": [
@@ -22278,7 +22278,7 @@
         },
         {
           "map": "MAP_METEOR_FALLS_1F_2R",
-          "base_label": "gMeteorFalls_1F_2R",
+          "base_label": "gMeteorFalls_1F_2R_Morning",
           "land_mons": {
             "encounter_rate": 10,
             "mons": [
@@ -22894,7 +22894,7 @@
         },
         {
           "map": "MAP_METEOR_FALLS_B1F_1R",
-          "base_label": "gMeteorFalls_B1F_1R",
+          "base_label": "gMeteorFalls_B1F_1R_Morning",
           "land_mons": {
             "encounter_rate": 10,
             "mons": [
@@ -23956,7 +23956,7 @@
         },
         {
           "map": "MAP_LILYCOVE_CITY",
-          "base_label": "gLilycoveCity",
+          "base_label": "gLilycoveCity_Morning",
           "water_mons": {
             "encounter_rate": 4,
             "mons": [
@@ -24312,7 +24312,7 @@
         },
         {
           "map": "MAP_DEWFORD_TOWN",
-          "base_label": "gDewfordTown",
+          "base_label": "gDewfordTown_Morning",
           "water_mons": {
             "encounter_rate": 4,
             "mons": [
@@ -24668,7 +24668,7 @@
         },
         {
           "map": "MAP_SLATEPORT_CITY",
-          "base_label": "gSlateportCity",
+          "base_label": "gSlateportCity_Morning",
           "water_mons": {
             "encounter_rate": 4,
             "mons": [
@@ -25024,7 +25024,7 @@
         },
         {
           "map": "MAP_MOSSDEEP_CITY",
-          "base_label": "gMossdeepCity",
+          "base_label": "gMossdeepCity_Morning",
           "water_mons": {
             "encounter_rate": 4,
             "mons": [
@@ -25380,7 +25380,7 @@
         },
         {
           "map": "MAP_PACIFIDLOG_TOWN",
-          "base_label": "gPacifidlogTown",
+          "base_label": "gPacifidlogTown_Morning",
           "water_mons": {
             "encounter_rate": 4,
             "mons": [
@@ -25736,7 +25736,7 @@
         },
         {
           "map": "MAP_EVER_GRANDE_CITY",
-          "base_label": "gEverGrandeCity",
+          "base_label": "gEverGrandeCity_Morning",
           "water_mons": {
             "encounter_rate": 4,
             "mons": [
@@ -26722,7 +26722,7 @@
         },
         {
           "map": "MAP_SOOTOPOLIS_CITY",
-          "base_label": "gSootopolisCity",
+          "base_label": "gSootopolisCity_Morning",
           "water_mons": {
             "encounter_rate": 1,
             "mons": [
@@ -27216,7 +27216,7 @@
         },
         {
           "map": "MAP_SAFARI_ZONE_SOUTHEAST",
-          "base_label": "gSafariZone_Southeast",
+          "base_label": "gSafariZone_Southeast_Morning",
           "land_mons": {
             "encounter_rate": 25,
             "mons": [
@@ -27832,7 +27832,7 @@
         },
         {
           "map": "MAP_SAFARI_ZONE_NORTHEAST",
-          "base_label": "gSafariZone_Northeast",
+          "base_label": "gSafariZone_Northeast_Morning",
           "land_mons": {
             "encounter_rate": 25,
             "mons": [
@@ -29884,7 +29884,7 @@
         },
         {
           "map": "MAP_METEOR_FALLS_STEVENS_CAVE",
-          "base_label": "gMeteorFalls_StevensCave",
+          "base_label": "gMeteorFalls_StevensCave_Morning",
           "land_mons": {
             "encounter_rate": 10,
             "mons": [
