@@ -466,14 +466,12 @@ RivalsHouse_1F_Text_MayWhoAreYou:
 	.string "Oh, no! I forgot!\p"
 	.string "I was supposed to go help Dad catch\n"
 	.string "some wild Pokémon!\p"
-	.string "Oh, hey, that reminds me!\n"
-	.string "You should go see Dad's newest Pokémon!\p"
-	.string "He just got three really rare ones\n"
-	.string "from the, um…\p"
-	.string "Oh, darn. Which region was it again?$"
+	.string "Oh! You should come too! My dad\n"
+	.string "just got three new Pokémon from uh…\p"
+	.string "Darn. Where was it from again?$"
 
 RivalsHouse_1F_Text_MayCatchYouLater:
-	.string "Huh? The {STR_VAR_2} region?\n"
+	.string "{STR_VAR_2}, huh?\n"
 	.string "Wow, I think that was it!\p"
 	.string "{PLAYER}{KUN}, I'll catch you later!$"
 
@@ -494,15 +492,16 @@ RivalsHouse_1F_Text_BrendanWhoAreYou:
 	.string "Do you want me to go catch you one?\p"
 	.string "Aw, darn, I forgot…\p"
 	.string "I'm supposed to go help my dad catch\n"
-	.string "Oh, you should go check out the three\n"
+	.string "some wild Pokémon!\p"
+	.string "Oh, you should check out the\n"
 	.string "new Pokémon my dad just got.\p"
-	.string "They're very rare, and they're all\n"
-	.string "from the, uh…\p"
-	.string "Hmm. Which region was it again?$"
+	.string "They're very cool! And they're all\n"
+	.string "from, uh…\p"
+	.string "Hmm. Where was it from again?$"
 
 RivalsHouse_1F_Text_BrendanSomeOtherTime:
-	.string "The {STR_VAR_2} region?\n"
-	.string "Huh, I think that was it, actually.\p"
+	.string "Hmm. {STR_VAR_2}, huh?\n"
+	.string "I think that was it, actually.\p"
 	.string "Some other time, okay?$"
 
 RivalsHouse_1F_Text_DoYouHavePokemon:
