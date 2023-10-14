@@ -2008,12 +2008,31 @@ const u8 gText_FORMS_NONE[] = _("{STR_VAR_1} has no alternate forms.");
 #endif
 
 // Start Menu clock
-const u8 gText_CurrentTime[] = _(" {STR_VAR_1}:{STR_VAR_2}");
-const u8 gText_CurrentTimeOff[] = _(" {STR_VAR_1} {STR_VAR_2}");
-const u8 gText_CurrentTimeAM[] = _(" {STR_VAR_1}:{STR_VAR_2} AM");
-const u8 gText_CurrentTimeAMOff[] = _(" {STR_VAR_1} {STR_VAR_2} AM");
-const u8 gText_CurrentTimePM[] = _(" {STR_VAR_1}:{STR_VAR_2} PM");
-const u8 gText_CurrentTimePMOff[] = _(" {STR_VAR_1} {STR_VAR_2} PM");
+const u8 gText_CurrentTime[] = _(" {STR_VAR_3}  {STR_VAR_1}:{STR_VAR_2}");
+const u8 gText_CurrentTimeOff[] = _(" {STR_VAR_3}  {STR_VAR_1} {STR_VAR_2}");
+const u8 gText_CurrentTimeAM[] = _(" {STR_VAR_3}  {STR_VAR_1}:{STR_VAR_2} AM");
+const u8 gText_CurrentTimeAMOff[] = _(" {STR_VAR_3}  {STR_VAR_1} {STR_VAR_2} AM");
+const u8 gText_CurrentTimePM[] = _(" {STR_VAR_3}  {STR_VAR_1}:{STR_VAR_2} PM");
+const u8 gText_CurrentTimePMOff[] = _(" {STR_VAR_3}  {STR_VAR_1} {STR_VAR_2} PM");
+
+const u8 gText_DayNameMON[] = _("MON");
+const u8 gText_DayNameTUE[] = _("TUE");
+const u8 gText_DayNameWED[] = _("WED");
+const u8 gText_DayNameTHU[] = _("THU");
+const u8 gText_DayNameFRI[] = _("FRI");
+const u8 gText_DayNameSAT[] = _("SAT");
+const u8 gText_DayNameSUN[] = _("SUN");
+
+const u8 *const gDayNamesStringsTable[] =
+{
+    gText_DayNameMON,
+    gText_DayNameTUE,
+    gText_DayNameWED,
+    gText_DayNameTHU,
+    gText_DayNameFRI,
+    gText_DayNameSAT,
+    gText_DayNameSUN
+};
 
 // Multi option menu
 const u8 gText_SmallDot[] = _("·");

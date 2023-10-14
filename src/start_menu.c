@@ -246,7 +246,7 @@ static const struct WindowTemplate sCurrentTime12WindowTemplate = {
     .bg = 0,
     .tilemapLeft = 1,
     .tilemapTop = 1,
-    .width = 6,
+    .width = 9,
     .height = 2,
     .paletteNum = 15,
     .baseBlock = 48
@@ -256,7 +256,7 @@ static const struct WindowTemplate sCurrentTime24WindowTemplate = {
     .bg = 0,
     .tilemapLeft = 1,
     .tilemapTop = 1,
-    .width = 4,
+    .width = 7,
     .height = 2,
     .paletteNum = 15,
     .baseBlock = 48
@@ -1535,7 +1535,8 @@ static void ShowCurrentTimeWindow(void)
 
     analogHour = (gLocalTime.hours >= 13 && gLocalTime.hours <= 24) ? gLocalTime.hours - 12 : gLocalTime.hours;
 
-	ConvertIntToDecimalStringN(gStringVar1, gLocalTime.hours, STR_CONV_MODE_LEADING_ZEROS, 2);
+	StringCopy(gStringVar3, gDayNamesStringsTable[(gLocalTime.days % 7)]);
+    ConvertIntToDecimalStringN(gStringVar1, gLocalTime.hours, STR_CONV_MODE_LEADING_ZEROS, 2);
 	ConvertIntToDecimalStringN(gStringVar2, gLocalTime.minutes, STR_CONV_MODE_LEADING_ZEROS, 2);
     if (gClockMode == TWELVE_HOUR_MODE)
 	    ConvertIntToDecimalStringN(gStringVar1, analogHour, STR_CONV_MODE_LEADING_ZEROS, 2);
@@ -1561,7 +1562,8 @@ void UpdateClockDisplay(void)
 	RtcCalcLocalTime();
     analogHour = (gLocalTime.hours >= 13 && gLocalTime.hours <= 24) ? gLocalTime.hours - 12 : gLocalTime.hours;
     
-	ConvertIntToDecimalStringN(gStringVar1, gLocalTime.hours, STR_CONV_MODE_LEADING_ZEROS, 2);
+	StringCopy(gStringVar3, gDayNamesStringsTable[(gLocalTime.days % 7)]);
+    ConvertIntToDecimalStringN(gStringVar1, gLocalTime.hours, STR_CONV_MODE_LEADING_ZEROS, 2);
 	ConvertIntToDecimalStringN(gStringVar2, gLocalTime.minutes, STR_CONV_MODE_LEADING_ZEROS, 2);
     if (gClockMode == TWELVE_HOUR_MODE)
 	    ConvertIntToDecimalStringN(gStringVar1, analogHour, STR_CONV_MODE_LEADING_ZEROS, 2);
