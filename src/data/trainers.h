@@ -7448,7 +7448,7 @@ const struct Trainer gTrainers[] = {
         .trainerName = _("Kent"),
         .items = {},
         .doubleBattle = FALSE,
-        .aiFlags = AI_FLAG_CHECK_BAD_MOVE,
+        .aiFlags = AI_FLAG_PREFER_STATUS_MOVES || AI_FLAG_STALL || AI_FLAG_CHECK_VIABILITY || AI_FLAG_CHECK_BAD_MOVE || AI_FLAG_OMNISCIENT,
         .party = TRAINER_PARTY(sParty_Kent),
     },
 
