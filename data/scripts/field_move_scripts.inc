@@ -39,11 +39,6 @@ EventScript_CancelCut::
 	releaseall
 	end
 
-Text_WantToCut:
-	.string "This tree looks like it can be\n"
-	.string "Cut down!\p"
-	.string "Would you like to Cut it?$"
-
 Text_MonUsedFieldMove:
 	.string "{STR_VAR_1} used {STR_VAR_2}!$"
 
@@ -101,10 +96,6 @@ EventScript_CancelSmash::
 	releaseall
 	end
 
-Text_WantToSmash:
-	.string "This rock appears to be breakable.\n"
-	.string "Would you like to use Rock Smash?$"
-
 Text_CantSmash:
 	.string "It's a rugged rock, but a Pokémon\n"
 	.string "may be able to smash it.$"
@@ -147,16 +138,6 @@ EventScript_CancelStrength::
 	releaseall
 	end
 
-Text_WantToStrength:
-	.string "It's a big boulder, but a Pokémon\n"
-	.string "may be able to push it aside.\p"
-	.string "Would you like to use Strength?$"
-
-Text_MonUsedStrength:
-	.string "{STR_VAR_1} used Strength!\p"
-	.string "{STR_VAR_1}'s Strength made it\n"
-	.string "possible to move boulders around!$"
-
 Text_CantStrength:
 	.string "It's a big boulder, but a Pokémon\n"
 	.string "may be able to push it aside.$"
@@ -183,10 +164,6 @@ Text_CantWaterfall:
 	.string "A wall of water is crashing down with\n"
 	.string "a mighty roar.$"
 
-Text_WantToWaterfall:
-	.string "It's a large waterfall.\n"
-	.string "Would you like to use Waterfall?$"
-
 Text_MonUsedWaterfall:
 	.string "{STR_VAR_1} used Waterfall.$"
 
@@ -196,6 +173,8 @@ EventScript_UseDive::
 	goto_if_eq VAR_RESULT, PARTY_SIZE, EventScript_CantDive
 	setfieldeffectargument 0, VAR_RESULT
 	setfieldeffectargument 1, 1
+	msgbox Text_WantToDive, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, EventScript_EndDive
 	dofieldeffect FLDEFF_USE_DIVE
 	goto EventScript_EndDive
 	end
@@ -212,9 +191,10 @@ EventScript_UseDiveUnderwater::
 	lockall
 	checkpartymove MOVE_DIVE
 	goto_if_eq VAR_RESULT, PARTY_SIZE, EventScript_CantSurface
-	bufferpartymonnick STR_VAR_1, VAR_RESULT
 	setfieldeffectargument 0, VAR_RESULT
 	setfieldeffectargument 1, 1
+	msgbox Text_WantToSurface, MSGBOX_YESNO
+	goto_if_eq VAR_RESULT, NO, EventScript_EndSurface
 	dofieldeffect FLDEFF_USE_DIVE
 	goto EventScript_EndSurface
 	end
