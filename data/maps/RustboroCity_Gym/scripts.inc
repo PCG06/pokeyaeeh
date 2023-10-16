@@ -2,7 +2,7 @@ RustboroCity_Gym_MapScripts::
 	.byte 0
 
 RustboroCity_Gym_EventScript_Roxanne::
-	trainerbattle_single TRAINER_ROXANNE_1, RustboroCity_Gym_Text_RoxanneIntro, RustboroCity_Gym_Text_RoxanneDefeat, RustboroCity_Gym_EventScript_RoxanneDefeated, NO_MUSIC
+	trainerbattle_double TRAINER_ROXANNE_1, RustboroCity_Gym_Text_RoxanneIntro, RustboroCity_Gym_Text_RoxanneDefeat, RustboroCity_Gym_Text_RoxanneNeedTwoMons, RustboroCity_Gym_EventScript_RoxanneDefeated, NO_MUSIC
 	specialvar VAR_RESULT, ShouldTryRematchBattle
 	goto_if_eq VAR_RESULT, TRUE, RustboroCity_Gym_EventScript_RoxanneRematch
 	goto_if_unset FLAG_RECEIVED_TM_ROCK_TOMB, RustboroCity_Gym_EventScript_GiveRockTomb
@@ -26,7 +26,7 @@ RustboroCity_Gym_EventScript_RoxanneDefeated::
 	end
 
 RustboroCity_Gym_EventScript_GiveRockTomb::
-	giveitem ITEM_TM_ROCK_TOMB
+	giveitem ITEM_TM_CHARM
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
 	setflag FLAG_RECEIVED_TM_ROCK_TOMB
 	msgbox RustboroCity_Gym_Text_ExplainRockTomb, MSGBOX_DEFAULT
@@ -116,11 +116,11 @@ RustboroCity_Gym_Text_GymGuideAdvice:
 	.string "But Gym Leaders aren't pushovers!\p"
 	.string "And that's where I come in!\n"
 	.string "I'm here to provide expert advice!\p"
-	.string "Roxanne, the Gym Leader, is a user\n"
-	.string "of Rock-type Pokémon.\p"
-	.string "The Rock type is very durable, but\n"
-	.string "it can't stand Water-type and\l"
-	.string "Grass-type moves.\p"
+	.string "Dor, the Gym Leader, is a user\n"
+	.string "of Fairy-type Pokémon.\p"
+	.string "The Fairy type is very magical, but\n"
+	.string "it can't stand Poison-type and\l"
+	.string "Steel-type moves.\p"
 	.string "Come see me afterwards, if you beat\n"
 	.string "the Gym Leader.\p"
 	.string "Well, go for it!$"
@@ -130,7 +130,7 @@ RustboroCity_Gym_Text_GymGuidePostVictory:
 	.string "My cheering must've worked!\p"
 	.string "Great!\n"
 	.string "Check your Trainer Card.\p"
-	.string "The Stone Badge you got should be\n"
+	.string "The Charm Badge you got should be\n"
 	.string "properly recorded on it.\p"
 	.string "In other words…\p"
 	.string "You've climbed the first step on\n"
@@ -145,26 +145,26 @@ RustboroCity_Gym_Text_JoshDefeat:
 	.string "You were too good for me…$"
 
 RustboroCity_Gym_Text_JoshPostBattle:
-	.string "You haven't seen anything of the Rock\n"
+	.string "You haven't seen anything of the Fairy\n"
 	.string "type's terrifying power!$"
 
 RustboroCity_Gym_Text_TommyIntro:
 	.string "If you can't beat me, you won't stand\n"
-	.string "a chance against Roxanne!$"
+	.string "a chance against Dor!$"
 
 RustboroCity_Gym_Text_TommyDefeat:
 	.string "Wow! You've got some potential!$"
 
 RustboroCity_Gym_Text_TommyPostBattle:
-	.string "Roxanne is stronger than me by\n"
+	.string "Dor is stronger than me by\n"
 	.string "several times.\p"
 	.string "You'd better be on your guard!$"
 
 RustboroCity_Gym_Text_MarcIntro:
 	.string "We might be in the middle of town,\n"
 	.string "but so what?\p"
-	.string "My Rock Pokémon need room to\n"
-	.string "rampage!$"
+	.string "My Fairy Pokémon need room to\n"
+	.string "twinkle!$"
 
 RustboroCity_Gym_Text_MarcDefeat:
 	.string "Oh, man oh man!\n"
@@ -176,66 +176,81 @@ RustboroCity_Gym_Text_MarcPostBattle:
 	.string "pick the Rock type at her young age.$"
 
 RustboroCity_Gym_Text_RoxanneIntro:
-	.string "Hello, I am Roxanne, the Rustboro\n"
+	.string "Hii, I am Dor! The Rustboro\n"
 	.string "Pokémon Gym Leader.\p"
-	.string "I became a Gym Leader so that I might\n"
-	.string "apply what I learned at the Pokémon\l"
-	.string "Trainer's School in battle.\p"
-	.string "Would you kindly demonstrate how you\n"
-	.string "battle, and with which Pokémon?$"
+	.string "I love children! But the League\n"
+	.string "won't let children anywhere near\l"
+	.string "my gym for some reason…\p"
+	.string "Oh wait, you are here to fight me,\n"
+	.string "right?\p"
+	.string "Go! My Fairy babies!$"
 
 RustboroCity_Gym_Text_RoxanneDefeat:
 	.string "So…\n"
 	.string "I lost…\p"
-	.string "It seems that I still have much more\n"
-	.string "to learn…\p"
+	.string "It still seems like I'm pathetic\n"
+	.string "as ever…\p"
 	.string "I understand.\p"
 	.string "The Pokémon League's rules state\n"
 	.string "that Trainers are to be given this\l"
 	.string "if they defeat a Gym Leader.\p"
-	.string "Please accept the official Pokémon\n"
-	.string "League Stone Badge.$"
+	.string "Here, take it, silly.$"
 
 RustboroCity_Gym_Text_ReceivedStoneBadge:
-	.string "{PLAYER} received the Stone Badge\n"
-	.string "from Roxanne.$"
+	.string "{PLAYER} received the Charm Badge\n"
+	.string "from Dor.$"
 
 RustboroCity_Gym_Text_StoneBadgeInfoTakeThis:
-	.string "The Stone Badge heightens the Attack\n"
-	.string "power of your Pokémon.\p"
-	.string "It also enables them to use the HM move\n"
-	.string "Cut outside of battle.\p"
-	.string "Please take this with you, too.$"
+	.string "The Charm Badge enables your Pokémon\n"
+	.string "to use HM Cut outside of battle.\p"
+	.string "Well, take this, too.$"
 
 RustboroCity_Gym_Text_ExplainRockTomb:
-	.string "That Technical Machine, TM39,\n"
-	.string "contains Rock Tomb.\p"
-	.string "It not only inflicts damage by dropping\n"
-	.string "rocks, it also lowers Speed.\p"
+	.string "That Technical Machine, TM146,\n"
+	.string "contains Charm.\p"
+	.string "It doesn't inflict any damage,\n"
+	.string "but harshly lowers your foe's\l"
+	.string "Attack stat.\p"
 	.string "If you use a TM, it instantly teaches\n"
 	.string "the move to a Pokémon.\p"
-	.string "Remember, a TM can be used only once,\n"
-	.string "so think before you use it.$"
+	.string "A TM can be used as many times as you\n"
+	.string "want, so don't worry about it.\p"
+	.string "See ya around, loser!$"
 
 RustboroCity_Gym_Text_RoxannePostBattle:
-	.string "Since you are so strong, you should\n"
-	.string "challenge other Gym Leaders.\p"
-	.string "By battling many Trainers, you should\n"
-	.string "learn many things.$"
+	.string "Since you think you are so strong,\n"
+	.string "go and challenge other Gym Leaders.\p"
+	.string "By battling more Trainers, you maybe\n"
+	.string "will learn some decency.$"
+
+RustboroCity_Gym_Text_RoxanneNeedTwoMons:
+	.string "Hii, I am Dor! The Rustboro\n"
+	.string "Pokémon Gym Leader.\p"
+	.string "I love children! But the League\n"
+	.string "won't let children anywhere near\l"
+	.string "my gym for some reason…\p"
+	.string "Oh wait, you are here to fight me,\n"
+	.string "right?\p"
+	.string "……\p"
+	.string "……\p"
+	.string "Just because you are single, doesn't\n"
+	.string "mean your Pokémon should be too!\p"
+	.string "This is a double battle, kid.\n"
+	.string "Go get a partner for your Pokémon!$"
 
 RustboroCity_Gym_Text_GymStatue:
 	.string "Rustboro City Pokémon Gym$"
 
 RustboroCity_Gym_Text_GymStatueCertified:
 	.string "Rustboro City Pokémon Gym\p"
-	.string "Roxanne's certified Trainers:\n"
-	.string "{PLAYER}$"
+	.string "Dor's certified Trainers:\n"
+	.string "Le Malin, {PLAYER}$"
 
 RustboroCity_Gym_Text_RoxanneRegisterCall:
 	.string "… … … … … …\n"
 	.string "… … … … … Beep!\p"
-	.string "Roxanne: Oh, hello, {PLAYER}?\n"
-	.string "This is Roxanne of Rustboro City.\p"
+	.string "Dor: Oh, hello, {PLAYER}?\n"
+	.string "This is Dor of Rustboro City.\p"
 	.string "I heard from Brawly that you're\n"
 	.string "moving up through the ranks of\l"
 	.string "Trainers at an incredible clip.\p"
@@ -249,12 +264,12 @@ RustboroCity_Gym_Text_RoxanneRegisterCall:
 	.string "… … … … … Click!$"
 
 RustboroCity_Gym_Text_RegisteredRoxanne:
-	.string "Registered Gym Leader Roxanne\n"
+	.string "Registered Gym Leader Dor\n"
 	.string "in the Pokénav.$"
 
 RustboroCity_Gym_Text_RoxannePreRematch:
-	.string "Roxanne: I'm so glad to see you again.\n"
-	.string "I'm Roxanne, the Gym Leader here.\p"
+	.string "Dor: I'm so glad to see you again.\n"
+	.string "I'm Dor, the Gym Leader here.\p"
 	.string "I'm sure we've both experienced many\n"
 	.string "battles since we last met.\p"
 	.string "I would like to see how much better\n"
@@ -265,14 +280,14 @@ RustboroCity_Gym_Text_RoxanneRematchDefeat:
 	.string "Again, I have lost…$"
 
 RustboroCity_Gym_Text_RoxannePostRematch:
-	.string "Roxanne: I still have much to learn\n"
+	.string "Dor: I still have much to learn\n"
 	.string "when it comes to battling Pokémon.\p"
 	.string "That awareness makes me love battling\n"
 	.string "all that much more!$"
 
 RustboroCity_Gym_Text_RoxanneRematchNeedTwoMons:
-	.string "Roxanne: I'm so glad to see you again.\n"
-	.string "I'm Roxanne, the Gym Leader here.\p"
+	.string "Dor: I'm so glad to see you again.\n"
+	.string "I'm Dor, the Gym Leader here.\p"
 	.string "I'm sure we've both experienced many\n"
 	.string "battles since we last met.\p"
 	.string "I would like to see how much better\n"

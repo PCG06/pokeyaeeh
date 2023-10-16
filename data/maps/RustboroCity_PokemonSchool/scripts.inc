@@ -324,7 +324,7 @@ RustboroCity_PokemonSchool_Text_StudentTalentLevelUnknown:
 
 RustboroCity_PokemonSchool_Text_ScottStoneBadge:
 	.string "Scott: Oh, what's that?\p"
-	.string "It's a Stone Badge, isn't it?\n"
+	.string "It's a Charm Badge, isn't it?\n"
 	.string "That's pretty impressive, I'd say.\p"
 	.string "But, you know, I would've loved to see\n"
 	.string "you in battle.\p"
@@ -341,7 +341,7 @@ RustboroCity_PokemonSchool_Text_ScottMetAlreadyStoneBadge:
 	.string "More specifically, I'm looking for\n"
 	.string "Pokémon battle experts.\p"
 	.string "Oh, what's that?\n"
-	.string "It's a Stone Badge, isn't it?\p"
+	.string "It's a Charm Badge, isn't it?\p"
 	.string "That's pretty impressive, I'd say, for\n"
 	.string "a starting Trainer like yourself.\p"
 	.string "But, you know, I would've loved to see\n"

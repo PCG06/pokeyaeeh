@@ -2229,7 +2229,7 @@ Route116_Text_JerryDefeat:
 Route116_Text_JerryPostBattle:
 	.string "I'll have to redo some courses at\n"
 	.string "the Trainer's School.\l"
-	.string "If I don't, Roxanne will be steamed.$"
+	.string "If I don't, Dor will be steamed.$"
 
 Route116_Text_JerryRegister1:
 	.string "I learned at the Trainer's School\n"
@@ -2255,7 +2255,7 @@ Route116_Text_JerryRematchDefeat:
 Route116_Text_JerryPostRematch:
 	.string "I'll have to redo some courses at\n"
 	.string "the Trainer's School.\l"
-	.string "If I don't, Roxanne will be steamed.$"
+	.string "If I don't, Dor will be steamed.$"
 
 Route116_Text_KarenIntro:
 	.string "I study at school, and I study on\n"
@@ -2266,7 +2266,7 @@ Route116_Text_KarenDefeat:
 
 Route116_Text_KarenPostBattle:
 	.string "Awww, I'll never become an elegant\n"
-	.string "Trainer like Roxanne this way!$"
+	.string "Trainer like Dor this way!$"
 
 Route116_Text_KarenRegister1:
 	.string "Oh, wow! Isn't that a Pokénav?\n"
@@ -2285,7 +2285,7 @@ Route116_Text_KarenRematchDefeat:
 	.string "I lost again?$"
 
 Route116_Text_KarenPostRematch:
-	.string "You've beaten Roxanne?\n"
+	.string "You've beaten Dor?\n"
 	.string "I can't beat you, then. Not yet.$"
 
 Route116_Text_SarahIntro:

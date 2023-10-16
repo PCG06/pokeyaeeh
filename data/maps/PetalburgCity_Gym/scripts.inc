@@ -1221,7 +1221,7 @@ PetalburgCity_Gym_Text_DadGoCollectBadges:
 	.string "Head for Rustboro City beyond this\n"
 	.string "town.\p"
 	.string "There, you should challenge\n"
-	.string "the Gym Leader, Roxanne.\p"
+	.string "the Gym Leader, Dor.\p"
 	.string "After her, go on to other Pokémon\n"
 	.string "Gyms and defeat their Leaders.\p"
 	.string "Collect Badges from them,\n"
