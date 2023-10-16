@@ -44285,7 +44285,6 @@ static const u16 sClawitzerTeachableLearnset[] = {
     MOVE_HELPING_HAND,
     MOVE_HIDDEN_POWER,
     MOVE_HYDRO_PUMP,
-    MOVE_HYPER_BEAM,
     MOVE_ICE_BEAM,
     MOVE_ICY_WIND,
     MOVE_IRON_TAIL,
