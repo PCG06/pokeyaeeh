@@ -239,7 +239,9 @@ RustboroCity_Gym_Text_RoxanneNeedTwoMons:
 	.string "Go get a partner for your Pokémon!$"
 
 RustboroCity_Gym_Text_GymStatue:
-	.string "Rustboro City Pokémon Gym$"
+	.string "Rustboro City Pokémon Gym\p"
+	.string "Dor's certified Trainers:\n"
+	.string "Le Malin$"
 
 RustboroCity_Gym_Text_GymStatueCertified:
 	.string "Rustboro City Pokémon Gym\p"
