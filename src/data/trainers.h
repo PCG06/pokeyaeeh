@@ -3188,7 +3188,7 @@ const struct Trainer gTrainers[] = {
         .trainerName = _("Dor"),
         .items = {},
         .doubleBattle = TRUE,
-        .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_STALL | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY | AI_FLAG_PREFER_STRONGEST_MOVE | AI_FLAG_OMNISCIENT,
+        .aiFlags = AI_FLAG_PREFER_STRONGEST_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_OMNISCIENT,
         .party = TRAINER_PARTY(sParty_Roxanne1),
     },
 
