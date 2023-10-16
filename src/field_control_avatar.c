@@ -131,8 +131,8 @@ void FieldGetPlayerInput(struct FieldInput *input, u16 newKeys, u16 heldKeys)
             input->heldDirection2 = TRUE;
         }
 
-        if (newKeys & R_BUTTON)
-            input->pressedRButton = TRUE;
+        if (newKeys & L_BUTTON)
+            input->pressedLButton = TRUE;
     }
 
     if (forcedMove == FALSE)

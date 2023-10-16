@@ -168,7 +168,7 @@ static const u32 sNoDataGfx[] = INCBIN_U32("graphics/dexnav/no_data.4bpp.lz");
 
 // searching image data
 static const u32 sPotentialStarGfx[] = INCBIN_U32("graphics/dexnav/star.4bpp.lz");
-//static const u32 sEyeGfx[] = INCBIN_U32("graphics/dexnav/vision.4bpp.lz");
+static const u32 sEyeGfx[] = INCBIN_U32("graphics/dexnav/vision.4bpp.lz");
 static const u32 sHiddenSearchIconGfx[] = INCBIN_U32("graphics/dexnav/hidden_search.4bpp.lz");
 static const u32 sOwnedIconGfx[] = INCBIN_U32("graphics/dexnav/owned_icon.4bpp.lz");
 static const u32 sHiddenMonIconGfx[] = INCBIN_U32("graphics/dexnav/hidden.4bpp.lz");
@@ -180,11 +180,11 @@ static const u8 sText_DexNav_PressRToRegister[] = _("R to register!");
 static const u8 sText_DexNav_SearchForRegisteredSpecies[] = _("Search {STR_VAR_1}");
 static const u8 sText_DexNav_NotFoundHere[] = _("This Pokémon cannot be found here!");
 static const u8 sText_ThreeQmarks[] = _("???");
-static const u8 sText_SearchLevel[] = _("SEARCH {LV}. {STR_VAR_1}");
+static const u8 sText_SearchLevel[] = _("Search {LV}. {STR_VAR_1}");
 static const u8 sText_MonLevel[] = _("{LV}. {STR_VAR_1}");
-static const u8 sText_EggMove[] = _("MOVE: {STR_VAR_1}");
+static const u8 sText_EggMove[] = _("Move: {STR_VAR_1}");
 static const u8 sText_HeldItem[] = _("{STR_VAR_1}");
-static const u8 sText_StartExit[] = _("{START_BUTTON} EXIT");
+static const u8 sText_StartExit[] = _("{START_BUTTON} Exit");
 static const u8 sText_DexNavChain[] = _("{NO} {STR_VAR_1}");
 static const u8 sText_DexNavChainLong[] = _("{NO}{STR_VAR_1}");
 
@@ -1056,7 +1056,7 @@ static void Task_DexNavSearch(u8 taskId)
     s16 x, y;
     struct Task *task = &gTasks[taskId];
     
-    if (sDexNavSearchDataPtr->proximity > MAX_PROXIMITY)
+    /*if (sDexNavSearchDataPtr->proximity > MAX_PROXIMITY)
     { // out of range
         if (sDexNavSearchDataPtr->hiddenSearch && !task->tRevealed)
             EndDexNavSearch(taskId);
@@ -1072,7 +1072,7 @@ static void Task_DexNavSearch(u8 taskId)
         else
             EndDexNavSearchSetupScript(EventScript_MovedTooFast, taskId);
         return;
-    }
+    }*/
     
     if (sDexNavSearchDataPtr->proximity <= SNEAKING_PROXIMITY && TestPlayerAvatarFlags(PLAYER_AVATAR_FLAG_DASH | PLAYER_AVATAR_FLAG_BIKE)) 
     { // running/biking too close
