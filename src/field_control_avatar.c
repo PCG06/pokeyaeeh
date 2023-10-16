@@ -88,12 +88,12 @@ void FieldClearPlayerInput(struct FieldInput *input)
     input->heldDirection2 = FALSE;
     input->tookStep = FALSE;
     input->pressedBButton = FALSE;
+    input->pressedLButton = FALSE;
     input->pressedRButton = FALSE;
     input->input_field_1_1 = FALSE;
     input->input_field_1_2 = FALSE;
     input->input_field_1_3 = FALSE;
     input->dpadDirection = 0;
-    input->pressedRButton = FALSE;
 }
 
 u8 gSelectedObjectEvent;
