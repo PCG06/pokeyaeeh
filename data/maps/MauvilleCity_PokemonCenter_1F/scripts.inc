@@ -11,8 +11,12 @@ MauvilleCity_PokemonCenter_1F_OnTransition:
 	goto MauvilleCity_PokemonCenter_1F_EventScript_SetMauvilleOldManGfx
 	end
 
-MauvilleCity_PokemonCenter_1F_EventScript_SetMauvilleOldManGfx::
+MauvilleCity_PokemonCenter_1F_EventScript_SetMauvilleOldManGfx:: @@ this does nothing now. I hate you old man!
 	special SetMauvilleOldManObjEventGfx
+	end
+
+MauvilleCity_PokemonCenter_1F_EventScript_MauvilleOldManCrying::
+    msgbox MauvilleCity_PokemonCenter_1F_Text_MauvilleOldManCrying, MSGBOX_NPC
 	end
 
 MauvilleCity_PokemonCenter_1F_EventScript_Nurse::
@@ -35,9 +39,17 @@ MauvilleCity_PokemonCenter_1F_EventScript_Youngster::
 	msgbox MauvilleCity_PokemonCenter_1F_Text_RecordCornerSoundsFun, MSGBOX_NPC
 	end
 
+MauvilleCity_PokemonCenter_1F_Text_MauvilleOldManCrying:
+    .string "I used to tell stories to\n"
+	.string "young adventurers.\p"
+	.string "But now…\p"
+	.string "I'm nothing.\p"
+	.string "Just a crazy old man waiting\n"
+	.string "for his time to come.$"
+
 MauvilleCity_PokemonCenter_1F_Text_ManOverThereSaysWeirdThings:
-	.string "That man over there, he says weird\n"
-	.string "things!\p"
+	.string "That man over there, he used to say\n"
+	.string "some weird things!\p"
 	.string "He's funny in a weird way.\n"
 	.string "I doubt I'll forget about him!$"
 
