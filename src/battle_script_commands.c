@@ -9293,7 +9293,7 @@ static void Cmd_various(void)
         }
         else
         {
-            if (GetBattlerAbility(gBattlerAttacker) == ABILITY_MEGA_LAUNCHER && gBattleMoves[gCurrentMove].pulseMove)
+            if (GetBattlerAbility(gBattlerAttacker) == ABILITY_MEGA_LAUNCHER && gBattleMoves[gCurrentMove].megaLauncherBoost)
                 gBattleMoveDamage = -(gBattleMons[battler].maxHP * 75 / 100);
             else
                 gBattleMoveDamage = -(gBattleMons[battler].maxHP / 2);

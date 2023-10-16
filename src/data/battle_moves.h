@@ -1028,6 +1028,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .split = SPLIT_SPECIAL,
         .zMoveEffect = Z_EFFECT_NONE,
         .sheerForceBoost = TRUE,
+        .megaLauncherBoost = TRUE,
     },
 
     [MOVE_BLIZZARD] =
@@ -1067,6 +1068,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .split = SPLIT_SPECIAL,
         .zMoveEffect = Z_EFFECT_NONE,
         .sheerForceBoost = TRUE,
+        .megaLauncherBoost = TRUE,
     },
 
     [MOVE_BUBBLE_BEAM] =
@@ -1082,6 +1084,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .split = SPLIT_SPECIAL,
         .zMoveEffect = Z_EFFECT_NONE,
         .sheerForceBoost = TRUE,
+        .megaLauncherBoost = TRUE,
     },
 
     [MOVE_AURORA_BEAM] =
@@ -1097,6 +1100,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .split = SPLIT_SPECIAL,
         .zMoveEffect = Z_EFFECT_NONE,
         .sheerForceBoost = TRUE,
+        .megaLauncherBoost = TRUE,
     },
 
     [MOVE_HYPER_BEAM] =
@@ -1113,6 +1117,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .zMoveEffect = Z_EFFECT_NONE,
         .ignoresKingsRock = B_UPDATED_MOVE_FLAGS < GEN_3,
         .instructBanned = TRUE,
+        .megaLauncherBoost = TRUE,
     },
 
     [MOVE_PECK] =
@@ -1336,6 +1341,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .zMoveEffect = Z_EFFECT_NONE,
         .sleepTalkBanned = TRUE,
         .instructBanned = TRUE,
+        .megaLauncherBoost = TRUE,
     },
 
     [MOVE_POISON_POWDER] =
@@ -5571,6 +5577,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .split = SPLIT_SPECIAL,
         .zMoveEffect = Z_EFFECT_NONE,
         .sheerForceBoost = TRUE,
+        .megaLauncherBoost = TRUE,
     },
 
     [MOVE_SHADOW_PUNCH] =
@@ -6056,7 +6063,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .split = SPLIT_SPECIAL,
         .zMoveEffect = Z_EFFECT_NONE,
         .sheerForceBoost = TRUE,
-        .pulseMove = TRUE,
+        .megaLauncherBoost = TRUE,
     },
 
     [MOVE_DOOM_DESIRE] =
@@ -6768,7 +6775,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .priority = 0,
         .split = SPLIT_SPECIAL,
         .zMoveEffect = Z_EFFECT_NONE,
-        .pulseMove = TRUE,
+        .megaLauncherBoost = TRUE,
         .ballisticMove = TRUE,
     },
 
@@ -6816,7 +6823,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .split = SPLIT_SPECIAL,
         .zMoveEffect = Z_EFFECT_NONE,
         .sheerForceBoost = TRUE,
-        .pulseMove = TRUE,
+        .megaLauncherBoost = TRUE,
     },
 
     [MOVE_NIGHT_SLASH] =
@@ -6934,7 +6941,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .priority = 0,
         .split = SPLIT_SPECIAL,
         .zMoveEffect = Z_EFFECT_NONE,
-        .pulseMove = TRUE,
+        .megaLauncherBoost = TRUE,
     },
 
     [MOVE_DRAGON_RUSH] =
@@ -7330,6 +7337,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .split = SPLIT_SPECIAL,
         .zMoveEffect = Z_EFFECT_NONE,
         .sheerForceBoost = TRUE,
+        .megaLauncherBoost = TRUE,
     },
 
     [MOVE_ROCK_CLIMB] =
@@ -7675,6 +7683,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .split = SPLIT_SPECIAL,
         .zMoveEffect = Z_EFFECT_NONE,
         .sheerForceBoost = TRUE,
+        .megaLauncherBoost = TRUE,
     },
 
     [MOVE_WOOD_HAMMER] =
@@ -8537,7 +8546,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .split = SPLIT_STATUS,
         .zMoveEffect = Z_EFFECT_RESET_STATS,
         .magicCoatAffected = TRUE,
-        .pulseMove = TRUE,
+        .megaLauncherBoost = TRUE,
     },
 
     [MOVE_HEX] =
@@ -10368,7 +10377,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .priority = 0,
         .split = SPLIT_SPECIAL,
         .zMoveEffect = Z_EFFECT_NONE,
-        .pulseMove = TRUE,
+        .megaLauncherBoost = TRUE,
         .metronomeBanned = TRUE,
     },
 
@@ -11017,6 +11026,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .split = SPLIT_SPECIAL,
         .zMoveEffect = Z_EFFECT_NONE,
         .metronomeBanned = TRUE,
+        .megaLauncherBoost = TRUE,
     },
 
     [MOVE_PSYCHIC_FANGS] =
@@ -11158,6 +11168,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .zMoveEffect = Z_EFFECT_NONE,
         .ignoresTargetAbility = TRUE,
         .metronomeBanned = B_UPDATED_MOVE_FLAGS >= GEN_8,
+        .megaLauncherBoost = TRUE,
     },
 
     [MOVE_TEARFUL_LOOK] =
@@ -11534,6 +11545,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .copycatBanned = TRUE,
         .sleepTalkBanned = TRUE,
         .instructBanned = TRUE,
+        .megaLauncherBoost = TRUE,
     },
 
     [MOVE_SNIPE_SHOT] =
@@ -12063,6 +12075,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .zMoveEffect = Z_EFFECT_NONE,
         .metronomeBanned = TRUE,
         .instructBanned = TRUE,
+        .megaLauncherBoost = TRUE,
     },
 
     [MOVE_STEEL_BEAM] =
@@ -12078,6 +12091,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .split = SPLIT_SPECIAL,
         .zMoveEffect = Z_EFFECT_NONE,
         .metronomeBanned = TRUE,
+        .megaLauncherBoost = TRUE,
     },
 
     [MOVE_EXPANDING_FORCE] =
@@ -12139,6 +12153,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .split = SPLIT_SPECIAL,
         .zMoveEffect = Z_EFFECT_NONE,
         .instructBanned = TRUE,
+        .megaLauncherBoost = TRUE,
     },
 
     [MOVE_SHELL_SIDE_ARM] =
@@ -12215,7 +12230,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .priority = 0,
         .split = SPLIT_SPECIAL,
         .zMoveEffect = Z_EFFECT_NONE,
-        .pulseMove = TRUE,
+        .megaLauncherBoost = TRUE,
     },
 
     [MOVE_SKITTER_SMACK] =
@@ -13555,6 +13570,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .zMoveEffect = Z_EFFECT_NONE,
         .strikeCount = 2,
         .metronomeBanned = TRUE,
+        .megaLauncherBoost = TRUE,
     },
 
     [MOVE_RAGE_FIST] =
@@ -13587,6 +13603,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_Z] =
         .split = SPLIT_SPECIAL,
         .zMoveEffect = Z_EFFECT_NONE,
         .metronomeBanned = TRUE,
+        .megaLauncherBoost = TRUE,
     },
 
     [MOVE_BITTER_BLADE] =

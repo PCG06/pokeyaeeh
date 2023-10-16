@@ -361,7 +361,7 @@ struct BattleMove
     u32 punchingMove:1;
     u32 sheerForceBoost:1;
     u32 bitingMove:1;
-    u32 pulseMove:1;
+    u32 megaLauncherBoost:1;
     u32 soundMove:1;
     u32 ballisticMove:1;
     u32 protectionMove:1;
