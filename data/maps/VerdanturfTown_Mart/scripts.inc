@@ -40,4 +40,3 @@ VerdanturfTown_Mart_Text_NestBallOnWeakenedPokemon:
 	.string "weakened Pokémon.\p"
 	.string "Verdanturf is the only place you can\n"
 	.string "buy it.$"
-

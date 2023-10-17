@@ -1083,4 +1083,3 @@ LilycoveCity_ContestLobby_Text_MadePokeblocksWithFamily:
 	.string "Big Sister. They turned out great!\p"
 	.string "I bet you can make smoother, better\n"
 	.string "{POKEBLOCK}s if you have more people.$"
-

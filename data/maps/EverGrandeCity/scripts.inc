@@ -34,4 +34,3 @@ EverGrandeCity_Text_CitySign:
 	.string "Ever Grande City\p"
 	.string "“The paradise of flowers, the sea,\n"
 	.string "and Pokémon.”$"
-

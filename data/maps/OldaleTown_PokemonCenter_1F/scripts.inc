@@ -61,4 +61,3 @@ OldaleTown_PokemonCenter_1F_Text_TradedInWirelessClub:
 	.string "The Pokémon Wireless Club on\n"
 	.string "the second floor was built recently.\p"
 	.string "I traded Pokémon right away.$"
-

@@ -140,4 +140,3 @@ EverGrandeCity_PokemonLeague_1F_Text_HaventObtainedAllBadges:
 EverGrandeCity_PokemonLeague_1F_Text_GoForth:
 	.string "Trainer! Believe in yourself and your\n"
 	.string "Pokémon, and go forth!$"
-

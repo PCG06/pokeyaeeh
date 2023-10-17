@@ -20,4 +20,3 @@ SlateportCity_House_Text_MustBeGoingToBattleTent:
 	.string "You're a Trainer, aren't you?\p"
 	.string "Since you came to Slateport City,\n"
 	.string "you must be going to the Battle Tent.$"
-

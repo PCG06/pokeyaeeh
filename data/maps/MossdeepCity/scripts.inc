@@ -432,4 +432,3 @@ MossdeepCity_Text_SootopolisNewGymLeader:
 	.string "Leader come in.\p"
 	.string "People tell me the new Leader once\n"
 	.string "mentored Wallace.$"
-

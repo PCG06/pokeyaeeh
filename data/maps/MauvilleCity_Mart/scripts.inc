@@ -32,4 +32,3 @@ MauvilleCity_Mart_Text_DecisionsDetermineBattle:
 	.string "instead…\p"
 	.string "The Trainer's decisions determine how\n"
 	.string "battles turn out, I think.$"
-

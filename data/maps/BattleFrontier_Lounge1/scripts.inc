@@ -255,4 +255,3 @@ BattleFrontier_Lounge1_Text_DidntDoAnythingSpecialRaisingIt:
 	.string "He said my Pokémon is outstanding!\n"
 	.string "But I didn't do anything special\l"
 	.string "raising it…$"
-

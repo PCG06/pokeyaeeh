@@ -165,4 +165,3 @@ LilycoveCity_House3_Text_GoingToEnterContest:
 	.string "I want to brag about how tough my\n"
 	.string "Pokémon is, so we're going to enter\l"
 	.string "a Contest together.$"
-

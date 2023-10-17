@@ -46,4 +46,3 @@ Route110_SeasideCyclingRoadNorthEntrance_Text_TooDangerousToWalk:
 	.string "Sorry, you can't walk on Cycling\n"
 	.string "Road. It's too dangerous.\p"
 	.string "Please come back with a Bike.$"
-

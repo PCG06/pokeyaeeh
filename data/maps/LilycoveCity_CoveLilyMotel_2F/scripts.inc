@@ -133,4 +133,3 @@ LilycoveCity_CoveLilyMotel_2F_Text_ContestsDoTakeStrategy:
 	.string "to win a Contest.\p"
 	.string "Devising Contest strategies is one way\n"
 	.string "of becoming a better Trainer, I'd say.$"
-

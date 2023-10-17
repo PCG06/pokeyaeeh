@@ -327,4 +327,3 @@ LilycoveCity_LilycoveMuseum_2F_Text_ThesePaintingsOfYourPokemon:
 	.string "These paintings are of your Pokémon.\p"
 	.string "Isn't that just the ultimate joy for\n"
 	.string "a Trainer?$"
-

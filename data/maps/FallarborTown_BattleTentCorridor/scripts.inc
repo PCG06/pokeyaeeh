@@ -67,4 +67,3 @@ FallarborTown_ContestHall_Text_CantWinEverywhere:
 FallarborTown_ContestHall_Text_SuperRankStage:
 	.string "Pokémon Contests\n"
 	.string "Super Rank Stage!$"
-

@@ -1,3 +1,4 @@
+raw `
 BattleFrontier_BattleTowerBattleRoom2_MapScripts:: @ 8248EE8
 	map_script MAP_SCRIPT_ON_TRANSITION, BattleFrontier_BattleTowerBattleRoom2_MapScript1_248EF8
 	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, BattleFrontier_BattleTowerBattleRoom2_MapScript2_248F33
@@ -505,3 +506,4 @@ gText_YourPartnerHasRetired:: @ 824979B
 	.string "Your partner has retired.\p"
 	.string "Your Battle Room challenge\n"
 	.string "will be canceled.$"
+`

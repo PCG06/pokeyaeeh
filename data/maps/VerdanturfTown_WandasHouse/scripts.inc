@@ -165,4 +165,3 @@ VerdanturfTown_WandasHouse_Text_WallyWasInEverGrande:
 	.string "Wally was in Ever Grande?\p"
 	.string "His parents in Petalburg would be\n"
 	.string "astonished to hear that!$"
-

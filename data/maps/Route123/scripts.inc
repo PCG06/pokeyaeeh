@@ -195,4 +195,3 @@ Route123_Text_RouteSignMtPyre:
 
 Route123_Text_BerryMastersHouse:
 	.string "Berry Master's House$"
-

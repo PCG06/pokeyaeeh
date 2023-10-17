@@ -65,4 +65,3 @@ MauvilleCity_PokemonCenter_1F_Text_RecordCornerSoundsFun:
 	.string "the Pokémon Center.\p"
 	.string "I don't know what it's about, but it\n"
 	.string "sounds fun. I'll go check it out!$"
-

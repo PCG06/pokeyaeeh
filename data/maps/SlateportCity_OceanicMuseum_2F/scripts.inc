@@ -437,4 +437,3 @@ SlateportCity_OceanicMuseum_2F_Text_SSAnneReplica:
 	.string "“S.S. Anne\p"
 	.string "“A replica of the luxury liner that\n"
 	.string "circles the globe.”$"
-

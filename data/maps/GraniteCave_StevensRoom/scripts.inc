@@ -118,4 +118,3 @@ GraniteCave_StevensRoom_Text_IveGotToHurryAlong:
 GraniteCave_StevensRoom_Text_OhBagIsFull:
 	.string "Oh, your Bag is full…\n"
 	.string "That's too bad, then.$"
-

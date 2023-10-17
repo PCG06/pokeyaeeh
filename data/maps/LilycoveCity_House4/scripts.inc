@@ -18,4 +18,3 @@ LilycoveCity_House4_Text_UnderwaterTrenchMossdeepSootopolis:
 	.string "There's a deep underwater trench\n"
 	.string "between Mossdeep and Sootopolis.\p"
 	.string "That's what someone told me, anyway.$"
-

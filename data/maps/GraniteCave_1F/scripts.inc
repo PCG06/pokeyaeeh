@@ -36,4 +36,3 @@ GraniteCave_1F_Text_ExplainFlash:
 	.string "of caves.\p"
 	.string "But, to use it, you need the Gym Badge\n"
 	.string "from Dewford's Pokémon Gym.$"
-

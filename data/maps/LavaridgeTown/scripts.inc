@@ -406,4 +406,3 @@ LavaridgeTown_Text_GymSign:
 LavaridgeTown_Text_HerbShopSign:
 	.string "Pokémon Herb Shop\n"
 	.string "“Bitter taste--better cure!”$"
-

@@ -104,4 +104,3 @@ Route111_WinstrateFamilysHouse_Text_GrandsonStrongShort:
 	.string "Pokémon League Champion by now.\p"
 	.string "Knowing my grandson, he could be the\n"
 	.string "Champion already!$"
-

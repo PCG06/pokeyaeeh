@@ -62,4 +62,3 @@ MauvilleCity_House2_Text_ThatsDisappointing:
 	.string "Oh, that's disappointing.\p"
 	.string "A Coin Case is needed for the\n"
 	.string "Game Corner.$"
-

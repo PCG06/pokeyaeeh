@@ -38,4 +38,3 @@ AbandonedShip_CaptainsOffice_Text_OhCanYouDeliverScanner: @ 823889D
 AbandonedShip_CaptainsOffice_Text_ThisIsSSCactus: @ 8238918
 	.string "This ship is called S.S. Cactus.\n"
 	.string "It seems to be from an earlier era.$"
-

@@ -143,4 +143,3 @@ RustboroCity_DevonCorp_1F_Text_ProductDisplay:
 	.string "“Recently, Devon has begun marketing\n"
 	.string "tools for Pokémon Trainers, including\l"
 	.string "Poké Balls and Pokénav systems.”$"
-

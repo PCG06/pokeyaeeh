@@ -291,4 +291,3 @@ LilycoveCity_LilycoveMuseum_1F_Text_MuseumTouristDestination:
 	.string "No, great for the Hoenn region!\p"
 	.string "This is what I've heard--a lone Trainer\n"
 	.string "procured all the paintings upstairs.$"
-

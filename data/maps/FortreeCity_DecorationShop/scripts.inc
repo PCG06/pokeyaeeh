@@ -69,4 +69,3 @@ FortreeCity_DecorationShop_Text_BuyingDeskForDolls:
 	.string "If I don't, when I decorate my\n"
 	.string "Secret Base, my Dolls will get\l"
 	.string "dirty or poked with splinters.$"
-

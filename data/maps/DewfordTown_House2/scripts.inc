@@ -54,4 +54,3 @@ DewfordTown_House2_Text_BrawlySoCool:
 	.string "heard about Brawly?\p"
 	.string "He's so cool…\n"
 	.string "Everyone idolizes him.$"
-

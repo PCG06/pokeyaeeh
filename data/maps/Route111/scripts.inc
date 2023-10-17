@@ -726,4 +726,3 @@ Route111_Text_TrainerHillSign:
 	.string "{RIGHT_ARROW} Trainer Hill Entrance\p"
 	.string "“Scale the heights, you hot-blooded\n"
 	.string "Trainers!”$"
-

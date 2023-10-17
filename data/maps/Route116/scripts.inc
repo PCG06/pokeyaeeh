@@ -470,4 +470,3 @@ Route116_Text_TrainerTipsBagHasPockets:
 	.string "placed in the appropriate Pockets.\p"
 	.string "No Trainer can afford to be without\n"
 	.string "a Bag of their own.$"
-

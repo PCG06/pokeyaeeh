@@ -418,4 +418,3 @@ MauvilleCity_Gym_Text_WattsonRematchNeedTwoMons:
 	.string "You've only one Pokémon with you!\p"
 	.string "Come see me with two or more\n"
 	.string "Pokémon, all right?$"
-

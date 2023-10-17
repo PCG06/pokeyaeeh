@@ -348,4 +348,3 @@ RustboroCity_PokemonSchool_Text_ScottMetAlreadyStoneBadge:
 	.string "you in battle.\p"
 	.string "It's hard to tell what you're like as\n"
 	.string "a Trainer from a League Badge.$"
-

@@ -116,4 +116,3 @@ AquaHideout_1F_Text_Grunt1Defeat:
 AquaHideout_1F_Text_Grunt1PostBattle:
 	.string "I took the loss for the Team,\n"
 	.string "but I did my job…$"
-

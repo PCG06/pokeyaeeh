@@ -38,4 +38,3 @@ FortreeCity_Mart_Text_StockUpOnItems:
 FortreeCity_Mart_Text_RareCandyMakesMonGrow:
 	.string "A Rare Candy makes a Pokémon grow\n"
 	.string "immediately by one level.$"
-

@@ -35,4 +35,3 @@ MossdeepCity_PokemonCenter_1F_Text_AbilitiesMightChangeMoves:
 	.string "Depending on the special abilities of\n"
 	.string "Pokémon, some moves might change\l"
 	.string "or not work at all.$"
-
