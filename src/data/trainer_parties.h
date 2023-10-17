@@ -7701,7 +7701,7 @@ static const struct TrainerMon sParty_Tiana[] = {
         .ability = ABILITY_RIVALRY,
         .gender = TRAINER_MON_FEMALE,
         .heldItem = ITEM_SITRUS_BERRY,
-        .ev = TRAINER_PARTY_EVS(0,0,0,52,0,0),
+        .ev = TRAINER_PARTY_EVS(0,0,0,200,0,0),
         .lvl = 14,
         .moves = {MOVE_DRAGON_RAGE, MOVE_BITE, MOVE_SCRATCH, MOVE_LEER},
         .nature = TRAINER_PARTY_NATURE(NATURE_JOLLY),
@@ -7719,6 +7719,14 @@ static const struct TrainerMon sParty_Tiana[] = {
         .heldItem = ITEM_SHARP_BEAK,
         .lvl = 14,
         .moves = {MOVE_PECK, MOVE_FURY_ATTACK, MOVE_HONE_CLAWS, MOVE_NONE},
+        .nature = TRAINER_PARTY_NATURE(NATURE_SERIOUS),
+    },
+    {
+        .species = SPECIES_CETODDLE,
+        .ability = ABILITY_THICK_FAT,
+        .heldItem = ITEM_LIFE_ORB,
+        .lvl = 14,
+        .moves = {MOVE_ICE_SHARD, MOVE_BULLDOZE, MOVE_YAWN, MOVE_NONE},
         .nature = TRAINER_PARTY_NATURE(NATURE_SERIOUS),
     }
 };

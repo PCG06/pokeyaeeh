@@ -63,11 +63,6 @@ Route102_EventScript_Rick::
 	msgbox Route102_Text_RickPostBattle, MSGBOX_AUTOCLOSE
 	end
 
-Route102_EventScript_Tiana::
-	trainerbattle_single TRAINER_TIANA, Route102_Text_TianaIntro, Route102_Text_TianaDefeated
-	msgbox Route102_Text_TianaPostBattle, MSGBOX_AUTOCLOSE
-	end
-
 Route102_EventScript_Allen::
 	trainerbattle_single TRAINER_ALLEN, Route102_Text_AllenIntro, Route102_Text_AllenDefeated
 	msgbox Route102_Text_AllenPostBattle, MSGBOX_AUTOCLOSE
@@ -107,3 +102,69 @@ Route102_Text_RouteSignOldale:
 Route102_Text_RouteSignPetalburg:
 	.string "Route 102\n"
 	.string "{LEFT_ARROW} Petalburg City$"
+
+Route102_EventScript_Tiana2::
+	msgbox Route102_EventScript_Tiana2_Text_0
+	giveitem ITEM_LUCKY_EGG, 2
+	playfanfare MUS_OBTAIN_ITEM
+	giveitem ITEM_TM_HONE_CLAWS, 1
+	playfanfare MUS_OBTAIN_ITEM
+	setflag FLAG_ROUTE_102_BOSS_DEFEATED
+	return
+
+
+Route102_EventScript_Tiana::
+	lock
+	faceplayer
+	checktrainerflag TRAINER_CALVIN_1
+	goto_if 1, Route102_EventScript_Tiana_5
+Route102_EventScript_Tiana_3:
+	msgbox Route102_EventScript_Tiana_Text_4
+Route102_EventScript_Tiana_1:
+	release
+	end
+
+Route102_EventScript_Tiana_2:
+	trainerbattle_double TRAINER_TIANA, Route102_EventScript_Tiana_Text_0, Route102_EventScript_Tiana_Text_1, Route102_EventScript_Tiana_Text_2, Route102_EventScript_Tiana2
+	msgbox Route102_EventScript_Tiana_Text_3
+	goto Route102_EventScript_Tiana_1
+
+Route102_EventScript_Tiana_4:
+	checktrainerflag TRAINER_ALLEN
+	goto_if 1, Route102_EventScript_Tiana_2
+	goto Route102_EventScript_Tiana_3
+
+Route102_EventScript_Tiana_5:
+	checktrainerflag TRAINER_RICK
+	goto_if 1, Route102_EventScript_Tiana_4
+	goto Route102_EventScript_Tiana_3
+
+
+Route102_EventScript_Tiana2_Text_0:
+	.string "Ok, fine! I lost! Here, take these,\n"
+	.string "they'll help you in your journey.$"
+
+Route102_EventScript_Tiana_Text_0:
+	.string "I'm going to keep winning and aim to be\n"
+	.string "the best Trainer. Help me further my\l"
+	.string "career!$"
+
+Route102_EventScript_Tiana_Text_1:
+	.string "I ended up furthering your career…$"
+
+Route102_EventScript_Tiana_Text_2:
+	.string "I want this to be a fair battle. Get\n"
+	.string "another Pokémon and talk to me again.$"
+
+Route102_EventScript_Tiana_Text_3:
+	.string "Lucky Eggs give more experience when\n"
+	.string "held in battle. Give it to your Pokémon\l"
+	.string "if you feel like it needs to get\l"
+	.string "stronger faster. The TM I gave you will\l"
+	.string "boost your Pokémon's Attack and\l"
+	.string "accuracy. It'll be useful in your\l"
+	.string "journey.$"
+
+Route102_EventScript_Tiana_Text_4:
+	.string "Why don't you beat every trainer here\n"
+	.string "before talking to me again?$"

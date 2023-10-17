@@ -7236,14 +7236,14 @@ const struct Trainer gTrainers[] = {
         .party = TRAINER_PARTY(sParty_MaxieMtChimney),
     },
 
-    [TRAINER_TIANA] =
+    [TRAINER_TIANA] = //Route Boss
     {
-        .trainerClass = TRAINER_CLASS_LASS,
+        .trainerClass = TRAINER_CLASS_ROUTE_BOSS,
         .encounterMusic_gender = F_TRAINER_FEMALE | TRAINER_ENCOUNTER_MUSIC_FEMALE,
         .trainerPic = TRAINER_PIC_LASS,
         .trainerName = _("Tiana"),
         .items = {},
-        .doubleBattle = FALSE,
+        .doubleBattle = TRUE,
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY,
         .party = TRAINER_PARTY(sParty_Tiana),
     },
