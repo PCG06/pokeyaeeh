@@ -4081,8 +4081,27 @@ static const struct TrainerMon sParty_Shelby5[] = {
 
 static const struct TrainerMon sParty_Calvin1[] = {
     {
-    .lvl = 5,
-    .species = SPECIES_POOCHYENA,
+        .species = SPECIES_RATTATA_ALOLAN,
+        .ability = ABILITY_HUSTLE,
+        .lvl = 7,
+        .moves = {MOVE_QUICK_ATTACK, MOVE_HEADBUTT, MOVE_NONE, MOVE_NONE},
+        .nature = TRAINER_PARTY_NATURE(NATURE_ADAMANT),
+    },
+    {
+        .species = SPECIES_VULPIX,
+        .ability = ABILITY_DROUGHT,
+        .gender = TRAINER_MON_FEMALE,
+        .heldItem = ITEM_ORAN_BERRY,
+        .lvl = 10,
+        .moves = {MOVE_EMBER, MOVE_HYPNOSIS, MOVE_TACKLE, MOVE_NONE},
+        .nature = TRAINER_PARTY_NATURE(NATURE_QUIRKY),
+    },
+    {
+        .species = SPECIES_NATU,
+        .ability = ABILITY_EARLY_BIRD,
+        .lvl = 12,
+        .moves = {MOVE_PECK, MOVE_QUICK_ATTACK, MOVE_NIGHT_SHADE, MOVE_CONFUSION},
+        .nature = TRAINER_PARTY_NATURE(NATURE_BASHFUL),
     }
 };
 
@@ -4276,12 +4295,30 @@ static const struct TrainerMon sParty_Eddie[] = {
 
 static const struct TrainerMon sParty_Allen[] = {
     {
-    .lvl = 4,
-    .species = SPECIES_ZIGZAGOON,
+        .species = SPECIES_PIKACHU,
+        .ability = ABILITY_STATIC,
+        .heldItem = ITEM_ORAN_BERRY,
+        .ev = TRAINER_PARTY_EVS(0,0,0,52,0,0),
+        .lvl = 10,
+        .moves = {MOVE_CHARM, MOVE_NUZZLE, MOVE_QUICK_ATTACK, MOVE_NONE},
+        .nature = TRAINER_PARTY_NATURE(NATURE_JOLLY),
     },
     {
-    .lvl = 3,
-    .species = SPECIES_TAILLOW,
+        .species = SPECIES_WHISMUR,
+        .ability = ABILITY_SOUNDPROOF,
+        .heldItem = ITEM_ORAN_BERRY,
+        .lvl = 8,
+        .moves = {MOVE_DISARMING_VOICE, MOVE_POUND, MOVE_ASTONISH, MOVE_NONE},
+        .nature = TRAINER_PARTY_NATURE(NATURE_JOLLY),
+    },
+    {
+        .species = SPECIES_WIGLETT,
+        .ability = ABILITY_GOOEY,
+        .heldItem = ITEM_SITRUS_BERRY,
+        .ev = TRAINER_PARTY_EVS(0,0,0,0,52,0), //needs special to do anything
+        .lvl = 12,
+        .moves = {MOVE_AQUA_JET, MOVE_MUD_SLAP, MOVE_WRAP, MOVE_WATER_GUN},
+        .nature = TRAINER_PARTY_NATURE(NATURE_JOLLY),
     }
 };
 
@@ -7660,12 +7697,29 @@ static const struct TrainerMon sParty_MaxieMtChimney[] = {
 
 static const struct TrainerMon sParty_Tiana[] = {
     {
-    .lvl = 4,
-    .species = SPECIES_ZIGZAGOON,
+        .species = SPECIES_AXEW,
+        .ability = ABILITY_RIVALRY,
+        .gender = TRAINER_MON_FEMALE,
+        .heldItem = ITEM_SITRUS_BERRY,
+        .ev = TRAINER_PARTY_EVS(0,0,0,52,0,0),
+        .lvl = 14,
+        .moves = {MOVE_DRAGON_RAGE, MOVE_BITE, MOVE_SCRATCH, MOVE_LEER},
+        .nature = TRAINER_PARTY_NATURE(NATURE_JOLLY),
     },
     {
-    .lvl = 4,
-    .species = SPECIES_SHROOMISH,
+        .species = SPECIES_SNUBBULL,
+        .ability = ABILITY_INTIMIDATE,
+        .lvl = 13,
+        .moves = {MOVE_BITE, MOVE_ICE_FANG, MOVE_THUNDER_FANG, MOVE_NONE},
+        .nature = TRAINER_PARTY_NATURE(NATURE_SERIOUS),
+    },
+    {
+        .species = SPECIES_ROOKIDEE,
+        .ability = ABILITY_UNNERVE,
+        .heldItem = ITEM_SHARP_BEAK,
+        .lvl = 14,
+        .moves = {MOVE_PECK, MOVE_FURY_ATTACK, MOVE_HONE_CLAWS, MOVE_NONE},
+        .nature = TRAINER_PARTY_NATURE(NATURE_SERIOUS),
     }
 };
 
@@ -7807,12 +7861,27 @@ static const struct TrainerMon sParty_Crissy[] = {
 
 static const struct TrainerMon sParty_Rick[] = {
     {
-    .lvl = 4,
-    .species = SPECIES_WURMPLE,
+        .species = SPECIES_RELLOR,
+        .ability = ABILITY_COMPOUND_EYES,
+        .lvl = 8,
+        .moves = {MOVE_ROLLOUT, MOVE_TACKLE, MOVE_POUNCE, MOVE_NONE},
+        .nature = TRAINER_PARTY_NATURE(NATURE_BASHFUL),
     },
     {
-    .lvl = 4,
-    .species = SPECIES_WURMPLE,
+        .species = SPECIES_SIZZLIPEDE,
+        .ability = ABILITY_FLAME_BODY,
+        .lvl = 10,
+        .moves = {MOVE_EMBER, MOVE_BITE, MOVE_LEECH_SEED, MOVE_NONE},
+        .nature = TRAINER_PARTY_NATURE(NATURE_BASHFUL),
+    },
+    {
+        .species = SPECIES_BEEDRILL,
+        .ability = ABILITY_SNIPER,
+        .heldItem = ITEM_SITRUS_BERRY,
+        .ev = TRAINER_PARTY_EVS(0,0,0,52,0,0),
+        .lvl = 13,
+        .moves = {MOVE_FURY_ATTACK, MOVE_BUG_BITE, MOVE_POISON_STING, MOVE_NONE},
+        .nature = TRAINER_PARTY_NATURE(NATURE_JOLLY),
     }
 };
 
