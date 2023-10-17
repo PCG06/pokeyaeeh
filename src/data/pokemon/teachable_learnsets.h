@@ -18404,6 +18404,7 @@ static const u16 sBreloomTeachableLearnset[] = {
     MOVE_GIGA_DRAIN,
     MOVE_GIGA_IMPACT,
     MOVE_GRASS_KNOT,
+    MOVE_GRASSY_GLIDE,
     MOVE_GRASSY_TERRAIN,
     MOVE_GUNK_SHOT,
     MOVE_HELPING_HAND,

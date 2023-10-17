@@ -1087,7 +1087,15 @@ static void Task_DexNavSearch(u8 taskId)
         EndDexNavSearch(taskId);
         return;
     }
-    
+
+    if (gMain.newKeys == B_BUTTON)
+	{
+		gSaveBlock1Ptr->dexNavChain = 0;
+		EndDexNavSearch(taskId);
+		PlaySE(SE_POKENAV_OFF);
+		return;
+	}
+
     if (gTasks[taskId].tFrameCount > DEXNAV_TIMEOUT * 60)
     { // player took too long
         if (sDexNavSearchDataPtr->hiddenSearch && !task->tRevealed)

@@ -123,6 +123,8 @@ void FieldGetPlayerInput(struct FieldInput *input, u16 newKeys, u16 heldKeys)
                 input->pressedBButton = TRUE;
             if (newKeys & R_BUTTON && !FlagGet(FLAG_SYS_DEXNAV_SEARCH))
                 input->pressedRButton = TRUE;
+            if (newKeys & L_BUTTON)
+                input->pressedLButton = TRUE;
         }
 
         if (heldKeys & (DPAD_UP | DPAD_DOWN | DPAD_LEFT | DPAD_RIGHT))
@@ -130,9 +132,15 @@ void FieldGetPlayerInput(struct FieldInput *input, u16 newKeys, u16 heldKeys)
             input->heldDirection = TRUE;
             input->heldDirection2 = TRUE;
         }
-
-        if (newKeys & L_BUTTON)
-            input->pressedLButton = TRUE;
+    }
+     
+    if (newKeys & START_BUTTON && FlagGet(FLAG_SYS_DEXNAV_SEARCH))
+    {
+        input->pressedStartButton = FALSE;
+    }
+    if (newKeys & SELECT_BUTTON && FlagGet(FLAG_SYS_DEXNAV_SEARCH))
+    {
+        input->pressedSelectButton = FALSE;
     }
 
     if (forcedMove == FALSE)
@@ -1132,6 +1140,9 @@ static bool8 EnableAutoRun(void)
 {
     if (!FlagGet(FLAG_SYS_B_DASH))
         return FALSE;   //auto run unusable until you get running shoes
+
+    if (FlagGet(FLAG_SYS_DEXNAV_SEARCH))
+        return FALSE;   //auto run unusable when dexnav searching
 
     PlaySE(SE_SELECT);
     if (TestPlayerAvatarFlags(PLAYER_AVATAR_FLAG_MACH_BIKE | PLAYER_AVATAR_FLAG_ACRO_BIKE))
