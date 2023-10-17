@@ -1072,14 +1072,14 @@ static void Task_DexNavSearch(u8 taskId)
         else
             EndDexNavSearchSetupScript(EventScript_MovedTooFast, taskId);
         return;
-    }*/
+    }
     
     if (sDexNavSearchDataPtr->proximity <= SNEAKING_PROXIMITY && TestPlayerAvatarFlags(PLAYER_AVATAR_FLAG_DASH | PLAYER_AVATAR_FLAG_BIKE)) 
     { // running/biking too close
         //always do event script, even if player hasn't revealed a hidden mon. It's assumed they would be creeping towards it
         EndDexNavSearchSetupScript(EventScript_MovedTooFast, taskId);
         return;
-    }
+    }*/
     
     if (ArePlayerFieldControlsLocked() == TRUE)
     { // check if script just executed
