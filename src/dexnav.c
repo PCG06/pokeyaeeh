@@ -634,12 +634,12 @@ static bool8 DexNavPickTile(u8 environment, u8 areaX, u8 areaY, bool8 smallScan)
             else if (TestPlayerAvatarFlags(PLAYER_AVATAR_FLAG_DASH))
                 tileBuffer = SNEAKING_PROXIMITY + 1;
             
-            if (GetPlayerDistance(topX, topY) <= tileBuffer)
+            /* if (GetPlayerDistance(topX, topY) <= tileBuffer)
             {
                 // tile too close to player
                 topX++;
                 continue;
-            }
+            } */
             
             for (i = 0; i < OBJECT_EVENTS_COUNT; i++)
             {
@@ -1132,7 +1132,7 @@ static void Task_DexNavSearch(u8 taskId)
         return;
     }
 
-    //Caves and water the pokemon moves around
+    /* //Caves and water the pokemon moves around
     if ((sDexNavSearchDataPtr->environment == ENCOUNTER_TYPE_WATER || GetCurrentMapType() == MAP_TYPE_UNDERGROUND)
         && sDexNavSearchDataPtr->proximity < GetMovementProximityBySearchLevel() && sDexNavSearchDataPtr->movementCount < 2
         && task->tRevealed)
@@ -1146,7 +1146,7 @@ static void Task_DexNavSearch(u8 taskId)
         }
         
         sDexNavSearchDataPtr->movementCount++;
-    }
+    } */
 
     DexNavProximityUpdate();
     if (task->tProximity != sDexNavSearchDataPtr->proximity)
@@ -1266,7 +1266,7 @@ static u8 DexNavTryGenerateMonLevel(u16 species, u8 environment)
     u8 levelBase = GetEncounterLevelFromMapData(species, environment);
     u8 levelBonus = gSaveBlock1Ptr->dexNavChain / 5;
 
-    if (levelBase == MON_LEVEL_NONEXISTENT)
+    if (GetEncounterLevelFromMapData(species, environment) == MON_LEVEL_NONEXISTENT)
         return MON_LEVEL_NONEXISTENT;   //species not found in the area
     
     if (Random() % 100 < 4)
