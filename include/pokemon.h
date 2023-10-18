@@ -633,6 +633,10 @@ u8 SendMonToPC(struct Pokemon* mon);
 u8 CalculatePartyCount(struct Pokemon *party);
 u16 SanitizeSpeciesId(u16 species);
 bool32 IsSpeciesEnabled(u16 species);
+//Egg Moves ---------------------------------------------------
+u8 GetNumberOfEggMoves(struct Pokemon *mon);
+u8 GetEggMoveTutorMoves(struct Pokemon *mon, u16 *moves);
+//-------------------------------------------------------------
 
 #define DAY_START 4
 #define NIGHT_START 18

@@ -400,7 +400,8 @@ const u8 gText_Shift[] = _("Shift");
 const u8 gText_SendOut[] = _("Send out");
 const u8 gText_Switch2[] = _("Switch");
 const u8 gText_Summary5[] = _("Summary");
-const u8 gText_Moves[] = _("Moves"); // Unused
+const u8 gText_Moves[] = _("Moves");
+const u8 gText_Egg_Moves[] = _("Egg Moves");
 const u8 gText_Enter[] = _("Enter");
 const u8 gText_NoEntry[] = _("No entry");
 const u8 gText_Take2[] = _("Take");
@@ -2039,7 +2040,6 @@ const u8 gText_CurrentTimePMOff[] = _(" {STR_VAR_3}  {STR_VAR_1} {STR_VAR_2} PM"
 const u8 gText_SmallDot[] = _("·");
 const u8 gText_LargeDot[] = _("{EMOJI_CIRCLE}");
 const u8 gText_PageNav[] = _("{L_BUTTON}{R_BUTTON} PAGE");
-
 
 // Region names
 const u8 gText_Kanto[] =    _("Kanto");

@@ -679,6 +679,8 @@ struct
     [MENU_REGISTER] = {gText_Register, CursorCb_Register},
     [MENU_TRADE1] = {gText_Trade4, CursorCb_Trade1},
     [MENU_TRADE2] = {gText_Trade4, CursorCb_Trade2},
+    [MENU_MOVES] = {gText_Moves, CursorCb_ChangeMoves},
+	[MENU_EGG_MOVES] = {gText_Egg_Moves, CursorCb_ChangeEggMoves},
     [MENU_TOSS] = {gMenuText_Toss, CursorCb_Toss},
     [MENU_SUB_FIELD_MOVES] = {gText_FieldMoves, CursorCb_FieldMovesSubMenu},
     [MENU_FIELD_MOVES + FIELD_MOVE_CUT] = {gMoveNames[MOVE_CUT], CursorCb_FieldMove},

@@ -3236,4 +3236,8 @@ extern const u8 gText_Alola[];
 extern const u8 gText_Galar[];
 extern const u8 gText_Paldea[];
 
+// Move tutors
+extern const u8 gText_Moves[];
+extern const u8 gText_Egg_Moves[];
+
 #endif // GUARD_STRINGS_H
