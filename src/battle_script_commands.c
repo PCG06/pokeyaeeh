@@ -4153,6 +4153,13 @@ static void Cmd_getexp(void)
                 if (B_MAX_LEVEL_EV_GAINS >= GEN_5)
                     MonGainEVs(&gPlayerParty[*expMonId], gBattleMons[gBattlerFainted].species);
             }
+            else if (GetMonData(&gPlayerParty[gBattleStruct->expGetterMonId], MON_DATA_LEVEL) >= GetLevelCap())
+            {
+                gBattleMoveDamage = 1;
+                MonGainEVs(&gPlayerParty[*expMonId], gBattleMons[gBattlerFainted].species);
+                gBattleScripting.getexpState++;
+                PrepareStringBattle(STRINGID_PKMNGAINED1EXP, gBattleStruct->expGetterBattlerId);
+            }
             else
             {
                 // Music change in a wild battle after fainting opposing pokemon.

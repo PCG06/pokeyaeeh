@@ -9413,3 +9413,31 @@ void UpdateMonPersonality(struct BoxPokemon *boxMon, u32 personality)
     boxMon->checksum = CalculateBoxMonChecksum(boxMon);
     EncryptBoxMon(boxMon);
 }
+
+u8 GetLevelCap(void)
+{
+    u8 currentLevelCap;
+
+    if (FlagGet(FLAG_SYS_GAME_CLEAR))
+        currentLevelCap = 101;
+    else if (FlagGet(FLAG_BADGE08_GET))
+        currentLevelCap = 85;
+    else if (FlagGet(FLAG_BADGE07_GET))
+        currentLevelCap = 75;
+    else if (FlagGet(FLAG_BADGE06_GET))
+        currentLevelCap = 65;
+    else if (FlagGet(FLAG_BADGE05_GET))
+        currentLevelCap = 55;
+    else if (FlagGet(FLAG_BADGE04_GET))
+        currentLevelCap = 50;
+    else if (FlagGet(FLAG_BADGE03_GET))
+        currentLevelCap = 45;
+    else if (FlagGet(FLAG_BADGE02_GET))
+        currentLevelCap = 36;
+    else if (FlagGet(FLAG_BADGE01_GET))
+        currentLevelCap = 23;
+    else
+    currentLevelCap = 16;
+
+    return currentLevelCap;
+}

@@ -812,6 +812,7 @@ static const u8 sText_TargetIsHurtBySaltCure[] = _("{B_DEF_NAME_WITH_PREFIX} is 
 static const u8 sText_BattlerAbilitySetUpTailwind[] = _("{B_ATK_NAME_WITH_PREFIX}'s Tailstream set up \ntailwind!");
 static const u8 sText_OpportunistCopied[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} copied its\nopponent's stat changes!");
 static const u8 sText_TargetCoveredInStickyCandySyrup[] = _("{B_DEF_NAME_WITH_PREFIX} got covered\nin sticky syrup!");
+static const u8 sText_PkmnGained1EXP[] = _("{B_BUFF1} gained\n1 EXP. Point!\p");
 
 const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
 {
@@ -1479,6 +1480,7 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_ULTRABURSTCOMPLETED - BATTLESTRINGS_TABLE_START] = sText_UltraBurstCompleted,
     [STRINGID_TEAMGAINEDEXP - BATTLESTRINGS_TABLE_START] = sText_TeamGainedEXP,
     [STRINGID_TARGETCOVEREDINSTICKYCANDYSYRUP - BATTLESTRINGS_TABLE_START] = sText_TargetCoveredInStickyCandySyrup,
+    [STRINGID_PKMNGAINED1EXP - BATTLESTRINGS_TABLE_START] = sText_PkmnGained1EXP,
 };
 
 const u16 gTrainerUsedItemStringIds[] =

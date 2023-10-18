@@ -418,7 +418,7 @@ static const u8 sDebugText_Util_Script_2[] =               _("Single Battle");
 static const u8 sDebugText_Util_Script_3[] =               _("Terrain Double Battle");
 static const u8 sDebugText_Util_Script_4[] =               _("Tailwind Double Battle");
 static const u8 sDebugText_Util_Script_5[] =               _("Revival Cats");
-static const u8 sDebugText_Util_Script_6[] =               _("Script 6");
+static const u8 sDebugText_Util_Script_6[] =               _("EXP testing");
 static const u8 sDebugText_Util_Script_7[] =               _("Script 7");
 static const u8 sDebugText_Util_Script_8[] =               _("Script 8");
 // Util Menu

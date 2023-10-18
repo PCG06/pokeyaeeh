@@ -94,6 +94,8 @@ Debug_Script_5::
 	end
 
 Debug_Script_6::
+    cleartrainerflag TRAINER_MAY_PLACEHOLDER
+	    trainerbattle_single TRAINER_MAY_PLACEHOLDER, Route119_Text_KentIntro, Route119_Text_KentDefeat
 	end
 
 Debug_Script_7::
