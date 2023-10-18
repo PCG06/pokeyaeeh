@@ -2616,6 +2616,9 @@ static u8 DisplaySelectionWindow(u8 windowType)
         u8 fontColorsId = 3;
         if ((sPartyMenuInternal->actions[i] >= MENU_FIELD_MOVES) || (sPartyMenuInternal->actions[i] == MENU_SUB_FIELD_MOVES))
             fontColorsId = 4;
+        if (sPartyMenuInternal->actions[i] == MENU_MOVES     ||
+            sPartyMenuInternal->actions[i] == MENU_EGG_MOVES)
+            fontColorsId = 6;
         AddTextPrinterParameterized4(sPartyMenuInternal->windowId[0], FONT_NORMAL, cursorDimension, (i * 16) + 1, letterSpacing, 0, sFontColorTable[fontColorsId], 0, sCursorOptions[sPartyMenuInternal->actions[i]].text);
     }
 
@@ -7565,6 +7568,8 @@ void ItemUseCB_HiddenPowerCrystals(u8 taskId, TaskFunc task)
     SetWordTaskArg(taskId, tOldFunc, (uintptr_t)(gTasks[taskId].func));
     gTasks[taskId].func = Task_HiddenPowerCrystals;
 }
+
+#undef tMonId
 
 // mints
 #define tState          data[0]
