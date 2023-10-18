@@ -15,6 +15,7 @@ RustboroCity_House2_Text_TrainerSchoolExcellent:
 	.string "become a Gym Leader.$"
 
 RustboroCity_House2_Text_RoxanneKnowsALot:
-	.string "Dor, the Gym Leader, really knows\n"
-	.string "a lot about Pokémon.\p"
-	.string "She's really strong, too!$"
+	.string "Dor, the Gym Leader, really loves\n"
+	.string "using Fairy-type Pokémon.\p"
+	.string "She said they remind her of kids\n"
+	.string "she'll never have.$"
