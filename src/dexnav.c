@@ -1026,7 +1026,7 @@ static void Task_RevealHiddenMon(u8 taskId)
     }
     
     
-    if (!GetSetPokedexFlag(SpeciesToNationalPokedexNum(species), FLAG_GET_SEEN))
+    if (species == SPECIES_NONE)
     {
         u8 index;
         
@@ -1173,7 +1173,7 @@ static void DexNavUpdateSearchWindow(u8 proximity, u8 searchLevel)
 {
     bool8 hideName = FALSE;
 
-    if (sDexNavSearchDataPtr->hiddenSearch && !GetSetPokedexFlag(SpeciesToNationalPokedexNum(sDexNavSearchDataPtr->species), FLAG_GET_SEEN))
+    if (sDexNavSearchDataPtr->species == SPECIES_NONE)
         hideName = TRUE;    //if a detector mode hidden search and player hasn't seen the mon, hide info
     
     FillWindowPixelBuffer(sDexNavSearchDataPtr->windowId, PIXEL_FILL(1));   //clear window
@@ -2007,8 +2007,8 @@ static void TryDrawIconInSlot(u16 species, s16 x, s16 y)
 {
     if (species == SPECIES_NONE || species > NUM_SPECIES)
         CreateNoDataIcon(x, y);   //'X' in slot
-    else if (!GetSetPokedexFlag(SpeciesToNationalPokedexNum(species), FLAG_GET_SEEN))
-        CreateMonIcon(SPECIES_NONE, SpriteCB_MonIcon, x, y, 0, 0); //question mark
+    /*else if (!GetSetPokedexFlag(SpeciesToNationalPokedexNum(species), FLAG_GET_SEEN))
+        CreateMonIcon(SPECIES_NONE, SpriteCB_MonIcon, x, y, 0, 0); //question mark */
     else
         CreateMonIcon(species, SpriteCB_MonIcon, x, y, 0, 0);
 }
@@ -2134,8 +2134,8 @@ static void PrintCurrentSpeciesInfo(void)
     u16 dexNum = SpeciesToNationalPokedexNum(species);
     u8 type1, type2;
     
-    if (!GetSetPokedexFlag(dexNum, FLAG_GET_SEEN))
-        species = SPECIES_NONE;
+    /* if (!GetSetPokedexFlag(dexNum, FLAG_GET_SEEN))
+        species = SPECIES_NONE; */
 
     // clear windows
     FillWindowPixelBuffer(WINDOW_INFO, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
@@ -2214,6 +2214,7 @@ static void PrintMapName(void)
 
 static void PrintSearchableSpecies(u16 species)
 {
+    species = DexNavGetSpecies();
     FillWindowPixelBuffer(WINDOW_REGISTERED, PIXEL_FILL(TEXT_COLOR_TRANSPARENT));
     PutWindowTilemap(WINDOW_REGISTERED);
     if (species == SPECIES_NONE)
