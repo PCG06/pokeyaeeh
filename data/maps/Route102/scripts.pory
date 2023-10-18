@@ -119,8 +119,10 @@ script Route102_EventScript_Tiana{
 	if(defeated(TRAINER_CALVIN_1) &&
 	   defeated(TRAINER_RICK) &&
 	   defeated(TRAINER_ALLEN)){
+		setflag(FLAG_NO_BAG_USE)
 		trainerbattle_double(TRAINER_TIANA, format("I'm going to keep winning and aim to be the best Trainer. Help me further my career!"), format("I ended up furthering your career…"), format("I want this to be a fair battle. Get another Pokémon and talk to me again."), Route102_EventScript_Tiana2)
 			msgbox(format("Lucky Eggs give more experience when held in battle. Give it to your Pokémon if you feel like it needs to get stronger faster. The TM I gave you will boost your Pokémon's Attack and accuracy. It'll be useful in your journey."))
+		clearflag(FLAG_NO_BAG_USE)
 	}
 	else{
 		// before defeating every trainer here

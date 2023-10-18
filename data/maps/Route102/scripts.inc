@@ -125,8 +125,10 @@ Route102_EventScript_Tiana_1:
 	end
 
 Route102_EventScript_Tiana_2:
+	setflag FLAG_NO_BAG_USE
 	trainerbattle_double TRAINER_TIANA, Route102_EventScript_Tiana_Text_0, Route102_EventScript_Tiana_Text_1, Route102_EventScript_Tiana_Text_2, Route102_EventScript_Tiana2
 	msgbox Route102_EventScript_Tiana_Text_3
+	clearflag FLAG_NO_BAG_USE
 	goto Route102_EventScript_Tiana_1
 
 Route102_EventScript_Tiana_4:
