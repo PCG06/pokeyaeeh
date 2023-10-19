@@ -1219,7 +1219,7 @@
 #define FLAG_ITEM_SAFARI_ZONE_SOUTH_EAST_BIG_PEARL                  0x492
 
 #define FLAG_ROUTE_102_BOSS_DEFEATED                                0x493 // Route 102 Boss Lass Tiana
-#define FLAG_UNUSED_0x494                                           0x494 // Unused Flag
+#define FLAG_ROUTE_104_BOSS_DEFEATED                                0x494 // Route 104 Boss Fisherman Ivan
 #define FLAG_UNUSED_0x495                                           0x495 // Unused Flag
 #define FLAG_UNUSED_0x496                                           0x496 // Unused Flag
 #define FLAG_UNUSED_0x497                                           0x497 // Unused Flag

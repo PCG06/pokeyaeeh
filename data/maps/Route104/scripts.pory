@@ -847,11 +847,6 @@ Route104_Movement_BrineyExitBoat:
 	walk_in_place_faster_left
 	step_end
 
-Route104_EventScript_Ivan::
-	trainerbattle_single TRAINER_IVAN, Route104_Text_IvanIntro, Route104_Text_IvanDefeat
-	msgbox Route104_Text_IvanPostBattle, MSGBOX_AUTOCLOSE
-	end
-
 Route104_EventScript_Billy::
 	trainerbattle_single TRAINER_BILLY, Route104_Text_BillyIntro, Route104_Text_BillyDefeat
 	msgbox Route104_Text_BillyPostBattle, MSGBOX_AUTOCLOSE
@@ -1172,3 +1167,33 @@ Route104_Text_BrendanPostBattle:
 	.string "Like Mr. Briney, it's important to\n"
 	.string "become friends with your Pokémon.$"
 `
+script Route104_EventScript_Ivan2{
+	msgbox(format("Ok, fine! I lost! You can have my precious rod…"))
+		giveitem(ITEM_OLD_ROD, 1)
+		playfanfare(MUS_OBTAIN_ITEM)
+		giveitem(ITEM_TM_BOUNCE, 1)
+		playfanfare(MUS_OBTAIN_ITEM)
+		setflag(FLAG_ROUTE_104_BOSS_DEFEATED)
+}
+
+script Route104_EventScript_Ivan{
+    lock
+    faceplayer
+	if(defeated(TRAINER_BILLY) &&
+	   defeated(TRAINER_DARIAN) &&
+	   defeated(TRAINER_CINDY_1) &&
+	   defeated(TRAINER_WINSTON_1) &&
+	   defeated(TRAINER_HALEY_1) &&
+	   defeated(TRAINER_GINA_AND_MIA_1)){
+		setflag(FLAG_NO_BAG_USE)
+		trainerbattle_double(TRAINER_IVAN, format("Why keep it a secret? I'm the Water Pokémon expert! Huh? You don't know me?"), format("I thought I wasn't too bad, if I may say so, but I guess not… Bleah…"), format("Why keep it a secret? I'm the Water Pokémon expert! Huh? Get more Pokémon and I'll battle you."), Route104_EventScript_Ivan2)
+			msgbox(format("Bouncy! Bouncy! Bouncy! Bounce is the strongest Water-type move!"))
+		clearflag(FLAG_NO_BAG_USE)
+	}
+	else{
+		// before defeating every trainer here
+		msgbox(format("I'm the Water Pokémon expert! Beat every trainer here before approaching me, little kiddo!"))
+	}
+    release
+    end
+}

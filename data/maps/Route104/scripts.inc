@@ -846,11 +846,6 @@ Route104_Movement_BrineyExitBoat:
 	walk_in_place_faster_left
 	step_end
 
-Route104_EventScript_Ivan::
-	trainerbattle_single TRAINER_IVAN, Route104_Text_IvanIntro, Route104_Text_IvanDefeat
-	msgbox Route104_Text_IvanPostBattle, MSGBOX_AUTOCLOSE
-	end
-
 Route104_EventScript_Billy::
 	trainerbattle_single TRAINER_BILLY, Route104_Text_BillyIntro, Route104_Text_BillyDefeat
 	msgbox Route104_Text_BillyPostBattle, MSGBOX_AUTOCLOSE
@@ -1170,3 +1165,84 @@ Route104_Text_BrendanPostBattle:
 	.string "making Pokémon battle.\p"
 	.string "Like Mr. Briney, it's important to\n"
 	.string "become friends with your Pokémon.$"
+
+Route104_EventScript_Ivan2::
+	msgbox Route104_EventScript_Ivan2_Text_0
+	giveitem ITEM_OLD_ROD, 1
+	playfanfare MUS_OBTAIN_ITEM
+	giveitem ITEM_TM_BOUNCE, 1
+	playfanfare MUS_OBTAIN_ITEM
+	setflag FLAG_ROUTE_104_BOSS_DEFEATED
+	return
+
+
+Route104_EventScript_Ivan::
+	lock
+	faceplayer
+	checktrainerflag TRAINER_BILLY
+	goto_if 1, Route104_EventScript_Ivan_5
+Route104_EventScript_Ivan_3:
+	msgbox Route104_EventScript_Ivan_Text_4
+Route104_EventScript_Ivan_1:
+	release
+	end
+
+Route104_EventScript_Ivan_2:
+	setflag FLAG_NO_BAG_USE
+	trainerbattle_double TRAINER_IVAN, Route104_EventScript_Ivan_Text_0, Route104_EventScript_Ivan_Text_1, Route104_EventScript_Ivan_Text_2, Route104_EventScript_Ivan2
+	msgbox Route104_EventScript_Ivan_Text_3
+	clearflag FLAG_NO_BAG_USE
+	goto Route104_EventScript_Ivan_1
+
+Route104_EventScript_Ivan_4:
+	checktrainerflag TRAINER_CINDY_1
+	goto_if 1, Route104_EventScript_Ivan_9
+	goto Route104_EventScript_Ivan_3
+
+Route104_EventScript_Ivan_5:
+	checktrainerflag TRAINER_DARIAN
+	goto_if 1, Route104_EventScript_Ivan_4
+	goto Route104_EventScript_Ivan_3
+
+Route104_EventScript_Ivan_8:
+	checktrainerflag TRAINER_HALEY_1
+	goto_if 1, Route104_EventScript_Ivan_12
+	goto Route104_EventScript_Ivan_3
+
+Route104_EventScript_Ivan_9:
+	checktrainerflag TRAINER_WINSTON_1
+	goto_if 1, Route104_EventScript_Ivan_8
+	goto Route104_EventScript_Ivan_3
+
+Route104_EventScript_Ivan_12:
+	checktrainerflag TRAINER_GINA_AND_MIA_1
+	goto_if 1, Route104_EventScript_Ivan_2
+	goto Route104_EventScript_Ivan_3
+
+
+Route104_EventScript_Ivan2_Text_0:
+	.string "Ok, fine! I lost! You can have my\n"
+	.string "precious rod…$"
+
+Route104_EventScript_Ivan_Text_0:
+	.string "Why keep it a secret? I'm the Water\n"
+	.string "Pokémon expert! Huh? You don't know\l"
+	.string "me?$"
+
+Route104_EventScript_Ivan_Text_1:
+	.string "I thought I wasn't too bad, if I may say\n"
+	.string "so, but I guess not… Bleah…$"
+
+Route104_EventScript_Ivan_Text_2:
+	.string "Why keep it a secret? I'm the Water\n"
+	.string "Pokémon expert! Huh? Get more Pokémon\l"
+	.string "and I'll battle you.$"
+
+Route104_EventScript_Ivan_Text_3:
+	.string "Bouncy! Bouncy! Bouncy! Bounce is the\n"
+	.string "strongest Water-type move!$"
+
+Route104_EventScript_Ivan_Text_4:
+	.string "I'm the Water Pokémon expert! Beat\n"
+	.string "every trainer here before approaching\l"
+	.string "me, little kiddo!$"
