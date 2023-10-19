@@ -1220,16 +1220,16 @@ static void DexNavUpdateSearchWindow(u8 proximity, u8 searchLevel)
 static void CreateDexNavWildMon(u16 species, u8 potential, u8 level, u8 abilityNum, u16 item, u16* moves)
 {
     struct Pokemon* mon = &gEnemyParty[0];
-    u8 iv[3] = {NUM_STATS};
+    //u8 iv[3] = {NUM_STATS};
     u8 i;
-    u8 perfectIv = 31;
+    //u8 perfectIv = 31;
     
     if (DexNavTryMakeShinyMon())
         FlagSet(FLAG_SHINY_CREATION); // just easier this way
     
     CreateWildMon(species, level);  // shiny rate bonus handled in CreateBoxMon
     
-    // Pick random, unique IVs to set to 31. The number of perfect IVs that are assigned is equal to the potential
+    /* // Pick random, unique IVs to set to 31. The number of perfect IVs that are assigned is equal to the potential
     iv[0] = Random() % NUM_STATS;               // choose 1st perfect stat
     do {
         iv[1] = Random() % NUM_STATS;
@@ -1242,7 +1242,7 @@ static void CreateDexNavWildMon(u16 species, u8 potential, u8 level, u8 abilityN
     if (potential > 1 && iv[1] != NUM_STATS)
         SetMonData(mon, MON_DATA_HP_IV + iv[1], &perfectIv);
     if (potential > 0 && iv[0] != NUM_STATS)
-        SetMonData(mon, MON_DATA_HP_IV + iv[0], &perfectIv);
+        SetMonData(mon, MON_DATA_HP_IV + iv[0], &perfectIv); */
     
     //Set ability
     SetMonData(mon, MON_DATA_ABILITY_NUM, &abilityNum);
