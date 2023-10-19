@@ -652,10 +652,10 @@
 #define FLAG_HIDDEN_ITEM_ROUTE_123_RARE_CANDY                (FLAG_HIDDEN_ITEMS_START + 0x6E)
 #define FLAG_HIDDEN_ITEM_ROUTE_105_BIG_PEARL                 (FLAG_HIDDEN_ITEMS_START + 0x6F)
 
-#define FLAG_SYS_MOVE_INFO   0x264  // Battle Interface
-#define FLAG_GEN6EXP_SHARE   0x265  // Gen6 EXP share flag smh
-#define FLAG_MOVE_RELEARNER  0x266  // Used to distinguish between the actual move relearner and the Moves option in the party menu.
-#define FLAG_UNUSED_0x267  0x267 // Unused Flag
+#define FLAG_SYS_MOVE_INFO     0x264  // Battle Interface
+#define FLAG_GEN6EXP_SHARE     0x265  // Gen6 EXP share flag smh
+#define FLAG_MOVE_RELEARNER    0x266  // Used to distinguish between the actual move relearner and the Moves option in the party menu.
+#define FLAG_DYNAMAX_BATTLE    0x267  // Unused Flag
 #define FLAG_UNUSED_0x268  0x268 // Unused Flag
 #define FLAG_UNUSED_0x269  0x269 // Unused Flag
 #define FLAG_UNUSED_0x26A  0x26A // Unused Flag

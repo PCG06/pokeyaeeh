@@ -10430,7 +10430,7 @@ u16 GetBattleFormChangeTargetSpecies(u32 battler, u16 method)
                     break;
                 case FORM_CHANGE_BATTLE_GIGANTAMAX:
                     // TODO: check Gigantamax factor
-                    targetSpecies = formChanges[i].targetSpecies;
+                    // targetSpecies = formChanges[i].targetSpecies;
                     break;
                 case FORM_CHANGE_BATTLE_WEATHER:
                     // Check if there is a required ability and if the battler's ability does not match it
