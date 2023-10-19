@@ -336,6 +336,7 @@ struct SpeciesInfo /*0x24*/
             u8 noFlip : 1;
  /* 0x20 */ u16 flags;
             u8 abilityHidden;
+ /* 0x22 */ u8 gigantamax:1;
 };
 
 struct BattleMove

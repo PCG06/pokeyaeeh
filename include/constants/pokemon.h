@@ -294,7 +294,7 @@
 #define EVO_MOVE_SPECIFIC_MAP             47     // Galarian Mr. Mime
 #define EVO_NIGHT_SPECIFIC_MAP            48     // Alolan Marowak
 
-#define EVOS_PER_MON 10
+#define EVOS_PER_MON 11
 
 // Evolution 'modes,' for GetEvolutionTargetSpecies
 #define EVO_MODE_NORMAL            0

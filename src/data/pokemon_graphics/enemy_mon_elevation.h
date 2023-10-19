@@ -282,4 +282,5 @@ const u8 gEnemyMonElevation[NUM_SPECIES + 1] =
     [SPECIES_IRON_MOTH] = 4,
     [SPECIES_CHI_YU] = 2,
 #endif
+    [SPECIES_BUTTERFREE_GIGANTAMAX] = 10,
 };
