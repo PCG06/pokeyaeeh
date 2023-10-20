@@ -835,6 +835,7 @@ const u8 gMoveNames[MOVES_COUNT_DYNAMAX][MOVE_NAME_LENGTH + 1] =
     [MOVE_MATCHA_GOTCHA] = _("Matcha Gotcha"),
     [MOVE_SYRUP_BOMB] = _("Syrup Bomb"),
     [MOVE_IVY_CUDGEL] = _("Ivy Cudgel"),
+    [MOVE_JETSTREAM] = _("Jetstream"),
     // Max Moves
     [MOVE_MAX_GUARD] = _("Max Guard"),
     [MOVE_MAX_STRIKE] = _("Max Strike"),
@@ -1727,6 +1728,7 @@ const u8 gMoveNames[MOVES_COUNT_DYNAMAX][MOVE_NAME_LENGTH + 1] =
     [MOVE_MATCHA_GOTCHA] = _("MatchaGotcha"),
     [MOVE_SYRUP_BOMB] = _("Syrup Bomb"),
     [MOVE_IVY_CUDGEL] = _("Ivy Cudgel"),
+    [MOVE_JETSTREAM] = _("Jetstream"),
     // Max Moves
     [MOVE_MAX_GUARD] = _("M-Guard"),
     [MOVE_MAX_STRIKE] = _("M-Strike"),

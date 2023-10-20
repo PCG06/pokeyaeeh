@@ -6074,6 +6074,8 @@ const struct ContestMove gContestMoves[MOVES_COUNT] =
     [MOVE_SYRUP_BOMB] = {0}, // TODO
 
     [MOVE_IVY_CUDGEL] = {0}, // TODO
+
+    [MOVE_JETSTREAM] = {0}, // TODO never
 };
 
 const struct ContestEffect gContestEffects[] =

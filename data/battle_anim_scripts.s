@@ -860,6 +860,7 @@ gBattleAnims_Moves::
 	.4byte Move_MATCHA_GOTCHA
 	.4byte Move_SYRUP_BOMB
 	.4byte Move_IVY_CUDGEL
+	.4byte Move_JETSTREAM
 @@@@ Z MOVES
 	.4byte Move_BREAKNECK_BLITZ
 	.4byte Move_ALL_OUT_PUMMELING
@@ -16518,6 +16519,36 @@ Move_DOUBLE_SHOCK::
 	clearmonbg ANIM_TARGET
 	blendoff
 	end
+
+Move_JETSTREAM::
+	loadspritegfx ANIM_TAG_AIR_WAVE
+	loadspritegfx ANIM_TAG_AIR_WAVE_2
+	loadspritegfx ANIM_TAG_IMPACT
+	loadspritegfx ANIM_TAG_EXPLOSION_2
+	call SetSkyBg
+	monbg ANIM_DEF_PARTNER
+	splitbgprio ANIM_TARGET
+	setalpha 12, 8
+	call AirProjectile
+	call AirProjectile
+	call AirProjectile
+	call AirProjectile
+	createvisualtask AnimTask_ShakeMon, 2, ANIM_TARGET, 3, 0, 10, 1
+	call SonicBoomHit
+	waitforvisualfinish
+	clearmonbg ANIM_DEF_PARTNER
+	call UnsetSkyBg
+	blendoff
+	end
+
+AirProjectile:
+	playsewithpan SE_M_RAZOR_WIND2, SOUND_PAN_ATTACKER
+	createsprite gAirWaveCrescentSpriteTemplate, ANIM_ATTACKER, 2, 14, -12, 0, -12, 15, 0, 0
+	createsprite gAirWaveCrescentSpriteTemplate, ANIM_ATTACKER, 2, 26, 8, 12, 8, 15, 0, 0
+	delay 3
+	createsprite gSpriteTemplate_SpiritBreakExplode, ANIM_TARGET, 3, 0x40, 0x40, 0x16, 0x16
+	delay 4
+	return
 
 Move_TERA_BLAST::
 Move_AXE_KICK::
