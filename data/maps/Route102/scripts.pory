@@ -106,11 +106,12 @@ Route102_Text_RouteSignPetalburg:
 `
 script Route102_EventScript_Tiana2{
 	msgbox(format("Ok, fine! I lost! Here, take these, they'll help you in your journey."))
-		giveitem(ITEM_LUCKY_EGG, 2)
-		playfanfare(MUS_OBTAIN_ITEM)
-		giveitem(ITEM_TM_HONE_CLAWS, 1)
-		playfanfare(MUS_OBTAIN_ITEM)
-		setflag(FLAG_ROUTE_102_BOSS_DEFEATED)
+	giveitem(ITEM_LUCKY_EGG, 2)
+	playfanfare(MUS_OBTAIN_ITEM)
+	giveitem(ITEM_TM_HONE_CLAWS, 1)
+	playfanfare(MUS_OBTAIN_ITEM)
+	msgbox(format("Lucky Eggs give more experience when held in battle. Give it to your Pokémon if you feel like it needs to get stronger faster. The TM I gave you will boost your Pokémon's Attack and accuracy. It'll be useful in your journey."), MSGBOX_NPC)
+    return
 }
 
 script Route102_EventScript_Tiana{
@@ -121,8 +122,9 @@ script Route102_EventScript_Tiana{
 	   defeated(TRAINER_ALLEN)){
 		setflag(FLAG_NO_BAG_USE)
 		trainerbattle_double(TRAINER_TIANA, format("I'm going to keep winning and aim to be the best Trainer. Help me further my career!"), format("I ended up furthering your career…"), format("I want this to be a fair battle. Get another Pokémon and talk to me again."), Route102_EventScript_Tiana2)
-			msgbox(format("Lucky Eggs give more experience when held in battle. Give it to your Pokémon if you feel like it needs to get stronger faster. The TM I gave you will boost your Pokémon's Attack and accuracy. It'll be useful in your journey."))
 		clearflag(FLAG_NO_BAG_USE)
+	    setflag(FLAG_ROUTE_102_BOSS_DEFEATED)
+		msgbox(format("Lucky Eggs give more experience when held in battle. Give it to your Pokémon if you feel like it needs to get stronger faster. The TM I gave you will boost your Pokémon's Attack and accuracy. It'll be useful in your journey."), MSGBOX_NPC)
 	}
 	else{
 		// before defeating every trainer here

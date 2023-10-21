@@ -1172,7 +1172,7 @@ Route104_EventScript_Ivan2::
 	playfanfare MUS_OBTAIN_ITEM
 	giveitem ITEM_TM_BOUNCE, 1
 	playfanfare MUS_OBTAIN_ITEM
-	setflag FLAG_ROUTE_104_BOSS_DEFEATED
+	msgbox Route104_EventScript_Ivan2_Text_1, MSGBOX_NPC
 	return
 
 
@@ -1182,7 +1182,7 @@ Route104_EventScript_Ivan::
 	checktrainerflag TRAINER_BILLY
 	goto_if 1, Route104_EventScript_Ivan_5
 Route104_EventScript_Ivan_3:
-	msgbox Route104_EventScript_Ivan_Text_4
+	msgbox Route104_EventScript_Ivan_Text_3
 Route104_EventScript_Ivan_1:
 	release
 	end
@@ -1190,8 +1190,9 @@ Route104_EventScript_Ivan_1:
 Route104_EventScript_Ivan_2:
 	setflag FLAG_NO_BAG_USE
 	trainerbattle_double TRAINER_IVAN, Route104_EventScript_Ivan_Text_0, Route104_EventScript_Ivan_Text_1, Route104_EventScript_Ivan_Text_2, Route104_EventScript_Ivan2
-	msgbox Route104_EventScript_Ivan_Text_3
 	clearflag FLAG_NO_BAG_USE
+	setflag FLAG_ROUTE_104_BOSS_DEFEATED
+	msgbox Route104_EventScript_Ivan2_Text_1
 	goto Route104_EventScript_Ivan_1
 
 Route104_EventScript_Ivan_4:
@@ -1224,6 +1225,10 @@ Route104_EventScript_Ivan2_Text_0:
 	.string "Ok, fine! I lost! You can have my\n"
 	.string "precious rod…$"
 
+Route104_EventScript_Ivan2_Text_1:
+	.string "Bouncy! Bouncy! Bouncy! Bounce is the\n"
+	.string "strongest Water-type move!$"
+
 Route104_EventScript_Ivan_Text_0:
 	.string "Why keep it a secret? I'm the Water\n"
 	.string "Pokémon expert! Huh? You don't know\l"
@@ -1239,10 +1244,6 @@ Route104_EventScript_Ivan_Text_2:
 	.string "and I'll battle you.$"
 
 Route104_EventScript_Ivan_Text_3:
-	.string "Bouncy! Bouncy! Bouncy! Bounce is the\n"
-	.string "strongest Water-type move!$"
-
-Route104_EventScript_Ivan_Text_4:
 	.string "I'm the Water Pokémon expert! Beat\n"
 	.string "every trainer here before approaching\l"
 	.string "me, little kiddo!$"

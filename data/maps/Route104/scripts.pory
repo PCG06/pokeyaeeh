@@ -1169,11 +1169,12 @@ Route104_Text_BrendanPostBattle:
 `
 script Route104_EventScript_Ivan2{
 	msgbox(format("Ok, fine! I lost! You can have my precious rod…"))
-		giveitem(ITEM_OLD_ROD, 1)
-		playfanfare(MUS_OBTAIN_ITEM)
-		giveitem(ITEM_TM_BOUNCE, 1)
-		playfanfare(MUS_OBTAIN_ITEM)
-		setflag(FLAG_ROUTE_104_BOSS_DEFEATED)
+	giveitem(ITEM_OLD_ROD, 1)
+	playfanfare(MUS_OBTAIN_ITEM)
+	giveitem(ITEM_TM_BOUNCE, 1)
+	playfanfare(MUS_OBTAIN_ITEM)
+	msgbox(format("Bouncy! Bouncy! Bouncy! Bounce is the strongest Water-type move!"), MSGBOX_NPC)
+	return
 }
 
 script Route104_EventScript_Ivan{
@@ -1187,8 +1188,9 @@ script Route104_EventScript_Ivan{
 	   defeated(TRAINER_GINA_AND_MIA_1)){
 		setflag(FLAG_NO_BAG_USE)
 		trainerbattle_double(TRAINER_IVAN, format("Why keep it a secret? I'm the Water Pokémon expert! Huh? You don't know me?"), format("I thought I wasn't too bad, if I may say so, but I guess not… Bleah…"), format("Why keep it a secret? I'm the Water Pokémon expert! Huh? Get more Pokémon and I'll battle you."), Route104_EventScript_Ivan2)
-			msgbox(format("Bouncy! Bouncy! Bouncy! Bounce is the strongest Water-type move!"))
 		clearflag(FLAG_NO_BAG_USE)
+		setflag(FLAG_ROUTE_104_BOSS_DEFEATED)
+		msgbox(format("Bouncy! Bouncy! Bouncy! Bounce is the strongest Water-type move!"))
 	}
 	else{
 		// before defeating every trainer here
