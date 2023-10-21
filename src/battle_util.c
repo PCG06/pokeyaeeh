@@ -5010,6 +5010,10 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                     }
                 }
                 break;
+            case ABILITY_STEAM_ENGINE:
+                if (moveType == TYPE_WATER)
+                    effect = 2, statId = STAT_SPEED, statAmount = 6;
+                break;
             case ABILITY_WELL_BAKED_BODY:
                 if (moveType == TYPE_FIRE)
                     effect = 2, statId = STAT_DEF, statAmount = 2;
