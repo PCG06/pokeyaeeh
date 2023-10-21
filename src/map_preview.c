@@ -102,7 +102,7 @@ static const u8 sAlteringCaveMapPreviewTilemap[] = INCBIN_U8("graphics/map_previ
 
 static const struct MapPreviewScreen sMapPreviewScreenData[MPS_COUNT] =
 {
-    [MPS_PETALBURG_WOODS] = 
+    /* [MPS_PETALBURG_WOODS] = 
     {
         .mapsec = MAPSEC_PETALBURG_WOODS,
         .type = MPS_TYPE_FOREST,
@@ -123,7 +123,7 @@ static const struct MapPreviewScreen sMapPreviewScreenData[MPS_COUNT] =
         .tilesptr = sMtMoonMapPreviewTiles,
         .tilemapptr = sMtMoonMapPreviewTilemap,
         .palptr = sMtMoonMapPreviewPalette
-    },
+    }, */
     //etc...
     
     /* Firered map preview entries for reference
