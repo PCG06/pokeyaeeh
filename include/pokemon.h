@@ -391,10 +391,10 @@ struct BattleMove
     u32 assistBanned:1; // Matches same moves as copycatBanned + semi-invulnerable moves and Mirror Coat.
     u32 sleepTalkBanned:1;
     u32 instructBanned:1;
-    u32 kickingMove:1;
-    u32 spinningMove:1;
     u32 encoreBanned:1;
     u32 parentalBondBanned:1;
+    u32 kickingMove:1;
+    u32 spinningMove:1;
 };
 
 #define SPINDA_SPOT_WIDTH 16
