@@ -7,11 +7,23 @@ FallarborTown_MoveRelearnersHouse_EventScript_MoveRelearner::
 	lockall
 	applymovement LOCALID_MOVE_RELEARNER, Common_Movement_FacePlayer
 	waitmovement 0
-	goto_if_set FLAG_TEMP_1, FallarborTown_MoveRelearnersHouse_EventScript_AskTeachMove
+	goto_if_set FLAG_SYS_ENABLE_MOVE_RELEARNERS, FallarborTown_MoveRelearnersHouse_EventScript_KitExplain
 	msgbox FallarborTown_MoveRelearnersHouse_Text_ImTheMoveTutor, MSGBOX_DEFAULT
-	setflag FLAG_TEMP_1
-	goto FallarborTown_MoveRelearnersHouse_EventScript_AskTeachMove
+	playfanfare MUS_OBTAIN_ITEM
+	message FallarborTown_MoveRelearnersHouse_Text_PlayerReceivedMoveKit
+	waitmessage
+	waitfanfare
+	msgbox FallarborTown_MoveRelearnersHouse_Text_KitExplain, MSGBOX_NPC
+	setflag FLAG_SYS_ENABLE_MOVE_RELEARNERS
 	end
+
+FallarborTown_MoveRelearnersHouse_EventScript_ImTheMoveTutor::
+    msgbox FallarborTown_MoveRelearnersHouse_Text_ImTheMoveTutor, MSGBOX_DEFAULT
+	end
+
+FallarborTown_MoveRelearnersHouse_EventScript_KitExplain::
+    msgbox FallarborTown_MoveRelearnersHouse_Text_KitExplain, MSGBOX_NPC
+	return
 
 FallarborTown_MoveRelearnersHouse_EventScript_AskTeachMove::
 	checkitem ITEM_HEART_SCALE
@@ -58,15 +70,36 @@ FallarborTown_MoveRelearnersHouse_EventScript_ComeBackWithHeartScale::
 	releaseall
 	end
 
+FallarborTown_MoveRelearnersHouse_Text_UseItToLearnMoves:
+    .string "You can use my kit to teach\n"
+	.string "new moves to your Pokémon.$"
+
+
 FallarborTown_MoveRelearnersHouse_Text_ImTheMoveTutor:
 	.string "I'm the Move Tutor.\p"
 	.string "I know all the moves that Pokémon\n"
 	.string "learn--every one of them--and I can\l"
 	.string "teach Pokémon those moves.\p"
-	.string "I can teach a move to a Pokémon\n"
-	.string "of yours if you'd like.\p"
-	.string "I'll do it for a Heart Scale.\n"
-	.string "I'm collecting those now.$"
+	.string "But, I've grown lethargic after\n"
+	.string "eating all those mushrooms.\p"
+	.string "Some might have even poisoned me!\p"
+	.string "I can let you have my kit.\p"
+	.string "…\n"
+	.string "…\p"
+	.string "For free, of course!\p"
+	.string "I've been trying to get rid of it.$"
+
+FallarborTown_MoveRelearnersHouse_Text_PlayerReceivedMoveKit:
+    .string "{PLAYER} receieved the Move Relearner's kit!$"
+
+FallarborTown_MoveRelearnersHouse_Text_KitExplain:
+    .string "My kit will help you to teach\n"
+	.string "moves your Pokémon would normally\l"
+	.string "only learn via breeding or\l"
+	.string "by reminding.\p"
+	.string "You can also use it to teach\n"
+	.string "TM as well as Tutorable moves.$"
+
 
 FallarborTown_MoveRelearnersHouse_Text_ThatsAHeartScaleWantMeToTeachMove:
 	.string "Oh! That's it! That's an honest to\n"

@@ -2718,10 +2718,14 @@ static void SetPartyMonFieldSelectionActions(struct Pokemon *mons, u8 slotId)
     {
         if (GetMonData(&mons[1], MON_DATA_SPECIES) != SPECIES_NONE)
             AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, MENU_SWITCH);
-        if (GetMonData(&mons[1], MON_DATA_SPECIES) != SPECIES_NONE && GetNumberOfRelearnableMoves(&mons[slotId]) > 0)
-            AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, MENU_MOVES);
-		if (GetMonData(&mons[1], MON_DATA_SPECIES) != SPECIES_NONE && GetNumberOfEggMoves(&mons[slotId]) > 0)
-            AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, MENU_EGG_MOVES);
+        // LevelUp and Egg move tutor (TODO: add Teachable Moves tutor)
+        if (FlagGet(FLAG_SYS_ENABLE_MOVE_RELEARNERS))
+        {
+            if (GetMonData(&mons[1], MON_DATA_SPECIES) != SPECIES_NONE && GetNumberOfRelearnableMoves(&mons[slotId]) > 0)
+                AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, MENU_MOVES);
+		    if (GetMonData(&mons[1], MON_DATA_SPECIES) != SPECIES_NONE && GetNumberOfEggMoves(&mons[slotId]) > 0)
+                AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, MENU_EGG_MOVES);
+        }
         if (ItemIsMail(GetMonData(&mons[slotId], MON_DATA_HELD_ITEM)))
             AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, MENU_MAIL);
         else
