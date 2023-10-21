@@ -128,11 +128,11 @@ EWRAM_DATA u8 sBasePaletteColorMapTypes[32] =
     COLOR_MAP_DARK_CONTRAST,
     COLOR_MAP_DARK_CONTRAST,
     COLOR_MAP_DARK_CONTRAST,
-    COLOR_MAP_DARK_CONTRAST,
-    COLOR_MAP_NONE,
-    COLOR_MAP_NONE,
+    COLOR_MAP_NONE, // shops; map previews
+    COLOR_MAP_NONE, // map popup
+    COLOR_MAP_NONE, // text boxes
     // sprite palettes
-    COLOR_MAP_CONTRAST,
+    COLOR_MAP_CONTRAST, // shadows; fog
     COLOR_MAP_DARK_CONTRAST,
     COLOR_MAP_CONTRAST,
     COLOR_MAP_CONTRAST,
