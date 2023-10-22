@@ -217,6 +217,22 @@
         .bodyColor = BODY_COLOR_RED,                                                    \
         .noFlip = TRUE
 
+#define TAUROS_MISC_INFO                                                                \
+        .baseHP        = 75,                                                            \
+        .baseAttack    = 100,                                                           \
+        .baseDefense   = 95,                                                            \
+        .baseSpeed     = 110,                                                           \
+        .baseSpAttack  = 40,                                                            \
+        .baseSpDefense = 70,                                                            \
+        .catchRate = 45,                                                                \
+        .expYield = 172,                                                                \
+        .genderRatio = MON_MALE,                                                        \
+        .eggCycles = 20,                                                                \
+        .friendship = STANDARD_FRIENDSHIP,                                              \
+        .growthRate = GROWTH_SLOW,                                                      \
+        .eggGroups = { EGG_GROUP_FIELD, EGG_GROUP_FIELD},                               \
+        .noFlip = FALSE
+
 #define LAPRAS_MISC_INFO                                                            \
         .baseHP        = 130,                                                       \
         .baseAttack    = 85,                                                        \
@@ -4271,22 +4287,6 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .bodyColor = BODY_COLOR_BROWN,
         .noFlip = FALSE,
     },
-
-#define TAUROS_MISC_INFO                                      \
-        .baseHP        = 75,                                  \
-        .baseAttack    = 100,                                 \
-        .baseDefense   = 95,                                  \
-        .baseSpeed     = 110,                                 \
-        .baseSpAttack  = 40,                                  \
-        .baseSpDefense = 70,                                  \
-        .catchRate = 45,                                      \
-        .expYield = 172,                                      \
-        .genderRatio = MON_MALE,                              \
-        .eggCycles = 20,                                      \
-        .friendship = STANDARD_FRIENDSHIP,                    \
-        .growthRate = GROWTH_SLOW,                            \
-        .eggGroups = { EGG_GROUP_FIELD, EGG_GROUP_FIELD},     \
-        .noFlip = FALSE
 
     [SPECIES_TAUROS] =
     {
