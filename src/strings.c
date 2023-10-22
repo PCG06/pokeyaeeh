@@ -306,25 +306,6 @@ const u8 *const gPocketNamesStringsTable[] =
     [KEYITEMS_POCKET] = gText_KeyItemsPocket
 };
 
-const u8 gText_DayNameMON[] = _("MON");
-const u8 gText_DayNameTUE[] = _("TUE");
-const u8 gText_DayNameWED[] = _("WED");
-const u8 gText_DayNameTHU[] = _("THU");
-const u8 gText_DayNameFRI[] = _("FRI");
-const u8 gText_DayNameSAT[] = _("SAT");
-const u8 gText_DayNameSUN[] = _("SUN");
-
-const u8 *const gDayNamesStringsTable[] =
-{
-    gText_DayNameMON,
-    gText_DayNameTUE,
-    gText_DayNameWED,
-    gText_DayNameTHU,
-    gText_DayNameFRI,
-    gText_DayNameSAT,
-    gText_DayNameSUN
-};
-
 const u8 gText_NumberItem_TMBerry[] = _("{NO}{STR_VAR_1}{CLEAR 0x07}{STR_VAR_2}");
 const u8 gText_NumberItem_HM[] = _("{CLEAR_TO 0x11}{STR_VAR_1}{CLEAR 0x05}{STR_VAR_2}");
 const u8 gText_SizeSlash[] = _("Size /");
@@ -1892,14 +1873,6 @@ const u8 gText_XsYAnd[] = _("{STR_VAR_1}'s {STR_VAR_2}\nand\l");
 const u8 gText_XsYWereSwapped[] = _("{STR_VAR_1}'s {STR_VAR_2}\lwere swapped!{PAUSE_UNTIL_PRESS}");
 
 const u8 gText_BasePointsResetToZero[] = _("{STR_VAR_1}'s base points\nwere all reset to zero!{PAUSE_UNTIL_PRESS}");
-
-// Start Menu clock
-const u8 gText_CurrentTime[] = _(" {STR_VAR_3}  {STR_VAR_1}:{STR_VAR_2}");
-const u8 gText_CurrentTimeOff[] = _(" {STR_VAR_3}  {STR_VAR_1} {STR_VAR_2}");
-const u8 gText_CurrentTimeAM[] = _(" {STR_VAR_3}  {STR_VAR_1}:{STR_VAR_2} AM");
-const u8 gText_CurrentTimeAMOff[] = _(" {STR_VAR_3}  {STR_VAR_1} {STR_VAR_2} AM");
-const u8 gText_CurrentTimePM[] = _(" {STR_VAR_3}  {STR_VAR_1}:{STR_VAR_2} PM");
-const u8 gText_CurrentTimePMOff[] = _(" {STR_VAR_3}  {STR_VAR_1} {STR_VAR_2} PM");
 
 // Multi option menu
 const u8 gText_SmallDot[] = _("·");
