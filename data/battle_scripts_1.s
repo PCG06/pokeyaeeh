@@ -10719,6 +10719,7 @@ BattleScript_TailstreamActivated::
 	copybyte gBattlerAbility, gBattlerAttacker
 	sethword sABILITY_OVERWRITE, ABILITY_TAILSTREAM
 	showabilitypopup BS_ABILITY_BATTLER
+	@ playmoveanimation BS_ATTACKER, MOVE_TAILWIND @ plays tailwind anim
 	printstring STRINGID_TAILSTREAMACTIVATED
 	waitmessage B_WAIT_TIME_LONG
 	sethword sABILITY_OVERWRITE, 0

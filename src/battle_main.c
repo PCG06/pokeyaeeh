@@ -622,7 +622,13 @@ static void CB2_InitBattleInternal(void)
 
     for (i = 0; i < PARTY_SIZE; i++)
     {
+
         AdjustFriendship(&gPlayerParty[i], FRIENDSHIP_EVENT_LEAGUE_BATTLE);
+        if (FlagGet(FLAG_TOXIC_POISON_TEAM))
+        {
+            u32 value = STATUS1_TOXIC_POISON;
+            SetMonData(&gPlayerParty[i], MON_DATA_STATUS, &value);
+        }
 
         // Apply party-wide start-of-battle form changes for both sides.
         TryFormChange(i, B_SIDE_PLAYER, FORM_CHANGE_BEGIN_BATTLE);
@@ -3724,9 +3730,61 @@ static void DoBattleIntro(void)
     }
 }
 
+static void SetPermaTrickRoom(void)
+{
+    if (FlagGet(FLAG_PERMANENT_TRICK_ROOM))
+    {
+        gFieldStatuses |= STATUS_FIELD_TRICK_ROOM;
+        gFieldTimers.trickRoomTimer = 250;
+    }
+}
+
+static void SetPermaTailwind(u32 battler)
+{
+    u32 battlerAtk = battler;
+    u32 battlerDef = BATTLE_OPPOSITE(battlerAtk);
+    u8 side;
+
+    if (FlagGet(FLAG_PERMANENT_TAILWIND))
+    {
+        gSideStatuses[GetBattlerSide(battlerDef)] |= SIDE_STATUS_TAILWIND;
+        gSideTimers[side].tailwindTimer = 250;
+    }
+}
+
+static void SetPermaScreens(u32 battler)
+{
+    u32 battlerAtk = battler;
+    u32 battlerDef = BATTLE_OPPOSITE(battlerAtk);
+    u8 side;
+
+    if (FlagGet(FLAG_PERMANENT_SCREENS))
+    {
+        gSideStatuses[GetBattlerSide(battlerDef)] |= SIDE_STATUS_REFLECT;
+        gSideTimers[side].reflectTimer = 250;
+
+        gSideStatuses[GetBattlerSide(battlerDef)] |= SIDE_STATUS_LIGHTSCREEN;
+        gSideTimers[side].lightscreenTimer = 250;
+    }
+}
+
+static void SetPermaAuroraVeil(u32 battler)
+{
+    u32 battlerAtk = battler;
+    u32 battlerDef = BATTLE_OPPOSITE(battlerAtk);
+    u8 side;
+
+    if (FlagGet(FLAG_PERMANENT_AURORA_VEIL))
+    {
+        gSideStatuses[GetBattlerSide(battlerDef)] |= SIDE_STATUS_AURORA_VEIL;
+        gSideTimers[side].auroraVeilTimer = 250;
+    }
+}
+
 static void TryDoEventsBeforeFirstTurn(void)
 {
     s32 i, j;
+    u32 battler = 0;
 
     if (gBattleControllerExecFlags)
         return;
@@ -3856,6 +3914,10 @@ static void TryDoEventsBeforeFirstTurn(void)
     memset(gQueuedStatBoosts, 0, sizeof(gQueuedStatBoosts));  // erase all totem boosts just to be safe
 
     SetAiLogicDataForTurn(AI_DATA); // get assumed abilities, hold effects, etc of all battlers
+    //Start match with a field condition (buff for the enemy)
+    SetPermaTrickRoom();
+    SetPermaTailwind(battler);
+    SetPermaScreens(battler);
 
     if (gBattleTypeFlags & BATTLE_TYPE_ARENA)
     {
