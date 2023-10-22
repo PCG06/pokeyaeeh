@@ -1075,7 +1075,7 @@ static void _GiveEggFromDaycare(struct DayCare *daycare)
 {
     struct Pokemon egg;
     u16 species;
-    u8 parentSlots[DAYCARE_MON_COUNT];
+    u8 parentSlots[DAYCARE_MON_COUNT] = {0};
     bool8 isEgg;
 
     species = DetermineEggSpeciesAndParentSlots(daycare, parentSlots);
