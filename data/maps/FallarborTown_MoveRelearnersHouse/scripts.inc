@@ -97,8 +97,6 @@ FallarborTown_MoveRelearnersHouse_Text_KitExplain:
 	.string "moves your Pokémon would normally\l"
 	.string "only learn via breeding or\l"
 	.string "by reminding.\p"
-	.string "You can also use it to teach\n"
-	.string "TM as well as Tutorable moves.$"
 
 
 FallarborTown_MoveRelearnersHouse_Text_ThatsAHeartScaleWantMeToTeachMove:
