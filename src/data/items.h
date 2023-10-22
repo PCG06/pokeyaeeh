@@ -7481,7 +7481,7 @@ const struct Item gItems[] =
         .secondaryId = MOVE_EARTH_POWER,
     },
 
-    [ITEM_TM_EARTHQUAKE] =
+    [ITEM_TM_JETSTREAM] =
     {
         .name = _("TM26"),
         .price = 3000,
@@ -7490,7 +7490,7 @@ const struct Item gItems[] =
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_TMHM,
-        .secondaryId = MOVE_EARTHQUAKE,
+        .secondaryId = MOVE_JETSTREAM,
     },
 
     [ITEM_TM_TAUNT] =
@@ -7697,7 +7697,7 @@ const struct Item gItems[] =
         .secondaryId = MOVE_GIGA_DRAIN,
     },
 
-    [ITEM_TM_DOUBLE_TEAM] =
+    [ITEM_TM_EARTHQUAKE] =
     {
         .name = _("TM44"),
         .price = 3000,
@@ -7706,7 +7706,7 @@ const struct Item gItems[] =
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_TMHM,
-        .secondaryId = MOVE_DOUBLE_TEAM,
+        .secondaryId = MOVE_EARTHQUAKE,
     },
 
     [ITEM_TM_ROCK_TOMB] =

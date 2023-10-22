@@ -5311,7 +5311,7 @@ static const u8 sMoveFourLineDescription_WildboltStorm[] = _("Attacks with thund
 static const u8 sMoveFourLineDescription_SandsearStorm[] = _("Attacks with fiery\nwinds and searingly\nhot sand that may\nburn the foe.");
 static const u8 sMoveFourLineDescription_LunarBlessing[] = _("The user restores HP\nand heals status\nconditions of itself\nand its ally.");
 static const u8 sMoveFourLineDescription_TakeHeart[] = _("The user cures its\nown status condit-\nions and raises Sp.\nAtk and Def stats.");
-static const u8 sMoveFourLineDescription_Jetstream[] = _("Shoots a stream of\nair at the foe. It\nhas an increased\ncrit rate.");
+static const u8 sMoveFourLineDescription_Jetstream[] = _("The user shoots a\nfast ray of wind at\nfoe. It may cause\nconfusion.");
 
 #endif
 

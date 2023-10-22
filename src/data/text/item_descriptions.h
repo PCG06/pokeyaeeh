@@ -3157,9 +3157,9 @@ static const u8 sTM25Desc[] = _(
     "Sp. Def.");
 
 static const u8 sTM26Desc[] = _(
-    "Causes a quake\n"
-    "that has no effect\n"
-    "on flying foes.");
+    "A fast stream of\n"
+    "wind that may\n"
+    "confuse the foe.");
 
 static const u8 sTM27Desc[] = _(
     "Enrages the foe so\n"
@@ -3247,9 +3247,9 @@ static const u8 sTM43Desc[] = _(
     "this move inflicts.");
 
 static const u8 sTM44Desc[] = _(
-    "Creates illusory\n"
-    "copies to raise\n"
-    "evasiveness.");
+    "Causes a quake\n"
+    "that has no effect\n"
+    "on flying foes.");
 
 static const u8 sTM45Desc[] = _(
     "Stops the foe from\n"
