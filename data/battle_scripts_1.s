@@ -10716,9 +10716,13 @@ BattleScript_EffectSnow::
 	goto BattleScript_MoveWeatherChange
 
 BattleScript_TailstreamActivated::
+    printstring STRINGID_EMPTYSTRING3
 	copybyte gBattlerAbility, gBattlerAttacker
 	sethword sABILITY_OVERWRITE, ABILITY_TAILSTREAM
 	showabilitypopup BS_ABILITY_BATTLER
+    printstring STRINGID_EMPTYSTRING3
+	waitmessage B_WAIT_TIME_LONG
+	printstring STRINGID_EMPTYSTRING3
 	@ playmoveanimation BS_ATTACKER, MOVE_TAILWIND @ plays tailwind anim
 	printstring STRINGID_TAILSTREAMACTIVATED
 	waitmessage B_WAIT_TIME_LONG
