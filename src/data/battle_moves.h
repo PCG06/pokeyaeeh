@@ -14422,17 +14422,16 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
 
     [MOVE_JETSTREAM] =
     {
-        .effect = EFFECT_HIT,
+        .effect = EFFECT_CONFUSE_HIT,
         .power = 90,
         .type = TYPE_FLYING,
         .accuracy = 100,
         .pp = 16,
-        .secondaryEffectChance = 0,
+        .secondaryEffectChance = 15,
         .target = MOVE_TARGET_SELECTED,
         .priority = 0,
         .split = SPLIT_SPECIAL,
         .zMoveEffect = Z_EFFECT_NONE,
-        .highCritRatio = TRUE,
     },
 
     // Z-Moves

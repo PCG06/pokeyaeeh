@@ -3276,9 +3276,9 @@ static const u8 sIvyCudgelDescription[] = _(
     "Type changes with held mask.\n"
     "High critical-hit ratio.");
 
-const u8 sJetstreamDescription[] = _(
+static const u8 sJetstreamDescription[] = _(
     "Shoots a stream of air.\n"
-    "High critical-hit ratio.");
+    "May cause confusion.");
 
 const u8 gNotDoneYetDescription[] = _(
     "This move can't be used. Its\n"
