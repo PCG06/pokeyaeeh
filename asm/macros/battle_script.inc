@@ -2387,3 +2387,8 @@
 	getbattlerfainted \battler
 	jumpifbyte CMP_EQUAL, gBattleCommunication, \value, \ptr
 	.endm
+
+	.macro flushtextbox
+	printstring STRINGID_EMPTYSTRING3
+	waitmessage 1
+	.endm
