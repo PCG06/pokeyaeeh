@@ -414,12 +414,12 @@ static const u8 sDebugText_Sound[] =            _("Sound…{CLEAR_TO 110}{RIGHT_
 static const u8 sDebugText_AccessPC[] =         _("Access PC…{CLEAR_TO 110}{RIGHT_ARROW}");
 static const u8 sDebugText_Cancel[] =           _("Cancel");
 // Script menu
-static const u8 sDebugText_Util_Script_1[] =               _("Double Battle");
+static const u8 sDebugText_Util_Script_1[] =               _("Battle testing");
 static const u8 sDebugText_Util_Script_2[] =               _("Single Battle");
 static const u8 sDebugText_Util_Script_3[] =               _("Terrain Double Battle");
 static const u8 sDebugText_Util_Script_4[] =               _("Tailwind Double Battle");
-static const u8 sDebugText_Util_Script_5[] =               _("Revival Cats");
-static const u8 sDebugText_Util_Script_6[] =               _("EXP testing");
+static const u8 sDebugText_Util_Script_5[] =               _("Script 5");
+static const u8 sDebugText_Util_Script_6[] =               _("Script 6");
 static const u8 sDebugText_Util_Script_7[] =               _("Script 7");
 static const u8 sDebugText_Util_Script_8[] =               _("Script 8");
 // Util Menu

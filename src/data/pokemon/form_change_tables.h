@@ -605,6 +605,12 @@ static const struct FormChange sEnamorusFormChangeTable[] = {
     {FORM_CHANGE_TERMINATOR},
 };
 
+static const struct FormChange sPalafinFormChangeTable[] = {
+    {FORM_CHANGE_BATTLE_SWITCH, SPECIES_PALAFIN_HERO, ABILITY_ZERO_TO_HERO},
+    {FORM_CHANGE_FAINT, SPECIES_PALAFIN, ABILITY_ZERO_TO_HERO},
+    {FORM_CHANGE_TERMINATOR},
+};
+
 #endif
 
 // Gigantamax Forms

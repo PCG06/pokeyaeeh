@@ -290,4 +290,8 @@ const struct FormChange *const gFormChangeTablePointers[NUM_SPECIES] =
     [SPECIES_ENAMORUS] = sEnamorusFormChangeTable,
     [SPECIES_ENAMORUS_THERIAN] = sEnamorusFormChangeTable,
 #endif
+#if P_GEN_9_POKEMON == TRUE
+    [SPECIES_PALAFIN] = sPalafinFormChangeTable,
+    [SPECIES_PALAFIN_HERO] = sPalafinFormChangeTable,
+#endif
 };

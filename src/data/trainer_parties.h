@@ -12370,8 +12370,24 @@ static const struct TrainerMon sParty_BrendanLinkPlaceholder[] = {
 
 static const struct TrainerMon sParty_MayLinkPlaceholder[] = {
     {
-    .lvl = 100,
-    .species = SPECIES_BLISSEY,
-    .moves {MOVE_SPLASH, MOVE_NONE, MOVE_NONE, MOVE_NONE}
-    }
+    .lvl = 50,
+    .species = SPECIES_PALAFIN,
+    .moves {MOVE_FLIP_TURN, MOVE_NONE, MOVE_NONE, MOVE_NONE}
+    },
+    {
+    .lvl = 50,
+    .species = SPECIES_PALAFIN,
+    .moves {MOVE_FLIP_TURN, MOVE_NONE, MOVE_NONE, MOVE_NONE}
+    },
+    {
+    .lvl = 50,
+    .species = SPECIES_ARCEUS,
+    .moves {MOVE_MEMENTO, MOVE_NONE, MOVE_NONE, MOVE_NONE}
+    },
+    {
+    .lvl = 50,
+    .species = SPECIES_ARCEUS,
+    .moves {MOVE_MEMENTO, MOVE_NONE, MOVE_NONE, MOVE_NONE}
+    },
+
 };

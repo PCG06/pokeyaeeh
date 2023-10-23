@@ -69,14 +69,15 @@ Debug_BoxFilledMessage::
 Debug_BoxFilledMessage_Text:
 	.string "Storage boxes filled!$"
 
-Debug_Script_1::
-    cleartrainerflag TRAINER_JOHN_AND_JAY_1
-		trainerbattle_double TRAINER_JOHN_AND_JAY_1, MeteorFalls_1F_2R_Text_JayIntro, MeteorFalls_1F_2R_Text_JayDefeat, MeteorFalls_1F_2R_Text_JayNotEnoughMons, MeteorFalls_1F_2R_EventScript_RegisterJay
+Debug_Script_1:: @ testing
+    cleartrainerflag TRAINER_MAY_PLACEHOLDER
+	    trainerbattle_double TRAINER_MAY_PLACEHOLDER, MeteorFalls_1F_2R_Text_JayIntro, MeteorFalls_1F_2R_Text_JayDefeat, MeteorFalls_1F_2R_Text_JayNotEnoughMons, MeteorFalls_1F_2R_EventScript_RegisterJay
 	end
 
 Debug_Script_2::
-    cleartrainerflag TRAINER_NOLEN
-		trainerbattle_single TRAINER_NOLEN, Route125_Text_NolenIntro, Route125_Text_NolenDefeat
+    cleartrainerflag TRAINER_KENT
+		trainerbattle_single TRAINER_KENT, Route119_Text_KentIntro, Route119_Text_KentDefeat
+	end
 
 Debug_Script_3::
 	cleartrainerflag TRAINER_JOHN_AND_JAY_2
@@ -89,13 +90,9 @@ Debug_Script_4::
 	end
 
 Debug_Script_5::
-    cleartrainerflag TRAINER_KENT
-		trainerbattle_single TRAINER_KENT, Route119_Text_KentIntro, Route119_Text_KentDefeat
 	end
 
 Debug_Script_6::
-    cleartrainerflag TRAINER_MAY_PLACEHOLDER
-	    trainerbattle_single TRAINER_MAY_PLACEHOLDER, Route119_Text_KentIntro, Route119_Text_KentDefeat
 	end
 
 Debug_Script_7::
