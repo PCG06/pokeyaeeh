@@ -9467,7 +9467,7 @@ static const struct TrainerMon sParty_Darian[] = {
     .ev = TRAINER_PARTY_EVS(0, 0, 200, 100, 0, 0),
     .lvl = 16,
     .ability = ABILITY_ADAPTABILITY,
-    .species = SPECIES_BASCULIN,
+    .species = SPECIES_BASCULIN_RED_STRIPED,
     .moves = {MOVE_AQUA_JET, MOVE_DIVE, MOVE_SCALE_SHOT, MOVE_NONE}
     },
     {
