@@ -2770,7 +2770,7 @@ const u16 gEggMoves[] = {
               MOVE_TICKLE,
               MOVE_WEATHER_BALL),
 
-    egg_moves(SHELLOS,
+    egg_moves(SHELLOS_WEST_SEA,
               MOVE_ACID_ARMOR,
               MOVE_AMNESIA,
               MOVE_BRINE,
@@ -4176,7 +4176,7 @@ const u16 gEggMoves[] = {
               MOVE_SUPERPOWER,
               MOVE_WIDE_GUARD),
 
-    egg_moves(ORICORIO,
+    egg_moves(ORICORIO_BAILE,
               MOVE_ATTRACT,
               MOVE_CAPTIVATE,
               MOVE_DEFOG,
