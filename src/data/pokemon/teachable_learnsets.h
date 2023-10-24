@@ -26360,7 +26360,7 @@ static const u16 sBurmyTeachableLearnset[] = {
     MOVE_UNAVAILABLE,
 };
 
-static const u16 sWormadamTeachableLearnset[] = {
+static const u16 sWormadamPlantCloakTeachableLearnset[] = {
     MOVE_ALLY_SWITCH,
     MOVE_ATTRACT,
     MOVE_BUG_BITE,
@@ -31926,7 +31926,7 @@ static const u16 sDarkraiTeachableLearnset[] = {
     MOVE_UNAVAILABLE,
 };
 
-static const u16 sShayminTeachableLearnset[] = {
+static const u16 sShayminLandTeachableLearnset[] = {
     MOVE_AERIAL_ACE,
     MOVE_BABY_DOLL_EYES,
     MOVE_BULLET_SEED,
@@ -43281,7 +43281,7 @@ static const u16 sEspurrTeachableLearnset[] = {
     MOVE_UNAVAILABLE,
 };
 
-static const u16 sMeowsticTeachableLearnset[] = {
+static const u16 sMeowsticMaleTeachableLearnset[] = {
     MOVE_ALLY_SWITCH,
     MOVE_ATTRACT,
     MOVE_CALM_MIND,
@@ -45923,7 +45923,7 @@ static const u16 sDiancieTeachableLearnset[] = {
     MOVE_UNAVAILABLE,
 };
 
-static const u16 sHoopaTeachableLearnset[] = {
+static const u16 sHoopaConfinedTeachableLearnset[] = {
     MOVE_ALLY_SWITCH,
     MOVE_BLOCK,
     MOVE_BRICK_BREAK,
@@ -47448,7 +47448,7 @@ static const u16 sRockruffTeachableLearnset[] = {
     MOVE_UNAVAILABLE,
 };
 
-static const u16 sLycanrocTeachableLearnset[] = {
+static const u16 sLycanrocMiddayTeachableLearnset[] = {
     MOVE_AGILITY,
     MOVE_ASSURANCE,
     MOVE_ATTRACT,
@@ -53173,7 +53173,7 @@ static const u16 sToxelTeachableLearnset[] = {
     MOVE_UNAVAILABLE,
 };
 
-static const u16 sToxtricityTeachableLearnset[] = {
+static const u16 sToxtricityAmpedTeachableLearnset[] = {
     MOVE_ACID_SPRAY,
     MOVE_ATTRACT,
     MOVE_BRICK_BREAK,
@@ -54569,7 +54569,7 @@ static const u16 sEiscueTeachableLearnset[] = {
     MOVE_UNAVAILABLE,
 };
 
-static const u16 sIndeedeeTeachableLearnset[] = {
+static const u16 sIndeedeeMaleTeachableLearnset[] = {
     MOVE_ALLY_SWITCH,
     MOVE_ATTRACT,
     MOVE_BODY_SLAM,
@@ -55420,7 +55420,7 @@ static const u16 sKubfuTeachableLearnset[] = {
     MOVE_UNAVAILABLE,
 };
 
-static const u16 sUrshifuTeachableLearnset[] = {
+static const u16 sUrshifuSingleStrikeStyleTeachableLearnset[] = {
     MOVE_ACROBATICS,
     MOVE_AERIAL_ACE,
     MOVE_ASSURANCE,

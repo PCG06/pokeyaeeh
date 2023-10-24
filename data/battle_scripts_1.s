@@ -416,7 +416,7 @@ gBattleScriptsForMoveEffects::
 	.4byte BattleScript_EffectVictoryDance            @ EFFECT_VICTORY_DANCE
 	.4byte BattleScript_EffectTeatime                 @ EFFECT_TEATIME
 	.4byte BattleScript_EffectAttackUpUserAlly        @ EFFECT_ATTACK_UP_USER_ALLY
-	.4byte BattleScript_EffectShellTrap				  @ EFFECT_SHELL_TRAP
+	.4byte BattleScript_EffectShellTrap               @ EFFECT_SHELL_TRAP
 	.4byte BattleScript_EffectHit                     @ EFFECT_PSYBLADE
 	.4byte BattleScript_EffectHit                     @ EFFECT_HYDRO_STEAM
 	.4byte BattleScript_EffectHitSetEntryHazard       @ EFFECT_HIT_SET_ENTRY_HAZARD
@@ -439,7 +439,7 @@ gBattleScriptsForMoveEffects::
 	.4byte BattleScript_EffectMatchaGotcha            @ EFFECT_MATCHA_GOTCHA
 	.4byte BattleScript_EffectSyrupBomb               @ EFFECT_SYRUP_BOMB
 	.4byte BattleScript_EffectHit                     @ EFFECT_IVY_CUDGEL
-	.4byte BattleScript_EffectMaxMove 				  @ EFFECT_MAX_MOVE
+	.4byte BattleScript_EffectMaxMove                 @ EFFECT_MAX_MOVE
 
 BattleScript_EffectSyrupBomb::
 	setmoveeffect MOVE_EFFECT_SYRUP_BOMB
@@ -1050,7 +1050,7 @@ BattleScript_EffectPhotonGeyser:
 	goto BattleScript_MoveEnd
 
 BattleScript_EffectAuraWheel: @ Aura Wheel can only be used by Morpeko
-	jumpifspecies BS_ATTACKER, SPECIES_MORPEKO, BattleScript_EffectSpeedUpHit
+	jumpifspecies BS_ATTACKER, SPECIES_MORPEKO_FULL_BELLY, BattleScript_EffectSpeedUpHit
 	jumpifspecies BS_ATTACKER, SPECIES_MORPEKO_HANGRY, BattleScript_EffectSpeedUpHit
 	goto BattleScript_PokemonCantUseTheMove
 
@@ -1163,7 +1163,7 @@ BattleScript_BothCanNoLongerEscape::
 
 BattleScript_EffectHyperspaceFury:
 	jumpifspecies BS_ATTACKER, SPECIES_HOOPA_UNBOUND, BattleScript_EffectHyperspaceFuryUnbound
-	jumpifspecies BS_ATTACKER, SPECIES_HOOPA, BattleScript_ButHoopaCantUseIt
+	jumpifspecies BS_ATTACKER, SPECIES_HOOPA_CONFINED, BattleScript_ButHoopaCantUseIt
 	goto BattleScript_PokemonCantUseTheMove
 
 BattleScript_EffectHyperspaceFuryUnbound::
