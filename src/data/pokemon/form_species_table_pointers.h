@@ -176,13 +176,13 @@ const u16 *const gFormSpeciesIdTables[NUM_SPECIES] =
     [SPECIES_BASCULEGION_MALE] = sBasculegionFormSpeciesIdTable,
 #endif
 #if P_GEN_9_POKEMON == TRUE
-    [SPECIES_OINKOLOGNE] = sOinkologneFormSpeciesIdTable,
-    [SPECIES_MAUSHOLD] = sMausholdFormSpeciesIdTable,
-    [SPECIES_SQUAWKABILLY] = sSquawkabillyFormSpeciesIdTable,
-    [SPECIES_PALAFIN] = sPalafinFormSpeciesIdTable,
-    [SPECIES_TATSUGIRI] = sTatsugiriFormSpeciesIdTable,
-    [SPECIES_DUDUNSPARCE] = sDudunsparceFormSpeciesIdTable,
-    [SPECIES_GIMMIGHOUL] = sGimmighoulFormSpeciesIdTable,
+    [SPECIES_OINKOLOGNE_MALE] = sOinkologneFormSpeciesIdTable,
+    [SPECIES_MAUSHOLD_FAMILY_OF_FOUR] = sMausholdFormSpeciesIdTable,
+    [SPECIES_SQUAWKABILLY_GREEN_PLUMAGE] = sSquawkabillyFormSpeciesIdTable,
+    [SPECIES_PALAFIN_ZERO] = sPalafinFormSpeciesIdTable,
+    [SPECIES_TATSUGIRI_CURLY] = sTatsugiriFormSpeciesIdTable,
+    [SPECIES_DUDUNSPARCE_TWO_SEGMENT] = sDudunsparceFormSpeciesIdTable,
+    [SPECIES_GIMMIGHOUL_CHEST] = sGimmighoulFormSpeciesIdTable,
 #endif
     // Megas
     [SPECIES_VENUSAUR_MEGA] = sVenusaurFormSpeciesIdTable,
