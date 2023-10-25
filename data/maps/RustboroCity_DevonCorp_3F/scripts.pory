@@ -58,12 +58,7 @@ RustboroCity_DevonCorp_3F_EventScript_MeetPresident::
 	setflag FLAG_SYS_POKENAV_GET
 	setflag FLAG_RECEIVED_POKENAV
 	setflag FLAG_HIDE_RUSTBORO_CITY_POKEMON_SCHOOL_SCOTT
-	msgbox RustboroCity_DevonCorp_3F_Text_MrStoneExplainPokenav, MSGBOX_DEFAULT
-	message RustboroCity_DevonCorp_3F_Text_ReceivedDexnav
-	waitfanfare
-	setflag FLAG_SYS_DEXNAV_GET
-	msgbox RustboroCity_DevonCorp_3F_Text_MrStoneExplainDexnavRestUp, MSGBOX_DEFAULT
-	msgbox RustboroCity_DevonCorp_3F_Text_MrStoneExplainDexnavRestUp, MSGBOX_DEFAULT //IDk why, but not adding it twice just skips the script :/
+	msgbox RustboroCity_DevonCorp_3F_Text_MrStoneExplainPokenavRestUp, MSGBOX_DEFAULT
 	call Common_EventScript_OutOfCenterPartyHeal
 	msgbox RustboroCity_DevonCorp_3F_Text_MrStoneGoWithCautionAndCare, MSGBOX_DEFAULT
 	setflag FLAG_HIDE_ROUTE_116_WANDAS_BOYFRIEND
@@ -225,31 +220,27 @@ RustboroCity_DevonCorp_3F_Text_MrStoneWantYouToHaveThis:
 	.string "That's why I want you to have this!$"
 
 RustboroCity_DevonCorp_3F_Text_ReceivedPokenav:
-	.string "{PLAYER} received a Pokénav.$"
+	.string "{PLAYER} received a PokéNav.$"
 
 RustboroCity_DevonCorp_3F_Text_ReceivedDexnav:
 	.string "{PLAYER} received a DexNav.$"
 
-RustboroCity_DevonCorp_3F_Text_MrStoneExplainPokenav:
+RustboroCity_DevonCorp_3F_Text_MrStoneExplainPokenavRestUp:
 	.string "Mr. Stone: That device…\p"
-	.string "It's a Pokémon Navigator, or Pokénav\n"
+	.string "It's a Pokémon Navigator, or PokéNav\n"
 	.string "for short.\p"
 	.string "It's an indispensable tool for any\n"
 	.string "Trainer on an adventure.\p"
 	.string "It has a map of the Hoenn region.\p"
 	.string "You can check the locations of\n"
 	.string "Dewford and Slateport easily!\p"
-	.string "Take this, too.$"
-
-RustboroCity_DevonCorp_3F_Text_MrStoneExplainDexnavRestUp:
-    .string "Mr. Stone: A DexNav is something\n"
-	.string "every Trainer would love!\p"
-	.string "It makes hunting for a specific species\n"
-	.string "of Pokémon very easy!\p"
-	.string "Just click {R_BUTTON} on a Pokémon to register\n"
-	.string "it on the DexNav and search.\p"
-	.string "You can use it to check what species of\n"
+	.string "You can also use the DexNav\n"
+	.string "feature to check what species of\l"
 	.string "Pokémon are around you.\p"
+	.string "It'll make searching for them,\n"
+	.string "very easy!\p"
+	.string "Just click {R_BUTTON} on a Pokémon to\n"
+	.string "register it on the DexNav and search.\p"
 	.string "By the way, I've heard that sinister\n"
 	.string "criminals--Magma and Aqua, I believe--\l"
 	.string "have been making trouble far and wide.\p"

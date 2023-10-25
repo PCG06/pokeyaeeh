@@ -122,6 +122,8 @@
 //funcs
 void EndDexNavSearch(u8 taskId);
 void Task_OpenDexNavFromStartMenu(u8 taskId);
+void Task_OpenDexNavFromPokenav(u8 taskId);
+u32 PokeNavMenuDexNavCallback(void);
 bool8 TryStartDexnavSearch(void);
 void TryIncrementSpeciesSearchLevel(u16 dexNum);
 void ResetDexNavSearch(void);

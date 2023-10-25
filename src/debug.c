@@ -2036,7 +2036,6 @@ static void DebugAction_Util_CheatStart(u8 taskId)
 {
     InitTimeBasedEvents();
     FlagSet(FLAG_SYS_ENABLE_MOVE_RELEARNERS);
-    FlagSet(FLAG_SYS_DEXNAV_GET);
     Debug_DestroyMenu_Full_Script(taskId, Debug_CheatStart);
 }
 static void DebugAction_Util_HatchAnEgg(u8 taskId)
