@@ -8035,7 +8035,7 @@ extern const u32 gMonFrontPic_Gimmighoul[];
 extern const u32 gMonPalette_Gimmighoul[];
 extern const u32 gMonBackPic_Gimmighoul[];
 extern const u32 gMonShinyPalette_Gimmighoul[];
-extern const u8 gMonIcon_Gimmighoul[];
+extern const u8 gMonIcon_GimmighoulChest[];
 extern const u8 gMonFootprint_Gimmighoul[];
 extern const u32 gMonFrontPic_GimmighoulRoaming[];
 extern const u32 gMonPalette_GimmighoulRoaming[];
