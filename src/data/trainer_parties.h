@@ -1724,7 +1724,7 @@ static const struct TrainerMon sParty_Winston1[] = {
     .lvl = 16,
     .heldItem = ITEM_SITRUS_BERRY,
     .ability = ABILITY_RATTLED,
-    .species = SPECIES_GIMMIGHOUL,
+    .species = SPECIES_GIMMIGHOUL_CHEST,
     .moves = {MOVE_PROTECT, MOVE_ENDURE, MOVE_HEX, MOVE_CONFUSE_RAY},
     .nickname = COMPOUND_STRING("Golden Boi")
     },

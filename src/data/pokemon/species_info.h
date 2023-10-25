@@ -26399,7 +26399,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .baseAttack    = 160,
         .baseDefense   = 97,
         .baseSpAttack  = 106,
-        .baseSpDefense = 100,
+        .baseSpDefense = 87,
         .expYield = 228,
         PALAFIN_MISC_INFO,
     },

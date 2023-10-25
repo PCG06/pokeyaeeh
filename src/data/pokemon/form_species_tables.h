@@ -1317,19 +1317,19 @@ static const u16 sBasculegionFormSpeciesIdTable[] = {
 
 #if P_GEN_9_POKEMON == TRUE
 static const u16 sOinkologneFormSpeciesIdTable[] = {
-    SPECIES_OINKOLOGNE,
+    SPECIES_OINKOLOGNE_MALE,
     SPECIES_OINKOLOGNE_FEMALE,
     FORM_SPECIES_END,
 };
 
 static const u16 sMausholdFormSpeciesIdTable[] = {
-    SPECIES_MAUSHOLD,
     SPECIES_MAUSHOLD_FAMILY_OF_THREE,
+    SPECIES_MAUSHOLD_FAMILY_OF_FOUR,
     FORM_SPECIES_END,
 };
 
 static const u16 sSquawkabillyFormSpeciesIdTable[] = {
-    SPECIES_SQUAWKABILLY,
+    SPECIES_SQUAWKABILLY_GREEN_PLUMAGE,
     SPECIES_SQUAWKABILLY_BLUE_PLUMAGE,
     SPECIES_SQUAWKABILLY_YELLOW_PLUMAGE,
     SPECIES_SQUAWKABILLY_WHITE_PLUMAGE,
@@ -1337,26 +1337,26 @@ static const u16 sSquawkabillyFormSpeciesIdTable[] = {
 };
 
 static const u16 sPalafinFormSpeciesIdTable[] = {
-    SPECIES_PALAFIN,
+    SPECIES_PALAFIN_ZERO,
     SPECIES_PALAFIN_HERO,
     FORM_SPECIES_END,
 };
 
 static const u16 sTatsugiriFormSpeciesIdTable[] = {
-    SPECIES_TATSUGIRI,
+    SPECIES_TATSUGIRI_CURLY,
     SPECIES_TATSUGIRI_DROOPY,
     SPECIES_TATSUGIRI_STRETCHY,
     FORM_SPECIES_END,
 };
 
 static const u16 sDudunsparceFormSpeciesIdTable[] = {
-    SPECIES_DUDUNSPARCE,
+    SPECIES_DUDUNSPARCE_TWO_SEGMENT,
     SPECIES_DUDUNSPARCE_THREE_SEGMENT,
     FORM_SPECIES_END,
 };
 
 static const u16 sGimmighoulFormSpeciesIdTable[] = {
-    SPECIES_GIMMIGHOUL,
+    SPECIES_GIMMIGHOUL_CHEST,
     SPECIES_GIMMIGHOUL_ROAMING,
     FORM_SPECIES_END,
 };
