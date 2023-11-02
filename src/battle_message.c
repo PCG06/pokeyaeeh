@@ -826,6 +826,10 @@ static const u8 sText_BattlerAbilitySetUpTailwind[] = _("{B_ATK_NAME_WITH_PREFIX
 static const u8 sText_OpportunistCopied[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} copied its\nopponent's stat changes!");
 static const u8 sText_TargetCoveredInStickyCandySyrup[] = _("{B_DEF_NAME_WITH_PREFIX} got covered\nin sticky syrup!");
 static const u8 sText_PkmnGained1EXP[] = _("{B_BUFF1} gained\n1 EXP. Point!\p");
+static const u8 sText_OminousAirCurrent[] = _("An ominous wind current is\nprotecting Ghost-type Pokémon!");
+static const u8 sText_GhostlyWindsDissipated[] = _("The ominous ghostly winds\nhave dissipated!{PAUSE 64}");
+static const u8 sText_OminousAirCurrentBlowsOn[] = _("The ominous air current\nblows on regardless!");
+static const u8 sText_AttackWeakenedByGhostlyWinds[] = _("The ominous ghostly winds\nweakened the attack!");
 
 const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
 {
@@ -1507,6 +1511,10 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_TEAMGAINEDEXP - BATTLESTRINGS_TABLE_START] = sText_TeamGainedEXP,
     [STRINGID_TARGETCOVEREDINSTICKYCANDYSYRUP - BATTLESTRINGS_TABLE_START] = sText_TargetCoveredInStickyCandySyrup,
     [STRINGID_PKMNGAINED1EXP - BATTLESTRINGS_TABLE_START] = sText_PkmnGained1EXP,
+    [STRINGID_ATTACKWEAKENEDBGHOSTLYWINDS - BATTLESTRINGS_TABLE_START] = sText_AttackWeakenedByGhostlyWinds,
+    [STRINGID_OMINOUSAIRCURRENTBLOWSON - BATTLESTRINGS_TABLE_START] = sText_OminousAirCurrentBlowsOn,
+    [STRINGID_GHOSTLYWINDSDISSIPATED - BATTLESTRINGS_TABLE_START] = sText_GhostlyWindsDissipated,
+    [STRINGID_OMINOUSAIRCURRENT - BATTLESTRINGS_TABLE_START] = sText_OminousAirCurrent,
 };
 
 const u16 gTrainerUsedItemStringIds[] =

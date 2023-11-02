@@ -8454,12 +8454,15 @@ static const struct TrainerMon sParty_Clark[] = {
 
 static const struct TrainerMon sParty_Eric[] = {
     {
-    .lvl = 20,
-    .species = SPECIES_GEODUDE,
+    .lvl = 50,
+    .ev = TRAINER_PARTY_EVS(252, 0, 252, 0, 0, 252),
+    .species = SPECIES_GENGAR,
+    .moves = {MOVE_SHADOW_BALL, MOVE_PSYCHIC, MOVE_DARK_PULSE, MOVE_HEX}
     },
     {
-    .lvl = 20,
-    .species = SPECIES_BALTOY,
+    .lvl = 50,
+    .species = SPECIES_GENGAR,
+    .moves = {MOVE_SHADOW_BALL, MOVE_PSYCHIC, MOVE_DARK_PULSE, MOVE_HEX}
     }
 };
 

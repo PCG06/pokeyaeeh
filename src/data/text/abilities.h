@@ -173,7 +173,7 @@ static const u8 sRefrigerateDescription[] = _("Normal moves become Ice.");
 static const u8 sSweetVeilDescription[] = _("Prevents party from sleep.");
 static const u8 sStanceChangeDescription[] = _("Transforms as it battles.");
 static const u8 sGaleWingsDescription[] = _("Flying moves go first.");
-static const u8 sMegaLauncherDescription[] = _("Boosts pulse moves.");
+static const u8 sMegaLauncherDescription[] = _("Boosts pulse & beam moves.");
 static const u8 sGrassPeltDescription[] = _("Ups Defense in grass.");
 static const u8 sSymbiosisDescription[] = _("Passes its item to an ally.");
 static const u8 sToughClawsDescription[] = _("Boosts contact moves.");
@@ -300,6 +300,7 @@ static const u8 sSupersweetSyrupDescription[] = _("Lowers the foe's Speed.");
 static const u8 sBrutalLegsDescription[] = _("Boosts kicking moves.");
 static const u8 sHardSpinnerDescription[] = _("Boosts spinning moves.");
 static const u8 sTailstreamDescription[] = _("Sets up tailwind.");
+static const u8 sPhantomGaleDescription[] = _("Sets up ominous airs.");
 
 #if B_EXPANDED_ABILITY_NAMES == TRUE
 const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
@@ -614,6 +615,7 @@ const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
     [ABILITY_BRUTAL_LEGS] = _("Brutal Legs"),
     [ABILITY_HARD_SPINNER] = _("Hard Spinner"),
     [ABILITY_TAILSTREAM] = _("Tailstream"),
+    [ABILITY_PHANTOM_GALE] = _("Phantom Gale"),
 };
 #else   // 12 characters
 const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
@@ -928,6 +930,7 @@ const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
     [ABILITY_BRUTAL_LEGS] = _("Brutal Legs"),
     [ABILITY_HARD_SPINNER] = _("Hard Spinner"),
     [ABILITY_TAILSTREAM] = _("Tailstream"),
+    [ABILITY_PHANTOM_GALE] = _("Phantom Gale"),
 };
 #endif
 
@@ -1243,4 +1246,5 @@ const u8 *const gAbilityDescriptionPointers[ABILITIES_COUNT] =
     [ABILITY_BRUTAL_LEGS] = sBrutalLegsDescription,
     [ABILITY_HARD_SPINNER] = sHardSpinnerDescription,
     [ABILITY_TAILSTREAM] = sTailstreamDescription,
+    [ABILITY_PHANTOM_GALE] = sPhantomGaleDescription,
 };

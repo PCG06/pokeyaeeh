@@ -484,6 +484,9 @@ extern const u8 BattleScript_SaltCureExtraDamage[];
 extern const u8 BattleScript_TailstreamActivated[];
 extern const u8 BattleScript_SyrupBombEndTurn[];
 extern const u8 BattleScript_SyrupBombActivates[];
+extern const u8 BattleScript_PhantomGaleActivates[];
+extern const u8 BattleScript_OminousAirCurrentBlowsOn[];
+extern const u8 BattleScript_AttackWeakenedByGhostlyWinds[];
 
 // zmoves
 extern const u8 BattleScript_ZMoveActivateDamaging[];

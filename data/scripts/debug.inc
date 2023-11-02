@@ -101,8 +101,8 @@ Debug_EventScript_Script_1:: @ testing
 	end
 
 Debug_EventScript_Script_2::
-    cleartrainerflag TRAINER_KENT
-		trainerbattle_single TRAINER_KENT, Route119_Text_KentIntro, Route119_Text_KentDefeat
+    cleartrainerflag TRAINER_ERIC
+		trainerbattle_single TRAINER_ERIC, JaggedPass_Text_EricIntro, JaggedPass_Text_EricDefeat
 	end
 
 Debug_EventScript_Script_3::

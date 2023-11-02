@@ -1011,6 +1011,7 @@ gBattleAnims_General::
 	.4byte General_DynamaxGrowth            @ B_ANIM_DYNAMAX_GROWTH
 	.4byte General_SetWeather               @ B_ANIM_MAX_SET_WEATHER
 	.4byte General_SyrupBombSpeedDrop       @ B_ANIM_SYRUP_BOMB_SPEED_DROP
+	.4byte General_GhostlyWinds             @ B_ANIM_GHOSTLY_WINDS
 
 	.align 2
 gBattleAnims_Special::
@@ -27219,6 +27220,17 @@ General_StrongWinds::
 	loadspritegfx ANIM_TAG_FLYING_DIRT
 	playsewithpan SE_M_GUST, 0
 	createvisualtask AnimTask_BlendParticle, 5, ANIM_TAG_FLYING_DIRT, 0, 12, 12, RGB(20, 20, 20)
+	waitforvisualfinish
+	createvisualtask AnimTask_LoadWindstormBackground, 5, FALSE
+	delay 32
+	waitforvisualfinish
+	stopsound
+	end
+
+General_GhostlyWinds::
+	loadspritegfx ANIM_TAG_WHITE_SHADOW
+	playsewithpan SE_M_GUST, 0
+	createvisualtask AnimTask_BlendParticle, 5, ANIM_TAG_WHITE_SHADOW, 0, 12, 12, RGB_BLACK
 	waitforvisualfinish
 	createvisualtask AnimTask_LoadWindstormBackground, 5, FALSE
 	delay 32

@@ -2105,6 +2105,22 @@ END:
             gBattlescriptCurrInstr = BattleScript_AttackWeakenedByStrongWinds;
         }
     }
+    // B_WEATHER_GHOSTLY_WINDS prints a string when it's about to reduce the power
+    // of a move that is Super Effective against a Ghost-type Pokémon.
+    if (gBattleWeather & B_WEATHER_GHOSTLY_WINDS)
+    {
+        if ((GetBattlerType(gBattlerTarget, 0) == TYPE_GHOST
+         && GetTypeModifier(moveType, GetBattlerType(gBattlerTarget, 0)) >= UQ_4_12(2.0))
+         || (GetBattlerType(gBattlerTarget, 1) == TYPE_GHOST
+         && GetTypeModifier(moveType, GetBattlerType(gBattlerTarget, 1)) >= UQ_4_12(2.0))
+         || (GetBattlerType(gBattlerTarget, 2) == TYPE_GHOST
+         && GetTypeModifier(moveType, GetBattlerType(gBattlerTarget, 2)) >= UQ_4_12(2.0)))
+        {
+            gBattlerAbility = gBattlerTarget;
+            BattleScriptPushCursor();
+            gBattlescriptCurrInstr = BattleScript_AttackWeakenedByGhostlyWinds;
+        }
+    }
 }
 
 static void Cmd_multihitresultmessage(void)
@@ -10119,7 +10135,8 @@ static void Cmd_various(void)
             u32 ability = GetBattlerAbility(i);
             if (((ability == ABILITY_DESOLATE_LAND && gBattleWeather & B_WEATHER_SUN_PRIMAL)
              || (ability == ABILITY_PRIMORDIAL_SEA && gBattleWeather & B_WEATHER_RAIN_PRIMAL)
-             || (ability == ABILITY_DELTA_STREAM && gBattleWeather & B_WEATHER_STRONG_WINDS))
+             || (ability == ABILITY_DELTA_STREAM && gBattleWeather & B_WEATHER_STRONG_WINDS)
+             || (ability == ABILITY_PHANTOM_GALE && gBattleWeather & B_WEATHER_GHOSTLY_WINDS))
              && IsBattlerAlive(i))
                 shouldNotClear = TRUE;
         }
@@ -10139,6 +10156,12 @@ static void Cmd_various(void)
         {
             gBattleWeather &= ~B_WEATHER_STRONG_WINDS;
             PrepareStringBattle(STRINGID_STRONGWINDSDISSIPATED, battler);
+            gBattleCommunication[MSG_DISPLAY] = 1;
+        }
+        else if (gBattleWeather & B_WEATHER_GHOSTLY_WINDS && !shouldNotClear)
+        {
+            gBattleWeather &= ~B_WEATHER_GHOSTLY_WINDS;
+            PrepareStringBattle(STRINGID_GHOSTLYWINDSDISSIPATED, battler);
             gBattleCommunication[MSG_DISPLAY] = 1;
         }
         break;

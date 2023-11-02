@@ -689,8 +689,12 @@
 #define STRINGID_BAGISFULL                            687
 #define STRINGID_TAILSTREAMACTIVATED                  688
 #define STRINGID_PKMNGAINED1EXP                       689
+#define STRINGID_OMINOUSAIRCURRENT                    690
+#define STRINGID_GHOSTLYWINDSDISSIPATED               691
+#define STRINGID_OMINOUSAIRCURRENTBLOWSON             692
+#define STRINGID_ATTACKWEAKENEDBGHOSTLYWINDS          693
 
-#define BATTLESTRINGS_COUNT                           690
+#define BATTLESTRINGS_COUNT                           694
 
 // This is the string id that gBattleStringsTable starts with.
 // String ids before this (e.g. STRINGID_INTROMSG) are not in the table,

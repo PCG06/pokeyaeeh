@@ -3931,6 +3931,7 @@ static const u16 sWeatherFlagsInfo[][3] =
     [ENUM_WEATHER_HAIL] = {B_WEATHER_HAIL_TEMPORARY, B_WEATHER_HAIL_PERMANENT, HOLD_EFFECT_ICY_ROCK},
     [ENUM_WEATHER_STRONG_WINDS] = {B_WEATHER_STRONG_WINDS, B_WEATHER_STRONG_WINDS, HOLD_EFFECT_NONE},
     [ENUM_WEATHER_SNOW] = {B_WEATHER_SNOW_TEMPORARY, B_WEATHER_SNOW_PERMANENT, HOLD_EFFECT_ICY_ROCK},
+    [ENUM_WEATHER_GHOSTLY_WINDS] = {B_WEATHER_GHOSTLY_WINDS, B_WEATHER_GHOSTLY_WINDS, HOLD_EFFECT_NONE},
 };
 
 static void ShouldChangeFormInWeather(u32 battler)
@@ -4512,6 +4513,12 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                 effect++;
             }
             break;
+        case ABILITY_PHANTOM_GALE:
+            if (TryChangeBattleWeather(battler, ENUM_WEATHER_GHOSTLY_WINDS, TRUE))
+            {
+                BattleScriptPushCursorAndCallback(BattleScript_PhantomGaleActivates);
+                effect++;
+            }
         case ABILITY_ELECTRIC_SURGE:
         case ABILITY_HADRON_ENGINE:
             if (TryChangeBattleTerrain(battler, STATUS_FIELD_ELECTRIC_TERRAIN, &gFieldTimers.terrainTimer))
@@ -9877,6 +9884,12 @@ static inline void MulByTypeEffectiveness(uq4_12_t *modifier, u32 move, u32 move
     if (gBattleWeather & B_WEATHER_STRONG_WINDS && WEATHER_HAS_EFFECT)
     {
         if (defType == TYPE_FLYING && mod >= UQ_4_12(2.0))
+            mod = UQ_4_12(1.0);
+    }
+    // B_WEATHER_GHOSTLY_WINDS weakens Super Effective moves against Ghost-type Pokémon     Also NEW weather
+    if (gBattleWeather & B_WEATHER_GHOSTLY_WINDS && WEATHER_HAS_EFFECT)
+    {
+        if (defType == TYPE_GHOST && mod >= UQ_4_12(2.0))
             mod = UQ_4_12(1.0);
     }
 
