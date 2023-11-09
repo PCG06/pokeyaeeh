@@ -9933,9 +9933,9 @@ const struct Item gItems[] =
         .name = _("Leader's Crest"),
         .price = 3000,
         .description = sLeadersCrestDesc,
-        .pocket = POCKET_ITEMS,
-        .type = ITEM_USE_BAG_MENU,
-        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .pocket = POCKET_POWER_UP,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_EvolutionStone,
     },
 
     [ITEM_MALICIOUS_ARMOR] =

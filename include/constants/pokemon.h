@@ -291,12 +291,16 @@
 #define EVO_ITEM_DAY                      40     // specified item is used on Pokémon, is day
 #define EVO_ITEM_HOLD                     41     // Pokémon levels up, holds specified item
 #define EVO_LEVEL_FOG                     42     // Pokémon reaches the specified level during fog in the overworld
-#define EVO_MOVE_FEMALE                   43     // Pokémon learn specific move, evolves, female (for Basculegion)
-#define EVO_MOVE_MALE                     44     // Pokémon learn specific move, evolves, male   (for Basculegion)
-#define EVO_ITEM_SPECIFIC_MAP             45     // Alolan cross-evolutions (like Alolan Exeggutor)
-#define EVO_LEVEL_SPECIFIC_MAP            46     // Galarian Weezing
-#define EVO_MOVE_SPECIFIC_MAP             47     // Galarian Mr. Mime
-#define EVO_NIGHT_SPECIFIC_MAP            48     // Alolan Marowak
+#define EVO_MOVE_TWO_SEGMENT              43     // Pokémon levels up, knows specified move, has a personality value with a modulus of 0
+#define EVO_MOVE_THREE_SEGMENT            44     // Pokémon levels up, knows specified move, has a personality value with a modulus of 1-9
+#define EVO_LEVEL_FAMILY_OF_THREE         45     // Pokémon reaches the specified level with a personality value with a modulus of 0
+#define EVO_LEVEL_FAMILY_OF_FOUR          46     // Pokémon reaches the specified level with a personality value with a modulus of 1-9
+#define EVO_MOVE_FEMALE                   47     // Pokémon learn specific move, evolves, female (for Basculegion)
+#define EVO_MOVE_MALE                     48     // Pokémon learn specific move, evolves, male   (for Basculegion)
+#define EVO_ITEM_SPECIFIC_MAP             49     // Alolan cross-evolutions (like Alolan Exeggutor)
+#define EVO_LEVEL_SPECIFIC_MAP            50     // Galarian Weezing
+#define EVO_MOVE_SPECIFIC_MAP             51     // Galarian Mr. Mime
+#define EVO_NIGHT_SPECIFIC_MAP            52     // Alolan Marowak
 
 #define EVOS_PER_MON 11
 
