@@ -830,9 +830,11 @@ static const u8 sText_OminousAirCurrent[] = _("An ominous wind current is\nprote
 static const u8 sText_GhostlyWindsDissipated[] = _("The ominous ghostly winds\nhave dissipated!{PAUSE 64}");
 static const u8 sText_OminousAirCurrentBlowsOn[] = _("The ominous air current\nblows on regardless!");
 static const u8 sText_AttackWeakenedByGhostlyWinds[] = _("The ominous ghostly winds\nweakened the attack!");
+static const u8 sText_ZeroToHeroTransformation[] = _("{B_ATK_NAME_WITH_PREFIX} underwent a heroic\ntransformation!");
 
 const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
 {
+    [STRINGID_ZEROTOHEROTRANSFORMATION - BATTLESTRINGS_TABLE_START] = sText_ZeroToHeroTransformation,
     [STRINGID_TAILSTREAMACTIVATED - BATTLESTRINGS_TABLE_START] = sText_BattlerAbilitySetUpTailwind,
     [STRINGID_MOVEBLOCKEDBYDYNAMAX - BATTLESTRINGS_TABLE_START] = sText_MoveBlockedByDynamax,
     [STRINGID_OPPORTUNISTCOPIED - BATTLESTRINGS_TABLE_START] = sText_OpportunistCopied,
