@@ -431,7 +431,7 @@ u16 GetStarterPokemon(u16 chosenStarterId)
     case 9:
         return sStarterMonPaldea[chosenStarterId];
     default:
-        return sStarterMonHoenn[chosenStarterId];
+        return sStarterMonPaldea[chosenStarterId];
     } 
 }
 

@@ -336,7 +336,7 @@ LittlerootTown_MaysHouse_1F_EventScript_ChooseStarterSet::
 	case 6, LittlerootTown_MaysHouse_1F_EventScript_Alola
 	case 7, LittlerootTown_MaysHouse_1F_EventScript_Galar
 	case 8, LittlerootTown_MaysHouse_1F_EventScript_Paldea
-	goto LittlerootTown_MaysHouse_1F_EventScript_Hoenn
+	goto LittlerootTown_MaysHouse_1F_EventScript_Paldea
 	end
 
 LittlerootTown_MaysHouse_1F_EventScript_Kanto:
