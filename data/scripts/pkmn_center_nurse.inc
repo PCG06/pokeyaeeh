@@ -5,9 +5,9 @@ Common_EventScript_PkmnCenterNurse::
     specialvar VAR_RESULT, CountPlayerTrainerStars
     goto_if_ge VAR_RESULT, 4, EventScript_PkmnCenterNurse_GoldCard
 	gettime
-	call_if_eq VAR_0x8003, TIME_MORNING, EventScript_PkmnCenterNurse_IntroMorning
-	call_if_eq VAR_0x8003, TIME_DAY, EventScript_PkmnCenterNurse_IntroDay
-	call_if_eq VAR_0x8003, TIME_NIGHT, EventScript_PkmnCenterNurse_IntroNight
+	call_if_eq VAR_0x8003, DN_TIME_MORNING, EventScript_PkmnCenterNurse_IntroMorning
+	call_if_eq VAR_0x8003, DN_TIME_DAY, EventScript_PkmnCenterNurse_IntroDay
+	call_if_eq VAR_0x8003, DN_TIME_NIGHT, EventScript_PkmnCenterNurse_IntroNight
     msgbox gText_WouldYouLikeToRestYourPkmn, MSGBOX_YESNO
     goto_if_eq VAR_RESULT, YES, EventScript_PkmnCenterNurse_HealPkmn
     goto_if_eq VAR_RESULT, NO, EventScript_PkmnCenterNurse_Goodbye
@@ -127,9 +127,9 @@ EventScript_PkmnCenterNurse_GoldCard::
 
 EventScript_PkmnCenterNurse_AskForUsual::
 	gettime
-	goto_if_eq VAR_0x8003, TIME_MORNING, EventScript_PkmnCenterNurse_UsualIntroMorning
-	goto_if_eq VAR_0x8003, TIME_DAY, EventScript_PkmnCenterNurse_UsualIntroDay
-	goto_if_eq VAR_0x8003, TIME_NIGHT, EventScript_PkmnCenterNurse_UsualIntroNight
+	goto_if_eq VAR_0x8003, DN_TIME_MORNING, EventScript_PkmnCenterNurse_UsualIntroMorning
+	goto_if_eq VAR_0x8003, DN_TIME_DAY, EventScript_PkmnCenterNurse_UsualIntroDay
+	goto_if_eq VAR_0x8003, DN_TIME_NIGHT, EventScript_PkmnCenterNurse_UsualIntroNight
     goto_if_eq VAR_RESULT, YES, EventScript_PkmnCenterNurse_GoldCardHealPkmn
     message gText_WeHopeToSeeYouAgain2
     return

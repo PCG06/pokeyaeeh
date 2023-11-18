@@ -59,13 +59,13 @@ static const u16 sTimeOfDayTints[][3] = {
 u8 GetCurrentTimeOfDay(void)
 {
     if (gLocalTime.hours < HOUR_MORNING)
-        return TIME_NIGHT;
+        return DN_TIME_NIGHT;
     else if (gLocalTime.hours < HOUR_DAY)
-        return TIME_MORNING;
+        return DN_TIME_MORNING;
     else if (gLocalTime.hours < HOUR_NIGHT)
-        return TIME_DAY;
+        return DN_TIME_DAY;
 
-    return TIME_NIGHT;
+    return DN_TIME_NIGHT;
 }
 
 static void LoadPaletteOverrides(void)

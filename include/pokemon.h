@@ -663,7 +663,4 @@ bool8 IsSpeciesAffectedByScalemons(u16 species);
 u32 GetBaseStatsTotal(const u16 species);
 u8 GetVisualBaseStat(u8 statId, u16 species);
 
-#define DAY_START 4
-#define NIGHT_START 18
-
 #endif // GUARD_POKEMON_H
