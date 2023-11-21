@@ -14323,7 +14323,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroups = { EGG_GROUP_FLYING, EGG_GROUP_WATER_3},
-        .abilities = {ABILITY_DEFEATIST, ABILITY_NONE, ABILITY_BERSERK},
+        .abilities = {ABILITY_DEFEATIST, ABILITY_NONE, ABILITY_EARLY_BIRD},
         .bodyColor = BODY_COLOR_YELLOW,
         .noFlip = FALSE,
     },
@@ -14345,7 +14345,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroups = { EGG_GROUP_FLYING, EGG_GROUP_WATER_3},
-        .abilities = {ABILITY_DEFEATIST, ABILITY_NONE, ABILITY_BERSERK},
+        .abilities = {ABILITY_DEFEATIST, ABILITY_NONE, ABILITY_EARLY_BIRD}, //early cuz its a fossil! get it? fine, ill just leave
         .bodyColor = BODY_COLOR_YELLOW,
         .noFlip = FALSE,
     },
