@@ -18,6 +18,7 @@
 #include "battle_debug.h"
 #include "battle_pike.h"
 #include "battle_pyramid.h"
+#include "battle_tower.h"
 #include "constants/abilities.h"
 #include "constants/game_stat.h"
 #include "constants/item.h"
@@ -311,7 +312,7 @@ static u8 ChooseWildMonLevel(const struct WildPokemon *wildPokemon, u8 wildMonIn
     u8 max;
     u8 range;
     u8 rand;
-    u8 curvedLevel;
+    u8 level = GetHighestLevelInPlayerParty();
     u8 curveAmount;
 
     if (LURE_STEP_COUNT == 0)
@@ -327,9 +328,8 @@ static u8 ChooseWildMonLevel(const struct WildPokemon *wildPokemon, u8 wildMonIn
             min = wildPokemon[wildMonIndex].maxLevel;
             max = wildPokemon[wildMonIndex].minLevel;
         }
-        curvedLevel = GetPartyMonCurvedLevel();
-        if (max < curvedLevel)
-            curveAmount = (((2 * curvedLevel) + max) / 3) - max;
+        if (max < level)
+            curveAmount = (((2 * level) + max) / 3) - max;
         range = max - min + 1;
         
          if (range < (curveAmount * 3) && (range != 0))
