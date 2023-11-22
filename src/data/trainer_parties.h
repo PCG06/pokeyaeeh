@@ -4264,13 +4264,6 @@ static const struct TrainerMon sParty_Josh[] = {
     .species = SPECIES_CLEFAIRY,
     .ability = ABILITY_CUTE_CHARM,
     .moves = {MOVE_CHARM, MOVE_DRAINING_KISS, MOVE_TACKLE, MOVE_NONE}
-    },
-    {
-    .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-    .lvl = 16,
-    .species = SPECIES_CLEFAIRY,
-    .ability = ABILITY_CUTE_CHARM,
-    .moves = {MOVE_TOXIC, MOVE_DRAINING_KISS, MOVE_TACKLE, MOVE_NONE}
     }
 };
 
@@ -5308,13 +5301,18 @@ static const struct TrainerMon sParty_Presley[] = {
 static const struct TrainerMon sParty_Edwardo[] = {
     {
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-    .lvl = 29,
-    .species = SPECIES_DODUO,
+    .lvl = 14,
+    .species = SPECIES_IMPIDIMP,
+    .ability = ABILITY_PRANKSTER,
+    .moves = {MOVE_THUNDER_WAVE, MOVE_FAKE_OUT, MOVE_FLATTER, MOVE_NONE}
     },
     {
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-    .lvl = 29,
-    .species = SPECIES_PELIPPER,
+    .lvl = 16,
+    .gender = TRAINER_MON_FEMALE,
+    .species = SPECIES_CLEFAIRY,
+    .ability = ABILITY_CUTE_CHARM,
+    .moves = {MOVE_TOXIC, MOVE_DRAINING_KISS, MOVE_TACKLE, MOVE_NONE}
     }
 };
 

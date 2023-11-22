@@ -14,6 +14,7 @@ RustboroCity_Gym_SetGymTrainers::
 	settrainerflag TRAINER_JOSH
 	settrainerflag TRAINER_TOMMY
 	settrainerflag TRAINER_MARC
+	settrainerflag TRAINER_EDWARDO
 	return
 
 DewfordTown_Gym_SetGymTrainers::
@@ -58,7 +59,6 @@ FortreeCity_Gym_SetGymTrainers::
 	settrainerflag TRAINER_JARED
 	settrainerflag TRAINER_FLINT
 	settrainerflag TRAINER_ASHLEY
-	settrainerflag TRAINER_EDWARDO
 	settrainerflag TRAINER_HUMBERTO
 	settrainerflag TRAINER_DARIUS
 	return

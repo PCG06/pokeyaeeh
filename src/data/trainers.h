@@ -3520,7 +3520,7 @@ const struct Trainer gTrainers[] = {
         .party = TRAINER_PARTY(sParty_Billy),
     },
 
-    [TRAINER_JOSH] =
+    [TRAINER_JOSH] = // Rustboro Gym Trainer, Lady Daisy
     {
         .trainerClass = TRAINER_CLASS_LADY,
         .encounterMusic_gender = F_TRAINER_FEMALE | TRAINER_ENCOUNTER_MUSIC_FEMALE,
@@ -3531,7 +3531,7 @@ const struct Trainer gTrainers[] = {
         .party = TRAINER_PARTY(sParty_Josh),
     },
 
-    [TRAINER_TOMMY] =
+    [TRAINER_TOMMY] = //Rustboro Gym Trainer, Aroma Lady Jasmine
     {
         .trainerClass = TRAINER_CLASS_AROMA_LADY,
         .encounterMusic_gender = F_TRAINER_FEMALE | TRAINER_ENCOUNTER_MUSIC_FEMALE,
@@ -4444,12 +4444,12 @@ const struct Trainer gTrainers[] = {
         .party = TRAINER_PARTY(sParty_Presley),
     },
 
-    [TRAINER_EDWARDO] =
+    [TRAINER_EDWARDO] = // Rustboro Gym Trainer, Cool Trainer Pomni
     {
-        .trainerClass = TRAINER_CLASS_BIRD_KEEPER,
-        .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_COOL,
-        .trainerPic = TRAINER_PIC_BIRD_KEEPER,
-        .trainerName = _("Edwardo"),
+        .trainerClass = TRAINER_CLASS_COOLTRAINER,
+        .encounterMusic_gender = F_TRAINER_FEMALE | TRAINER_ENCOUNTER_MUSIC_COOL,
+        .trainerPic = TRAINER_PIC_COOLTRAINER_F,
+        .trainerName = _("Pomni"),
         .doubleBattle = FALSE,
         .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_CHECK_VIABILITY,
         .party = TRAINER_PARTY(sParty_Edwardo),
@@ -6281,7 +6281,7 @@ const struct Trainer gTrainers[] = {
         .party = TRAINER_PARTY(sParty_GruntJaggedPass),
     },
 
-    [TRAINER_MARC] =
+    [TRAINER_MARC] = // Rustboro Gym Trainer, Lass Iris
     {
         .trainerClass = TRAINER_CLASS_LASS,
         .encounterMusic_gender = F_TRAINER_FEMALE | TRAINER_ENCOUNTER_MUSIC_FEMALE,
