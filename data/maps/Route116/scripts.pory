@@ -337,11 +337,6 @@ Route116_EventScript_Sarah::
 	msgbox Route116_Text_SarahPostBattle, MSGBOX_AUTOCLOSE
 	end
 
-Route116_EventScript_Dawson::
-	trainerbattle_single TRAINER_DAWSON, Route116_Text_DawsonIntro, Route116_Text_DawsonDefeat
-	msgbox Route116_Text_DawsonPostBattle, MSGBOX_AUTOCLOSE
-	end
-
 Route116_EventScript_Devan::
 	trainerbattle_single TRAINER_DEVAN, Route116_Text_DevanIntro, Route116_Text_DevanDefeat
 	msgbox Route116_Text_DevanPostBattle, MSGBOX_AUTOCLOSE
@@ -473,3 +468,39 @@ Route116_Text_TrainerTipsBagHasPockets:
 	.string "a Bag of their own.$"
 
 `
+
+script Route116_EventScript_Dawson2{
+	msgbox(format("Ok, fine! I lost! Here, take these, they'll help you in your journey."))
+	giveitem(ITEM_AMULET_COIN, 2)
+	playfanfare(MUS_OBTAIN_ITEM)
+	giveitem(ITEM_TM_NASTY_PLOT, 1)
+	playfanfare(MUS_OBTAIN_ITEM)
+	msgbox(format("Amulet Coin earn you more money in trainer battles if your Pokémon is holding it and participates in the battle. And the TM, Nasty Plot, sharply raises your Pokémon's Sp. Attack. If you are good at battling, you can efficiently make use of that move."), MSGBOX_NPC)
+    return
+}
+
+script Route116_EventScript_Dawson{
+    lock
+    faceplayer
+	if(defeated(TRAINER_JOEY) &&
+	   defeated(TRAINER_JOSE) &&
+	   defeated(TRAINER_JERRY_1) &&
+	   defeated(TRAINER_CLARK) &&
+	   defeated(TRAINER_JANICE) &&
+	   defeated(TRAINER_KAREN_1) &&
+	   defeated(TRAINER_SARAH) &&
+	   defeated(TRAINER_DEVAN) &&
+	   defeated(TRAINER_JOHNSON)){
+		setflag(FLAG_NO_BAG_USE)
+		trainerbattle_double(TRAINER_DAWSON, format("When you lay your eyes on my Pokémon's gorgeous fur, their beauty will render you helpless!"), format("Oh, baby, say it isn't so!"), format("Come on, partner! Get another Pokémon, at least! My gorgeous Pokémon would like a fair battle."), Route116_EventScript_Dawson2)
+		clearflag(FLAG_NO_BAG_USE)
+	    setflag(FLAG_ROUTE_116_BOSS_DEFEATED)
+		msgbox(format("Amulet Coin earn you more money in trainer battles if your Pokémon is holding it and participates in the battle. And the TM, Nasty Plot, sharply raises your Pokémon's Sp. Attack. If you are good at battling, you can efficiently make use of that move."), MSGBOX_NPC)
+	}
+	else{
+		// before defeating every trainer here
+		msgbox(format("Why don't you beat every Trainer here before approaching me again?"))
+	}
+    release
+    end
+}

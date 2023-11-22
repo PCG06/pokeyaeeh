@@ -336,11 +336,6 @@ Route116_EventScript_Sarah::
 	msgbox Route116_Text_SarahPostBattle, MSGBOX_AUTOCLOSE
 	end
 
-Route116_EventScript_Dawson::
-	trainerbattle_single TRAINER_DAWSON, Route116_Text_DawsonIntro, Route116_Text_DawsonDefeat
-	msgbox Route116_Text_DawsonPostBattle, MSGBOX_AUTOCLOSE
-	end
-
 Route116_EventScript_Devan::
 	trainerbattle_single TRAINER_DEVAN, Route116_Text_DevanIntro, Route116_Text_DevanDefeat
 	msgbox Route116_Text_DevanPostBattle, MSGBOX_AUTOCLOSE
@@ -470,3 +465,103 @@ Route116_Text_TrainerTipsBagHasPockets:
 	.string "placed in the appropriate Pockets.\p"
 	.string "No Trainer can afford to be without\n"
 	.string "a Bag of their own.$"
+
+Route116_EventScript_Dawson2::
+	msgbox Route116_EventScript_Dawson2_Text_0
+	giveitem ITEM_AMULET_COIN, 2
+	playfanfare MUS_OBTAIN_ITEM
+	giveitem ITEM_TM_NASTY_PLOT, 1
+	playfanfare MUS_OBTAIN_ITEM
+	msgbox Route116_EventScript_Dawson2_Text_1, MSGBOX_NPC
+	return
+
+
+Route116_EventScript_Dawson::
+	lock
+	faceplayer
+	checktrainerflag TRAINER_JOEY
+	goto_if 1, Route116_EventScript_Dawson_5
+Route116_EventScript_Dawson_3:
+	msgbox Route116_EventScript_Dawson_Text_3
+Route116_EventScript_Dawson_1:
+	release
+	end
+
+Route116_EventScript_Dawson_2:
+	setflag FLAG_NO_BAG_USE
+	trainerbattle_double TRAINER_DAWSON, Route116_EventScript_Dawson_Text_0, Route116_EventScript_Dawson_Text_1, Route116_EventScript_Dawson_Text_2, Route116_EventScript_Dawson2
+	clearflag FLAG_NO_BAG_USE
+	setflag FLAG_ROUTE_116_BOSS_DEFEATED
+	msgbox Route116_EventScript_Dawson2_Text_1, MSGBOX_NPC
+	goto Route116_EventScript_Dawson_1
+
+Route116_EventScript_Dawson_4:
+	checktrainerflag TRAINER_JERRY_1
+	goto_if 1, Route116_EventScript_Dawson_9
+	goto Route116_EventScript_Dawson_3
+
+Route116_EventScript_Dawson_5:
+	checktrainerflag TRAINER_JOSE
+	goto_if 1, Route116_EventScript_Dawson_4
+	goto Route116_EventScript_Dawson_3
+
+Route116_EventScript_Dawson_8:
+	checktrainerflag TRAINER_JANICE
+	goto_if 1, Route116_EventScript_Dawson_13
+	goto Route116_EventScript_Dawson_3
+
+Route116_EventScript_Dawson_9:
+	checktrainerflag TRAINER_CLARK
+	goto_if 1, Route116_EventScript_Dawson_8
+	goto Route116_EventScript_Dawson_3
+
+Route116_EventScript_Dawson_12:
+	checktrainerflag TRAINER_SARAH
+	goto_if 1, Route116_EventScript_Dawson_17
+	goto Route116_EventScript_Dawson_3
+
+Route116_EventScript_Dawson_13:
+	checktrainerflag TRAINER_KAREN_1
+	goto_if 1, Route116_EventScript_Dawson_12
+	goto Route116_EventScript_Dawson_3
+
+Route116_EventScript_Dawson_16:
+	checktrainerflag TRAINER_JOHNSON
+	goto_if 1, Route116_EventScript_Dawson_2
+	goto Route116_EventScript_Dawson_3
+
+Route116_EventScript_Dawson_17:
+	checktrainerflag TRAINER_DEVAN
+	goto_if 1, Route116_EventScript_Dawson_16
+	goto Route116_EventScript_Dawson_3
+
+
+Route116_EventScript_Dawson2_Text_0:
+	.string "Ok, fine! I lost! Here, take these,\n"
+	.string "they'll help you in your journey.$"
+
+Route116_EventScript_Dawson2_Text_1:
+	.string "Amulet Coin earn you more money in\n"
+	.string "trainer battles if your Pokémon is\l"
+	.string "holding it and participates in the\l"
+	.string "battle. And the TM, Nasty Plot, sharply\l"
+	.string "raises your Pokémon's Sp. Attack. If\l"
+	.string "you are good at battling, you can\l"
+	.string "efficiently make use of that move.$"
+
+Route116_EventScript_Dawson_Text_0:
+	.string "When you lay your eyes on my Pokémon's\n"
+	.string "gorgeous fur, their beauty will render\l"
+	.string "you helpless!$"
+
+Route116_EventScript_Dawson_Text_1:
+	.string "Oh, baby, say it isn't so!$"
+
+Route116_EventScript_Dawson_Text_2:
+	.string "Come on, partner! Get another Pokémon,\n"
+	.string "at least! My gorgeous Pokémon would\l"
+	.string "like a fair battle.$"
+
+Route116_EventScript_Dawson_Text_3:
+	.string "Why don't you beat every Trainer here\n"
+	.string "before approaching me again?$"
