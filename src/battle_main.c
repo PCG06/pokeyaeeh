@@ -42,6 +42,7 @@
 #include "roamer.h"
 #include "safari_zone.h"
 #include "scanline_effect.h"
+#include "script_pokemon_util.h"
 #include "sound.h"
 #include "sprite.h"
 #include "string_util.h"
@@ -888,6 +889,7 @@ static void CB2_HandleStartBattle(void)
     RunTasks();
     AnimateSprites();
     BuildOamBuffer();
+    HealPlayerParty();
 
     playerMultiplayerId = GetMultiplayerId();
     gBattleScripting.multiplayerId = playerMultiplayerId;
