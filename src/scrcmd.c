@@ -2401,6 +2401,11 @@ bool8 ScrCmd_giveformchangeitems(struct ScriptContext *ctx)
     AddBagItem(ITEM_GRACIDEA, 1);
     AddBagItem(ITEM_REVEAL_GLASS, 1);
     AddBagItem(ITEM_DNA_SPLICERS, 1);
+    AddBagItem(ITEM_DOUSE_DRIVE, 1);
+	AddBagItem(ITEM_SHOCK_DRIVE, 1);
+	AddBagItem(ITEM_BURN_DRIVE, 1);
+	AddBagItem(ITEM_CHILL_DRIVE, 1);
+    AddBagItem(ITEM_ZYGARDE_CUBE, 1);
     AddBagItem(ITEM_PRISON_BOTTLE, 1);
     AddBagItem(ITEM_N_LUNARIZER, 1);
     AddBagItem(ITEM_N_SOLARIZER, 1);
