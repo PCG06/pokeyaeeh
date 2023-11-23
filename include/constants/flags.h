@@ -58,7 +58,7 @@
 #define FLAG_UNUSED_0x02B    0x2B // Unused Flag
 
 // Item config flags
-#define FLAG_GEN6EXP_SHARE           0x2C // Unused Flag
+#define FLAG_GEN6EXP_SHARE           0x2C // Enables Gen6 EXP Share
 #define FLAG_UNUSED_0x02D    0x2D // Unused Flag
 #define FLAG_UNUSED_0x02E    0x2E // Unused Flag
 #define FLAG_UNUSED_0x02F    0x2F // Unused Flag
@@ -69,9 +69,11 @@
 #define FLAG_UNUSED_0x034    0x34 // Unused Flag
 #define FLAG_UNUSED_0x035    0x35 // Unused Flag
 #define FLAG_UNUSED_0x036    0x36 // Unused Flag
-#define FLAG_UNUSED_0x037    0x37 // Unused Flag
-#define FLAG_UNUSED_0x038    0x38 // Unused Flag
-#define FLAG_UNUSED_0x039    0x39 // Unused Flag
+
+// OW config flags
+#define FLAG_NO_ENCOUNTER            0x37 // Disabled wild encounters
+#define FLAG_NO_TRAINER_SEE          0x38 // Disables trainer-see you
+#define FLAG_NO_COLLISION            0x39 // Disables collisions
 #define FLAG_UNUSED_0x03A    0x3A // Unused Flag
 #define FLAG_UNUSED_0x03B    0x3B // Unused Flag
 #define FLAG_UNUSED_0x03C    0x3C // Unused Flag
