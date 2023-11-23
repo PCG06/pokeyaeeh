@@ -94,6 +94,26 @@ Route104_PrettyPetalFlowerShop_EventScript_RandomBerryGirl::
 	release
 	end
 
+Route104_PrettyPetalFlowerShop_EventScript_RandomMintGirl::
+	lock
+	faceplayer
+	dotimebasedevents
+	goto_if_set FLAG_DAILY_FLOWER_SHOP_RECEIVED_MINT, Route104_PrettyPetalFlowerShop_EventScript_AlreadyReceivedMint
+	msgbox Route104_PrettyPetalFlowerShop_Text_HaveAFewMints, MSGBOX_DEFAULT
+	random 21
+	addvar VAR_RESULT, ITEM_LONELY_MINT
+	giveitem VAR_RESULT 3
+	goto_if_eq VAR_RESULT, 0, Common_EventScript_ShowBagIsFull
+	setflag FLAG_DAILY_FLOWER_SHOP_RECEIVED_MINT
+	msgbox Route104_PrettyPetalFlowerShop_Text_NotInTheWild, MSGBOX_DEFAULT
+	release
+	end
+
+Route104_PrettyPetalFlowerShop_EventScript_AlreadyReceivedMint::
+	msgbox Route104_PrettyPetalFlowerShop_Text_NotInTheWild, MSGBOX_DEFAULT
+	release
+	end
+
 Route104_PrettyPetalFlowerShop_EventScript_AlreadyReceivedBerry::
 	msgbox Route104_PrettyPetalFlowerShop_Text_MachineMixesBerries, MSGBOX_DEFAULT
 	release

@@ -199,6 +199,18 @@ Route104_PrettyPetalFlowerShop_Text_MachineMixesBerries:
 	.string "for Pokémon.\p"
 	.string "I want some candy, too.$"
 
+Route104_PrettyPetalFlowerShop_Text_HaveAFewMints:
+    .string "You look like a determined trainer!\p"
+	.string "Here, have a few mints.$"
+
+Route104_PrettyPetalFlowerShop_Text_NotInTheWild:
+    .string "You can't find nature mints in\n"
+	.string "the wild.\p"
+	.string "The art of growing these mints is\n"
+	.string "a tradition from the Unova region.\p"
+	.string "Come back tomorrow from a few more\n"
+	.string "mints!$"
+
 SootopolisCity_Text_NameIsKiriHaveOneOfThese:
 	.string "Hi, what's your name?\p"
 	.string "… … …  … … …  … … …\n"
