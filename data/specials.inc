@@ -536,7 +536,8 @@ gSpecials::
 	def_special TrySetBattleTowerLinkType
 	def_special SetTotemBoost
 	def_special TrySpecialOverworldEvo
-	def_special GetBaseSpecies
-	def_special SetCurrentSpecies
 	def_special CreateWonderTradePokemon
 	def_special ShowEvIvScreen
+	def_special GetNumberSprayStrength
+	def_special GetSprayId
+	def_special GetLastUsedSprayType

@@ -99,7 +99,7 @@ static u16 UNUSED GetLengthWithExpandedPlayerName(const u8 *str)
     return length;
 }
 
-static void DrawMultichoiceMenuInternal(u8 left, u8 top, u8 multichoiceId, bool8 ignoreBPress, u8 cursorPos, const struct MenuAction *actions, int count)
+void DrawMultichoiceMenuInternal(u8 left, u8 top, u8 multichoiceId, bool8 ignoreBPress, u8 cursorPos, const struct MenuAction *actions, int count)
 {
     int i;
     u8 windowId;
@@ -125,119 +125,6 @@ static void DrawMultichoiceMenu(u8 left, u8 top, u8 multichoiceId, bool8 ignoreB
 {
     DrawMultichoiceMenuInternal(left, top, multichoiceId, ignoreBPress, cursorPos, sMultichoiceLists[multichoiceId].list, sMultichoiceLists[multichoiceId].count);
 }
-
-#if I_REPEL_LURE_MENU == TRUE
-void TryDrawRepelMenu(struct ScriptContext *ctx)
-{
-    static const u16 repelItems[] = {ITEM_REPEL, ITEM_SUPER_REPEL, ITEM_MAX_REPEL};
-    struct MenuAction menuItems[ARRAY_COUNT(repelItems) + 1] = {NULL};
-    int i, count = 0, menuPos = 0;
-
-    for (i = 0; i < ARRAY_COUNT(repelItems); i++)
-    {
-        if (CheckBagHasItem(repelItems[i], 1))
-        {
-            VarSet(VAR_0x8004 + count, repelItems[i]);
-        #if VAR_LAST_REPEL_LURE_USED != 0
-            if (VarGet(VAR_LAST_REPEL_LURE_USED) == repelItems[i])
-                menuPos = count;
-        #endif
-            menuItems[count].text = ItemId_GetName(repelItems[i]);
-            count++;
-        }
-    }
-
-    if (count > 1)
-        DrawMultichoiceMenuInternal(0, 0, 0, FALSE, menuPos, menuItems, count);
-
-    gSpecialVar_Result = (count > 1);
-}
-
-void HandleRepelMenuChoice(struct ScriptContext *ctx)
-{
-    gSpecialVar_0x8004 = VarGet(VAR_0x8004 + gSpecialVar_Result); // Get item Id;
-    VarSet(VAR_REPEL_STEP_COUNT, ItemId_GetHoldEffectParam(gSpecialVar_0x8004));
-#if VAR_LAST_REPEL_LURE_USED != 0
-    VarSet(VAR_LAST_REPEL_LURE_USED, gSpecialVar_0x8004);
-#endif
-}
-
-void TryDrawLureMenu(struct ScriptContext *ctx)
-{
-    static const u16 lureItems[] = {ITEM_LURE, ITEM_SUPER_LURE, ITEM_MAX_LURE};
-    struct MenuAction menuItems[ARRAY_COUNT(lureItems) + 1] = {NULL};
-    int i, count = 0, menuPos = 0;
-
-
-    for (i = 0; i < ARRAY_COUNT(lureItems); i++)
-    {
-        if (CheckBagHasItem(lureItems[i], 1))
-        {
-            VarSet(VAR_0x8004 + count, lureItems[i]);
-        #if VAR_LAST_REPEL_LURE_USED != 0
-            if (VarGet(VAR_LAST_REPEL_LURE_USED) == lureItems[i])
-                menuPos = count;
-        #endif
-            menuItems[count].text = ItemId_GetName(lureItems[i]);
-            count++;
-        }
-    }
-
-    if (count > 1)
-        DrawMultichoiceMenuInternal(0, 0, 0, FALSE, menuPos, menuItems, count);
-
-    gSpecialVar_Result = (count > 1);
-}
-
-void HandleLureMenuChoice(struct ScriptContext *ctx)
-{
-    gSpecialVar_0x8004 = VarGet(VAR_0x8004 + gSpecialVar_Result); // Get item Id;
-    VarSet(VAR_REPEL_STEP_COUNT, ItemId_GetHoldEffectParam(gSpecialVar_0x8004) | REPEL_LURE_MASK);
-#if VAR_LAST_REPEL_LURE_USED != 0
-    VarSet(VAR_LAST_REPEL_LURE_USED, gSpecialVar_0x8004);
-#endif
-}
-#endif //I_REPEL_LURE_MENU == TRUE
-void DrawObjEventNameBox(u8 left, u8 top, const u8 *text)
-{
-    u32 i;
-    static u8 windowId;
-    u8 newWidth;
-    u8 count = 1;
-    u8 width = 0;
-    u8 marginSpace;
-
-    //These 3 vars are used to repeat the function when needed
-    u8 tempLeft = left; 
-    u8 tempTop = top;
-    tempText = text;
-
-    width = DisplayTextAndGetWidth(text, width);
-    newWidth = ConvertPixelWidthToTileWidth(width);
-    left = ScriptMenu_AdjustLeftCoordFromWidth(left, newWidth);
-    windowId = CreateWindowFromRect(left, top, newWidth, count * 2);
-
-    if (isNameBoxActive == FALSE) {  //Newly loading name box
-
-        SetStandardWindowBorderStyle(windowId, FALSE);
-        StringExpandPlaceholders(gStringVar4, text);
-        AddTextPrinterParameterized(windowId, 1, gStringVar4, 6, 0, TEXT_SKIP_DRAW, NULL);
-        CopyWindowToVram(windowId, COPYWIN_GFX);
-        ScheduleBgCopyTilemapToVram(2);
-
-    } else { //Loading a name box over another one
-
-        ClearToTransparentAndRemoveWindow(windowId); //what this else condtional does is to make it look as if it buffered. looks better imo
-        for (i = 0; i <= 125500; i++) { //just a delay lol
-            isNameBoxActive = FALSE;
-        }
-        DrawObjEventNameBox(tempLeft, tempTop, tempText); //reload function
-    }
-
-    nameBoxWindowId = windowId; //I use an EWRAM_DATA to access the value in the closemessage function to remove the namebox
-    isNameBoxActive = TRUE;
-}
-
 
 #define tLeft           data[0]
 #define tTop            data[1]
