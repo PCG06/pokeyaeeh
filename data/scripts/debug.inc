@@ -116,7 +116,7 @@ Debug_EventScript_Script_4::
 	end
 
 Debug_EventScript_Script_5::
-	end
+	setflag FLAG_SYS_GAME_CLEAR
 
 Debug_EventScript_Script_6::
 	end

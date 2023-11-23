@@ -2385,3 +2385,30 @@ bool8 ScrCmd_givecustommon(struct ScriptContext *ctx)
     return FALSE;
 }
 
+bool8 ScrCmd_giveformchangeitems(struct ScriptContext *ctx)
+{
+    AddBagItem(ITEM_EXP_CANDY_XS, 100);
+    AddBagItem(ITEM_EXP_CANDY_S, 100);
+    AddBagItem(ITEM_EXP_CANDY_M, 100);
+    AddBagItem(ITEM_EXP_CANDY_L, 100);
+    AddBagItem(ITEM_EXP_CANDY_XL, 100);
+    AddBagItem(ITEM_RARE_CANDY, 100);
+    AddBagItem(ITEM_RED_ORB, 1);
+    AddBagItem(ITEM_BLUE_ORB, 1);
+    AddBagItem(ITEM_ADAMANT_ORB, 1);
+    AddBagItem(ITEM_LUSTROUS_ORB, 1);
+    AddBagItem(ITEM_GRISEOUS_ORB, 1);
+    AddBagItem(ITEM_GRACIDEA, 1);
+    AddBagItem(ITEM_REVEAL_GLASS, 1);
+    AddBagItem(ITEM_DNA_SPLICERS, 1);
+    AddBagItem(ITEM_PRISON_BOTTLE, 1);
+    AddBagItem(ITEM_N_LUNARIZER, 1);
+    AddBagItem(ITEM_N_SOLARIZER, 1);
+    AddBagItem(ITEM_ULTRANECROZIUM_Z, 1);
+    AddBagItem(ITEM_RUSTED_SWORD, 1);
+    AddBagItem(ITEM_RUSTED_SHIELD, 1);
+    AddBagItem(ITEM_SCROLL_OF_DARKNESS, 1);
+    AddBagItem(ITEM_SCROLL_OF_WATERS, 1);
+    AddBagItem(ITEM_REINS_OF_UNITY, 1);
+}
+

@@ -201,8 +201,7 @@ LittlerootTown_ProfessorBirchsLab_EventScript_UpgradeToNationalDex::
 	message LittlerootTown_ProfessorBirchsLab_Text_PokedexUpgradedToNational
 	waitmessage
 	waitfanfare
-	setflag FLAG_SYS_NATIONAL_DEX
-	special EnableNationalPokedex
+	giveformchangeitems
 	msgbox LittlerootTown_ProfessorBirchsLab_Text_GrassyPatchWaiting2, MSGBOX_DEFAULT
 	closemessage
 	setflag FLAG_HIDE_LITTLEROOT_TOWN_BIRCH
@@ -553,6 +552,8 @@ LittlerootTown_ProfessorBirchsLab_EventScript_ReceivePokedex::
 	waitfanfare
 	setflag FLAG_SYS_POKEDEX_GET
 	special SetUnlockedPokedexFlags
+	setflag FLAG_SYS_NATIONAL_DEX
+	special EnableNationalPokedex
 	setflag FLAG_RECEIVED_POKEDEX_FROM_BIRCH
 	setvar VAR_CABLE_CLUB_TUTORIAL_STATE, 1
 	return
@@ -829,37 +830,37 @@ LittlerootTown_ProfessorBirchsLab_Text_OtherRegionsUpgradeToNational:
 	.string "of you help me study Pokémon.\p"
 	.string "Thanks to your help, new facts\n"
 	.string "are coming to light.\p"
-	.string "It appears that in the Hoenn region,\n"
-	.string "there are also Pokémon from other\l"
-	.string "regions.\p"
-	.string "It goes to show how rich and varied\n"
-	.string "the natural environments of Hoenn\l"
-	.string "happen to be.\p"
-	.string "That's why I think it's necessary for\n"
-	.string "me to upgrade your Pokédex to\l"
-	.string "the National Mode.\p"
-	.string "Here, let me see your Pokédex units.$"
+	.string "I have recently come in acquisition of\n"
+	.string "a few rare artifacts from a few old\l"
+	.string "colleagues of mine.\p"
+	.string "These items can change the form of\n"
+	.string "certain when held on used upon.\p"
+	.string "Oh no, don't worry. If you misplace any,\n"
+	.string "you can just buy it from the League!\p"
+	.string "A few of these items are easy to find\n"
+	.string "in other regions, so they are exporting\l"
+	.string "them to other regions as jewelry.\p" @ idk what to write, its 2am :/
+	.string "Let me get them, one sec.$"
 
 LittlerootTown_ProfessorBirchsLab_Text_MayUpgradeSoCool:
 	.string "May: Eheheh!\p"
-	.string "It's so cool that even my Pokédex\n"
-	.string "is getting updated!\p"
-	.string "It's because you went out and caught\n"
-	.string "so many Pokémon, {PLAYER}{KUN}!$"
+	.string "It's so cool that even I am\n"
+	.string "getting the items!\p"
+	.string "You became the Champion, before I could\n"
+	.string "get my 7th badge, {PLAYER}!$"
 
 LittlerootTown_ProfessorBirchsLab_Text_BrendanYouCanThankMe:
-	.string "Brendan: I went out all over Hoenn\n"
-	.string "and checked out Pokémon.\p"
-	.string "You can thank me for getting\n"
-	.string "the National Mode Pokédex.\p"
+	.string "Brendan: Haha, you're getting these\n"
+	.string "artifacts because I asked Dad to\l"
+	.string "get them for us!\p"
+	.string "I'm glad we both can use them!\p"
 	.string "Yep, you're lucky, {PLAYER}!$"
 
 LittlerootTown_ProfessorBirchsLab_Text_OkayAllDone:
-	.string "Prof. Birch: Okay, all done!$"
+	.string "Prof. Birch: Okay, got it!$"
 
 LittlerootTown_ProfessorBirchsLab_Text_PokedexUpgradedToNational:
-	.string "{PLAYER}'s Pokédex was upgraded\n"
-	.string "to the National Mode!$"
+	.string "{PLAYER} received some rare items!$"
 
 LittlerootTown_ProfessorBirchsLab_Text_GrassyPatchWaiting2:
 	.string "Prof. Birch: But listen.\n"

@@ -32,6 +32,7 @@ EverGrandeCity_PokemonLeague_1F_EventScript_Clerk::
 	faceplayer
 	message gText_HowMayIServeYou
 	waitmessage
+	goto_if_set FLAG_SYS_GAME_CLEAR, EverGrandeCity_PokemonLeague_1F_Pokemart_Postgame
 	pokemart EverGrandeCity_PokemonLeague_1F_Pokemart
 	msgbox gText_PleaseComeAgain, MSGBOX_DEFAULT
 	release
@@ -47,6 +48,19 @@ EverGrandeCity_PokemonLeague_1F_Pokemart:
 	.2byte ITEM_REVIVE
 	.2byte ITEM_MAX_REPEL
 	.2byte ITEM_NONE
+	release
+	end
+
+	.align 2
+EverGrandeCity_PokemonLeague_1F_Pokemart_Postgame:
+    .2byte ITEM_RED_ORB
+	.2byte ITEM_BLUE_ORB
+	.2byte ITEM_ADAMANT_ORB
+	.2byte ITEM_LUSTROUS_ORB
+	.2byte ITEM_GRISEOUS_ORB
+	.2byte ITEM_ULTRANECROZIUM_Z
+	.2byte ITEM_RUSTED_SWORD
+	.2byte ITEM_RUSTED_SHIELD
 	release
 	end
 
