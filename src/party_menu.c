@@ -2626,6 +2626,9 @@ static u8 DisplaySelectionWindow(u8 windowType)
     case SELECTWINDOW_ZYGARDECUBE:
         window = sZygardeCubeSelectWindowTemplate;
         break;
+    case SELECTWINDOW_LEVEL_UP:
+        window = sLevelUpSelectWindowTemplate;
+        break;
     default: // SELECTWINDOW_MOVES
         window = sMoveSelectWindowTemplate;
         break;
@@ -2650,6 +2653,51 @@ static u8 DisplaySelectionWindow(u8 windowType)
     }
 
     InitMenuInUpperLeftCorner(sPartyMenuInternal->windowId[0], sPartyMenuInternal->numActions, 0, TRUE);
+    ScheduleBgCopyTilemapToVram(2);
+
+    return sPartyMenuInternal->windowId[0];
+}
+
+static u8 DisplaySelectionWindowNew(u8 windowType)
+{
+    struct WindowTemplate window;
+    u8 cursorDimension;
+    u8 fontAttribute;
+    u8 i;
+
+    switch (windowType)
+    {
+    case SELECTWINDOW_ACTIONS:
+        SetWindowTemplateFields(&window, 2, 19, 19 - (sPartyMenuInternal->numActions * 2), 10, sPartyMenuInternal->numActions * 2, 14, 0x2E9);
+        break;
+    case SELECTWINDOW_ITEM:
+        window = sItemGiveTakeWindowTemplate;
+        break;
+    case SELECTWINDOW_MAIL:
+        window = sMailReadTakeWindowTemplate;
+        break;
+    case SELECTWINDOW_CATALOG:
+        window = sCatalogSelectWindowTemplate;
+        break;
+    case SELECTWINDOW_ZYGARDECUBE:
+        window = sZygardeCubeSelectWindowTemplate;
+        break;
+    case SELECTWINDOW_LEVEL_UP:
+        window = sLevelUpSelectWindowTemplate;
+        break;
+    default: // SELECTWINDOW_MOVES
+        window = sMoveSelectWindowTemplate;
+        break;
+    }
+
+    sPartyMenuInternal->windowId[0] = AddWindow(&window);
+    DrawStdFrameWithCustomTileAndPalette(sPartyMenuInternal->windowId[0], FALSE, 0x4F, 13);
+    if (windowType == SELECTWINDOW_MOVES)
+        return sPartyMenuInternal->windowId[0];
+    cursorDimension = GetMenuCursorDimensionByFont(1, 0);
+    fontAttribute = GetFontAttribute(1, 2);
+
+    InitMenuInUpperLeftCorner(sPartyMenuInternal->windowId[0], sPartyMenuInternal->numActions, 0, 1);
     ScheduleBgCopyTilemapToVram(2);
 
     return sPartyMenuInternal->windowId[0];
@@ -4541,6 +4589,20 @@ static bool8 IsItemFlute(u16 item)
     return FALSE;
 }
 
+static bool8 ExecuteTableBasedItemEffect_(u8 partyMonIndex, u16 item, u8 monMoveIndex)
+{
+    if (gMain.inBattle)
+    {
+        if ((partyMonIndex == 0 && gStatuses3[B_POSITION_PLAYER_LEFT] & STATUS3_EMBARGO)
+          || (partyMonIndex == 1 && gStatuses3[B_POSITION_PLAYER_RIGHT] & STATUS3_EMBARGO))
+            return TRUE;    // cannot use on this mon
+        else
+            return ExecuteTableBasedItemEffect(&gPlayerParty[partyMonIndex], item, GetPartyIdFromBattleSlot(partyMonIndex), monMoveIndex);
+    }
+    else
+        return ExecuteTableBasedItemEffect(&gPlayerParty[partyMonIndex], item, partyMonIndex, monMoveIndex);
+}
+
 static bool32 CannotUsePartyBattleItem(u16 itemId, struct Pokemon* mon)
 {
     u8 i;
@@ -5054,6 +5116,48 @@ static void ShowMoveSelectWindow(u8 slot)
     ScheduleBgCopyTilemapToVram(2);
 }
 
+#define MAX_CANDY_BOX_LEVELS 5
+
+static void ShowLevelUpSelectWindow(u8 slot)
+{
+    u8 nextlevel, numlevels, i;
+    u8 levelCount = 0;
+    u8 fontId = 1;
+    u8 windowId = DisplaySelectionWindowNew(SELECTWINDOW_LEVEL_UP);
+    u8 level = GetMonData(&gPlayerParty[slot], MON_DATA_LEVEL);
+    u8 levelcap = GetLevelCap();
+	static const u8 sText_levelCap[] =  _("Level Cap$");
+
+    if(levelcap >= MAX_LEVEL)
+        levelcap = MAX_LEVEL;
+
+    numlevels = levelcap - level;
+
+    if(numlevels >= MAX_CANDY_BOX_LEVELS)
+        numlevels = MAX_CANDY_BOX_LEVELS;
+
+    nextlevel = level;
+    VarSet(VAR_CANDY_BOX_NUM_LEVELS, numlevels);
+
+    for (i = 0; i < numlevels; i++)
+    {
+        nextlevel++;
+        if(i == (numlevels - 1))
+        {
+            StringCopy(gStringVar1, sText_levelCap);
+        }
+        else
+        {
+            ConvertIntToDecimalStringN(gStringVar1, nextlevel, STR_CONV_MODE_RIGHT_ALIGN, 3);
+        }
+        AddTextPrinterParameterized(windowId, fontId, gStringVar1, 8, (i * 16) + 1, 0, NULL);
+        if(nextlevel <= GetLevelCap() && nextlevel <= MAX_LEVEL)
+            levelCount++;
+    }
+    InitMenuInUpperLeftCornerNormal(windowId, levelCount, 0);
+    ScheduleBgCopyTilemapToVram(2);
+}
+
 static void Task_HandleWhichMoveInput(u8 taskId)
 {
     s8 input = Menu_ProcessInput();
@@ -5380,6 +5484,8 @@ static void CB2_ReturnToPartyMenuWhileLearningMove(void)
         SetMonData(&gPlayerParty[gPartyMenu.slotId], MON_DATA_LEVEL, &sFinalLevel); // to avoid displaying incorrect level
     if (ItemId_GetFieldFunc(gSpecialVar_ItemId) == ItemUseOutOfBattle_RareCandy && gPartyMenu.menuType == PARTY_MENU_TYPE_FIELD && CheckBagHasItem(gSpecialVar_ItemId, 1))
         InitPartyMenu(PARTY_MENU_TYPE_FIELD, PARTY_LAYOUT_SINGLE, PARTY_ACTION_USE_ITEM, TRUE, PARTY_MSG_NONE, Task_ReturnToPartyMenuWhileLearningMove, gPartyMenu.exitCallback);
+    else if (gSpecialVar_ItemId == ITEM_CANDY_BOX && gPartyMenu.menuType == PARTY_MENU_TYPE_FIELD)
+        InitPartyMenu(PARTY_MENU_TYPE_FIELD, PARTY_LAYOUT_SINGLE, PARTY_ACTION_USE_ITEM, TRUE, PARTY_MSG_NONE, Task_ReturnToPartyMenuWhileLearningMove, gPartyMenu.exitCallback);
     else
         InitPartyMenu(PARTY_MENU_TYPE_FIELD, PARTY_LAYOUT_SINGLE, PARTY_ACTION_CHOOSE_MON, TRUE, PARTY_MSG_NONE, Task_ReturnToPartyMenuWhileLearningMove, gPartyMenu.exitCallback);
 }
@@ -5576,6 +5682,96 @@ void ItemUseCB_RareCandy(u8 taskId, TaskFunc task)
     }
 }
 
+static void Task_HandleWhichLevelInput(u8 taskId)
+{
+    s8 input = Menu_ProcessInput();
+
+    if (input != MENU_NOTHING_CHOSEN)
+    {
+        if (input == MENU_B_PRESSED)
+        {
+            PlaySE(SE_SELECT);
+            ReturnToUseOnWhichMon(taskId);
+        }
+        else
+        {
+            VarSet(VAR_CANDY_BOX_LEVEL, Menu_GetCursorPos());
+            PartyMenuRemoveWindow(&sPartyMenuInternal->windowId[0]);
+            ItemUseCB_CandyBox(taskId, gTasks[taskId].func);
+            //gTasks[taskId].func = ItemUseCB_CandyBox;
+        }
+    }
+}
+
+void ItemUseCB_CandyBox2(u8 taskId, TaskFunc task)
+{
+    u8 levelCap = GetLevelCap();
+    u8 level = GetMonData(&gPlayerParty[gPartyMenu.slotId], MON_DATA_LEVEL);
+
+    PlaySE(SE_SELECT);
+    FlagSet(FLAG_USED_CANDY_BOX);
+    DisplayPartyMenuStdMessage(PARTY_MSG_CHOSE_LEVEL);
+    if(level + 1 < levelCap)
+    {
+        ShowLevelUpSelectWindow(gPartyMenu.slotId);
+        gTasks[taskId].func = Task_HandleWhichLevelInput;
+    }
+    else if(level + 1 == levelCap)
+    {
+        VarSet(VAR_CANDY_BOX_LEVEL, 0);
+        VarSet(VAR_CANDY_BOX_NUM_LEVELS, 1);
+        ItemUseCB_CandyBox(taskId, task);
+    }
+    else
+    {
+        ItemUseCB_CandyBox(taskId, task);
+    }
+}
+
+void ItemUseCB_CandyBox(u8 taskId, TaskFunc task)
+{
+    struct Pokemon *mon = &gPlayerParty[gPartyMenu.slotId];
+    struct PartyMenuInternal *ptr = sPartyMenuInternal;
+    s16 *arrayPtr = ptr->data;
+    u16 *itemPtr = &gSpecialVar_ItemId;
+    bool8 cannotUseEffect;
+    u8 level = GetMonData(mon, MON_DATA_LEVEL);
+
+    if (level != MAX_LEVEL && (level < GetLevelCap()))
+    {
+        BufferMonStatsToTaskData(mon, arrayPtr);
+		cannotUseEffect = ExecuteTableBasedItemEffect_(gPartyMenu.slotId, ITEM_RARE_CANDY, 0); //literally doesnt work without this function
+        BufferMonStatsToTaskData(mon, &ptr->data[NUM_STATS]);
+    }
+    else
+    {
+        PartyMenuTryEvolution(taskId);
+        cannotUseEffect = TRUE;
+    }
+    PlaySE(SE_SELECT);
+    if (cannotUseEffect)
+    {
+        gPartyMenuUseExitCallback = FALSE;
+        DisplayPartyMenuMessage(gText_WontHaveEffect, TRUE);
+        ScheduleBgCopyTilemapToVram(2);
+        gTasks[taskId].func = task;
+    }
+    else
+    {
+        gPartyMenuUseExitCallback = TRUE;
+        PlayFanfareByFanfareNum(FANFARE_LEVEL_UP);
+        UpdateMonDisplayInfoAfterRareCandy(gPartyMenu.slotId, mon);
+        GetMonNickname(mon, gStringVar1);
+        ConvertIntToDecimalStringN(gStringVar2, GetMonData(mon, MON_DATA_LEVEL), STR_CONV_MODE_LEFT_ALIGN, 3);
+        StringExpandPlaceholders(gStringVar4, gText_PkmnElevatedToLvVar2);
+        DisplayPartyMenuMessage(gStringVar4, TRUE);
+        ScheduleBgCopyTilemapToVram(2);
+        gTasks[taskId].func = Task_TryLearnNewMoves;
+    }
+    FlagClear(FLAG_USED_CANDY_BOX);
+    VarSet(VAR_CANDY_BOX_LEVEL, 0);
+}
+
 static void UpdateMonDisplayInfoAfterRareCandy(u8 slot, struct Pokemon *mon)
 {
     SetPartyMonAilmentGfx(mon, &sPartyMenuBoxes[slot]);
@@ -5697,6 +5893,12 @@ static void CB2_ReturnToPartyMenuUsingRareCandy(void)
     SetMainCallback2(CB2_ShowPartyMenuForItemUse);
 }
 
+static void CB2_ReturnToPartyMenuUsingCandyBox(void)
+{
+    gItemUseCB = ItemUseCB_CandyBox;
+    SetMainCallback2(CB2_ShowPartyMenuForItemUse);
+}
+
 static void PartyMenuTryEvolution(u8 taskId)
 {
     struct Pokemon *mon = &gPlayerParty[gPartyMenu.slotId];
@@ -5711,6 +5913,8 @@ static void PartyMenuTryEvolution(u8 taskId)
         FreePartyPointers();
         if (ItemId_GetFieldFunc(gSpecialVar_ItemId) == ItemUseOutOfBattle_RareCandy && gPartyMenu.menuType == PARTY_MENU_TYPE_FIELD && CheckBagHasItem(gSpecialVar_ItemId, 1))
             gCB2_AfterEvolution = CB2_ReturnToPartyMenuUsingRareCandy;
+        else if (gSpecialVar_ItemId == ITEM_CANDY_BOX && gPartyMenu.menuType == PARTY_MENU_TYPE_FIELD)
+            gCB2_AfterEvolution = CB2_ReturnToPartyMenuUsingCandyBox;
         else
             gCB2_AfterEvolution = gPartyMenu.exitCallback;
         BeginEvolutionScene(mon, targetSpecies, TRUE, gPartyMenu.slotId);

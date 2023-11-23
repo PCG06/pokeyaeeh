@@ -854,6 +854,22 @@ void ItemUseOutOfBattle_RareCandy(u8 taskId)
     SetUpItemUseCallback(taskId);
 }
 
+void ItemUseOutOfBattle_CandyBox(u8 taskId)
+{
+    if (gTasks[taskId].tUsingRegisteredKeyItem != TRUE)
+    {
+        gItemUseCB = ItemUseCB_CandyBox2;
+        SetUpItemUseCallback(taskId);
+    }
+    else
+    {
+        DisplayDadsAdviceCannotUseItemMessage(taskId, gTasks[taskId].tUsingRegisteredKeyItem);
+        /*gFieldCallback = FieldCB_ReturnToFieldNoScript;
+        FadeScreen(FADE_TO_BLACK, 0);
+        gTasks[taskId].func = Task_InitCandyBoxFromField;*/
+    }
+}
+
 void ItemUseOutOfBattle_TMHM(u8 taskId)
 {
 /*     if (gSpecialVar_ItemId >= ITEM_HM01)

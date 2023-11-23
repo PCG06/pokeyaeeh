@@ -48,6 +48,7 @@ void ItemUseOutOfBattle_SootSack(u8);
 u16 GetAshCount(void);
 void ItemUseOutOfBattle_HiddenPowerCrystals(u8 taskId);
 void ItemUseOutOfBattle_Mints(u8 taskId);
+void ItemUseOutOfBattle_CandyBox(u8 taskId);
 
 enum {
     BALL_THROW_UNABLE_TWO_MONS,

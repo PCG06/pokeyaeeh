@@ -10609,4 +10609,15 @@ const struct Item gItems[] =
         .fieldUseFunc = ItemUseOutOfBattle_HiddenPowerCrystals,
         .secondaryId = TYPE_STEEL,
     },
+
+    [ITEM_CANDY_BOX] =
+    {
+        .name = _("Candy Box"),
+        .price = 0,
+        .description = sRareCandyDesc,
+        .pocket = POCKET_KEY_ITEMS,
+        .type = ITEM_USE_PARTY_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CandyBox,
+        .importance = 1,
+    },
 };

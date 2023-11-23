@@ -1172,7 +1172,9 @@
 #define ITEM_DARK_CRYSTAL 878
 #define ITEM_STEEL_CRYSTAL 879
 
-#define ITEMS_COUNT 880
+#define ITEM_CANDY_BOX 880
+
+#define ITEMS_COUNT 881
 #define ITEM_FIELD_ARROW ITEMS_COUNT
 
 // A special item id associated with "Cancel"/"Exit" etc. in a list of items or decorations

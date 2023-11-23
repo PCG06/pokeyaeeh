@@ -3105,4 +3105,6 @@ extern const u8 gText_Paldea[];
 extern const u8 gText_Moves[];
 extern const u8 gText_Egg_Moves[];
 
+extern const u8 gText_WhatLevel[];
+
 #endif // GUARD_STRINGS_H

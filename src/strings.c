@@ -1883,6 +1883,8 @@ const u8 gText_SmallDot[] = _("·");
 const u8 gText_LargeDot[] = _("{EMOJI_CIRCLE}");
 const u8 gText_PageNav[] = _("{L_BUTTON}{R_BUTTON} PAGE");
 
+const u8 gText_WhatLevel[] = _("To what level?");
+
 // Region names
 const u8 gText_Kanto[] =    _("Kanto");
 const u8 gText_Johto[] =    _("Johto");
