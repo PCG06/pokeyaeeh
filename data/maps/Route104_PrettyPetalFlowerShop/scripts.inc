@@ -85,9 +85,9 @@ Route104_PrettyPetalFlowerShop_EventScript_RandomBerryGirl::
 	dotimebasedevents
 	goto_if_set FLAG_DAILY_FLOWER_SHOP_RECEIVED_BERRY, Route104_PrettyPetalFlowerShop_EventScript_AlreadyReceivedBerry
 	msgbox Route104_PrettyPetalFlowerShop_Text_ImGrowingFlowers, MSGBOX_DEFAULT
-	random 8
+	random 67
 	addvar VAR_RESULT, FIRST_BERRY_INDEX
-	giveitem VAR_RESULT
+	giveitem VAR_RESULT, 5
 	goto_if_eq VAR_RESULT, 0, Common_EventScript_ShowBagIsFull
 	setflag FLAG_DAILY_FLOWER_SHOP_RECEIVED_BERRY
 	msgbox Route104_PrettyPetalFlowerShop_Text_MachineMixesBerries, MSGBOX_DEFAULT
@@ -100,9 +100,12 @@ Route104_PrettyPetalFlowerShop_EventScript_RandomMintGirl::
 	dotimebasedevents
 	goto_if_set FLAG_DAILY_FLOWER_SHOP_RECEIVED_MINT, Route104_PrettyPetalFlowerShop_EventScript_AlreadyReceivedMint
 	msgbox Route104_PrettyPetalFlowerShop_Text_HaveAFewMints, MSGBOX_DEFAULT
-	random 21
+	random 11
 	addvar VAR_RESULT, ITEM_LONELY_MINT
-	giveitem VAR_RESULT 3
+	giveitem VAR_RESULT
+	random 10
+	addvar VAR_RESULT, ITEM_QUIET_MINT
+	giveitem VAR_RESULT
 	goto_if_eq VAR_RESULT, 0, Common_EventScript_ShowBagIsFull
 	setflag FLAG_DAILY_FLOWER_SHOP_RECEIVED_MINT
 	msgbox Route104_PrettyPetalFlowerShop_Text_NotInTheWild, MSGBOX_DEFAULT

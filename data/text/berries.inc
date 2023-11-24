@@ -207,7 +207,7 @@ Route104_PrettyPetalFlowerShop_Text_NotInTheWild:
     .string "You can't find nature mints in\n"
 	.string "the wild.\p"
 	.string "The art of growing these mints is\n"
-	.string "a tradition from the Unova region.\p"
+	.string "a tradition from the Galar region.\p"
 	.string "Come back tomorrow from a few more\n"
 	.string "mints!$"
 
