@@ -315,52 +315,45 @@ static u8 ChooseWildMonLevel(const struct WildPokemon *wildPokemon, u8 wildMonIn
     u8 level = GetHighestLevelInPlayerParty();
     u8 curveAmount;
 
-    if (LURE_STEP_COUNT == 0)
+    // Make sure minimum level is less than maximum level
+    if (wildPokemon[wildMonIndex].maxLevel >= wildPokemon[wildMonIndex].minLevel)
     {
-        // Make sure minimum level is less than maximum level
-        if (wildPokemon[wildMonIndex].maxLevel >= wildPokemon[wildMonIndex].minLevel)
-        {
-            min = wildPokemon[wildMonIndex].minLevel;
-            max = wildPokemon[wildMonIndex].maxLevel;
-        }
-        else
-        {
-            min = wildPokemon[wildMonIndex].maxLevel;
-            max = wildPokemon[wildMonIndex].minLevel;
-        }
-        if (max < level)
-            curveAmount = (((2 * level) + max) / 3) - max;
-        range = max - min + 1;
-        
-         if (range < (curveAmount * 3) && (range != 0))
-            range = curveAmount / 3;
-        
-        rand = Random() % range;
-
-        // check ability for max level mon
-        if (!GetMonData(&gPlayerParty[0], MON_DATA_SANITY_IS_EGG))
-        {
-            u16 ability = GetMonAbility(&gPlayerParty[0]);
-            if (ability == ABILITY_HUSTLE || ability == ABILITY_VITAL_SPIRIT || ability == ABILITY_PRESSURE)
-            {
-                if (Random() % 2 == 0)
-                    return max + curveAmount;
-
-                if (rand != 0)
-                    rand--;
-            }
-        }
-        return min + rand + curveAmount;
+        min = wildPokemon[wildMonIndex].minLevel;
+        max = wildPokemon[wildMonIndex].maxLevel;
     }
     else
     {
-        // Looks for the max level of all slots that share the same species as the selected slot.
-        max = GetMaxLevelOfSpeciesInWildTable(wildPokemon, wildPokemon[wildMonIndex].species, area);
-        if (max > 0)
-            return max + 1;
-        else // Failsafe
-            return wildPokemon[wildMonIndex].maxLevel + 1;
+        min = wildPokemon[wildMonIndex].maxLevel;
+        max = wildPokemon[wildMonIndex].minLevel;
     }
+
+    // In postgame, all wild encounters will be more than 60
+    if ((FlagGet(FLAG_SYS_GAME_CLEAR) == TRUE) && (level < 60))
+        level = 60;
+
+    if (max < level)
+        curveAmount = (((2 * level) + max) / 3) - max;
+    range = max - min + 1;
+        
+    if (range < (curveAmount * 3) && (range != 0))
+        range = curveAmount / 3;
+
+    rand = Random() % range;
+
+    // check ability for max level mon
+    if (!GetMonData(&gPlayerParty[0], MON_DATA_SANITY_IS_EGG))
+    {
+        u16 ability = GetMonAbility(&gPlayerParty[0]);
+        if (ability == ABILITY_HUSTLE || ability == ABILITY_VITAL_SPIRIT || ability == ABILITY_PRESSURE)
+        {
+            if (Random() % 2 == 0)
+                return max + curveAmount;
+
+            if (rand != 0)
+                rand--;
+        }
+    }
+    return min + rand + curveAmount;
 }
 
 u16 GetCurrentMapWildMonHeaderId(void)
