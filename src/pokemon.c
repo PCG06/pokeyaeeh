@@ -9431,26 +9431,26 @@ u8 GetLevelCap(void)
 {
     u8 currentLevelCap;
 
-    if (FlagGet(FLAG_BADGE01_GET))
-        currentLevelCap = 23;    // Gym 2
-    else if (FlagGet(FLAG_BADGE02_GET))
-        currentLevelCap = 36;    // Gym 3
-    else if (FlagGet(FLAG_BADGE03_GET))
-        currentLevelCap = 45;    // Gym 4
-    else if (FlagGet(FLAG_BADGE04_GET))
-        currentLevelCap = 55;    // Gym 5
-    else if (FlagGet(FLAG_BADGE05_GET))
-        currentLevelCap = 60;    // Gym 6
-    else if (FlagGet(FLAG_BADGE06_GET))
-        currentLevelCap = 65;    // Gym 7
-    else if (FlagGet(FLAG_BADGE07_GET))
-        currentLevelCap = 75;    // Gym 8
+    if (FlagGet(FLAG_SYS_GAME_CLEAR))
+        currentLevelCap = 101;
     else if (FlagGet(FLAG_BADGE08_GET))
-        currentLevelCap = 85;    // Elite Four
-    else if (FlagGet(FLAG_SYS_GAME_CLEAR))
-        currentLevelCap = 101;   // Postgame
+        currentLevelCap = 85;
+    else if (FlagGet(FLAG_BADGE07_GET))
+        currentLevelCap = 75;
+    else if (FlagGet(FLAG_BADGE06_GET))
+        currentLevelCap = 65;
+    else if (FlagGet(FLAG_BADGE05_GET))
+        currentLevelCap = 55;
+    else if (FlagGet(FLAG_BADGE04_GET))
+        currentLevelCap = 50;
+    else if (FlagGet(FLAG_BADGE03_GET))
+        currentLevelCap = 45;
+    else if (FlagGet(FLAG_BADGE02_GET))
+        currentLevelCap = 36;
+    else if (FlagGet(FLAG_BADGE01_GET))
+        currentLevelCap = 23;
     else
-    currentLevelCap = 16;        // Gym 1
+    currentLevelCap = 16;
 
     return currentLevelCap;
 }

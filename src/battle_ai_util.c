@@ -1596,9 +1596,14 @@ bool32 IsMoveEncouragedToHit(u32 battlerAtk, u32 battlerDef, u32 move)
       && (gBattleMoves[move].effect == EFFECT_THUNDER || gBattleMoves[move].effect == EFFECT_HURRICANE))
         return FALSE;
 
+    if ((weather & B_WEATHER_RAIN || B_WEATHER_SANDSTORM)
+      && (move == MOVE_HEAT_WAVE))
+        return FALSE;
+
     // increased accuracy but don't always hit
     if ((((weather & B_WEATHER_RAIN) && (gBattleMoves[move].effect == EFFECT_THUNDER || gBattleMoves[move].effect == EFFECT_HURRICANE))
-            || (((weather & (B_WEATHER_HAIL | B_WEATHER_SNOW)) && move == MOVE_BLIZZARD)))
+            || (((weather & (B_WEATHER_HAIL | B_WEATHER_SNOW)) && (move == MOVE_BLIZZARD || gBattleMoves[move].effect == EFFECT_HURRICANE)))
+            || ((weather & B_WEATHER_SUN) && (move == MOVE_HEAT_WAVE)))
         || (gBattleMoves[move].effect == EFFECT_VITAL_THROW)
         || (B_MINIMIZE_DMG_ACC >= GEN_6 && (gStatuses3[battlerDef] & STATUS3_MINIMIZED) && gBattleMoves[move].minimizeDoubleDamage)
         || (gBattleMoves[move].accuracy == 0))
@@ -1722,6 +1727,7 @@ bool32 ShouldSetSun(u32 battlerAtk, u32 atkAbility, u32 holdEffect)
       || atkAbility == ABILITY_LEAF_GUARD
       || atkAbility == ABILITY_SOLAR_POWER
       || atkAbility == ABILITY_HARVEST
+      || HasMove(battlerAtk, MOVE_HEAT_WAVE)
       || HasMoveEffect(battlerAtk, EFFECT_SOLAR_BEAM)
       || HasMoveEffect(battlerAtk, EFFECT_MORNING_SUN)
       || HasMoveEffect(battlerAtk, EFFECT_SYNTHESIS)
@@ -1747,6 +1753,7 @@ bool32 ShouldSetSnow(u32 battler, u32 ability, u32 holdEffect)
       || ability == ABILITY_SLUSH_RUSH
       || IS_BATTLER_OF_TYPE(battler, TYPE_ICE)
       || HasMove(battler, MOVE_BLIZZARD)
+      || HasMove(battler, MOVE_HURRICANE)
       || HasMoveEffect(battler, EFFECT_AURORA_VEIL)
       || HasMoveEffect(battler, EFFECT_WEATHER_BALL))
     {

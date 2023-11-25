@@ -4042,6 +4042,8 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
                 ADJUST_SCORE(2);
             if (HasMoveWithType(battlerDef, TYPE_FIRE) || HasMoveWithType(BATTLE_PARTNER(battlerDef), TYPE_FIRE))
                 ADJUST_SCORE(1);
+            if (HasMove(battlerDef, MOVE_HEAT_WAVE))
+                ADJUST_SCORE(1);
         }
         break;
     case EFFECT_SUNNY_DAY:
