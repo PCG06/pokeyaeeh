@@ -541,3 +541,4 @@ gSpecials::
 	def_special GetNumberSprayStrength
 	def_special GetSprayId
 	def_special GetLastUsedSprayType
+	def_special TrySkyBattle

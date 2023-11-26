@@ -51,7 +51,7 @@
 #define FLAG_NO_CATCHING             0x24 // Disables catching
 #define FLAG_AI_VS_AI_BATTLE         0x25 // Player party will be controlled by AI
 #define FLAG_DYNAMAX_BATTLE          0x26 // Battles will feature Dynamax
-#define FLAG_UNUSED_0x027    0x27 // Unused Flag
+#define FLAG_SKY_BATTLE              0x27 // Starts a Sky Battle
 #define FLAG_UNUSED_0x028    0x28 // Unused Flag
 #define FLAG_UNUSED_0x029    0x29 // Unused Flag
 #define FLAG_UNUSED_0x02A    0x2A // Unused Flag

@@ -735,6 +735,7 @@ struct BattleStruct
     u8 pledgeMove:1;
     u8 timesGotHit[NUM_BATTLE_SIDES][PARTY_SIZE];
     u8 enduredDamage;
+    bool8 isSkyBattle:1;
 };
 
 // The palaceFlags member of struct BattleStruct contains 1 flag per move to indicate which moves the AI should consider,

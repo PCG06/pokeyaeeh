@@ -376,6 +376,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
         .split = SPLIT_PHYSICAL,
         .zMoveEffect = Z_EFFECT_NONE,
         .makesContact = TRUE,
+        .skyBattleBanned = TRUE,
     },
 
     [MOVE_VINE_WHIP] =
@@ -417,6 +418,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
         .sheerForceBoost = TRUE,
         .minimizeDoubleDamage = TRUE,
         .kickingMove = TRUE,
+        .skyBattleBanned = TRUE,
     },
 
     [MOVE_DOUBLE_KICK] =
@@ -610,6 +612,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
         .makesContact = TRUE,
         .sheerForceBoost = TRUE,
         .minimizeDoubleDamage = B_UPDATED_MOVE_FLAGS >= GEN_6,
+        .skyBattleBanned = TRUE,
     },
 
     [MOVE_WRAP] =
@@ -1016,6 +1019,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
         .split = SPLIT_SPECIAL,
         .zMoveEffect = Z_EFFECT_NONE,
         .damagesUnderwater = TRUE,
+        .skyBattleBanned = TRUE,
     },
 
     [MOVE_ICE_BEAM] =
@@ -1231,6 +1235,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
         .split = SPLIT_PHYSICAL,
         .zMoveEffect = Z_EFFECT_NONE,
         .makesContact = TRUE,
+        .skyBattleBanned = TRUE,
     },
 
     [MOVE_STRENGTH] =
@@ -1590,6 +1595,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
         .zMoveEffect = Z_EFFECT_NONE,
         .ignoresKingsRock = B_UPDATED_MOVE_FLAGS < GEN_3,
         .damagesUnderground = TRUE,
+        .skyBattleBanned = TRUE,
     },
 
     [MOVE_FISSURE] =
@@ -1605,6 +1611,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
         .split = SPLIT_PHYSICAL,
         .zMoveEffect = Z_EFFECT_NONE,
         .damagesUnderground = TRUE,
+        .skyBattleBanned = TRUE,
     },
 
     [MOVE_DIG] =
@@ -1628,6 +1635,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
         .sleepTalkBanned = TRUE,
         .instructBanned = TRUE,
         .assistBanned = TRUE,
+        .skyBattleBanned = TRUE,
     },
 
     [MOVE_TOXIC] =
@@ -2930,6 +2938,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
         .snatchAffected = TRUE,
         .ignoresProtect = TRUE,
         .mirrorMoveBanned = TRUE,
+        .skyBattleBanned = TRUE,
     },
 
     [MOVE_STRUGGLE] =
@@ -3435,6 +3444,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
         .mirrorMoveBanned = TRUE,
         .magicCoatAffected = B_UPDATED_MOVE_FLAGS >= GEN_5,
         .forcePressure = TRUE,
+        .skyBattleBanned = TRUE,
     },
 
     [MOVE_ZAP_CANNON] =
@@ -4007,6 +4017,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
         .split = SPLIT_PHYSICAL,
         .zMoveEffect = Z_EFFECT_NONE,
         .damagesUnderground = TRUE,
+        .skyBattleBanned = TRUE,
     },
 
     [MOVE_DYNAMIC_PUNCH] =
@@ -4974,6 +4985,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
         .snatchAffected = TRUE,
         .ignoresProtect = TRUE,
         .mirrorMoveBanned = TRUE,
+        .skyBattleBanned = TRUE,
     },
 
     [MOVE_SUPERPOWER] =
@@ -5242,6 +5254,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
         .sleepTalkBanned = TRUE,
         .instructBanned = TRUE,
         .assistBanned = TRUE,
+        .skyBattleBanned = TRUE,
     },
 
     [MOVE_ARM_THRUST] =
@@ -5392,6 +5405,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
         .zMoveEffect = Z_EFFECT_SPDEF_UP_1,
         .ignoresProtect = TRUE,
         .mirrorMoveBanned = TRUE,
+        .skyBattleBanned = TRUE,
     },
 
     [MOVE_ICE_BALL] =
@@ -5917,6 +5931,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
         .split = SPLIT_SPECIAL,
         .zMoveEffect = Z_EFFECT_NONE,
         .sheerForceBoost = TRUE,
+        .skyBattleBanned = TRUE,
     },
 
     [MOVE_BULLET_SEED] =
@@ -6054,6 +6069,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
         .priority = 0,
         .split = SPLIT_SPECIAL,
         .zMoveEffect = Z_EFFECT_NONE,
+        .skyBattleBanned = TRUE,
     },
 
     [MOVE_BULK_UP] =
@@ -6208,6 +6224,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
         .zMoveEffect = Z_EFFECT_SPDEF_UP_1,
         .ignoresProtect = TRUE,
         .mirrorMoveBanned = TRUE,
+        .skyBattleBanned = TRUE,
     },
 
     [MOVE_CALM_MIND] =
@@ -6386,6 +6403,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
         .zMoveEffect = Z_EFFECT_SPATK_UP_1,
         .ignoresProtect = TRUE,
         .mirrorMoveBanned = TRUE,
+        .skyBattleBanned = TRUE,
     },
 
     [MOVE_MIRACLE_EYE] =
@@ -6962,6 +6980,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
         .mirrorMoveBanned = TRUE,
         .magicCoatAffected = B_UPDATED_MOVE_FLAGS >= GEN_5,
         .forcePressure = TRUE,
+        .skyBattleBanned = TRUE,
     },
 
     [MOVE_HEART_SWAP] =
@@ -7371,6 +7390,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
         .split = SPLIT_SPECIAL,
         .zMoveEffect = Z_EFFECT_NONE,
         .sheerForceBoost = TRUE,
+        .skyBattleBanned = TRUE,
     },
 
     [MOVE_SWITCHEROO] =
@@ -7907,6 +7927,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
         .split = SPLIT_SPECIAL,
         .zMoveEffect = Z_EFFECT_NONE,
         .makesContact = TRUE,
+        .skyBattleBanned = TRUE,
     },
 
     [MOVE_CHATTER] =
@@ -8458,6 +8479,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
         .split = SPLIT_PHYSICAL,
         .zMoveEffect = Z_EFFECT_NONE,
         .damagesAirborne = TRUE,
+        .skyBattleBanned = TRUE,
     },
 
     [MOVE_STORM_THROW] =
@@ -8540,6 +8562,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
         .zMoveEffect = Z_EFFECT_NONE,
         .makesContact = TRUE,
         .minimizeDoubleDamage = B_UPDATED_MOVE_FLAGS >= GEN_7,
+        .skyBattleBanned = TRUE,
     },
 
     [MOVE_SYNCHRONOISE] =
@@ -9107,6 +9130,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
         .priority = 0,
         .split = SPLIT_SPECIAL,
         .zMoveEffect = Z_EFFECT_NONE,
+        .skyBattleBanned = TRUE,
     },
 
     [MOVE_FIRE_PLEDGE] =
@@ -9125,6 +9149,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
         .priority = 0,
         .split = SPLIT_SPECIAL,
         .zMoveEffect = Z_EFFECT_NONE,
+        .skyBattleBanned = TRUE,
     },
 
     [MOVE_GRASS_PLEDGE] =
@@ -9143,6 +9168,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
         .priority = 0,
         .split = SPLIT_SPECIAL,
         .zMoveEffect = Z_EFFECT_NONE,
+        .skyBattleBanned = TRUE,
     },
 
     [MOVE_VOLT_SWITCH] =
@@ -9191,6 +9217,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
         .split = SPLIT_PHYSICAL,
         .zMoveEffect = Z_EFFECT_NONE,
         .sheerForceBoost = TRUE,
+        .skyBattleBanned = TRUE,
     },
 
     [MOVE_FROST_BREATH] =
@@ -9811,6 +9838,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
         .makesContact = TRUE,
         .minimizeDoubleDamage = TRUE,
         .gravityBanned = TRUE,
+        .skyBattleBanned = TRUE,
     },
 
     [MOVE_MAT_BLOCK] =
@@ -9832,6 +9860,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
         .metronomeBanned = TRUE,
         .copycatBanned = TRUE,
         .assistBanned = TRUE,
+        .skyBattleBanned = TRUE,
     },
 
     [MOVE_BELCH] =
@@ -9870,6 +9899,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
         .zMoveEffect = Z_EFFECT_ATK_UP_1,
         .ignoresProtect = TRUE,
         .mirrorMoveBanned = TRUE,
+        .skyBattleBanned = TRUE,
     },
 
     [MOVE_STICKY_WEB] =
@@ -9887,6 +9917,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
         .ignoresProtect = TRUE,
         .mirrorMoveBanned = TRUE,
         .magicCoatAffected = TRUE,
+        .skyBattleBanned = TRUE,
     },
 
     [MOVE_FELL_STINGER] =
@@ -10161,6 +10192,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
         .zMoveEffect = Z_EFFECT_DEF_UP_1,
         .ignoresProtect = TRUE,
         .mirrorMoveBanned = TRUE,
+        .skyBattleBanned = TRUE,
     },
 
     [MOVE_MISTY_TERRAIN] =
@@ -10177,6 +10209,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
         .zMoveEffect = Z_EFFECT_SPDEF_UP_1,
         .ignoresProtect = TRUE,
         .mirrorMoveBanned = TRUE,
+        .skyBattleBanned = TRUE,
     },
 
     [MOVE_ELECTRIFY] =
@@ -10517,6 +10550,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
         .twoTurnMove = TRUE,
         .sleepTalkBanned = TRUE,
         .instructBanned = TRUE,
+        .skyBattleBanned = TRUE,
     },
 
     [MOVE_MAGNETIC_FLUX] =
@@ -10567,6 +10601,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
         .zMoveEffect = Z_EFFECT_SPD_UP_1,
         .ignoresProtect = TRUE,
         .mirrorMoveBanned = TRUE,
+        .skyBattleBanned = TRUE,
     },
 
     [MOVE_DAZZLING_GLEAM] =
@@ -10736,6 +10771,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
         .damagesAirborne = TRUE,
         .ignoreTypeIfFlyingAndUngrounded = TRUE,
         .metronomeBanned = TRUE,
+        .skyBattleBanned = TRUE,
     },
 
     [MOVE_THOUSAND_WAVES] =
@@ -10751,6 +10787,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
         .split = SPLIT_PHYSICAL,
         .zMoveEffect = Z_EFFECT_NONE,
         .metronomeBanned = TRUE,
+        .skyBattleBanned = TRUE,
     },
 
     [MOVE_LANDS_WRATH] =
@@ -10765,6 +10802,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
         .priority = 0,
         .split = SPLIT_PHYSICAL,
         .zMoveEffect = Z_EFFECT_NONE,
+        .skyBattleBanned = TRUE,
     },
 
     [MOVE_LIGHT_OF_RUIN] =
@@ -11506,6 +11544,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
         .split = SPLIT_PHYSICAL,
         .zMoveEffect = Z_EFFECT_NONE,
         .makesContact = TRUE,
+        .skyBattleBanned = TRUE,
     },
 
     [MOVE_SHADOW_BONE] =
@@ -12226,6 +12265,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
         .zMoveEffect = Z_EFFECT_NONE,
         .makesContact = TRUE,
         .metronomeBanned = TRUE,
+        .skyBattleBanned = TRUE,
     },
 
     [MOVE_DECORATE] =
@@ -12275,6 +12315,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
         .zMoveEffect = Z_EFFECT_NONE,
         .makesContact = TRUE,
         .metronomeBanned = TRUE,
+        .skyBattleBanned = TRUE,
     },
 
     [MOVE_PYRO_BALL] =
@@ -12599,6 +12640,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
         .makesContact = TRUE,
         .argument = ARG_TRY_REMOVE_TERRAIN_FAIL, // Remove a field terrain if there is one and hit, otherwise fail.
         .spinningMove = TRUE,
+        .skyBattleBanned = TRUE,
     },
 
     [MOVE_SCALE_SHOT] =
@@ -12679,6 +12721,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
         .split = SPLIT_PHYSICAL,
         .zMoveEffect = Z_EFFECT_NONE,
         .makesContact = TRUE,
+        .skyBattleBanned = TRUE,
     },
 
     [MOVE_RISING_VOLTAGE] =
@@ -13202,6 +13245,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
         .split = SPLIT_PHYSICAL,
         .zMoveEffect = Z_EFFECT_NONE,
         .makesContact = TRUE,
+        .skyBattleBanned = TRUE,
     },
 
     [MOVE_CHLOROBLAST] =
@@ -13650,6 +13694,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
         .zMoveEffect = Z_EFFECT_NONE,
         .makesContact = TRUE,
         .spinningMove = TRUE,
+        .skyBattleBanned = TRUE,
     },
 
     [MOVE_POPULATION_BOMB] =
@@ -13685,6 +13730,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
         .makesContact = TRUE,
         .argument = ARG_TRY_REMOVE_TERRAIN_HIT, // Remove the active field terrain if there is one.
         .spinningMove = TRUE,
+        .skyBattleBanned = TRUE,
     },
 
     [MOVE_GLAIVE_RUSH] =
@@ -14519,6 +14565,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
         .priority = 0,
         .split = SPLIT_PHYSICAL,
         .zMoveEffect = 0,
+        .skyBattleBanned = TRUE,
     },
     [MOVE_CONTINENTAL_CRUSH] =
     {
