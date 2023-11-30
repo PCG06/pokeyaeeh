@@ -665,6 +665,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
         .zMoveEffect = Z_EFFECT_NONE,
         .makesContact = TRUE,
         .instructBanned = TRUE,
+        .punchingMove = TRUE,
     },
 
     [MOVE_DOUBLE_EDGE] =
@@ -3454,6 +3455,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
         .zMoveEffect = Z_EFFECT_NONE,
         .sheerForceBoost = TRUE,
         .ballisticMove = TRUE,
+        .megaLauncherBoost = TRUE,
     },
 
     [MOVE_FORESIGHT] =
@@ -5050,6 +5052,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
         .split = SPLIT_PHYSICAL,
         .zMoveEffect = Z_EFFECT_NONE,
         .makesContact = TRUE,
+        .punchingMove = TRUE,
     },
 
     [MOVE_YAWN] =
@@ -6620,6 +6623,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
         .split = SPLIT_PHYSICAL,
         .zMoveEffect = Z_EFFECT_NONE,
         .makesContact = TRUE,
+        .punchingMove = TRUE,
     },
 
     [MOVE_PAYBACK] =
@@ -14431,6 +14435,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
         .priority = 0,
         .split = SPLIT_SPECIAL,
         .zMoveEffect = Z_EFFECT_NONE,
+        .sheerForceBoost = TRUE,
     },
 
     // Z-Moves

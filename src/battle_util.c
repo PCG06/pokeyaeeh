@@ -8982,15 +8982,15 @@ u32 CalcMoveBasePowerAfterModifiers(u32 move, u32 battlerAtk, u32 battlerDef, u3
         break;
     case ABILITY_RECKLESS:
         if (IS_MOVE_RECOIL(move))
-           modifier = uq4_12_multiply(modifier, UQ_4_12(1.2));
+           modifier = uq4_12_multiply(modifier, UQ_4_12(1.25));
         break;
     case ABILITY_IRON_FIST:
         if (gBattleMoves[move].punchingMove)
-           modifier = uq4_12_multiply(modifier, UQ_4_12(1.2));
+           modifier = uq4_12_multiply(modifier, UQ_4_12(1.33));
         break;
     case ABILITY_BRUTAL_LEGS:
         if (gBattleMoves[move].kickingMove)
-           modifier = uq4_12_multiply(modifier, UQ_4_12(1.2));
+           modifier = uq4_12_multiply(modifier, UQ_4_12(1.33));
         break;
     case ABILITY_SHEER_FORCE:
         if (gBattleMoves[move].sheerForceBoost)
@@ -9067,11 +9067,7 @@ u32 CalcMoveBasePowerAfterModifiers(u32 move, u32 battlerAtk, u32 battlerDef, u3
         break;
     case ABILITY_TRANSISTOR:
         if (moveType == TYPE_ELECTRIC)
-        #if B_TRANSISTOR_BOOST >= GEN_9
-            modifier = uq4_12_multiply(modifier, UQ_4_12(5325 / 4096));
-        #else
             modifier = uq4_12_multiply(modifier, UQ_4_12(1.5));
-        #endif
         break;
     case ABILITY_DRAGONS_MAW:
         if (moveType == TYPE_DRAGON)
