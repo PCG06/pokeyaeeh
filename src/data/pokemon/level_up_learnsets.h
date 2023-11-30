@@ -466,6 +466,7 @@ static const struct LevelUpMove sFearowLevelUpLearnset[] = {
     LEVEL_UP_MOVE(15, MOVE_AERIAL_ACE),
     LEVEL_UP_MOVE(18, MOVE_WING_ATTACK),
     LEVEL_UP_MOVE(18, MOVE_MIRROR_MOVE),
+    LEVEL_UP_MOVE(21, MOVE_NIGHT_SLASH),
     LEVEL_UP_MOVE(23, MOVE_TAKE_DOWN),
     LEVEL_UP_MOVE(25, MOVE_FOCUS_ENERGY),
     LEVEL_UP_MOVE(30, MOVE_AGILITY),
@@ -978,6 +979,7 @@ static const struct LevelUpMove sJigglypuffLevelUpLearnset[] = {
 };
 
 static const struct LevelUpMove sWigglytuffLevelUpLearnset[] = {
+    LEVEL_UP_MOVE( 0, MOVE_FOLLOW_ME),
     LEVEL_UP_MOVE( 1, MOVE_STOCKPILE),
     LEVEL_UP_MOVE( 1, MOVE_ECHOED_VOICE),
     LEVEL_UP_MOVE( 1, MOVE_ROUND),
@@ -1003,6 +1005,7 @@ static const struct LevelUpMove sWigglytuffLevelUpLearnset[] = {
     LEVEL_UP_MOVE( 1, MOVE_BIDE),
     LEVEL_UP_MOVE( 1, MOVE_DOUBLE_SLAP),
     LEVEL_UP_MOVE( 5, MOVE_PLAY_ROUGH),
+    LEVEL_UP_MOVE( 10, MOVE_MOONBLAST),
     LEVEL_UP_END
 };
 
@@ -1604,6 +1607,7 @@ static const struct LevelUpMove sPoliwrathLevelUpLearnset[] = {
     LEVEL_UP_MOVE( 1, MOVE_BULK_UP),
     LEVEL_UP_MOVE( 1, MOVE_BUBBLE),
     LEVEL_UP_MOVE( 1, MOVE_DOUBLE_SLAP),
+    LEVEL_UP_MOVE(27, MOVE_JET_PUNCH),
     LEVEL_UP_MOVE(32, MOVE_DYNAMIC_PUNCH),
     LEVEL_UP_MOVE(43, MOVE_MIND_READER),
     LEVEL_UP_MOVE(53, MOVE_CIRCLE_THROW),

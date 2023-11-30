@@ -2520,6 +2520,7 @@ static const u16 sWigglytuffTeachableLearnset[] = {
     MOVE_TRAILBLAZE,
     MOVE_TRI_ATTACK,
     MOVE_UPROAR,
+    MOVE_VOLT_SWITCH,
     MOVE_WATER_PULSE,
     MOVE_WILD_CHARGE,
     MOVE_WORK_UP,

@@ -62,6 +62,7 @@ const u16 gEggMoves[] = {
     egg_moves(PIDGEY,
               MOVE_AIR_CUTTER,
               MOVE_AIR_SLASH,
+              MOVE_BOOMBURST,
               MOVE_BRAVE_BIRD,
               MOVE_DEFOG,
               MOVE_FEINT_ATTACK,

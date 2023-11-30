@@ -1178,7 +1178,7 @@ static s32 GetSwitchinWeatherImpact(void)
                     weatherImpact = 1;
             }
         }
-        if ((gBattleWeather & B_WEATHER_SUN) && (ability == ABILITY_SOLAR_POWER || ability == ABILITY_DRY_SKIN))
+        if ((gBattleWeather & B_WEATHER_SUN) && (ability == ABILITY_DRY_SKIN))
         {
             weatherImpact = maxHP / 8;
             if (weatherImpact == 0)
