@@ -996,7 +996,7 @@ const struct MonCoords gMonFrontPicCoords[NUM_SPECIES + 1] =
     [SPECIES_GREAVARD]                          = { .size = MON_COORDS_SIZE(64, 64), .y_offset =  6 },
     [SPECIES_HOUNDSTONE]                        = { .size = MON_COORDS_SIZE(64, 64), .y_offset =  1 },
     [SPECIES_FLAMIGO]                           = { .size = MON_COORDS_SIZE(64, 64), .y_offset =  2 },
-    [SPECIES_CETODDLE]                          = { .size = MON_COORDS_SIZE(64, 64), .y_offset = 14 },
+    [SPECIES_CETODDLE]                          = { .size = MON_COORDS_SIZE(64, 64), .y_offset =  1 },
     [SPECIES_CETITAN]                           = { .size = MON_COORDS_SIZE(64, 64), .y_offset =  3 },
     [SPECIES_VELUZA]                            = { .size = MON_COORDS_SIZE(64, 64), .y_offset =  0 },
     [SPECIES_DONDOZO]                           = { .size = MON_COORDS_SIZE(64, 64), .y_offset =  0 },
