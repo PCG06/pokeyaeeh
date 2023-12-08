@@ -38,11 +38,7 @@ static const u8 sFirePunchDescription[] = _(
 
 static const u8 sIcePunchDescription[] = _(
     "An icy punch that may\n"
-#if B_USE_FROSTBITE == TRUE
     "leave the foe with frostbite.");
-#else
-    "freeze the foe.");
-#endif
 
 static const u8 sThunderPunchDescription[] = _(
     "An electrified punch that\n"
@@ -246,19 +242,11 @@ static const u8 sSurfDescription[] = _(
 
 static const u8 sIceBeamDescription[] = _(
     "Blasts the foe with an icy\n"
-#if B_USE_FROSTBITE == TRUE
     "beam. May cause frostbite.");
-#else
-    "beam that may freeze it.");
-#endif
 
 static const u8 sBlizzardDescription[] = _(
     "Hits the foe with an icy\n"
-#if B_USE_FROSTBITE == TRUE
     "storm. May cause frostbite.");
-#else
-    "storm that may freeze it.");
-#endif
 
 static const u8 sPsybeamDescription[] = _(
     "Fires a peculiar ray that\n"
@@ -746,7 +734,7 @@ static const u8 sSpiteDescription[] = _(
 
 static const u8 sPowderSnowDescription[] = _(
     "Blasts the foe with a snowy\n"
-    "gust. May cause freezing.");
+    "gust. May cause frostbite.");
 
 static const u8 sProtectDescription[] = _(
     "Evades attack, but may fail\n"
@@ -2250,7 +2238,7 @@ static const u8 sPetalBlizzardDescription[] = _(
 
 static const u8 sFreezeDryDescription[] = _(
     "Super effective on Water-\n"
-    "types. May cause freezing.");
+    "types. May cause frostbite.");
 
 static const u8 sDisarmingVoiceDescription[] = _(
     "Lets out a charming cry\n"
@@ -2951,11 +2939,7 @@ static const u8 sDragonEnergyDescription[] = _(
 
 static const u8 sFreezingGlareDescription[] = _(
     "Shoots psychic power from\n"
-#if B_USE_FROSTBITE == TRUE
     "the eyes. May frostbite.");
-#else
-    "the eyes. May freeze the foe.");
-#endif
 
 static const u8 sFieryWrathDescription[] = _(
     "An attack fueled by your\n"
@@ -4208,8 +4192,8 @@ static const u8 sMoveFourLineDescription_Mist[] = _("The ally party is\nprotecte
 static const u8 sMoveFourLineDescription_WaterGun[] = _("The foe is struck\nwith a lot of water\nexpelled forcibly\nfrom the mouth.");
 static const u8 sMoveFourLineDescription_HydroPump[] = _("Water is blasted at\nthe foe with great\npressure and may\ncause flinching.");
 static const u8 sMoveFourLineDescription_Surf[] = _("A big wave crashes\ndown on the foe.\nCan also be used\nfor crossing water.");
-static const u8 sMoveFourLineDescription_IceBeam[] = _("The foe is struck\nwith an icy beam.\nIt may freeze the\nfoe solid.");
-static const u8 sMoveFourLineDescription_Blizzard[] = _("The foe is blasted\nwith a blizzard.\nIt may freeze the\nfoe solid.");
+static const u8 sMoveFourLineDescription_IceBeam[] = _("The foe is struck\nwith an icy beam.\nIt may cause\nfrostbite.");
+static const u8 sMoveFourLineDescription_Blizzard[] = _("The foe is blasted\nwith a blizzard.\nIt may cause\nfrostbite.");
 static const u8 sMoveFourLineDescription_Psybeam[] = _("A peculiar ray is\nshot at the foe.\nIt may leave the\nfoe confused.");
 static const u8 sMoveFourLineDescription_BubbleBeam[] = _("A spray of bubbles\nstrikes the foe.\nIt may lower the\nfoe's Speed stat.");
 static const u8 sMoveFourLineDescription_AuroraBeam[] = _("A rainbow-colored\nattack beam.\nIt may lower the\nfoe's Attack stat.");
@@ -4339,7 +4323,7 @@ static const u8 sMoveFourLineDescription_Aeroblast[] = _("A vortex of air is\nsh
 static const u8 sMoveFourLineDescription_CottonSpore[] = _("Cotton-like spores\ncling to the foe,\nsharply reducing\nits Speed stat.");
 static const u8 sMoveFourLineDescription_Reversal[] = _("An all-out attack\nthat becomes more\npowerful the less\nHP the user has.");
 static const u8 sMoveFourLineDescription_Spite[] = _("A move that cuts\n2 to 5 PP from the\nmove last used by\nthe foe.");
-static const u8 sMoveFourLineDescription_PowderSnow[] = _("Blasts the foe with\na snowy gust.\nIt may cause\nfreezing.");
+static const u8 sMoveFourLineDescription_PowderSnow[] = _("Blasts the foe with\na snowy gust.\nIt may cause\nfrostbite.");
 static const u8 sMoveFourLineDescription_Protect[] = _("Enables the user to\nevade all attacks.\nIt may fail if used\nin succession.");
 static const u8 sMoveFourLineDescription_MachPunch[] = _("A punch thrown at\nblinding speed.\nIt is certain to\nstrike first.");
 static const u8 sMoveFourLineDescription_ScaryFace[] = _("Frightens the foe\nwith a scary face\nto sharply reduce\nits Speed.");
@@ -4576,8 +4560,8 @@ static const u8 sMoveFourLineDescription_Mist[] = _("The ally party is\nprotecte
 static const u8 sMoveFourLineDescription_WaterGun[] = _("The foe is struck\nwith a lot of water\nexpelled forcibly\nfrom the mouth.");
 static const u8 sMoveFourLineDescription_HydroPump[] = _("A high volume of\nwater is blasted at\nthe foe under great\npressure.");
 static const u8 sMoveFourLineDescription_Surf[] = _("A big wave crashes\ndown on the foe.\nCan also be used\nfor crossing water.");
-static const u8 sMoveFourLineDescription_IceBeam[] = _("The foe is struck\nwith an icy beam.\nIt may freeze the\nfoe solid.");
-static const u8 sMoveFourLineDescription_Blizzard[] = _("The foe is blasted\nwith a blizzard.\nIt may freeze the\nfoe solid.");
+static const u8 sMoveFourLineDescription_IceBeam[] = _("The foe is struck\nwith an icy beam.\nIt may cause\nfrostbite.");
+static const u8 sMoveFourLineDescription_Blizzard[] = _("The foe is blasted\nwith a blizzard.\nIt may cause\nfrostbite.");
 static const u8 sMoveFourLineDescription_Psybeam[] = _("A peculiar ray is\nshot at the foe.\nIt may leave the\nfoe confused.");
 static const u8 sMoveFourLineDescription_BubbleBeam[] = _("A spray of bubbles\nstrikes the foe.\nIt may lower the\nfoe's SPEED stat.");
 static const u8 sMoveFourLineDescription_AuroraBeam[] = _("A rainbow-colored\nattack beam.\nIt may lower the\nfoe's ATTACK stat.");
@@ -4707,7 +4691,7 @@ static const u8 sMoveFourLineDescription_Aeroblast[] = _("A vortex of air is\nsh
 static const u8 sMoveFourLineDescription_CottonSpore[] = _("Cotton-like spores\ncling to the foe,\nsharply reducing\nits SPEED stat.");
 static const u8 sMoveFourLineDescription_Reversal[] = _("An all-out attack\nthat becomes more\npowerful the less\nHP the user has.");
 static const u8 sMoveFourLineDescription_Spite[] = _("A move that cuts\n2 to 5 PP from the\nmove last used by\nthe foe.");
-static const u8 sMoveFourLineDescription_PowderSnow[] = _("Blasts the foe with\na snowy gust.\nIt may cause\nfreezing.");
+static const u8 sMoveFourLineDescription_PowderSnow[] = _("Blasts the foe with\na snowy gust.\nIt may cause\nfrostbite.");
 static const u8 sMoveFourLineDescription_Protect[] = _("Enables the user to\nevade all attacks.\nIt may fail if used\nin succession.");
 static const u8 sMoveFourLineDescription_MachPunch[] = _("A punch thrown at\nblinding speed.\nIt is certain to\nstrike first.");
 static const u8 sMoveFourLineDescription_ScaryFace[] = _("Frightens the foe\nwith a scary face\nto sharply reduce\nits SPEED.");
@@ -4959,7 +4943,7 @@ static const u8 sMoveFourLineDescription_BulletPunch[] = _("Bullet-fast punches\
 static const u8 sMoveFourLineDescription_IceShard[] = _("Flash-frozen ice\nchunks are hurled\nat the foe. This\nmove goes first.");
 static const u8 sMoveFourLineDescription_ShadowClaw[] = _("Claws made from\nshadows strike the\nfoe. Critical hits\nland more easily.");
 static const u8 sMoveFourLineDescription_ThunderFang[] = _("Electrified fangs\nbite the foe. This\nmay paralyse them,\nor make them flinch.");
-static const u8 sMoveFourLineDescription_IceFang[] = _("Frozen fangs bite\nthe foe. This may\nfreeze them, or\nmake them flinch.");
+static const u8 sMoveFourLineDescription_IceFang[] = _("Frozen fangs bite\nthe foe. This may\ncause frostbite, or\nmake them flinch.");
 static const u8 sMoveFourLineDescription_FireFang[] = _("Fiery fangs bite\nthe foe. This may\nburn them, or make\nthem flinch.");
 static const u8 sMoveFourLineDescription_ShadowSneak[] = _("The user's shadow\nextends and strikes\nthe foe. This move\nalways goes first.");
 static const u8 sMoveFourLineDescription_MudBomb[] = _("A hard-packed mud\nball is hurled at\nthe foe. This may\ndrop their accuracy.");
@@ -5294,7 +5278,7 @@ static const u8 sMoveFourLineDescription_ThunderCage[] = _("The user traps the\n
 static const u8 sMoveFourLineDescription_ThunderCage[] = _("The user traps the\nfoe in a cage of\nelectricity for\ntwo to five turns.");
 #endif
 static const u8 sMoveFourLineDescription_DragonEnergy[] = _("The higher the\nuser's HP, the more\npowerful this\nattack becomes.");
-static const u8 sMoveFourLineDescription_FreezingGlare[] = _("The user shoots\npsychic power from\nits eyes to attack.\nMay freeze the foe.");
+static const u8 sMoveFourLineDescription_FreezingGlare[] = _("The user shoots\npsychic power from\nits eyes to attack.\nMay cause frostbite.");
 static const u8 sMoveFourLineDescription_FieryWrath[] = _("It uses its wrath to\nfuel a fire-like aura\nattack. May cause\nthe foe to flinch.");
 static const u8 sMoveFourLineDescription_ThunderousKick[] = _("Moves like lightning\nbefore delivering a\nkick. It lowers\nthe foe's Defense.");
 static const u8 sMoveFourLineDescription_GlacialLance[] = _("Strikes by hurling\na blizzard-cloaked\nicicle lance at\nopposing Pokémon.");
