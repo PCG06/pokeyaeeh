@@ -8,7 +8,7 @@
 
 #if P_UPDATED_STATS >= GEN_6
     #define BUTTERFREE_SP_ATK\
-            .baseSpAttack  = 90,
+            .baseSpAttack  = 95,
 #else
     #define BUTTERFREE_SP_ATK\
             .baseSpAttack  = 80,
@@ -1765,7 +1765,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_SLOW,
         .eggGroups = { EGG_GROUP_FLYING, EGG_GROUP_FLYING},
-        .abilities = {ABILITY_KEEN_EYE, ABILITY_TANGLED_FEET, ABILITY_BIG_PECKS},
+        .abilities = {ABILITY_KEEN_EYE, ABILITY_TANGLED_FEET, ABILITY_GALE_WINGS},
         .bodyColor = BODY_COLOR_BROWN,
         .noFlip = FALSE,
     },
@@ -1787,7 +1787,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_SLOW,
         .eggGroups = { EGG_GROUP_FLYING, EGG_GROUP_FLYING},
-        .abilities = {ABILITY_KEEN_EYE, ABILITY_TANGLED_FEET, ABILITY_BIG_PECKS},
+        .abilities = {ABILITY_KEEN_EYE, ABILITY_TANGLED_FEET, ABILITY_GALE_WINGS},
         .bodyColor = BODY_COLOR_BROWN,
         .noFlip = FALSE,
     },
@@ -1813,7 +1813,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_SLOW,
         .eggGroups = { EGG_GROUP_FLYING, EGG_GROUP_FLYING},
-        .abilities = {ABILITY_KEEN_EYE, ABILITY_GALE_WINGS, ABILITY_BIG_PECKS},
+        .abilities = {ABILITY_KEEN_EYE, ABILITY_TANGLED_FEET, ABILITY_GALE_WINGS},
         .bodyColor = BODY_COLOR_BROWN,
         .noFlip = FALSE,
     },
@@ -1890,7 +1890,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .baseHP        = 65,
         .baseAttack    = 95,
         .baseDefense   = 65,
-        .baseSpeed     = 100,
+        .baseSpeed     = 105,
         .baseSpAttack  = 61,
         .baseSpDefense = 61,
         .types = { TYPE_NORMAL, TYPE_FLYING },
@@ -2231,10 +2231,10 @@ const struct SpeciesInfo gSpeciesInfo[] =
     [SPECIES_VULPIX] =
     {
         .baseHP        = 38,
-        .baseAttack    = 41,
+        .baseAttack    = 36,
         .baseDefense   = 40,
         .baseSpeed     = 65,
-        .baseSpAttack  = 50,
+        .baseSpAttack  = 55,
         .baseSpDefense = 65,
         .types = { TYPE_FIRE, TYPE_FIRE },
         .catchRate = 190,
@@ -2254,10 +2254,10 @@ const struct SpeciesInfo gSpeciesInfo[] =
     [SPECIES_NINETALES] =
     {
         .baseHP        = 73,
-        .baseAttack    = 76,
+        .baseAttack    = 71,
         .baseDefense   = 75,
         .baseSpeed     = 100,
-        .baseSpAttack  = 81,
+        .baseSpAttack  = 91,
         .baseSpDefense = 100,
         .types = { TYPE_FIRE, TYPE_FIRE },
         .catchRate = 75,
@@ -2336,7 +2336,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
     [SPECIES_ZUBAT] =
     {
         .baseHP        = 40,
-        .baseAttack    = 45,
+        .baseAttack    = 50,
         .baseDefense   = 35,
         .baseSpeed     = 55,
         .baseSpAttack  = 30,
@@ -2358,7 +2358,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
     [SPECIES_GOLBAT] =
     {
         .baseHP        = 75,
-        .baseAttack    = 80,
+        .baseAttack    = 85,
         .baseDefense   = 70,
         .baseSpeed     = 90,
         .baseSpAttack  = 65,
@@ -5186,7 +5186,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
     [SPECIES_CROBAT] =
     {
         .baseHP        = 85,
-        .baseAttack    = 90,
+        .baseAttack    = 95,
         .baseDefense   = 80,
         .baseSpeed     = 130,
         .baseSpAttack  = 70,
