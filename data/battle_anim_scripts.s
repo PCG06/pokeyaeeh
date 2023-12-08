@@ -16948,9 +16948,9 @@ Move_FROST_GLARE:
 	@ loadspritegfx ANIM_TAG_EYE
 	loadspritegfx ANIM_TAG_EYE_SPARKLE
 	createsprite gEyeSparkleSpriteTemplate, ANIM_ATTACKER, 0, -16, -8
-	createsprite gEyeSparkleSpriteTemplate, ANIM_ATTACKER, 0, -16, -8
+	createsprite gEyeSparkleSpriteTemplate, ANIM_ATTACKER, 0, 16, -8
 	createsprite gOpeningEyeSpriteTemplate, ANIM_ATTACKER, 5, 0x0, 0x0, 0x1, 0x0
-	@ createsprite gMeanLookEyeSpriteTemplate, ANIM_ATTACKER, 1 @ for the bigger eye
+	@ createsprite gMeanLookEyeSpriteTemplate, ANIM_ATTACKER, 1 @ for the meaner eye
 	createsoundtask SoundTask_LoopSEAdjustPanning, SE_M_BUBBLE_BEAM2, SOUND_PAN_ATTACKER, SOUND_PAN_TARGET, 4, 4, 0, 10
 	createsprite gSimplePaletteBlendSpriteTemplate, ANIM_ATTACKER, 2, 4, -31, 0, 7, RGB(0, 20, 31)
 	createvisualtask AnimTask_ShakeMon2, 2, ANIM_TARGET, 2, 0, 25, 1
