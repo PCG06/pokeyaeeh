@@ -4061,6 +4061,7 @@ static bool32 IsDomeStatusMoveEffect(u32 effect)
     case EFFECT_NIGHTMARE:
     case EFFECT_YAWN:
     case EFFECT_CURSE:
+    case EFFECT_FROST_GLARE:
         return TRUE;
     default:
         return FALSE;

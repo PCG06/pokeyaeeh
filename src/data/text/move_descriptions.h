@@ -3288,6 +3288,10 @@ static const u8 sJetstreamDescription[] = _(
     "Shoots a stream of air.\n"
     "May cause confusion.");
 
+static const u8 sFrostGlareDescription[] = _(
+    "Chillingly stares at the foe\n"
+    "and causes frostbite.");
+
 const u8 gNotDoneYetDescription[] = _(
     "This move can't be used. Its\n"
     "effect is in development.");
@@ -4133,6 +4137,7 @@ const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] =
     [MOVE_SYRUP_BOMB - 1] = sSyrupBombDescription,
     [MOVE_IVY_CUDGEL - 1] = sIvyCudgelDescription,
     [MOVE_JETSTREAM - 1] = sJetstreamDescription,
+    [MOVE_FROST_GLARE - 1] = sFrostGlareDescription,
 };
 
 static const u8 sMoveFourLineDescription_Pound[] = _("A physical attack\ndelivered with a\nlong tail or a\nforeleg, etc.");
@@ -5320,6 +5325,7 @@ static const u8 sMoveFourLineDescription_SandsearStorm[] = _("Attacks with fiery
 static const u8 sMoveFourLineDescription_LunarBlessing[] = _("The user restores HP\nand heals status\nconditions of itself\nand its ally.");
 static const u8 sMoveFourLineDescription_TakeHeart[] = _("The user cures its\nown status condit-\nions and raises Sp.\nAtk and Def stats.");
 static const u8 sMoveFourLineDescription_Jetstream[] = _("The user shoots a\nfast ray of wind at\nfoe. It may cause\nconfusion.");
+static const u8 sMoveFourLineDescription_FrostGlare[] = _("The user chillingly\nstares at the foe.\nThe foe is now\nfrostbitten.");
 
 #endif
 
@@ -6122,5 +6128,6 @@ const u8 *const gMoveFourLineDescriptionPointers[MOVES_COUNT - 1] = {
     [MOVE_LUNAR_BLESSING    - 1] = sMoveFourLineDescription_LunarBlessing,
     [MOVE_TAKE_HEART        - 1] = sMoveFourLineDescription_TakeHeart,
     [MOVE_JETSTREAM         - 1] = sMoveFourLineDescription_Jetstream,
+    [MOVE_FROST_GLARE       - 1] = sMoveFourLineDescription_FrostGlare,
 #endif
 };

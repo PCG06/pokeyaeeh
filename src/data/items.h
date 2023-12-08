@@ -7951,7 +7951,7 @@ const struct Item gItems[] =
         .secondaryId = MOVE_FOCUS_PUNCH,
     },
 
-    [ITEM_TM_FOCUS_BLAST] =
+    [ITEM_TM_FROST_GLARE] =
     {
         .name = _("TM66"),
         .price = 3000,
@@ -7960,7 +7960,7 @@ const struct Item gItems[] =
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_TMHM,
-        .secondaryId = MOVE_FOCUS_BLAST,
+        .secondaryId = MOVE_FROST_GLARE,
     },
 
     [ITEM_TM_THUNDER_WAVE] =

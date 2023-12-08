@@ -443,6 +443,7 @@ gBattleScriptsForMoveEffects::
 	.4byte BattleScript_EffectMaxMove                 @ EFFECT_MAX_MOVE
 	.4byte BattleScript_EffectGlaiveRush              @ EFFECT_GLAIVE_RUSH
 	.4byte BattleScript_EffectBrickBreak              @ EFFECT_RAGING_BULL
+	.4byte BattleScript_EffectFrostGlare              @ EFFECT_FROST_GLARE
 
 BattleScript_EffectGlaiveRush::
 	call BattleScript_EffectHit_Ret
@@ -10866,3 +10867,32 @@ BattleScript_AttackWeakenedByGhostlyWinds::
 	waitmessage B_WAIT_TIME_MED
 	printstring STRINGID_EMPTYSTRING3
 	return
+
+BattleScript_EffectFrostGlare::
+	attackcanceler
+	attackstring
+	ppreduce
+	jumpifsubstituteblocks BattleScript_ButItFailed
+	jumpifstatus BS_TARGET, STATUS1_FROSTBITE, BattleScript_AlreadyHasFrostbite
+	jumpiftype BS_TARGET, TYPE_ICE, BattleScript_NotAffected
+	jumpifability BS_TARGET, ABILITY_COMATOSE, BattleScript_AbilityProtectsDoesntAffect
+	jumpifability BS_TARGET, ABILITY_PURIFYING_SALT, BattleScript_AbilityProtectsDoesntAffect
+	jumpifflowerveil BattleScript_FlowerVeilProtects
+	jumpifleafguardprotected BS_TARGET, BattleScript_AbilityProtectsDoesntAffect
+	jumpifshieldsdown BS_TARGET, BattleScript_AbilityProtectsDoesntAffect
+	jumpifstatus BS_TARGET, STATUS1_ANY, BattleScript_ButItFailed
+	jumpifterrainaffected BS_TARGET, STATUS_FIELD_MISTY_TERRAIN, BattleScript_MistyTerrainPrevents
+	accuracycheck BattleScript_ButItFailed, ACC_CURR_MOVE
+	jumpifsafeguard BattleScript_SafeguardProtected
+	attackanimation
+	waitanimation
+	setmoveeffect MOVE_EFFECT_FROSTBITE
+	seteffectprimary
+	goto BattleScript_MoveEnd
+
+BattleScript_AlreadyHasFrostbite::
+	setalreadystatusedmoveattempt BS_ATTACKER
+	pause B_WAIT_TIME_SHORT
+	printstring STRINGID_PKMNALREADYHASFROSTBITE
+	waitmessage B_WAIT_TIME_LONG
+	goto BattleScript_MoveEnd

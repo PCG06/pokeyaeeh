@@ -3357,9 +3357,9 @@ static const u8 sTM65Desc[] = _(
     "Flinches if hit.");
 
 static const u8 sTM66Desc[] = _(
-    "Hightens focus and\n"
-    "unleashes power.\n"
-    "May lower Sp. Def.");
+    "Chillingly stares\n"
+    "at the foe and\n"
+    "causes a frostbite.");
 
 static const u8 sTM67Desc[] = _(
     "A weak jolt of\n"

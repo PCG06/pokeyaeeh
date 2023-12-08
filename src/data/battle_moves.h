@@ -14439,6 +14439,21 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
         .sheerForceBoost = TRUE,
     },
 
+    [MOVE_FROST_GLARE] =
+    {
+        .effect = EFFECT_FROST_GLARE,
+        .power = 0,
+        .type = TYPE_ICE,
+        .accuracy = 85,
+        .pp = 15,
+        .secondaryEffectChance = 0,
+        .target = MOVE_TARGET_SELECTED,
+        .priority = 0,
+        .split = SPLIT_STATUS,
+        .zMoveEffect = Z_EFFECT_ATK_UP_1,
+        .magicCoatAffected = TRUE,
+    },
+
     // Z-Moves
     [MOVE_BREAKNECK_BLITZ] =
     {

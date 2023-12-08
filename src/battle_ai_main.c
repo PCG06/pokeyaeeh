@@ -788,6 +788,7 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                 case EFFECT_WILL_O_WISP:
                 case EFFECT_TOXIC:
                 case EFFECT_LEECH_SEED:
+                case EFFECT_FROST_GLARE:
                     ADJUST_SCORE(-5);
                     break;
                 case EFFECT_CURSE:
@@ -3684,7 +3685,8 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
           || HasMoveEffect(battlerDef, EFFECT_PARALYZE)
           || HasMoveEffect(battlerDef, EFFECT_WILL_O_WISP)
           || HasMoveEffect(battlerDef, EFFECT_CONFUSE)
-          || HasMoveEffect(battlerDef, EFFECT_LEECH_SEED))
+          || HasMoveEffect(battlerDef, EFFECT_LEECH_SEED)
+          || HasMoveEffect(battlerDef, EFFECT_FROST_GLARE))
             ADJUST_SCORE(2);
         if (!gBattleMons[battlerDef].status2 & (STATUS2_WRAPPED | STATUS2_ESCAPE_PREVENTION && aiData->hpPercents[battlerAtk] > 70))
             ADJUST_SCORE(1);
@@ -4999,6 +5001,7 @@ static s32 AI_SetupFirstTurn(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
     case EFFECT_GEOMANCY:
     case EFFECT_VICTORY_DANCE:
     case EFFECT_HIT_SET_ENTRY_HAZARD:
+    case EFFECT_FROST_GLARE:
         ADJUST_SCORE(2);
         break;
     default:

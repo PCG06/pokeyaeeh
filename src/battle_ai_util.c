@@ -362,6 +362,7 @@ static const u16 sEncouragedEncoreEffects[] =
     EFFECT_WATER_SPORT,
     EFFECT_DRAGON_DANCE,
     EFFECT_CAMOUFLAGE,
+    EFFECT_FROST_GLARE,
 };
 
 // Functions
@@ -1487,6 +1488,7 @@ bool32 IsNonVolatileStatusMoveEffect(u32 moveEffect)
     case EFFECT_PARALYZE:
     case EFFECT_WILL_O_WISP:
     case EFFECT_YAWN:
+    case EFFECT_FROST_GLARE:
         return TRUE;
     default:
         return FALSE;
@@ -3287,7 +3289,8 @@ bool32 PartnerMoveEffectIsStatusSameTarget(u32 battlerAtkPartner, u32 battlerDef
        || gBattleMoves[partnerMove].effect == EFFECT_TOXIC
        || gBattleMoves[partnerMove].effect == EFFECT_PARALYZE
        || gBattleMoves[partnerMove].effect == EFFECT_WILL_O_WISP
-       || gBattleMoves[partnerMove].effect == EFFECT_YAWN))
+       || gBattleMoves[partnerMove].effect == EFFECT_YAWN
+       || gBattleMoves[partnerMove].effect == EFFECT_FROST_GLARE))
         return TRUE;
     return FALSE;
 }

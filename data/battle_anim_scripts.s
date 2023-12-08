@@ -861,6 +861,7 @@ gBattleAnims_Moves::
 	.4byte Move_SYRUP_BOMB
 	.4byte Move_IVY_CUDGEL
 	.4byte Move_JETSTREAM
+	.4byte Move_FROST_GLARE
 @@@@ Z MOVES
 	.4byte Move_BREAKNECK_BLITZ
 	.4byte Move_ALL_OUT_PUMMELING
@@ -16937,6 +16938,30 @@ AirProjectile:
 	createsprite gSpriteTemplate_SpiritBreakExplode, ANIM_TARGET, 3, 0x40, 0x40, 0x16, 0x16
 	delay 4
 	return
+
+Move_FROST_GLARE:
+	monbg ANIM_TARGET
+	splitbgprio ANIM_TARGET
+	setalpha 12, 8
+	loadspritegfx ANIM_TAG_ICE_CRYSTALS
+	loadspritegfx ANIM_TAG_OPENING_EYE
+	@ loadspritegfx ANIM_TAG_EYE
+	loadspritegfx ANIM_TAG_EYE_SPARKLE
+	createsprite gEyeSparkleSpriteTemplate, ANIM_ATTACKER, 0, -16, -8
+	createsprite gEyeSparkleSpriteTemplate, ANIM_ATTACKER, 0, -16, -8
+	createsprite gOpeningEyeSpriteTemplate, ANIM_ATTACKER, 5, 0x0, 0x0, 0x1, 0x0
+	@ createsprite gMeanLookEyeSpriteTemplate, ANIM_ATTACKER, 1 @ for the bigger eye
+	createsoundtask SoundTask_LoopSEAdjustPanning, SE_M_BUBBLE_BEAM2, SOUND_PAN_ATTACKER, SOUND_PAN_TARGET, 4, 4, 0, 10
+	createsprite gSimplePaletteBlendSpriteTemplate, ANIM_ATTACKER, 2, 4, -31, 0, 7, RGB(0, 20, 31)
+	createvisualtask AnimTask_ShakeMon2, 2, ANIM_TARGET, 2, 0, 25, 1
+	waitforvisualfinish
+	delay 20
+	call IceCrystalEffectShort
+	createsprite gSimplePaletteBlendSpriteTemplate, ANIM_ATTACKER, 2, 4, 5, 7, 0, RGB(0, 20, 31)
+	waitforvisualfinish
+	clearmonbg ANIM_TARGET
+	blendoff
+	end
 
 Move_TERA_BLAST::
 Move_AXE_KICK::
