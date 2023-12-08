@@ -1463,6 +1463,11 @@
 	.4byte \jumpInstr
 	.endm
 
+    .macro tryhealpulse failInstr:req
+	callnative BS_TryHealPulse
+	.4byte \failInstr
+	.endm
+
 	.macro jumpifargument argument:req, jumpInstr:req
 	callnative BS_JumpIfArgument
 	.byte \argument
@@ -1730,11 +1735,6 @@
 
 	.macro setlastusedability battler:req
 	various \battler, VARIOUS_SET_LAST_USED_ABILITY
-	.endm
-
-	.macro tryhealpulse battler:req, failInstr:req
-	various \battler, VARIOUS_TRY_HEAL_PULSE
-	.4byte \failInstr
 	.endm
 
 	.macro tryquash failInstr:req
