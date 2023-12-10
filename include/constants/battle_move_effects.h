@@ -421,6 +421,7 @@
 #define EFFECT_GLAIVE_RUSH                  415
 #define EFFECT_RAGING_BULL                  416
 #define EFFECT_FROST_GLARE                  417
+#define EFFECT_RAGE_FIST                    418
 
 #define NUM_BATTLE_MOVE_EFFECTS             418
 
