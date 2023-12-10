@@ -1264,7 +1264,7 @@ RustboroCity_Text_CuttersHouse:
 
 RustboroCity_Text_DevelopedNewPokenavFeature:
 	.string "I've been developing an added feature\n"
-	.string "for the PokéNav…\p"
+	.string "for the Pokénav…\p"
 	.string "And it turned out great!\p"
 	.string "{PLAYER}, may I see that PokéNav?\n"
 	.string "The one our President gave you?$"
