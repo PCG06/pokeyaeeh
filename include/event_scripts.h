@@ -615,6 +615,7 @@ extern const u8 EventScript_TerminateLink[];
 
 // Rotom Catalog
 extern u8 ItemScript_RotomCatalog[];
+
 // Dexnav
 extern const u8 EventScript_StartDexNavBattle[];
 extern const u8 EventScript_NotFoundNearby[];
