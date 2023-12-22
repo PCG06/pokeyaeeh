@@ -14513,6 +14513,23 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
         .punchingMove = TRUE,
     },
 
+    [MOVE_ROUSED_FANGS] =
+    {
+        .effect = EFFECT_SPEED_UP_HIT,
+        .power = 75,
+        .type = TYPE_ELECTRIC,
+        .accuracy = 100,
+        .pp = 15,
+        .secondaryEffectChance = 100,
+        .target = MOVE_TARGET_SELECTED,
+        .priority = 0,
+        .split = SPLIT_PHYSICAL,
+        .zMoveEffect = Z_EFFECT_NONE,
+        .makesContact = TRUE,
+        .sheerForceBoost = TRUE,
+        .bitingMove = TRUE,
+    },
+
     // Z-Moves
     [MOVE_BREAKNECK_BLITZ] =
     {
