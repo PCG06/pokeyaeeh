@@ -1393,8 +1393,8 @@ static const u8 sCovetDescription[] = _(
     "item held by the foe.");
 
 static const u8 sVoltTackleDescription[] = _(
-    "A life-risking tackle that\n"
-    "slightly hurts the user.");
+    "An electrifying tackle that\n"
+    "lowers the user's defences.");
 
 static const u8 sMagicalLeafDescription[] = _(
     "Attacks with a strange leaf\n"
@@ -2085,8 +2085,8 @@ static const u8 sElectrowebDescription[] = _(
     "electric net. Lowers Speed.");
 
 static const u8 sWildChargeDescription[] = _(
-    "An electrical tackle that\n"
-    "also hurts the user.");
+    "A charge that may paralyze\n"
+    "foe. Also hurts the user.");
 
 static const u8 sDrillRunDescription[] = _(
     "Spins its body like a drill.\n"
@@ -4499,7 +4499,7 @@ static const u8 sMoveFourLineDescription_Bounce[] = _("The user bounces\non the 
 static const u8 sMoveFourLineDescription_MudShot[] = _("The user attacks by\nhurling mud.\nIt also reduces the\nfoe's Speed.");
 static const u8 sMoveFourLineDescription_PoisonTail[] = _("An attack with a\nhigh critical-hit\nratio. It may also\npoison the foe.");
 static const u8 sMoveFourLineDescription_Covet[] = _("A cutely executed\nattack that also\nsteals the foe's\nhold item.");
-static const u8 sMoveFourLineDescription_VoltTackle[] = _("The user throws an\nelectrified tackle.\nIt hurts the user\na little.");
+static const u8 sMoveFourLineDescription_VoltTackle[] = _("The user throws an\nelectrified tackle.\nIt lowers its Def\nand Sp. Def stats.");
 static const u8 sMoveFourLineDescription_MagicalLeaf[] = _("The foe is attacked\nwith a strange leaf\nthat cannot be\nevaded.");
 static const u8 sMoveFourLineDescription_WaterSport[] = _("Weakens FIRE-type\nattacks while the\nuser is in the\nbattle.");
 static const u8 sMoveFourLineDescription_CalmMind[] = _("The user focuses\nits mind to raise\nthe Sp. Atk and\nSp. Def stats.");
@@ -4867,7 +4867,7 @@ static const u8 sMoveFourLineDescription_Bounce[] = _("The user bounces\non the 
 static const u8 sMoveFourLineDescription_MudShot[] = _("The user attacks by\nhurling mud.\nIt also reduces the\nfoe's SPEED.");
 static const u8 sMoveFourLineDescription_PoisonTail[] = _("An attack with a\nhigh critical-hit\nratio. It may also\npoison the foe.");
 static const u8 sMoveFourLineDescription_Covet[] = _("A cutely executed\nattack that also\nsteals the foe's\nhold item.");
-static const u8 sMoveFourLineDescription_VoltTackle[] = _("The user throws an\nelectrified tackle.\nIt hurts the user\na little.");
+static const u8 sMoveFourLineDescription_VoltTackle[] = _("The user throws an\nelectrified tackle.\nIt lowers its Def\nand Sp. Def stats.");
 static const u8 sMoveFourLineDescription_MagicalLeaf[] = _("The foe is attacked\nwith a strange leaf\nthat cannot be\nevaded.");
 static const u8 sMoveFourLineDescription_WaterSport[] = _("Weakens FIRE-type\nattacks while the\nuser is in the\nbattle.");
 static const u8 sMoveFourLineDescription_CalmMind[] = _("The user focuses\nits mind to raise\nthe SP. ATK and\nSP. DEF stats.");
@@ -4921,7 +4921,7 @@ static const u8 sMoveFourLineDescription_ToxicSpikes[] = _("Poison spikes are\nl
 static const u8 sMoveFourLineDescription_HeartSwap[] = _("The user employs\nits psychic powers\nto swap stat changes\nwith the target.");
 static const u8 sMoveFourLineDescription_AquaRing[] = _("The user envelops\nitself in a veil of\nwater. It regains\nsome HP every turn.");
 static const u8 sMoveFourLineDescription_MagnetRise[] = _("The user levitates\nusing electrically\ngenerated magnetism\nfor five turns.");
-static const u8 sMoveFourLineDescription_FlareBlitz[] = _("A ruthless, fiery\ncharge which harms\nthe user, too. It\nmay burn the target.");
+static const u8 sMoveFourLineDescription_FlareBlitz[] = _("A ruthless, fiery\ncharge which harms\nthe user. It may\nburn the target.");
 static const u8 sMoveFourLineDescription_ForcePalm[] = _("The foe is attacked\nwith a shock wave\nwhich may leave\nthem paralyzed.");
 static const u8 sMoveFourLineDescription_AuraSphere[] = _("A blast of aura\npower from deep\nwithin is loosed.\nIt cannot miss.");
 static const u8 sMoveFourLineDescription_RockPolish[] = _("The user polishes\nits body to reduce\ndrag. This sharply\nraises its Speed.");
@@ -5055,7 +5055,7 @@ static const u8 sMoveFourLineDescription_FrostBreath[] = _("A cold breath which\
 static const u8 sMoveFourLineDescription_DragonTail[] = _("The foe is knocked\naway, and a\ndifferent Pokémon\nis dragged out.");
 static const u8 sMoveFourLineDescription_WorkUp[] = _("The user is roused,\nand its Attack and\nSp. Atk stats\nincrease.");
 static const u8 sMoveFourLineDescription_Electroweb[] = _("The foe is caught\nin an electric net.\nThis lowers their\nSpeed stat.");
-static const u8 sMoveFourLineDescription_WildCharge[] = _("An electric,\nreckless crash\nattack that also\nhurts the user.");
+static const u8 sMoveFourLineDescription_WildCharge[] = _("A reckless electric\ncharge which harms\nthe user. It may\n paralyze the foe.");
 static const u8 sMoveFourLineDescription_DrillRun[] = _("Rotating its body\nlike a drill, the\nuser crashes into\nthe foe.");
 static const u8 sMoveFourLineDescription_DualChop[] = _("The foe is hit with\nbrutal strikes\ntwice in a row.");
 static const u8 sMoveFourLineDescription_HeartStamp[] = _("The foe's guard\ndrops, and the user\nstrikes. This may\ncause flinching.");
