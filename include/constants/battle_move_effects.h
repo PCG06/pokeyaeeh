@@ -422,7 +422,8 @@
 #define EFFECT_RAGING_BULL                  416
 #define EFFECT_FROST_GLARE                  417
 #define EFFECT_RAGE_FIST                    418
+#define EFFECT_DOODLE                       419
 
-#define NUM_BATTLE_MOVE_EFFECTS             418
+#define NUM_BATTLE_MOVE_EFFECTS             420
 
 #endif  // GUARD_CONSTANTS_BATTLE_MOVE_EFFECTS_H
