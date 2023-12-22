@@ -129,7 +129,54 @@ Debug_EventScript_Script_4::
 	end
 
 Debug_EventScript_Script_5::
-	setflag FLAG_SYS_GAME_CLEAR
+	lock
+    faceplayer
+    checktrainerflag TRAINER_ALBERTO
+    goto_if 0, Route123_EventScript_Alberto_Battle_Event_Script
+    msgbox Route123_Text_AlbertoPostBattle, MSGBOX_AUTOCLOSE
+    release
+    end
+
+Route123_EventScript_Alberto_Battle_Event_Script::
+    msgbox Route123_EventScript_Alberto_Text_AskSkyBattle, MSGBOX_YESNO
+    compare VAR_RESULT, NO
+    goto_if_eq Route123_EventScript_Alberto_DenySkyBattle
+    special TrySkyBattle
+    compare VAR_RESULT, TRUE
+    goto_if_eq Route123_EventScript_Alberto_StartBattle
+    msgbox Route123_EventScript_Alberto_Text_No_Flying_Pokemon
+    closemessage
+    release
+    end
+
+Route123_EventScript_Alberto_DenySkyBattle::
+    msgbox Route123_EventScript_Alberto_Text_DenySkyBattle
+    closemessage
+    release
+    end
+
+Route123_EventScript_Alberto_StartBattle::
+    msgbox Route123_EventScript_Alberto_Text_StartBattle
+    trainerbattle_no_intro TRAINER_ALBERTO, Route123_Text_AlbertoDefeat
+    release
+    end
+Route123_EventScript_Alberto_Text_AskSkyBattle:
+    .string "Care for a Sky Battle with a Sky\n"
+    .string "Trainer?$"
+
+Route123_EventScript_Alberto_Text_DenySkyBattle:
+    .string "Well, this is a bit disappointing for a\n"
+    .string "Sky Trainer like me...$"
+
+Route123_EventScript_Alberto_Text_StartBattle:
+    .string "Woo hoo! I'm a Sky Trainer! Look at me\n"
+    .string "go! Wooooo!$"
+
+Route123_EventScript_Alberto_Text_No_Flying_Pokemon:
+    .string "Well, well, isn't this a shame. You don't\n"
+    .string "have any flying Pokémon. We Sky\l"
+    .string "Trainers only battle with Pokémon that\l"
+    .string "can fly in the sky.$"
 
 Debug_EventScript_Script_6::
 	end
