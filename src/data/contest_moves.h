@@ -6078,6 +6078,8 @@ const struct ContestMove gContestMoves[MOVES_COUNT] =
     [MOVE_JETSTREAM] = {0}, // TODO never
 
     [MOVE_FROST_GLARE] = {0}, // TODO never
+
+    [MOVE_KNUCKLE_PUNCH] = {0}, // TODO never
 };
 
 const struct ContestEffect gContestEffects[] =

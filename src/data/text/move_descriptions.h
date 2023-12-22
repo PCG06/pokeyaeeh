@@ -3276,6 +3276,10 @@ static const u8 sFrostGlareDescription[] = _(
     "Chillingly stares at the foe\n"
     "and causes frostbite.");
 
+static const u8 sKnucklePunchDescription[] = _(
+    "A full force punch that may\n"
+    "cause the foe to flinch.");
+
 const u8 gNotDoneYetDescription[] = _(
     "This move can't be used. Its\n"
     "effect is in development.");
@@ -4122,6 +4126,7 @@ const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] =
     [MOVE_IVY_CUDGEL - 1] = sIvyCudgelDescription,
     [MOVE_JETSTREAM - 1] = sJetstreamDescription,
     [MOVE_FROST_GLARE - 1] = sFrostGlareDescription,
+    [MOVE_KNUCKLE_PUNCH - 1] = sKnucklePunchDescription,
 };
 
 static const u8 sMoveFourLineDescription_Pound[] = _("A physical attack\ndelivered with a\nlong tail or a\nforeleg, etc.");
@@ -5365,6 +5370,7 @@ static const u8 sMoveFourLineDescription_SyrupBomb[] = _("The user sets off an\n
 static const u8 sMoveFourLineDescription_IvyCudgel[] = _("This move's type\nchanges depending\non the mask. It has a\nhigh crit hit ratio.");
 static const u8 sMoveFourLineDescription_Jetstream[] = _("The user shoots a\nfast ray of wind at\nfoe. It may cause\nconfusion.");
 static const u8 sMoveFourLineDescription_FrostGlare[] = _("The user chillingly\nstares at the foe.\nThe foe is now\nfrostbitten.");
+static const u8 sMoveFourLineDescription_KnucklePunch[] = _("The user punches\nthe foe with great\nforce. This may\ncause flinching.");
 
 #endif
 
@@ -6224,5 +6230,6 @@ const u8 *const gMoveFourLineDescriptionPointers[MOVES_COUNT - 1] = {
     [MOVE_IVY_CUDGEL        - 1] = sMoveFourLineDescription_IvyCudgel,
     [MOVE_JETSTREAM         - 1] = sMoveFourLineDescription_Jetstream,
     [MOVE_FROST_GLARE       - 1] = sMoveFourLineDescription_FrostGlare,
+    [MOVE_KNUCKLE_PUNCH     - 1] = sMoveFourLineDescription_KnucklePunch,
 #endif
 };
