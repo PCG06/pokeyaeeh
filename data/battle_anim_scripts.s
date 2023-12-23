@@ -865,6 +865,7 @@ gBattleAnims_Moves::
 	.4byte Move_FROST_GLARE
 	.4byte Move_KNUCKLE_PUNCH
 	.4byte Move_ROUSED_FANGS
+	.4byte Move_STUNNING_BLOW
 @@@@ Z MOVES
 	.4byte Move_BREAKNECK_BLITZ
 	.4byte Move_ALL_OUT_PUMMELING
@@ -17061,6 +17062,26 @@ Move_ROUSED_FANGS:
 	blendoff
 	delay 1
 	end
+
+Move_STUNNING_BLOW:
+	loadspritegfx ANIM_TAG_SLASH_2
+	loadspritegfx ANIM_TAG_PINK_HEART
+	monbg ANIM_DEF_PARTNER
+	setalpha 12, 8
+	playsewithpan SE_M_TAKE_DOWN, SOUND_PAN_ATTACKER
+	createsprite gVerticalDipSpriteTemplate, ANIM_ATTACKER, 2, 0x6, 0x1, 0x0
+	waitforvisualfinish
+	createsprite gFalseSwipeSliceSpriteTemplate, ANIM_TARGET, 2
+	playsewithpan SE_M_RAZOR_WIND, SOUND_PAN_TARGET
+	delay 25
+	createsprite gPinkHeartSpriteTemplate, ANIM_TARGET, 3, 0xff00, 0xffd6
+	createsprite gPinkHeartSpriteTemplate, ANIM_TARGET, 3, 0x80, 0xfff2
+	createsprite gPinkHeartSpriteTemplate, ANIM_TARGET, 3, 0x1a0, 0xffda
+	createsprite gPinkHeartSpriteTemplate, ANIM_TARGET, 3, 0xff80, 0xffea
+	waitforvisualfinish
+	blendoff
+	clearmonbg ANIM_DEF_PARTNER
+    end
 
 Move_TERA_BLAST::
 Move_AXE_KICK::

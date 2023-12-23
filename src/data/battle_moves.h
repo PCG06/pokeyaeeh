@@ -14530,6 +14530,21 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
         .bitingMove = TRUE,
     },
 
+    [MOVE_STUNNING_BLOW] =
+    {
+        .effect = EFFECT_FLINCH_HIT,
+        .power = 60,
+        .type = TYPE_FAIRY,
+        .accuracy = 100,
+        .pp = 15,
+        .secondaryEffectChance = 30,
+        .target = MOVE_TARGET_BOTH,
+        .priority = 0,
+        .split = SPLIT_PHYSICAL,
+        .zMoveEffect = Z_EFFECT_NONE,
+        .makesContact = TRUE,
+    },
+
     // Z-Moves
     [MOVE_BREAKNECK_BLITZ] =
     {

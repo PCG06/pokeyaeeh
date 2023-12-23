@@ -3284,6 +3284,10 @@ static const u8 sRousedFangsDescription[] = _(
     "An electrifying bite.\n"
     "Raises Speed.");
 
+static const u8 sStunningBlowDescription[] = _(
+    "A stunning blow that will\n"
+    "cause the foe to flinch.");
+
 const u8 gNotDoneYetDescription[] = _(
     "This move can't be used. Its\n"
     "effect is in development.");
@@ -4132,6 +4136,7 @@ const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] =
     [MOVE_FROST_GLARE - 1] = sFrostGlareDescription,
     [MOVE_KNUCKLE_PUNCH - 1] = sKnucklePunchDescription,
     [MOVE_ROUSED_FANGS - 1] = sRousedFangsDescription,
+    [MOVE_STUNNING_BLOW - 1] = sStunningBlowDescription,
 };
 
 static const u8 sMoveFourLineDescription_Pound[] = _("A physical attack\ndelivered with a\nlong tail or a\nforeleg, etc.");
@@ -5377,6 +5382,8 @@ static const u8 sMoveFourLineDescription_Jetstream[] = _("The user shoots a\nfas
 static const u8 sMoveFourLineDescription_FrostGlare[] = _("The user chillingly\nstares at the foe.\nThe foe is now\nfrostbitten.");
 static const u8 sMoveFourLineDescription_KnucklePunch[] = _("The user punches\nthe foe with great\nforce. This may\ncause flinching.");
 static const u8 sMoveFourLineDescription_RousedFangs[] = _("The user's electric\nfangs jab into the\nthe foe. Raises the\nuser's Speed.");
+static const u8 sMoveFourLineDescription_StunningBlow[] = _("The user excitedly\nslams the foe to\nstun it. This may\ncause flinching.");
+
 
 #endif
 
@@ -6238,5 +6245,6 @@ const u8 *const gMoveFourLineDescriptionPointers[MOVES_COUNT - 1] = {
     [MOVE_FROST_GLARE       - 1] = sMoveFourLineDescription_FrostGlare,
     [MOVE_KNUCKLE_PUNCH     - 1] = sMoveFourLineDescription_KnucklePunch,
     [MOVE_ROUSED_FANGS      - 1] = sMoveFourLineDescription_RousedFangs,
+    [MOVE_STUNNING_BLOW      - 1] = sMoveFourLineDescription_StunningBlow,
 #endif
 };
