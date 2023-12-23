@@ -4145,6 +4145,7 @@ enum
 static void HandleTurnActionSelectionState(void)
 {
     s32 i, battler;
+    u8 trainerClass = gTrainers[gTrainerBattleOpponent_A].trainerClass;
 
     gBattleCommunication[ACTIONS_CONFIRMED_COUNT] = 0;
     for (battler = 0; battler < gBattlersCount; battler++)
@@ -4256,8 +4257,8 @@ static void HandleTurnActionSelectionState(void)
                     }
                     break;
                 case B_ACTION_USE_ITEM:
-                    if (FlagGet(B_FLAG_NO_BAG_USE))
-                    {
+                    if (gStatuses3[battler] & STATUS3_SKY_DROPPED)
+                    {   // If currently held by Sky Drop
                         RecordedBattle_ClearBattlerAction(battler, 1);
                         gSelectionBattleScripts[battler] = BattleScript_ActionSelectionItemsCantBeUsed;
                         gBattleCommunication[battler] = STATE_SELECTION_SCRIPT;
@@ -4265,14 +4266,25 @@ static void HandleTurnActionSelectionState(void)
                         *(gBattleStruct->stateIdAfterSelScript + battler) = STATE_BEFORE_ACTION_CHOSEN;
                         return;
                     }
-
                     if (((gBattleTypeFlags & (BATTLE_TYPE_LINK
-                                            | BATTLE_TYPE_FRONTIER_NO_PYRAMID
+                                            | BATTLE_TYPE_MULTI
+                                            | BATTLE_TYPE_TOWER_LINK_MULTI
+                                            | BATTLE_TYPE_SECRET_BASE
+                                            | BATTLE_TYPE_FRONTIER
                                             | BATTLE_TYPE_EREADER_TRAINER
-                                            | BATTLE_TYPE_RECORDED_LINK))
+                                            | BATTLE_TYPE_RECORDED
+                                            | BATTLE_TYPE_RECORDED_LINK
+                                            | BATTLE_TYPE_TRAINER_HILL))
                                             && !gTestRunnerEnabled)
-                                            // Or if currently held by Sky Drop
-                                            || gStatuses3[battler] & STATUS3_SKY_DROPPED)
+                        || (trainerClass == TRAINER_CLASS_RIVAL)
+                        || (trainerClass == TRAINER_CLASS_LEADER)
+                        || (trainerClass == TRAINER_CLASS_ELITE_FOUR)
+                        || (trainerClass == TRAINER_CLASS_CHAMPION)
+                        || (trainerClass ==  TRAINER_CLASS_AQUA_ADMIN)
+                        || (trainerClass ==  TRAINER_CLASS_AQUA_LEADER)
+                        || (trainerClass ==  TRAINER_CLASS_MAGMA_ADMIN)
+                        || (trainerClass ==  TRAINER_CLASS_MAGMA_LEADER)
+                        || (trainerClass ==  TRAINER_CLASS_ROUTE_BOSS))
                     {
                         RecordedBattle_ClearBattlerAction(battler, 1);
                         gSelectionBattleScripts[battler] = BattleScript_ActionSelectionItemsCantBeUsed;
@@ -5354,6 +5366,11 @@ static void HandleEndTurn_BattleWon(void)
         gBattlescriptCurrInstr = BattleScript_PayDayMoneyAndPickUpItems;
     }
 
+    if (FlagGet(B_FLAG_NO_BAG_USE))
+    {
+        FlagClear(B_FLAG_NO_BAG_USE);
+    }
+
     gBattleMainFunc = HandleEndTurn_FinishBattle;
 }
 
@@ -5388,6 +5405,11 @@ static void HandleEndTurn_BattleLost(void)
     else
     {
         gBattlescriptCurrInstr = BattleScript_LocalBattleLost;
+    }
+
+    if (FlagGet(B_FLAG_NO_BAG_USE))
+    {
+        FlagClear(B_FLAG_NO_BAG_USE);
     }
 
     gBattleMainFunc = HandleEndTurn_FinishBattle;

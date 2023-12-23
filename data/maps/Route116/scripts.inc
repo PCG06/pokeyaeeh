@@ -488,9 +488,7 @@ Route116_EventScript_Dawson_1:
 	end
 
 Route116_EventScript_Dawson_2:
-	setflag FLAG_NO_BAG_USE
 	trainerbattle_double TRAINER_DAWSON, Route116_EventScript_Dawson_Text_0, Route116_EventScript_Dawson_Text_1, Route116_EventScript_Dawson_Text_2, Route116_EventScript_Dawson2
-	clearflag FLAG_NO_BAG_USE
 	setflag FLAG_ROUTE_116_BOSS_DEFEATED
 	msgbox Route116_EventScript_Dawson2_Text_1, MSGBOX_NPC
 	goto Route116_EventScript_Dawson_1

@@ -2127,10 +2127,29 @@ static void HandleChooseActionAfterDma3(u32 battler)
 static void PlayerHandleChooseAction(u32 battler)
 {
     s32 i;
+    u8 trainerClass = gTrainers[gTrainerBattleOpponent_A].trainerClass;
 
     gBattlerControllerFuncs[battler] = HandleChooseActionAfterDma3;
     BattleTv_ClearExplosionFaintCause();
-    if (FlagGet(FLAG_NO_BAG_USE))
+    if (((gBattleTypeFlags & (BATTLE_TYPE_LINK
+                            | BATTLE_TYPE_MULTI
+                            | BATTLE_TYPE_TOWER_LINK_MULTI
+                            | BATTLE_TYPE_SECRET_BASE
+                            | BATTLE_TYPE_FRONTIER
+                            | BATTLE_TYPE_EREADER_TRAINER
+                            | BATTLE_TYPE_RECORDED
+                            | BATTLE_TYPE_RECORDED_LINK
+                            | BATTLE_TYPE_TRAINER_HILL))
+                            && !gTestRunnerEnabled)
+        || (trainerClass == TRAINER_CLASS_LEADER)
+        || (trainerClass == TRAINER_CLASS_RIVAL)
+        || (trainerClass == TRAINER_CLASS_ELITE_FOUR)
+        || (trainerClass == TRAINER_CLASS_CHAMPION)
+        || (trainerClass ==  TRAINER_CLASS_AQUA_ADMIN)
+        || (trainerClass ==  TRAINER_CLASS_AQUA_LEADER)
+        || (trainerClass ==  TRAINER_CLASS_MAGMA_ADMIN)
+        || (trainerClass ==  TRAINER_CLASS_MAGMA_LEADER)
+        || (trainerClass ==  TRAINER_CLASS_ROUTE_BOSS))
         BattlePutTextOnWindow(gText_BattleMenuNoBag, B_WIN_ACTION_MENU);
     else
         BattlePutTextOnWindow(gText_BattleMenu, B_WIN_ACTION_MENU);
