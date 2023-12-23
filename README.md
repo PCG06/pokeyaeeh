@@ -2,20 +2,27 @@
 
 ## What does YAEEH mean?
 
-YAEEH literally means Yet Another Emerald Enhancement Hack.
+YAEEH means Yet Another Emerald Enhancement Hack.
 
-It's a joke on the hundreds of Emerald enhancement hacks, but YAEEH isn't quite the Emerald enhancement hack you might have thought!
+It's a joke on the hundreds of Emerald enhancement hacks (no offence) out there, but YAEEH isn't quite the Emerald enhancement hack you might have thought!
 
 ## Overview
 
-YAEEH takes place in Hoenn. Wow, who would've thought an Emerald hack not taking place in Hoenn?! You play as Brendan or May, as usual and roam through the region. But something is different. The Gym Leaders seemed different, Wally seemed different, what is this? THEY HAVE BEEN REPLACED?! BY WHO?! By some people, yes. Your real dad has also come back with the milk to test you and see if you are worth the child suppport!
+YAEEH takes place in Hoenn. You play as Brendan or May, as usual and roam through the region. But something is different. The Gym Leaders seemed different, Wally seemed different, what is this? THEY HAVE BEEN REPLACED?! BY WHO?! By some weird people, yes. Beat them all and face the Elite Four and Champion to prove the world you're the very best, like no one ever was!
 
-## pokeemerald Expansion
-- This game wouldn't have been made without the amazing pokeemerald Expansion!
-- All the features like Pokémon, Abilities, Moves, Items, Battle Engine, Battle Gimmicks and forms, and more!
+There's some coarse language in the game, so if you're looking for a good experience, this hack is not for you! But if you like weird dialogue, you might find it interesting.
+
+## pokeemerald-expansion
+- This game wouldn't have been made without the amazing pokeemerald-expansion!
+- All the features like Pokémon, abilities, moves, items, battle engine, gimmicks and forms, and more were made by the talented folks over at RHH!
+- YAEEH is based off RHH's pokeemerald-expansion v1.6.2.
 
 ### Link
 - [GitHub](https://github.com/rh-hideout/pokeemerald-expansion)
+
+## Installation
+
+YAEEH has not released as it is still very early in development and I don't have a lot of time to work on it. But if you would like to play the game, you can follow these [instructions](/INSTALL.md) to download the repository. You can also ask for help in the Discord server linked below. 
 
 ## Features
 - ALL Pokémon, Abilities, Moves, Items from Gen1-Gen9! (DLC Pokémon are yet to be added)
@@ -29,12 +36,10 @@ YAEEH takes place in Hoenn. Wow, who would've thought an Emerald hack not taking
 - Custom abilities and moves.
 - Many abilities and moves have been reworked.
 - Pokémon getting new moves and abilities.
-- No IVs! Every Pokémon has max IVS.
+- No IVs! Every Pokémon has max IVS, no need to grind for hours to find a perfect Pokémon!
 - DexNav for finding Hidden Ability Pokémon and shiny hunting!
-- Ability Capsule to change between Abilities.
-- Ability Patch to change Ability to Hidden Ability.
 - Nature Mints to change Natures.
-- Hidden Crystals to change Hidden Power.
+- Hidden Crystals to change Hidden Power type.
 - Some edgy and cringy dialogue.
 - Expanded Bag pockets.
 - Bag sorting.
@@ -44,14 +49,17 @@ YAEEH takes place in Hoenn. Wow, who would've thought an Emerald hack not taking
 
 
 ## Credits
-The credits list is very large, I thank each and every one of them!
-- RH Hideout and everyone who helped in making the pokeemerald-expansion.
-- Iceman8911: 12h - 24h menu clock, lot of help with merging.
+- The credits list is very large, I thank each and every one of them!
+
+- RH Hideout, pret and everyone who helped in making the pokeemerald-expansion.
+- Huderlem: porymap and poryscript.
+- Iceman8911: 12h - 24h menu clock, balancing some Pokémon, suggestions, lot of help with merging.
 - HunarPG: lot of help with merging.
 - AsparagusEduardo: PoryMoves for updated movesets, better bag and lot of help.
 - Lunos: instant text, Rotom Catalog, lot of help.
-- Ghoulslash: map previews, rock climb, overworld expansion, Nature Mints.
-- Karathan:  field moves submenu.
+- Ghoulslash: map previews, rock climb, overworld expansion, Nature Mints, lot of help
+- Karathan: field moves submenu.
+- Agustin: item drops.
 - Dizzy Eggg: move info fixes, lot of help.
 - TheXaman: HGSS PokéDex, debug menu.
 - Ydarissep: Online Pokédex
@@ -66,14 +74,15 @@ The credits list is very large, I thank each and every one of them!
 - Rioluwott: mega in HoF, auto fast-surf, Hidden Crystals, battle UI update and fixes, custom ability code, move info.
 - Anon822: save type error screen.
 - Paccy: R to edit clock.
-- devolov: auto-HMs,  mutli-page options.
+- devolov: auto-HMs, mutli-page options.
 - Zeturic: warping party screen, move item.
 - セケツ (SEKETSU): trainers throw Poké Ball instead of dropping.
 - missiri: type icons.
 - Darky: Elite Redux Creator, custom ability ideas and code, move info.
 - BuffelSaft: Starter Multichoice.
 - Pawkkie: shortened TMHM use message, help.
-- Mudskip: Day on the menu clock.
+- Diego Mertens: Trainer Pokémon scaling and evolutions.
+- Graion Dilach: help in anim centering.
 - Black Fragrant: R info icon.
 - Poffin_Case: FRLG style NPC OW sprites.
 - Hyo: FRLG style protagonists OW sprites.
@@ -83,4 +92,4 @@ The credits list is very large, I thank each and every one of them!
 - [Discord](https://discord.gg/zCNUYuK72u)
 - [Online Pokédex](https://ydarissep.github.io/YAEEH-Pokedex)
 - [General Documentation](https://docs.google.com/spreadsheets/d/1BTwvOnlWT4arpc6ZZTufe7oWPGvPNOl_e3KRwQrmlv4)
-- [Wild Encounters](https://docs.google.com/spreadsheets/d/10QrQ0IoaS3JlR8oUPfBSbkUa4wbeCbdRik17_9KYFPs)
+
