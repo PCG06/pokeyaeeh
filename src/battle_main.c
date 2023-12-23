@@ -5366,11 +5366,6 @@ static void HandleEndTurn_BattleWon(void)
         gBattlescriptCurrInstr = BattleScript_PayDayMoneyAndPickUpItems;
     }
 
-    if (FlagGet(B_FLAG_NO_BAG_USE))
-    {
-        FlagClear(B_FLAG_NO_BAG_USE);
-    }
-
     gBattleMainFunc = HandleEndTurn_FinishBattle;
 }
 
@@ -5405,11 +5400,6 @@ static void HandleEndTurn_BattleLost(void)
     else
     {
         gBattlescriptCurrInstr = BattleScript_LocalBattleLost;
-    }
-
-    if (FlagGet(B_FLAG_NO_BAG_USE))
-    {
-        FlagClear(B_FLAG_NO_BAG_USE);
     }
 
     gBattleMainFunc = HandleEndTurn_FinishBattle;
