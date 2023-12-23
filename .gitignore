@@ -52,5 +52,4 @@ prefabs.json
 *.diff
 *.sym
 *.js
-tools/poryscript/**
 src/data/map_group_count.h
