@@ -16979,10 +16979,11 @@ Move_JET_PUNCH:
 	monbg ANIM_DEF_PARTNER
 	setalpha 12, 8
 	playsewithpan SE_M_DIVE, SOUND_PAN_TARGET
-	createsprite gDiveWaterSplashSpriteTemplate, 3, 1, 0
-	call DiveSetUpWaterDroplets
+	createvisualtask AnimTask_TranslateMonEllipticalRespectSide, 2, ANIM_ATTACKER, 24, 6, 1, 5
+	createvisualtask AnimTask_TraceMonBlended, 2, 0, 4, 7, 3
+	delay 18
 	createvisualtask AnimTask_BlendBattleAnimPal, 10, F_PAL_TARGET, 2, 0, 9, RGB_BLUE
-	waitforvisualfinish
+	delay 8
 	createsprite gSmallBubblePairSpriteTemplate, ANIM_TARGET, 2, 0x14, 0xffec, 0x14, ANIM_TARGET
 	createsprite gSmallBubblePairSpriteTemplate, ANIM_TARGET, 2, 0xa, 0xa, 0x14, ANIM_TARGET
 	createsprite gFistFootSpriteTemplate, ANIM_TARGET, 3, 0, 0, 8, 1, 0
@@ -17074,10 +17075,10 @@ Move_STUNNING_BLOW:
 	createsprite gFalseSwipeSliceSpriteTemplate, ANIM_TARGET, 2
 	playsewithpan SE_M_RAZOR_WIND, SOUND_PAN_TARGET
 	delay 25
-	createsprite gPinkHeartSpriteTemplate, ANIM_TARGET, 3, 0xff00, 0xffd6
-	createsprite gPinkHeartSpriteTemplate, ANIM_TARGET, 3, 0x80, 0xfff2
-	createsprite gPinkHeartSpriteTemplate, ANIM_TARGET, 3, 0x1a0, 0xffda
-	createsprite gPinkHeartSpriteTemplate, ANIM_TARGET, 3, 0xff80, 0xffea
+	createsprite gPinkHeartSprite2Template, ANIM_TARGET, 3, 0xff00, 0xffd6
+	createsprite gPinkHeartSprite2Template, ANIM_TARGET, 3, 0x80, 0xfff2
+	createsprite gPinkHeartSprite2Template, ANIM_TARGET, 3, 0x1a0, 0xffda
+	createsprite gPinkHeartSprite2Template, ANIM_TARGET, 3, 0xff80, 0xffea
 	waitforvisualfinish
 	blendoff
 	clearmonbg ANIM_DEF_PARTNER

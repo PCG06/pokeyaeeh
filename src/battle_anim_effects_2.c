@@ -71,6 +71,7 @@ static void AnimEyeSparkle(struct Sprite *);
 static void AnimEyeSparkle_Step(struct Sprite *sprite);
 static void AnimAngel(struct Sprite *);
 static void AnimPinkHeart(struct Sprite *);
+static void AnimPinkHeart2(struct Sprite *);
 static void AnimDevil(struct Sprite *);
 static void AnimFurySwipes(struct Sprite *);
 static void AnimMovementWaves(struct Sprite *);
@@ -1081,6 +1082,17 @@ const struct SpriteTemplate gPinkHeartSpriteTemplate =
     .images = NULL,
     .affineAnims = gDummySpriteAffineAnimTable,
     .callback = AnimPinkHeart,
+};
+
+const struct SpriteTemplate gPinkHeartSprite2Template =
+{
+    .tileTag = ANIM_TAG_PINK_HEART,
+    .paletteTag = ANIM_TAG_PINK_HEART,
+    .oam = &gOamData_AffineOff_ObjNormal_16x16,
+    .anims = gDummySpriteAnimTable,
+    .images = NULL,
+    .affineAnims = gDummySpriteAffineAnimTable,
+    .callback = AnimPinkHeart2,
 };
 
 const union AnimCmd gDevilAnimCmds1[] =
@@ -3590,6 +3602,34 @@ static void AnimPinkHeart_Step(struct Sprite *sprite)
 
 static void AnimPinkHeart(struct Sprite *sprite)
 {
+    if (sprite->data[0] == 0)
+    {
+        sprite->data[1] = gBattleAnimArgs[0];
+        sprite->data[2] = gBattleAnimArgs[1];
+        sprite->data[0]++;
+    }
+    else
+    {
+        sprite->data[4] += sprite->data[1];
+        sprite->x2 = sprite->data[4] >> 8;
+        sprite->y2 = Sin(sprite->data[3], sprite->data[2]);
+        sprite->data[3] = (sprite->data[3] + 3) & 0xFF;
+        if (sprite->data[3] > 70)
+        {
+            sprite->callback = AnimPinkHeart_Step;
+            sprite->x += sprite->x2;
+            sprite->y += sprite->y2;
+            sprite->x2 = 0;
+            sprite->y2 = 0;
+            sprite->data[3] = Random2() % 180;
+        }
+    }
+}
+
+static void AnimPinkHeart2(struct Sprite *sprite)
+{
+    SetAverageBattlerPositions(gBattleAnimTarget, FALSE, &sprite->x, &sprite->y);
+
     if (sprite->data[0] == 0)
     {
         sprite->data[1] = gBattleAnimArgs[0];
