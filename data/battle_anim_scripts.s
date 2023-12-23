@@ -860,6 +860,7 @@ gBattleAnims_Moves::
 	.4byte Move_MATCHA_GOTCHA
 	.4byte Move_SYRUP_BOMB
 	.4byte Move_IVY_CUDGEL
+@@@@@@@@@@@@ CUSTOM MOVES @@@@@@@@@@@@
 	.4byte Move_JETSTREAM
 	.4byte Move_FROST_GLARE
 	.4byte Move_KNUCKLE_PUNCH
