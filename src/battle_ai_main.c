@@ -3941,6 +3941,8 @@ static s32 AI_CheckViability(u32 battlerAtk, u32 battlerDef, u32 move, s32 score
             //fallthrough
         default: // protect
             ProtectChecks(battlerAtk, battlerDef, move, predictedMove, &score);
+            if (gDisableStructs[battlerAtk].isFirstTurn && aiData->abilities[battlerAtk] == ABILITY_SPEED_BOOST)
+            ADJUST_SCORE(10);
             break;
         }
         break;

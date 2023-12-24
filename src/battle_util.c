@@ -10431,6 +10431,13 @@ bool32 CanMegaEvolve(u32 battler)
     else
         holdEffect = ItemId_GetHoldEffect(itemId);
 
+    if (gBattleMons[battler].species == SPECIES_SHARPEDO
+     && GetBattlerAbility(battler) == ABILITY_SPEED_BOOST
+     && HasMove(battler, MOVE_PROTECT)
+     && gDisableStructs[battler].isFirstTurn
+     && holdEffect == HOLD_EFFECT_MEGA_STONE)
+        return FALSE;
+
     // Check if there is an entry in the evolution table for regular Mega Evolution.
     if (GetBattleFormChangeTargetSpecies(battler, FORM_CHANGE_BATTLE_MEGA_EVOLUTION_ITEM) != SPECIES_NONE)
     {

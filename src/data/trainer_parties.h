@@ -12667,8 +12667,11 @@ static const struct TrainerMon sParty_Leaf[] = {
 
 static const struct TrainerMon sParty_BrendanLinkPlaceholder[] = {
     {
-    .lvl = 5,
-    .species = SPECIES_GROUDON,
+    .lvl = 100,
+    .species = SPECIES_SHARPEDO,
+    .ability = ABILITY_SPEED_BOOST,
+    .heldItem = ITEM_SHARPEDONITE,
+    .moves = {MOVE_PROTECT, MOVE_CRUNCH, MOVE_FAKE_OUT, MOVE_LIQUIDATION}
     }
 };
 

@@ -9390,7 +9390,7 @@ const struct Trainer gTrainers[] = {
         .trainerPic = TRAINER_PIC_RS_BRENDAN,
         .trainerName = _("Brendan"),
         .doubleBattle = FALSE,
-        .aiFlags = 0,
+        .aiFlags = AI_FLAG_CHECK_VIABILITY,
         .party = TRAINER_PARTY(sParty_BrendanLinkPlaceholder),
     },
 

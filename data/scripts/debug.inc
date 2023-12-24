@@ -160,25 +160,10 @@ Route123_EventScript_Alberto_StartBattle::
     trainerbattle_no_intro TRAINER_ALBERTO, Route123_Text_AlbertoDefeat
     release
     end
-Route123_EventScript_Alberto_Text_AskSkyBattle:
-    .string "Care for a Sky Battle with a Sky\n"
-    .string "Trainer?$"
-
-Route123_EventScript_Alberto_Text_DenySkyBattle:
-    .string "Well, this is a bit disappointing for a\n"
-    .string "Sky Trainer like me...$"
-
-Route123_EventScript_Alberto_Text_StartBattle:
-    .string "Woo hoo! I'm a Sky Trainer! Look at me\n"
-    .string "go! Wooooo!$"
-
-Route123_EventScript_Alberto_Text_No_Flying_Pokemon:
-    .string "Well, well, isn't this a shame. You don't\n"
-    .string "have any flying Pokémon. We Sky\l"
-    .string "Trainers only battle with Pokémon that\l"
-    .string "can fly in the sky.$"
 
 Debug_EventScript_Script_6::
+	cleartrainerflag TRAINER_BRENDAN_PLACEHOLDER
+		trainerbattle_single TRAINER_BRENDAN_PLACEHOLDER, JaggedPass_Text_EricIntro, JaggedPass_Text_EricDefeat
 	end
 
 Debug_EventScript_Script_7::
@@ -273,5 +258,23 @@ DebugText_DaycareOnePokemon:
 
 DebugText_DaycarePokemonNotCompatible:
 	.string "Your Pokémon at Daycare can't\nhave babies together!$"
+
+Route123_EventScript_Alberto_Text_AskSkyBattle:
+    .string "Care for a Sky Battle with a Sky\n"
+    .string "Trainer?$"
+
+Route123_EventScript_Alberto_Text_DenySkyBattle:
+    .string "Well, this is a bit disappointing for a\n"
+    .string "Sky Trainer like me...$"
+
+Route123_EventScript_Alberto_Text_StartBattle:
+    .string "Woo hoo! I'm a Sky Trainer! Look at me\n"
+    .string "go! Wooooo!$"
+
+Route123_EventScript_Alberto_Text_No_Flying_Pokemon:
+    .string "Well, well, isn't this a shame. You don't\n"
+    .string "have any flying Pokémon. We Sky\l"
+    .string "Trainers only battle with Pokémon that\l"
+    .string "can fly in the sky.$"
 
 .endif
