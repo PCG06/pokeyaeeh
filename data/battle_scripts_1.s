@@ -8064,8 +8064,10 @@ BattleScript_IllusionOff::
 	return
 
 BattleScript_CottonDownActivates::
-	setbyte sFIXED_ABILITY_POPUP, TRUE
-	call BattleScript_AbilityPopUp
+	copybyte sSAVED_BATTLER, gBattlerAttacker
+	showabilitypopup BS_TARGET
+	pause B_WAIT_TIME_LONG
+	destroyabilitypopup
 	copybyte gEffectBattler, gBattlerTarget
 	savetarget
 	setbyte gBattlerTarget, 0
@@ -8086,8 +8088,8 @@ BattleScript_CottonDownLoopIncrement:
 	addbyte gBattlerTarget, 1
 	jumpifbytenotequal gBattlerTarget, gBattlersCount, BattleScript_CottonDownLoop
 BattleScript_CottonDownReturn:
-	restoretarget
-	destroyabilitypopup
+	swapattackerwithtarget
+	copybyte gBattlerAttacker, sSAVED_BATTLER
 	return
 
 BattleScript_AnticipationActivates::
