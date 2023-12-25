@@ -23,6 +23,9 @@ Debug_CheatStart::
 	givemon SPECIES_MUDKIP, 20, ITEM_NONE
 	setflag FLAG_SYS_POKEDEX_GET
 	special SetUnlockedPokedexFlags
+	setflag FLAG_SYS_ENABLE_MOVE_RELEARNERS
+    setflag FLAG_SYS_POKENAV_GET
+    setflag FLAG_SYS_DEXNAV_GET
 	setflag FLAG_RECEIVED_POKEDEX_FROM_BIRCH
 	setvar VAR_CABLE_CLUB_TUTORIAL_STATE, 2
 	setflag FLAG_SYS_NATIONAL_DEX
@@ -108,27 +111,32 @@ Debug_FlagsAndVarNotSetBattleConfigMessage_Text:
 	.string "usable flag and a usable var in:\l"
 	.string "'include/config/battle.h'!$"
 
-Debug_EventScript_Script_1:: @ testing
-    cleartrainerflag TRAINER_MAY_PLACEHOLDER
-	    trainerbattle_double TRAINER_MAY_PLACEHOLDER, MeteorFalls_1F_2R_Text_JayIntro, MeteorFalls_1F_2R_Text_JayDefeat, MeteorFalls_1F_2R_Text_JayNotEnoughMons, MeteorFalls_1F_2R_EventScript_RegisterJay
-	end
+Debug_EventScript_Script_1::
+    goto_if_set FLAG_UNLOCK_CHEAT_MENU, Debug_EventScript_UnsetCheatFlag
+    goto Debug_EventScript_SetCheatFlag
+    end
 
-Debug_EventScript_Script_2::
+Debug_EventScript_Script_2:: @ one Mega Evolution
     cleartrainerflag TRAINER_ERIC
-		trainerbattle_single TRAINER_ERIC, JaggedPass_Text_EricIntro, JaggedPass_Text_EricDefeat
+	trainerbattle_single TRAINER_ERIC, JaggedPass_Text_EricIntro, JaggedPass_Text_EricDefeat
 	end
 
-Debug_EventScript_Script_3::
+Debug_EventScript_Script_3:: @ both have Mega Evolution
+	cleartrainerflag TRAINER_JOHN_AND_JAY_4
+	trainerbattle_double TRAINER_JOHN_AND_JAY_4, MeteorFalls_1F_2R_Text_JayIntro, MeteorFalls_1F_2R_Text_JayDefeat, MeteorFalls_1F_2R_Text_JayNotEnoughMons, MeteorFalls_1F_2R_EventScript_RegisterJay
+    end
+
+Debug_EventScript_Script_4:: @ Rillaboom sets Grassy Terrain
 	cleartrainerflag TRAINER_JOHN_AND_JAY_2
-		trainerbattle_double TRAINER_JOHN_AND_JAY_2, MeteorFalls_1F_2R_Text_JayIntro, MeteorFalls_1F_2R_Text_JayDefeat, MeteorFalls_1F_2R_Text_JayNotEnoughMons, MeteorFalls_1F_2R_EventScript_RegisterJay
+	trainerbattle_double TRAINER_JOHN_AND_JAY_2, MeteorFalls_1F_2R_Text_JayIntro, MeteorFalls_1F_2R_Text_JayDefeat, MeteorFalls_1F_2R_Text_JayNotEnoughMons, MeteorFalls_1F_2R_EventScript_RegisterJay
 	end
 
-Debug_EventScript_Script_4::
+Debug_EventScript_Script_5:: @ Honchkrow sets Tailwind
 	cleartrainerflag TRAINER_JOHN_AND_JAY_3
-		trainerbattle_double TRAINER_JOHN_AND_JAY_3, MeteorFalls_1F_2R_Text_JayIntro, MeteorFalls_1F_2R_Text_JayDefeat, MeteorFalls_1F_2R_Text_JayNotEnoughMons, MeteorFalls_1F_2R_EventScript_RegisterJay
-	end
+	trainerbattle_double TRAINER_JOHN_AND_JAY_3, MeteorFalls_1F_2R_Text_JayIntro, MeteorFalls_1F_2R_Text_JayDefeat, MeteorFalls_1F_2R_Text_JayNotEnoughMons, MeteorFalls_1F_2R_EventScript_RegisterJay
+    end
 
-Debug_EventScript_Script_5::
+Debug_EventScript_Script_6:: @ Sky Battle
 	lock
     faceplayer
     checktrainerflag TRAINER_ALBERTO
@@ -137,40 +145,27 @@ Debug_EventScript_Script_5::
     release
     end
 
-Route123_EventScript_Alberto_Battle_Event_Script::
-    msgbox Route123_EventScript_Alberto_Text_AskSkyBattle, MSGBOX_YESNO
-    compare VAR_RESULT, NO
-    goto_if_eq Route123_EventScript_Alberto_DenySkyBattle
-    special TrySkyBattle
-    compare VAR_RESULT, TRUE
-    goto_if_eq Route123_EventScript_Alberto_StartBattle
-    msgbox Route123_EventScript_Alberto_Text_No_Flying_Pokemon
-    closemessage
-    release
-    end
-
-Route123_EventScript_Alberto_DenySkyBattle::
-    msgbox Route123_EventScript_Alberto_Text_DenySkyBattle
-    closemessage
-    release
-    end
-
-Route123_EventScript_Alberto_StartBattle::
-    msgbox Route123_EventScript_Alberto_Text_StartBattle
-    trainerbattle_no_intro TRAINER_ALBERTO, Route123_Text_AlbertoDefeat
-    release
-    end
-
-Debug_EventScript_Script_6::
-	cleartrainerflag TRAINER_BRENDAN_PLACEHOLDER
-		trainerbattle_single TRAINER_BRENDAN_PLACEHOLDER, JaggedPass_Text_EricIntro, JaggedPass_Text_EricDefeat
-	end
-
 Debug_EventScript_Script_7::
+	cleartrainerflag TRAINER_MAY_PLACEHOLDER
+	trainerbattle_double TRAINER_MAY_PLACEHOLDER, MeteorFalls_1F_2R_Text_JayIntro, MeteorFalls_1F_2R_Text_JayDefeat, MeteorFalls_1F_2R_Text_JayNotEnoughMons, MeteorFalls_1F_2R_EventScript_RegisterJay
 	end
 
 Debug_EventScript_Script_8::
 	end
+
+Debug_EventScript_CHEAT_Script_1::
+    giveitem ITEM_RARE_CANDY, 999
+	closemessage
+	end
+
+Debug_EventScript_CHEAT_Script_2::
+Debug_EventScript_CHEAT_Script_3::
+Debug_EventScript_CHEAT_Script_4::
+Debug_EventScript_CHEAT_Script_5::
+Debug_EventScript_CHEAT_Script_6::
+Debug_EventScript_CHEAT_Script_7::
+Debug_EventScript_CHEAT_Script_8::
+    end
 
 Debug_CheckSaveBlock::
 	callnative CheckSaveBlock1Size
@@ -258,6 +253,46 @@ DebugText_DaycareOnePokemon:
 
 DebugText_DaycarePokemonNotCompatible:
 	.string "Your Pokémon at Daycare can't\nhave babies together!$"
+
+Debug_EventScript_SetCheatFlag::
+    msgbox Debug_Text_SetCheatFlag, MSGBOX_AUTOCLOSE
+    setflag FLAG_UNLOCK_CHEAT_MENU
+	end
+
+Debug_EventScript_UnsetCheatFlag::
+    msgbox Debug_Text_UnsetCheatFlag, MSGBOX_AUTOCLOSE
+    clearflag FLAG_UNLOCK_CHEAT_MENU
+	end
+
+Debug_Text_SetCheatFlag::
+    .string "Cheat flag set.$"
+
+Debug_Text_UnsetCheatFlag::
+    .string "Cheat flag unset.$"
+
+Route123_EventScript_Alberto_Battle_Event_Script::
+    msgbox Route123_EventScript_Alberto_Text_AskSkyBattle, MSGBOX_YESNO
+    compare VAR_RESULT, NO
+    goto_if_eq Route123_EventScript_Alberto_DenySkyBattle
+    special TrySkyBattle
+    compare VAR_RESULT, TRUE
+    goto_if_eq Route123_EventScript_Alberto_StartBattle
+    msgbox Route123_EventScript_Alberto_Text_No_Flying_Pokemon
+    closemessage
+    release
+    end
+
+Route123_EventScript_Alberto_DenySkyBattle::
+    msgbox Route123_EventScript_Alberto_Text_DenySkyBattle
+    closemessage
+    release
+    end
+
+Route123_EventScript_Alberto_StartBattle::
+    msgbox Route123_EventScript_Alberto_Text_StartBattle
+    trainerbattle_no_intro TRAINER_ALBERTO, Route123_Text_AlbertoDefeat
+    release
+    end
 
 Route123_EventScript_Alberto_Text_AskSkyBattle:
     .string "Care for a Sky Battle with a Sky\n"

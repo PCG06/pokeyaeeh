@@ -76,6 +76,7 @@ enum DebugMenu
     DEBUG_MENU_ITEM_FILL,
     DEBUG_MENU_ITEM_SOUND,
     DEBUG_MENU_ITEM_ACCESS_PC,
+    DEBUG_MENU_ITEM_CHEAT_SCRIPTS,
     DEBUG_MENU_ITEM_CANCEL,
 };
 
@@ -109,6 +110,18 @@ enum ScriptMenu
     DEBUG_UTIL_MENU_ITEM_SCRIPT_6,
     DEBUG_UTIL_MENU_ITEM_SCRIPT_7,
     DEBUG_UTIL_MENU_ITEM_SCRIPT_8,
+};
+
+enum CheatScriptMenu
+{
+    DEBUG_UTIL_MENU_ITEM_CHEAT_SCRIPT_1,
+    DEBUG_UTIL_MENU_ITEM_CHEAT_SCRIPT_2,
+    DEBUG_UTIL_MENU_ITEM_CHEAT_SCRIPT_3,
+    DEBUG_UTIL_MENU_ITEM_CHEAT_SCRIPT_4,
+    DEBUG_UTIL_MENU_ITEM_CHEAT_SCRIPT_5,
+    DEBUG_UTIL_MENU_ITEM_CHEAT_SCRIPT_6,
+    DEBUG_UTIL_MENU_ITEM_CHEAT_SCRIPT_7,
+    DEBUG_UTIL_MENU_ITEM_CHEAT_SCRIPT_8,
 };
 
 enum FlagsVarsMenu
@@ -301,6 +314,15 @@ static void DebugAction_Util_Script_6(u8 taskId);
 static void DebugAction_Util_Script_7(u8 taskId);
 static void DebugAction_Util_Script_8(u8 taskId);
 
+static void DebugAction_Util_CHEAT_Script_1(u8 taskId);
+static void DebugAction_Util_CHEAT_Script_2(u8 taskId);
+static void DebugAction_Util_CHEAT_Script_3(u8 taskId);
+static void DebugAction_Util_CHEAT_Script_4(u8 taskId);
+static void DebugAction_Util_CHEAT_Script_5(u8 taskId);
+static void DebugAction_Util_CHEAT_Script_6(u8 taskId);
+static void DebugAction_Util_CHEAT_Script_7(u8 taskId);
+static void DebugAction_Util_CHEAT_Script_8(u8 taskId);
+
 static void DebugAction_OpenUtilitiesMenu(u8 taskId);
 static void DebugAction_OpenScriptsMenu(u8 taskId);
 static void DebugAction_OpenFlagsVarsMenu(u8 taskId);
@@ -312,6 +334,7 @@ static void DebugAction_AccessPC(u8 taskId);
 static void DebugTask_HandleMenuInput_Main(u8 taskId);
 static void DebugTask_HandleMenuInput_Utilities(u8 taskId);
 static void DebugTask_HandleMenuInput_Scripts(u8 taskId);
+static void DebugTask_HandleMenuInput_CheatScripts(u8 taskId);
 static void DebugTask_HandleMenuInput_FlagsVars(u8 taskId);
 static void DebugTask_HandleMenuInput_Battle(u8 taskId);
 static void DebugTask_HandleMenuInput_Give(u8 taskId);
@@ -407,6 +430,14 @@ extern const u8 Debug_EventScript_Script_5[];
 extern const u8 Debug_EventScript_Script_6[];
 extern const u8 Debug_EventScript_Script_7[];
 extern const u8 Debug_EventScript_Script_8[];
+extern const u8 Debug_EventScript_CHEAT_Script_1[];
+extern const u8 Debug_EventScript_CHEAT_Script_2[];
+extern const u8 Debug_EventScript_CHEAT_Script_3[];
+extern const u8 Debug_EventScript_CHEAT_Script_4[];
+extern const u8 Debug_EventScript_CHEAT_Script_5[];
+extern const u8 Debug_EventScript_CHEAT_Script_6[];
+extern const u8 Debug_EventScript_CHEAT_Script_7[];
+extern const u8 Debug_EventScript_CHEAT_Script_8[];
 extern const u8 DebugScript_DaycareMonsNotCompatible[];
 extern const u8 DebugScript_OneDaycareMons[];
 extern const u8 DebugScript_ZeroDaycareMons[];
@@ -434,6 +465,7 @@ static const u8 sDebugText_Continue[] =      _("Continue…{CLEAR_TO 110}{RIGHT_
 // Main Menu
 static const u8 sDebugText_Utilities[] =        _("Utilities…{CLEAR_TO 110}{RIGHT_ARROW}");
 static const u8 sDebugText_Scripts[] =          _("Scripts…{CLEAR_TO 110}{RIGHT_ARROW}");
+static const u8 sDebugText_CheatScripts[] =     _("CheatScripts…{CLEAR_TO 110}{RIGHT_ARROW}");
 static const u8 sDebugText_FlagsVars[] =        _("Flags & Vars…{CLEAR_TO 110}{RIGHT_ARROW}");
 static const u8 sDebugText_Battle[] =           _("Battle Test{CLEAR_TO 110}{RIGHT_ARROW}");
 static const u8 sDebugText_Give[] =             _("Give X…{CLEAR_TO 110}{RIGHT_ARROW}");
@@ -442,14 +474,25 @@ static const u8 sDebugText_Sound[] =            _("Sound…{CLEAR_TO 110}{RIGHT_
 static const u8 sDebugText_AccessPC[] =         _("Access PC…{CLEAR_TO 110}{RIGHT_ARROW}");
 static const u8 sDebugText_Cancel[] =           _("Cancel");
 // Script menu
-static const u8 sDebugText_Util_Script_1[] =               _("Battle testing");
+static const u8 sDebugText_Util_Script_1[] =               _("Testing stuff");
 static const u8 sDebugText_Util_Script_2[] =               _("Single Battle");
-static const u8 sDebugText_Util_Script_3[] =               _("Terrain Double Battle");
-static const u8 sDebugText_Util_Script_4[] =               _("Tailwind Double Battle");
-static const u8 sDebugText_Util_Script_5[] =               _("Sky Battle");
-static const u8 sDebugText_Util_Script_6[] =               _("Script 6");
+static const u8 sDebugText_Util_Script_3[] =               _("Double Battle");
+static const u8 sDebugText_Util_Script_4[] =               _("Terrain Double Battle");
+static const u8 sDebugText_Util_Script_5[] =               _("Tailwind Double Battle");
+static const u8 sDebugText_Util_Script_6[] =               _("Sky Battle");
 static const u8 sDebugText_Util_Script_7[] =               _("Script 7");
 static const u8 sDebugText_Util_Script_8[] =               _("Script 8");
+
+// Script menu
+static const u8 sDebugText_Util_CHEAT_Script_1[] =               _("Candies");
+static const u8 sDebugText_Util_CHEAT_Script_2[] =               _("Cheat Script 2");
+static const u8 sDebugText_Util_CHEAT_Script_3[] =               _("Cheat Script 3");
+static const u8 sDebugText_Util_CHEAT_Script_4[] =               _("Cheat Script 4");
+static const u8 sDebugText_Util_CHEAT_Script_5[] =               _("Cheat Script 5");
+static const u8 sDebugText_Util_CHEAT_Script_6[] =               _("Cheat Script 6");
+static const u8 sDebugText_Util_CHEAT_Script_7[] =               _("Cheat Script 7");
+static const u8 sDebugText_Util_CHEAT_Script_8[] =               _("Cheat Script 8");
+
 // Util Menu
 static const u8 sDebugText_Util_HealParty[] =                _("Heal Party");
 static const u8 sDebugText_Util_FlyToMap[] =                 _("Fly to map…{CLEAR_TO 110}{RIGHT_ARROW}");
@@ -617,6 +660,7 @@ static const struct ListMenuItem sDebugMenu_Items_Main[] =
     [DEBUG_MENU_ITEM_FILL]      = {sDebugText_Fill,      DEBUG_MENU_ITEM_FILL},
     [DEBUG_MENU_ITEM_SOUND]     = {sDebugText_Sound,     DEBUG_MENU_ITEM_SOUND},
     [DEBUG_MENU_ITEM_ACCESS_PC] = {sDebugText_AccessPC,  DEBUG_MENU_ITEM_ACCESS_PC},
+    [DEBUG_MENU_ITEM_CHEAT_SCRIPTS]   = {sDebugText_CheatScripts,   DEBUG_MENU_ITEM_CHEAT_SCRIPTS},
     [DEBUG_MENU_ITEM_CANCEL]    = {sDebugText_Cancel,    DEBUG_MENU_ITEM_CANCEL}
 };
 
@@ -650,6 +694,18 @@ static const struct ListMenuItem sDebugMenu_Items_Scripts[] =
     [DEBUG_UTIL_MENU_ITEM_SCRIPT_6] = {sDebugText_Util_Script_6, DEBUG_UTIL_MENU_ITEM_SCRIPT_6},
     [DEBUG_UTIL_MENU_ITEM_SCRIPT_7] = {sDebugText_Util_Script_7, DEBUG_UTIL_MENU_ITEM_SCRIPT_7},
     [DEBUG_UTIL_MENU_ITEM_SCRIPT_8] = {sDebugText_Util_Script_8, DEBUG_UTIL_MENU_ITEM_SCRIPT_8},
+};
+
+static const struct ListMenuItem sDebugMenu_Items_CheatScripts[] =
+{
+    [DEBUG_UTIL_MENU_ITEM_CHEAT_SCRIPT_1] = {sDebugText_Util_CHEAT_Script_1, DEBUG_UTIL_MENU_ITEM_CHEAT_SCRIPT_1},
+    [DEBUG_UTIL_MENU_ITEM_CHEAT_SCRIPT_2] = {sDebugText_Util_CHEAT_Script_2, DEBUG_UTIL_MENU_ITEM_CHEAT_SCRIPT_2},
+    [DEBUG_UTIL_MENU_ITEM_CHEAT_SCRIPT_3] = {sDebugText_Util_CHEAT_Script_3, DEBUG_UTIL_MENU_ITEM_CHEAT_SCRIPT_3},
+    [DEBUG_UTIL_MENU_ITEM_CHEAT_SCRIPT_4] = {sDebugText_Util_CHEAT_Script_4, DEBUG_UTIL_MENU_ITEM_CHEAT_SCRIPT_4},
+    [DEBUG_UTIL_MENU_ITEM_CHEAT_SCRIPT_5] = {sDebugText_Util_CHEAT_Script_5, DEBUG_UTIL_MENU_ITEM_CHEAT_SCRIPT_5},
+    [DEBUG_UTIL_MENU_ITEM_CHEAT_SCRIPT_6] = {sDebugText_Util_CHEAT_Script_6, DEBUG_UTIL_MENU_ITEM_CHEAT_SCRIPT_6},
+    [DEBUG_UTIL_MENU_ITEM_CHEAT_SCRIPT_7] = {sDebugText_Util_CHEAT_Script_7, DEBUG_UTIL_MENU_ITEM_CHEAT_SCRIPT_7},
+    [DEBUG_UTIL_MENU_ITEM_CHEAT_SCRIPT_8] = {sDebugText_Util_CHEAT_Script_8, DEBUG_UTIL_MENU_ITEM_CHEAT_SCRIPT_8},
 };
 
 static const struct ListMenuItem sDebugMenu_Items_FlagsVars[] =
@@ -761,6 +817,7 @@ static void (*const sDebugMenu_Actions_Main[])(u8) =
     [DEBUG_MENU_ITEM_FILL]      = DebugAction_OpenFillMenu,
     [DEBUG_MENU_ITEM_SOUND]     = DebugAction_OpenSoundMenu,
     [DEBUG_MENU_ITEM_ACCESS_PC] = DebugAction_AccessPC,
+    [DEBUG_MENU_ITEM_CHEAT_SCRIPTS]   = DebugAction_OpenCheatScriptsMenu,
     [DEBUG_MENU_ITEM_CANCEL]    = DebugAction_Cancel
 };
 static void (*const sDebugMenu_Actions_Utilities[])(u8) =
@@ -793,6 +850,18 @@ static void (*const sDebugMenu_Actions_Scripts[])(u8) =
     [DEBUG_UTIL_MENU_ITEM_SCRIPT_6] = DebugAction_Util_Script_6,
     [DEBUG_UTIL_MENU_ITEM_SCRIPT_7] = DebugAction_Util_Script_7,
     [DEBUG_UTIL_MENU_ITEM_SCRIPT_8] = DebugAction_Util_Script_8,
+};
+
+static void (*const sDebugMenu_Actions_CheatScripts[])(u8) =
+{
+    [DEBUG_UTIL_MENU_ITEM_CHEAT_SCRIPT_1] = DebugAction_Util_CHEAT_Script_1,
+    [DEBUG_UTIL_MENU_ITEM_CHEAT_SCRIPT_2] = DebugAction_Util_CHEAT_Script_2,
+    [DEBUG_UTIL_MENU_ITEM_CHEAT_SCRIPT_3] = DebugAction_Util_CHEAT_Script_3,
+    [DEBUG_UTIL_MENU_ITEM_CHEAT_SCRIPT_4] = DebugAction_Util_CHEAT_Script_4,
+    [DEBUG_UTIL_MENU_ITEM_CHEAT_SCRIPT_5] = DebugAction_Util_CHEAT_Script_5,
+    [DEBUG_UTIL_MENU_ITEM_CHEAT_SCRIPT_6] = DebugAction_Util_CHEAT_Script_6,
+    [DEBUG_UTIL_MENU_ITEM_CHEAT_SCRIPT_7] = DebugAction_Util_CHEAT_Script_7,
+    [DEBUG_UTIL_MENU_ITEM_CHEAT_SCRIPT_8] = DebugAction_Util_CHEAT_Script_8,
 };
 
 static void (*const sDebugMenu_Actions_Flags[])(u8) =
@@ -923,6 +992,13 @@ static const struct ListMenuTemplate sDebugMenu_ListTemplate_Scripts =
     .items = sDebugMenu_Items_Scripts,
     .moveCursorFunc = ListMenuDefaultCursorMoveFunc,
     .totalItems = ARRAY_COUNT(sDebugMenu_Items_Scripts),
+};
+
+static const struct ListMenuTemplate sDebugMenu_ListTemplate_CheatScripts =
+{
+    .items = sDebugMenu_Items_CheatScripts,
+    .moveCursorFunc = ListMenuDefaultCursorMoveFunc,
+    .totalItems = ARRAY_COUNT(sDebugMenu_Items_CheatScripts),
 };
 
 static const struct ListMenuTemplate sDebugMenu_ListTemplate_FlagsVars =
@@ -1365,6 +1441,25 @@ static void DebugTask_HandleMenuInput_Scripts(u8 taskId)
     }
 }
 
+static void DebugTask_HandleMenuInput_CheatScripts(u8 taskId)
+{
+    void (*func)(u8);
+    u32 input = ListMenu_ProcessInput(gTasks[taskId].tMenuTaskId);
+
+    if (JOY_NEW(A_BUTTON))
+    {
+        PlaySE(SE_SELECT);
+        if ((func = sDebugMenu_Actions_CheatScripts[input]) != NULL)
+            func(taskId);
+    }
+    else if (JOY_NEW(B_BUTTON))
+    {
+        PlaySE(SE_SELECT);
+        Debug_DestroyMenu_Full(taskId);
+        ScriptContext_Enable();
+    }
+}
+
 static void DebugTask_HandleMenuInput_FlagsVars(u8 taskId)
 {
     void (*func)(u8);
@@ -1601,7 +1696,6 @@ static void DebugTask_HandleMenuInput_Sound(u8 taskId)
     else if (JOY_NEW(B_BUTTON))
     {
         PlaySE(SE_SELECT);
-        Debug_DestroyMenu(taskId);
         Debug_ReShowMainMenu();
     }
 }
@@ -1618,6 +1712,12 @@ static void DebugAction_OpenScriptsMenu(u8 taskId)
 {
     Debug_DestroyMenu(taskId);
     Debug_ShowMenu(DebugTask_HandleMenuInput_Scripts, sDebugMenu_ListTemplate_Scripts);
+}
+
+void DebugAction_OpenCheatScriptsMenu(u8 taskId)
+{
+    Debug_DestroyMenu(taskId);
+    Debug_ShowMenu(DebugTask_HandleMenuInput_CheatScripts, sDebugMenu_ListTemplate_CheatScripts);
 }
 
 static void DebugAction_OpenFlagsVarsMenu(u8 taskId)
@@ -2115,7 +2215,6 @@ static void DebugAction_Util_Clear_Boxes(u8 taskId)
 static void DebugAction_Util_CheatStart(u8 taskId)
 {
     InitTimeBasedEvents();
-    FlagSet(FLAG_SYS_ENABLE_MOVE_RELEARNERS);
     Debug_DestroyMenu_Full_Script(taskId, Debug_CheatStart);
 }
 
@@ -2164,6 +2263,46 @@ static void DebugAction_Util_Script_7(u8 taskId)
 static void DebugAction_Util_Script_8(u8 taskId)
 {
     Debug_DestroyMenu_Full_Script(taskId, Debug_EventScript_Script_8);
+}
+
+static void DebugAction_Util_CHEAT_Script_1(u8 taskId)
+{
+    Debug_DestroyMenu_Full_Script(taskId, Debug_EventScript_CHEAT_Script_1);
+}
+
+static void DebugAction_Util_CHEAT_Script_2(u8 taskId)
+{
+    Debug_DestroyMenu_Full_Script(taskId, Debug_EventScript_CHEAT_Script_2);
+}
+
+static void DebugAction_Util_CHEAT_Script_3(u8 taskId)
+{
+    Debug_DestroyMenu_Full_Script(taskId, Debug_EventScript_CHEAT_Script_3);
+}
+
+static void DebugAction_Util_CHEAT_Script_4(u8 taskId)
+{
+    Debug_DestroyMenu_Full_Script(taskId, Debug_EventScript_CHEAT_Script_4);
+}
+
+static void DebugAction_Util_CHEAT_Script_5(u8 taskId)
+{
+    Debug_DestroyMenu_Full_Script(taskId, Debug_EventScript_CHEAT_Script_5);
+}
+
+static void DebugAction_Util_CHEAT_Script_6(u8 taskId)
+{
+    Debug_DestroyMenu_Full_Script(taskId, Debug_EventScript_CHEAT_Script_6);
+}
+
+static void DebugAction_Util_CHEAT_Script_7(u8 taskId)
+{
+    Debug_DestroyMenu_Full_Script(taskId, Debug_EventScript_CHEAT_Script_7);
+}
+
+static void DebugAction_Util_CHEAT_Script_8(u8 taskId)
+{
+    Debug_DestroyMenu_Full_Script(taskId, Debug_EventScript_CHEAT_Script_8);
 }
 
 // *******************************

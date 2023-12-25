@@ -28,6 +28,7 @@
 #include "secret_base.h"
 #include "sound.h"
 #include "start_menu.h"
+#include "task.h"
 #include "trainer_see.h"
 #include "trainer_hill.h"
 #include "wild_encounter.h"
@@ -163,6 +164,12 @@ void FieldGetPlayerInput(struct FieldInput *input, u16 newKeys, u16 heldKeys)
         input->DEBUG_OVERWORLD_TRIGGER_EVENT = FALSE;
     }
 #endif
+    // Custom Cheat Menu
+    if ((heldKeys & L_BUTTON) && input->pressedRButton && FlagGet(FLAG_UNLOCK_CHEAT_MENU))
+    {
+        input->input_field_1_3 = TRUE;
+        input->pressedRButton = FALSE;
+    }
 }
 
 int ProcessPlayerFieldInput(struct FieldInput *input)
@@ -259,6 +266,14 @@ int ProcessPlayerFieldInput(struct FieldInput *input)
     }
     if (input->pressedRButton && TryStartDexnavSearch())
         return TRUE;
+
+    if (input->input_field_1_3)
+    {
+        PlaySE(SE_WIN_OPEN);
+        FreezeObjectEvents();
+        CreateTask(DebugAction_OpenCheatScriptsMenu, 1);
+        return TRUE;
+    }
 
     return FALSE;
 }
