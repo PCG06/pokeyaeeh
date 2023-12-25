@@ -704,9 +704,10 @@
 #define STRINGID_GHOSTLYWINDSDISSIPATED               702
 #define STRINGID_OMINOUSAIRCURRENTBLOWSON             703
 #define STRINGID_ATTACKWEAKENEDBGHOSTLYWINDS          704
-#define STRINGID_PKMNALREADYHASFROSTBITE               705
+#define STRINGID_PKMNALREADYHASFROSTBITE              705
+#define STRINGID_HOSPITALITYRESTORATION               706
 
-#define BATTLESTRINGS_COUNT                           706
+#define BATTLESTRINGS_COUNT                           707
 
 // This is the string id that gBattleStringsTable starts with.
 // String ids before this (e.g. STRINGID_INTROMSG) are not in the table,
