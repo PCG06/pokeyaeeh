@@ -440,7 +440,6 @@ u16 getHallofFameSpecies(u8 num){
     u8 i;
     u16 item = GetMonData(&gPlayerParty[num], MON_DATA_HELD_ITEM);
     u16 species = GetMonData(&gPlayerParty[num], MON_DATA_SPECIES);
-    //u16 species = GetMonData(&gPlayerParty[num], MON_DATA_SPECIES_OR_EGG);
 
     switch(species){
         case SPECIES_ABOMASNOW:
@@ -650,6 +649,9 @@ u16 getHallofFameSpecies(u8 num){
         case SPECIES_ZAMAZENTA:
             if(item == ITEM_RUSTED_SHIELD)
                 return SPECIES_ZAMAZENTA_CROWNED_SHIELD;
+        break;
+        case SPECIES_PALAFIN:
+            return SPECIES_PALAFIN_HERO;
         break;
     return species;
     }
