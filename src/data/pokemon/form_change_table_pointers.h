@@ -108,6 +108,10 @@ const struct FormChange *const gFormChangeTablePointers[NUM_SPECIES] =
     [SPECIES_GROUDON_PRIMAL] = sGroudonFormChangeTable,
     [SPECIES_RAYQUAZA] = sRayquazaFormChangeTable,
     [SPECIES_RAYQUAZA_MEGA] = sRayquazaFormChangeTable,
+    [SPECIES_DEOXYS_NORMAL] = sDeoxysNormalFormChangeTable,
+    [SPECIES_DEOXYS_ATTACK] = sDeoxysAttackFormChangeTable,
+    [SPECIES_DEOXYS_DEFENSE] = sDeoxysDefenseFormChangeTable,
+    [SPECIES_DEOXYS_SPEED] = sDeoxysSpeedFormChangeTable,
 #if P_GEN_4_POKEMON == TRUE
     [SPECIES_BURMY_PLANT_CLOAK] = sBurmyFormChangeTable,
     [SPECIES_BURMY_SANDY_CLOAK] = sBurmyFormChangeTable,
