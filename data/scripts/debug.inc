@@ -312,4 +312,13 @@ Route123_EventScript_Alberto_Text_No_Flying_Pokemon:
     .string "Trainers only battle with Pokémon that\l"
     .string "can fly in the sky.$"
 
+Debug_ShowExpansionVersion::
+	callnative BufferExpansionVersion
+	msgbox Debug_ExpansionVersion, MSGBOX_DEFAULT
+	release
+	end
+
+Debug_ExpansionVersion:
+	.string "pokeemerald-expansion {STR_VAR_1}$"
+
 .endif

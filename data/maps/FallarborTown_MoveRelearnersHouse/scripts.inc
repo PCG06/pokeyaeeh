@@ -47,3 +47,66 @@ FallarborTown_MoveRelearnersHouse_Text_KitExplain:
 	.string "moves your Pokémon would normally\l"
 	.string "only learn via breeding or\l"
 	.string "by reminding.$"
+
+FallarborTown_MoveRelearnersHouse_EventScript_ChooseMon::
+	msgbox FallarborTown_MoveRelearnersHouse_Text_TutorWhichMon, MSGBOX_DEFAULT
+	special ChooseMonForMoveRelearner
+	waitstate
+	goto_if_eq VAR_0x8004, PARTY_NOTHING_CHOSEN, FallarborTown_MoveRelearnersHouse_EventScript_ComeBackWithHeartScale
+	special IsSelectedMonEgg
+	goto_if_eq VAR_RESULT, TRUE, FallarborTown_MoveRelearnersHouse_EventScript_CantTeachEgg
+	goto_if_eq VAR_0x8005, 0, FallarborTown_MoveRelearnersHouse_EventScript_NoMoveToTeachMon
+	goto FallarborTown_MoveRelearnersHouse_EventScript_ChooseMove
+	end
+
+FallarborTown_MoveRelearnersHouse_EventScript_ChooseMove::
+	msgbox FallarborTown_MoveRelearnersHouse_Text_TeachWhichMove, MSGBOX_DEFAULT
+	special TeachMoveRelearnerMove
+	waitstate
+	goto_if_eq VAR_0x8004, 0, FallarborTown_MoveRelearnersHouse_EventScript_ChooseMon
+	goto FallarborTown_MoveRelearnersHouse_EventScript_ComeBackWithHeartScale
+	end
+
+FallarborTown_MoveRelearnersHouse_EventScript_NoMoveToTeachMon::
+	msgbox FallarborTown_MoveRelearnersHouse_Text_DontHaveMoveToTeachPokemon, MSGBOX_DEFAULT
+	goto FallarborTown_MoveRelearnersHouse_EventScript_ChooseMon
+	end
+
+FallarborTown_MoveRelearnersHouse_EventScript_CantTeachEgg::
+	msgbox FallarborTown_MoveRelearnersHouse_Text_CantTeachEgg, MSGBOX_DEFAULT
+	goto FallarborTown_MoveRelearnersHouse_EventScript_ChooseMon
+	end
+
+FallarborTown_MoveRelearnersHouse_EventScript_ComeBackWithHeartScale::
+	msgbox FallarborTown_MoveRelearnersHouse_Text_ComeBackWithHeartScale, MSGBOX_DEFAULT
+	releaseall
+	end
+
+FallarborTown_MoveRelearnersHouse_Text_ThatsAHeartScaleWantMeToTeachMove:
+	.string "Oh! That's it! That's an honest to\n"
+	.string "goodness Heart Scale!\p"
+	.string "Let me guess, you want me to teach\n"
+	.string "a move?$"
+
+FallarborTown_MoveRelearnersHouse_Text_TutorWhichMon:
+	.string "Which Pokémon needs tutoring?$"
+
+FallarborTown_MoveRelearnersHouse_Text_TeachWhichMove:
+	.string "Which move should I teach?$"
+
+FallarborTown_MoveRelearnersHouse_Text_DontHaveMoveToTeachPokemon:
+	.string "Sorry…\p"
+	.string "It doesn't appear as if I have any move\n"
+	.string "I can teach that Pokémon.$"
+
+FallarborTown_MoveRelearnersHouse_Text_HandedOverHeartScale:
+	.string "{PLAYER} handed over one Heart Scale\n"
+	.string "in exchange.$"
+
+FallarborTown_MoveRelearnersHouse_Text_ComeBackWithHeartScale:
+	.string "If your Pokémon need to learn a move,\n"
+	.string "come back with a Heart Scale.$"
+
+FallarborTown_MoveRelearnersHouse_Text_CantTeachEgg:
+	.string "Hunh? There isn't a single move that\n"
+	.string "I can teach an Egg.$"
