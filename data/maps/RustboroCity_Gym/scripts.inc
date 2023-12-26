@@ -270,7 +270,7 @@ RustboroCity_Gym_Text_RoxanneRegisterCall:
 	.string "… … … … … Beep!\p"
 	.string "Dor: Oh, hello, {PLAYER}?\n"
 	.string "This is Dor of Rustboro City.\p"
-	.string "I heard from Brawly that you're\n"
+	.string "I heard from Scep that you're\n"
 	.string "moving up through the ranks of\l"
 	.string "Trainers at an incredible clip.\p"
 	.string "Well, I'd rather not think that\n"

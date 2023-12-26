@@ -16,6 +16,7 @@ DewfordTown_MapScripts::
 
 DewfordTown_OnTransition:
 	setflag FLAG_VISITED_DEWFORD_TOWN
+	setvar VAR_TERRAIN_SET, 0
 	end
 
 DewfordTown_EventScript_Briney::
@@ -649,7 +650,7 @@ DewfordTown_Text_TownSign:
 
 DewfordTown_Text_GymSign:
 	.string "Dewford Town Pokémon Gym\n"
-	.string "Leader: Brawly\l"
+	.string "Leader: Scep\l"
 	.string "“A big wave in fighting!”$"
 
 DewfordTown_Text_HallSign:

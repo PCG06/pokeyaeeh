@@ -1248,7 +1248,7 @@ PetalburgCity_Gym_Text_NormanGoToDewford:
 	.string "But there are many more Trainers\n"
 	.string "who are stronger than you, {PLAYER}.\p"
 	.string "Across the sea in Dewford Town is a\n"
-	.string "Gym Leader named Brawly.\p"
+	.string "Gym Leader named Scep.\p"
 	.string "You should go challenge him.$"
 
 PetalburgCity_Gym_Text_YouHaveGottenStronger:

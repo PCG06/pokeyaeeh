@@ -52944,6 +52944,7 @@ static const u16 sAppletunTeachableLearnset[] = {
     MOVE_DRACO_METEOR,
     MOVE_DRAGON_PULSE,
     MOVE_DRAGON_TAIL,
+    MOVE_EARTH_POWER,
     MOVE_EARTHQUAKE,
     MOVE_ENDURE,
     MOVE_ENERGY_BALL,

@@ -3,10 +3,11 @@ DewfordTown_Gym_MapScripts::
 	.byte 0
 
 DewfordTown_Gym_OnTransition:
+    setvar VAR_TERRAIN_SET, STATUS_FIELD_GRASSY_TERRAIN
 	end
 
 DewfordTown_Gym_EventScript_Brawly::
-	trainerbattle_single TRAINER_BRAWLY_1, DewfordTown_Gym_Text_BrawlyIntro, DewfordTown_Gym_Text_BrawlyDefeat, DewfordTown_Gym_EventScript_BrawlyDefeated, NO_MUSIC
+	trainerbattle_double TRAINER_BRAWLY_1, DewfordTown_Gym_Text_BrawlyIntro, DewfordTown_Gym_Text_BrawlyDefeat, DewfordTown_Gym_Text_BrawlyNotEnoughMons, DewfordTown_Gym_EventScript_BrawlyDefeated, NO_MUSIC
 	specialvar VAR_RESULT, ShouldTryRematchBattle
 	goto_if_eq VAR_RESULT, TRUE, DewfordTown_Gym_EventScript_BrawlyRematch
 	goto_if_unset FLAG_RECEIVED_TM_BULK_UP, DewfordTown_Gym_EventScript_GiveBulkUp2
@@ -40,14 +41,14 @@ DewfordTown_Gym_EventScript_BrawlyDefeated::
 	end
 
 DewfordTown_Gym_EventScript_GiveBulkUp::
-	giveitem ITEM_TM_BULK_UP
+	giveitem ITEM_TM_SEED_BOMB
 	goto_if_eq VAR_RESULT, 0, Common_EventScript_BagIsFull
 	msgbox DewfordTown_Gym_Text_ExplainBulkUp, MSGBOX_DEFAULT
 	setflag FLAG_RECEIVED_TM_BULK_UP
 	return
 
 DewfordTown_Gym_EventScript_GiveBulkUp2:
-	giveitem ITEM_TM_BULK_UP
+	giveitem ITEM_TM_SEED_BOMB
 	goto_if_eq VAR_RESULT, 0, Common_EventScript_ShowBagIsFull
 	msgbox DewfordTown_Gym_Text_ExplainBulkUp, MSGBOX_DEFAULT
 	setflag FLAG_RECEIVED_TM_BULK_UP
@@ -128,38 +129,40 @@ DewfordTown_Gym_EventScript_GymStatue::
 DewfordTown_Gym_Text_GymGuideAdvice:
 	.string "Hey, how's it going, Champion-\n"
 	.string "bound {PLAYER}?\p"
-	.string "Dewford's Gym Leader Brawly commands\n"
-	.string "Fighting-type Pokémon.\p"
-	.string "Going against him with Normal-type\n"
+	.string "Dewford's Gym Leader Scep commands\n"
+	.string "Grass-type Pokémon.\p"
+	.string "Going against him with Water-type\n"
 	.string "Pokémon is asking for trouble.\p"
-	.string "Fighting Pokémon will lay a serious\n"
-	.string "smack down on Normal Pokémon,\l"
-	.string "so be careful!\p"
-	.string "What's worse, the Gym is as dark as\n"
-	.string "the ocean floor.\p"
-	.string "But it will get brighter after defeating\n"
-	.string "the Trainers in your way.\p"
-	.string "Hey, okay, go for it!$"
+	.string "Grass Pokémon will lay a serious\n"
+	.string "smack down on Water and Ground\l"
+	.string "Pokémon, so be careful!\p"
+	.string "There'll be Grassy Terrain everywhere.\n"
+	.string "It'll reduce damage of earthquakes\l"
+	.string "and heals a little every turn.\p"
+	.string "Bring a Fire-type or two.\p"
+	.string "Hey, go for it, Champ!\n"
+	.string "I believe in you!$"
 
 DewfordTown_Gym_Text_GymGuidePostVictory:
-	.string "Whoah! It's turned too bright in here!\p"
-	.string "Your future is bright, too!$"
+	.string "Whoah! You're a real one, {PLAYER}!\n"
+	.string "Onward to Mauville, now!\p"
+	.string "Good luck in your future battles!$"
 
 DewfordTown_Gym_Text_TakaoIntro:
-	.string "Might is right!\n"
-	.string "Come on!$"
+	.string "Flower power!\n"
+	.string "Let's go!$"
 
 DewfordTown_Gym_Text_TakaoDefeat:
 	.string "Not enough power…$"
 
 DewfordTown_Gym_Text_TakaoPostBattle:
-	.string "Your skill overcame my strength!\n"
-	.string "Your technique is commendable!$"
+	.string "Your skill overcame my power!\n"
+	.string "You are powerful!$"
 
 DewfordTown_Gym_Text_JocelynIntro:
-	.string "There's no need for Brawly to be\n"
+	.string "There's no need for Scep to be\n"
 	.string "involved!\p"
-	.string "I'll crush you!$"
+	.string "I'll beat you!$"
 
 DewfordTown_Gym_Text_JocelynDefeat:
 	.string "But… How?\n"
@@ -168,9 +171,8 @@ DewfordTown_Gym_Text_JocelynDefeat:
 DewfordTown_Gym_Text_JocelynPostBattle:
 	.string "I'm not going to waste this loss.\n"
 	.string "I'll use it to motivate me to train!\p"
-	.string "One day I'll become a Gym Leader…\p"
-	.string "No, I'll become the Pokémon League\n"
-	.string "Champion!$"
+	.string "One day I'll become a gardener…\p"
+	.string "No, I'm too silly for that.$"
 
 DewfordTown_Gym_Text_LauraIntro:
 	.string "Don't you dare brush me off!\n"
@@ -181,54 +183,57 @@ DewfordTown_Gym_Text_LauraDefeat:
 	.string "I lost!$"
 
 DewfordTown_Gym_Text_LauraPostBattle:
-	.string "I battle in the dark to make my heart\n"
+	.string "I battle in the sun to make my heart\n"
 	.string "stronger.\p"
 	.string "But because it's so dark, I can never\n"
-	.string "see Brawly's face…$"
+	.string "see your face…$"
 
 DewfordTown_Gym_Text_LilithIntro:
 	.string "Ufufu…\n"
-	.string "Are you stumbling around in the dark?$"
+	.string "Scared, little bro?$"
 
 DewfordTown_Gym_Text_LilithDefeat:
 	.string "Oh, you…\n"
 	.string "I don't want to know you!$"
 
 DewfordTown_Gym_Text_LilithPostBattle:
-	.string "You deserve to stay lost and end up\n"
-	.string "back at the entrance again!$"
+	.string "You deserve to be scared and alone!\n"
+	.string "Go back home, dumbass!$"
 
 DewfordTown_Gym_Text_BrendenIntro:
 	.string "I'll show you the gumption of\n"
-	.string "a sailing man!$"
+	.string "a good loving father!$"
 
 DewfordTown_Gym_Text_BrendenDefeat:
-	.string "How'd this happen?\n"
-	.string "It's not like me to lose this way!$"
+	.string "Ah-ha! I lied.\n"
+	.string "I got divorced two years ago.$"
 
 DewfordTown_Gym_Text_BrendenPostBattle:
-	.string "Oh, aye! You're worthy of seeing\n"
-	.string "our Gym Leader.$"
+	.string "Marriage and Pokémon battles\n"
+	.string "are quite similar.\p"
+	.string "You can ran away if you things\n"
+	.string "get hard.$"
 
 DewfordTown_Gym_Text_CristianIntro:
-	.string "If you mean to pass, it has to be\n"
-	.string "through me!$"
+	.string "Time to take care of the vines$"
 
 DewfordTown_Gym_Text_CristianDefeat:
-	.string "Grrrrr!\n"
-	.string "Vastly overpowered!$"
+	.string "Ah, fungus$"
 
 DewfordTown_Gym_Text_CristianPostBattle:
 	.string "You win!\n"
-	.string "Go after that Badge!$"
+	.string "Go get that Badge!$"
 
 DewfordTown_Gym_Text_BrawlyIntro:
-	.string "I'm Brawly!\n"
+	.string "Hi, I'm Scep!\n"
 	.string "Dewford's Gym Leader!\p"
-	.string "I've been churned in the rough waves\n"
-	.string "of these parts, and I've grown tough\l"
-	.string "in the pitch-black cave!\p"
-	.string "So you wanted to challenge me?\n"
+	.string "I've been bullied for the better part\n"
+	.string "of my life for being a Grass-type\l"
+	.string "specialist. Life sucks, man.\p"
+	.string "Oh, wait…\n"
+	.string "You're here for a battle!\p"
+	.string "Nobody likes to see me yapping.\n"
+	.string "Sigh…\p"
 	.string "Let me see what you're made of!$"
 
 DewfordTown_Gym_Text_BrawlyDefeat:
@@ -238,13 +243,19 @@ DewfordTown_Gym_Text_BrawlyDefeat:
 	.string "Okay, you've got me.\n"
 	.string "Take this Gym Badge!$"
 
+DewfordTown_Gym_Text_BrawlyNotEnoughMons:
+    .string "Sigh…\p"
+	.string "At least get some more Pokémon, bro.\n"
+	.string "Can't do a double battle with just\l"
+	.string "one critter, eh?$"
+
 DewfordTown_Gym_Text_ReceivedKnuckleBadge:
-	.string "{PLAYER} received the Knuckle Badge\n"
-	.string "from Brawly.$"
+	.string "{PLAYER} received the Verdant Badge\n"
+	.string "from Scep.$"
 
 DewfordTown_Gym_Text_KnuckleBadgeInfoTakeThis:
-	.string "The Knuckle Badge makes all Pokémon\n"
-	.string "up to Level 30, even those you get in\l"
+	.string "The Verdant Badge makes all Pokémon\n"
+	.string "up to Level 36, even those you get in\l"
 	.string "trades, obey without question.\p"
 	.string "And, you'll be able to use the HM move\n"
 	.string "Flash outside of battle.\p"
@@ -252,13 +263,13 @@ DewfordTown_Gym_Text_KnuckleBadgeInfoTakeThis:
 	.string "Machine, too.$"
 
 DewfordTown_Gym_Text_ExplainBulkUp:
-	.string "That TM08 contains Bulk Up.\p"
-	.string "It's a move that raises both Attack\n"
-	.string "and Defense stats.\p"
+	.string "That TM123 contains Seed Bomb.\p"
+	.string "It's a damage dealing Grass-type\n"
+	.string "move. Quite reliable!\p"
 	.string "… … … … … …$"
 
 DewfordTown_Gym_Text_RegisteredBrawly:
-	.string "Registered Gym Leader Brawly\n"
+	.string "Registered Gym Leader Scep\n"
 	.string "in the PokéNav.$"
 
 DewfordTown_Gym_Text_BrawlyPostBattle:
@@ -271,11 +282,11 @@ DewfordTown_Gym_Text_GymStatue:
 
 DewfordTown_Gym_Text_GymStatueCertified:
 	.string "Dewford Town Pokémon Gym\p"
-	.string "Brawly's certified Trainers:\n"
+	.string "Scep's certified Trainers:\n"
 	.string "{PLAYER}$"
 
 DewfordTown_Gym_Text_BrawlyPreRematch:
-	.string "Brawly: A wave may draw back, but it\n"
+	.string "Scep: A wave may draw back, but it\n"
 	.string "always returns to the shore.\p"
 	.string "A giant wave of a talent like you…\n"
 	.string "I knew you would return!\p"
@@ -287,12 +298,12 @@ DewfordTown_Gym_Text_BrawlyRematchDefeat:
 	.string "Swamped again!$"
 
 DewfordTown_Gym_Text_BrawlyPostRematch:
-	.string "Brawly: Battling is vast and it's deep.\n"
+	.string "Scep: Battling is vast and it's deep.\n"
 	.string "You can't see the bottom.\l"
 	.string "It's just like the sea of Hoenn!$"
 
 DewfordTown_Gym_Text_BrawlyRematchNeedTwoMons:
-	.string "Brawly: A wave may draw back, but it\n"
+	.string "Scep: A wave may draw back, but it\n"
 	.string "always returns to the shore.\p"
 	.string "A giant wave of a talent like you…\n"
 	.string "I knew you would return!\p"
