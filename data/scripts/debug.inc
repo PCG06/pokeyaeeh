@@ -112,8 +112,7 @@ Debug_FlagsAndVarNotSetBattleConfigMessage_Text:
 	.string "'include/config/battle.h'!$"
 
 Debug_EventScript_Script_1::
-    goto_if_set FLAG_UNLOCK_CHEAT_MENU, Debug_EventScript_UnsetCheatFlag
-    goto Debug_EventScript_SetCheatFlag
+    setflag FLAG_SYS_GAME_CLEAR
     end
 
 Debug_EventScript_Script_2:: @ one Mega Evolution
