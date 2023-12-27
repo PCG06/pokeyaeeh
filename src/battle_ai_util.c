@@ -295,6 +295,10 @@ static const s8 sAiAbilityRatings[ABILITIES_COUNT] =
     [ABILITY_WANDERING_SPIRIT] = 2,
     [ABILITY_GORILLA_TACTICS] = 4,
     [ABILITY_BRUTAL_LEGS] = 6,
+    [ABILITY_PHANTOM_GALE] = 10,
+    [ABILITY_HERBIVATE] = 8,
+    [ABILITY_SCORCHATE] = 8,
+    [ABILITY_OCEANATE] = 8,
 };
 
 static const u16 sEncouragedEncoreEffects[] =
