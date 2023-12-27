@@ -1993,18 +1993,22 @@ u8 CreateNPCTrainerPartyFromTrainer(struct Pokemon *party, const struct Trainer 
             u32 otIdType = OT_ID_RANDOM_NO_SHINY;
             u32 fixedOtId = 0;
 
-                if (level + partyData[i].lvl > 100)
-                {
-                    level = 100;
-                }
-                else if (level + partyData[i].lvl < 1)
-                {
-                    level = 1;
-                }
-                else
-                {
-                    level = partyData[i].lvl;
-                }
+            if (level + partyData[i].lvl > 100)
+            {
+                level = 100;
+            }
+            else if (level + partyData[i].lvl < 1)
+            {
+                level = 1;
+            }
+            else if (level < partyData[i].lvl)
+            {
+                level = partyData[i].lvl;
+            }
+            else
+            {
+                level;
+            }
 
             if (trainer->doubleBattle == TRUE)
                 personalityValue = 0x80;
