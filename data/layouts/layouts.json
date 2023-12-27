@@ -884,10 +884,10 @@
     {
       "id": "LAYOUT_MAUVILLE_CITY_GYM",
       "name": "MauvilleCity_Gym_Layout",
-      "width": 10,
-      "height": 21,
+      "width": 17,
+      "height": 19,
       "primary_tileset": "gTileset_Building",
-      "secondary_tileset": "gTileset_MauvilleGym",
+      "secondary_tileset": "gTileset_LavaridgeGym",
       "border_filepath": "data/layouts/MauvilleCity_Gym/border.bin",
       "blockdata_filepath": "data/layouts/MauvilleCity_Gym/map.bin"
     },
