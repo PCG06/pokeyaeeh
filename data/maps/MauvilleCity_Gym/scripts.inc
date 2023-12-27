@@ -3,72 +3,10 @@ MauvilleCity_Gym_MapScripts::
 	.byte 0
 
 MauvilleCity_Gym_OnLoad:
-	goto_if_set FLAG_DEFEATED_MAUVILLE_GYM, MauvilleCity_Gym_EventScript_DeactivatePuzzle
-	end
-
-MauvilleCity_Gym_EventScript_UpdateBarriers::
-	goto_if_set FLAG_MAUVILLE_GYM_BARRIERS_STATE, MauvilleCity_Gym_EventScript_SetAltBarriers
-	end
-
-MauvilleCity_Gym_EventScript_SetAltBarriers::
-	setmetatile 3, 11, METATILE_MauvilleGym_RedBeamV1_On, TRUE
-	setmetatile 3, 12, METATILE_MauvilleGym_RedBeamV2_On, TRUE
-	setmetatile 3, 13, METATILE_MauvilleGym_PoleTop_On, TRUE
-	setmetatile 4, 10, METATILE_MauvilleGym_RedBeamH1_On, FALSE
-	setmetatile 5, 10, METATILE_MauvilleGym_RedBeamH2_On, FALSE
-	setmetatile 4, 11, METATILE_MauvilleGym_RedBeamH3_On, TRUE
-	setmetatile 5, 11, METATILE_MauvilleGym_RedBeamH4_On, TRUE
-	setmetatile 7, 10, METATILE_MauvilleGym_RedBeamH1_On, FALSE
-	setmetatile 8, 10, METATILE_MauvilleGym_RedBeamH2_On, FALSE
-	setmetatile 7, 11, METATILE_MauvilleGym_RedBeamH3_On, TRUE
-	setmetatile 8, 11, METATILE_MauvilleGym_RedBeamH4_On, TRUE
-	setmetatile 4, 13, METATILE_MauvilleGym_GreenBeamH1_Off, FALSE
-	setmetatile 5, 13, METATILE_MauvilleGym_GreenBeamH2_Off, FALSE
-	setmetatile 4, 14, METATILE_MauvilleGym_GreenBeamH3_Off, FALSE
-	setmetatile 5, 14, METATILE_MauvilleGym_GreenBeamH4_Off, FALSE
-	setmetatile 1, 10, METATILE_MauvilleGym_GreenBeamH1_Off, FALSE
-	setmetatile 2, 10, METATILE_MauvilleGym_GreenBeamH2_Off, FALSE
-	setmetatile 1, 11, METATILE_MauvilleGym_GreenBeamH3_Off, FALSE
-	setmetatile 2, 11, METATILE_MauvilleGym_GreenBeamH4_Off, FALSE
-	setmetatile 6, 8, METATILE_MauvilleGym_PoleBottom_On, TRUE
-	setmetatile 6, 9, METATILE_MauvilleGym_FloorTile, FALSE
-	setmetatile 6, 10, METATILE_MauvilleGym_PoleTop_Off, FALSE
-	setmetatile 4, 6, METATILE_MauvilleGym_GreenBeamH1_Off, FALSE
-	setmetatile 5, 6, METATILE_MauvilleGym_GreenBeamH2_Off, FALSE
-	setmetatile 4, 7, METATILE_MauvilleGym_GreenBeamH3_Off, FALSE
-	setmetatile 5, 7, METATILE_MauvilleGym_GreenBeamH4_Off, FALSE
-	end
-
-MauvilleCity_Gym_EventScript_Switch1Pressed::
-	setvar VAR_0x8004, 0
-	special MauvilleGymPressSwitch
-	goto MauvilleCity_Gym_EventScript_UpdateBarriers
-	end
-
-MauvilleCity_Gym_EventScript_Switch2Pressed::
-	setvar VAR_0x8004, 1
-	special MauvilleGymPressSwitch
-	goto MauvilleCity_Gym_EventScript_UpdateBarriers
-	end
-
-MauvilleCity_Gym_EventScript_Switch3Pressed::
-	setvar VAR_0x8004, 2
-	special MauvilleGymPressSwitch
-	goto MauvilleCity_Gym_EventScript_UpdateBarriers
-	end
-
-MauvilleCity_Gym_EventScript_Switch4Pressed::
-	setvar VAR_0x8004, 3
-	special MauvilleGymPressSwitch
-	goto MauvilleCity_Gym_EventScript_UpdateBarriers
-	end
-
-MauvilleCity_Gym_EventScript_DeactivatePuzzle::
-	special MauvilleGymDeactivatePuzzle
 	end
 
 MauvilleCity_Gym_EventScript_Wattson::
-	trainerbattle_single TRAINER_WATTSON_1, MauvilleCity_Gym_Text_WattsonIntro, MauvilleCity_Gym_Text_WattsonDefeat, MauvilleCity_Gym_EventScript_WattsonDefeated, NO_MUSIC
+	trainerbattle_double TRAINER_WATTSON_1, MauvilleCity_Gym_Text_WattsonIntro, MauvilleCity_Gym_Text_WattsonDefeat, MauvilleCity_Gym_Text_WattsonNeedTwoPokemon, MauvilleCity_Gym_EventScript_WattsonDefeated, NO_MUSIC
 	specialvar VAR_RESULT, ShouldTryRematchBattle
 	goto_if_eq VAR_RESULT, TRUE, MauvilleCity_Gym_EventScript_WattsonRematch
 	goto_if_unset FLAG_RECEIVED_TM_SHOCK_WAVE, MauvilleCity_Gym_EventScript_GiveShockWave2
@@ -106,7 +44,7 @@ MauvilleCity_Gym_EventScript_WattsonDefeated::
 	end
 
 MauvilleCity_Gym_EventScript_GiveShockWave2::
-	giveitem ITEM_TM_SHOCK_WAVE
+	giveitem ITEM_TM_HEAT_WAVE
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
 	msgbox MauvilleCity_Gym_Text_ExplainShockWave, MSGBOX_DEFAULT
 	setflag FLAG_RECEIVED_TM_SHOCK_WAVE
@@ -114,7 +52,7 @@ MauvilleCity_Gym_EventScript_GiveShockWave2::
 	end
 
 MauvilleCity_Gym_EventScript_GiveShockWave::
-	giveitem ITEM_TM_SHOCK_WAVE
+	giveitem ITEM_TM_HEAT_WAVE
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_BagIsFull
 	msgbox MauvilleCity_Gym_Text_ExplainShockWave, MSGBOX_DEFAULT
 	setflag FLAG_RECEIVED_TM_SHOCK_WAVE
@@ -128,66 +66,6 @@ MauvilleCity_Gym_EventScript_CompletedNewMauville::
 MauvilleCity_Gym_EventScript_WattsonRematch::
 	trainerbattle_rematch_double TRAINER_WATTSON_1, MauvilleCity_Gym_Text_WattsonPreRematch, MauvilleCity_Gym_Text_WattsonRematchDefeat, MauvilleCity_Gym_Text_WattsonRematchNeedTwoMons
 	msgbox MauvilleCity_Gym_Text_WattsonPostRematch, MSGBOX_AUTOCLOSE
-	end
-
-MauvilleCity_Gym_EventScript_Switch1::
-	lockall
-	goto_if_set FLAG_DEFEATED_MAUVILLE_GYM, MauvilleCity_Gym_EventScript_SwitchDoNothing
-	goto_if_eq VAR_MAUVILLE_GYM_STATE, 1, MauvilleCity_Gym_EventScript_SwitchDoNothing
-	setvar VAR_MAUVILLE_GYM_STATE, 1
-	setvar VAR_0x8004, 0
-	goto MauvilleCity_Gym_EventScript_PressFloorSwitch
-	end
-
-MauvilleCity_Gym_EventScript_Switch2::
-	lockall
-	goto_if_set FLAG_DEFEATED_MAUVILLE_GYM, MauvilleCity_Gym_EventScript_SwitchDoNothing
-	goto_if_eq VAR_MAUVILLE_GYM_STATE, 2, MauvilleCity_Gym_EventScript_SwitchDoNothing
-	setvar VAR_MAUVILLE_GYM_STATE, 2
-	setvar VAR_0x8004, 1
-	goto MauvilleCity_Gym_EventScript_PressFloorSwitch
-	end
-
-MauvilleCity_Gym_EventScript_Switch3::
-	lockall
-	goto_if_set FLAG_DEFEATED_MAUVILLE_GYM, MauvilleCity_Gym_EventScript_SwitchDoNothing
-	goto_if_eq VAR_MAUVILLE_GYM_STATE, 3, MauvilleCity_Gym_EventScript_SwitchDoNothing
-	setvar VAR_MAUVILLE_GYM_STATE, 3
-	setvar VAR_0x8004, 2
-	goto MauvilleCity_Gym_EventScript_PressFloorSwitch
-	end
-
-MauvilleCity_Gym_EventScript_Switch4::
-	lockall
-	goto_if_set FLAG_DEFEATED_MAUVILLE_GYM, MauvilleCity_Gym_EventScript_SwitchDoNothing
-	goto_if_eq VAR_MAUVILLE_GYM_STATE, 4, MauvilleCity_Gym_EventScript_SwitchDoNothing
-	setvar VAR_MAUVILLE_GYM_STATE, 4
-	setvar VAR_0x8004, 3
-	goto MauvilleCity_Gym_EventScript_PressFloorSwitch
-	end
-
-MauvilleCity_Gym_EventScript_PressFloorSwitch::
-	special MauvilleGymSetDefaultBarriers
-	special MauvilleGymPressSwitch
-	special DrawWholeMapView
-	playse SE_UNLOCK
-	goto_if_set FLAG_MAUVILLE_GYM_BARRIERS_STATE, MauvilleCity_Gym_EventScript_ClearBarriersAltState
-	goto_if_unset FLAG_MAUVILLE_GYM_BARRIERS_STATE, MauvilleCity_Gym_EventScript_SetBarriersAltState
-	releaseall
-	end
-
-MauvilleCity_Gym_EventScript_SwitchDoNothing::
-	releaseall
-	end
-
-MauvilleCity_Gym_EventScript_SetBarriersAltState::
-	setflag FLAG_MAUVILLE_GYM_BARRIERS_STATE
-	releaseall
-	end
-
-MauvilleCity_Gym_EventScript_ClearBarriersAltState::
-	clearflag FLAG_MAUVILLE_GYM_BARRIERS_STATE
-	releaseall
 	end
 
 MauvilleCity_Gym_EventScript_Kirk::
@@ -253,67 +131,73 @@ MauvilleCity_Gym_EventScript_GymStatue::
 MauvilleCity_Gym_Text_GymGuideAdvice:
 	.string "Hey, how's it going, Champion-\n"
 	.string "bound {PLAYER}?\p"
-	.string "Wattson, the Leader of Mauville\n"
-	.string "Gym, uses Electric-type Pokémon.\p"
-	.string "If you challenge him with Water-type\n"
-	.string "Pokémon, he'll zap them! Bzzt!\p"
-	.string "And, he's put in switch-controlled\n"
-	.string "doors all over his Gym! Eccentric!\p"
-	.string "Hey, go for it!$"
+	.string "Tan, the Leader of Mauville Gym,\n"
+	.string "uses Fire-type Pokémon.\p"
+	.string "If you challenge him with Grass-type\n"
+	.string "Pokémon, he'll burn them!\p"
+	.string "And, due to advancement in technology\n"
+	.string "Tan was able to hustle a mini sun\l"
+	.string "inside the gym!\p"
+	.string "It boosts the power of Fire-type\n"
+	.string "attacks and lessens the power of\l"
+	.string "Water-type attacks.\p"
+	.string "Ground-type or Rock-type Pokémon\n"
+	.string "are your best friends here.\p"
+	.string "Go for it, Champ!\p"
+	.string "Your fiery spirit burns bright!$"
 
 MauvilleCity_Gym_Text_GymGuidePostVictory:
-	.string "Whoa, you're electrifying!\n"
-	.string "You've powered the door open!$"
+	.string "Whoa, you're burning hot!\n"
+	.string "You've done it again, Champ!\p"
+	.string "Onward to Fallabour, my friend!$"
 
 MauvilleCity_Gym_Text_KirkIntro:
-	.string "My electric soul, it'll shatter your\n"
+	.string "My fiery soul, it'll shatter your\n"
 	.string "dreams whole, whoa-yeahah!$"
 
 MauvilleCity_Gym_Text_KirkDefeat:
-	.string "That was plugged in, amped up,\n"
-	.string "over-driven electric, man!$"
+	.string "That was rough, man!$"
 
 MauvilleCity_Gym_Text_KirkPostBattle:
-	.string "Pokémon and rock, it's all about heart,\n"
-	.string "whoa-yeah!$"
+	.string "I love Fire-types.\p"
+	.string "We have a passion for burning!$"
 
 MauvilleCity_Gym_Text_ShawnIntro:
-	.string "I trained under Wattson!\n"
+	.string "I trained under Tan!\n"
 	.string "There ain't no way I'll lose easily!$"
 
 MauvilleCity_Gym_Text_ShawnDefeat:
-	.string "Unplugged and turned off…$"
+	.string "And I lost that easily…$"
 
 MauvilleCity_Gym_Text_ShawnPostBattle:
-	.string "Wattson, our Gym Leader, has been\n"
+	.string "Tan, our Gym Leader, has been\n"
 	.string "around for a long, long time.\p"
-	.string "He was battling even before your\n"
-	.string "daddy was born, that tough coot.$"
+	.string "He was battling even before I was born!$"
 
 MauvilleCity_Gym_Text_BenIntro:
-	.string "This Gym's got puzzles!\n"
+	.string "This Gym's got the heat!\n"
 	.string "Isn't it fun?$"
 
 MauvilleCity_Gym_Text_BenDefeat:
 	.string "It's no fun to lose…$"
 
 MauvilleCity_Gym_Text_BenPostBattle:
-	.string "Wattson says he likes setting up\n"
-	.string "little traps with switches.$"
+	.string "Tan says he likes setting\n"
+	.string "public parks on fire.\p"
+	.string "…\p"
+	.string "There are no public parks in Hoenn!$"
 
 MauvilleCity_Gym_Text_VivianIntro:
 	.string "With my charm and my Pokémon's moves,\n"
-	.string "you'll be shocked!$"
+	.string "you'll be cooled down!$"
 
 MauvilleCity_Gym_Text_VivianDefeat:
-	.string "I'm shocked by your power!$"
+	.string "I'm warmed by your power!$"
 
 MauvilleCity_Gym_Text_VivianPostBattle:
-	.string "I've heard that Mauville was founded\n"
-	.string "by Wattson.\p"
-	.string "He was a Trainer long before we\n"
-	.string "became Trainers.\l"
-	.string "He must know all sorts of things!$"
+	.string "I've heard that Tan loves battling\n"
+	.string "little kids.\p"
+	.string "Not the best example, heh.$"
 
 MauvilleCity_Gym_Text_AngeloIntro:
 	.string "I love shiny things!$"
@@ -323,21 +207,25 @@ MauvilleCity_Gym_Text_AngeloDefeat:
 	.string "My eyes are frazzled…$"
 
 MauvilleCity_Gym_Text_AngeloPostBattle:
-	.string "Mauville Gym's Wattson has a shiny\n"
+	.string "Mauville Gym's Tan has a shiny\n"
 	.string "forehead. It makes me happy!$"
 
 MauvilleCity_Gym_Text_WattsonIntro:
-	.string "I've given up on my plans to convert\n"
-	.string "the city, I have.\p"
-	.string "And so, I put my time into making\n"
-	.string "door traps in my Gym.\p"
-	.string "Oh? Now, what are you doing here?\p"
-	.string "What's that? You say you've gotten\n"
-	.string "past all my rigged doors?\p"
+	.string "Hello, young aged person.\p"
+	.string "What's poppin'?\p"
+	.string "I'm Tanakin, the Mauville City\n"
+	.string "Gym Leader.\p"
+	.string "But you can call me Tan!\p"
+	.string "Hmm…\p"
+	.string "…\p"
+	.string "…\p"
+	.string "…\n"
+	.string "…\p"
 	.string "Wahahahah!\n"
-	.string "Now, that is amusing!\p"
-	.string "Then, I, Wattson, the Leader of\n"
-	.string "Mauville Gym, shall electrify you!$"
+	.string "I'm shy around kids!\p"
+	.string "Oh! A battle!\n"
+	.string "Right… Right…!\p"
+	.string "Let's begin!$"
 
 MauvilleCity_Gym_Text_WattsonDefeat:
 	.string "Wahahahah!\n"
@@ -345,26 +233,30 @@ MauvilleCity_Gym_Text_WattsonDefeat:
 	.string "You ended up giving me a thrill!\n"
 	.string "Take this Badge!$"
 
+MauvilleCity_Gym_Text_WattsonNeedTwoPokemon:
+    .string "I like your burning passion,\n"
+	.string "young person.\p"
+	.string "But get another Pokémon here.\p"
+	.string "You can't solo this thing, ya'know?$"
+
 MauvilleCity_Gym_Text_ReceivedDynamoBadge:
-	.string "{PLAYER} received the Dynamo Badge\n"
-	.string "from Wattson.$"
+	.string "{PLAYER} received the Inferno Badge\n"
+	.string "from Tan.$"
 
 MauvilleCity_Gym_Text_ExplainDynamoBadgeTakeThis:
-	.string "With the Dynamo Badge, Pokémon can\n"
+	.string "With the Inferno Badge, Pokémon can\n"
 	.string "use Rock Smash out of battle.\p"
-	.string "And, it will make your Pokémon a little\n"
-	.string "bit faster, too.\p"
 	.string "Hmm…\n"
 	.string "You should take this, too!$"
 
 MauvilleCity_Gym_Text_ExplainShockWave:
-	.string "That TM34 there contains Shock Wave.\p"
+	.string "That TM84 there contains Heat Wave.\p"
 	.string "It's a trustworthy move that never\n"
-	.string "misses! You can count on it!\p"
+	.string "misses…… in harsh sunlight! Hehe\p"
 	.string "… … … … … …$"
 
 MauvilleCity_Gym_Text_RegisteredWattson:
-	.string "Registered Gym Leader Wattson\n"
+	.string "Registered Gym Leader Tan\n"
 	.string "in the PokéNav.$"
 
 MauvilleCity_Gym_Text_WattsonPostBattle:
@@ -373,18 +265,18 @@ MauvilleCity_Gym_Text_WattsonPostBattle:
 
 MauvilleCity_Gym_Text_WattsonGoForthAndEndeavor:
 	.string "Wahahahah!\n"
-	.string "Go forth and endeavor, youngster!$"
+	.string "Go forth and endeavor, young person!$"
 
 MauvilleCity_Gym_Text_GymStatue:
 	.string "Mauville City Pokémon Gym$"
 
 MauvilleCity_Gym_Text_GymStatueCertified:
 	.string "Mauville City Pokémon Gym\p"
-	.string "Wattson's certified Trainers:\n"
+	.string "Tan's certified Trainers:\n"
 	.string "{PLAYER}$"
 
 MauvilleCity_Gym_Text_WattsonPreRematch:
-	.string "Wattson: Ah-ha! Here at last!\n"
+	.string "Tan: Ah-ha! Here at last!\n"
 	.string "I know what you want.\l"
 	.string "You want to battle my Pokémon!\p"
 	.string "Wahahahaha!\p"
@@ -396,7 +288,7 @@ MauvilleCity_Gym_Text_WattsonRematchDefeat:
 	.string "Our batteries ran dry…$"
 
 MauvilleCity_Gym_Text_WattsonPostRematch:
-	.string "Wattson: We'll have to recharge our\n"
+	.string "Tan: We'll have to recharge our\n"
 	.string "batteries again.\p"
 	.string "When we're fully charged up, we'll\n"
 	.string "gladly accept your challenge.\p"
@@ -404,7 +296,7 @@ MauvilleCity_Gym_Text_WattsonPostRematch:
 	.string "won't you?$"
 
 MauvilleCity_Gym_Text_WattsonRematchNeedTwoMons:
-	.string "Wattson: Ah-ha! Here at last!\n"
+	.string "Tan: Ah-ha! Here at last!\n"
 	.string "I know what you want.\l"
 	.string "You want to battle my Pokémon!\p"
 	.string "Wahahahaha!\p"

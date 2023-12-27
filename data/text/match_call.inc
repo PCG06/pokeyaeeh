@@ -2101,7 +2101,7 @@ MatchCall_Text_Brawly4::
 	.string "I'll ever get bored of battling you!$"
 
 MatchCall_Text_Wattson1::
-	.string "Wattson: Oh, it's you!\p"
+	.string "Tan: Oh, it's you!\p"
 	.string "After you left, I've been redoing\n"
 	.string "my training from scratch.\p"
 	.string "I'd say I could use a wee bit more\n"
@@ -2110,7 +2110,7 @@ MatchCall_Text_Wattson1::
 	.string "Wahahahaha!$"
 
 MatchCall_Text_Wattson2::
-	.string "Wattson: Wahahahaha!\p"
+	.string "Tan: Wahahahaha!\p"
 	.string "You've really done it, haven't you?\n"
 	.string "I've been getting word about you!\p"
 	.string "It seems I need to retrain some\n"
@@ -2121,13 +2121,13 @@ MatchCall_Text_Wattson2::
 	.string "Wahahahaha!$"
 
 MatchCall_Text_Wattson3::
-	.string "Wattson: Oh, it's you!\n"
+	.string "Tan: Oh, it's you!\n"
 	.string "My Gym's ready!\p"
 	.string "Visit Mauville anytime!\n"
 	.string "Wahahahaha!$"
 
 MatchCall_Text_Wattson4::
-	.string "Wattson: Wahahaha!\p"
+	.string "Tan: Wahahaha!\p"
 	.string "A battle with you is always charged\n"
 	.string "with shocking power!$"
 
