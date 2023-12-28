@@ -687,8 +687,17 @@ void ItemUseOutOfBattle_PokemonBoxLink(u8 taskId)
 
 static void Task_AccessPokemonBoxLink(u8 taskId)
 {
-    ScriptContext_SetupScript(EventScript_AccessPokemonBoxLink);
-    DestroyTask(taskId);
+    u16 currentMap = ((gSaveBlock1Ptr->location.mapGroup) << 8 | gSaveBlock1Ptr->location.mapNum);
+    if (currentMap == MAP_EVER_GRANDE_CITY_SIDNEYS_ROOM || MAP_EVER_GRANDE_CITY_PHOEBES_ROOM || MAP_EVER_GRANDE_CITY_GLACIAS_ROOM || MAP_EVER_GRANDE_CITY_DRAKES_ROOM || MAP_EVER_GRANDE_CITY_CHAMPIONS_ROOM
+                     || MAP_EVER_GRANDE_CITY_HALL1 || MAP_EVER_GRANDE_CITY_HALL2 || MAP_EVER_GRANDE_CITY_HALL3 || MAP_EVER_GRANDE_CITY_HALL4 || MAP_EVER_GRANDE_CITY_HALL5)
+    {
+        ItemUseOutOfBattle_CannotUse(taskId);
+    }
+    else
+    {
+        ScriptContext_SetupScript(EventScript_AccessPokemonBoxLink);
+        DestroyTask(taskId);
+    }
 }
 
 void ItemUseOutOfBattle_CoinCase(u8 taskId)
