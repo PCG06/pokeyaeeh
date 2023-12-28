@@ -318,7 +318,7 @@ LavaridgeTown_Gym_1F_Text_ExplainOverheat:
 
 LavaridgeTown_Gym_1F_Text_RegisteredFlannery:
 	.string "Registered Gym Leader Flannery\n"
-	.string "in the PokéNav.$"
+	.string "in the Pokénav.$"
 
 LavaridgeTown_Gym_1F_Text_FlanneryPostBattle:
 	.string "Your power reminds me of someone…\p"

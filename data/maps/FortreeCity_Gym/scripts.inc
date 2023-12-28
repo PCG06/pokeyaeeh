@@ -264,7 +264,7 @@ FortreeCity_Gym_Text_ExplainAerialAce:
 
 FortreeCity_Gym_Text_RegisteredWinona:
 	.string "Registered Gym Leader Winona\n"
-	.string "in the PokéNav.$"
+	.string "in the Pokénav.$"
 
 FortreeCity_Gym_Text_WinonaPostBattle:
 	.string "Though I fell to you, I will remain\n"
