@@ -685,9 +685,9 @@
       "id": "LAYOUT_LAVARIDGE_TOWN_GYM_1F",
       "name": "LavaridgeTown_Gym_1F_Layout",
       "width": 17,
-      "height": 19,
+      "height": 22,
       "primary_tileset": "gTileset_Building",
-      "secondary_tileset": "gTileset_LavaridgeGym",
+      "secondary_tileset": "gTileset_PetalburgGym",
       "border_filepath": "data/layouts/LavaridgeTown_Gym_1F/border.bin",
       "blockdata_filepath": "data/layouts/LavaridgeTown_Gym_1F/map.bin"
     },
