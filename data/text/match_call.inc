@@ -2132,7 +2132,7 @@ MatchCall_Text_Wattson4::
 	.string "with shocking power!$"
 
 MatchCall_Text_Flannery1::
-	.string "Flannery: {PLAYER}…\p"
+	.string "Qanak: {PLAYER}…\p"
 	.string "When we battled, I learned exactly\n"
 	.string "how immature I was.\p"
 	.string "But I'm not done yet!\p"
@@ -2142,7 +2142,7 @@ MatchCall_Text_Flannery1::
 	.string "please challenge us again.$"
 
 MatchCall_Text_Flannery2::
-	.string "Flannery: Hello, {PLAYER}?\n"
+	.string "Qanak: Hello, {PLAYER}?\n"
 	.string "Congratulations!\p"
 	.string "Word of your success has reached\n"
 	.string "us like the heat of a volcano!\p"
@@ -2153,13 +2153,13 @@ MatchCall_Text_Flannery2::
 	.string "Match Call list.$"
 
 MatchCall_Text_Flannery3::
-	.string "Flannery: Oh, {PLAYER}?\n"
+	.string "Qanak: Oh, {PLAYER}?\n"
 	.string "Our Gym's ready!\p"
 	.string "Come to Lavaridge for a soak\n"
 	.string "in the hot spring and a challenge!$"
 
 MatchCall_Text_Flannery4::
-	.string "Flannery: {PLAYER}…\n"
+	.string "Qanak: {PLAYER}…\n"
 	.string "I'm positive that you keep getting\l"
 	.string "better at training every time.$"
 

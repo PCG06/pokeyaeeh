@@ -1,8 +1,3 @@
-.set LOCALID_COLE, 2
-.set LOCALID_GERALD, 3
-.set LOCALID_AXLE, 4
-.set LOCALID_DANIELLE, 5
-
 LavaridgeTown_Gym_1F_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, LavaridgeTown_Gym_1F_OnTransition
 	.byte 0
@@ -66,42 +61,32 @@ LavaridgeTown_Gym_1F_EventScript_FlanneryRematch::
 	end
 
 LavaridgeTown_Gym_1F_EventScript_Cole::
-	trainerbattle_single TRAINER_COLE, LOCALID_COLE, LavaridgeTown_Gym_1F_Text_ColeIntro, LavaridgeTown_Gym_1F_Text_ColeDefeat
+	trainerbattle_single TRAINER_COLE, LavaridgeTown_Gym_1F_Text_ColeIntro, LavaridgeTown_Gym_1F_Text_ColeDefeat
 	msgbox LavaridgeTown_Gym_1F_Text_ColePostBattle, MSGBOX_AUTOCLOSE
 	end
 
 LavaridgeTown_Gym_1F_EventScript_Axle::
-	trainerbattle_single TRAINER_AXLE, LOCALID_AXLE, LavaridgeTown_Gym_1F_Text_AxleIntro, LavaridgeTown_Gym_1F_Text_AxleDefeat
+	trainerbattle_single TRAINER_AXLE, LavaridgeTown_Gym_1F_Text_AxleIntro, LavaridgeTown_Gym_1F_Text_AxleDefeat
 	msgbox LavaridgeTown_Gym_1F_Text_AxlePostBattle, MSGBOX_AUTOCLOSE
 	end
 
-LavaridgeTown_Gym_B1F_EventScript_Keegan::
-	trainerbattle_single TRAINER_KEEGAN, LOCALID_KEEGAN, LavaridgeTown_Gym_B1F_Text_KeeganIntro, LavaridgeTown_Gym_B1F_Text_KeeganDefeat
-	msgbox LavaridgeTown_Gym_B1F_Text_KeeganPostBattle, MSGBOX_AUTOCLOSE
-	end
-
 LavaridgeTown_Gym_1F_EventScript_Danielle::
-	trainerbattle_single TRAINER_DANIELLE, LOCALID_DANIELLE, LavaridgeTown_Gym_1F_Text_DanielleIntro, LavaridgeTown_Gym_1F_Text_DanielleDefeat
+	trainerbattle_single TRAINER_DANIELLE, LavaridgeTown_Gym_1F_Text_DanielleIntro, LavaridgeTown_Gym_1F_Text_DanielleDefeat
 	msgbox LavaridgeTown_Gym_1F_Text_DaniellePostBattle, MSGBOX_AUTOCLOSE
 	end
 
 LavaridgeTown_Gym_1F_EventScript_Gerald::
-	trainerbattle_single TRAINER_GERALD, LOCALID_GERALD, LavaridgeTown_Gym_1F_Text_GeraldIntro, LavaridgeTown_Gym_1F_Text_GeraldDefeat
+	trainerbattle_single TRAINER_GERALD, LavaridgeTown_Gym_1F_Text_GeraldIntro, LavaridgeTown_Gym_1F_Text_GeraldDefeat
 	msgbox LavaridgeTown_Gym_1F_Text_GeraldPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 LavaridgeTown_Gym_B1F_EventScript_Jace::
-	trainerbattle_single TRAINER_JACE, LOCALID_JACE, LavaridgeTown_Gym_B1F_Text_JaceIntro, LavaridgeTown_Gym_B1F_Text_JaceDefeat
+	trainerbattle_single TRAINER_JACE, LavaridgeTown_Gym_B1F_Text_JaceIntro, LavaridgeTown_Gym_B1F_Text_JaceDefeat
 	msgbox LavaridgeTown_Gym_B1F_Text_JacePostBattle, MSGBOX_AUTOCLOSE
 	end
 
-LavaridgeTown_Gym_B1F_EventScript_Jeff::
-	trainerbattle_single TRAINER_JEFF, LOCALID_JEFF, LavaridgeTown_Gym_B1F_Text_JeffIntro, LavaridgeTown_Gym_B1F_Text_JeffDefeat
-	msgbox LavaridgeTown_Gym_B1F_Text_JeffPostBattle, MSGBOX_AUTOCLOSE
-	end
-
 LavaridgeTown_Gym_B1F_EventScript_Eli::
-	trainerbattle_single TRAINER_ELI, LOCALID_ELI, LavaridgeTown_Gym_B1F_Text_EliIntro, LavaridgeTown_Gym_B1F_Text_EliDefeat
+	trainerbattle_single TRAINER_ELI, LavaridgeTown_Gym_B1F_Text_EliIntro, LavaridgeTown_Gym_B1F_Text_EliDefeat
 	msgbox LavaridgeTown_Gym_B1F_Text_EliPostBattle, MSGBOX_AUTOCLOSE
 	end
 
@@ -164,99 +149,67 @@ LavaridgeTown_Gym_1F_Text_GymGuidePostVictory:
 	.string "opened, why not head there?$"
 
 LavaridgeTown_Gym_1F_Text_ColeIntro:
-	.string "Owowowowow!\n"
-	.string "Yikes, it's hot!$"
+	.string "Hey, hey.\n"
+	.string "What's up?$"
 
 LavaridgeTown_Gym_1F_Text_ColeDefeat:
-	.string "I'm blinded by sweat in my eyes…$"
+	.string "D'oh!…$"
 
 LavaridgeTown_Gym_1F_Text_ColePostBattle:
-	.string "Being buried in hot sand promotes\n"
-	.string "circulation.\p"
-	.string "It's effective for healing pain in\n"
-	.string "your joints.$"
+	.string "I'm a family guy, not some professional\n"
+	.string "Pokémon Trainer.\p"
+	.string "But you beat me fair and square.$"
 
 LavaridgeTown_Gym_1F_Text_AxleIntro:
 	.string "I'm trying to relieve my stress.\n"
 	.string "Don't come along and stress me out!$"
 
 LavaridgeTown_Gym_1F_Text_AxleDefeat:
-	.string "I hope Flannery flames you good!$"
+	.string "You stressed me out, man!$"
 
 LavaridgeTown_Gym_1F_Text_AxlePostBattle:
 	.string "Haaah… Whew…\p"
-	.string "If you spend too much time buried in\n"
-	.string "hot sand, it tuckers you out…$"
-
-LavaridgeTown_Gym_B1F_Text_KeeganIntro:
-	.string "You must be getting tired by now.\n"
-	.string "You'd like to rest in the hot sand,\l"
-	.string "wouldn't you?\p"
-	.string "But you should know that maintaining\n"
-	.string "your willpower is an important ability\l"
-	.string "for all Trainers.$"
-
-LavaridgeTown_Gym_B1F_Text_KeeganDefeat:
-	.string "Play with fire, and be burned…$"
-
-LavaridgeTown_Gym_B1F_Text_KeeganPostBattle:
-	.string "Your skill is real…\n"
-	.string "But our Leader Flannery is strong.\p"
-	.string "If you don't watch yourself, you'll be\n"
-	.string "burned seriously.$"
+	.string "You owe me some stress relievers!$"
 
 LavaridgeTown_Gym_1F_Text_GeraldIntro:
-	.string "Can your Pokémon withstand\n"
-	.string "392-degree heat?$"
+	.string "My wife said we'll dominate you!$"
 
 LavaridgeTown_Gym_1F_Text_GeraldDefeat:
-	.string "It didn't burn hotly enough…$"
+	.string "You dominated both of us…$"
 
 LavaridgeTown_Gym_1F_Text_GeraldPostBattle:
-	.string "The temperature of magma is\n"
-	.string "392 degrees.\p"
-	.string "Your Pokémon beat me, so they should\n"
-	.string "easily survive in magma.$"
+	.string "I have a masters degree in astro\n"
+	.string "physics.\p"
+	.string "Yet, I work as a Gym Trainer, here.\p"
+	.string "This economy sucks.$"
 
 LavaridgeTown_Gym_1F_Text_DanielleIntro:
-	.string "Um…\n"
-	.string "Okay, I'll battle with you.$"
+	.string "My husband is delusional.$"
 
 LavaridgeTown_Gym_1F_Text_DanielleDefeat:
-	.string "Oh, but you're too strong.$"
+	.string "Go ahead, young one.$"
 
 LavaridgeTown_Gym_1F_Text_DaniellePostBattle:
-	.string "I'm going to be a pretty and strong\n"
-	.string "Trainer just like Flannery.$"
+	.string "My son makes more money battling\n"
+	.string "Trainers than my husband ever will.\p"
+	.string "And he has a masters degree in astro\n"
+	.string "uhh something something.$"
 
 LavaridgeTown_Gym_B1F_Text_JaceIntro:
 	.string "Come on, get with it!\n"
 	.string "Let's go before my feelings cool!$"
 
 LavaridgeTown_Gym_B1F_Text_JaceDefeat:
-	.string "It's so hot, and yet my heart is\n"
-	.string "clutched by ice…$"
+	.string "Yup, I cooled down.$"
 
 LavaridgeTown_Gym_B1F_Text_JacePostBattle:
 	.string "The way the battling spirit burns\n"
 	.string "within you, you may stand a chance\l"
 	.string "against our Leader.$"
 
-LavaridgeTown_Gym_B1F_Text_JeffIntro:
-	.string "See how the flames blaze wildly?\n"
-	.string "They flare in anticipation of my win!$"
-
-LavaridgeTown_Gym_B1F_Text_JeffDefeat:
-	.string "Something didn't go right.$"
-
-LavaridgeTown_Gym_B1F_Text_JeffPostBattle:
-	.string "Well, so what? I say so what?\n"
-	.string "I can walk on hot coals barefoot!\p"
-	.string "…Don't even think about trying it!$"
-
 LavaridgeTown_Gym_B1F_Text_EliIntro:
-	.string "As much as I love mountains,\n"
-	.string "I especially love volcanoes.$"
+	.string "Ah-ha!\p"
+	.string "Didn't expect that, did you?.$"
 
 LavaridgeTown_Gym_B1F_Text_EliDefeat:
 	.string "Well, it seems to me I lost without\n"
@@ -264,42 +217,37 @@ LavaridgeTown_Gym_B1F_Text_EliDefeat:
 
 LavaridgeTown_Gym_B1F_Text_EliPostBattle:
 	.string "I stay here because I became a fan\n"
-	.string "of Flannery's power.\p"
+	.string "of Qanak's power.\p"
 	.string "Hehehehe.$"
 
 LavaridgeTown_Gym_1F_Text_FlanneryIntro:
-	.string "Welcome… No, wait.\p"
+	.string "Brrr.\p"
 	.string "Puny Trainer, how good to see you've\n"
 	.string "made it here!\p"
-	.string "I have been entrusted with the…\n"
+	.string "I am Qanak.\n"
 	.string "No, wait.\p"
-	.string "I am Flannery, and I'm the Gym\n"
-	.string "Leader here!\p"
-	.string "Uh…\n"
-	.string "Dare not underestimate me, though\l"
-	.string "I have been Leader only a short time!\p"
-	.string "With skills inherited from my grand-\n"
-	.string "father, I shall, uh…demonstrate the\l"
-	.string "hot moves we have honed on this land!$"
+	.string "I'm not paid enough to lose to a\n"
+	.string "mere child…\p"
+	.string "Ok.\n"
+	.string "So, here's the thing.\l"
+	.string "I'mma beat you harder than you have\l"
+	.string "ever been beaten before!$"
 
 LavaridgeTown_Gym_1F_Text_FlanneryDefeat:
 	.string "Oh…\n"
 	.string "I guess I was trying too hard…\p"
-	.string "I… I've only recently become\n"
-	.string "a Gym Leader.\p"
+	.string "You played really well at my own\n"
+	.string "game.\p"
 	.string "I tried too hard to be someone\n"
 	.string "I'm not.\p"
-	.string "I have to do things my natural way. If\n"
-	.string "I don't, my Pokémon will be confused.\p"
-	.string "Thanks for teaching me that.\n"
-	.string "For that, you deserve this.$"
+	.string "Oh yeah, take this.$"
 
 LavaridgeTown_Gym_1F_Text_ReceivedHeatBadge:
-	.string "{PLAYER} received the Heat Badge\n"
-	.string "from Flannery.$"
+	.string "{PLAYER} received the Inverse Badge\n"
+	.string "from Qanak.$"
 
 LavaridgeTown_Gym_1F_Text_ExplainHeatBadgeTakeThis:
-	.string "If you have a Heat Badge, all Pokémon\n"
+	.string "If you have a Inverse Badge, all Pokémon\n"
 	.string "up to Level 50, even those you get in\l"
 	.string "trades from other people, will obey\l"
 	.string "you completely.\p"
@@ -317,7 +265,7 @@ LavaridgeTown_Gym_1F_Text_ExplainOverheat:
 	.string "be suitable for longer battles.$"
 
 LavaridgeTown_Gym_1F_Text_RegisteredFlannery:
-	.string "Registered Gym Leader Flannery\n"
+	.string "Registered Gym Leader Qanak\n"
 	.string "in the Pokénav.$"
 
 LavaridgeTown_Gym_1F_Text_FlanneryPostBattle:
@@ -330,11 +278,11 @@ LavaridgeTown_Gym_1F_Text_GymStatue:
 
 LavaridgeTown_Gym_1F_Text_GymStatueCertified:
 	.string "Lavaridge Town Pokémon Gym\p"
-	.string "Flannery's certified Trainers:\n"
+	.string "Qanak's certified Trainers:\n"
 	.string "{PLAYER}$"
 
 LavaridgeTown_Gym_1F_Text_FlanneryPreRematch:
-	.string "Flannery: Losing a battle isn't going\n"
+	.string "Qanak: Losing a battle isn't going\n"
 	.string "to deflate me.\p"
 	.string "I love Pokémon.\n"
 	.string "I love to battle.\l"
@@ -347,7 +295,7 @@ LavaridgeTown_Gym_1F_Text_FlanneryRematchDefeat:
 	.string "On the verge of eruption!$"
 
 LavaridgeTown_Gym_1F_Text_FlanneryPostRematch:
-	.string "Flannery: I lost the match,\n"
+	.string "Qanak: I lost the match,\n"
 	.string "but I'm completely satisfied.\p"
 	.string "It's not often I get to enjoy a battle\n"
 	.string "this heated.\p"
@@ -355,7 +303,7 @@ LavaridgeTown_Gym_1F_Text_FlanneryPostRematch:
 	.string "again sometime!$"
 
 LavaridgeTown_Gym_1F_Text_FlanneryRematchNeedTwoMons:
-	.string "Flannery: Losing a battle isn't going\n"
+	.string "Qanak: Losing a battle isn't going\n"
 	.string "to deflate me.\p"
 	.string "I love Pokémon.\n"
 	.string "I love to battle.\l"
