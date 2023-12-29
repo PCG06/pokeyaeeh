@@ -4344,6 +4344,11 @@ static const u8 sGlimmeringCharmDesc[] = _(
     "raise the shards\n"
     "from Tera Raids.");
 
+static const u8 sMetalAlloyDesc[] = _(
+    "A peculiar metal\n"
+    "that makes certain\n"
+    "Pokémon evolve.");
+
 static const u8 sFireCrystalDesc[] =_(
     "Changes Pokémon's\n"
     "hidden potential\n"
