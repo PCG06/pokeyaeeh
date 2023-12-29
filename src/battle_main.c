@@ -5814,7 +5814,7 @@ void SetTypeBeforeUsingMove(u32 move, u32 battlerAtk)
                  || ((attackerAbility == ABILITY_SCORCHATE) && (ateType = TYPE_FIRE))
                  || ((attackerAbility == ABILITY_OCEANATE) && (ateType = TYPE_WATER))
                 )
-             )
+            )
     {
         gBattleStruct->dynamicMoveType = ateType | F_DYNAMIC_TYPE_2;
         if (!IsDynamaxed(battlerAtk))
