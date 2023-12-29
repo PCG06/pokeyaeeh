@@ -2,6 +2,7 @@
 #include "malloc.h"
 #include "apprentice.h"
 #include "battle.h"
+#include "battle_ai_util.h"
 #include "battle_anim.h"
 #include "battle_controllers.h"
 #include "battle_message.h"
@@ -4499,6 +4500,41 @@ static u16 CalculateBoxMonChecksum(struct BoxPokemon *boxMon)
     SetMonData(mon, field, &n);                                 \
 }
 
+bool8 IsSpeciesAffectedByScalemons(u16 species)
+{
+	if (species == SPECIES_SHEDINJA) // Shedinja would get OP stats because of its low HP and BST
+		return FALSE;
+
+    else
+        return TRUE;
+}
+
+u32 GetBaseStatsTotal(const u16 species)
+{
+    u32 total = 0;
+    u32 i;
+    u8 const *ptr;
+    ptr = &gSpeciesInfo[species].baseHP;
+
+    for (i = 0; i < NUM_STATS; i++)
+        total += ptr[i];
+
+    return total;
+}
+
+u8 GetVisualBaseStat(u8 statId, u16 species)
+{
+	u16 base = ((u8*) (&gSpeciesInfo[species].baseHP))[statId];
+
+	if (statId != STAT_HP && (FlagGet(FLAG_SCALEMONS)) && IsSpeciesAffectedByScalemons(species))
+	{
+		u8 baseHP = gSpeciesInfo[species].baseHP;
+		base = ((base * (600 - baseHP)) / (GetBaseStatsTotal(species) - baseHP), 255); //Max 255
+	}
+
+	return base;
+}
+
 void CalculateMonStats(struct Pokemon *mon)
 {
     s32 oldMaxHP = GetMonData(mon, MON_DATA_MAX_HP, NULL);
@@ -4552,6 +4588,26 @@ void CalculateMonStats(struct Pokemon *mon)
     CALC_STAT(baseSpeed, speedIV, speedEV, STAT_SPEED, MON_DATA_SPEED)
     CALC_STAT(baseSpAttack, spAttackIV, spAttackEV, STAT_SPATK, MON_DATA_SPATK)
     CALC_STAT(baseSpDefense, spDefenseIV, spDefenseEV, STAT_SPDEF, MON_DATA_SPDEF)
+
+    if (FlagGet(FLAG_SCALEMONS) && IsSpeciesAffectedByScalemons(species))
+	{
+        u32 i;
+        u16 base;
+        u16 baseStatTotal;
+        u16 HP;
+        u16 baseAtk;
+        u32 evs[i];
+
+		for (i = STAT_ATK; i < NUM_STATS; i++) // HP doesn't change in Scalemons
+		{
+			base = ((u8*) (&gSpeciesInfo[species].baseHP))[i];
+            baseStatTotal = GetBaseStatsTotal(species);
+            HP = gSpeciesInfo[species].baseHP;
+            baseAtk = ((u8*) (&gSpeciesInfo[species].baseAttack))[i];
+			base = ((base * (600 - HP)) / (baseStatTotal - HP), 255); // Max 255
+			CALC_STAT(baseAttack + (i - 1), 31, evs[i], i, MON_DATA_ATK + (i - 1));
+		}
+	}
 
     if (species == SPECIES_SHEDINJA)
     {

@@ -113,7 +113,7 @@ Debug_FlagsAndVarNotSetBattleConfigMessage_Text:
 	.string "'include/config/battle.h'!$"
 
 Debug_EventScript_Script_1::
-    goto_if_set FLAG_UNLOCK_CHEAT_MENU, Debug_EventScript_UnsetCheatFlag
+    goto_if_set FLAG_SCALEMONS, Debug_EventScript_UnsetCheatFlag
     goto Debug_EventScript_SetCheatFlag
     end
 
@@ -257,12 +257,12 @@ DebugText_DaycarePokemonNotCompatible:
 
 Debug_EventScript_SetCheatFlag::
     msgbox Debug_Text_SetCheatFlag, MSGBOX_AUTOCLOSE
-    setflag FLAG_UNLOCK_CHEAT_MENU
+    setflag FLAG_SCALEMONS
 	end
 
 Debug_EventScript_UnsetCheatFlag::
     msgbox Debug_Text_UnsetCheatFlag, MSGBOX_AUTOCLOSE
-    clearflag FLAG_UNLOCK_CHEAT_MENU
+    clearflag FLAG_SCALEMONS
 	end
 
 Debug_Text_SetCheatFlag::
