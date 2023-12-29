@@ -37,11 +37,11 @@ MauvilleCity_Gym_SetGymTrainers::
 LavaridgeTown_Gym_SetGymTrainers::
 	settrainerflag TRAINER_COLE
 	settrainerflag TRAINER_AXLE
-	settrainerflag TRAINER_KEEGAN
+	@ settrainerflag TRAINER_KEEGAN @ removed from this gym
 	settrainerflag TRAINER_GERALD
 	settrainerflag TRAINER_DANIELLE
 	settrainerflag TRAINER_JACE
-	settrainerflag TRAINER_JEFF
+	@ settrainerflag TRAINER_JEFF @ removed from this gym
 	settrainerflag TRAINER_ELI
 	return
 

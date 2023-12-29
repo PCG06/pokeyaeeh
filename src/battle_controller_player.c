@@ -1865,6 +1865,10 @@ static void MoveSelectionDisplayMoveType(u32 battler)
 {
     u8 *txtPtr;
     struct ChooseMoveStruct *moveInfo = (struct ChooseMoveStruct *)(&gBattleResources->bufferA[battler][4]);
+    u32 move = moveInfo->moves[gMoveSelectionCursor[battler]];
+    u32 moveType = gBattleMoves[move].type;
+    u32 atkAbility = GetBattlerAbility(battler);
+    u32 ateAbility = atkAbility;
 
     txtPtr = StringCopy(gDisplayedStringBattle, gText_MoveInterfaceType);
     *(txtPtr)++ = EXT_CTRL_CODE_BEGIN;
@@ -1886,6 +1890,60 @@ static void MoveSelectionDisplayMoveType(u32 battler)
         type |= 0xC0;
         StringCopy(txtPtr, gTypeNames[type & 0x3F]);
     }
+
+    else if ((gBattleMoves[move].type != TYPE_NORMAL)
+        && gBattleMoves[move].effect != EFFECT_HIDDEN_POWER
+        && gBattleMoves[move].effect != EFFECT_WEATHER_BALL
+        && gBattleMoves[move].effect != EFFECT_CHANGE_TYPE_ON_ITEM
+        && gBattleMoves[move].effect != EFFECT_NATURAL_GIFT
+        && gBattleMoves[move].effect != EFFECT_TERRAIN_PULSE
+        && gBattleMoves[move].effect != EFFECT_CHANGE_TYPE_ON_ITEM
+        && (ateAbility == ABILITY_NORMALIZE))
+    {
+        StringCopy(txtPtr, gTypeNames[TYPE_NORMAL]);
+    }
+
+    else if ((gBattleMoves[move].soundMove == TRUE) && (atkAbility == ABILITY_LIQUID_VOICE))
+    {
+        StringCopy(txtPtr, gTypeNames[TYPE_WATER]);
+    }
+
+    else if ((moveType == TYPE_NORMAL)
+        && gBattleMoves[move].effect != EFFECT_HIDDEN_POWER
+        && gBattleMoves[move].effect != EFFECT_WEATHER_BALL
+        && gBattleMoves[move].effect != EFFECT_CHANGE_TYPE_ON_ITEM
+        && gBattleMoves[move].effect != EFFECT_NATURAL_GIFT)
+    {
+        if (ateAbility == ABILITY_PIXILATE)
+        {
+            StringCopy(txtPtr, gTypeNames[TYPE_FAIRY]);
+        }
+        else if (ateAbility == ABILITY_REFRIGERATE)
+        {
+            StringCopy(txtPtr, gTypeNames[TYPE_ICE]);
+        }
+        else if (ateAbility == ABILITY_AERILATE)
+        {
+            StringCopy(txtPtr, gTypeNames[TYPE_FLYING]);
+        }
+        else if (ateAbility == ABILITY_GALVANIZE)
+        {
+            StringCopy(txtPtr, gTypeNames[TYPE_ELECTRIC]);
+        }
+        else if (ateAbility == ABILITY_HERBIVATE)
+        {
+            StringCopy(txtPtr, gTypeNames[TYPE_GRASS]);
+        }
+        else if (ateAbility == ABILITY_SCORCHATE)
+        {
+            StringCopy(txtPtr, gTypeNames[TYPE_FIRE]);
+        }
+        else if (ateAbility == ABILITY_OCEANATE)
+        {
+            StringCopy(txtPtr, gTypeNames[TYPE_WATER]);
+        }
+    }
+
     else
     {
         StringCopy(txtPtr, gTypeNames[gBattleMoves[moveInfo->moves[gMoveSelectionCursor[battler]]].type]);
@@ -2518,6 +2576,7 @@ static void ChangeMoveDisplayMode(u32 battler)
     u32 accuracy = GetTotalAccuracy(battlerAtk, battlerDef, move, atkAbility, defAbility, holdEffectAtk, holdEffectDef);
     u32 weather = gBattleWeather;
     bool32 updateFlags = FALSE;
+    u32 ateAbility = atkAbility;
 
     //Move Name
     StringCopy(gDisplayedStringBattle, gMoveNames[move]);
@@ -2543,6 +2602,25 @@ static void ChangeMoveDisplayMode(u32 battler)
     if (gBattleMoves[move].effect == EFFECT_ROLLOUT && atkAbility == ABILITY_HARD_SPINNER)
     {
         StringExpandPlaceholders(gStringVar1, gPower45Text);
+    }
+    if ((moveType == TYPE_NORMAL)
+        && gBattleMoves[move].effect != EFFECT_HIDDEN_POWER
+        && gBattleMoves[move].effect != EFFECT_WEATHER_BALL
+        && gBattleMoves[move].effect != EFFECT_CHANGE_TYPE_ON_ITEM
+        && gBattleMoves[move].effect != EFFECT_NATURAL_GIFT
+        && ((ateAbility == ABILITY_PIXILATE) || (ateAbility == ABILITY_REFRIGERATE) || (ateAbility == ABILITY_AERILATE) || (ateAbility == ABILITY_GALVANIZE) || (ateAbility == ABILITY_HERBIVATE) || (ateAbility == ABILITY_SCORCHATE) || (ateAbility == ABILITY_OCEANATE)))
+    {
+        ConvertIntToDecimalStringN(gStringVar1, power*(1.2), STR_CONV_MODE_RIGHT_ALIGN, 4);
+    }
+    if (gBattleMoves[move].effect != EFFECT_HIDDEN_POWER
+        && gBattleMoves[move].effect != EFFECT_WEATHER_BALL
+        && gBattleMoves[move].effect != EFFECT_CHANGE_TYPE_ON_ITEM
+        && gBattleMoves[move].effect != EFFECT_NATURAL_GIFT
+        && gBattleMoves[move].effect != EFFECT_TERRAIN_PULSE
+        && gBattleMoves[move].effect != EFFECT_CHANGE_TYPE_ON_ITEM
+        && (ateAbility == ABILITY_NORMALIZE))
+    {
+        ConvertIntToDecimalStringN(gStringVar1, power*(1.3), STR_CONV_MODE_RIGHT_ALIGN, 4);
     }
 	StringExpandPlaceholders(gStringVar4, gPowerText);
     BattlePutTextOnWindow(gStringVar4, B_WIN_MOVE_NAME_3);

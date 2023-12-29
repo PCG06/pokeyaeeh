@@ -1100,9 +1100,9 @@ MatchCall_PersonalizedText39::
 	.string "Whiff-whiff! Whiff-whiff!\p"
 	.string "Hey! Sorry about that!\n"
 	.string "I just put on some suntan oil.\p"
-	.string "So my PokéNav went whoopsy\n"
+	.string "So my Pokénav went whoopsy\n"
 	.string "out of my hand into the water!\p"
-	.string "But, boy, Devon's PokéNav is built\n"
+	.string "But, boy, Devon's Pokénav is built\n"
 	.string "tough. It survived that dunking!\p"
 	.string "Anyways, I'm busy sunbathing,\n"
 	.string "so let's chat another time.$"
@@ -2132,7 +2132,7 @@ MatchCall_Text_Wattson4::
 	.string "with shocking power!$"
 
 MatchCall_Text_Flannery1::
-	.string "Flannery: {PLAYER}…\p"
+	.string "Qanak: {PLAYER}…\p"
 	.string "When we battled, I learned exactly\n"
 	.string "how immature I was.\p"
 	.string "But I'm not done yet!\p"
@@ -2142,7 +2142,7 @@ MatchCall_Text_Flannery1::
 	.string "please challenge us again.$"
 
 MatchCall_Text_Flannery2::
-	.string "Flannery: Hello, {PLAYER}?\n"
+	.string "Qanak: Hello, {PLAYER}?\n"
 	.string "Congratulations!\p"
 	.string "Word of your success has reached\n"
 	.string "us like the heat of a volcano!\p"
@@ -2153,13 +2153,13 @@ MatchCall_Text_Flannery2::
 	.string "Match Call list.$"
 
 MatchCall_Text_Flannery3::
-	.string "Flannery: Oh, {PLAYER}?\n"
+	.string "Qanak: Oh, {PLAYER}?\n"
 	.string "Our Gym's ready!\p"
 	.string "Come to Lavaridge for a soak\n"
 	.string "in the hot spring and a challenge!$"
 
 MatchCall_Text_Flannery4::
-	.string "Flannery: {PLAYER}…\n"
+	.string "Qanak: {PLAYER}…\n"
 	.string "I'm positive that you keep getting\l"
 	.string "better at training every time.$"
 
@@ -2629,7 +2629,7 @@ MatchCall_Text_Wally6::
 	.string "… … … … … …\n"
 	.string "… … … … … …\p"
 	.string "Wally appears to be out of\n"
-	.string "the PokéNav's service area…$"
+	.string "the Pokénav's service area…$"
 
 MatchCall_Text_Wally7:: @ 2B5100
 	.string "Wally: Oh, {PLAYER}!\p"
@@ -2707,7 +2707,7 @@ MatchCall_Text_Scott7::
 	.string "… … … … … …\n"
 	.string "… … … … … …\p"
 	.string "Scott appears to be out of\n"
-	.string "the PokéNav's service area…$"
+	.string "the Pokénav's service area…$"
 
 MatchCall_Text_Norman1:: @ 82B5719
 	.string "Dad: In Rustboro, there's a man\n"
@@ -2834,7 +2834,7 @@ MatchCall_Text_Steven7:: @ 82B5ED9
 MatchCall_Text_BirchRegisterCall: @ 82B5F52
 	.string "Prof. Birch: Oh, {PLAYER}{KUN}!\n"
 	.string "I've already heard about you!\p"
-	.string "It seems your PokéNav's been\n"
+	.string "It seems your Pokénav's been\n"
 	.string "upgraded with Match Call.\p"
 	.string "Well, I should register, too!\p"
 	.string "That way, I'd be able to examine\n"
@@ -2844,16 +2844,16 @@ MatchCall_Text_BirchRegisterCall: @ 82B5F52
 
 MatchCall_Text_RegisteredBirch: @ 82B603A
 	.string "Registered Prof. Birch\n"
-	.string "in the PokéNav.$"
+	.string "in the Pokénav.$"
 	
 MatchCall_Text_UnusedProfBirch:
 	.string "Prof. Birch: When one has both\n"
-	.string "the Pokédex and PokéNav, studying\l"
+	.string "the Pokédex and Pokénav, studying\l"
 	.string "Pokémon becomes more fun, eh?$"
 
 MatchCall_Text_MrStone1:: @ 82B60C0
 	.string "Mr. Stone: Oh? {PLAYER}{KUN}!\p"
-	.string "Since you called me, the PokéNav\n"
+	.string "Since you called me, the Pokénav\n"
 	.string "must be working properly!\p"
 	.string "Other people will be registered,\n"
 	.string "so try calling them up, too!\p"
