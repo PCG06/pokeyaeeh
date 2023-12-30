@@ -113,8 +113,8 @@ Debug_FlagsAndVarNotSetBattleConfigMessage_Text:
 	.string "'include/config/battle.h'!$"
 
 Debug_EventScript_Script_1::
-    goto_if_set FLAG_UNLOCK_CHEAT_MENU, Debug_EventScript_UnsetCheatFlag
-    goto Debug_EventScript_SetCheatFlag
+    goto_if_set FLAG_UNLOCK_CHEAT_MENU, Debug_EventScript_UnsetTestFlag
+    goto Debug_EventScript_SetTestFlag
     end
 
 Debug_EventScript_Script_2:: @ one Mega Evolution
@@ -255,21 +255,21 @@ DebugText_DaycareOnePokemon:
 DebugText_DaycarePokemonNotCompatible:
 	.string "Your Pokémon at Daycare can't\nhave babies together!$"
 
-Debug_EventScript_SetCheatFlag::
-    msgbox Debug_Text_SetCheatFlag, MSGBOX_AUTOCLOSE
+Debug_EventScript_SetTestFlag::
+    msgbox Debug_Text_SetTestFlag, MSGBOX_AUTOCLOSE
     setflag FLAG_UNLOCK_CHEAT_MENU
 	end
 
-Debug_EventScript_UnsetCheatFlag::
-    msgbox Debug_Text_UnsetCheatFlag, MSGBOX_AUTOCLOSE
+Debug_EventScript_UnsetTestFlag::
+    msgbox Debug_Text_UnsetTestFlag, MSGBOX_AUTOCLOSE
     clearflag FLAG_UNLOCK_CHEAT_MENU
 	end
 
-Debug_Text_SetCheatFlag::
-    .string "Cheat flag set.$"
+Debug_Text_SetTestFlag::
+    .string "Test flag set.$"
 
-Debug_Text_UnsetCheatFlag::
-    .string "Cheat flag unset.$"
+Debug_Text_UnsetTestFlag::
+    .string "Test flag unset.$"
 
 Route123_EventScript_Alberto_Battle_Event_Script::
     msgbox Route123_EventScript_Alberto_Text_AskSkyBattle, MSGBOX_YESNO
