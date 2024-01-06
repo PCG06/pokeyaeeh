@@ -1942,6 +1942,10 @@ static void MoveSelectionDisplayMoveType(u32 battler)
         {
             StringCopy(txtPtr, gTypeNames[TYPE_WATER]);
         }
+        else
+        {
+            StringCopy(txtPtr, gTypeNames[gBattleMoves[moveInfo->moves[gMoveSelectionCursor[battler]]].type]);
+        }
     }
 
     else
