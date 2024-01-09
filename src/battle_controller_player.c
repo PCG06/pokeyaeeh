@@ -1801,20 +1801,26 @@ u8 TypeEffectiveness(struct ChooseMoveStruct *moveInfo, u8 targetId, u32 battler
     u16 mod4 = sTypeEffectivenessTable[gBattleMoves[moveInfo->moves[gMoveSelectionCursor[battler]]].argument][gBattleMons[targetId].type2];
     u16 attackingMove = gBattleMoves[moveInfo->moves[gMoveSelectionCursor[battler]]].power >= 1;
  
-	if (gBattleMons[targetId].type2 != gBattleMons[targetId].type1)
-	{
-		MulModifier(&mod, mod2);
-	}
+	
+    if (gBattleMoves[moveInfo->moves[gMoveSelectionCursor[battler]]].power >= 1)
+    {
+        if (gBattleMons[targetId].type2 != gBattleMons[targetId].type1)
+	    {
+		    MulModifier(&mod, mod2);
+        }
  
-	if (gBattleMoves[moveInfo->moves[gMoveSelectionCursor[battler]]].effect == EFFECT_TWO_TYPED_MOVE)
-	{
-		MulModifier(&mod, mod3);
- 
-		if (gBattleMons[targetId].type2 != gBattleMons[targetId].type1)
-		{
-			MulModifier(&mod, mod4);
-		}
-	}
+	    if (gBattleMoves[moveInfo->moves[gMoveSelectionCursor[battler]]].effect == EFFECT_TWO_TYPED_MOVE)
+	    {
+		    MulModifier(&mod, mod3);
+
+		    if (gBattleMons[targetId].type2 != gBattleMons[targetId].type1)
+		    {
+			    MulModifier(&mod, mod4);
+		    }
+	    }
+    }
+    else
+		return 10;
  
 //if (gBattleMoves[moveInfo->moves[gMoveSelectionCursor[battler]]].power == 0)
  
@@ -1822,25 +1828,6 @@ u8 TypeEffectiveness(struct ChooseMoveStruct *moveInfo, u8 targetId, u32 battler
 	// 24 - super effective / green
 	// 25 - not very effective / black
 	// 26 - no effect / white
- 
-	if (mod == UQ_4_12(0.0)) {
-		if(isInverse)
-			return 24;
-		else
-			return 26;
-	}
-	else if (mod <= UQ_4_12(0.5)) {
-		if(isInverse)
-		    return 24;
-		else
-			return 25;
-	}
-	else if (mod >= UQ_4_12(2.0)) {
-		if(isInverse)
-			return 25;
-		else
-			return 24;
-	}
 
     // Freeze-Dry is super effective against Water-types
     if (gBattleMoves[moveInfo->moves[gMoveSelectionCursor[battler]]].effect == EFFECT_FREEZE_DRY && IS_BATTLER_OF_TYPE(targetId, TYPE_WATER))
@@ -1912,13 +1899,39 @@ u8 TypeEffectiveness(struct ChooseMoveStruct *moveInfo, u8 targetId, u32 battler
     {
         return 26;
     }
+    // Status moves are immune against Good As Gold
+    else if ((gBattleMoves[moveInfo->moves[gMoveSelectionCursor[battler]]].split == SPLIT_STATUS) && (defAbility == ABILITY_GOOD_AS_GOLD))
+    {
+        return 26;
+    }
     else
     {
-        return 10;
+        if (mod == UQ_4_12(1.0))
+        {
+		    return 10;
+        }
+        else if (mod == UQ_4_12(0.0))
+        {
+		    if(isInverse)
+			    return 24;
+		    else
+			    return 26;
+	    }
+	    else if (mod <= UQ_4_12(0.5))
+        {
+		    if(isInverse)
+		        return 24;
+		    else
+			    return 25;
+	    }
+	    else if (mod >= UQ_4_12(2.0))
+        {
+		    if(isInverse)
+			    return 25;
+		    else
+			    return 24;
+	    }
     }
-
-	if (gBattleMoves[moveInfo->moves[gMoveSelectionCursor[battler]]].power == 0)
-		return 10;
 }
 
 static void MoveSelectionDisplayMoveTypeDoubles(u8 targetId, u32 battler)
