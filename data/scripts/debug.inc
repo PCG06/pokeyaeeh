@@ -119,7 +119,7 @@ Debug_EventScript_Script_1::
 
 Debug_EventScript_Script_2:: @ one Mega Evolution
     cleartrainerflag TRAINER_ERIC
-	trainerbattle_single TRAINER_ERIC, JaggedPass_Text_EricIntro, JaggedPass_Text_EricDefeat
+	trainerbattle_double TRAINER_ERIC, JaggedPass_Text_EricIntro, JaggedPass_Text_EricDefeat, MeteorFalls_1F_2R_Text_JayNotEnoughMons
 	end
 
 Debug_EventScript_Script_3:: @ both have Mega Evolution
