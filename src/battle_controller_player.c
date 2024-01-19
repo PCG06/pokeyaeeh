@@ -1790,77 +1790,50 @@ static void MulModifier(u16 *modifier, u16 val)
 
 u8 TypeEffectiveness(struct ChooseMoveStruct *moveInfo, u8 targetId, u32 battler)
 {
-    u32 battlerAtk = battler;
-    u32 battlerDef = BATTLE_OPPOSITE(battlerAtk);
-    u32 defAbility = GetBattlerAbility(battlerDef);
+    u32 battlerDef = BATTLE_OPPOSITE(battler);
+    u16 attackingMove = gBattleMoves[moveInfo->moves[gMoveSelectionCursor[battler]]].power >= 1;
+    u32 defType1 = gBattleMons[targetId].type1;
+	u32 defType2 = gBattleMons[targetId].type2;
+    u32 defAbility = gBattleMons[targetId].ability;
 	bool8 isInverse = (B_FLAG_INVERSE_BATTLE != 0 && FlagGet(B_FLAG_INVERSE_BATTLE)) ? TRUE : FALSE;
  
 	u16 mod = sTypeEffectivenessTable[gBattleMoves[moveInfo->moves[gMoveSelectionCursor[battler]]].type][gBattleMons[targetId].type1];
     u16 mod2 = sTypeEffectivenessTable[gBattleMoves[moveInfo->moves[gMoveSelectionCursor[battler]]].type][gBattleMons[targetId].type2];
 	u16 mod3 = sTypeEffectivenessTable[gBattleMoves[moveInfo->moves[gMoveSelectionCursor[battler]]].argument][gBattleMons[targetId].type1];
-    u16 mod4 = sTypeEffectivenessTable[gBattleMoves[moveInfo->moves[gMoveSelectionCursor[battler]]].argument][gBattleMons[targetId].type2];
-    u16 attackingMove = gBattleMoves[moveInfo->moves[gMoveSelectionCursor[battler]]].power >= 1;
+    u16 mod4 = sTypeEffectivenessTable[gBattleMoves[moveInfo->moves[gMoveSelectionCursor[battler]]].argument][gBattleMons[targetId].type2]; 
+	
+    if (gBattleMoves[moveInfo->moves[gMoveSelectionCursor[battler]]].power >= 1)
+    {
+        if (gBattleMons[targetId].type2 != gBattleMons[targetId].type1)
+	    {
+		    MulModifier(&mod, mod2);
+        }
  
-	if (gBattleMons[targetId].type2 != gBattleMons[targetId].type1)
-	{
-		MulModifier(&mod, mod2);
-	}
- 
-	if (gBattleMoves[moveInfo->moves[gMoveSelectionCursor[battler]]].effect == EFFECT_TWO_TYPED_MOVE)
-	{
-		MulModifier(&mod, mod3);
- 
-		if (gBattleMons[targetId].type2 != gBattleMons[targetId].type1)
-		{
-			MulModifier(&mod, mod4);
-		}
-	}
- 
-//if (gBattleMoves[moveInfo->moves[gMoveSelectionCursor[battler]]].power == 0)
- 
+	    if (gBattleMoves[moveInfo->moves[gMoveSelectionCursor[battler]]].effect == EFFECT_TWO_TYPED_MOVE)
+	    {
+		    MulModifier(&mod, mod3);
+
+		    if (gBattleMons[targetId].type2 != gBattleMons[targetId].type1)
+		    {
+			    MulModifier(&mod, mod4);
+		    }
+	    }
+    }
+    else
+		return 10;
+
 	// 10 - normal effectiveness / normal
 	// 24 - super effective / green
 	// 25 - not very effective / black
 	// 26 - no effect / white
- 
-	if (mod == UQ_4_12(0.0)) {
-		if(isInverse)
-			return 24;
-		else
-			return 26;
-	}
-	else if (mod <= UQ_4_12(0.5)) {
-		if(isInverse)
-		    return 24;
-		else
-			return 25;
-	}
-	else if (mod >= UQ_4_12(2.0)) {
-		if(isInverse)
-			return 25;
-		else
-			return 24;
-	}
 
-    // Freeze-Dry is super effective against Water-types
-    if (gBattleMoves[moveInfo->moves[gMoveSelectionCursor[battler]]].effect == EFFECT_FREEZE_DRY && IS_BATTLER_OF_TYPE(targetId, TYPE_WATER))
-    {
-        return 24;
-    }
-    // Fire moves are super effective against Dry Skin
-    else if (gBattleMoves[moveInfo->moves[gMoveSelectionCursor[battler]]].type == TYPE_FIRE && attackingMove && ((defAbility == ABILITY_DRY_SKIN) || (defAbility == ABILITY_FLUFFY)))
-    {
-        return 24;
-    }
-    // Fire moves are immune against Flash Fire and Fluffy
-    else if (gBattleMoves[moveInfo->moves[gMoveSelectionCursor[battler]]].type == TYPE_FIRE && ((defAbility == ABILITY_FLASH_FIRE) || (defAbility == ABILITY_WELL_BAKED_BODY)))
+    // Ability checks
+    
+    // Immunities
+    // Fire moves are immune against Flash Fire and Well Baked Body
+    if (gBattleMoves[moveInfo->moves[gMoveSelectionCursor[battler]]].type == TYPE_FIRE && ((defAbility == ABILITY_FLASH_FIRE) || (defAbility == ABILITY_WELL_BAKED_BODY)))
     {
         return 26;
-    }
-    // Fire moves are not very effective against Heatproof, Thick Fat and Water Bubble
-    else if (gBattleMoves[moveInfo->moves[gMoveSelectionCursor[battler]]].type == TYPE_FIRE && attackingMove && ((defAbility == ABILITY_HEATPROOF) || (defAbility == ABILITY_THICK_FAT) || ((defAbility == ABILITY_WATER_BUBBLE))))
-    {
-        return 25;
     }
     // Water moves are immune against Water Absorb, Dry Skin, Storm Drain and Steam Engine
     else if (gBattleMoves[moveInfo->moves[gMoveSelectionCursor[battler]]].type == TYPE_WATER && ((defAbility == ABILITY_WATER_ABSORB) || (defAbility == ABILITY_DRY_SKIN) || (defAbility == ABILITY_STORM_DRAIN) || (defAbility == ABILITY_STEAM_ENGINE)))
@@ -1878,14 +1851,9 @@ u8 TypeEffectiveness(struct ChooseMoveStruct *moveInfo, u8 targetId, u32 battler
         return 26;
     }
     // Electric moves are immune against Volt Absorb, Lighting Rod and Motor Drive
-    else if (gBattleMoves[moveInfo->moves[gMoveSelectionCursor[battler]]].type == TYPE_GROUND && ((defAbility == ABILITY_VOLT_ABSORB) || (defAbility == ABILITY_LIGHTNING_ROD) || (defAbility == ABILITY_MOTOR_DRIVE)))
+    else if (gBattleMoves[moveInfo->moves[gMoveSelectionCursor[battler]]].type == TYPE_ELECTRIC && ((defAbility == ABILITY_VOLT_ABSORB) || (defAbility == ABILITY_LIGHTNING_ROD) || (defAbility == ABILITY_MOTOR_DRIVE)))
     {
         return 26;
-    }
-    // Ghost moves are not very effective against Purifying Salt
-    else if (gBattleMoves[moveInfo->moves[gMoveSelectionCursor[battler]]].type == TYPE_GHOST && (defAbility == ABILITY_PURIFYING_SALT))
-    {
-        return 25;
     }
     // Ground moves are immune against Levitate and Earth Eater
     else if (gBattleMoves[moveInfo->moves[gMoveSelectionCursor[battler]]].type == TYPE_GROUND && ((defAbility == ABILITY_LEVITATE) || (defAbility == ABILITY_EARTH_EATER)))
@@ -1912,13 +1880,93 @@ u8 TypeEffectiveness(struct ChooseMoveStruct *moveInfo, u8 targetId, u32 battler
     {
         return 26;
     }
-    else
+    // Status moves are immune against Good As Gold
+    else if ((gBattleMoves[moveInfo->moves[gMoveSelectionCursor[battler]]].split == SPLIT_STATUS) && (defAbility == ABILITY_GOOD_AS_GOLD))
     {
-        return 10;
+        return 26;
     }
 
-	if (gBattleMoves[moveInfo->moves[gMoveSelectionCursor[battler]]].power == 0)
-		return 10;
+    // Super Effective
+    // Fire moves are super effective against Dry Skin and Fluffy
+    else if (gBattleMoves[moveInfo->moves[gMoveSelectionCursor[battler]]].type == TYPE_FIRE && attackingMove && ((defAbility == ABILITY_DRY_SKIN) || (defAbility == ABILITY_FLUFFY)))
+    {
+        if (mod < UQ_4_12(1.0))
+            return 25;
+        else
+            return 24;
+    }
+    // Resistence
+    // Fire moves are not very effective against Heatproof, Thick Fat and Water Bubble
+    else if (gBattleMoves[moveInfo->moves[gMoveSelectionCursor[battler]]].type == TYPE_FIRE && attackingMove && ((defAbility == ABILITY_HEATPROOF) || (defAbility == ABILITY_THICK_FAT) || ((defAbility == ABILITY_WATER_BUBBLE))))
+    {
+        if (mod > UQ_4_12(2.0)) // 4x weakness is reduced to 2x, which is still super effective
+            return 24;
+        else if (mod == UQ_4_12(2.0))
+            return 10;
+        else
+            return 25;
+    }
+    // Ice moves are not very effective against Thick Fat
+    else if (gBattleMoves[moveInfo->moves[gMoveSelectionCursor[battler]]].type == TYPE_ICE && attackingMove && (defAbility == ABILITY_THICK_FAT))
+    {
+        if (mod > UQ_4_12(2.0)) // 4x weakness is reduced to 2x, which is still super effective
+            return 24;
+        else if (mod == UQ_4_12(2.0))
+            return 10;
+        else
+            return 25;
+    }
+    // Ghost moves are not very effective against Purifying Salt
+    else if (gBattleMoves[moveInfo->moves[gMoveSelectionCursor[battler]]].type == TYPE_GHOST && attackingMove && (defAbility == ABILITY_PURIFYING_SALT))
+    {
+        if (mod > UQ_4_12(2.0)) // 4x weakness is reduced to 2x, which is still super effective
+            return 24;
+        else if (mod == UQ_4_12(2.0))
+            return 10;
+        else
+            return 25;
+    }
+    // Move checks
+    // Super effective
+    // Freeze-Dry is super effective against Water-types
+    else if (gBattleMoves[moveInfo->moves[gMoveSelectionCursor[battler]]].effect == EFFECT_FREEZE_DRY)
+    {
+        u16 mod5 = mod*4;
+        if (((defType1 == TYPE_WATER) || (defType2 == TYPE_WATER)) && (mod5 >= UQ_4_12(2.0)))
+            return 24;
+        else if (((defType1 == TYPE_WATER) || (defType2 == TYPE_WATER)) && (mod5 < UQ_4_12(2.0)))
+            return 10;
+    }
+
+    // Regular type effectiveness
+    else
+    {
+        if (mod == UQ_4_12(1.0))
+        {
+		    return 10;
+        }
+        else if (mod == UQ_4_12(0.0))
+        {
+		    if(isInverse)
+			    return 24;
+		    else
+			    return 26;
+	    }
+	    else if (mod <= UQ_4_12(0.5))
+        {
+		    if(isInverse)
+		        return 24;
+		    else
+			    return 25;
+	    }
+	    else if (mod >= UQ_4_12(2.0))
+        {
+		    if(isInverse)
+			    return 25;
+		    else
+			    return 24;
+	    }
+    }
 }
 
 static void MoveSelectionDisplayMoveTypeDoubles(u8 targetId, u32 battler)
@@ -2723,7 +2771,7 @@ static void ChangeMoveDisplayMode(u32 battler)
 	CopyWindowToVram(B_WIN_MOVE_NAME_4 , 3);
 
     //Contact Move
-    if(!gBattleMoves[move].makesContact == FALSE)
+    if (IsMoveMakingContact(move, battlerAtk))
 	    StringExpandPlaceholders(gStringVar4, gContactText);
     else
         StringExpandPlaceholders(gStringVar4, gNoContactText);
