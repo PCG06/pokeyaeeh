@@ -1929,14 +1929,14 @@ u8 TypeEffectiveness(struct ChooseMoveStruct *moveInfo, u8 targetId, u32 battler
     // Move checks
     // Super effective
     // Freeze-Dry is super effective against Water-types
-    else if (gBattleMoves[moveInfo->moves[gMoveSelectionCursor[battler]]].effect == EFFECT_FREEZE_DRY)
+    /*else if (gBattleMoves[moveInfo->moves[gMoveSelectionCursor[battler]]].effect == EFFECT_FREEZE_DRY)
     {
         u16 mod5 = mod*4;
         if (((defType1 == TYPE_WATER) || (defType2 == TYPE_WATER)) && (mod5 >= UQ_4_12(2.0)))
             return 24;
         else if (((defType1 == TYPE_WATER) || (defType2 == TYPE_WATER)) && (mod5 < UQ_4_12(2.0)))
             return 10;
-    }
+    }*/
 
     // Regular type effectiveness
     else
