@@ -61,14 +61,14 @@
 #include "constants/union_room.h"
 #include "constants/weather.h"
 
-#define DAY_EVO_HOUR_BEGIN       12
-#define DAY_EVO_HOUR_END         HOURS_PER_DAY
+#define DAY_EVO_HOUR_BEGIN       4
+#define DAY_EVO_HOUR_END         18
 
 #define DUSK_EVO_HOUR_BEGIN      17
 #define DUSK_EVO_HOUR_END        18
 
-#define NIGHT_EVO_HOUR_BEGIN     0
-#define NIGHT_EVO_HOUR_END       12
+#define NIGHT_EVO_HOUR_BEGIN     18
+#define NIGHT_EVO_HOUR_END       4
 
 #if P_FRIENDSHIP_EVO_THRESHOLD >= GEN_9
 #define FRIENDSHIP_EVO_THRESHOLD 160

@@ -35,6 +35,7 @@
 #include "pokemon_summary_screen.h"
 #include "random.h"
 #include "region_map.h"
+#include "rtc.h"
 #include "scanline_effect.h"
 #include "script.h"
 #include "script_pokemon_util.h"
@@ -48,13 +49,13 @@
 #include "text_window.h"
 #include "wild_encounter.h"
 #include "window.h"
+#include "constants/abilities.h"
 #include "constants/map_types.h"
 #include "constants/species.h"
 #include "constants/maps.h"
 #include "constants/field_effects.h"
 #include "constants/items.h"
 #include "constants/songs.h"
-#include "constants/abilities.h"
 #include "constants/rgb.h"
 #include "constants/region_map_sections.h"
 #include "gba/m4a_internal.h"
@@ -159,6 +160,7 @@ static void DrawHiddenSearchWindow(u8 width);
 static const u32 sDexNavGuiTiles[] = INCBIN_U32("graphics/dexnav/gui_tiles.4bpp.lz");
 static const u32 sDexNavGuiTilemap[] = INCBIN_U32("graphics/dexnav/gui_tilemap.bin.lz");
 static const u32 sDexNavGuiPal[] = INCBIN_U32("graphics/dexnav/gui.gbapal");
+static const u32 sDexNavGuiNightPal[] = INCBIN_U32("graphics/dexnav/gui_night.gbapal");
 
 static const u32 sSelectionCursorGfx[] = INCBIN_U32("graphics/dexnav/cursor.4bpp.lz");
 static const u16 sSelectionCursorPal[] = INCBIN_U16("graphics/dexnav/cursor.gbapal");
@@ -187,6 +189,10 @@ static const u8 sText_HeldItem[] = _("{STR_VAR_1}");
 static const u8 sText_StartExit[] = _("{START_BUTTON} Exit");
 static const u8 sText_DexNavChain[] = _("{NO} {STR_VAR_1}");
 static const u8 sText_DexNavChainLong[] = _("{NO}{STR_VAR_1}");
+static const u8 gText_DexNavMorning[] = _(" - Morning");
+static const u8 gText_DexNavDay[] = _(" - Day");
+static const u8 gText_DexNavEvening[] = _(" - Evening");
+static const u8 gText_DexNavNight[] = _(" - Night");
 
 static const u8 sText_ArrowLeft[] = _("{LEFT_ARROW}");
 static const u8 sText_ArrowRight[] = _("{RIGHT_ARROW}");
@@ -1676,7 +1682,15 @@ static bool8 DexNav_LoadGraphics(void)
         }
         break;
     case 2:
-        LoadPalette(sDexNavGuiPal, 0, 32);
+        RtcCalcLocalTime();
+        if (gLocalTime.hours >= 4 && gLocalTime.hours < 18)
+        {
+            LoadPalette(sDexNavGuiPal, 0, 32);
+        }
+        else if (gLocalTime.hours >= 18 && gLocalTime.hours < 4)
+        {
+            LoadPalette(sDexNavGuiNightPal, 0, 32);
+        }
         sDexNavUiDataPtr->state++;
         break;
     default:
@@ -2075,9 +2089,6 @@ static u16 DexNavGetSpecies(void)
         return SPECIES_NONE;
     }
     
-    if (!GetSetPokedexFlag(SpeciesToNationalPokedexNum(species), FLAG_GET_SEEN))
-        return SPECIES_NONE;
-    
     return species;
 }
 
@@ -2179,7 +2190,7 @@ static void PrintCurrentSpeciesInfo(void)
     {
         AddTextPrinterParameterized3(WINDOW_INFO, 0, 0, HA_INFO_Y, sFontColor_Black, 0, sText_DexNav_NoInfo);
     }
-    else if (GetSetPokedexFlag(dexNum, FLAG_GET_CAUGHT))
+    else// if (GetSetPokedexFlag(dexNum, FLAG_GET_CAUGHT))
     {
         #ifdef BATTLE_ENGINE
         if (gSpeciesInfo[species].abilities[2] != ABILITY_NONE)
@@ -2190,10 +2201,6 @@ static void PrintCurrentSpeciesInfo(void)
         #endif
         else
             AddTextPrinterParameterized3(WINDOW_INFO, 0, 0, HA_INFO_Y, sFontColor_Black, 0, gText_None);
-    }
-    else
-    {
-        AddTextPrinterParameterized3(WINDOW_INFO, 0, 0, HA_INFO_Y, sFontColor_Black, 0, sText_DexNav_CaptureToSee);
     }
     
     //current chain
@@ -2206,9 +2213,39 @@ static void PrintCurrentSpeciesInfo(void)
 
 static void PrintMapName(void)
 {
+    u16 mapStringLength = MAP_NAME_LENGTH;
+    int left;
+
     GetMapName(gStringVar3, GetCurrentRegionMapSectionId(), 0);
-    AddTextPrinterParameterized3(WINDOW_REGISTERED, 1, 108 +
-      GetStringRightAlignXOffset(1, gStringVar3, MAP_NAME_LENGTH * GetFontAttribute(1, FONTATTR_MAX_LETTER_WIDTH)), 0, sFontColor_White, 0, gStringVar3);
+
+    RtcCalcLocalTime();
+    if (gLocalTime.hours >= 4 && gLocalTime.hours < 10)
+    {
+        StringAppend(gStringVar3, gText_DexNavMorning);
+        mapStringLength += StringLength(gText_DexNavMorning);
+        left = 50;
+    }
+    else if (gLocalTime.hours >= 10 && gLocalTime.hours < 18)
+    {
+        StringAppend(gStringVar3, gText_DexNavDay);
+        mapStringLength += StringLength(gText_DexNavDay);
+        left = 70;
+    }
+    else if (gLocalTime.hours >= 18 && gLocalTime.hours < 20)
+    {
+        StringAppend(gStringVar3, gText_DexNavEvening);
+        mapStringLength += StringLength(gText_DexNavEvening);
+        left = 50;
+    }
+    else // if (gLocalTime.hours >= 20 && gLocalTime.hours < 4)
+    {
+        StringAppend(gStringVar3, gText_DexNavNight);
+        mapStringLength += StringLength(gText_DexNavNight);
+        left = 60;
+    }
+    // originally 108 + getstringrightalignxoffset...
+    AddTextPrinterParameterized3(WINDOW_REGISTERED, 1, left +
+    GetStringRightAlignXOffset(1, gStringVar3, mapStringLength * GetFontAttribute(1, FONTATTR_MAX_LETTER_WIDTH)), 0, sFontColor_White, 0, gStringVar3);
     CopyWindowToVram(WINDOW_REGISTERED, 3);
 }
 
