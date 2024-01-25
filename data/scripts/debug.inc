@@ -146,9 +146,10 @@ Debug_EventScript_Script_6:: @ Sky Battle
     release
     end
 
-Debug_EventScript_Script_7::
+Debug_EventScript_Script_7:: @ Mugshots
 	cleartrainerflag TRAINER_MAY_PLACEHOLDER
-	trainerbattle_double TRAINER_MAY_PLACEHOLDER, MeteorFalls_1F_2R_Text_JayIntro, MeteorFalls_1F_2R_Text_JayDefeat, MeteorFalls_1F_2R_Text_JayNotEnoughMons, MeteorFalls_1F_2R_EventScript_RegisterJay
+	setvar VAR_MUGSHOT_ID, MUGSHOT_MAY
+	trainerbattle_single TRAINER_MAY_PLACEHOLDER, JaggedPass_Text_EricIntro, JaggedPass_Text_EricDefeat
 	end
 
 Debug_EventScript_Script_8::
