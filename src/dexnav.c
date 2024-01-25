@@ -160,7 +160,6 @@ static void DrawHiddenSearchWindow(u8 width);
 static const u32 sDexNavGuiTiles[] = INCBIN_U32("graphics/dexnav/gui_tiles.4bpp.lz");
 static const u32 sDexNavGuiTilemap[] = INCBIN_U32("graphics/dexnav/gui_tilemap.bin.lz");
 static const u32 sDexNavGuiPal[] = INCBIN_U32("graphics/dexnav/gui.gbapal");
-static const u32 sDexNavGuiNightPal[] = INCBIN_U32("graphics/dexnav/gui_night.gbapal");
 
 static const u32 sSelectionCursorGfx[] = INCBIN_U32("graphics/dexnav/cursor.4bpp.lz");
 static const u16 sSelectionCursorPal[] = INCBIN_U16("graphics/dexnav/cursor.gbapal");
@@ -1682,15 +1681,7 @@ static bool8 DexNav_LoadGraphics(void)
         }
         break;
     case 2:
-        RtcCalcLocalTime();
-        if (gLocalTime.hours >= 4 && gLocalTime.hours < 18)
-        {
-            LoadPalette(sDexNavGuiPal, 0, 32);
-        }
-        else if (gLocalTime.hours >= 18 && gLocalTime.hours < 4)
-        {
-            LoadPalette(sDexNavGuiNightPal, 0, 32);
-        }
+        LoadPalette(sDexNavGuiPal, 0, 32);
         sDexNavUiDataPtr->state++;
         break;
     default:
