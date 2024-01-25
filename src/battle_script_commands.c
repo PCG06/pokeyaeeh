@@ -10661,6 +10661,17 @@ static void Cmd_various(void)
         }
         return;
     }
+    case VARIOUS_TRY_ACTIVATE_RAMPAGE:
+    {
+        if (GetBattlerAbility(battler) == ABILITY_RAMPAGE
+          && HasAttackerFaintedTarget()
+          && !NoAliveMonsForEitherParty())
+        {
+            gDisableStructs[battler].rechargeTimer = 0;
+            gBattleMons[battler].status2 &= ~(STATUS2_RECHARGE);
+        }
+        break;
+    }
     } // End of switch (cmd->id)
 
     gBattlescriptCurrInstr = cmd->nextInstr;
