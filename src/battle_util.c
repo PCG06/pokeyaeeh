@@ -2688,6 +2688,22 @@ if (ability == ABILITY_MAGIC_GUARD) \
             break;\
 }
 
+#define TOXIC_BOOST_CHECK \
+if (ability == ABILITY_TOXIC_BOOST) \
+{\
+    RecordAbilityBattle(battler, ability);\
+    gBattleStruct->turnEffectsTracker++;\
+            break;\
+}
+
+#define FLARE_BOOST_CHECK \
+if (ability == ABILITY_FLARE_BOOST) \
+{\
+    RecordAbilityBattle(battler, ability);\
+    gBattleStruct->turnEffectsTracker++;\
+            break;\
+}
+
 
 u8 DoBattlerEndTurnEffects(void)
 {
@@ -2773,6 +2789,7 @@ u8 DoBattlerEndTurnEffects(void)
                 && gBattleMons[battler].hp != 0)
             {
                 MAGIC_GUARD_CHECK;
+                TOXIC_BOOST_CHECK;
 
                 if (ability == ABILITY_POISON_HEAL)
                 {
@@ -2802,6 +2819,7 @@ u8 DoBattlerEndTurnEffects(void)
                 && gBattleMons[battler].hp != 0)
             {
                 MAGIC_GUARD_CHECK;
+                TOXIC_BOOST_CHECK;
 
                 if (ability == ABILITY_POISON_HEAL)
                 {
@@ -2834,6 +2852,8 @@ u8 DoBattlerEndTurnEffects(void)
                 && gBattleMons[battler].hp != 0)
             {
                 MAGIC_GUARD_CHECK;
+                FLARE_BOOST_CHECK;
+
                 gBattleMoveDamage = GetNonDynamaxMaxHP(battler) / (B_BURN_DAMAGE >= GEN_7 ? 16 : 8);
                 if (ability == ABILITY_HEATPROOF)
                 {
