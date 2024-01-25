@@ -160,7 +160,6 @@ static void DrawHiddenSearchWindow(u8 width);
 static const u32 sDexNavGuiTiles[] = INCBIN_U32("graphics/dexnav/gui_tiles.4bpp.lz");
 static const u32 sDexNavGuiTilemap[] = INCBIN_U32("graphics/dexnav/gui_tilemap.bin.lz");
 static const u32 sDexNavGuiPal[] = INCBIN_U32("graphics/dexnav/gui.gbapal");
-static const u32 sDexNavGuiNightPal[] = INCBIN_U32("graphics/dexnav/gui_night.gbapal");
 
 static const u32 sSelectionCursorGfx[] = INCBIN_U32("graphics/dexnav/cursor.4bpp.lz");
 static const u16 sSelectionCursorPal[] = INCBIN_U16("graphics/dexnav/cursor.gbapal");
@@ -1682,15 +1681,7 @@ static bool8 DexNav_LoadGraphics(void)
         }
         break;
     case 2:
-        RtcCalcLocalTime();
-        if (gLocalTime.hours >= 4 && gLocalTime.hours < 18)
-        {
-            LoadPalette(sDexNavGuiPal, 0, 32);
-        }
-        else if (gLocalTime.hours >= 18 && gLocalTime.hours < 4)
-        {
-            LoadPalette(sDexNavGuiNightPal, 0, 32);
-        }
+        LoadPalette(sDexNavGuiPal, 0, 32);
         sDexNavUiDataPtr->state++;
         break;
     default:
@@ -2223,28 +2214,28 @@ static void PrintMapName(void)
     {
         StringAppend(gStringVar3, gText_DexNavMorning);
         mapStringLength += StringLength(gText_DexNavMorning);
-        left = 50;
+        left = 65;
     }
     else if (gLocalTime.hours >= 10 && gLocalTime.hours < 18)
     {
         StringAppend(gStringVar3, gText_DexNavDay);
         mapStringLength += StringLength(gText_DexNavDay);
-        left = 70;
+        left = 85;
     }
     else if (gLocalTime.hours >= 18 && gLocalTime.hours < 20)
     {
         StringAppend(gStringVar3, gText_DexNavEvening);
         mapStringLength += StringLength(gText_DexNavEvening);
-        left = 50;
+        left = 65;
     }
     else // if (gLocalTime.hours >= 20 && gLocalTime.hours < 4)
     {
         StringAppend(gStringVar3, gText_DexNavNight);
         mapStringLength += StringLength(gText_DexNavNight);
-        left = 60;
+        left = 75;
     }
     // originally 108 + getstringrightalignxoffset...
-    AddTextPrinterParameterized3(WINDOW_REGISTERED, 1, left +
+    AddTextPrinterParameterized3(WINDOW_REGISTERED, 0, left +
     GetStringRightAlignXOffset(1, gStringVar3, mapStringLength * GetFontAttribute(1, FONTATTR_MAX_LETTER_WIDTH)), 0, sFontColor_White, 0, gStringVar3);
     CopyWindowToVram(WINDOW_REGISTERED, 3);
 }
@@ -2256,13 +2247,13 @@ static void PrintSearchableSpecies(u16 species)
     PutWindowTilemap(WINDOW_REGISTERED);
     if (species == SPECIES_NONE)
     {
-        AddTextPrinterParameterized3(WINDOW_REGISTERED, 1, 0, 0, sFontColor_White, TEXT_SKIP_DRAW, sText_DexNav_PressRToRegister);
+        AddTextPrinterParameterized3(WINDOW_REGISTERED, 0, 0, 0, sFontColor_White, TEXT_SKIP_DRAW, sText_DexNav_PressRToRegister);
     }
     else
     {
         StringCopy(gStringVar1, gSpeciesNames[species]);
         StringExpandPlaceholders(gStringVar4, sText_DexNav_SearchForRegisteredSpecies);
-        AddTextPrinterParameterized3(WINDOW_REGISTERED, 1, 0, 0, sFontColor_White, TEXT_SKIP_DRAW, gStringVar4);
+        AddTextPrinterParameterized3(WINDOW_REGISTERED, 0, 0, 0, sFontColor_White, TEXT_SKIP_DRAW, gStringVar4);
     }
     
     PrintMapName();
