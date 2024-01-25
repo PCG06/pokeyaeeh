@@ -17121,6 +17121,45 @@ Move_RAGING_BULL::
 	waitbgfadein
 	end
 
+Move_JET_PUNCH:
+    loadspritegfx ANIM_TAG_ROUND_SHADOW
+    loadspritegfx ANIM_TAG_SPLASH
+	loadspritegfx ANIM_TAG_SWEAT_BEAD
+	loadspritegfx ANIM_TAG_ICE_CRYSTALS
+    loadspritegfx ANIM_TAG_HANDS_AND_FEET
+    loadspritegfx ANIM_TAG_WATER_IMPACT
+    loadspritegfx ANIM_TAG_IMPACT
+    monbg ANIM_DEF_PARTNER
+    setalpha 12, 8
+    playsewithpan SE_M_HEADBUTT, SOUND_PAN_ATTACKER
+    createsprite gDiveBallSpriteTemplate, 2, 4, 0, 0, 13, 336
+    waitforvisualfinish
+    playsewithpan SE_M_DIVE, SOUND_PAN_ATTACKER
+    createsprite gDiveWaterSplashSpriteTemplate, 3, 1, 0
+    call DiveSetUpWaterDroplets
+    call DiveSetUpWaterDroplets
+    call DiveSetUpWaterDroplets
+    call DiveSetUpWaterDroplets
+    call DiveSetUpWaterDroplets
+	delay 24
+    createsprite gSmallBubblePairSpriteTemplate, ANIM_TARGET, 2, 0x14, 0xffec, 0x14, ANIM_TARGET
+    createsprite gSmallBubblePairSpriteTemplate, ANIM_TARGET, 2, 0xa, 0xa, 0x14, ANIM_TARGET
+    createsprite gFistFootSpriteTemplate, ANIM_TARGET, 3, 0, 0, 8, 1, 0
+    playsewithpan SE_M_DIVE, SOUND_PAN_TARGET
+    createsprite gBasicHitSplatSpriteTemplate, ANIM_TARGET, 2, 0, 0, ANIM_TARGET, 1
+    createvisualtask AnimTask_ShakeMon, 2, ANIM_TARGET, 0, 3, 15, 1
+    delay 6
+    createsprite gSmallBubblePairSpriteTemplate, ANIM_TARGET, 2, 0x14, 0xffec, 0x14, ANIM_TARGET
+    createsprite gSmallBubblePairSpriteTemplate, ANIM_TARGET, 2, 0xa, 0xa, 0x14, ANIM_TARGET
+    createsprite gDiveWaterSplashSpriteTemplate, ANIM_TARGET, 131, 1, 1
+    call DiveSetUpWaterDroplets
+    createvisualtask AnimTask_BlendBattleAnimPal, 10, F_PAL_TARGET, 0, 9, 0, RGB_BLUE
+    waitforvisualfinish
+    visible ANIM_ATTACKER
+    clearmonbg ANIM_DEF_PARTNER
+    blendoff
+    end
+
 Move_JETSTREAM::
 	loadspritegfx ANIM_TAG_AIR_WAVE
 	loadspritegfx ANIM_TAG_AIR_WAVE_2
@@ -17172,41 +17211,6 @@ Move_FROST_GLARE:
 	createsprite gSimplePaletteBlendSpriteTemplate, ANIM_ATTACKER, 2, 4, 5, 7, 0, RGB(0, 20, 31)
 	waitforvisualfinish
 	clearmonbg ANIM_TARGET
-	blendoff
-	end
-
-Move_JET_PUNCH:
-	loadspritegfx ANIM_TAG_HANDS_AND_FEET
-	loadspritegfx ANIM_TAG_WATER_DROPLET
-	loadspritegfx ANIM_TAG_WATER_IMPACT
-	loadspritegfx ANIM_TAG_IMPACT
-	loadspritegfx ANIM_TAG_ICE_CRYSTALS
-	loadspritegfx ANIM_TAG_SPARKLE_6
-	loadspritegfx ANIM_TAG_ROUND_SHADOW
-	loadspritegfx ANIM_TAG_SPLASH
-	monbg ANIM_DEF_PARTNER
-	setalpha 12, 8
-	playsewithpan SE_M_DIVE, SOUND_PAN_TARGET
-	createvisualtask AnimTask_TranslateMonEllipticalRespectSide, 2, ANIM_ATTACKER, 24, 6, 1, 5
-	createvisualtask AnimTask_TraceMonBlended, 2, 0, 4, 7, 3
-	delay 18
-	createvisualtask AnimTask_BlendBattleAnimPal, 10, F_PAL_TARGET, 2, 0, 9, RGB_BLUE
-	delay 8
-	createsprite gSmallBubblePairSpriteTemplate, ANIM_TARGET, 2, 0x14, 0xffec, 0x14, ANIM_TARGET
-	createsprite gSmallBubblePairSpriteTemplate, ANIM_TARGET, 2, 0xa, 0xa, 0x14, ANIM_TARGET
-	createsprite gFistFootSpriteTemplate, ANIM_TARGET, 3, 0, 0, 8, 1, 0
-	playsewithpan SE_M_DIVE, SOUND_PAN_TARGET
-	createsprite gBasicHitSplatSpriteTemplate, ANIM_TARGET, 2, 0, 0, ANIM_TARGET, 1
-	createvisualtask AnimTask_ShakeMon, 2, ANIM_TARGET, 0, 3, 15, 1
-	delay 6
-	createsprite gSmallBubblePairSpriteTemplate, ANIM_TARGET, 2, 0x14, 0xffec, 0x14, ANIM_TARGET
-	createsprite gSmallBubblePairSpriteTemplate, ANIM_TARGET, 2, 0xa, 0xa, 0x14, ANIM_TARGET
-	createsprite gDiveWaterSplashSpriteTemplate, ANIM_TARGET, 131, 1, 1
-	call DiveSetUpWaterDroplets
-	waitforvisualfinish
-	createvisualtask AnimTask_BlendBattleAnimPal, 10, F_PAL_TARGET, 0, 9, 0, RGB_BLUE
-	waitforvisualfinish
-	clearmonbg ANIM_DEF_PARTNER
 	blendoff
 	end
 
