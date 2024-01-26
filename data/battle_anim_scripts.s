@@ -860,6 +860,21 @@ gBattleAnims_Moves::
 	.4byte Move_MATCHA_GOTCHA
 	.4byte Move_SYRUP_BOMB
 	.4byte Move_IVY_CUDGEL
+	.4byte Move_ELECTRO_SHOT
+	.4byte Move_TERA_STARSTORM
+	.4byte Move_FICKLE_BEAM
+	.4byte Move_BURNING_BULWARK
+	.4byte Move_THUNDERCLAP
+	.4byte Move_MIGHTY_CLEAVE
+	.4byte Move_TACHYON_CUTTER
+	.4byte Move_HARD_PRESS
+	.4byte Move_DRAGON_CHEER
+	.4byte Move_ALLURING_VOICE
+	.4byte Move_TEMPER_FLARE
+	.4byte Move_SUPERCELL_SLAM
+	.4byte Move_PSYCHIC_NOISE
+	.4byte Move_UPPER_HAND
+	.4byte Move_MALIGNANT_CHAIN
 @@@@@@@@@@@@ CUSTOM MOVES @@@@@@@@@@@@
 	.4byte Move_JETSTREAM
 	.4byte Move_FROST_GLARE
@@ -17345,6 +17360,21 @@ Move_HYDRO_STEAM::
 Move_BLOOD_MOON::
 Move_MATCHA_GOTCHA::
 Move_IVY_CUDGEL::
+Move_ELECTRO_SHOT::
+Move_TERA_STARSTORM::
+Move_FICKLE_BEAM::
+Move_BURNING_BULWARK::
+Move_THUNDERCLAP::
+Move_MIGHTY_CLEAVE::
+Move_TACHYON_CUTTER::
+Move_HARD_PRESS::
+Move_DRAGON_CHEER::
+Move_ALLURING_VOICE::
+Move_TEMPER_FLARE::
+Move_SUPERCELL_SLAM::
+Move_PSYCHIC_NOISE::
+Move_UPPER_HAND::
+Move_MALIGNANT_CHAIN::
 	end @to do
 
 @@@@@@@@@@@@@@@@@@@@@@@ GEN 1-3 @@@@@@@@@@@@@@@@@@@@@@@
