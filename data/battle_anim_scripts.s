@@ -17124,8 +17124,8 @@ Move_RAGING_BULL::
 Move_JET_PUNCH:
     loadspritegfx ANIM_TAG_ROUND_SHADOW
     loadspritegfx ANIM_TAG_SPLASH
-	loadspritegfx ANIM_TAG_SWEAT_BEAD
-	loadspritegfx ANIM_TAG_ICE_CRYSTALS
+    loadspritegfx ANIM_TAG_SWEAT_BEAD
+    loadspritegfx ANIM_TAG_ICE_CRYSTALS
     loadspritegfx ANIM_TAG_HANDS_AND_FEET
     loadspritegfx ANIM_TAG_WATER_IMPACT
     loadspritegfx ANIM_TAG_IMPACT
@@ -17141,7 +17141,7 @@ Move_JET_PUNCH:
     call DiveSetUpWaterDroplets
     call DiveSetUpWaterDroplets
     call DiveSetUpWaterDroplets
-	delay 24
+    delay 24
     createsprite gSmallBubblePairSpriteTemplate, ANIM_TARGET, 2, 0x14, 0xffec, 0x14, ANIM_TARGET
     createsprite gSmallBubblePairSpriteTemplate, ANIM_TARGET, 2, 0xa, 0xa, 0x14, ANIM_TARGET
     createsprite gFistFootSpriteTemplate, ANIM_TARGET, 3, 0, 0, 8, 1, 0
