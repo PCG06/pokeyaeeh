@@ -17175,6 +17175,33 @@ Move_JET_PUNCH:
 	blendoff
 	end
 
+Move_BURNING_BULWARK:
+	loadspritegfx ANIM_TAG_PROTECT @protect
+	loadspritegfx ANIM_TAG_SMALL_EMBER @fire
+	monbg ANIM_ATK_PARTNER
+	splitbgprio ANIM_ATTACKER
+	waitplaysewithpan SE_M_REFLECT, SOUND_PAN_ATTACKER 0x10
+	createsprite gProtectSpriteTemplate, ANIM_ATTACKER, 2, 0x18, 0x0, 0x5a
+	createsprite gSpriteTemplate_BurningJealousyFireBuff, ANIM_ATTACKER, 2, ANIM_ATTACKER, 0xffe8, 0x1a, 0x2, 0x18
+	delay 0x3
+	createsprite gSpriteTemplate_BurningJealousyFireBuff, ANIM_ATTACKER, 2, ANIM_ATTACKER, 0xe, 0x1c, 0x1, 0x18
+	delay 0x3
+	createsprite gSpriteTemplate_BurningJealousyFireBuff, ANIM_ATTACKER, 2, ANIM_ATTACKER, 0xfffb, 0xa, 0x2, 0x18
+	delay 0x3
+	createsprite gSpriteTemplate_BurningJealousyFireBuff, ANIM_ATTACKER, 2, ANIM_ATTACKER, 0x1c, 0x1a, 0x3, 0x18
+	delay 0x3
+	createsprite gSpriteTemplate_BurningJealousyFireBuff, ANIM_ATTACKER, 2, ANIM_ATTACKER, 0xffe8, 0x1a, 0x2, 0x18
+	delay 0x3
+	createsprite gSpriteTemplate_BurningJealousyFireBuff, ANIM_ATTACKER, 2, ANIM_ATTACKER, 0xe, 0x1c, 0x1, 0x18
+	delay 0x3
+	createsprite gSpriteTemplate_BurningJealousyFireBuff, ANIM_ATTACKER, 2, ANIM_ATTACKER, 0xfffb, 0xa, 0x2, 0x18
+	delay 0x3
+	createsprite gSpriteTemplate_BurningJealousyFireBuff, ANIM_ATTACKER, 2, ANIM_ATTACKER, 0x1c, 0x1a, 0x3, 0x18
+	delay 0x3
+	waitforvisualfinish
+	clearmonbg ANIM_ATK_PARTNER
+	end
+
 Move_JETSTREAM::
 	loadspritegfx ANIM_TAG_AIR_WAVE
 	loadspritegfx ANIM_TAG_AIR_WAVE_2
@@ -17363,7 +17390,6 @@ Move_IVY_CUDGEL::
 Move_ELECTRO_SHOT::
 Move_TERA_STARSTORM::
 Move_FICKLE_BEAM::
-Move_BURNING_BULWARK::
 Move_THUNDERCLAP::
 Move_MIGHTY_CLEAVE::
 Move_TACHYON_CUTTER::
