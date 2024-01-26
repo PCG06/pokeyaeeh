@@ -2510,16 +2510,34 @@ static void Task_DexNavMain(u8 taskId)
         
         if (species != SPECIES_NONE)
         {            
-            PrintSearchableSpecies(species);
-            //PlaySE(SE_DEX_SEARCH);
-            PlayCry_Script(species, 0);
-            
-            // create value to store in a var
-            VarSet(VAR_DEXNAV_SPECIES, ((sDexNavUiDataPtr->environment << 14) | species));
+            if (((sDexNavUiDataPtr->environment << 14) | species) == VarGet(VAR_DEXNAV_SPECIES))
+            {
+                PlaySE(SE_BOO);
+                PrintSearchableSpecies(SPECIES_NONE);
+                VarSet(VAR_DEXNAV_SPECIES, SPECIES_NONE);
+            }
+            else
+            {
+                PrintSearchableSpecies(species);
+                //PlaySE(SE_DEX_SEARCH);
+                PlayCry_Script(species, 0);
+                
+                // create value to store in a var
+                VarSet(VAR_DEXNAV_SPECIES, ((sDexNavUiDataPtr->environment << 14) | species));
+            }
         }
         else
         {
-            PlaySE(SE_FAILURE);
+            if (VarGet(VAR_DEXNAV_SPECIES) != SPECIES_NONE)
+            {
+                PlaySE(SE_BOO);
+                PrintSearchableSpecies(SPECIES_NONE);
+                VarSet(VAR_DEXNAV_SPECIES, SPECIES_NONE);
+            }
+            else
+            {
+                PlaySE(SE_FAILURE);
+            }
         }
     }
     else if (JOY_NEW(A_BUTTON))
