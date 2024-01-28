@@ -2635,6 +2635,7 @@ static void Cmd_resultmessage(void)
 		!(gMoveResultFlags & MOVE_RESULT_FOE_ENDURED) &&
 		!(gMoveResultFlags & MOVE_RESULT_FAILED) &&
 		!(gMoveResultFlags & MOVE_RESULT_DOESNT_AFFECT_FOE) &&
+        (!gProtectStructs[gBattlerAttacker].confusionSelfDmg) &&
 		(gBattleMoves[gCurrentMove].split != SPLIT_STATUS) &&
 		(gBattleMoves[gCurrentMove].power > 0) &&
         //(gMultiHitCounter == 0) &&
