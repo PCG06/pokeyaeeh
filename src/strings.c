@@ -1530,6 +1530,7 @@ const u8 gText_ButtonTypeLEqualsA[] = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}L=A");
 const u8 gText_ClockMode[] = _("Clock Mode");
 const u8 gText_ClockOption1[] = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}12 Hour"); // Using them without the {COLOR GREEN}{SHADOW LIGHT_GREEN} causes corruption :(
 const u8 gText_ClockOption2[] = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}24 Hour");
+const u8 gText_DamageDone[] = _("Damage Done");
 const u8 gText_NumPlayerLink[] = _("{STR_VAR_1}P Link");
 const u8 gText_BronzeCard[] = _("Bronze");
 const u8 gText_CopperCard[] = _("Copper");

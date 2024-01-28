@@ -325,6 +325,7 @@ extern const u8 gText_Frame[];
 extern const u8 gText_ClockMode[];
 extern const u8 gText_ClockOption1[];
 extern const u8 gText_ClockOption2[];
+extern const u8 gText_DamageDone[];
 extern const u8 gText_OptionMenuCancel[];
 extern const u8 gText_ButtonMode[];
 

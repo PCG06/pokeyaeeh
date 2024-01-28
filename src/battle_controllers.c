@@ -1124,6 +1124,7 @@ void BtlController_EmitPrintString(u32 battler, u32 bufferId, u16 stringID)
         stringInfo->textBuffs[0][i] = gBattleTextBuff1[i];
         stringInfo->textBuffs[1][i] = gBattleTextBuff2[i];
         stringInfo->textBuffs[2][i] = gBattleTextBuff3[i];
+        stringInfo->textBuffs[3][i] = gBattleTextBuff4[i];
     }
     PrepareBufferDataTransfer(battler, bufferId, gBattleResources->transferBuffer, sizeof(struct BattleMsgData) + 4);
 }
@@ -1153,6 +1154,7 @@ void BtlController_EmitPrintSelectionString(u32 battler, u32 bufferId, u16 strin
         stringInfo->textBuffs[0][i] = gBattleTextBuff1[i];
         stringInfo->textBuffs[1][i] = gBattleTextBuff2[i];
         stringInfo->textBuffs[2][i] = gBattleTextBuff3[i];
+        stringInfo->textBuffs[3][i] = gBattleTextBuff4[i];
     }
     PrepareBufferDataTransfer(battler, bufferId, gBattleResources->transferBuffer, sizeof(struct BattleMsgData) + 4);
 }

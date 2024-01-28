@@ -8313,6 +8313,12 @@ BattleScript_PrintPayDayMoneyString::
 	waitmessage B_WAIT_TIME_LONG
 	return
 
+BattleScript_PrintDamageDoneString::
+	waitmessage B_WAIT_TIME_LONG
+	printstring STRINGID_POKEMONDIDAMMOUNTDAMAGE
+	waitmessage B_WAIT_TIME_LONG
+	return
+
 BattleScript_WrapTurnDmg::
 	jumpifability BS_ATTACKER, ABILITY_MAGIC_GUARD, BattleScript_DoTurnDmgEnd
 	playanimation BS_ATTACKER, B_ANIM_TURN_TRAP, sB_ANIM_ARG1
@@ -10940,3 +10946,4 @@ BattleScript_AlreadyHasFrostbite::
 	printstring STRINGID_PKMNALREADYHASFROSTBITE
 	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_MoveEnd
+
