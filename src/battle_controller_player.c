@@ -44,7 +44,7 @@
 #include "constants/trainers.h"
 #include "constants/rgb.h"
 
-static void PlayerBufferExecCompleted(u32 battler);
+void PlayerBufferExecCompleted(u32 battler);
 static void PlayerHandleLoadMonSprite(u32 battler);
 static void PlayerHandleSwitchInAnim(u32 battler);
 static void PlayerHandleDrawTrainerPic(u32 battler);
@@ -202,7 +202,7 @@ void SetControllerToPlayer(u32 battler)
     gPlayerDpadHoldFrames = 0;
 }
 
-static void PlayerBufferExecCompleted(u32 battler)
+void PlayerBufferExecCompleted(u32 battler)
 {
     gBattlerControllerFuncs[battler] = PlayerBufferRunCommand;
     if (gBattleTypeFlags & BATTLE_TYPE_LINK)
