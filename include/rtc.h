@@ -17,17 +17,17 @@
 
 #define RTC_ERR_FLAG_MASK      0x0FF0
 
-#define MORNING_EVO_HOUR_BEGIN 6
-#define MORNING_EVO_HOUR_END   10
+#define MORNING_EVO_HOUR_BEGIN 4
+#define MORNING_EVO_HOUR_END   8
 
-#define DAY_EVO_HOUR_BEGIN     10
-#define DAY_EVO_HOUR_END       19
+#define DAY_EVO_HOUR_BEGIN     8
+#define DAY_EVO_HOUR_END       18
 
 #define DUSK_EVO_HOUR_BEGIN    19
 #define DUSK_EVO_HOUR_END      20
 
 #define NIGHT_EVO_HOUR_BEGIN   20
-#define NIGHT_EVO_HOUR_END     6
+#define NIGHT_EVO_HOUR_END     4
 
 #define TIME_MORNING           0
 #define TIME_DAY               1
