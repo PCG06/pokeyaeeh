@@ -163,6 +163,7 @@ struct ProtectStruct
     u32 specialDmg;
     u8 physicalBattlerId;
     u8 specialBattlerId;
+    u32 burningBulwarked:1;
 };
 
 struct SpecialStatus
@@ -801,7 +802,8 @@ STATIC_ASSERT(sizeof(((struct BattleStruct *)0)->palaceFlags) * 8 >= MAX_BATTLER
                                         || gProtectStructs[battlerId].kingsShielded                                    \
                                         || gProtectStructs[battlerId].banefulBunkered                                  \
                                         || gProtectStructs[battlerId].obstructed                                       \
-                                        || gProtectStructs[battlerId].silkTrapped)
+                                        || gProtectStructs[battlerId].silkTrapped                                      \
+                                        || gProtectStructs[battlerId].burningBulwarked)
 
 #define GET_STAT_BUFF_ID(n)((n & 7))              // first three bits 0x1, 0x2, 0x4
 #define GET_STAT_BUFF_VALUE_WITH_SIGN(n)((n & 0xF8))
@@ -976,6 +978,7 @@ extern u8 gDisplayedStringBattle[425];
 extern u8 gBattleTextBuff1[TEXT_BUFF_ARRAY_COUNT];
 extern u8 gBattleTextBuff2[TEXT_BUFF_ARRAY_COUNT];
 extern u8 gBattleTextBuff3[TEXT_BUFF_ARRAY_COUNT + 13]; //to handle stupidly large z move names
+extern u8 gBattleTextBuff4[TEXT_BUFF_ARRAY_COUNT];      //For Damage Done
 extern u32 gBattleTypeFlags;
 extern u8 gBattleTerrain;
 extern u32 gUnusedFirstBattleVar1;

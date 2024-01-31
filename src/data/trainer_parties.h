@@ -8924,35 +8924,11 @@ static const struct TrainerMon sParty_Clark[] = {
 
 static const struct TrainerMon sParty_Eric[] = {
     {
-    .species = SPECIES_WALREIN,
-    .ability = ABILITY_THICK_FAT,
-    .lvl = 50,
-    .moves = {MOVE_SPLASH, MOVE_SPLASH, MOVE_SPLASH, MOVE_SPLASH}
-    },
-    {
-    .species = SPECIES_AZUMARILL,
-    .ability = ABILITY_THICK_FAT,
-    .lvl = 50,
-    .moves = {MOVE_SPLASH, MOVE_SPLASH, MOVE_SPLASH, MOVE_SPLASH}
-    },
-    {
-    .species = SPECIES_EMPOLEON,
-    .ability = ABILITY_COMPETITIVE,
-    .lvl = 50,
-    .moves = {MOVE_SPLASH, MOVE_SPLASH, MOVE_SPLASH, MOVE_SPLASH}
-    },
-    {
     .species = SPECIES_VAPOREON,
     .ability = ABILITY_WATER_ABSORB,
     .lvl = 50,
     .moves = {MOVE_SPLASH, MOVE_SPLASH, MOVE_SPLASH, MOVE_SPLASH}
-    },
-    {
-    .species = SPECIES_SWAMPERT,
-    .ability = ABILITY_DAMP,
-    .lvl = 50,
-    .moves = {MOVE_SPLASH, MOVE_SPLASH, MOVE_SPLASH, MOVE_SPLASH}
-    },
+    }
 };
 
 static const struct TrainerMon sParty_Lucas2[] = {

@@ -1581,9 +1581,11 @@ static bool32 AccuracyCalcHelper(u16 move)
 
     if (WEATHER_HAS_EFFECT)
     {
-        if ((IsBattlerWeatherAffected(gBattlerTarget, B_WEATHER_RAIN) && (gBattleMoves[move].effect == EFFECT_THUNDER || gBattleMoves[move].effect == EFFECT_HURRICANE)))
+        if (IsBattlerWeatherAffected(gBattlerTarget, B_WEATHER_RAIN) && 
+            (gBattleMoves[move].effect == EFFECT_THUNDER || gBattleMoves[move].effect == EFFECT_HURRICANE || 
+            move == MOVE_BLEAKWIND_STORM || move == MOVE_WILDBOLT_STORM || move == MOVE_SANDSEAR_STORM))
         {
-            // thunder/hurricane ignore acc checks in rain unless target is holding utility umbrella
+            // thunder/hurricane/genie moves ignore acc checks in rain unless target is holding utility umbrella
             JumpIfMoveFailed(7, move);
             return TRUE;
         }
@@ -2272,11 +2274,29 @@ static void Cmd_healthbarupdate(void)
         if (DoesSubstituteBlockMove(gBattlerAttacker, battler, gCurrentMove) && gDisableStructs[battler].substituteHP && !(gHitMarker & HITMARKER_IGNORE_SUBSTITUTE))
         {
             PrepareStringBattle(STRINGID_SUBSTITUTEDAMAGED, battler);
+            FlagSet(FLAG_SYS_DISABLE_DAMAGE_DONE);
         }
         else if (!DoesDisguiseBlockMove(gBattlerAttacker, battler, gCurrentMove))
         {
             s16 healthValue = min(gBattleMoveDamage, 10000); // Max damage (10000) not present in R/S, ensures that huge damage values don't change sign
 
+            if (!(gHitMarker & HITMARKER_IGNORE_SUBSTITUTE) &&
+                !(gMoveResultFlags & MOVE_RESULT_ONE_HIT_KO) &&
+                !(gMoveResultFlags & MOVE_RESULT_FOE_ENDURED) &&
+                !(gMoveResultFlags & MOVE_RESULT_FAILED) &&
+                !(gMoveResultFlags & MOVE_RESULT_DOESNT_AFFECT_FOE) &&
+                (!gProtectStructs[gBattlerAttacker].confusionSelfDmg) &&
+                (!IS_BATTLER_PROTECTED(gBattlerTarget)) &&
+                (gDisableStructs[battler].substituteHP == 0) &&
+                (gBattleMoves[gCurrentMove].split != SPLIT_STATUS) &&
+                (gBattleMoves[gCurrentMove].power > 0) &&
+                (gBattleMoveDamage > 0) &&
+                !(gSaveBlock2Ptr->optionsDamageDoneOff))
+                {
+		            VarSet(VAR_DAMAGE_DONE, gBattleMoveDamage);
+                    FlagClear(FLAG_SYS_DISABLE_DAMAGE_DONE);
+                }
+            
             BtlController_EmitHealthBarUpdate(battler, BUFFER_A, healthValue);
             MarkBattlerForControllerExec(battler);
 
@@ -2609,6 +2629,24 @@ static void Cmd_resultmessage(void)
         BattleScriptPushCursor();
         gBattlescriptCurrInstr = BattleScript_PrintBerryReduceString;
     }
+
+    if (!(gHitMarker & HITMARKER_IGNORE_SUBSTITUTE) &&
+		!(gMoveResultFlags & MOVE_RESULT_ONE_HIT_KO) &&
+		!(gMoveResultFlags & MOVE_RESULT_FOE_ENDURED) &&
+		!(gMoveResultFlags & MOVE_RESULT_FAILED) &&
+		!(gMoveResultFlags & MOVE_RESULT_DOESNT_AFFECT_FOE) &&
+        (!gProtectStructs[gBattlerAttacker].confusionSelfDmg) &&
+		(gBattleMoves[gCurrentMove].split != SPLIT_STATUS) &&
+		(gBattleMoves[gCurrentMove].power > 0) &&
+        //(gMultiHitCounter == 0) &&
+		(gBattleMoveDamage > 0) &&
+        (!FlagGet(FLAG_SYS_DISABLE_DAMAGE_DONE)) &&
+        !(gSaveBlock2Ptr->optionsDamageDoneOff))
+	{
+        PREPARE_HWORD_NUMBER_BUFFER(gBattleTextBuff4, 4, VarGet(VAR_DAMAGE_DONE)); 
+        BattleScriptPushCursor();
+        gBattlescriptCurrInstr = BattleScript_PrintDamageDoneString;
+	}
 }
 
 static void Cmd_printstring(void)
@@ -3485,6 +3523,7 @@ void SetMoveEffect(bool32 primary, u32 certain)
                     gProtectStructs[gBattlerTarget].banefulBunkered = FALSE;
                     gProtectStructs[gBattlerTarget].obstructed = FALSE;
                     gProtectStructs[gBattlerTarget].silkTrapped = FALSE;
+                    gProtectStructs[gBattlerTarget].burningBulwarked = FALSE;
                     BattleScriptPush(gBattlescriptCurrInstr + 1);
                     if (gCurrentMove == MOVE_HYPERSPACE_FURY)
                         gBattlescriptCurrInstr = BattleScript_HyperspaceFuryRemoveProtect;
@@ -4243,7 +4282,7 @@ static void Cmd_getexp(void)
                     PREPARE_MON_NICK_WITH_PREFIX_BUFFER(gBattleTextBuff1, gBattleStruct->expGetterBattlerId, *expMonId);
                     // buffer 'gained' or 'gained a boosted'
                     PREPARE_STRING_BUFFER(gBattleTextBuff2, i);
-                    PREPARE_WORD_NUMBER_BUFFER(gBattleTextBuff3, 6, gBattleMoveDamage);
+                    PREPARE_WORD_NUMBER_BUFFER(gBattleTextBuff4, 6, gBattleMoveDamage);
 
                     if (wasSentOut || holdEffect == HOLD_EFFECT_EXP_SHARE)
                     {
@@ -5265,6 +5304,15 @@ static void Cmd_moveend(void)
                     gProtectStructs[gBattlerAttacker].touchedProtectLike = FALSE;
                     gBattleScripting.moveEffect = MOVE_EFFECT_POISON | MOVE_EFFECT_AFFECTS_USER;
                     PREPARE_MOVE_BUFFER(gBattleTextBuff1, MOVE_BANEFUL_BUNKER);
+                    BattleScriptPushCursor();
+                    gBattlescriptCurrInstr = BattleScript_BanefulBunkerEffect;
+                    effect = 1;
+                }
+                else if (gProtectStructs[gBattlerTarget].burningBulwarked)
+                {
+                    gProtectStructs[gBattlerAttacker].touchedProtectLike = FALSE;
+                    gBattleScripting.moveEffect = MOVE_EFFECT_BURN | MOVE_EFFECT_AFFECTS_USER;
+                    PREPARE_MOVE_BUFFER(gBattleTextBuff1, MOVE_BURNING_BULWARK);
                     BattleScriptPushCursor();
                     gBattlescriptCurrInstr = BattleScript_BanefulBunkerEffect;
                     effect = 1;
@@ -10354,6 +10402,7 @@ static void Cmd_various(void)
         VARIOUS_ARGS(const u8 *failInstr);
         if (gBattleMons[battler].item == ITEM_NONE
            || gFieldStatuses & STATUS_FIELD_MAGIC_ROOM
+           || IS_BATTLER_PROTECTED(gBattlerTarget)
            || GetBattlerAbility(battler) == ABILITY_KLUTZ)
         {
             gBattlescriptCurrInstr = cmd->failInstr;
@@ -10659,6 +10708,17 @@ static void Cmd_various(void)
         }
         return;
     }
+    case VARIOUS_TRY_ACTIVATE_RAMPAGE:
+    {
+        if (GetBattlerAbility(battler) == ABILITY_RAMPAGE
+          && HasAttackerFaintedTarget()
+          && !NoAliveMonsForEitherParty())
+        {
+            gDisableStructs[battler].rechargeTimer = 0;
+            gBattleMons[battler].status2 &= ~(STATUS2_RECHARGE);
+        }
+        break;
+    }
     } // End of switch (cmd->id)
 
     gBattlescriptCurrInstr = cmd->nextInstr;
@@ -10722,6 +10782,11 @@ static void Cmd_setprotectlike(void)
             else if (gCurrentMove == MOVE_SILK_TRAP)
             {
                 gProtectStructs[gBattlerAttacker].silkTrapped = TRUE;
+                gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_PROTECTED_ITSELF;
+            }
+            else if (gCurrentMove == MOVE_BURNING_BULWARK)
+            {
+                gProtectStructs[gBattlerAttacker].burningBulwarked = TRUE;
                 gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_PROTECTED_ITSELF;
             }
 
@@ -12688,10 +12753,8 @@ static void Cmd_copymovepermanently(void)
     gChosenMove = MOVE_UNAVAILABLE;
 
     if (!(gBattleMons[gBattlerAttacker].status2 & STATUS2_TRANSFORMED)
-        && gLastPrintedMoves[gBattlerTarget] != MOVE_STRUGGLE
-        && gLastPrintedMoves[gBattlerTarget] != MOVE_NONE
         && gLastPrintedMoves[gBattlerTarget] != MOVE_UNAVAILABLE
-        && gLastPrintedMoves[gBattlerTarget] != MOVE_SKETCH)
+        && !gBattleMoves[gLastPrintedMoves[gBattlerTarget]].sketchBanned)
     {
         s32 i;
 

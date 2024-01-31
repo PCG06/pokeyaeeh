@@ -35,6 +35,7 @@
 #include "pokemon_summary_screen.h"
 #include "random.h"
 #include "region_map.h"
+#include "rtc.h"
 #include "scanline_effect.h"
 #include "script.h"
 #include "script_pokemon_util.h"
@@ -48,13 +49,13 @@
 #include "text_window.h"
 #include "wild_encounter.h"
 #include "window.h"
+#include "constants/abilities.h"
 #include "constants/map_types.h"
 #include "constants/species.h"
 #include "constants/maps.h"
 #include "constants/field_effects.h"
 #include "constants/items.h"
 #include "constants/songs.h"
-#include "constants/abilities.h"
 #include "constants/rgb.h"
 #include "constants/region_map_sections.h"
 #include "gba/m4a_internal.h"
@@ -187,6 +188,10 @@ static const u8 sText_HeldItem[] = _("{STR_VAR_1}");
 static const u8 sText_StartExit[] = _("{START_BUTTON} Exit");
 static const u8 sText_DexNavChain[] = _("{NO} {STR_VAR_1}");
 static const u8 sText_DexNavChainLong[] = _("{NO}{STR_VAR_1}");
+static const u8 gText_DexNavMorning[] = _(" - Morning");
+static const u8 gText_DexNavDay[] = _(" - Day");
+static const u8 gText_DexNavEvening[] = _(" - Evening");
+static const u8 gText_DexNavNight[] = _(" - Night");
 
 static const u8 sText_ArrowLeft[] = _("{LEFT_ARROW}");
 static const u8 sText_ArrowRight[] = _("{RIGHT_ARROW}");
@@ -2075,9 +2080,6 @@ static u16 DexNavGetSpecies(void)
         return SPECIES_NONE;
     }
     
-    if (!GetSetPokedexFlag(SpeciesToNationalPokedexNum(species), FLAG_GET_SEEN))
-        return SPECIES_NONE;
-    
     return species;
 }
 
@@ -2179,7 +2181,7 @@ static void PrintCurrentSpeciesInfo(void)
     {
         AddTextPrinterParameterized3(WINDOW_INFO, 0, 0, HA_INFO_Y, sFontColor_Black, 0, sText_DexNav_NoInfo);
     }
-    else if (GetSetPokedexFlag(dexNum, FLAG_GET_CAUGHT))
+    else// if (GetSetPokedexFlag(dexNum, FLAG_GET_CAUGHT))
     {
         #ifdef BATTLE_ENGINE
         if (gSpeciesInfo[species].abilities[2] != ABILITY_NONE)
@@ -2190,10 +2192,6 @@ static void PrintCurrentSpeciesInfo(void)
         #endif
         else
             AddTextPrinterParameterized3(WINDOW_INFO, 0, 0, HA_INFO_Y, sFontColor_Black, 0, gText_None);
-    }
-    else
-    {
-        AddTextPrinterParameterized3(WINDOW_INFO, 0, 0, HA_INFO_Y, sFontColor_Black, 0, sText_DexNav_CaptureToSee);
     }
     
     //current chain
@@ -2206,9 +2204,39 @@ static void PrintCurrentSpeciesInfo(void)
 
 static void PrintMapName(void)
 {
+    u16 mapStringLength = MAP_NAME_LENGTH;
+    int left;
+
     GetMapName(gStringVar3, GetCurrentRegionMapSectionId(), 0);
-    AddTextPrinterParameterized3(WINDOW_REGISTERED, 1, 108 +
-      GetStringRightAlignXOffset(1, gStringVar3, MAP_NAME_LENGTH * GetFontAttribute(1, FONTATTR_MAX_LETTER_WIDTH)), 0, sFontColor_White, 0, gStringVar3);
+
+    RtcCalcLocalTime();
+    if (gLocalTime.hours >= 4 && gLocalTime.hours < 10)
+    {
+        StringAppend(gStringVar3, gText_DexNavMorning);
+        mapStringLength += StringLength(gText_DexNavMorning);
+        left = 65;
+    }
+    else if (gLocalTime.hours >= 10 && gLocalTime.hours < 18)
+    {
+        StringAppend(gStringVar3, gText_DexNavDay);
+        mapStringLength += StringLength(gText_DexNavDay);
+        left = 85;
+    }
+    else if (gLocalTime.hours >= 18 && gLocalTime.hours < 20)
+    {
+        StringAppend(gStringVar3, gText_DexNavEvening);
+        mapStringLength += StringLength(gText_DexNavEvening);
+        left = 65;
+    }
+    else // if (gLocalTime.hours >= 20 && gLocalTime.hours < 4)
+    {
+        StringAppend(gStringVar3, gText_DexNavNight);
+        mapStringLength += StringLength(gText_DexNavNight);
+        left = 75;
+    }
+    // originally 108 + getstringrightalignxoffset...
+    AddTextPrinterParameterized3(WINDOW_REGISTERED, 0, left +
+    GetStringRightAlignXOffset(1, gStringVar3, mapStringLength * GetFontAttribute(1, FONTATTR_MAX_LETTER_WIDTH)), 0, sFontColor_White, 0, gStringVar3);
     CopyWindowToVram(WINDOW_REGISTERED, 3);
 }
 
@@ -2219,13 +2247,13 @@ static void PrintSearchableSpecies(u16 species)
     PutWindowTilemap(WINDOW_REGISTERED);
     if (species == SPECIES_NONE)
     {
-        AddTextPrinterParameterized3(WINDOW_REGISTERED, 1, 0, 0, sFontColor_White, TEXT_SKIP_DRAW, sText_DexNav_PressRToRegister);
+        AddTextPrinterParameterized3(WINDOW_REGISTERED, 0, 0, 0, sFontColor_White, TEXT_SKIP_DRAW, sText_DexNav_PressRToRegister);
     }
     else
     {
         StringCopy(gStringVar1, gSpeciesNames[species]);
         StringExpandPlaceholders(gStringVar4, sText_DexNav_SearchForRegisteredSpecies);
-        AddTextPrinterParameterized3(WINDOW_REGISTERED, 1, 0, 0, sFontColor_White, TEXT_SKIP_DRAW, gStringVar4);
+        AddTextPrinterParameterized3(WINDOW_REGISTERED, 0, 0, 0, sFontColor_White, TEXT_SKIP_DRAW, gStringVar4);
     }
     
     PrintMapName();
@@ -2482,16 +2510,34 @@ static void Task_DexNavMain(u8 taskId)
         
         if (species != SPECIES_NONE)
         {            
-            PrintSearchableSpecies(species);
-            //PlaySE(SE_DEX_SEARCH);
-            PlayCry_Script(species, 0);
-            
-            // create value to store in a var
-            VarSet(VAR_DEXNAV_SPECIES, ((sDexNavUiDataPtr->environment << 14) | species));
+            if (((sDexNavUiDataPtr->environment << 14) | species) == VarGet(VAR_DEXNAV_SPECIES))
+            {
+                PlaySE(SE_BOO);
+                PrintSearchableSpecies(SPECIES_NONE);
+                VarSet(VAR_DEXNAV_SPECIES, SPECIES_NONE);
+            }
+            else
+            {
+                PrintSearchableSpecies(species);
+                //PlaySE(SE_DEX_SEARCH);
+                PlayCry_Script(species, 0);
+                
+                // create value to store in a var
+                VarSet(VAR_DEXNAV_SPECIES, ((sDexNavUiDataPtr->environment << 14) | species));
+            }
         }
         else
         {
-            PlaySE(SE_FAILURE);
+            if (VarGet(VAR_DEXNAV_SPECIES) != SPECIES_NONE)
+            {
+                PlaySE(SE_BOO);
+                PrintSearchableSpecies(SPECIES_NONE);
+                VarSet(VAR_DEXNAV_SPECIES, SPECIES_NONE);
+            }
+            else
+            {
+                PlaySE(SE_FAILURE);
+            }
         }
     }
     else if (JOY_NEW(A_BUTTON))

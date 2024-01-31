@@ -300,6 +300,7 @@ static const u8 sPhantomGaleDescription[] = _("Sets up ominous airs.");
 static const u8 sHerbivateDescription[] = _("Normal moves become Grass.");
 static const u8 sScorchateDescription[] = _("Normal moves become Fire.");
 static const u8 sOceanateDescription[] = _("Normal moves become Water.");
+static const u8 sRampageDescription[] = _("No recharge after a KO.");
 
 #if B_EXPANDED_ABILITY_NAMES == TRUE
 const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
@@ -618,6 +619,7 @@ const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
     [ABILITY_HERBIVATE] = _("Herbivate"),
     [ABILITY_SCORCHATE] = _("Scorchate"),
     [ABILITY_OCEANATE] = _("Oceanate"),
+    [ABILITY_RAMPAGE] = _("Rampage"),
 };
 #else   // 12 characters
 const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
@@ -936,6 +938,7 @@ const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
     [ABILITY_HERBIVATE] = _("Herbivate"),
     [ABILITY_SCORCHATE] = _("Scorchate"),
     [ABILITY_OCEANATE] = _("Oceanate"),
+    [ABILITY_RAMPAGE] = _("Rampage"),
 };
 #endif
 
@@ -1255,4 +1258,5 @@ const u8 *const gAbilityDescriptionPointers[ABILITIES_COUNT] =
     [ABILITY_HERBIVATE] = sHerbivateDescription,
     [ABILITY_SCORCHATE] = sScorchateDescription,
     [ABILITY_OCEANATE] = sOceanateDescription,
+    [ABILITY_RAMPAGE] = sRampageDescription,
 };

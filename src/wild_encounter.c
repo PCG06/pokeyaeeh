@@ -1175,9 +1175,3 @@ u8 ChooseHiddenMonIndex(void)
         return 0xFF;
     #endif
 }
-
-bool32 MapHasNoEncounterData(void)
-{
-    return (GetCurrentMapWildMonHeaderId() == HEADER_NONE);
-}
-

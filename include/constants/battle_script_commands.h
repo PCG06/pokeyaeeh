@@ -245,6 +245,7 @@
 #define VARIOUS_HIT_SWITCH_TARGET_FAILED             154
 #define VARIOUS_TRY_REVIVAL_BLESSING                 155
 #define VARIOUS_GIVE_DROPPED_ITEMS                   156
+#define VARIOUS_TRY_ACTIVATE_RAMPAGE                 157
 
 // Cmd_manipulatedamage
 #define DMG_CHANGE_SIGN            0

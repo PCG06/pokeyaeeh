@@ -522,7 +522,7 @@
 #define FLAG_SYS_MOVE_INFO                   0x1DE // Battle interface
 #define FLAG_MOVE_RELEARNER                  0x1DF // Move relearner
 #define FLAG_UNLOCK_CHEAT_MENU               0x1E0 // Cheat Scripts Menu
-#define FLAG_UNUSED_0x1E1                    0x1E1 // Unused Flag
+#define FLAG_SYS_DISABLE_DAMAGE_DONE         0x1E1 // Damage Done display
 #define FLAG_UNUSED_0x1E2                    0x1E2 // Unused Flag
 #define FLAG_UNUSED_0x1E3                    0x1E3 // Unused Flag
 

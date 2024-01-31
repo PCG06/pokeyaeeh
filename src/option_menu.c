@@ -25,6 +25,8 @@
 #define tSound              data[MENUITEM_SOUND]
 #define tButtonMode         data[MENUITEM_BUTTONMODE]
 #define tWindowFrameType    data[MENUITEM_FRAMETYPE]
+#define tDamageDoneOff      data[MENUITEM_DAMAGEDONE]
+#define tQuickBattleRun     data[MENUITEM_QUICKBATTLERUN]
 
 enum
 {
@@ -40,6 +42,8 @@ enum
     MENUITEM_COUNT,
     // Page 2
     MENUITEM_CLOCKMODE = 0,
+    MENUITEM_DAMAGEDONE,
+    MENUITEM_QUICKBATTLERUN,
     MENUITEM_CANCEL_PAGE2,
     MENUITEM_COUNT_PAGE2,
 };
@@ -67,14 +71,16 @@ enum
 }
 
 // Page 1
-#define YPOS_TEXTSPEED    (MENUITEM_TEXTSPEED * 16)
-#define YPOS_BATTLESCENE  (MENUITEM_BATTLESCENE * 16)
-#define YPOS_BATTLESTYLE  (MENUITEM_BATTLESTYLE * 16)
-#define YPOS_SOUND        (MENUITEM_SOUND * 16)
-#define YPOS_BUTTONMODE   (MENUITEM_BUTTONMODE * 16)
-#define YPOS_FRAMETYPE    (MENUITEM_FRAMETYPE * 16)
+#define YPOS_TEXTSPEED      (MENUITEM_TEXTSPEED * 16)
+#define YPOS_BATTLESCENE    (MENUITEM_BATTLESCENE * 16)
+#define YPOS_BATTLESTYLE    (MENUITEM_BATTLESTYLE * 16)
+#define YPOS_SOUND          (MENUITEM_SOUND * 16)
+#define YPOS_BUTTONMODE     (MENUITEM_BUTTONMODE * 16)
+#define YPOS_FRAMETYPE      (MENUITEM_FRAMETYPE * 16)
 // Page 2
-#define YPOS_CLOCKMODE    (MENUITEM_CLOCKMODE * 16)
+#define YPOS_CLOCKMODE      (MENUITEM_CLOCKMODE * 16)
+#define YPOS_DAMAGEDONE     (MENUITEM_DAMAGEDONE * 16)
+#define YPOS_QUICKBATTLERUN (MENUITEM_QUICKBATTLERUN * 16)
 
 static void Task_OptionMenuFadeIn(u8 taskId);
 static void Task_OptionMenuProcessInput(u8 taskId);
@@ -97,6 +103,10 @@ static void ButtonMode_DrawChoices(u8 selection);
 // Add new functions for options here
 static u8 ClockMode_ProcessInput(u8 selection);
 static void ClockMode_DrawChoices(u8 selection);
+static u8 DamageDone_ProcessInput(u8 selection);
+static u8 QuickbattleRun_ProcessInput(u8 selection);
+static void DamageDone_DrawChoices(u8 selection);
+static void QuickBattleRun_DrawChoices(u8 selection);
 
 static void SaveOptionMenuDataFromTask(u8 taskId);
 //
@@ -126,6 +136,8 @@ static const u8 *const sOptionMenuItemsNames[MENUITEM_COUNT] =
 static const u8 *const sOptionMenuItemsNames_Page2[MENUITEM_COUNT_PAGE2] =
 {
     [MENUITEM_CLOCKMODE]       = gText_ClockMode,
+    [MENUITEM_DAMAGEDONE]      = gText_DamageDone,
+    [MENUITEM_QUICKBATTLERUN]  = gText_QuickBattleRun,
     [MENUITEM_CANCEL_PAGE2]    = gText_OptionMenuCancel,
 };
 
@@ -222,6 +234,8 @@ static void ReadAllCurrentSettings(u8 taskId)
             break;
         case PAGE_2:
             gTasks[taskId].data[MENUITEM_CLOCKMODE] = gClockMode;
+            gTasks[taskId].tDamageDoneOff = gSaveBlock2Ptr->optionsDamageDoneOff;
+            gTasks[taskId].tQuickBattleRun = gSaveBlock2Ptr->optionsQuickBattleRun;
             break;
     }
 }
@@ -243,6 +257,8 @@ static void DrawOptions(u8 taskId)
         
         case PAGE_2:
             ClockMode_DrawChoices(gTasks[taskId].data[MENUITEM_CLOCKMODE]);
+            DamageDone_DrawChoices(gTasks[taskId].tDamageDoneOff);
+            QuickBattleRun_DrawChoices(gTasks[taskId].tQuickBattleRun);
             break;
     }
   
@@ -514,7 +530,20 @@ static void Task_OptionMenuProcessInput_Page2(u8 taskId)
             if (previousOption != gTasks[taskId].data[MENUITEM_CLOCKMODE])
                 ClockMode_DrawChoices(gTasks[taskId].data[MENUITEM_CLOCKMODE]);
             break;
-        // For future options
+        case MENUITEM_DAMAGEDONE:
+            previousOption = gTasks[taskId].tDamageDoneOff;
+            gTasks[taskId].tDamageDoneOff = DamageDone_ProcessInput(gTasks[taskId].tDamageDoneOff);
+
+            if (previousOption != gTasks[taskId].tDamageDoneOff)
+                DamageDone_DrawChoices(gTasks[taskId].tDamageDoneOff);
+            break;
+        case MENUITEM_QUICKBATTLERUN:
+            previousOption = gTasks[taskId].tQuickBattleRun;
+            gTasks[taskId].tQuickBattleRun = DamageDone_ProcessInput(gTasks[taskId].tQuickBattleRun);
+
+            if (previousOption != gTasks[taskId].tQuickBattleRun)
+                QuickBattleRun_DrawChoices(gTasks[taskId].tQuickBattleRun);
+            break;
         }
 
         if (sArrowPressed)
@@ -542,7 +571,8 @@ static void SaveOptionMenuDataFromTask(u8 taskId)
                 gClockMode = TWELVE_HOUR_MODE;
             else
                 gClockMode = TWENTYFOUR_HOUR_MODE;
-
+            gSaveBlock2Ptr->optionsDamageDoneOff = gTasks[taskId].tDamageDoneOff;
+            gSaveBlock2Ptr->optionsQuickBattleRun = gTasks[taskId].tQuickBattleRun;
             break;
     }
 
@@ -832,6 +862,48 @@ static void ClockMode_DrawChoices(u8 selection)
 
     DrawOptionMenuChoice(gText_ClockOption1, 104, YPOS_CLOCKMODE, styles[0]);
     DrawOptionMenuChoice(gText_ClockOption2, 154, YPOS_CLOCKMODE, styles[1]);
+}
+
+static u8 DamageDone_ProcessInput(u8 selection)
+{
+     if (JOY_NEW(DPAD_LEFT | DPAD_RIGHT))
+    {
+        selection ^= 1;
+        sArrowPressed = TRUE;
+    }
+
+    return selection;
+}
+
+static void DamageDone_DrawChoices(u8 selection)
+{
+    u8 styles[2] = {0};
+
+    styles[selection] = 1;
+
+    DrawOptionMenuChoice(gText_BattleSceneOn, 104, YPOS_DAMAGEDONE, styles[0]);
+    DrawOptionMenuChoice(gText_BattleSceneOff, 154, YPOS_DAMAGEDONE, styles[1]);
+}
+
+static u8 QuickbattleRun_ProcessInput(u8 selection)
+{
+     if (JOY_NEW(DPAD_LEFT | DPAD_RIGHT))
+    {
+        selection ^= 1;
+        sArrowPressed = TRUE;
+    }
+
+    return selection;
+}
+
+static void QuickBattleRun_DrawChoices(u8 selection)
+{
+    u8 styles[2] = {0};
+
+    styles[selection] = 1;
+
+    DrawOptionMenuChoice(gText_QuickBattleRunR, 104, YPOS_QUICKBATTLERUN, styles[0]);
+    DrawOptionMenuChoice(gText_QuickBattleRunBA, 154, YPOS_QUICKBATTLERUN, styles[1]);
 }
 
 static void DrawHeaderText(void)

@@ -6445,6 +6445,7 @@ BattleScript_FaintTarget::
 	tryactivatebeastboost BS_ATTACKER
 	tryactivategrimneigh BS_ATTACKER    @ and as one shadow rider
 	tryactivatebattlebond BS_ATTACKER
+	tryactivaterampage BS_ATTACKER
 	trytrainerslidefirstdownmsg BS_TARGET
 	return
 
@@ -8309,6 +8310,12 @@ BattleScript_MoveUsedIsConfusedNoMore::
 
 BattleScript_PrintPayDayMoneyString::
 	printstring STRINGID_PLAYERPICKEDUPMONEY
+	waitmessage B_WAIT_TIME_LONG
+	return
+
+BattleScript_PrintDamageDoneString::
+	waitmessage B_WAIT_TIME_LONG
+	printstring STRINGID_POKEMONDIDAMMOUNTDAMAGE
 	waitmessage B_WAIT_TIME_LONG
 	return
 
@@ -10939,3 +10946,4 @@ BattleScript_AlreadyHasFrostbite::
 	printstring STRINGID_PKMNALREADYHASFROSTBITE
 	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_MoveEnd
+

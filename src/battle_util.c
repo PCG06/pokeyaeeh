@@ -2688,6 +2688,22 @@ if (ability == ABILITY_MAGIC_GUARD) \
             break;\
 }
 
+#define TOXIC_BOOST_CHECK \
+if (ability == ABILITY_TOXIC_BOOST) \
+{\
+    RecordAbilityBattle(battler, ability);\
+    gBattleStruct->turnEffectsTracker++;\
+            break;\
+}
+
+#define FLARE_BOOST_CHECK \
+if (ability == ABILITY_FLARE_BOOST) \
+{\
+    RecordAbilityBattle(battler, ability);\
+    gBattleStruct->turnEffectsTracker++;\
+            break;\
+}
+
 
 u8 DoBattlerEndTurnEffects(void)
 {
@@ -2773,6 +2789,7 @@ u8 DoBattlerEndTurnEffects(void)
                 && gBattleMons[battler].hp != 0)
             {
                 MAGIC_GUARD_CHECK;
+                TOXIC_BOOST_CHECK;
 
                 if (ability == ABILITY_POISON_HEAL)
                 {
@@ -2802,6 +2819,7 @@ u8 DoBattlerEndTurnEffects(void)
                 && gBattleMons[battler].hp != 0)
             {
                 MAGIC_GUARD_CHECK;
+                TOXIC_BOOST_CHECK;
 
                 if (ability == ABILITY_POISON_HEAL)
                 {
@@ -2834,6 +2852,8 @@ u8 DoBattlerEndTurnEffects(void)
                 && gBattleMons[battler].hp != 0)
             {
                 MAGIC_GUARD_CHECK;
+                FLARE_BOOST_CHECK;
+
                 gBattleMoveDamage = GetNonDynamaxMaxHP(battler) / (B_BURN_DAMAGE >= GEN_7 ? 16 : 8);
                 if (ability == ABILITY_HEATPROOF)
                 {
@@ -5719,6 +5739,7 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
              && RandomWeighted(RNG_FLAME_BODY, 2, 1))
             {
                 gBattleScripting.moveEffect = MOVE_EFFECT_AFFECTS_USER | MOVE_EFFECT_BURN;
+                PREPARE_ABILITY_BUFFER(gBattleTextBuff1, ABILITY_FLAME_BODY);
                 BattleScriptPushCursor();
                 gBattlescriptCurrInstr = BattleScript_AbilityStatusEffect;
                 gHitMarker |= HITMARKER_IGNORE_SAFEGUARD;
@@ -8514,6 +8535,8 @@ bool32 IsBattlerProtected(u32 battler, u32 move)
              && GetBattlerMoveTargetType(gBattlerAttacker, move) & (MOVE_TARGET_BOTH | MOVE_TARGET_FOES_AND_ALLY))
         return TRUE;
     else if (gProtectStructs[battler].banefulBunkered)
+        return TRUE;
+    else if (gProtectStructs[battler].burningBulwarked)
         return TRUE;
     else if ((gProtectStructs[battler].obstructed || gProtectStructs[battler].silkTrapped) && !IS_MOVE_STATUS(move))
         return TRUE;
