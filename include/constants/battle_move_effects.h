@@ -423,7 +423,8 @@
 #define EFFECT_FROST_GLARE                  417
 #define EFFECT_RAGE_FIST                    418
 #define EFFECT_DOODLE                       419
+#define EFFECT_FICKLE_BEAM                  420
 
-#define NUM_BATTLE_MOVE_EFFECTS             420
+#define NUM_BATTLE_MOVE_EFFECTS             421
 
 #endif  // GUARD_CONSTANTS_BATTLE_MOVE_EFFECTS_H
