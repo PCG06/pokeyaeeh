@@ -707,8 +707,9 @@
 #define STRINGID_PKMNALREADYHASFROSTBITE              705
 #define STRINGID_HOSPITALITYRESTORATION               706
 #define STRINGID_POKEMONDIDAMMOUNTDAMAGE              707
+#define STRINGID_ELECTROSHOCKCHARGING                 708
 
-#define BATTLESTRINGS_COUNT                           708
+#define BATTLESTRINGS_COUNT                           709
 
 // This is the string id that gBattleStringsTable starts with.
 // String ids before this (e.g. STRINGID_INTROMSG) are not in the table,
@@ -766,6 +767,7 @@
 #define B_MSG_TURN1_FREEZE_SHOCK   10
 #define B_MSG_TURN1_SKY_DROP       11
 #define B_MSG_TURN1_METEOR_BEAM    12
+#define B_MSG_TURN1_ELECTRO_SHOCK  13
 
 // gMoveWeatherChangeStringIds
 #define B_MSG_STARTED_RAIN      0
