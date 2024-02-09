@@ -347,6 +347,7 @@ SECTIONS {
         src/expansion_intro.o(.text);
         src/day_night.o(.text);
 		src/dexnav.o(.text);
+        src/stat_editor.o(.text);
     } =0
 
     script_data :
@@ -716,6 +717,7 @@ SECTIONS {
         src/expansion_intro.o(.rodata);
         src/day_night.o(.rodata);
 		src/dexnav.o(.rodata);
+        src/stat_editor.o(.rodata);
     } =0
 
     song_data :

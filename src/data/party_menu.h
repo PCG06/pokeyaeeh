@@ -730,6 +730,7 @@ struct
     [MENU_MOVES] = {gText_Moves, CursorCb_ChangeMoves},
 	[MENU_EGG_MOVES] = {gText_Egg_Moves, CursorCb_ChangeEggMoves},
     [MENU_TOSS] = {gMenuText_Toss, CursorCb_Toss},
+    [MENU_STAT_EDIT] = {gText_StatEditor, CursorCb_StatEdit},
     [MENU_SUB_FIELD_MOVES] = {gText_FieldMoves, CursorCb_FieldMovesSubMenu},
     [MENU_CATALOG_BULB] = {gText_LightBulb, CursorCb_CatalogBulb},
     [MENU_CATALOG_OVEN] = {gText_MicrowaveOven, CursorCb_CatalogOven},
