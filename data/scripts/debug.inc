@@ -112,7 +112,7 @@ Debug_FlagsAndVarNotSetBattleConfigMessage_Text:
 	.string "usable flag and a usable var in:\l"
 	.string "'include/config/battle.h'!$"
 
-Debug_EventScript_Script_1::
+Debug_EventScript_Script_1:: @ Use to test flags
     goto_if_set FLAG_UNLOCK_CHEAT_MENU, Debug_EventScript_UnsetTestFlag
     goto Debug_EventScript_SetTestFlag
     end
