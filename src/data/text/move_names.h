@@ -853,8 +853,8 @@ const u8 gMoveNames[MOVES_COUNT_DYNAMAX][MOVE_NAME_LENGTH + 1] =
     [MOVE_JETSTREAM] = _("Jetstream"),
     [MOVE_FROST_GLARE] = _("Frost Glare"),
     [MOVE_KNUCKLE_PUNCH] = _("Knuckle Punch"),
-    [MOVE_ROUSED_FANGS] = _("Roused Fangs"),
     [MOVE_STUNNING_BLOW] = _("Stunning Blow"),
+    [MOVE_ROUSED_FANGS] = _("Roused Fangs"),
     [MOVE_AQUA_FANGS] = _("Aqua Fangs"),
     // Max Moves
     [MOVE_MAX_GUARD] = _("Max Guard"),
@@ -1766,8 +1766,8 @@ const u8 gMoveNames[MOVES_COUNT_DYNAMAX][MOVE_NAME_LENGTH + 1] =
     [MOVE_JETSTREAM] = _("Jetstream"),
     [MOVE_FROST_GLARE] = _("Frost Glare"),
     [MOVE_KNUCKLE_PUNCH] = _("KnucklePunch"),
-    [MOVE_ROUSED_FANGS] = _("Roused Fangs"),
     [MOVE_STUNNING_BLOW] = _("StunningBlow"),
+    [MOVE_ROUSED_FANGS] = _("Roused Fangs"),
     [MOVE_AQUA_FANGS] = _("Aqua Fangs");
     // Max Moves
     [MOVE_MAX_GUARD] = _("M-Guard"),
