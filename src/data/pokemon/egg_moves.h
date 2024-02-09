@@ -98,6 +98,7 @@ const u16 gEggMoves[] = {
               MOVE_WHIRLWIND),
 
     egg_moves(EKANS,
+              MOVE_AQUA_FANGS,
               MOVE_BEAT_UP,
               MOVE_DISABLE,
               MOVE_IRON_TAIL,
@@ -146,6 +147,7 @@ const u16 gEggMoves[] = {
               MOVE_VENOM_DRENCH),
 
     egg_moves(NIDORAN_M,
+              MOVE_AQUA_FANGS,
               MOVE_AMNESIA,
               MOVE_BEAT_UP,
               MOVE_CHIP_AWAY,
@@ -996,6 +998,7 @@ const u16 gEggMoves[] = {
     egg_moves(TOTODILE,
               MOVE_ANCIENT_POWER,
               MOVE_AQUA_JET,
+              MOVE_AQUA_FANGS,
               MOVE_BLOCK,
               MOVE_CRUNCH,
               MOVE_DRAGON_DANCE,
@@ -1792,6 +1795,7 @@ const u16 gEggMoves[] = {
     egg_moves(MUDKIP,
               MOVE_ANCIENT_POWER,
               MOVE_AVALANCHE,
+              MOVE_AQUA_FANGS,
               MOVE_BARRIER,
               MOVE_BITE,
               MOVE_COUNTER,
@@ -1812,6 +1816,7 @@ const u16 gEggMoves[] = {
 
     egg_moves(POOCHYENA,
               MOVE_ASTONISH,
+              MOVE_AQUA_FANGS,
               MOVE_COVET,
               MOVE_FIRE_FANG,
               MOVE_ICE_FANG,
@@ -2682,6 +2687,7 @@ const u16 gEggMoves[] = {
               MOVE_WATER_SPORT),
 
     egg_moves(SHINX,
+              MOVE_AQUA_FANGS,
               MOVE_BABY_DOLL_EYES,
               MOVE_DOUBLE_KICK,
               MOVE_EERIE_IMPULSE,
@@ -3418,6 +3424,7 @@ const u16 gEggMoves[] = {
               MOVE_WHIRLPOOL),
 
     egg_moves(SANDILE,
+              MOVE_AQUA_FANGS,
               MOVE_AQUA_TAIL,
               MOVE_BEAT_UP,
               MOVE_COUNTER,
@@ -4058,6 +4065,7 @@ const u16 gEggMoves[] = {
               MOVE_GLARE),
 
     egg_moves(TYRUNT,
+              MOVE_AQUA_FANGS,
               MOVE_CURSE,
               MOVE_DRAGON_DANCE,
               MOVE_FIRE_FANG,
