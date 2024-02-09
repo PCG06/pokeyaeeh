@@ -118,33 +118,33 @@ static const struct WindowTemplate sMenuWindowTemplates[] =
 {
     [WINDOW_1] = 
     {
-        .bg = 0,            // which bg to print text on
-        .tilemapLeft = 1,   // position from left (per 8 pixels)
-        .tilemapTop = 0,    // position from top (per 8 pixels)
-        .width = 30,        // width (per 8 pixels)
-        .height = 2,        // height (per 8 pixels)
-        .paletteNum = 15,   // palette index to use for text
-        .baseBlock = 1,     // tile start in VRAM
+        .bg = 0,                     // which bg to print text on
+        .tilemapLeft = 1,            // position from left (per 8 pixels)
+        .tilemapTop = 0,             // position from top (per 8 pixels)
+        .width = 30,                 // width (per 8 pixels)
+        .height = 2,                 // height (per 8 pixels)
+        .paletteNum = 15,            // palette index to use for text
+        .baseBlock = 1,              // tile start in VRAM
     },
     [WINDOW_2] = 
     {
-        .bg = 0,            // which bg to print text on
-        .tilemapLeft = 11,   // position from left (per 8 pixels)
-        .tilemapTop = 2,    // position from top (per 8 pixels)
-        .width = 18,        // width (per 8 pixels)
-        .height = 17,        // height (per 8 pixels)
-        .paletteNum = 15,   // palette index to use for text
-        .baseBlock = 1 + 69,     // tile start in VRAM
+        .bg = 0,                     // which bg to print text on
+        .tilemapLeft = 11,           // position from left (per 8 pixels)
+        .tilemapTop = 2,             // position from top (per 8 pixels)
+        .width = 18,                 // width (per 8 pixels)
+        .height = 17,                // height (per 8 pixels)
+        .paletteNum = 15,            // palette index to use for text
+        .baseBlock = 1 + 70,         // tile start in VRAM
     },
     [WINDOW_3] = 
     {
-        .bg = 0,            // which bg to print text on
-        .tilemapLeft = 1,   // position from left (per 8 pixels)
-        .tilemapTop = 11,    // position from top (per 8 pixels)
-        .width = 8,        // width (per 8 pixels)
-        .height = 9,        // height (per 8 pixels)
-        .paletteNum = 15,   // palette index to use for text
-        .baseBlock = 1 + 69 + 297,     // tile start in VRAM
+        .bg = 0,                     // which bg to print text on
+        .tilemapLeft = 1,            // position from left (per 8 pixels)
+        .tilemapTop = 11,            // position from top (per 8 pixels)
+        .width = 8,                  // width (per 8 pixels)
+        .height = 9,                 // height (per 8 pixels)
+        .paletteNum = 15,            // palette index to use for text
+        .baseBlock = 1 + 70 + 306,   // tile start in VRAM
     },
 };
 
@@ -517,8 +517,8 @@ static void DestroySelector()
 #define DISTANCE_BETWEEN_STATS_Y 16
 #define SECOND_COLUMN ((8 * 4))
 #define THIRD_COLUMN ((8 * 8))
-#define STARTING_X 60
-#define STARTING_Y 26
+#define STARTING_X 12 + 48
+#define STARTING_Y 6 + 20
 
 struct MonPrintData {
     u16 x;
@@ -859,6 +859,8 @@ static void ChangeAndUpdateStat()
     u32 currentHP = 0;
     u32 oldMaxHP = 0;
     u32 amountHPLost = 0;
+    s32 tempDifference = 0;
+    u32 newDifference = 0;
 
     if (currentStatEnum == MON_DATA_HP_EV || currentStatEnum == MON_DATA_HP_IV)
     {
@@ -872,8 +874,7 @@ static void ChangeAndUpdateStat()
 
     if ((amountHPLost > 0) && (currentHP != 0))
     {
-        s32 tempDifference = GetMonData(ReturnPartyMon(), MON_DATA_MAX_HP) - amountHPLost;
-        u32 newDifference;
+        tempDifference = GetMonData(ReturnPartyMon(), MON_DATA_MAX_HP) - amountHPLost;
 
         if (tempDifference < 0)
             tempDifference = 0;
@@ -895,9 +896,10 @@ static void Task_MenuEditingStat(u8 taskId) // This function should be refactore
         PrintTitleToWindowMainState();
         return;
     }
+
     if (JOY_NEW(DPAD_LEFT))
     {
-        if(sStatEditorDataPtr->selector_x == 0)
+        if(sStatEditorDataPtr->selector_x == 0) // EVs
         {
             if(sStatEditorDataPtr->editingStat == 0)
             {
@@ -905,7 +907,7 @@ static void Task_MenuEditingStat(u8 taskId) // This function should be refactore
                 return;
             }
 
-            sStatEditorDataPtr->editingStat--;
+            sStatEditorDataPtr->editingStat = sStatEditorDataPtr->editingStat - 4;
             if((sStatEditorDataPtr->editingStat == 0))
                 StartSpriteAnim(&gSprites[sStatEditorDataPtr->selectorSpriteId], 1);
             else
@@ -913,7 +915,7 @@ static void Task_MenuEditingStat(u8 taskId) // This function should be refactore
     
             ChangeAndUpdateStat();
         }
-        else
+        else // IVs
         {
             if((sStatEditorDataPtr->editingStat == 0))
             {
@@ -941,7 +943,7 @@ static void Task_MenuEditingStat(u8 taskId) // This function should be refactore
                 return;
             }
 
-            sStatEditorDataPtr->editingStat++;
+            sStatEditorDataPtr->editingStat = sStatEditorDataPtr->editingStat + 4;
             if((sStatEditorDataPtr->editingStat == 252))
                 StartSpriteAnim(&gSprites[sStatEditorDataPtr->selectorSpriteId], 2);
             else
@@ -969,7 +971,7 @@ static void Task_MenuEditingStat(u8 taskId) // This function should be refactore
         
     }
 
-    if (JOY_NEW(DPAD_UP) || JOY_NEW(R_BUTTON))
+    if (JOY_NEW(DPAD_UP))
     {
         if(sStatEditorDataPtr->selector_x == 0)
         {
@@ -1003,8 +1005,7 @@ static void Task_MenuEditingStat(u8 taskId) // This function should be refactore
         }
         
     }
-
-    if (JOY_NEW(DPAD_DOWN) || JOY_NEW(L_BUTTON))
+    if (JOY_NEW(DPAD_DOWN))
     {
 
         if((sStatEditorDataPtr->editingStat == 0))
