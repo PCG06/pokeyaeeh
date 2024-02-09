@@ -881,6 +881,7 @@ gBattleAnims_Moves::
 	.4byte Move_KNUCKLE_PUNCH
 	.4byte Move_ROUSED_FANGS
 	.4byte Move_STUNNING_BLOW
+	.4byte Move_AQUA_FANGS
 @@@@ Z MOVES
 	.4byte Move_BREAKNECK_BLITZ
 	.4byte Move_ALL_OUT_PUMMELING
@@ -1035,6 +1036,7 @@ gBattleAnims_General::
 	.4byte General_Rainbow                  @ B_ANIM_RAINBOW
 	.4byte General_SeaOfFire                @ B_ANIM_SEA_OF_FIRE
 	.4byte General_Swamp                    @ B_ANIM_SWAMP
+	.4byte General_TrickRoom                @ B_ANIM_TRICK_ROOM_BATTLE
 
 	.align 2
 gBattleAnims_Special::
@@ -17362,6 +17364,34 @@ Move_STUNNING_BLOW:
 	waitforvisualfinish
 	blendoff
 	clearmonbg ANIM_DEF_PARTNER
+	end
+
+Move_AQUA_FANGS:
+	loadspritegfx ANIM_TAG_IMPACT
+	loadspritegfx ANIM_TAG_SMALL_BUBBLES
+	loadspritegfx ANIM_TAG_SHARP_TEETH
+	monbg ANIM_TARGET
+	splitbgprio ANIM_TARGET
+	createsprite gSimplePaletteBlendSpriteTemplate, ANIM_ATTACKER, 2, F_PAL_BG, 0, 0, 7, RGB(0, 25, 28)
+	delay 10
+	playsewithpan SE_M_BITE, SOUND_PAN_TARGET
+	createsprite gSharpTeethSpriteTemplate, ANIM_ATTACKER, 2, 0xffe0, 0xffe0, 0x1, 0x333, 0x333, 0xa
+	createsprite gSharpTeethSpriteTemplate, ANIM_ATTACKER, 2, 0x20, 0x20, 0x5, 0xfccd, 0xfccd, 0xa
+	delay 0xa
+	createsprite gBasicHitSplatSpriteTemplate, ANIM_ATTACKER, 2, 0xfff8, 0x0, 0x1, 0x1
+	createvisualtask AnimTask_ShakeMon, 5, ANIM_TARGET, 0, 7, 5, 2
+	delay 0x10
+	playsewithpan SE_M_BITE, SOUND_PAN_TARGET
+	createsprite gSharpTeethSpriteTemplate, ANIM_ATTACKER, 2, 0x20, 0xffe0, 0x7, 0xfccd, 0x333, 0xa
+	createsprite gSharpTeethSpriteTemplate, ANIM_ATTACKER, 2, 0xffe0, 0x20, 0x3, 0x333, 0xfccd, 0xa
+	delay 0xa
+	createsprite gBasicHitSplatSpriteTemplate, ANIM_ATTACKER, 2, 0x8, 0x0, 0x1, 0x1
+	createvisualtask AnimTask_ShakeMon, 5, ANIM_TARGET, 0, 8, 4, 2
+	waitforvisualfinish
+	createsprite gSimplePaletteBlendSpriteTemplate, ANIM_ATTACKER, 2, F_PAL_BG, 1, 7, 0, RGB(0, 25, 28)
+	waitforvisualfinish
+	clearmonbg ANIM_TARGET
+	blendoff
 	end
 
 Move_TERA_BLAST::
@@ -34037,4 +34067,15 @@ General_DynamaxGrowth:: @ PORTED FROM CFRU
 	delay 8
 	createvisualtask AnimTask_DynamaxGrowth, 0x5, 0x1, 0x0
 	waitforvisualfinish
+	end
+
+General_TrickRoom::
+	setalpha 8, 8
+	playsewithpan SE_M_SUPERSONIC, SOUND_PAN_TARGET
+	fadetobg BG_TRICK_ROOM
+	waitbgfadein
+	delay 0x40
+	restorebg
+	waitbgfadein
+	blendoff
 	end

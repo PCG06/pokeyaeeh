@@ -56,6 +56,7 @@
 #include "sound.h"
 #include "sprite.h"
 #include "start_menu.h"
+#include "stat_editor.h"
 #include "string_util.h"
 #include "strings.h"
 #include "task.h"
@@ -96,6 +97,7 @@ enum {
     MENU_TRADE1,
     MENU_TRADE2,
     MENU_TOSS,
+    MENU_STAT_EDIT,
     MENU_MOVES,
 	MENU_EGG_MOVES,
     MENU_SUB_FIELD_MOVES,
@@ -211,7 +213,7 @@ struct PartyMenuInternal
     u32 spriteIdCancelPokeball:7;
     u32 messageId:14;
     u8 windowId[3];
-    u8 actions[12];
+    u8 actions[13];
     u8 numActions;
     // In vanilla Emerald, only the first 0xB0 hwords (0x160 bytes) are actually used.
     // However, a full 0x100 hwords (0x200 bytes) are allocated.
@@ -496,6 +498,7 @@ static void CursorCb_Register(u8);
 static void CursorCb_Trade1(u8);
 static void CursorCb_Trade2(u8);
 static void CursorCb_Toss(u8);
+static void CursorCb_StatEdit(u8);
 static void CursorCb_ChangeMoves(u8);
 static void CursorCb_ChangeEggMoves(u8);
 static void CursorCb_FieldMovesSubMenu(u8);
@@ -2918,6 +2921,7 @@ static void SetPartyMonFieldSelectionActions(struct Pokemon *mons, u8 slotId)
 
     sPartyMenuInternal->numActions = 0;
     AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, MENU_SUMMARY);
+    AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, MENU_STAT_EDIT);
     AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, MENU_SUB_FIELD_MOVES);
 
     if (!InBattlePike())
@@ -4552,6 +4556,23 @@ static void UpdatePartyMonAilmentGfx(u8 status, struct PartyMenuBox *menuBox)
         gSprites[menuBox->statusSpriteId].invisible = FALSE;
         break;
     }
+}
+
+static void ChangePokemonStatsPartyScreen_CB(void)
+{
+    CB2_ReturnToPartyMenuFromSummaryScreen();
+}
+
+static void ChangePokemonStatsPartyScreen(void)
+{
+    StatEditor_Init(ChangePokemonStatsPartyScreen_CB);
+}
+static void CursorCb_StatEdit(u8 taskId)
+{
+    PlaySE(SE_SELECT);
+    gSpecialVar_0x8004 = gPartyMenu.slotId;
+    sPartyMenuInternal->exitCallback = ChangePokemonStatsPartyScreen;
+    Task_ClosePartyMenu(taskId);
 }
 
 void LoadPartyMenuAilmentGfx(void)

@@ -10882,6 +10882,13 @@ BattleScript_TailstreamActivated::
 	call BattleScript_TryTailwindAbilitiesLoop
 	end3
 
+BattleScript_TrickRoomBattle::
+    printstring STRINGID_TRICKROOM_BATTLE
+    waitmessage B_WAIT_TIME_LONG
+    playanimation BS_OPPONENT1, B_ANIM_TRICK_ROOM_BATTLE
+    waitanimation
+    end3
+
 BattleScript_PhantomGaleActivates::
 	pause B_WAIT_TIME_SHORT
 	call BattleScript_AbilityPopUp

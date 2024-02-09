@@ -112,8 +112,8 @@ Debug_FlagsAndVarNotSetBattleConfigMessage_Text:
 	.string "usable flag and a usable var in:\l"
 	.string "'include/config/battle.h'!$"
 
-Debug_EventScript_Script_1::
-    goto_if_set FLAG_UNLOCK_CHEAT_MENU, Debug_EventScript_UnsetTestFlag
+Debug_EventScript_Script_1:: @ Use to test flags
+    goto_if_set B_SET_TRICK_ROOM, Debug_EventScript_UnsetTestFlag
     goto Debug_EventScript_SetTestFlag
     end
 
@@ -258,12 +258,12 @@ DebugText_DaycarePokemonNotCompatible:
 
 Debug_EventScript_SetTestFlag::
     msgbox Debug_Text_SetTestFlag, MSGBOX_AUTOCLOSE
-    setflag FLAG_UNLOCK_CHEAT_MENU
+    setflag B_SET_TRICK_ROOM
 	end
 
 Debug_EventScript_UnsetTestFlag::
     msgbox Debug_Text_UnsetTestFlag, MSGBOX_AUTOCLOSE
-    clearflag FLAG_UNLOCK_CHEAT_MENU
+    clearflag B_SET_TRICK_ROOM
 	end
 
 Debug_Text_SetTestFlag::
