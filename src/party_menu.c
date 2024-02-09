@@ -2887,11 +2887,13 @@ static void SetPartyMonFieldMoveSelectionActions(struct Pokemon *mons, u8 slotId
 {
     u32 i,j, move;
 
-    // Adds Fly and Flash to the Pokémon's field moves list without knowing them
-    if (CheckBagHasItem(ITEM_HM02, 1))
-    AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, FIELD_MOVE_FLY + MENU_FIELD_MOVES);
-    if (CheckBagHasItem(ITEM_TM85, 1))
-    AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, FIELD_MOVE_FLASH + MENU_FIELD_MOVES);
+    // Adds field moves to the Pokémon's field moves list without knowing them
+    if ((FlagGet(FLAG_BADGE06_GET)) && (CheckBagHasItem(ITEM_HM02, 1)) && (Overworld_MapTypeAllowsTeleportAndFly(gMapHeader.mapType) == TRUE))
+        AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, FIELD_MOVE_FLY + MENU_FIELD_MOVES);
+    if ((FlagGet(FLAG_BADGE01_GET)) && (CheckBagHasItem(ITEM_TM85, 1)) && (gMapHeader.cave == TRUE) && !(FlagGet(FLAG_SYS_USE_FLASH)))
+        AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, FIELD_MOVE_FLASH + MENU_FIELD_MOVES);
+    if (CanUseDigOrEscapeRopeOnCurMap() == TRUE)
+        AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, FIELD_MOVE_DIG + MENU_FIELD_MOVES);
     
     // Add field moves to action list
     for (i = 0; i < MAX_MON_MOVES; i++)
@@ -2921,13 +2923,17 @@ static void SetPartyMonFieldSelectionActions(struct Pokemon *mons, u8 slotId)
 
     sPartyMenuInternal->numActions = 0;
     AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, MENU_SUMMARY);
-    AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, MENU_STAT_EDIT);
-    AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, MENU_SUB_FIELD_MOVES);
 
     if (!InBattlePike())
     {
         if (GetMonData(&mons[1], MON_DATA_SPECIES) != SPECIES_NONE)
             AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, MENU_SWITCH);
+
+
+        if (FlagGet(FLAG_ADVENTURE_STARTED))
+            AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, MENU_STAT_EDIT);
+
+        AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, MENU_SUB_FIELD_MOVES);
         // LevelUp and Egg move tutor (TODO: add Teachable Moves tutor)
         if (FlagGet(FLAG_SYS_ENABLE_MOVE_RELEARNERS))
         {
