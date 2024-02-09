@@ -59,7 +59,11 @@ struct StatEditorResources
     u16 evTotal;
     u16 ivTotal;
     u16 partyid;
+    u16 inputMode;
 };
+
+#define INPUT_SELECT_STAT 0
+#define INPUT_EDIT_STAT 1
 
 enum WindowIds
 {
@@ -200,7 +204,7 @@ static const union AnimCmd sSpriteAnim_Selector0[] =
 {
     ANIMCMD_FRAME(0, 32),
     ANIMCMD_FRAME(0, 32),
-    ANIMCMD_FRAME(48, 10),
+    //ANIMCMD_FRAME(48, 10),
     ANIMCMD_JUMP(0),
 };
 
@@ -345,6 +349,7 @@ static bool8 StatEditor_DoGfxSetup(void)
     case 5:
         StatEditor_InitWindows();
         PrintTitleToWindowMainState();
+        sStatEditorDataPtr->inputMode = INPUT_SELECT_STAT;
         PrintMonStats();
         CreateSelector();
         gMain.state++;
@@ -747,6 +752,25 @@ static void SelectorCallback(struct Sprite *sprite)
         {{188, 110 + 20}, {220, 110 + 20}}, // Thanks Jaizu
     };
 
+    if(sStatEditorDataPtr->inputMode == INPUT_EDIT_STAT)
+    {
+        if(sprite->data[0] == 32)
+        {
+            sprite->invisible = TRUE;
+        }
+        if(sprite->data[0] >= 48)
+        {
+            sprite->invisible = FALSE;
+            sprite->data[0] = 0;
+        }
+        sprite->data[0]++;
+    }
+    else
+    {
+        sprite->invisible = FALSE;
+        sprite->data[0] = 0;
+    }
+
     sStatEditorDataPtr->selectedStat = sStatEditorDataPtr->selector_x + (sStatEditorDataPtr->selector_y * 2);
 
     sprite->x = spriteCords[sStatEditorDataPtr->selector_y][sStatEditorDataPtr->selector_x].x;
@@ -792,6 +816,7 @@ static void Task_StatEditorMain(u8 taskId) // input control when first loaded in
         StartSpriteAnim(&gSprites[sStatEditorDataPtr->selectorSpriteId], 3);
         PlaySE(SE_SELECT);
         PrintTitleToWindowEditState();
+        sStatEditorDataPtr->inputMode = INPUT_EDIT_STAT;
         gTasks[taskId].func = Task_MenuEditingStat;
         if(sStatEditorDataPtr->editingStat == 0)
             StartSpriteAnim(&gSprites[sStatEditorDataPtr->selectorSpriteId], 1);
@@ -893,6 +918,7 @@ static void Task_MenuEditingStat(u8 taskId) // This function should be refactore
         gTasks[taskId].func = Task_StatEditorMain;
         StartSpriteAnim(&gSprites[sStatEditorDataPtr->selectorSpriteId], 0);
         PlaySE(SE_SELECT);
+        sStatEditorDataPtr->inputMode = INPUT_SELECT_STAT;
         PrintTitleToWindowMainState();
         return;
     }
