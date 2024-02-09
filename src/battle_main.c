@@ -3757,15 +3757,6 @@ static void DoBattleIntro(void)
     }
 }
 
-static void SetPermaTrickRoom(void)
-{
-    if (FlagGet(FLAG_TRICK_ROOM))
-    {
-        gFieldStatuses |= STATUS_FIELD_TRICK_ROOM;
-        gFieldTimers.trickRoomTimer = 250;
-    }
-}
-
 static void SetPermaTailwind(u32 battler)
 {
     u32 battlerAtk = battler;
@@ -5686,6 +5677,15 @@ static void ReturnFromBattleToOverworld(void)
 #endif                                                                               // & with B_OUTCOME_WON (1) will return TRUE and deactivates the roamer.
             SetRoamerInactive();
     }
+
+    VarSet(VAR_TERRAIN, 0);
+    FlagClear(B_SET_TRICK_ROOM);
+    VarSet(B_VAR_TRICK_ROOM_TIMER, 0);
+    FlagClear(B_FLAG_INVERSE_BATTLE);
+    FlagClear(B_FLAG_FORCE_DOUBLE_WILD);
+    FlagClear(B_SMART_WILD_AI_FLAG);
+    FlagClear(B_FLAG_NO_BAG_USE);
+    FlagClear(B_FLAG_NO_CATCHING);
 
     m4aSongNumStop(SE_LOW_HEALTH);
     SetMainCallback2(gMain.savedCallback);
