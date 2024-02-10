@@ -424,7 +424,8 @@
 #define EFFECT_RAGE_FIST                    418
 #define EFFECT_DOODLE                       419
 #define EFFECT_FICKLE_BEAM                  420
+#define EFFECT_LAST_RESPECTS                421
 
-#define NUM_BATTLE_MOVE_EFFECTS             421
+#define NUM_BATTLE_MOVE_EFFECTS             422
 
 #endif  // GUARD_CONSTANTS_BATTLE_MOVE_EFFECTS_H

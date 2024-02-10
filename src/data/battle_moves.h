@@ -13603,7 +13603,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
 
     [MOVE_LAST_RESPECTS] =
     {
-        .effect = EFFECT_PLACEHOLDER, // EFFECT_LAST_RESPECTS
+        .effect = EFFECT_LAST_RESPECTS,
         .power = 50,
         .type = TYPE_GHOST,
         .accuracy = 100,
@@ -13613,7 +13613,6 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
         .priority = 0,
         .split = SPLIT_PHYSICAL,
         .zMoveEffect = Z_EFFECT_NONE,
-        .metronomeBanned = TRUE, // Only since it isn't implemented yet
     },
 
     [MOVE_LUMINA_CRASH] =
