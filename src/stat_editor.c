@@ -911,9 +911,91 @@ static void ChangeAndUpdateStat()
     PrintMonStats();
 }
 
-static void Task_MenuEditingStat(u8 taskId) // This function should be refactored to not be a hot mess
+#define EDIT_INPUT_INCREASE_STATE           0
+#define EDIT_INPUT_HALF_INCREASE_STATE      1
+#define EDIT_INPUT_MAX_INCREASE_STATE       2
+#define EDIT_INPUT_DECREASE_STATE           3
+#define EDIT_INPUT_HALF_DECREASE_STATE      4
+#define EDIT_INPUT_MAX_DECREASE_STATE       5
+
+#define STAT_MINIMUM          0  
+#define IV_MAX_SINGLE_STAT    31   
+#define EV_MAX_SINGLE_STAT    252   
+#define EV_MAX_TOTAL          510            
+
+#define EDITING_EVS     0
+#define EDITING_IVS     1
+
+#define CHECK_IF_STAT_CANT_INCREASE (((sStatEditorDataPtr->editingStat == ((sStatEditorDataPtr->selector_x == EDITING_EVS) ? (EV_MAX_SINGLE_STAT) : (IV_MAX_SINGLE_STAT))) \
+                                     || ((sStatEditorDataPtr->selector_x == EDITING_EVS) && (sStatEditorDataPtr->evTotal == EV_MAX_TOTAL))))
+
+static void HandleEditingStatInput(u32 input)
 {
-    if (JOY_NEW(B_BUTTON) || JOY_NEW(A_BUTTON))
+    u16 iterator = 0;
+    if((input <= EDIT_INPUT_MAX_INCREASE_STATE) && CHECK_IF_STAT_CANT_INCREASE)
+    {
+        StartSpriteAnim(&gSprites[sStatEditorDataPtr->selectorSpriteId], 2);
+        return;
+    }
+
+    if((input >= EDIT_INPUT_DECREASE_STATE) && (sStatEditorDataPtr->editingStat == STAT_MINIMUM))
+    {
+        StartSpriteAnim(&gSprites[sStatEditorDataPtr->selectorSpriteId], 1);
+        return;
+    }
+
+    #define INCREASE_DECREASE_AMOUNT 4
+
+    switch(input)
+    {
+        case EDIT_INPUT_DECREASE_STATE:
+            for (iterator = 0; iterator < INCREASE_DECREASE_AMOUNT; iterator++)
+            {
+                if(!(sStatEditorDataPtr->editingStat == STAT_MINIMUM))
+                    sStatEditorDataPtr->editingStat--;
+                else
+                    break;
+            }
+            break;
+       case EDIT_INPUT_MAX_DECREASE_STATE:
+            sStatEditorDataPtr->editingStat = STAT_MINIMUM;
+            break;
+        case EDIT_INPUT_INCREASE_STATE:
+            for (iterator = 0; iterator < INCREASE_DECREASE_AMOUNT; iterator++)
+            {
+                if(!CHECK_IF_STAT_CANT_INCREASE)
+                    sStatEditorDataPtr->editingStat++;
+                else
+                    break;
+            }
+            break;
+        case EDIT_INPUT_MAX_INCREASE_STATE:
+            if((sStatEditorDataPtr->selector_x == EDITING_EVS))
+            {
+                if (EV_MAX_TOTAL - sStatEditorDataPtr->evTotal < EV_MAX_SINGLE_STAT)
+                    sStatEditorDataPtr->editingStat += EV_MAX_TOTAL - sStatEditorDataPtr->evTotal;
+                else
+                    sStatEditorDataPtr->editingStat = EV_MAX_SINGLE_STAT;
+            }
+            else
+            {
+                sStatEditorDataPtr->editingStat = IV_MAX_SINGLE_STAT;
+            }
+    }
+
+    ChangeAndUpdateStat();
+
+    if(CHECK_IF_STAT_CANT_INCREASE)
+        StartSpriteAnim(&gSprites[sStatEditorDataPtr->selectorSpriteId], 2);
+    else if(sStatEditorDataPtr->editingStat == STAT_MINIMUM)
+        StartSpriteAnim(&gSprites[sStatEditorDataPtr->selectorSpriteId], 1); 
+    else
+        StartSpriteAnim(&gSprites[sStatEditorDataPtr->selectorSpriteId], 3);       
+}
+
+static void Task_MenuEditingStat(u8 taskId)
+{
+    if ((JOY_NEW(A_BUTTON)) || JOY_NEW(B_BUTTON))
     {
         gTasks[taskId].func = Task_StatEditorMain;
         StartSpriteAnim(&gSprites[sStatEditorDataPtr->selectorSpriteId], 0);
@@ -922,127 +1004,13 @@ static void Task_MenuEditingStat(u8 taskId) // This function should be refactore
         PrintTitleToWindowMainState();
         return;
     }
-
     if (JOY_NEW(DPAD_LEFT))
-    {
-        if(sStatEditorDataPtr->selector_x == 0) // EVs
-        {
-            if(sStatEditorDataPtr->editingStat == 0)
-            {
-                StartSpriteAnim(&gSprites[sStatEditorDataPtr->selectorSpriteId], 1);
-                return;
-            }
-
-            sStatEditorDataPtr->editingStat = sStatEditorDataPtr->editingStat - 4;
-            if((sStatEditorDataPtr->editingStat == 0))
-                StartSpriteAnim(&gSprites[sStatEditorDataPtr->selectorSpriteId], 1);
-            else
-                StartSpriteAnim(&gSprites[sStatEditorDataPtr->selectorSpriteId], 3);
-    
-            ChangeAndUpdateStat();
-        }
-        else // IVs
-        {
-            if((sStatEditorDataPtr->editingStat == 0))
-            {
-                StartSpriteAnim(&gSprites[sStatEditorDataPtr->selectorSpriteId], 1);
-                return;
-            }
-
-            sStatEditorDataPtr->editingStat--;
-            if((sStatEditorDataPtr->editingStat == 0))
-                StartSpriteAnim(&gSprites[sStatEditorDataPtr->selectorSpriteId], 1);
-            else
-                StartSpriteAnim(&gSprites[sStatEditorDataPtr->selectorSpriteId], 3);
-
-            ChangeAndUpdateStat();
-        }
-        
-    }
+        HandleEditingStatInput(EDIT_INPUT_DECREASE_STATE);
     if (JOY_NEW(DPAD_RIGHT))
-    {
-        if(sStatEditorDataPtr->selector_x == 0)
-        {
-            if((sStatEditorDataPtr->editingStat == 252) || (sStatEditorDataPtr->evTotal == 510))
-            {
-                StartSpriteAnim(&gSprites[sStatEditorDataPtr->selectorSpriteId], 2);
-                return;
-            }
-
-            sStatEditorDataPtr->editingStat = sStatEditorDataPtr->editingStat + 4;
-            if((sStatEditorDataPtr->editingStat == 252))
-                StartSpriteAnim(&gSprites[sStatEditorDataPtr->selectorSpriteId], 2);
-            else
-                StartSpriteAnim(&gSprites[sStatEditorDataPtr->selectorSpriteId], 3);
-    
-            ChangeAndUpdateStat();
-
-        }
-        else
-        {
-            if(sStatEditorDataPtr->editingStat == 31)
-            {
-                StartSpriteAnim(&gSprites[sStatEditorDataPtr->selectorSpriteId], 2);
-                return;
-            }
-
-            sStatEditorDataPtr->editingStat++;
-            if((sStatEditorDataPtr->editingStat == 31))
-                StartSpriteAnim(&gSprites[sStatEditorDataPtr->selectorSpriteId], 2);
-            else
-                StartSpriteAnim(&gSprites[sStatEditorDataPtr->selectorSpriteId], 3);
-    
-            ChangeAndUpdateStat();
-        }
-        
-    }
-
-    if (JOY_NEW(DPAD_UP))
-    {
-        if(sStatEditorDataPtr->selector_x == 0)
-        {
-            if((sStatEditorDataPtr->editingStat == 252) || (sStatEditorDataPtr->evTotal == 510))
-            {
-                StartSpriteAnim(&gSprites[sStatEditorDataPtr->selectorSpriteId], 2);
-                return;
-            }
-
-            if (510 - sStatEditorDataPtr->evTotal < 252)
-                sStatEditorDataPtr->editingStat += 510 - sStatEditorDataPtr->evTotal;
-            else
-                sStatEditorDataPtr->editingStat = 252;
-    
-            StartSpriteAnim(&gSprites[sStatEditorDataPtr->selectorSpriteId], 2);    
-            ChangeAndUpdateStat();
-
-        }
-        else
-        {
-            if(sStatEditorDataPtr->editingStat == 31)
-            {
-                StartSpriteAnim(&gSprites[sStatEditorDataPtr->selectorSpriteId], 2);
-                return;
-            }
-
-            sStatEditorDataPtr->editingStat = 31;
-            StartSpriteAnim(&gSprites[sStatEditorDataPtr->selectorSpriteId], 2);    
-    
-            ChangeAndUpdateStat();
-        }
-        
-    }
-    if (JOY_NEW(DPAD_DOWN))
-    {
-
-        if((sStatEditorDataPtr->editingStat == 0))
-        {
-            StartSpriteAnim(&gSprites[sStatEditorDataPtr->selectorSpriteId], 1);
-            return;
-        }
-        
-        sStatEditorDataPtr->editingStat = 0;
-        StartSpriteAnim(&gSprites[sStatEditorDataPtr->selectorSpriteId], 1);  
-        ChangeAndUpdateStat(); 
-    }
+        HandleEditingStatInput(EDIT_INPUT_INCREASE_STATE);
+    if (JOY_NEW(R_BUTTON))
+        HandleEditingStatInput(EDIT_INPUT_MAX_INCREASE_STATE);
+    if (JOY_NEW(L_BUTTON))
+        HandleEditingStatInput(EDIT_INPUT_MAX_DECREASE_STATE);
 
 }
