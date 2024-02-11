@@ -704,6 +704,7 @@ struct BattleStruct
     u8 swapDamageCategory:1; // Photon Geyser, Shell Side Arm, Light That Burns the Sky
     bool8 terrainDone:1;
     bool8 trickroomDone:1;
+    bool8 tailwindDone:1;
     u8 ballSpriteIds[2];    // item gfx, window gfx
     u8 moveInfoSpriteId; // move info, window gfx
     u8 appearedInBattle; // Bitfield to track which Pokemon appeared in battle. Used for Burmy's form change

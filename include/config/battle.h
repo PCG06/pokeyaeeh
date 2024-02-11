@@ -180,7 +180,9 @@
 #define B_VAR_WILD_AI_FLAGS         0     // If not 0, you can use this var to add to default wild AI flags. NOT usable with flags above (1 << 15)
 
 #define B_SET_TRICK_ROOM            FLAG_TRICK_ROOM     // If this flag is set, Trick Room will start before the battle.
-#define B_VAR_TRICK_ROOM_TIMER      0     // If this var has a value greater or equal than 1 Trick Troom will be on a timer, otherwise it will be permanent unless dimenstions are twisted again.
+
+#define B_SET_ATK_TAILWIND          FLAG_TAILWIND_ATK   // If this flag is set, Tailwind will start before the battle.
+#define B_SET_DEF_TAILWIND          FLAG_TAILWIND_DEF   // If this flag is set, Tailwind will start before the battle.
 
 // Sky Battles
 #define B_FLAG_SKY_BATTLE           FLAG_SKY_BATTLE       // If this flag has a value, the player will be able to engage in scripted Sky Battles.

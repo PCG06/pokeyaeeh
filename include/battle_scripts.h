@@ -498,6 +498,8 @@ extern const u8 BattleScript_HurtByTheSeaOfFire[];
 extern const u8 BattleScript_TheSeaOfFireDisappeared[];
 extern const u8 BattleScript_TheSwampDisappeared[];
 extern const u8 BattleScript_TrickRoomBattle[];
+extern const u8 BattleScript_TailwindAtkBattle[];
+extern const u8 BattleScript_TailwindDefBattle[];
 
 // zmoves
 extern const u8 BattleScript_ZMoveActivateDamaging[];

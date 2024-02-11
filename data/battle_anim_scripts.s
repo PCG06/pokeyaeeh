@@ -1037,6 +1037,7 @@ gBattleAnims_General::
 	.4byte General_SeaOfFire                @ B_ANIM_SEA_OF_FIRE
 	.4byte General_Swamp                    @ B_ANIM_SWAMP
 	.4byte General_TrickRoom                @ B_ANIM_TRICK_ROOM_BATTLE
+	.4byte General_Tailwind                 @ B_ANIM_TAILWIND_BATTLE
 
 	.align 2
 gBattleAnims_Special::
@@ -34093,4 +34094,36 @@ General_TrickRoom::
 	restorebg
 	waitbgfadein
 	blendoff
+	end
+
+General_Tailwind:
+	loadspritegfx ANIM_TAG_FLYING_DIRT
+	playsewithpan SE_M_GUST, SOUND_PAN_ATTACKER
+	call SetHighSpeedBg
+	monbg ANIM_ATK_PARTNER
+	setalpha 12, 8
+	playsewithpan SE_M_DOUBLE_TEAM, SOUND_PAN_ATTACKER
+	createsprite gFlyingSandCrescentSpriteTemplate, ANIM_ATTACKER, 40, 10, 2304, 96, 0
+	delay 12
+	playsewithpan SE_M_DOUBLE_TEAM, SOUND_PAN_ATTACKER
+	createsprite gFlyingSandCrescentSpriteTemplate, ANIM_ATTACKER, 40, 90, 2048, 96, 0
+	delay 12
+	playsewithpan SE_M_DOUBLE_TEAM, SOUND_PAN_ATTACKER
+	createsprite gFlyingSandCrescentSpriteTemplate, ANIM_ATTACKER, 40, 50, 2560, 96, 0
+	delay 12
+	playsewithpan SE_M_DOUBLE_TEAM, SOUND_PAN_ATTACKER
+	createsprite gFlyingSandCrescentSpriteTemplate, ANIM_ATTACKER, 40, 20, 2304, 96, 0
+	delay 12
+	playsewithpan SE_M_DOUBLE_TEAM, SOUND_PAN_ATTACKER
+	createsprite gFlyingSandCrescentSpriteTemplate, ANIM_ATTACKER, 40, 70, 1984, 96, 0
+	delay 12
+	createsprite gFlyingSandCrescentSpriteTemplate, ANIM_ATTACKER, 40, 0, 2816, 96, 0
+	delay 10
+	createsprite gFlyingSandCrescentSpriteTemplate, ANIM_ATTACKER, 40, 60, 2560, 96, 0
+	waitforvisualfinish
+	stopsound
+	call UnsetHighSpeedBg
+	clearmonbg ANIM_ATK_PARTNER
+	blendoff
+	delay 1
 	end

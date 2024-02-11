@@ -411,8 +411,12 @@ void Overworld_ResetStateAfterDigEscRope(void)
         FlagClear(B_SET_TRICK_ROOM);
     #endif
 
-    #if B_VAR_TRICK_ROOM_TIMER != 0
-        VarSet(B_VAR_TRICK_ROOM_TIMER, 0);
+    #if B_SET_ATK_TAILWIND
+        FlagClear(B_SET_ATK_TAILWIND);
+    #endif
+
+    #if B_SET_DEF_TAILWIND
+        FlagClear(B_SET_DEF_TAILWIND);
     #endif
 
     #if B_VAR_WILD_AI_FLAGS != 0
