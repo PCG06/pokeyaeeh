@@ -254,6 +254,4 @@ u8 GetBattlerType(u32 battler, u8 typeIndex);
 bool8 CanMonParticipateInSkyBattle(struct Pokemon *mon);
 bool8 IsMonBannedFromSkyBattles(u16 species);
 
-bool32 TryTrickRoomBattle(void);
-
 #endif // GUARD_BATTLE_UTIL_H

@@ -2411,7 +2411,7 @@ u8 DoFieldEndTurnEffects(void)
             }
             break;
         case ENDTURN_TRICK_ROOM:
-            if (gFieldStatuses & STATUS_FIELD_TRICK_ROOM && gFieldTimers.trickRoomTimer > 0 && --gFieldTimers.trickRoomTimer == 0)
+            if (gFieldStatuses & STATUS_FIELD_TRICK_ROOM && --gFieldTimers.trickRoomTimer == 0)
             {
                 gFieldStatuses &= ~STATUS_FIELD_TRICK_ROOM;
                 BattleScriptExecute(BattleScript_TrickRoomEnds);
@@ -11571,18 +11571,4 @@ u8 GetBattlerType(u32 battler, u8 typeIndex)
     }
 
     return types[typeIndex];
-}
-
-bool32 TryTrickRoomBattle(void)
-{
-    if (FlagGet(B_SET_TRICK_ROOM))
-    {
-        gFieldStatuses |= STATUS_FIELD_TRICK_ROOM;
-        if (VarGet(B_VAR_TRICK_ROOM_TIMER))
-            gFieldTimers.trickRoomTimer = VarGet(B_VAR_TRICK_ROOM_TIMER);
-        BattleScriptPushCursorAndCallback(BattleScript_TrickRoomBattle);
-        return TRUE;
-    }
-
-    return FALSE;
 }

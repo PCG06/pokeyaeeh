@@ -845,11 +845,9 @@ static const u8 sText_PkmnAlreadyHasAFrostbite[] = _("{B_DEF_NAME_WITH_PREFIX} a
 static const u8 sText_HospitalityRestoration[] = _("The {B_ATK_PARTNER_NAME} drank down all\nthe matcha that Sinistcha made!");
 static const u8 sText_PkmnDidAmmountDamage[] = _("{B_ATK_NAME_WITH_PREFIX} did {B_BUFF4} damage!");
 static const u8 sText_ElectroShockCharging[] = _("{B_ATK_NAME_WITH_PREFIX} absorbed\nelectricity!");
-static const u8 sText_TrickRoomBattle[] = _("The dimensions were twisted!");
 
 const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
 {
-    [STRINGID_TRICKROOM_BATTLE - BATTLESTRINGS_TABLE_START] = sText_TrickRoomBattle,
     [STRINGID_ELECTROSHOCKCHARGING - BATTLESTRINGS_TABLE_START] = sText_ElectroShockCharging,
     [STRINGID_POKEMONDIDAMMOUNTDAMAGE - BATTLESTRINGS_TABLE_START] = sText_PkmnDidAmmountDamage,
     [STRINGID_HOSPITALITYRESTORATION - BATTLESTRINGS_TABLE_START] = sText_HospitalityRestoration,
