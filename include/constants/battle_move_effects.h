@@ -425,7 +425,10 @@
 #define EFFECT_DOODLE                       419
 #define EFFECT_FICKLE_BEAM                  420
 #define EFFECT_LAST_RESPECTS                421
+#define EFFECT_FILLET_AWAY                  422
+#define EFFECT_SHED_TAIL                    423
+#define EFFECT_DRAGON_CHEER                 424
 
-#define NUM_BATTLE_MOVE_EFFECTS             422
+#define NUM_BATTLE_MOVE_EFFECTS             425
 
 #endif  // GUARD_CONSTANTS_BATTLE_MOVE_EFFECTS_H

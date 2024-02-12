@@ -545,7 +545,7 @@ static void Cmd_setsafeguard(void);
 static void Cmd_magnitudedamagecalculation(void);
 static void Cmd_jumpifnopursuitswitchdmg(void);
 static void Cmd_setsunny(void);
-static void Cmd_maxattackhalvehp(void);
+static void Cmd_halvehp(void);
 static void Cmd_copyfoestats(void);
 static void Cmd_rapidspinfree(void);
 static void Cmd_setdefensecurlbit(void);
@@ -804,7 +804,7 @@ void (* const gBattleScriptingCommandsTable[])(void) =
     Cmd_magnitudedamagecalculation,              //0xB9
     Cmd_jumpifnopursuitswitchdmg,                //0xBA
     Cmd_setsunny,                                //0xBB
-    Cmd_maxattackhalvehp,                        //0xBC
+    Cmd_halvehp,                                 //0xBC
     Cmd_copyfoestats,                            //0xBD
     Cmd_rapidspinfree,                           //0xBE
     Cmd_setdefensecurlbit,                       //0xBF
@@ -1920,6 +1920,7 @@ s32 CalcCritChanceStageArgs(u32 battlerAtk, u32 battlerDef, u32 move, bool32 rec
     else
     {
         critChance  = 2 * ((gBattleMons[battlerAtk].status2 & STATUS2_FOCUS_ENERGY) != 0)
+                    + 1 * ((gBattleMons[battlerAtk].status2 & STATUS2_DRAGON_CHEER) != 0)
                     + (gBattleMoves[gCurrentMove].highCritRatio)
                     + (holdEffectAtk == HOLD_EFFECT_SCOPE_LENS)
                     + 2 * (holdEffectAtk == HOLD_EFFECT_LUCKY_PUNCH && gBattleMons[battlerAtk].species == SPECIES_CHANSEY)
@@ -12339,14 +12340,20 @@ static void Cmd_setfocusenergy(void)
 {
     CMD_ARGS();
 
-    if (gBattleMons[gBattlerAttacker].status2 & STATUS2_FOCUS_ENERGY)
+    if ((gBattleMoves[gCurrentMove].effect == EFFECT_DRAGON_CHEER && (!(gBattleTypeFlags & BATTLE_TYPE_DOUBLE) || (gAbsentBattlerFlags & gBitTable[gBattlerTarget])))
+     || gBattleMons[gBattlerTarget].status2 & STATUS2_FOCUS_ENERGY_ANY)
     {
         gMoveResultFlags |= MOVE_RESULT_FAILED;
         gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_FOCUS_ENERGY_FAILED;
     }
+    else if (gBattleMoves[gCurrentMove].effect == EFFECT_DRAGON_CHEER && !IS_BATTLER_OF_TYPE(gBattlerTarget, TYPE_DRAGON))
+    {
+        gBattleMons[gBattlerTarget].status2 |= STATUS2_DRAGON_CHEER;
+        gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_GETTING_PUMPED;
+    }
     else
     {
-        gBattleMons[gBattlerAttacker].status2 |= STATUS2_FOCUS_ENERGY;
+        gBattleMons[gBattlerTarget].status2 |= STATUS2_FOCUS_ENERGY;
         gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_GETTING_PUMPED;
     }
     gBattlescriptCurrInstr = cmd->nextInstr;
@@ -12413,8 +12420,10 @@ static void Cmd_setsubstitute(void)
 {
     CMD_ARGS();
 
-    u32 hp = GetNonDynamaxMaxHP(gBattlerAttacker) / 4;
-    if (GetNonDynamaxMaxHP(gBattlerAttacker) / 4 == 0)
+    u32 factor = gBattleMoves[gCurrentMove].effect == EFFECT_SHED_TAIL ? 2 : 4;
+    u32 hp = GetNonDynamaxMaxHP(gBattlerAttacker) / factor;
+
+    if (GetNonDynamaxMaxHP(gBattlerAttacker) / factor == 0)
         hp = 1;
 
     if (gBattleMons[gBattlerAttacker].hp <= hp)
@@ -12424,7 +12433,7 @@ static void Cmd_setsubstitute(void)
     }
     else
     {
-        gBattleMoveDamage = GetNonDynamaxMaxHP(gBattlerAttacker) / 4; // one bit value will only work for pokemon which max hp can go to 1020(which is more than possible in games)
+        gBattleMoveDamage = GetNonDynamaxMaxHP(gBattlerAttacker) / factor; // one bit value will only work for pokemon which max hp can go to 1020(which is more than possible in games)
         if (gBattleMoveDamage == 0)
             gBattleMoveDamage = 1;
 
@@ -13385,8 +13394,8 @@ static void Cmd_setsunny(void)
     gBattlescriptCurrInstr = cmd->nextInstr;
 }
 
-// Belly Drum
-static void Cmd_maxattackhalvehp(void)
+// Belly Drum, Fillet Away
+static void Cmd_halvehp(void)
 {
     CMD_ARGS(const u8 *failInstr);
 
@@ -13395,11 +13404,8 @@ static void Cmd_maxattackhalvehp(void)
     if (!(GetNonDynamaxMaxHP(gBattlerAttacker) / 2))
         halfHp = 1;
 
-    // Belly Drum fails if the user's current HP is less than half its maximum, or if the user's Attack is already at +6 (even if the user has Contrary).
-    if (gBattleMons[gBattlerAttacker].statStages[STAT_ATK] < MAX_STAT_STAGE
-        && gBattleMons[gBattlerAttacker].hp > halfHp)
+    if (gBattleMons[gBattlerAttacker].hp > halfHp)
     {
-        gBattleMons[gBattlerAttacker].statStages[STAT_ATK] = MAX_STAT_STAGE;
         gBattleMoveDamage = GetNonDynamaxMaxHP(gBattlerAttacker) / 2;
         if (gBattleMoveDamage == 0)
             gBattleMoveDamage = 1;

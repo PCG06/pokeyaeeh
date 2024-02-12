@@ -1426,7 +1426,7 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                 ADJUST_SCORE(-10);
             break;
         case EFFECT_FOCUS_ENERGY:
-            if (gBattleMons[battlerAtk].status2 & STATUS2_FOCUS_ENERGY)
+            if (gBattleMons[battlerAtk].status2 & STATUS2_FOCUS_ENERGY_ANY)
                 ADJUST_SCORE(-10);
             break;
         case EFFECT_CONFUSE:
@@ -1659,6 +1659,7 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
                 ADJUST_SCORE(-6);
             break;
         case EFFECT_BELLY_DRUM:
+        case EFFECT_FILLET_AWAY:
             if (aiData->abilities[battlerAtk] == ABILITY_CONTRARY)
                 ADJUST_SCORE(-10);
             else if (aiData->hpPercents[battlerAtk] <= 60)
@@ -1717,6 +1718,7 @@ static s32 AI_CheckBadMove(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
             break;
         case EFFECT_FOLLOW_ME:
         case EFFECT_HELPING_HAND:
+        case EFFECT_DRAGON_CHEER:
             if (!isDoubleBattle
               || !IsBattlerAlive(BATTLE_PARTNER(battlerAtk))
               || PartnerHasSameMoveEffectWithoutTarget(BATTLE_PARTNER(battlerAtk), move, aiData->partnerMove)
@@ -2787,6 +2789,14 @@ static s32 AI_DoubleBattle(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
         {
             RETURN_SCORE_PLUS(2);   // partner has earthquake or magnitude -> good idea to use magnet rise
         }
+        break;
+    case EFFECT_DRAGON_CHEER:
+        if (gBattleMons[battlerAtkPartner].status2 & STATUS2_FOCUS_ENERGY_ANY || !HasDamagingMove(battlerAtkPartner))
+            ADJUST_SCORE(-5);
+        else if (atkPartnerHoldEffect == HOLD_EFFECT_SCOPE_LENS
+              || IS_BATTLER_OF_TYPE(battlerAtkPartner, TYPE_DRAGON)
+              || gBattleMoves[aiData->partnerMove].highCritRatio > 0)
+            ADJUST_SCORE(4);
         break;
     } // our effect relative to partner
 
@@ -5044,6 +5054,7 @@ static s32 AI_Risky(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
     case EFFECT_FOCUS_PUNCH:
     case EFFECT_REVENGE:
     case EFFECT_TEETER_DANCE:
+    case EFFECT_FILLET_AWAY:
         if (Random() & 1)
             ADJUST_SCORE(2);
         break;
@@ -5192,6 +5203,7 @@ static s32 AI_HPAware(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
             case EFFECT_CONVERSION_2:
             case EFFECT_SAFEGUARD:
             case EFFECT_BELLY_DRUM:
+            case EFFECT_FILLET_AWAY:
                 ADJUST_SCORE(-2);
                 break;
             default:
@@ -5227,6 +5239,7 @@ static s32 AI_HPAware(u32 battlerAtk, u32 battlerDef, u32 move, s32 score)
             case EFFECT_HAIL:
             case EFFECT_SNOWSCAPE:
             case EFFECT_RAIN_DANCE:
+            case EFFECT_FILLET_AWAY:
                 ADJUST_SCORE(-2);
                 break;
             default:

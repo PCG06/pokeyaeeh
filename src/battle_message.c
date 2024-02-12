@@ -166,7 +166,7 @@ static const u8 sText_PkmnFreedFrom[] = _("{B_ATK_NAME_WITH_PREFIX} was freed\nf
 static const u8 sText_PkmnCrashed[] = _("{B_ATK_NAME_WITH_PREFIX} kept going\nand crashed!");
 const u8 gText_PkmnShroudedInMist[] = _("{B_ATK_PREFIX2} became\nshrouded in Mist!");
 static const u8 sText_PkmnProtectedByMist[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} is protected\nby Mist!");
-const u8 gText_PkmnGettingPumped[] = _("{B_ATK_NAME_WITH_PREFIX} is getting\npumped!");
+const u8 gText_PkmnGettingPumped[] = _("{B_DEF_NAME_WITH_PREFIX} is getting\npumped!");
 static const u8 sText_PkmnHitWithRecoil[] = _("{B_ATK_NAME_WITH_PREFIX} is hit\nwith recoil!");
 static const u8 sText_PkmnProtectedItself2[] = _("{B_ATK_NAME_WITH_PREFIX} protected\nitself!");
 static const u8 sText_PkmnBuffetedBySandstorm[] = _("{B_ATK_NAME_WITH_PREFIX} is buffeted\nby the sandstorm!");
@@ -848,9 +848,11 @@ static const u8 sText_PkmnAlreadyHasAFrostbite[] = _("{B_DEF_NAME_WITH_PREFIX} a
 static const u8 sText_HospitalityRestoration[] = _("The {B_ATK_PARTNER_NAME} drank down all\nthe matcha that Sinistcha made!");
 static const u8 sText_PkmnDidAmmountDamage[] = _("{B_ATK_NAME_WITH_PREFIX} did {B_BUFF4} damage!");
 static const u8 sText_ElectroShockCharging[] = _("{B_ATK_NAME_WITH_PREFIX} absorbed\nelectricity!");
+static const u8 sText_ShedItsTail[] = _("{B_ATK_NAME_WITH_PREFIX} shed its tail\nto create a decoy!");
 
 const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
 {
+    [STRINGID_SHEDITSTAIL - BATTLESTRINGS_TABLE_START] = sText_ShedItsTail,
     [STRINGID_ELECTROSHOCKCHARGING - BATTLESTRINGS_TABLE_START] = sText_ElectroShockCharging,
     [STRINGID_POKEMONDIDAMMOUNTDAMAGE - BATTLESTRINGS_TABLE_START] = sText_PkmnDidAmmountDamage,
     [STRINGID_HOSPITALITYRESTORATION - BATTLESTRINGS_TABLE_START] = sText_HospitalityRestoration,

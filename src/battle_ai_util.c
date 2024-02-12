@@ -367,6 +367,7 @@ static const u16 sEncouragedEncoreEffects[] =
     EFFECT_DRAGON_DANCE,
     EFFECT_CAMOUFLAGE,
     EFFECT_FROST_GLARE,
+    EFFECT_FILLET_AWAY,
 };
 
 // Functions
@@ -2192,6 +2193,7 @@ bool32 IsAttackBoostMoveEffect(u32 effect)
     case EFFECT_BELLY_DRUM:
     case EFFECT_BULK_UP:
     case EFFECT_GROWTH:
+    case EFFECT_FILLET_AWAY:
         return TRUE;
     default:
         return FALSE;
