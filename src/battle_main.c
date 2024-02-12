@@ -3752,6 +3752,25 @@ static void DoBattleIntro(void)
             gBattleStruct->overworldWeatherDone = FALSE;
             SetAiLogicDataForTurn(AI_DATA); // get assumed abilities, hold effects, etc of all battlers
             Ai_InitPartyStruct(); // Save mons party counts, and first 2/4 mons on the battlefield.
+            gBattleStruct->startingStatus = 0;
+            if (B_VAR_STARTING_STATUS != 0)
+            {
+                if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS && gTrainers[gTrainerBattleOpponent_B].startingStatus)
+                {
+                    gBattleStruct->startingStatus = gTrainers[gTrainerBattleOpponent_B].startingStatus;
+                    gBattleStruct->startingStatusTimer = 0; // infinite
+                }
+                else if (gTrainers[gTrainerBattleOpponent_A].startingStatus)
+                {
+                    gBattleStruct->startingStatus = gTrainers[gTrainerBattleOpponent_A].startingStatus;
+                    gBattleStruct->startingStatusTimer = 0; // infinite
+                }
+                else
+                {
+                    gBattleStruct->startingStatus = VarGet(B_VAR_STARTING_STATUS);
+                    gBattleStruct->startingStatusTimer = VarGet(B_VAR_STARTING_STATUS_TIMER);
+                }
+            }
             gBattleMainFunc = TryDoEventsBeforeFirstTurn;
         }
         break;
@@ -3862,10 +3881,18 @@ static void TryDoEventsBeforeFirstTurn(void)
         gBattleStruct->overworldWeatherDone = TRUE;
         return;
     }
-
+    
     if (!gBattleStruct->terrainDone && AbilityBattleEffects(ABILITYEFFECT_SWITCH_IN_TERRAIN, 0, 0, ABILITYEFFECT_SWITCH_IN_TERRAIN, 0) != 0)
     {
         gBattleStruct->terrainDone = TRUE;
+        return;
+    }
+
+    if (!gBattleStruct->startingStatusDone
+            && gBattleStruct->startingStatus
+            && AbilityBattleEffects(ABILITYEFFECT_SWITCH_IN_STATUSES, 0, 0, ABILITYEFFECT_SWITCH_IN_STATUSES, 0) != 0)
+    {
+        gBattleStruct->startingStatusDone = TRUE;
         return;
     }
 
@@ -5682,7 +5709,8 @@ static void ReturnFromBattleToOverworld(void)
             SetRoamerInactive();
     }
 
-    VarSet(VAR_TERRAIN, 0);
+    VarSet(B_VAR_STARTING_STATUS, 0);
+    VarSet(B_VAR_STARTING_STATUS_TIMER, 0);
     FlagClear(B_FLAG_INVERSE_BATTLE);
     FlagClear(B_FLAG_FORCE_DOUBLE_WILD);
     FlagClear(B_SMART_WILD_AI_FLAG);
