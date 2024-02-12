@@ -6920,7 +6920,9 @@ BattleScript_OverworldStatusStarts::
 	flushtextbox
 	printfromtable gStartingStatusStringIds
 	waitmessage B_WAIT_TIME_LONG
-	playanimation_var BS_BATTLER_0, sB_ANIM_ARG1
+	playanimation_var BS_ATTACKER, sB_ANIM_ARG1
+	waitmessage 88
+	flushtextbox
 	call BattleScript_OverworldStatusStarts_TryActivations
 	end3
 
@@ -10894,7 +10896,7 @@ BattleScript_TailstreamActivated::
     printstring STRINGID_EMPTYSTRING3
 	waitmessage B_WAIT_TIME_LONG
 	printstring STRINGID_EMPTYSTRING3
-	@ playmoveanimation BS_ATTACKER, MOVE_TAILWIND @ plays tailwind anim
+	playanimation BS_ABILITY_BATTLER, B_ANIM_TAILWIND
 	printstring STRINGID_TAILSTREAMACTIVATED
 	waitmessage B_WAIT_TIME_LONG
 	sethword sABILITY_OVERWRITE, 0
@@ -10962,4 +10964,3 @@ BattleScript_AlreadyHasFrostbite::
 	printstring STRINGID_PKMNALREADYHASFROSTBITE
 	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_MoveEnd
-

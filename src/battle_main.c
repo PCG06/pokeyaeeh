@@ -3752,24 +3752,23 @@ static void DoBattleIntro(void)
             gBattleStruct->overworldWeatherDone = FALSE;
             SetAiLogicDataForTurn(AI_DATA); // get assumed abilities, hold effects, etc of all battlers
             Ai_InitPartyStruct(); // Save mons party counts, and first 2/4 mons on the battlefield.
+            
+            // Try to set a status to start the battle with
             gBattleStruct->startingStatus = 0;
-            if (B_VAR_STARTING_STATUS != 0)
+            if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS && gTrainers[gTrainerBattleOpponent_B].startingStatus)
             {
-                if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS && gTrainers[gTrainerBattleOpponent_B].startingStatus)
-                {
-                    gBattleStruct->startingStatus = gTrainers[gTrainerBattleOpponent_B].startingStatus;
-                    gBattleStruct->startingStatusTimer = 0; // infinite
-                }
-                else if (gTrainers[gTrainerBattleOpponent_A].startingStatus)
-                {
-                    gBattleStruct->startingStatus = gTrainers[gTrainerBattleOpponent_A].startingStatus;
-                    gBattleStruct->startingStatusTimer = 0; // infinite
-                }
-                else
-                {
-                    gBattleStruct->startingStatus = VarGet(B_VAR_STARTING_STATUS);
-                    gBattleStruct->startingStatusTimer = VarGet(B_VAR_STARTING_STATUS_TIMER);
-                }
+                gBattleStruct->startingStatus = gTrainers[gTrainerBattleOpponent_B].startingStatus;
+                gBattleStruct->startingStatusTimer = 0; // infinite
+            }
+            else if (gTrainers[gTrainerBattleOpponent_A].startingStatus)
+            {
+                gBattleStruct->startingStatus = gTrainers[gTrainerBattleOpponent_A].startingStatus;
+                gBattleStruct->startingStatusTimer = 0; // infinite
+            }
+            else if (B_VAR_STARTING_STATUS != 0)
+            {
+                gBattleStruct->startingStatus = VarGet(B_VAR_STARTING_STATUS);
+                gBattleStruct->startingStatusTimer = VarGet(B_VAR_STARTING_STATUS_TIMER);
             }
             gBattleMainFunc = TryDoEventsBeforeFirstTurn;
         }
@@ -3777,29 +3776,7 @@ static void DoBattleIntro(void)
     }
 }
 
-static void SetPermaTrickRoom(void)
-{
-    if (FlagGet(FLAG_PERMANENT_TRICK_ROOM))
-    {
-        gFieldStatuses |= STATUS_FIELD_TRICK_ROOM;
-        gFieldTimers.trickRoomTimer = 250;
-    }
-}
-
-static void SetPermaTailwind(u32 battler)
-{
-    u32 battlerAtk = battler;
-    u32 battlerDef = BATTLE_OPPOSITE(battlerAtk);
-    u8 side;
-
-    if (FlagGet(FLAG_PERMANENT_TAILWIND))
-    {
-        gSideStatuses[GetBattlerSide(battlerDef)] |= SIDE_STATUS_TAILWIND;
-        gSideTimers[side].tailwindTimer = 250;
-    }
-}
-
-static void SetPermaScreens(u32 battler)
+/*static void SetPermaScreens(u32 battler)
 {
     u32 battlerAtk = battler;
     u32 battlerDef = BATTLE_OPPOSITE(battlerAtk);
@@ -3826,7 +3803,7 @@ static void SetPermaAuroraVeil(u32 battler)
         gSideStatuses[GetBattlerSide(battlerDef)] |= SIDE_STATUS_AURORA_VEIL;
         gSideTimers[side].auroraVeilTimer = 250;
     }
-}
+}*/
 
 static void TryDoEventsBeforeFirstTurn(void)
 {
@@ -3970,9 +3947,6 @@ static void TryDoEventsBeforeFirstTurn(void)
 
     SetAiLogicDataForTurn(AI_DATA); // get assumed abilities, hold effects, etc of all battlers
     //Start match with a field condition (buff for the enemy)
-    SetPermaTrickRoom();
-    SetPermaTailwind(battler);
-    SetPermaScreens(battler);
 
     if (gBattleTypeFlags & BATTLE_TYPE_ARENA)
     {
