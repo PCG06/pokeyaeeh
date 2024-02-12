@@ -660,11 +660,11 @@
 #define FLAG_HIDDEN_ITEM_ROUTE_105_BIG_PEARL                 (FLAG_HIDDEN_ITEMS_START + 0x6F)
 
 #define FLAG_TRICK_ROOM                 0x264 // Sets permanent Trick Room
-#define FLAG_TAILWIND_ATK               0x265 // Sets permanent Tailwind (for the user)
-#define FLAG_TAILWIND_DEF               0x266 // Sets permanent Tailwind (for the enemy)
-#define FLAG_SCREENS                    0x267 // Sets permanent Reflect and Light Screen (for the enemy)
-#define FLAG_AURORA_VEIL                0x268 // Sets permanent Aurora Veil (for the enemy)
-#define FLAG_TOXIC_POISON_TEAM          0x269 // Toxic Poisons player party when the battle starts
+#define FLAG_TAILWIND                   0x265 // Sets permanent Tailwind (for the enemy)
+#define FLAG_SCREENS                    0x266 // Sets permanent Reflect and Light Screen (for the enemy)
+#define FLAG_AURORA_VEIL                0x267 // Sets permanent Aurora Veil (for the enemy)
+#define FLAG_TOXIC_POISON_TEAM          0x268 // Toxic Poisons player party when the battle starts
+#define FLAG_UNUSED_0x269  0x269 // Unused Flag
 #define FLAG_UNUSED_0x26A  0x26A // Unused Flag
 #define FLAG_UNUSED_0x26B  0x26B // Unused Flag
 #define FLAG_UNUSED_0x26C  0x26C // Unused Flag

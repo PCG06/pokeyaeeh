@@ -709,10 +709,8 @@
 #define STRINGID_POKEMONDIDAMMOUNTDAMAGE              707
 #define STRINGID_ELECTROSHOCKCHARGING                 708
 #define STRINGID_TRICKROOM_BATTLE                     709
-#define STRINGID_TAILWIND_BATTLE_ATK                  710
-#define STRINGID_TAILWIND_BATTLE_DEF                  711
 
-#define BATTLESTRINGS_COUNT                           712
+#define BATTLESTRINGS_COUNT                           710
 
 // This is the string id that gBattleStringsTable starts with.
 // String ids before this (e.g. STRINGID_INTROMSG) are not in the table,

@@ -3758,15 +3758,6 @@ static void DoBattleIntro(void)
     }
 }
 
-/*static void SetPermaTrickRoom(void)
-{
-    if (FlagGet(FLAG_TRICK_ROOM))
-    {
-        gFieldStatuses |= STATUS_FIELD_TRICK_ROOM;
-        gFieldTimers.trickRoomTimer = 250;
-    }
-}
-
 static void SetPermaTailwind(u32 battler)
 {
     u32 battlerAtk = battler;
@@ -3794,7 +3785,7 @@ static void SetPermaScreens(u32 battler)
         gSideStatuses[GetBattlerSide(battlerDef)] |= SIDE_STATUS_LIGHTSCREEN;
         gSideTimers[side].lightscreenTimer = 250;
     }
-}*/
+}
 
 static void SetPermaAuroraVeil(u32 battler)
 {
@@ -3874,12 +3865,6 @@ static void TryDoEventsBeforeFirstTurn(void)
         gBattleStruct->trickroomDone = TRUE;
         return;
     }
-    
-    if (!gBattleStruct->tailwindDone && TryTailwindBattle())
-    {
-        gBattleStruct->tailwindDone = TRUE;
-        return;
-    }
 
     // Totem boosts
     for (i = 0; i < gBattlersCount; i++)
@@ -3955,6 +3940,9 @@ static void TryDoEventsBeforeFirstTurn(void)
 
     SetAiLogicDataForTurn(AI_DATA); // get assumed abilities, hold effects, etc of all battlers
     //Start match with a field condition (buff for the enemy)
+    //SetPermaTrickRoom();
+    SetPermaTailwind(battler);
+    SetPermaScreens(battler);
 
     if (gBattleTypeFlags & BATTLE_TYPE_ARENA)
     {
@@ -5693,8 +5681,7 @@ static void ReturnFromBattleToOverworld(void)
 
     VarSet(VAR_TERRAIN, 0);
     FlagClear(B_SET_TRICK_ROOM);
-    FlagClear(B_SET_ATK_TAILWIND);
-    FlagClear(B_SET_DEF_TAILWIND);
+    VarSet(B_VAR_TRICK_ROOM_TIMER, 0);
     FlagClear(B_FLAG_INVERSE_BATTLE);
     FlagClear(B_FLAG_FORCE_DOUBLE_WILD);
     FlagClear(B_SMART_WILD_AI_FLAG);

@@ -565,7 +565,6 @@
 #define B_ANIM_SEA_OF_FIRE              44
 #define B_ANIM_SWAMP                    45
 #define B_ANIM_TRICK_ROOM_BATTLE        46
-#define B_ANIM_TAILWIND_BATTLE          47
 
 // special animations table (gBattleAnims_Special)
 #define B_ANIM_LVL_UP                   0

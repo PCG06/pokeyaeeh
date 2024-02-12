@@ -846,13 +846,9 @@ static const u8 sText_HospitalityRestoration[] = _("The {B_ATK_PARTNER_NAME} dra
 static const u8 sText_PkmnDidAmmountDamage[] = _("{B_ATK_NAME_WITH_PREFIX} did {B_BUFF4} damage!");
 static const u8 sText_ElectroShockCharging[] = _("{B_ATK_NAME_WITH_PREFIX} absorbed\nelectricity!");
 static const u8 sText_TrickRoomBattle[] = _("The dimensions were twisted!");
-static const u8 sText_TailwindBattleAtk[] = _("The tailwind blew from\nbehind your team!");
-static const u8 sText_TailwindBattleDef[] = _("The tailwind blew from\nbehind the opposing team!");
 
 const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
 {
-    [STRINGID_TAILWIND_BATTLE_DEF - BATTLESTRINGS_TABLE_START] = sText_TailwindBattleDef,
-    [STRINGID_TAILWIND_BATTLE_ATK - BATTLESTRINGS_TABLE_START] = sText_TailwindBattleAtk,
     [STRINGID_TRICKROOM_BATTLE - BATTLESTRINGS_TABLE_START] = sText_TrickRoomBattle,
     [STRINGID_ELECTROSHOCKCHARGING - BATTLESTRINGS_TABLE_START] = sText_ElectroShockCharging,
     [STRINGID_POKEMONDIDAMMOUNTDAMAGE - BATTLESTRINGS_TABLE_START] = sText_PkmnDidAmmountDamage,

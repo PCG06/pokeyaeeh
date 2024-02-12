@@ -113,7 +113,7 @@ Debug_FlagsAndVarNotSetBattleConfigMessage_Text:
 	.string "'include/config/battle.h'!$"
 
 Debug_EventScript_Script_1:: @ Use to test flags
-    goto_if_set B_SET_DEF_TAILWIND, Debug_EventScript_UnsetTestFlag
+    goto_if_set B_SET_TRICK_ROOM, Debug_EventScript_UnsetTestFlag
     goto Debug_EventScript_SetTestFlag
     end
 
@@ -258,12 +258,12 @@ DebugText_DaycarePokemonNotCompatible:
 
 Debug_EventScript_SetTestFlag::
     msgbox Debug_Text_SetTestFlag, MSGBOX_AUTOCLOSE
-    setflag B_SET_DEF_TAILWIND
+    setflag B_SET_TRICK_ROOM
 	end
 
 Debug_EventScript_UnsetTestFlag::
     msgbox Debug_Text_UnsetTestFlag, MSGBOX_AUTOCLOSE
-    clearflag B_SET_DEF_TAILWIND
+    clearflag B_SET_TRICK_ROOM
 	end
 
 Debug_Text_SetTestFlag::

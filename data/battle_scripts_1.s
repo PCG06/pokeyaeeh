@@ -10884,29 +10884,11 @@ BattleScript_TailstreamActivated::
 	end3
 
 BattleScript_TrickRoomBattle::
-	playanimation BS_BATTLER_0, B_ANIM_TRICK_ROOM_BATTLE
-	printstring STRINGID_TRICKROOM_BATTLE
-	waitmessage B_WAIT_TIME_LONG
-	waitanimation
-	end3
-
-BattleScript_TailwindAtkBattle::
-	flushtextbox
-	playanimation BS_BATTLER_0, B_ANIM_TAILWIND_BATTLE
-	printstring STRINGID_TAILWIND_BATTLE_ATK
-	waitmessage B_WAIT_TIME_LONG
-	waitanimation
-	call BattleScript_TryTailwindAbilitiesLoop
-	end3
-
-BattleScript_TailwindDefBattle::
-	flushtextbox
-	playanimation BS_OPPONENT1, B_ANIM_TAILWIND_BATTLE
-	printstring STRINGID_TAILWIND_BATTLE_DEF
-	waitmessage B_WAIT_TIME_LONG
-	waitanimation
-	call BattleScript_TryTailwindAbilitiesLoop
-	end3
+    printstring STRINGID_TRICKROOM_BATTLE
+    waitmessage B_WAIT_TIME_LONG
+    playanimation BS_OPPONENT1, B_ANIM_TRICK_ROOM_BATTLE
+    waitanimation
+    end3
 
 BattleScript_PhantomGaleActivates::
 	pause B_WAIT_TIME_SHORT
@@ -10969,3 +10951,4 @@ BattleScript_AlreadyHasFrostbite::
 	printstring STRINGID_PKMNALREADYHASFROSTBITE
 	waitmessage B_WAIT_TIME_LONG
 	goto BattleScript_MoveEnd
+

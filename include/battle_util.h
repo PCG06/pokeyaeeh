@@ -255,6 +255,5 @@ bool8 CanMonParticipateInSkyBattle(struct Pokemon *mon);
 bool8 IsMonBannedFromSkyBattles(u16 species);
 
 bool32 TryTrickRoomBattle(void);
-bool32 TryTailwindBattle(void);
 
 #endif // GUARD_BATTLE_UTIL_H

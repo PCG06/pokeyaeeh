@@ -2230,7 +2230,7 @@ u8 DoFieldEndTurnEffects(void)
                 gBattlerAttacker = gSideTimers[side].tailwindBattlerId;
                 if (gSideStatuses[side] & SIDE_STATUS_TAILWIND)
                 {
-                    if (gSideTimers[side].tailwindTimer > 0 && --gSideTimers[side].tailwindTimer == 0)
+                    if (--gSideTimers[side].tailwindTimer == 0)
                     {
                         gSideStatuses[side] &= ~SIDE_STATUS_TAILWIND;
                         BattleScriptExecute(BattleScript_TailwindEnds);
@@ -11578,32 +11578,9 @@ bool32 TryTrickRoomBattle(void)
     if (FlagGet(B_SET_TRICK_ROOM))
     {
         gFieldStatuses |= STATUS_FIELD_TRICK_ROOM;
+        if (VarGet(B_VAR_TRICK_ROOM_TIMER))
+            gFieldTimers.trickRoomTimer = VarGet(B_VAR_TRICK_ROOM_TIMER);
         BattleScriptPushCursorAndCallback(BattleScript_TrickRoomBattle);
-        return TRUE;
-    }
-
-    return FALSE;
-}
-
-bool32 TryTailwindBattle(void)
-{
-    u8 side;
-
-    if (FlagGet(B_SET_ATK_TAILWIND))
-    {
-        side = B_POSITION_PLAYER_LEFT;
-
-        gSideStatuses[side] |= SIDE_STATUS_TAILWIND;
-        BattleScriptPushCursorAndCallback(BattleScript_TailwindAtkBattle);
-        return TRUE;
-    }
-    
-    if (FlagGet(B_SET_DEF_TAILWIND))
-    {
-        side = B_POSITION_OPPONENT_LEFT;
-
-        gSideStatuses[side] |= SIDE_STATUS_TAILWIND;
-        BattleScriptPushCursorAndCallback(BattleScript_TailwindDefBattle);
         return TRUE;
     }
 
