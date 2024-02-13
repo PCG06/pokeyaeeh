@@ -3316,7 +3316,6 @@ Move_DEFOG:
 
 Move_TRICK_ROOM::
 	call InitRoomAnimation
-General_TrickRoom:
 	fadetobg BG_TRICK_ROOM
 	waitbgfadein
 	delay 0x40
@@ -4946,7 +4945,6 @@ PowerSplitLaunch:
 
 Move_WONDER_ROOM::
 	call InitRoomAnimation
-General_WonderRoom:
 	fadetobg BG_WONDER_ROOM
 	waitbgfadein
 	delay 0x40
@@ -5127,7 +5125,6 @@ Move_TELEKINESIS::
 
 Move_MAGIC_ROOM::
 	call InitRoomAnimation
-General_MagicRoom:
 	fadetobg BG_MAGIC_ROOM
 	waitbgfadein
 	delay 0x40
@@ -34089,4 +34086,37 @@ General_DynamaxGrowth:: @ PORTED FROM CFRU
 	delay 8
 	createvisualtask AnimTask_DynamaxGrowth, 0x5, 0x1, 0x0
 	waitforvisualfinish
+	end
+
+General_TrickRoom:
+	setalpha 8, 8
+	playsewithpan SE_M_SUPERSONIC, SOUND_PAN_TARGET
+	fadetobg BG_TRICK_ROOM
+	waitbgfadein
+	delay 0x40
+	restorebg
+	waitbgfadein
+	blendoff
+	end
+
+General_WonderRoom:
+	setalpha 8, 8
+	playsewithpan SE_M_SUPERSONIC, SOUND_PAN_TARGET
+	fadetobg BG_WONDER_ROOM
+	waitbgfadein
+	delay 0x40
+	restorebg
+	waitbgfadein
+	blendoff
+	end
+
+General_MagicRoom:
+	setalpha 8, 8
+	playsewithpan SE_M_SUPERSONIC, SOUND_PAN_TARGET
+	fadetobg BG_MAGIC_ROOM
+	waitbgfadein
+	delay 0x40
+	restorebg
+	waitbgfadein
+	blendoff
 	end
