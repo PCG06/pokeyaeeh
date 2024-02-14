@@ -8924,10 +8924,11 @@ static const struct TrainerMon sParty_Clark[] = {
 
 static const struct TrainerMon sParty_Eric[] = {
     {
-    .species = SPECIES_VAPOREON,
-    .ability = ABILITY_WATER_ABSORB,
-    .lvl = 50,
-    .moves = {MOVE_SPLASH, MOVE_SPLASH, MOVE_SPLASH, MOVE_SPLASH}
+    .species = SPECIES_SHIFTRY,
+    .ability = ABILITY_WIND_RIDER,
+    .lvl = 5,
+    .moves = {MOVE_SPLASH, MOVE_SPLASH, MOVE_SPLASH, MOVE_SPLASH},
+    .nature = TRAINER_PARTY_NATURE(NATURE_CAREFUL)
     }
 };
 

@@ -3,7 +3,7 @@ DewfordTown_Gym_MapScripts::
 	.byte 0
 
 DewfordTown_Gym_OnTransition:
-    setvar VAR_TERRAIN_SET, STATUS_FIELD_GRASSY_TERRAIN
+    setvar VAR_STARTING_STATUS, STATUS_FIELD_GRASSY_TERRAIN
 	end
 
 DewfordTown_Gym_EventScript_Brawly::

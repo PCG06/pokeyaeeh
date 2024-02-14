@@ -21279,11 +21279,11 @@ const struct SpeciesInfo gSpeciesInfo[] =
     [SPECIES_BLASTOISE_MEGA] =
     {
         .baseHP        = 90,
-        .baseAttack    = 77,
-        .baseDefense   = 130,
+        .baseAttack    = 82,
+        .baseDefense   = 125,
         .baseSpeed     = 78,
         .baseSpAttack  = 135,
-        .baseSpDefense = 125,
+        .baseSpDefense = 120,
         .types = { TYPE_WATER, TYPE_WATER},
         .catchRate = 45,
         .expYield = 284,

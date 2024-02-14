@@ -3169,7 +3169,7 @@ void SwitchInClearSetData(u32 battler)
     }
     if (gBattleMoves[gCurrentMove].effect == EFFECT_BATON_PASS)
     {
-        gBattleMons[battler].status2 &= (STATUS2_CONFUSION | STATUS2_FOCUS_ENERGY | STATUS2_SUBSTITUTE | STATUS2_ESCAPE_PREVENTION | STATUS2_CURSED);
+        gBattleMons[battler].status2 &= (STATUS2_CONFUSION | STATUS2_FOCUS_ENERGY_ANY | STATUS2_SUBSTITUTE | STATUS2_ESCAPE_PREVENTION | STATUS2_CURSED);
         gStatuses3[battler] &= (STATUS3_LEECHSEED_BATTLER | STATUS3_LEECHSEED | STATUS3_ALWAYS_HITS | STATUS3_PERISH_SONG | STATUS3_ROOTED
                                        | STATUS3_GASTRO_ACID | STATUS3_EMBARGO | STATUS3_TELEKINESIS | STATUS3_MAGNET_RISE | STATUS3_HEAL_BLOCK
                                        | STATUS3_AQUA_RING | STATUS3_POWER_TRICK);
@@ -3213,6 +3213,11 @@ void SwitchInClearSetData(u32 battler)
         gDisableStructs[battler].battlerWithSureHit = disableStructCopy.battlerWithSureHit;
         gDisableStructs[battler].perishSongTimer = disableStructCopy.perishSongTimer;
         gDisableStructs[battler].battlerPreventingEscape = disableStructCopy.battlerPreventingEscape;
+    }
+    else if (gBattleMoves[gCurrentMove].effect == EFFECT_SHED_TAIL)
+    {
+        gBattleMons[battler].status2 |= STATUS2_SUBSTITUTE;
+        gDisableStructs[battler].substituteHP = disableStructCopy.substituteHP;
     }
 
     gMoveResultFlags = 0;
@@ -3287,6 +3292,7 @@ const u8* FaintClearSetData(u32 battler)
 {
     s32 i;
     const u8 *result = NULL;
+    u8 battlerSide = GetBattlerSide(battler);
 
     for (i = 0; i < NUM_BATTLE_STATS; i++)
         gBattleMons[battler].statStages[i] = DEFAULT_STAT_STAGE;
@@ -3371,7 +3377,7 @@ const u8* FaintClearSetData(u32 battler)
 
     for (i = 0; i < gBattlersCount; i++)
     {
-        if (i != battler && GetBattlerSide(i) != GetBattlerSide(battler))
+        if (i != battler && GetBattlerSide(i) != battlerSide)
             gBattleStruct->lastTakenMove[i] = MOVE_NONE;
 
         gBattleStruct->lastTakenMoveFrom[i][battler] = 0;
@@ -3751,32 +3757,37 @@ static void DoBattleIntro(void)
             gBattleStruct->overworldWeatherDone = FALSE;
             SetAiLogicDataForTurn(AI_DATA); // get assumed abilities, hold effects, etc of all battlers
             Ai_InitPartyStruct(); // Save mons party counts, and first 2/4 mons on the battlefield.
+            
+            // Try to set a status to start the battle with
+            gBattleStruct->startingStatus = 0;
+            if (gBattleTypeFlags & BATTLE_TYPE_TWO_OPPONENTS && gTrainers[gTrainerBattleOpponent_B].startingStatus)
+            {
+                gBattleStruct->startingStatus = gTrainers[gTrainerBattleOpponent_B].startingStatus;
+                gBattleStruct->startingStatusTimer = 0; // infinite
+            }
+            else if (gTrainers[gTrainerBattleOpponent_A].startingStatus)
+            {
+                gBattleStruct->startingStatus = gTrainers[gTrainerBattleOpponent_A].startingStatus;
+                gBattleStruct->startingStatusTimer = 0; // infinite
+            }
+            else if (B_VAR_STARTING_STATUS != 0)
+            {
+                gBattleStruct->startingStatus = VarGet(B_VAR_STARTING_STATUS);
+                gBattleStruct->startingStatusTimer = VarGet(B_VAR_STARTING_STATUS_TIMER);
+            }
             gBattleMainFunc = TryDoEventsBeforeFirstTurn;
         }
         break;
     }
 }
 
-static void SetPermaTailwind(u32 battler)
+/*static void SetPermaScreens(u32 battler)
 {
     u32 battlerAtk = battler;
     u32 battlerDef = BATTLE_OPPOSITE(battlerAtk);
     u8 side;
 
-    if (FlagGet(FLAG_TAILWIND))
-    {
-        gSideStatuses[GetBattlerSide(battlerDef)] |= SIDE_STATUS_TAILWIND;
-        gSideTimers[side].tailwindTimer = 250;
-    }
-}
-
-static void SetPermaScreens(u32 battler)
-{
-    u32 battlerAtk = battler;
-    u32 battlerDef = BATTLE_OPPOSITE(battlerAtk);
-    u8 side;
-
-    if (FlagGet(FLAG_SCREENS))
+    if (FlagGet(FLAG_PERMANENT_SCREENS))
     {
         gSideStatuses[GetBattlerSide(battlerDef)] |= SIDE_STATUS_REFLECT;
         gSideTimers[side].reflectTimer = 250;
@@ -3792,12 +3803,12 @@ static void SetPermaAuroraVeil(u32 battler)
     u32 battlerDef = BATTLE_OPPOSITE(battlerAtk);
     u8 side;
 
-    if (FlagGet(FLAG_AURORA_VEIL))
+    if (FlagGet(FLAG_PERMANENT_AURORA_VEIL))
     {
         gSideStatuses[GetBattlerSide(battlerDef)] |= SIDE_STATUS_AURORA_VEIL;
         gSideTimers[side].auroraVeilTimer = 250;
     }
-}
+}*/
 
 static void TryDoEventsBeforeFirstTurn(void)
 {
@@ -3852,16 +3863,18 @@ static void TryDoEventsBeforeFirstTurn(void)
         gBattleStruct->overworldWeatherDone = TRUE;
         return;
     }
-
+    
     if (!gBattleStruct->terrainDone && AbilityBattleEffects(ABILITYEFFECT_SWITCH_IN_TERRAIN, 0, 0, ABILITYEFFECT_SWITCH_IN_TERRAIN, 0) != 0)
     {
         gBattleStruct->terrainDone = TRUE;
         return;
     }
 
-    if (!gBattleStruct->trickroomDone && TryTrickRoomBattle())
+    if (!gBattleStruct->startingStatusDone
+            && gBattleStruct->startingStatus
+            && AbilityBattleEffects(ABILITYEFFECT_SWITCH_IN_STATUSES, 0, 0, ABILITYEFFECT_SWITCH_IN_STATUSES, 0) != 0)
     {
-        gBattleStruct->trickroomDone = TRUE;
+        gBattleStruct->startingStatusDone = TRUE;
         return;
     }
 
@@ -3939,9 +3952,6 @@ static void TryDoEventsBeforeFirstTurn(void)
 
     SetAiLogicDataForTurn(AI_DATA); // get assumed abilities, hold effects, etc of all battlers
     //Start match with a field condition (buff for the enemy)
-    //SetPermaTrickRoom();
-    SetPermaTailwind(battler);
-    SetPermaScreens(battler);
 
     if (gBattleTypeFlags & BATTLE_TYPE_ARENA)
     {
@@ -5678,9 +5688,8 @@ static void ReturnFromBattleToOverworld(void)
             SetRoamerInactive();
     }
 
-    VarSet(VAR_TERRAIN, 0);
-    FlagClear(B_SET_TRICK_ROOM);
-    VarSet(B_VAR_TRICK_ROOM_TIMER, 0);
+    VarSet(B_VAR_STARTING_STATUS, 0);
+    VarSet(B_VAR_STARTING_STATUS_TIMER, 0);
     FlagClear(B_FLAG_INVERSE_BATTLE);
     FlagClear(B_FLAG_FORCE_DOUBLE_WILD);
     FlagClear(B_SMART_WILD_AI_FLAG);

@@ -175,12 +175,10 @@
 
 // Var Settings
 // To use the following features in scripting, replace the 0s with the var ID you're assigning it to.
-// Eg: Replace with VAR_UNUSED_0x40F7 so you can use VAR_TERRAIN for that feature.
-#define VAR_TERRAIN                 VAR_TERRAIN_SET            // If this var has a value, assigning a STATUS_FIELD_xx_TERRAIN to it before battle causes the battle to start with that terrain active
+// Eg: Replace with VAR_UNUSED_0x40F7 so you can use B_VAR_TERRAIN for that feature.
+#define B_VAR_STARTING_STATUS       VAR_STARTING_STATUS     // If this var has a value, assigning a STATUS_FIELD_xx_TERRAIN to it before battle causes the battle to start with that terrain active.
+#define B_VAR_STARTING_STATUS_TIMER 0     // If this var has a value greater or equal than 1 field terrains will last that number of turns, otherwise they will last until they're overwritten.
 #define B_VAR_WILD_AI_FLAGS         0     // If not 0, you can use this var to add to default wild AI flags. NOT usable with flags above (1 << 15)
-
-#define B_SET_TRICK_ROOM            FLAG_TRICK_ROOM     // If this flag is set, Trick Room will start before the battle.
-#define B_VAR_TRICK_ROOM_TIMER      0     // If this var has a value greater or equal than 1 Trick Troom will be on a timer, otherwise it will be permanent unless dimenstions are twisted again.
 
 // Sky Battles
 #define B_FLAG_SKY_BATTLE           FLAG_SKY_BATTLE       // If this flag has a value, the player will be able to engage in scripted Sky Battles.

@@ -17,7 +17,7 @@ DewfordTown_MapScripts::
 
 DewfordTown_OnTransition:
 	setflag FLAG_VISITED_DEWFORD_TOWN
-	setvar VAR_TERRAIN_SET, 0
+	setvar VAR_STARTING_STATUS, 0
 	end
 
 DewfordTown_EventScript_Briney::
