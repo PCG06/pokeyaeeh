@@ -314,7 +314,7 @@
     {
       "id": "LAYOUT_ROUTE116",
       "name": "Route116_Layout",
-      "width": 100,
+      "width": 90,
       "height": 20,
       "primary_tileset": "gTileset_General",
       "secondary_tileset": "gTileset_Rustboro",
