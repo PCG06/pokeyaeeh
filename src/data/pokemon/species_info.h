@@ -55,11 +55,11 @@
 
 #define CHARIZARD_MISC_INFO                                             \
         .baseHP        = 78,                                            \
-        .baseAttack    = 78,                                            \
+        .baseAttack    = 80,                                            \
         .baseDefense   = 78,                                            \
         .baseSpeed     = 108,                                           \
         .baseSpAttack  = 111,                                           \
-        .baseSpDefense = 82,                                            \
+        .baseSpDefense = 85,                                            \
         .types = {TYPE_FIRE, TYPE_FLYING},                              \
         .catchRate = 45,                                                \
         .expYield = 240,                                                \
@@ -21233,9 +21233,9 @@ const struct SpeciesInfo gSpeciesInfo[] =
     [SPECIES_CHARIZARD_MEGA_X] =
     {
         .baseHP        = 78,
-        .baseAttack    = 134,
+        .baseAttack    = 138,
         .baseDefense   = 111,
-        .baseSpeed     = 108,
+        .baseSpeed     = 104,
         .baseSpAttack  = 122,
         .baseSpDefense = 82,
         .types = { TYPE_FIRE, TYPE_DRAGON},
@@ -21256,9 +21256,9 @@ const struct SpeciesInfo gSpeciesInfo[] =
     [SPECIES_CHARIZARD_MEGA_Y] =
     {
         .baseHP        = 78,
-        .baseAttack    = 97,
+        .baseAttack    = 101,
         .baseDefense   = 78,
-        .baseSpeed     = 108,
+        .baseSpeed     = 104,
         .baseSpAttack  = 159,
         .baseSpDefense = 115,
         .types = { TYPE_FIRE, TYPE_FLYING},
@@ -22508,10 +22508,10 @@ const struct SpeciesInfo gSpeciesInfo[] =
     [SPECIES_VULPIX_ALOLAN] =
     {
         .baseHP        = 38,
-        .baseAttack    = 41,
+        .baseAttack    = 36,
         .baseDefense   = 40,
         .baseSpeed     = 65,
-        .baseSpAttack  = 50,
+        .baseSpAttack  = 55,
         .baseSpDefense = 65,
         .types = { TYPE_ICE, TYPE_ICE},
         .catchRate = 190,
@@ -22532,10 +22532,10 @@ const struct SpeciesInfo gSpeciesInfo[] =
     [SPECIES_NINETALES_ALOLAN] =
     {
         .baseHP        = 73,
-        .baseAttack    = 67,
+        .baseAttack    = 62,
         .baseDefense   = 75,
         .baseSpeed     = 109,
-        .baseSpAttack  = 81,
+        .baseSpAttack  = 91,
         .baseSpDefense = 100,
         .types = { TYPE_ICE, TYPE_FAIRY},
         .catchRate = 75,
