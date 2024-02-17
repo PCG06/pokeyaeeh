@@ -14795,6 +14795,23 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
         .bitingMove = TRUE,
     },
 
+    [MOVE_GLACIAL_SLAM] =
+    {
+        .effect = EFFECT_RECOIL_33_STATUS,
+        .power = 120,
+        .type = TYPE_ICE,
+        .accuracy = 100,
+        .pp = 15,
+        .secondaryEffectChance = 10,
+        .target = MOVE_TARGET_SELECTED,
+        .priority = 0,
+        .split = SPLIT_PHYSICAL,
+        .argument = STATUS1_FROSTBITE,
+        .zMoveEffect = Z_EFFECT_NONE,
+        .makesContact = TRUE,
+        .sheerForceBoost = TRUE,
+    },
+
     // Z-Moves
     [MOVE_BREAKNECK_BLITZ] =
     {

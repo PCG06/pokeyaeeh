@@ -4205,6 +4205,7 @@ const u8 *const gMoveDescriptionPointers[MOVES_COUNT - 1] =
     [MOVE_STUNNING_BLOW - 1] = sStunningBlowDescription,
     [MOVE_ROUSED_FANGS - 1] = sRousedFangsDescription,
     [MOVE_AQUA_FANGS - 1] = sAquaFangsDescription,
+    [MOVE_GLACIAL_SLAM - 1] = sAquaFangsDescription,
 };
 
 static const u8 sMoveFourLineDescription_Pound[] = _("A physical attack\ndelivered with a\nlong tail or a\nforeleg, etc.");
@@ -6346,5 +6347,6 @@ const u8 *const gMoveFourLineDescriptionPointers[MOVES_COUNT - 1] = {
     [MOVE_STUNNING_BLOW     - 1] = sMoveFourLineDescription_StunningBlow,
     [MOVE_ROUSED_FANGS      - 1] = sMoveFourLineDescription_RousedFangs,
     [MOVE_AQUA_FANGS        - 1] = sMoveFourLineDescription_AquaFangs,
+    [MOVE_GLACIAL_SLAM      - 1] = sMoveFourLineDescription_AquaFangs,
 #endif
 };
