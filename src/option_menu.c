@@ -850,8 +850,8 @@ static void QuickBattleRun_DrawChoices(u8 selection)
 
     styles[selection] = 1;
 
-    DrawOptionMenuChoice(gText_QuickBattleRunR, 104, YPOS_QUICKBATTLERUN, styles[0]);
-    DrawOptionMenuChoice(gText_QuickBattleRunBA, GetStringRightAlignXOffset(FONT_NORMAL, gText_QuickBattleRunBA, 198), YPOS_QUICKBATTLERUN, styles[1]);
+    DrawOptionMenuChoice(gText_QuickBattleRunBA, 104, YPOS_QUICKBATTLERUN, styles[0]);
+    DrawOptionMenuChoice(gText_QuickBattleRunR, GetStringRightAlignXOffset(FONT_NORMAL, gText_QuickBattleRunR, 198), YPOS_QUICKBATTLERUN, styles[1]);
 }
 
 static void DrawHeaderText(void)

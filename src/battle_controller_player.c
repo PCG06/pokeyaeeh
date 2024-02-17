@@ -421,7 +421,7 @@ static void HandleInputChooseAction(u32 battler)
             BtlController_EmitTwoReturnValues(battler, BUFFER_B, B_ACTION_CANCEL_PARTNER, 0);
             PlayerBufferExecCompleted(battler);
         }
-        else if (gSaveBlock2Ptr->optionsQuickBattleRun) 
+        else if (!gSaveBlock2Ptr->optionsQuickBattleRun) 
         {
             if (!(gBattleTypeFlags & BATTLE_TYPE_TRAINER)) // If wild battle, pressing B moves cursor to "Run".
             {
@@ -434,7 +434,7 @@ static void HandleInputChooseAction(u32 battler)
     }
     else if (JOY_NEW(R_BUTTON) || gPlayerDpadHoldFrames > 59)
     {
-        if (!gSaveBlock2Ptr->optionsQuickBattleRun)
+        if (gSaveBlock2Ptr->optionsQuickBattleRun)
         {
             if (!(gBattleTypeFlags & BATTLE_TYPE_TRAINER)) // If wild battle, pressing R "Runs" away.
             {

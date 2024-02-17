@@ -8392,7 +8392,7 @@ BattleScript_PrintPayDayMoneyString::
 
 BattleScript_PrintDamageDoneString::
 	waitmessage B_WAIT_TIME_LONG
-	printstring STRINGID_POKEMONDIDAMMOUNTDAMAGE
+	printstring STRINGID_POKEMONDEALTAMOUNTDAMAGE
 	waitmessage B_WAIT_TIME_LONG
 	return
 
