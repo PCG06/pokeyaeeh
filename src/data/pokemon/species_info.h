@@ -57,7 +57,7 @@
         .baseHP        = 78,                                            \
         .baseAttack    = 80,                                            \
         .baseDefense   = 78,                                            \
-        .baseSpeed     = 108,                                           \
+        .baseSpeed     = 104,                                           \
         .baseSpAttack  = 111,                                           \
         .baseSpDefense = 85,                                            \
         .types = {TYPE_FIRE, TYPE_FLYING},                              \
