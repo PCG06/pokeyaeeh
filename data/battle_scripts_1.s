@@ -9549,6 +9549,7 @@ BattleScript_GooeyActivates::
 	call BattleScript_AbilityPopUp
 	swapattackerwithtarget  @ for defiant, mirror armor
 	seteffectsecondary
+	swapattackerwithtarget
 	return
 
 BattleScript_AbilityStatusEffect::
