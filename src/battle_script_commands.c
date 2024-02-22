@@ -1661,9 +1661,22 @@ u32 GetTotalAccuracy(u32 battlerAtk, u32 battlerDef, u32 move, u32 atkAbility, u
     if (IsBattlerWeatherAffected(battlerDef, B_WEATHER_SUN)
       && (gBattleMoves[move].effect == EFFECT_THUNDER || gBattleMoves[move].effect == EFFECT_HURRICANE))
         moveAcc = 50;
+    // Check Heat Wave on rainy weather.
     if (IsBattlerWeatherAffected(battlerDef, B_WEATHER_RAIN)
       && (move == MOVE_HEAT_WAVE))
-        moveAcc = 75;
+        moveAcc = 50;
+    // Check Thunder on rainy weather.
+    if (IsBattlerWeatherAffected(battlerDef, B_WEATHER_RAIN)
+      && (gBattleMoves[move].effect == EFFECT_THUNDER))
+        moveAcc = 0;
+    // Check Hurricane on rainy and snowy weather.
+    if ((IsBattlerWeatherAffected(battlerDef, B_WEATHER_RAIN) || IsBattlerWeatherAffected(battlerDef, B_WEATHER_SNOW))
+      && (gBattleMoves[move].effect == EFFECT_HURRICANE))
+        moveAcc = 0;
+    // Check Heat Wave on sunny weather.
+    if (IsBattlerWeatherAffected(battlerDef, B_WEATHER_SUN)
+      && (move == MOVE_HEAT_WAVE))
+        moveAcc = 0;
     // Check Wonder Skin.
     if (defAbility == ABILITY_WONDER_SKIN && IS_MOVE_STATUS(move) && moveAcc > 50)
         moveAcc = 50;
@@ -4221,7 +4234,6 @@ static void Cmd_getexp(void)
                 gBattleMoveDamage = 1;
                 MonGainEVs(&gPlayerParty[*expMonId], gBattleMons[gBattlerFainted].species);
                 gBattleScripting.getexpState++;
-                PrepareStringBattle(STRINGID_PKMNGAINED1EXP, gBattleStruct->expGetterBattlerId);
             }
             else
             {

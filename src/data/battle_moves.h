@@ -3000,7 +3000,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
     [MOVE_TRIPLE_KICK] =
     {
         .effect = EFFECT_TRIPLE_KICK,
-        .power = 10,
+        .power = 20,
         .type = TYPE_FIGHTING,
         .accuracy = 90,
         .pp = 10,
@@ -3012,6 +3012,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
         .makesContact = TRUE,
         .strikeCount = 3,
         .kickingMove = TRUE,
+        .spinningMove = TRUE,
     },
 
     [MOVE_THIEF] =
@@ -12877,6 +12878,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
         .makesContact = TRUE,
         .strikeCount = 3,
         .kickingMove = TRUE,
+        .spinningMove = TRUE,
     },
 
     [MOVE_DUAL_WINGBEAT] =

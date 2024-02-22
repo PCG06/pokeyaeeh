@@ -699,21 +699,20 @@
 #define STRINGID_PKMNDROPPEDITEM                      697
 #define STRINGID_BAGISFULL                            698
 #define STRINGID_TAILSTREAMACTIVATED                  699
-#define STRINGID_PKMNGAINED1EXP                       700
-#define STRINGID_OMINOUSAIRCURRENT                    701
-#define STRINGID_GHOSTLYWINDSDISSIPATED               702
-#define STRINGID_OMINOUSAIRCURRENTBLOWSON             703
-#define STRINGID_ATTACKWEAKENEDBGHOSTLYWINDS          704
-#define STRINGID_PKMNALREADYHASFROSTBITE              705
-#define STRINGID_HOSPITALITYRESTORATION               706
-#define STRINGID_POKEMONDEALTAMOUNTDAMAGE             707
-#define STRINGID_ELECTROSHOCKCHARGING                 708
-#define STRINGID_DIMENSIONSWERETWISTED                709
-#define STRINGID_BIZARREARENACREATED                  710
-#define STRINGID_BIZARREAREACREATED                   711
-#define STRINGID_SHEDITSTAIL                          712
+#define STRINGID_OMINOUSAIRCURRENT                    700
+#define STRINGID_GHOSTLYWINDSDISSIPATED               701
+#define STRINGID_OMINOUSAIRCURRENTBLOWSON             702
+#define STRINGID_ATTACKWEAKENEDBGHOSTLYWINDS          703
+#define STRINGID_PKMNALREADYHASFROSTBITE              704
+#define STRINGID_HOSPITALITYRESTORATION               705
+#define STRINGID_POKEMONDEALTAMOUNTDAMAGE             706
+#define STRINGID_ELECTROSHOCKCHARGING                 707
+#define STRINGID_DIMENSIONSWERETWISTED                708
+#define STRINGID_BIZARREARENACREATED                  709
+#define STRINGID_BIZARREAREACREATED                   710
+#define STRINGID_SHEDITSTAIL                          711
 
-#define BATTLESTRINGS_COUNT                           713
+#define BATTLESTRINGS_COUNT                           712
 
 // This is the string id that gBattleStringsTable starts with.
 // String ids before this (e.g. STRINGID_INTROMSG) are not in the table,
