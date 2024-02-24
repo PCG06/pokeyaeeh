@@ -4243,7 +4243,7 @@ static void PrintUnknownMonMeasurements(void)
 
 static u8* GetUnknownMonHeightString(void)
 {
-    if (UNITS == UNITS_IMPERIAL)
+    if (!gSaveBlock2Ptr->optionsUnitSystem)
         return ReplaceDecimalSeparator(gText_UnkHeight);
     else
         return ReplaceDecimalSeparator(gText_UnkHeightMetric);
@@ -4251,7 +4251,7 @@ static u8* GetUnknownMonHeightString(void)
 
 static u8* GetUnknownMonWeightString(void)
 {
-    if (UNITS == UNITS_IMPERIAL)
+    if (!gSaveBlock2Ptr->optionsUnitSystem)
         return ReplaceDecimalSeparator(gText_UnkWeight);
     else
         return ReplaceDecimalSeparator(gText_UnkWeightMetric);
@@ -4292,7 +4292,7 @@ static void PrintOwnedMonHeight(u16 species)
     u32 x = GetMeasurementTextPositions(DEX_MEASUREMENT_X);
     u32 yTop = GetMeasurementTextPositions(DEX_Y_TOP);
 
-    if (UNITS == UNITS_IMPERIAL)
+    if (!gSaveBlock2Ptr->optionsUnitSystem)
         heightString = ConvertMonHeightToImperialString(height);
     else
         heightString = ConvertMonHeightToMetricString(height);
@@ -4308,7 +4308,7 @@ static void PrintOwnedMonWeight(u16 species)
     u32 x = GetMeasurementTextPositions(DEX_MEASUREMENT_X);
     u32 yBottom = GetMeasurementTextPositions(DEX_Y_BOTTOM);
 
-    if (UNITS == UNITS_IMPERIAL)
+    if (!gSaveBlock2Ptr->optionsUnitSystem)
         weightString = ConvertMonWeightToImperialString(weight);
     else
         weightString = ConvertMonWeightToMetricString(weight);

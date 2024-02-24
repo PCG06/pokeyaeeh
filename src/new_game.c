@@ -97,8 +97,9 @@ static void SetDefaultOptions(void)
     gSaveBlock2Ptr->optionsBattleStyle = OPTIONS_BATTLE_STYLE_SHIFT;
     gSaveBlock2Ptr->optionsBattleSceneOff = FALSE;
     gSaveBlock2Ptr->regionMapZoom = FALSE;
+    gSaveBlock2Ptr->optionsUnitSystem = FALSE; // default Metric
     gSaveBlock2Ptr->optionsDamageDoneOff = TRUE;
-    gSaveBlock2Ptr->optionsQuickBattleRun = TRUE; // default B->A
+    gSaveBlock2Ptr->optionsQuickBattleRun = FALSE; // default B->A
 }
 
 static void ClearPokedexFlags(void)

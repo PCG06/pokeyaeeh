@@ -55,7 +55,7 @@
 
 #define CHARIZARD_MISC_INFO                                             \
         .baseHP        = 78,                                            \
-        .baseAttack    = 80,                                            \
+        .baseAttack    = 79,                                            \
         .baseDefense   = 80,                                            \
         .baseSpeed     = 102,                                           \
         .baseSpAttack  = 111,                                           \

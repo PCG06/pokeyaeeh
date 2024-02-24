@@ -1533,6 +1533,9 @@ const u8 gText_ButtonTypeLEqualsA[] = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}L=A");
 const u8 gText_ClockMode[] = _("Clock Mode");
 const u8 gText_ClockOption1[] = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}12 Hour"); // Using them without the {COLOR GREEN}{SHADOW LIGHT_GREEN} causes corruption :(
 const u8 gText_ClockOption2[] = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}24 Hour");
+const u8 gText_UnitSystem[] = _("Unit System");
+const u8 gText_Imperial[] = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}Imperial");
+const u8 gText_Metric[] = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}Metric");
 const u8 gText_DamageDone[] = _("Damage Done");
 const u8 gText_QuickBattleRun[] = _("Quick Battle Run");
 const u8 gText_QuickBattleRunR[] = _("{COLOR GREEN}{SHADOW LIGHT_GREEN}R");
