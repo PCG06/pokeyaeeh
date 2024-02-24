@@ -95,6 +95,8 @@
 #define MEMBERS_7(a, b, c, d, e, f, g) a; b; c; d; e; f; g;
 #define MEMBERS_8(a, b, c, d, e, f, g, h) a; b; c; d; e; f; g; h;
 
+extern const struct PokedexEntry gPokedexEntries[];
+
 extern struct Evolution gEvolutionTable[][EVOS_PER_MON];
 
 extern const u8 *const gBattleScriptsForMoveEffects[];
@@ -14919,6 +14921,7 @@ static void Cmd_handleballthrow(void)
     {
         u32 odds, i;
         u8 catchRate;
+        u16 species;
 
         gLastThrownBall = gLastUsedItem;
         gBallToDisplay = gLastThrownBall;
@@ -15031,7 +15034,7 @@ static void Cmd_handleballthrow(void)
                     ballMultiplier = 400;
                 break;
             case ITEM_HEAVY_BALL:
-                i = GetPokedexHeightWeight(SpeciesToNationalPokedexNum(gBattleMons[gBattlerTarget].species), 1);
+                i = gPokedexEntries[SanitizeSpeciesId(species)].weight;
                 if (B_HEAVY_BALL_MODIFIER >= GEN_7)
                 {
                     if (i < 1000)

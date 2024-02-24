@@ -68,6 +68,7 @@ extern const u8 *const gBattleScriptsForMoveEffects[];
 extern const u8 *const gBattlescriptsForRunningByItem[];
 extern const u8 *const gBattlescriptsForUsingItem[];
 extern const u8 *const gBattlescriptsForSafariActions[];
+extern const struct PokedexEntry gPokedexEntries[];
 
 static const u8 sPkblToEscapeFactor[][3] = {
     {
@@ -8744,7 +8745,8 @@ u32 GetMoveSlot(u16 *moves, u32 move)
 u32 GetBattlerWeight(u32 battler)
 {
     u32 i;
-    u32 weight = GetPokedexHeightWeight(SpeciesToNationalPokedexNum(gBattleMons[battler].species), 1);
+    u16 species;
+    u32 weight = gPokedexEntries[SanitizeSpeciesId(species)].weight;
     u32 ability = GetBattlerAbility(battler);
     u32 holdEffect = GetBattlerHoldEffect(battler, TRUE);
 
