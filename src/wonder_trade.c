@@ -1209,8 +1209,11 @@ u16 GetValidWonderTradeItem(u16 item)
      || item == ITEM_RED_ORB
      || item == ITEM_BLUE_ORB
      || item == ITEM_ADAMANT_ORB
+     || item == ITEM_ADAMANT_CRYSTAL
      || item == ITEM_LUSTROUS_ORB
-     || item == ITEM_GRISEOUS_ORB)
+     || item == ITEM_LUSTROUS_GLOBE
+     || item == ITEM_GRISEOUS_ORB
+     || item == ITEM_GRISEOUS_CORE)
         goto ROLL;
     else if (IS_ITEM_MAIL(item))
         goto ROLL;

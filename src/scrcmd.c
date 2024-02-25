@@ -2386,8 +2386,11 @@ bool8 ScrCmd_giveformchangeitems(struct ScriptContext *ctx)
     AddBagItem(ITEM_RED_ORB, 1);
     AddBagItem(ITEM_BLUE_ORB, 1);
     AddBagItem(ITEM_ADAMANT_ORB, 1);
+    AddBagItem(ITEM_ADAMANT_CRYSTAL, 1);
     AddBagItem(ITEM_LUSTROUS_ORB, 1);
+    AddBagItem(ITEM_LUSTROUS_GLOBE, 1);
     AddBagItem(ITEM_GRISEOUS_ORB, 1);
+    AddBagItem(ITEM_GRISEOUS_CORE, 1);
     AddBagItem(ITEM_GRACIDEA, 1);
     AddBagItem(ITEM_REVEAL_GLASS, 1);
     AddBagItem(ITEM_DNA_SPLICERS, 1);
