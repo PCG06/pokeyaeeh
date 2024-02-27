@@ -4428,3 +4428,8 @@ static const u8 sSteelCrystalDesc[] =_(
     "Changes Pokémon's\n"
     "hidden potential\n"
     "to Steel.");
+
+static const u8 sSteelArmorDesc[] =_(
+    "Shelmet's armor. It\n"
+    "is loved by a\n"
+    "certain Pokémon.");

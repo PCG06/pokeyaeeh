@@ -10647,4 +10647,17 @@ const struct Item gItems[] =
         .fieldUseFunc = ItemUseOutOfBattle_CandyBox,
         .importance = 1,
     },
+
+    [ITEM_STEEL_ARMOR] =
+    {
+        .name = _("Steel Armor"),
+        .price = 2000,
+        .holdEffect = HOLD_EFFECT_STEEL_POWER,
+        .holdEffectParam = TYPE_BOOST_PARAM,
+        .description = sSteelArmorDesc,
+        .pocket = POCKET_POWER_UP,
+        .type = EVO_HELD_ITEM_TYPE,
+        .fieldUseFunc = EVO_HELD_ITEM_FIELD_FUNC,
+        .flingPower = 30,
+    },
 };

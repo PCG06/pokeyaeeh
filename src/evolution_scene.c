@@ -192,6 +192,8 @@ static void Task_BeginEvolutionScene(u8 taskId)
 
             DestroyTask(taskId);
             EvolutionScene(mon, postEvoSpecies, canStopEvo, partyId);
+            if (postEvoSpecies == SPECIES_ACCELGOR)
+                AddBagItem(ITEM_STEEL_ARMOR, 1);
         }
         break;
     }
