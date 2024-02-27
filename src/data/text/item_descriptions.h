@@ -3492,9 +3492,9 @@ static const u8 sTM92Desc[] = _(
     "doubles in power.");
 
 static const u8 sTM93Desc[] = _(
-    "Slashes with a sha-\n"
-    "dow claw. High\n"
-    "crit-hit ratio.");
+    "If previous move\n"
+    "failed, this move\n"
+    "doubles in power.");
 
 static const u8 sTM94Desc[] = _(
     "Switches abilities\n"
@@ -3502,9 +3502,9 @@ static const u8 sTM94Desc[] = _(
     "turn this is used.");
 
 static const u8 sTM95Desc[] = _(
-    "Enables full-power\n"
-    "attack, but sharply\n"
-    "lowers Sp. Atk.");
+    "Slashes with a sha-\n"
+    "dow claw. High\n"
+    "crit-hit ratio.");
 
 static const u8 sTM96Desc[] = _(
     "The user is roused\n"
@@ -3527,9 +3527,9 @@ static const u8 sTM99Desc[] = _(
     "accuracy.");
 
 static const u8 sTM100Desc[] = _(
-    "Slashes the foe\n"
-    "with scythe, claws.\n"
-    "High crit-hit ratio.");
+    "A slicing attack\n"
+    "with a high crit-\n"
+    "hit ratio.");
 
 static const u8 sTM101Desc[] = _(
     "Water is shot with\n"
@@ -3572,9 +3572,9 @@ static const u8 sTM108Desc[] = _(
     "status condition.");
 
 static const u8 sTM109Desc[] = _(
-    "Song that inflicts\n"
-    "damage. Others can\n"
-    "join too.");
+    "Electrified attack\n"
+    "that damages the\n"
+    "user if missed.");
 
 static const u8 sTM110Desc[] = _(
     "Captures the foe\n"
