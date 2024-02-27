@@ -254,7 +254,6 @@ bool8 AddBagItem(u16 itemId, u16 count)
     {
         struct BagPocket *itemPocket;
         struct ItemSlot *newItems;
-        u16 slotCapacity;
         u16 ownedCount;
         u8 pocket = ItemId_GetPocket(itemId) - 1;
 
@@ -262,24 +261,13 @@ bool8 AddBagItem(u16 itemId, u16 count)
         newItems = AllocZeroed(itemPocket->capacity * sizeof(struct ItemSlot));
         memcpy(newItems, itemPocket->itemSlots, itemPocket->capacity * sizeof(struct ItemSlot));
 
-        if (pocket != BERRIES_POCKET)
-            slotCapacity = MAX_BAG_ITEM_CAPACITY;
-        else
-            slotCapacity = MAX_BERRY_CAPACITY;
-
-        if (pocket == TMHM_POCKET)
-        {
-            if (!CheckBagHasItem(TMHM_POCKET, 1))
-                AddBagItem(TMHM_POCKET, 1);
-        }
-
         for (i = 0; i < itemPocket->capacity; i++)
         {
             if (newItems[i].itemId == itemId)
             {
                 ownedCount = GetBagItemQuantity(&newItems[i].quantity);
                 // check if won't exceed max slot capacity
-                if (ownedCount + count <= slotCapacity)
+                if (ownedCount + count <= MAX_BAG_ITEM_CAPACITY)
                 {
                     // successfully added to already existing item's count
                     SetBagItemQuantity(&newItems[i].quantity, ownedCount + count);
@@ -295,11 +283,11 @@ bool8 AddBagItem(u16 itemId, u16 count)
                         Free(newItems);
                         return FALSE;
                     }
+                    // don't create another instance of the item if it's at max slot capacity and count is equal to 0
                     else
                     {
-                        count -= slotCapacity - ownedCount;
-                        SetBagItemQuantity(&newItems[i].quantity, slotCapacity);
-                        // don't create another instance of the item if it's at max slot capacity and count is equal to 0
+                        Free(newItems);
+                        return FALSE;
                         if (count == 0)
                         {
                             break;
@@ -318,7 +306,7 @@ bool8 AddBagItem(u16 itemId, u16 count)
                 if (newItems[i].itemId == ITEM_NONE)
                 {
                     newItems[i].itemId = itemId;
-                    if (count > slotCapacity)
+                    if (count > MAX_BAG_ITEM_CAPACITY)
                     {
                         // try creating a new slot with max capacity if duplicates are possible
                         if (pocket == TMHM_POCKET || pocket == BERRIES_POCKET)
@@ -326,8 +314,8 @@ bool8 AddBagItem(u16 itemId, u16 count)
                             Free(newItems);
                             return FALSE;
                         }
-                        count -= slotCapacity;
-                        SetBagItemQuantity(&newItems[i].quantity, slotCapacity);
+                        count -= MAX_BAG_ITEM_CAPACITY;
+                        SetBagItemQuantity(&newItems[i].quantity, MAX_BAG_ITEM_CAPACITY);
                     }
                     else
                     {
