@@ -192,8 +192,6 @@ static void Task_BeginEvolutionScene(u8 taskId)
 
             DestroyTask(taskId);
             EvolutionScene(mon, postEvoSpecies, canStopEvo, partyId);
-            if (postEvoSpecies == SPECIES_ACCELGOR)
-                AddBagItem(ITEM_STEEL_ARMOR, 1);
         }
         break;
     }
@@ -645,6 +643,7 @@ enum {
 static void Task_EvolutionScene(u8 taskId)
 {
     u32 var;
+    u16 postEvoSpecies = gTasks[taskId].tPostEvoSpecies;
     struct Pokemon *mon = &gPlayerParty[gTasks[taskId].tPartyId];
 
     // check if B Button was held, so the evolution gets stopped
@@ -780,6 +779,10 @@ static void Task_EvolutionScene(u8 taskId)
             GetSetPokedexFlag(SpeciesToNationalPokedexNum(gTasks[taskId].tPostEvoSpecies), FLAG_SET_SEEN);
             GetSetPokedexFlag(SpeciesToNationalPokedexNum(gTasks[taskId].tPostEvoSpecies), FLAG_SET_CAUGHT);
             IncrementGameStat(GAME_STAT_EVOLVED_POKEMON);
+            if (postEvoSpecies == SPECIES_ACCELGOR)
+                AddBagItem(ITEM_STEEL_ARMOR, 1);
+            if ((postEvoSpecies == SPECIES_BUTTERFREE) || (postEvoSpecies == SPECIES_BEEDRILL) || (postEvoSpecies == SPECIES_TYRANITAR) || (postEvoSpecies == SPECIES_BEAUTIFLY) || (postEvoSpecies == SPECIES_DUSTOX))
+                AddBagItem(ITEM_SHED_SHELL, 1);
         }
         break;
     case EVOSTATE_TRY_LEARN_MOVE:
