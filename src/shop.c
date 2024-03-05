@@ -418,7 +418,7 @@ static const struct ListMenuTemplate sShopBuyMenuListTemplate =
     .lettersSpacing = 0,
     .itemVerticalPadding = 0,
     .scrollMultiple = LIST_NO_MULTIPLE_SCROLL,
-    .fontId = FONT_NARROW,
+    .fontId = FONT_NARROWER,
     .cursorKind = CURSOR_BLACK_ARROW
 };
 
@@ -867,11 +867,17 @@ static void BuyMenuPrintPriceInList(u8 windowId, u32 itemId, u8 y)
         }
 
         if (ItemId_GetImportance(itemId) && (CheckBagHasItem(itemId, 1) || CheckPCHasItem(itemId, 1)))
+        {
             StringCopy(gStringVar4, gText_SoldOut);
+            x = GetStringRightAlignXOffset(FONT_NARROWER, gStringVar4, 120);
+           AddTextPrinterParameterized4(windowId, FONT_NARROWER, x, y, 0, 0, sShopBuyMenuTextColors[COLORID_ITEM_LIST], TEXT_SKIP_DRAW, gStringVar4);
+        }
         else
+        {
             StringExpandPlaceholders(gStringVar4, gText_PokedollarVar1);
-        x = GetStringRightAlignXOffset(FONT_NARROW, gStringVar4, 120);
-        AddTextPrinterParameterized4(windowId, FONT_NARROW, x, y, 0, 0, sShopBuyMenuTextColors[COLORID_ITEM_LIST], TEXT_SKIP_DRAW, gStringVar4);
+            x = GetStringRightAlignXOffset(FONT_NARROW, gStringVar4, 120);
+            AddTextPrinterParameterized4(windowId, FONT_NARROW, x, y, 0, 0, sShopBuyMenuTextColors[COLORID_ITEM_LIST], TEXT_SKIP_DRAW, gStringVar4);
+        }
     }
 }
 

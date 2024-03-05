@@ -4026,6 +4026,11 @@ void BattlePutTextOnWindow(const u8 *text, u8 windowId)
     printerTemplate.bgColor = textInfo[windowId].bgColor;
     printerTemplate.shadowColor = textInfo[windowId].shadowColor;
 
+    if (B_WIN_MOVE_NAME_1 <= windowId && windowId <= B_WIN_MOVE_NAME_4)
+    {
+        printerTemplate.fontId = FONT_NARROWER;
+    }
+
     if (printerTemplate.x == 0xFF)
     {
         u32 width = GetBattleWindowTemplatePixelWidth(gBattleScripting.windowsType, windowId);
