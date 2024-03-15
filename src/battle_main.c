@@ -4751,6 +4751,8 @@ u32 GetBattlerTotalSpeedStatArgs(u32 battler, u32 ability, u32 holdEffect)
         speed = (speed * 150) / 100;
     else if (ability == ABILITY_QUARK_DRIVE && gFieldStatuses & STATUS_FIELD_ELECTRIC_TERRAIN && highestStat == STAT_SPEED)
         speed = (speed * 150) / 100;
+    else if (ability == ABILITY_RUN_AWAY && ((gBattleMons[battler].hp) <= (gBattleMons[battler].maxHP / 2)))
+        speed *= 2;
 
     // stat stages
     speed *= gStatStageRatios[gBattleMons[battler].statStages[STAT_SPEED]][0];
@@ -5345,9 +5347,9 @@ static void HandleEndTurn_BattleWon(void)
         gBattlescriptCurrInstr = BattleScript_FrontierTrainerBattleWon;
 
         if (gTrainerBattleOpponent_A == TRAINER_FRONTIER_BRAIN)
-            PlayBGM(MUS_VICTORY_GYM_LEADER);
+            PlayBGM(MUS_PL_VICTORY_FRONTIER_BRAIN);
         else
-            PlayBGM(MUS_VICTORY_TRAINER);
+            PlayBGM(MUS_DP_VICTORY_TRAINER);
     }
     else if (gBattleTypeFlags & BATTLE_TYPE_TRAINER && !(gBattleTypeFlags & BATTLE_TYPE_LINK))
     {
@@ -5357,8 +5359,10 @@ static void HandleEndTurn_BattleWon(void)
         switch (gTrainers[gTrainerBattleOpponent_A].trainerClass)
         {
         case TRAINER_CLASS_ELITE_FOUR:
+            PlayBGM(MUS_DP_VICTORY_ELITE_FOUR);
+            break;
         case TRAINER_CLASS_CHAMPION:
-            PlayBGM(MUS_VICTORY_LEAGUE);
+            PlayBGM(MUS_DP_VICTORY_CHAMPION);
             break;
         case TRAINER_CLASS_TEAM_AQUA:
         case TRAINER_CLASS_TEAM_MAGMA:
@@ -5369,11 +5373,22 @@ static void HandleEndTurn_BattleWon(void)
             PlayBGM(MUS_VICTORY_AQUA_MAGMA);
             break;
         case TRAINER_CLASS_LEADER:
+            PlayBGM(MUS_DP_VICTORY_GYM_LEADER);
+            break;
         case TRAINER_CLASS_ROUTE_BOSS:
-            PlayBGM(MUS_VICTORY_GYM_LEADER);
+            PlayBGM(MUS_HG_VICTORY_GYM_LEADER);
+            break;
+        case TRAINER_CLASS_SALON_MAIDEN:
+        case TRAINER_CLASS_DOME_ACE:
+        case TRAINER_CLASS_PALACE_MAVEN:
+        case TRAINER_CLASS_ARENA_TYCOON:
+        case TRAINER_CLASS_FACTORY_HEAD:
+        case TRAINER_CLASS_PIKE_QUEEN:
+        case TRAINER_CLASS_PYRAMID_KING:
+            PlayBGM(MUS_PL_VICTORY_FRONTIER_BRAIN);
             break;
         default:
-            PlayBGM(MUS_VICTORY_TRAINER);
+            PlayBGM(MUS_DP_VICTORY_TRAINER);
             break;
         }
     }

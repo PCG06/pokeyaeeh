@@ -95,6 +95,8 @@
 #define MEMBERS_7(a, b, c, d, e, f, g) a; b; c; d; e; f; g;
 #define MEMBERS_8(a, b, c, d, e, f, g, h) a; b; c; d; e; f; g; h;
 
+extern const struct PokedexEntry gPokedexEntries[];
+
 extern struct Evolution gEvolutionTable[][EVOS_PER_MON];
 
 extern const u8 *const gBattleScriptsForMoveEffects[];
@@ -1661,9 +1663,22 @@ u32 GetTotalAccuracy(u32 battlerAtk, u32 battlerDef, u32 move, u32 atkAbility, u
     if (IsBattlerWeatherAffected(battlerDef, B_WEATHER_SUN)
       && (gBattleMoves[move].effect == EFFECT_THUNDER || gBattleMoves[move].effect == EFFECT_HURRICANE))
         moveAcc = 50;
+    // Check Heat Wave on rainy weather.
     if (IsBattlerWeatherAffected(battlerDef, B_WEATHER_RAIN)
       && (move == MOVE_HEAT_WAVE))
-        moveAcc = 75;
+        moveAcc = 50;
+    // Check Thunder on rainy weather.
+    if (IsBattlerWeatherAffected(battlerDef, B_WEATHER_RAIN)
+      && (gBattleMoves[move].effect == EFFECT_THUNDER))
+        moveAcc = 0;
+    // Check Hurricane on rainy and snowy weather.
+    if ((IsBattlerWeatherAffected(battlerDef, B_WEATHER_RAIN) || IsBattlerWeatherAffected(battlerDef, B_WEATHER_SNOW))
+      && (gBattleMoves[move].effect == EFFECT_HURRICANE))
+        moveAcc = 0;
+    // Check Heat Wave on sunny weather.
+    if (IsBattlerWeatherAffected(battlerDef, B_WEATHER_SUN)
+      && (move == MOVE_HEAT_WAVE))
+        moveAcc = 0;
     // Check Wonder Skin.
     if (defAbility == ABILITY_WONDER_SKIN && IS_MOVE_STATUS(move) && moveAcc > 50)
         moveAcc = 50;
@@ -4221,7 +4236,6 @@ static void Cmd_getexp(void)
                 gBattleMoveDamage = 1;
                 MonGainEVs(&gPlayerParty[*expMonId], gBattleMons[gBattlerFainted].species);
                 gBattleScripting.getexpState++;
-                PrepareStringBattle(STRINGID_PKMNGAINED1EXP, gBattleStruct->expGetterBattlerId);
             }
             else
             {
@@ -4233,7 +4247,7 @@ static void Cmd_getexp(void)
                     && !gBattleStruct->wildVictorySong)
                 {
                     BattleStopLowHpSound();
-                    PlayBGM(MUS_VICTORY_WILD);
+                    PlayBGM(MUS_DP_VICTORY_WILD);
                     gBattleStruct->wildVictorySong++;
                 }
 
@@ -4286,7 +4300,7 @@ static void Cmd_getexp(void)
                     PREPARE_MON_NICK_WITH_PREFIX_BUFFER(gBattleTextBuff1, gBattleStruct->expGetterBattlerId, *expMonId);
                     // buffer 'gained' or 'gained a boosted'
                     PREPARE_STRING_BUFFER(gBattleTextBuff2, i);
-                    PREPARE_WORD_NUMBER_BUFFER(gBattleTextBuff4, 6, gBattleMoveDamage);
+                    PREPARE_WORD_NUMBER_BUFFER(gBattleTextBuff3, 6, gBattleMoveDamage);
 
                     if (wasSentOut || holdEffect == HOLD_EFFECT_EXP_SHARE)
                     {
@@ -9112,7 +9126,7 @@ static void Cmd_various(void)
     case VARIOUS_PLAY_TRAINER_DEFEATED_MUSIC:
     {
         VARIOUS_ARGS();
-        BtlController_EmitPlayFanfareOrBGM(battler, BUFFER_A, MUS_VICTORY_TRAINER, TRUE);
+        BtlController_EmitPlayFanfareOrBGM(battler, BUFFER_A, MUS_DP_VICTORY_TRAINER, TRUE);
         MarkBattlerForControllerExec(battler);
         break;
     }
@@ -14907,6 +14921,7 @@ static void Cmd_handleballthrow(void)
     {
         u32 odds, i;
         u8 catchRate;
+        u16 species;
 
         gLastThrownBall = gLastUsedItem;
         gBallToDisplay = gLastThrownBall;
@@ -15019,7 +15034,7 @@ static void Cmd_handleballthrow(void)
                     ballMultiplier = 400;
                 break;
             case ITEM_HEAVY_BALL:
-                i = GetPokedexHeightWeight(SpeciesToNationalPokedexNum(gBattleMons[gBattlerTarget].species), 1);
+                i = gPokedexEntries[SanitizeSpeciesId(species)].weight;
                 if (B_HEAVY_BALL_MODIFIER >= GEN_7)
                 {
                     if (i < 1000)

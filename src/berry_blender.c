@@ -3795,7 +3795,7 @@ static void Task_PlayPokeblockFanfare(u8 taskId)
 {
     if (gTasks[taskId].data[0] == 0)
     {
-        PlayFanfare(MUS_LEVEL_UP);
+        PlayFanfare(MUS_DP_LEVEL_UP);
         gTasks[taskId].data[0]++;
     }
     if (IsFanfareTaskInactive())

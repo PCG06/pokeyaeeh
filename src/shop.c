@@ -418,7 +418,7 @@ static const struct ListMenuTemplate sShopBuyMenuListTemplate =
     .lettersSpacing = 0,
     .itemVerticalPadding = 0,
     .scrollMultiple = LIST_NO_MULTIPLE_SCROLL,
-    .fontId = FONT_NARROW,
+    .fontId = FONT_NARROWER,
     .cursorKind = CURSOR_BLACK_ARROW
 };
 
@@ -867,11 +867,17 @@ static void BuyMenuPrintPriceInList(u8 windowId, u32 itemId, u8 y)
         }
 
         if (ItemId_GetImportance(itemId) && (CheckBagHasItem(itemId, 1) || CheckPCHasItem(itemId, 1)))
+        {
             StringCopy(gStringVar4, gText_SoldOut);
+            x = GetStringRightAlignXOffset(FONT_NARROWER, gStringVar4, 120);
+           AddTextPrinterParameterized4(windowId, FONT_NARROWER, x, y, 0, 0, sShopBuyMenuTextColors[COLORID_ITEM_LIST], TEXT_SKIP_DRAW, gStringVar4);
+        }
         else
+        {
             StringExpandPlaceholders(gStringVar4, gText_PokedollarVar1);
-        x = GetStringRightAlignXOffset(FONT_NARROW, gStringVar4, 120);
-        AddTextPrinterParameterized4(windowId, FONT_NARROW, x, y, 0, 0, sShopBuyMenuTextColors[COLORID_ITEM_LIST], TEXT_SKIP_DRAW, gStringVar4);
+            x = GetStringRightAlignXOffset(FONT_NARROW, gStringVar4, 120);
+            AddTextPrinterParameterized4(windowId, FONT_NARROW, x, y, 0, 0, sShopBuyMenuTextColors[COLORID_ITEM_LIST], TEXT_SKIP_DRAW, gStringVar4);
+        }
     }
 }
 
@@ -1411,20 +1417,31 @@ static void Task_ReturnToItemListAfterItemPurchase(u8 taskId)
 
     if (JOY_NEW(A_BUTTON | B_BUTTON))
     {
-        PlaySE(SE_SELECT);
-
-        // Purchasing 10+ Poke Balls gets the player a Premier Ball
-        if ((ItemId_GetPocket(tItemId) == POCKET_POKE_BALLS) && tItemCount > 9 && AddBagItem(ITEM_PREMIER_BALL, tItemCount / 10) == TRUE)
-            if (tItemCount > 19)
-           {
-               BuyMenuDisplayMessage(taskId, gText_ThrowInPremierBalls, BuyMenuReturnToItemList);
-           }
-           else
-           {
-               BuyMenuDisplayMessage(taskId, gText_ThrowInPremierBall, BuyMenuReturnToItemList);
-           }
+        u16 premierBallsToAdd = tItemCount / 10;
+        if (premierBallsToAdd >= 1
+         && ((I_PREMIER_BALL_BONUS <= GEN_7 && tItemId == ITEM_POKE_BALL)
+          || (I_PREMIER_BALL_BONUS >= GEN_8 && (ItemId_GetPocket(tItemId) == POCKET_POKE_BALLS))))
+        {
+            u32 spaceAvailable = GetFreeSpaceForItemInBag(ITEM_PREMIER_BALL);
+            if (spaceAvailable < premierBallsToAdd)
+                premierBallsToAdd = spaceAvailable;
+        }
         else
+        {
+            premierBallsToAdd = 0;
+        }
+
+        PlaySE(SE_SELECT);
+        AddBagItem(ITEM_PREMIER_BALL, premierBallsToAdd);
+        if (premierBallsToAdd > 0)
+        {
+            ConvertIntToDecimalStringN(gStringVar1, premierBallsToAdd, STR_CONV_MODE_LEFT_ALIGN, MAX_ITEM_DIGITS);
+            BuyMenuDisplayMessage(taskId, (premierBallsToAdd >= 2 ? gText_ThrowInPremierBalls : gText_ThrowInPremierBall), BuyMenuReturnToItemList);
+        }
+        else
+        {
             BuyMenuReturnToItemList(taskId);
+        }
     }
 }
 

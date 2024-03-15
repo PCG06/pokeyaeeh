@@ -4909,12 +4909,7 @@ BattleScript_PartyHealEnd::
 BattleScript_EffectTripleKick::
 	attackcanceler
 	accuracycheck BattleScript_PrintMoveMissed, ACC_CURR_MOVE
-	jumpifmove MOVE_TRIPLE_AXEL BS_TripleAxel
-	addbyte sTRIPLE_KICK_POWER, 10 @ triple kick gets +10 power
-	goto BattleScript_HitFromAtkString
-
-BS_TripleAxel:
-	addbyte sTRIPLE_KICK_POWER, 20 @ triple axel gets +20 power
+	addbyte sTRIPLE_KICK_POWER, 20 @ triple kick and triple axel get +20 power
 	goto BattleScript_HitFromAtkString
 
 BattleScript_EffectThief::
@@ -4935,6 +4930,7 @@ BattleScript_EffectMeanLook::
 .if B_GHOSTS_ESCAPE >= GEN_6
 	jumpiftype BS_TARGET, TYPE_GHOST, BattleScript_ButItFailed
 .endif
+	jumpifability BS_TARGET, ABILITY_RUN_AWAY, BattleScript_ButItFailed
 	attackanimation
 	waitanimation
 	setmoveeffect MOVE_EFFECT_PREVENT_ESCAPE
@@ -5495,7 +5491,7 @@ BattleScript_EffectHurricane:
 	goto BattleScript_EffectHit
 
 BattleScript_EffectTeleport:
-.if B_TELEPORT_BEHAVIOR >= GEN_7
+.if B_TELEPORT_BEHAVIOR >= GEN_8
 	jumpifbattletype BATTLE_TYPE_TRAINER, BattleScript_EffectBatonPass
 	jumpifside BS_ATTACKER, B_SIDE_PLAYER, BattleScript_EffectBatonPass
 .else
@@ -8392,7 +8388,7 @@ BattleScript_PrintPayDayMoneyString::
 
 BattleScript_PrintDamageDoneString::
 	waitmessage B_WAIT_TIME_LONG
-	printstring STRINGID_POKEMONDIDAMMOUNTDAMAGE
+	printstring STRINGID_POKEMONDEALTAMOUNTDAMAGE
 	waitmessage B_WAIT_TIME_LONG
 	return
 
@@ -9553,6 +9549,7 @@ BattleScript_GooeyActivates::
 	call BattleScript_AbilityPopUp
 	swapattackerwithtarget  @ for defiant, mirror armor
 	seteffectsecondary
+	swapattackerwithtarget
 	return
 
 BattleScript_AbilityStatusEffect::

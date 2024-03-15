@@ -8275,7 +8275,7 @@ const struct Item gItems[] =
         .secondaryId = MOVE_STOMPING_TANTRUM,
     },
 
-    [ITEM_TM_SHADOW_CLAW] =
+    [ITEM_TM_TEMPER_FLARE] =
     {
         .name = _("TM93"),
         .price = 3000,
@@ -8284,7 +8284,7 @@ const struct Item gItems[] =
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_TMHM,
-        .secondaryId = MOVE_SHADOW_CLAW,
+        .secondaryId = MOVE_TEMPER_FLARE,
     },
 
     [ITEM_TM_SKILL_SWAP] =
@@ -8299,7 +8299,7 @@ const struct Item gItems[] =
         .secondaryId = MOVE_SKILL_SWAP,
     },
 
-    [ITEM_TM_OVERHEAT] =
+    [ITEM_TM_SHADOW_CLAW] =
     {
         .name = _("TM95"),
         .price = 3000,
@@ -8308,7 +8308,7 @@ const struct Item gItems[] =
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_TMHM,
-        .secondaryId = MOVE_OVERHEAT,
+        .secondaryId = MOVE_SHADOW_CLAW,
     },
 
     [ITEM_TM_WORK_UP] =
@@ -8466,7 +8466,7 @@ const struct Item gItems[] =
         .secondaryId = MOVE_HEX,
     },
 
-    [ITEM_TM_ROUND] =
+    [ITEM_TM_SUPERCELL_SLAM] =
     {
         .name = _("TM109"),
         .price = 3000,
@@ -8475,7 +8475,7 @@ const struct Item gItems[] =
         .pocket = POCKET_TM_HM,
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_TMHM,
-        .secondaryId = MOVE_ROUND,
+        .secondaryId = MOVE_SUPERCELL_SLAM,
     },
 
     [ITEM_TM_ELECTROWEB] =
@@ -10646,5 +10646,18 @@ const struct Item gItems[] =
         .type = ITEM_USE_PARTY_MENU,
         .fieldUseFunc = ItemUseOutOfBattle_CandyBox,
         .importance = 1,
+    },
+
+    [ITEM_STEEL_ARMOR] =
+    {
+        .name = _("Steel Armor"),
+        .price = 2000,
+        .holdEffect = HOLD_EFFECT_STEEL_POWER,
+        .holdEffectParam = TYPE_BOOST_PARAM,
+        .description = sSteelArmorDesc,
+        .pocket = POCKET_POWER_UP,
+        .type = EVO_HELD_ITEM_TYPE,
+        .fieldUseFunc = EVO_HELD_ITEM_FIELD_FUNC,
+        .flingPower = 30,
     },
 };

@@ -421,7 +421,7 @@ static void HandleInputChooseAction(u32 battler)
             BtlController_EmitTwoReturnValues(battler, BUFFER_B, B_ACTION_CANCEL_PARTNER, 0);
             PlayerBufferExecCompleted(battler);
         }
-        else if (gSaveBlock2Ptr->optionsQuickBattleRun) 
+        else if (!gSaveBlock2Ptr->optionsQuickBattleRun) 
         {
             if (!(gBattleTypeFlags & BATTLE_TYPE_TRAINER)) // If wild battle, pressing B moves cursor to "Run".
             {
@@ -434,7 +434,7 @@ static void HandleInputChooseAction(u32 battler)
     }
     else if (JOY_NEW(R_BUTTON) || gPlayerDpadHoldFrames > 59)
     {
-        if (!gSaveBlock2Ptr->optionsQuickBattleRun)
+        if (gSaveBlock2Ptr->optionsQuickBattleRun)
         {
             if (!(gBattleTypeFlags & BATTLE_TYPE_TRAINER)) // If wild battle, pressing R "Runs" away.
             {
@@ -2688,9 +2688,9 @@ static void ChangeMoveDisplayMode(u32 battler)
     static const u8 gContactText[] =  _("Contact");
     static const u8 gNoContactText[] =  _("No Contact");
 
-    u32 power;
     struct ChooseMoveStruct *moveInfo = (struct ChooseMoveStruct*)(&gBattleResources->bufferA[battler][4]);
     u32 move = moveInfo->moves[gMoveSelectionCursor[battler]];
+    u32 effect = gBattleMoves[move].effect;
     u32 battlerAtk = battler;
     u32 battlerDef = BATTLE_OPPOSITE(battlerAtk);
     u32 moveType = gBattleMoves[move].type;
@@ -2698,9 +2698,10 @@ static void ChangeMoveDisplayMode(u32 battler)
     u32 defAbility = GetBattlerAbility(battlerDef);
     u32 holdEffectAtk = GetBattlerHoldEffect(battlerAtk, TRUE);
     u32 holdEffectDef = GetBattlerHoldEffect(battlerDef, TRUE);
-    u32 accuracy = GetTotalAccuracy(battlerAtk, battlerDef, move, atkAbility, defAbility, holdEffectAtk, holdEffectDef);
     u32 weather = gBattleWeather;
     bool32 updateFlags = FALSE;
+    u32 power = CalcMoveBasePowerAfterModifiers(move, battlerAtk, battlerDef, moveType, updateFlags, atkAbility, defAbility, holdEffectAtk, weather);
+    u32 accuracy = GetTotalAccuracy(battlerAtk, battlerDef, move, atkAbility, defAbility, holdEffectAtk, holdEffectDef);
     u32 ateAbility = atkAbility;
 
     //Move Name
@@ -2711,7 +2712,6 @@ static void ChangeMoveDisplayMode(u32 battler)
     CopyWindowToVram(B_WIN_MOVE_NAME_1 , 3);
 
     //Move Power
-    power = CalcMoveBasePowerAfterModifiers(move, battlerAtk, battlerDef, moveType, updateFlags, atkAbility, defAbility, holdEffectAtk, weather);
     if (gBattleMoves[move].power == 0)
     {
         StringExpandPlaceholders(gStringVar1, gPower0Text);
@@ -2720,29 +2720,29 @@ static void ChangeMoveDisplayMode(u32 battler)
     {
         ConvertIntToDecimalStringN(gStringVar1, power, STR_CONV_MODE_RIGHT_ALIGN, 4);
     }
-    if (gBattleMoves[move].effect == EFFECT_ROLLOUT)
+    if (effect == EFFECT_ROLLOUT)
     {
         StringExpandPlaceholders(gStringVar1, gPower30Text);
     }
-    if (gBattleMoves[move].effect == EFFECT_ROLLOUT && atkAbility == ABILITY_HARD_SPINNER)
+    if (effect == EFFECT_ROLLOUT && atkAbility == ABILITY_HARD_SPINNER)
     {
         StringExpandPlaceholders(gStringVar1, gPower45Text);
     }
     if ((moveType == TYPE_NORMAL)
-        && gBattleMoves[move].effect != EFFECT_HIDDEN_POWER
-        && gBattleMoves[move].effect != EFFECT_WEATHER_BALL
-        && gBattleMoves[move].effect != EFFECT_CHANGE_TYPE_ON_ITEM
-        && gBattleMoves[move].effect != EFFECT_NATURAL_GIFT
+        && effect != EFFECT_HIDDEN_POWER
+        && effect != EFFECT_WEATHER_BALL
+        && effect != EFFECT_CHANGE_TYPE_ON_ITEM
+        && effect != EFFECT_NATURAL_GIFT
         && ((ateAbility == ABILITY_PIXILATE) || (ateAbility == ABILITY_REFRIGERATE) || (ateAbility == ABILITY_AERILATE) || (ateAbility == ABILITY_GALVANIZE) || (ateAbility == ABILITY_HERBIVATE) || (ateAbility == ABILITY_SCORCHATE) || (ateAbility == ABILITY_OCEANATE)))
     {
         ConvertIntToDecimalStringN(gStringVar1, power*(1.2), STR_CONV_MODE_RIGHT_ALIGN, 4);
     }
-    if (gBattleMoves[move].effect != EFFECT_HIDDEN_POWER
-        && gBattleMoves[move].effect != EFFECT_WEATHER_BALL
-        && gBattleMoves[move].effect != EFFECT_CHANGE_TYPE_ON_ITEM
-        && gBattleMoves[move].effect != EFFECT_NATURAL_GIFT
-        && gBattleMoves[move].effect != EFFECT_TERRAIN_PULSE
-        && gBattleMoves[move].effect != EFFECT_CHANGE_TYPE_ON_ITEM
+    if (effect != EFFECT_HIDDEN_POWER
+        && effect != EFFECT_WEATHER_BALL
+        && effect != EFFECT_CHANGE_TYPE_ON_ITEM
+        && effect != EFFECT_NATURAL_GIFT
+        && effect != EFFECT_TERRAIN_PULSE
+        && effect != EFFECT_CHANGE_TYPE_ON_ITEM
         && (ateAbility == ABILITY_NORMALIZE))
     {
         ConvertIntToDecimalStringN(gStringVar1, power*(1.3), STR_CONV_MODE_RIGHT_ALIGN, 4);
@@ -2753,7 +2753,7 @@ static void ChangeMoveDisplayMode(u32 battler)
 	CopyWindowToVram(B_WIN_MOVE_NAME_3 , 3);
 
     //Move Accuracy
-    if (gBattleMoves[move].accuracy == 0)
+    if (accuracy == 0)
     {
         StringExpandPlaceholders(gStringVar1, gNoMissText);
     }

@@ -485,8 +485,8 @@ static const u8 sText_PkmnBrokeFree[] = _("Oh, no!\nThe Pokémon broke free!");
 static const u8 sText_ItAppearedCaught[] = _("Aww!\nIt appeared to be caught!");
 static const u8 sText_AarghAlmostHadIt[] = _("Aargh!\nAlmost had it!");
 static const u8 sText_ShootSoClose[] = _("Shoot!\nIt was so close, too!");
-static const u8 sText_GotchaPkmnCaughtPlayer[] = _("Gotcha!\n{B_DEF_NAME} was caught!{WAIT_SE}{PLAY_BGM MUS_CAUGHT}\p");
-static const u8 sText_GotchaPkmnCaughtWally[] = _("Gotcha!\n{B_DEF_NAME} was caught!{WAIT_SE}{PLAY_BGM MUS_CAUGHT}{PAUSE 127}");
+static const u8 sText_GotchaPkmnCaughtPlayer[] = _("Gotcha!\n{B_DEF_NAME} was caught!{WAIT_SE}{PLAY_BGM MUS_HG_CAUGHT}\p");
+static const u8 sText_GotchaPkmnCaughtWally[] = _("Gotcha!\n{B_DEF_NAME} was caught!{WAIT_SE}{PLAY_BGM MUS_HG_CAUGHT}{PAUSE 127}");
 static const u8 sText_GiveNicknameCaptured[] = _("Give a nickname to the\ncaptured {B_DEF_NAME}?");
 static const u8 sText_PkmnSentToPC[] = _("{B_DEF_NAME} was sent to\n{B_PC_CREATOR_NAME} PC.");
 static const u8 sText_Someones[] = _("someone's");
@@ -828,7 +828,6 @@ static const u8 sText_TargetIsHurtBySaltCure[] = _("{B_DEF_NAME_WITH_PREFIX} is 
 static const u8 sText_BattlerAbilitySetUpTailwind[] = _("{B_ATK_NAME_WITH_PREFIX}'s Tailstream set up \ntailwind!");
 static const u8 sText_OpportunistCopied[] = _("{B_SCR_ACTIVE_NAME_WITH_PREFIX} copied its\nopponent's stat changes!");
 static const u8 sText_TargetCoveredInStickyCandySyrup[] = _("{B_DEF_NAME_WITH_PREFIX} got covered\nin sticky syrup!");
-static const u8 sText_PkmnGained1EXP[] = _("{B_BUFF1} gained\n1 EXP. Point!\p");
 static const u8 sText_OminousAirCurrent[] = _("An ominous wind current is\nprotecting Ghost-type Pokémon!");
 static const u8 sText_GhostlyWindsDissipated[] = _("The ominous ghostly winds\nhave dissipated!{PAUSE 64}");
 static const u8 sText_OminousAirCurrentBlowsOn[] = _("The ominous air current\nblows on regardless!");
@@ -846,7 +845,7 @@ static const u8 sText_SwampEnvelopedSide[] = _("A swamp enveloped\n{B_DEF_TEAM2}
 static const u8 sText_TheSwampDisappeared[] = _("The swamp around {B_ATK_TEAM2}\nteam disappeared!");
 static const u8 sText_PkmnAlreadyHasAFrostbite[] = _("{B_DEF_NAME_WITH_PREFIX} already\nhas a frostbite.");
 static const u8 sText_HospitalityRestoration[] = _("The {B_ATK_PARTNER_NAME} drank down all\nthe matcha that Sinistcha made!");
-static const u8 sText_PkmnDidAmmountDamage[] = _("{B_ATK_NAME_WITH_PREFIX} did {B_BUFF4} damage!");
+static const u8 sText_PkmnDealtAmountDamage[] = _("{B_ATK_NAME_WITH_PREFIX} dealt {B_BUFF4} damage!");
 static const u8 sText_ElectroShockCharging[] = _("{B_ATK_NAME_WITH_PREFIX} absorbed\nelectricity!");
 static const u8 sText_ShedItsTail[] = _("{B_ATK_NAME_WITH_PREFIX} shed its tail\nto create a decoy!");
 
@@ -854,7 +853,7 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
 {
     [STRINGID_SHEDITSTAIL - BATTLESTRINGS_TABLE_START] = sText_ShedItsTail,
     [STRINGID_ELECTROSHOCKCHARGING - BATTLESTRINGS_TABLE_START] = sText_ElectroShockCharging,
-    [STRINGID_POKEMONDIDAMMOUNTDAMAGE - BATTLESTRINGS_TABLE_START] = sText_PkmnDidAmmountDamage,
+    [STRINGID_POKEMONDEALTAMOUNTDAMAGE - BATTLESTRINGS_TABLE_START] = sText_PkmnDealtAmountDamage,
     [STRINGID_HOSPITALITYRESTORATION - BATTLESTRINGS_TABLE_START] = sText_HospitalityRestoration,
     [STRINGID_PKMNALREADYHASFROSTBITE - BATTLESTRINGS_TABLE_START] = sText_PkmnAlreadyHasAFrostbite,
     [STRINGID_THESWAMPDISAPPEARED - BATTLESTRINGS_TABLE_START] = sText_TheSwampDisappeared,
@@ -1548,7 +1547,6 @@ const u8 *const gBattleStringsTable[BATTLESTRINGS_COUNT] =
     [STRINGID_ULTRABURSTCOMPLETED - BATTLESTRINGS_TABLE_START] = sText_UltraBurstCompleted,
     [STRINGID_TEAMGAINEDEXP - BATTLESTRINGS_TABLE_START] = sText_TeamGainedEXP,
     [STRINGID_TARGETCOVEREDINSTICKYCANDYSYRUP - BATTLESTRINGS_TABLE_START] = sText_TargetCoveredInStickyCandySyrup,
-    [STRINGID_PKMNGAINED1EXP - BATTLESTRINGS_TABLE_START] = sText_PkmnGained1EXP,
     [STRINGID_ATTACKWEAKENEDBGHOSTLYWINDS - BATTLESTRINGS_TABLE_START] = sText_AttackWeakenedByGhostlyWinds,
     [STRINGID_OMINOUSAIRCURRENTBLOWSON - BATTLESTRINGS_TABLE_START] = sText_OminousAirCurrentBlowsOn,
     [STRINGID_GHOSTLYWINDSDISSIPATED - BATTLESTRINGS_TABLE_START] = sText_GhostlyWindsDissipated,
@@ -3021,9 +3019,9 @@ void BufferStringBattle(u16 stringID, u32 battler)
 
         stringPtr = sText_AttackerUsedX;
         break;
-    case STRINGID_POKEMONDIDAMMOUNTDAMAGE: // pokemon did damage
+    case STRINGID_POKEMONDEALTAMOUNTDAMAGE: // pokemon did damage
         ConvertIntToDecimalStringN(gBattleTextBuff4, VarGet(VAR_DAMAGE_DONE), STR_CONV_MODE_LEFT_ALIGN, 4);
-        stringPtr = sText_PkmnDidAmmountDamage;
+        stringPtr = sText_PkmnDealtAmountDamage;
         break;
     case STRINGID_BATTLEEND: // battle end
         if (gBattleTextBuff1[0] & B_OUTCOME_LINK_BATTLE_RAN)
@@ -4027,6 +4025,11 @@ void BattlePutTextOnWindow(const u8 *text, u8 windowId)
     printerTemplate.fgColor = textInfo[windowId].fgColor;
     printerTemplate.bgColor = textInfo[windowId].bgColor;
     printerTemplate.shadowColor = textInfo[windowId].shadowColor;
+
+    if (B_WIN_MOVE_NAME_1 <= windowId && windowId <= B_WIN_MOVE_NAME_4)
+    {
+        printerTemplate.fontId = FONT_NARROWER;
+    }
 
     if (printerTemplate.x == 0xFF)
     {

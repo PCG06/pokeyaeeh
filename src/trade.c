@@ -3426,7 +3426,7 @@ static bool8 DoTradeAnim_Cable(void)
         gSprites[sTradeAnim->monSpriteIds[TRADE_PLAYER]].y2 = gMonFrontPicCoords[sTradeAnim->monSpecies[TRADE_PLAYER]].y_offset;
         sTradeAnim->state++;
         sTradeAnim->cachedMapMusic = GetCurrentMapMusic();
-        PlayNewMapMusic(MUS_EVOLUTION);
+        PlayNewMapMusic(MUS_DP_EVOLUTION);
         break;
     case STATE_MON_SLIDE_IN:
         if (sTradeAnim->bg2hofs > 0)
@@ -3825,7 +3825,7 @@ static bool8 DoTradeAnim_Cable(void)
         break;
     case STATE_TAKE_CARE_OF_MON:
         if (++sTradeAnim->timer == 10)
-            PlayFanfare(MUS_EVOLVED);
+            PlayFanfare(MUS_DP_EVOLVED);
 
         if (sTradeAnim->timer == 250)
         {
@@ -3899,7 +3899,7 @@ static bool8 DoTradeAnim_Wireless(void)
         gSprites[sTradeAnim->monSpriteIds[TRADE_PLAYER]].y2 = gMonFrontPicCoords[sTradeAnim->monSpecies[TRADE_PLAYER]].y_offset;
         sTradeAnim->state++;
         sTradeAnim->cachedMapMusic = GetCurrentMapMusic();
-        PlayNewMapMusic(MUS_EVOLUTION);
+        PlayNewMapMusic(MUS_DP_EVOLUTION);
         break;
     case STATE_MON_SLIDE_IN:
         if (sTradeAnim->bg2hofs > 0)
@@ -4322,7 +4322,7 @@ static bool8 DoTradeAnim_Wireless(void)
         break;
     case STATE_TAKE_CARE_OF_MON:
         if (++sTradeAnim->timer == 10)
-            PlayFanfare(MUS_EVOLVED);
+            PlayFanfare(MUS_DP_EVOLVED);
 
         if (sTradeAnim->timer == 250)
         {

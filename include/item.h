@@ -78,6 +78,7 @@ u32 GetItemStatus1Mask(u16 itemId);
 u32 GetItemStatus2Mask(u16 itemId);
 void DrawHeaderBox(void);
 void HideHeaderBox(void);
+u32 GetFreeSpaceForItemInBag(u16 itemId);
 
 enum ItemObtainFlags
 {
