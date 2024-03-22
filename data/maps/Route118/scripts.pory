@@ -26,7 +26,7 @@ Route118_OnFrame:
 Route118_EventScript_GoodRodFisherman::
 	lock
 	faceplayer
-	goto_if_set FLAG_RECEIVED_GOOD_ROD, Route118_EventScript_ReceivedGoodRod
+	goto_if_set FLAG_RECEIVED_SUPER_ROD, Route118_EventScript_ReceivedGoodRod
 	msgbox Route118_Text_YouAgreeGoodRodIsGood, MSGBOX_YESNO
 	goto_if_eq VAR_RESULT, YES, Route118_EventScript_ReceiveGoodRod
 	goto_if_eq VAR_RESULT, NO, Route118_EventScript_DeclineGoodRod
@@ -34,8 +34,8 @@ Route118_EventScript_GoodRodFisherman::
 
 Route118_EventScript_ReceiveGoodRod::
 	msgbox Route118_Text_IdenticalMindsTakeThis, MSGBOX_DEFAULT
-	giveitem ITEM_GOOD_ROD
-	setflag FLAG_RECEIVED_GOOD_ROD
+	giveitem ITEM_SUPER_ROD
+	setflag FLAG_RECEIVED_SUPER_ROD
 	msgbox Route118_Text_TryYourLuckFishing, MSGBOX_DEFAULT
 	release
 	end
@@ -265,14 +265,14 @@ Route118_Text_StevenQuestions:
 
 Route118_Text_YouAgreeGoodRodIsGood:
 	.string "Hmm!\n"
-	.string "A Good Rod is really good!\p"
+	.string "A Super Rod is really super!\p"
 	.string "Wouldn't you agree?$"
 
 Route118_Text_IdenticalMindsTakeThis:
 	.string "Hmm!\n"
 	.string "We're of identical minds!\p"
 	.string "Hmm!\n"
-	.string "Take this Good Rod!$"
+	.string "Take this Super Rod!$"
 
 Route118_Text_TryYourLuckFishing:
 	.string "Wherever there's water, try your luck\n"
@@ -283,7 +283,7 @@ Route118_Text_DontYouLikeToFish:
 
 Route118_Text_TryCatchingMonWithGoodRod:
 	.string "Try catching all sorts of Pokémon\n"
-	.string "with your Good Rod.$"
+	.string "with your Super Rod.$"
 
 Route118_Text_CanCrossRiversWithSurf:
 	.string "Even if there isn't a boat, you can\n"
