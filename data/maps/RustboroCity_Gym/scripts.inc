@@ -3,7 +3,7 @@ RustboroCity_Gym_MapScripts::
 
 RustboroCity_Gym_EventScript_Roxanne::
     setflag FLAG_NO_BAG_USE
-	trainerbattle_double TRAINER_ROXANNE_1, RustboroCity_Gym_Text_RoxanneIntro, RustboroCity_Gym_Text_RoxanneDefeat, RustboroCity_Gym_Text_RoxanneNeedTwoMons, RustboroCity_Gym_EventScript_RoxanneDefeated, NO_MUSIC
+	trainerbattle_single TRAINER_ROXANNE_1, RustboroCity_Gym_Text_RoxanneIntro, RustboroCity_Gym_Text_RoxanneDefeat, RustboroCity_Gym_EventScript_RoxanneDefeated, NO_MUSIC
 	specialvar VAR_RESULT, ShouldTryRematchBattle
 	goto_if_eq VAR_RESULT, TRUE, RustboroCity_Gym_EventScript_RoxanneRematch
 	goto_if_unset FLAG_RECEIVED_TM_ROCK_TOMB, RustboroCity_Gym_EventScript_GiveRockTomb
@@ -239,8 +239,8 @@ RustboroCity_Gym_Text_ExplainRockTomb:
 RustboroCity_Gym_Text_RoxannePostBattle:
 	.string "Since you think you are so strong,\n"
 	.string "go and challenge other Gym Leaders.\p"
-	.string "By battling more Trainers, you maybe\n"
-	.string "will learn some decency.$"
+	.string "By battling more Trainers, you will\n"
+	.string "maybe learn some decency.$"
 
 RustboroCity_Gym_Text_RoxanneNeedTwoMons:
 	.string "Hii, I am Dor! The Rustboro\n"

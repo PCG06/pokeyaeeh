@@ -975,14 +975,14 @@ Route104_EventScript_RematchCindy::
 	end
 
 Route104_EventScript_Gina::
-	trainerbattle_double TRAINER_GINA_AND_MIA_1, Route104_Text_GinaIntro, Route104_Text_GinaDefeat, Route104_Text_GinaNotEnoughMons
+	trainerbattle_single TRAINER_GINA_AND_MIA_1, Route104_Text_GinaIntro, Route104_Text_GinaDefeat
 	special GetPlayerBigGuyGirlString
 	msgbox Route104_Text_GinaPostBattle, MSGBOX_DEFAULT
 	release
 	end
 
 Route104_EventScript_Mia::
-	trainerbattle_double TRAINER_GINA_AND_MIA_1, Route104_Text_MiaIntro, Route104_Text_MiaDefeat, Route104_Text_MiaNotEnoughMons
+	trainerbattle_single TRAINER_GINA_AND_MIA_1, Route104_Text_MiaIntro, Route104_Text_MiaDefeat
 	special GetPlayerBigGuyGirlString
 	msgbox Route104_Text_MiaPostBattle, MSGBOX_DEFAULT
 	release
@@ -1168,11 +1168,14 @@ Route104_Text_BrendanPostBattle:
 
 Route104_EventScript_Ivan2::
 	msgbox Route104_EventScript_Ivan2_Text_0
-	giveitem ITEM_OLD_ROD, 1
+	givecustommon SPECIES_MAGIKARP, 15, ITEM_MYSTIC_WATER, ITEM_CHERISH_BALL, NATURE_JOLLY, 0, 0, 252, 4, 0, 0, 252, 31, 31, 31, 31, 0, 31, MOVE_SPLASH, MOVE_BOUNCE, MOVE_NONE, MOVE_NONE, TRUE
 	playfanfare MUS_OBTAIN_ITEM
+	message Route104_EventScript_Ivan2_Text_1
+	waitmessage
+	waitfanfare
 	giveitem ITEM_TM_BOUNCE, 1
 	playfanfare MUS_OBTAIN_ITEM
-	msgbox Route104_EventScript_Ivan2_Text_1, MSGBOX_NPC
+	msgbox Route104_EventScript_Ivan2_Text_2, MSGBOX_NPC
 	return
 
 
@@ -1182,17 +1185,17 @@ Route104_EventScript_Ivan::
 	checktrainerflag TRAINER_BILLY
 	goto_if 1, Route104_EventScript_Ivan_5
 Route104_EventScript_Ivan_3:
-	msgbox Route104_EventScript_Ivan_Text_3
+	msgbox Route104_EventScript_Ivan_Text_2
 Route104_EventScript_Ivan_1:
 	release
 	end
 
 Route104_EventScript_Ivan_2:
 	setflag FLAG_NO_BAG_USE
-	trainerbattle_double TRAINER_IVAN, Route104_EventScript_Ivan_Text_0, Route104_EventScript_Ivan_Text_1, Route104_EventScript_Ivan_Text_2, Route104_EventScript_Ivan2
+	trainerbattle_single TRAINER_IVAN, Route104_EventScript_Ivan_Text_0, Route104_EventScript_Ivan_Text_1, Route104_EventScript_Ivan2
 	clearflag FLAG_NO_BAG_USE
 	setflag FLAG_ROUTE_104_BOSS_DEFEATED
-	msgbox Route104_EventScript_Ivan2_Text_1
+	msgbox Route104_EventScript_Ivan2_Text_2
 	goto Route104_EventScript_Ivan_1
 
 Route104_EventScript_Ivan_4:
@@ -1222,28 +1225,22 @@ Route104_EventScript_Ivan_12:
 
 
 Route104_EventScript_Ivan2_Text_0:
-	.string "Ok, fine! I lost! You can have my\n"
-	.string "precious rod…$"
+	.string "Ok, fine! I lost! You can have my prized\n"
+	.string "possesion…$"
 
 Route104_EventScript_Ivan2_Text_1:
-	.string "Bouncy! Bouncy! Bouncy! Bounce is the\n"
-	.string "strongest Water-type move!$"
+	.string "{PLAYER} received Magikarp!$"
+
+Route104_EventScript_Ivan2_Text_2:
+	.string "Bouncy! Bouncy! Bouncy!\pBounce is the strongest Water-type\nmove!$"
 
 Route104_EventScript_Ivan_Text_0:
-	.string "Why keep it a secret? I'm the Water\n"
-	.string "Pokémon expert! Huh? You don't know\l"
-	.string "me?$"
+	.string "Why keep it a secret?\pI'm the Water Pokémon expert!\pHuh?\nYou don't know me?$"
 
 Route104_EventScript_Ivan_Text_1:
-	.string "I thought I wasn't too bad, if I may say\n"
-	.string "so, but I guess not… Bleah…$"
+	.string "I thought I wasn't too bad,\nif I may say so, but I guess not\p… Bleah…$"
 
 Route104_EventScript_Ivan_Text_2:
-	.string "Why keep it a secret? I'm the Water\n"
-	.string "Pokémon expert! Huh? Get more Pokémon\l"
-	.string "and I'll battle you.$"
-
-Route104_EventScript_Ivan_Text_3:
-	.string "I'm the Water Pokémon expert! Beat\n"
-	.string "every trainer here before approaching\l"
-	.string "me, little kiddo!$"
+	.string "I'm the Water Pokémon expert!\p"
+	.string "Beat every trainer here before\n"
+	.string "approaching me, little kiddo!$"

@@ -24,12 +24,12 @@ MtPyre_2F_EventScript_Mark::
 	end
 
 MtPyre_2F_EventScript_Luke::
-	trainerbattle_double TRAINER_DEZ_AND_LUKE, MtPyre_2F_Text_LukeIntro, MtPyre_2F_Text_LukeDefeat, MtPyre_2F_Text_LukeNotEnoughMons
+	trainerbattle_single TRAINER_DEZ_AND_LUKE, MtPyre_2F_Text_LukeIntro, MtPyre_2F_Text_LukeDefeat
 	msgbox MtPyre_2F_Text_LukePostBattle, MSGBOX_AUTOCLOSE
 	end
 
 MtPyre_2F_EventScript_Dez::
-	trainerbattle_double TRAINER_DEZ_AND_LUKE, MtPyre_2F_Text_DezIntro, MtPyre_2F_Text_DezDefeat, MtPyre_2F_Text_DezNotEnoughMons
+	trainerbattle_single TRAINER_DEZ_AND_LUKE, MtPyre_2F_Text_DezIntro, MtPyre_2F_Text_DezDefeat
 	msgbox MtPyre_2F_Text_DezPostBattle, MSGBOX_AUTOCLOSE
 	end
 

@@ -453,12 +453,12 @@ Route109_EventScript_Carter::
 	end
 
 Route109_EventScript_Paul::
-	trainerbattle_double TRAINER_MEL_AND_PAUL, Route109_Text_PaulIntro, Route109_Text_PaulDefeated, Route109_Text_PaulNotEnoughPokemon
+	trainerbattle_single TRAINER_MEL_AND_PAUL, Route109_Text_PaulIntro, Route109_Text_PaulDefeated
 	msgbox Route109_Text_PaulPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route109_EventScript_Mel::
-	trainerbattle_double TRAINER_MEL_AND_PAUL, Route109_Text_MelIntro, Route109_Text_MelDefeated, Route109_Text_MelNotEnoughPokemon
+	trainerbattle_single TRAINER_MEL_AND_PAUL, Route109_Text_MelIntro, Route109_Text_MelDefeated
 	msgbox Route109_Text_MelPostBattle, MSGBOX_AUTOCLOSE
 	end
 

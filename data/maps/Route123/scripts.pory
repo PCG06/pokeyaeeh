@@ -101,12 +101,12 @@ Route123_EventScript_RematchJacki::
 	end
 
 Route123_EventScript_Miu::
-	trainerbattle_double TRAINER_MIU_AND_YUKI, Route123_Text_MiuIntro, Route123_Text_MiuDefeat, Route123_Text_MiuNotEnoughMons
+	trainerbattle_single TRAINER_MIU_AND_YUKI, Route123_Text_MiuIntro, Route123_Text_MiuDefeat
 	msgbox Route123_Text_MiuPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 Route123_EventScript_Yuki::
-	trainerbattle_double TRAINER_MIU_AND_YUKI, Route123_Text_YukiIntro, Route123_Text_YukiDefeat, Route123_Text_YukiNotEnoughMons
+	trainerbattle_single TRAINER_MIU_AND_YUKI, Route123_Text_YukiIntro, Route123_Text_YukiDefeat
 	msgbox Route123_Text_YukiPostBattle, MSGBOX_AUTOCLOSE
 	end
 

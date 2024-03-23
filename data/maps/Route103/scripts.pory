@@ -208,7 +208,7 @@ Route103_EventScript_Daisy::
 	end
 
 Route103_EventScript_Amy::
-	trainerbattle_double TRAINER_AMY_AND_LIV_1, Route103_Text_AmyIntro, Route103_Text_AmyDefeated, Route103_Text_AmyNotEnoughPokemon, Route102_EventScript_AmyRegisterMatchCallAfterBattle
+	trainerbattle_single TRAINER_AMY_AND_LIV_1, Route103_Text_AmyIntro, Route103_Text_AmyDefeated, Route102_EventScript_AmyRegisterMatchCallAfterBattle
 	specialvar VAR_RESULT, ShouldTryRematchBattle
 	goto_if_eq VAR_RESULT, TRUE, Route102_EventScript_AmyRematch
 	msgbox Route103_Text_AmyPostBattle, MSGBOX_AUTOCLOSE
@@ -226,7 +226,7 @@ Route102_EventScript_AmyRematch::
 	end
 
 Route103_EventScript_Liv::
-	trainerbattle_double TRAINER_AMY_AND_LIV_1, Route103_Text_LivIntro, Route103_Text_LivDefeated, Route103_Text_LivNotEnoughPokemon, Route102_EventScript_LivRegisterMatchCallAfterBattle
+	trainerbattle_single TRAINER_AMY_AND_LIV_1, Route103_Text_LivIntro, Route103_Text_LivDefeated, Route102_EventScript_LivRegisterMatchCallAfterBattle
 	specialvar VAR_RESULT, ShouldTryRematchBattle
 	goto_if_eq VAR_RESULT, TRUE, Route102_EventScript_LivRematch
 	msgbox Route103_Text_LivPostBattle, MSGBOX_AUTOCLOSE

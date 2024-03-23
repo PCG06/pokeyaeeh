@@ -44,12 +44,12 @@ SSTidalRooms_EventScript_Thomas::
 	end
 
 SSTidalRooms_EventScript_Jed::
-	trainerbattle_double TRAINER_LEA_AND_JED, SSTidalRooms_Text_JedIntro, SSTidalRooms_Text_JedDefeat, SSTidalRooms_Text_JedNotEnoughMons
+	trainerbattle_single TRAINER_LEA_AND_JED, SSTidalRooms_Text_JedIntro, SSTidalRooms_Text_JedDefeat
 	msgbox SSTidalRooms_Text_JedPostBattle, MSGBOX_AUTOCLOSE
 	end
 
 SSTidalRooms_EventScript_Lea::
-	trainerbattle_double TRAINER_LEA_AND_JED, SSTidalRooms_Text_LeaIntro, SSTidalRooms_Text_LeaDefeat, SSTidalRooms_Text_LeaNotEnoughMons
+	trainerbattle_single TRAINER_LEA_AND_JED, SSTidalRooms_Text_LeaIntro, SSTidalRooms_Text_LeaDefeat
 	msgbox SSTidalRooms_Text_LeaPostBattle, MSGBOX_AUTOCLOSE
 	end
 

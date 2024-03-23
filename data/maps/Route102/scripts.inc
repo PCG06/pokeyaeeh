@@ -119,14 +119,14 @@ Route102_EventScript_Tiana::
 	checktrainerflag TRAINER_CALVIN_1
 	goto_if 1, Route102_EventScript_Tiana_5
 Route102_EventScript_Tiana_3:
-	msgbox Route102_EventScript_Tiana_Text_3
+	msgbox Route102_EventScript_Tiana_Text_2
 Route102_EventScript_Tiana_1:
 	release
 	end
 
 Route102_EventScript_Tiana_2:
 	setflag FLAG_NO_BAG_USE
-	trainerbattle_double TRAINER_TIANA, Route102_EventScript_Tiana_Text_0, Route102_EventScript_Tiana_Text_1, Route102_EventScript_Tiana_Text_2, Route102_EventScript_Tiana2
+	trainerbattle_single TRAINER_TIANA, Route102_EventScript_Tiana_Text_0, Route102_EventScript_Tiana_Text_1, Route102_EventScript_Tiana2
 	clearflag FLAG_NO_BAG_USE
 	setflag FLAG_ROUTE_102_BOSS_DEFEATED
 	msgbox Route102_EventScript_Tiana2_Text_1, MSGBOX_NPC
@@ -144,30 +144,17 @@ Route102_EventScript_Tiana_5:
 
 
 Route102_EventScript_Tiana2_Text_0:
-	.string "Ok, fine! I lost! Here, take these,\n"
-	.string "they'll help you in your journey.$"
+	.string "Ok, fine! I lost!\pHere, take these, they'll help you in\nyour journey.$"
 
 Route102_EventScript_Tiana2_Text_1:
-	.string "Lucky Eggs give more experience when\n"
-	.string "held in battle. Give it to your Pokémon\l"
-	.string "if you feel like it needs to get\l"
-	.string "stronger faster. The TM I gave you will\l"
-	.string "boost your Pokémon's Attack and\l"
-	.string "accuracy. It'll be useful in your\l"
-	.string "journey.$"
+	.string "Lucky Eggs give more experience when\nheld in battle.\pGive it to your Pokémon if you feel\nlike it needs to get stronger faster.\pThe TM I gave you will boost your\nPokémon's Attack and accuracy.\pIt'll be useful in your journey.$"
 
 Route102_EventScript_Tiana_Text_0:
-	.string "I'm going to keep winning and aim to be\n"
-	.string "the best Trainer. Help me further my\l"
-	.string "career!$"
+	.string "I'm going to keep winning and aim to be\nthe best Trainer.\pHelp me further my career!$"
 
 Route102_EventScript_Tiana_Text_1:
 	.string "I ended up furthering your career…$"
 
 Route102_EventScript_Tiana_Text_2:
-	.string "I want this to be a fair battle. Get\n"
-	.string "another Pokémon and talk to me again.$"
-
-Route102_EventScript_Tiana_Text_3:
-	.string "Why don't you beat every trainer here\n"
-	.string "before talking to me again?$"
+	.string "Why don't you beat every trainer\n"
+	.string "here before talking to me again?$"

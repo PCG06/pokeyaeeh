@@ -482,14 +482,14 @@ Route116_EventScript_Dawson::
 	checktrainerflag TRAINER_JOEY
 	goto_if 1, Route116_EventScript_Dawson_5
 Route116_EventScript_Dawson_3:
-	msgbox Route116_EventScript_Dawson_Text_3
+	msgbox Route116_EventScript_Dawson_Text_2
 Route116_EventScript_Dawson_1:
 	release
 	end
 
 Route116_EventScript_Dawson_2:
 	setflag FLAG_NO_BAG_USE
-	trainerbattle_double TRAINER_DAWSON, Route116_EventScript_Dawson_Text_0, Route116_EventScript_Dawson_Text_1, Route116_EventScript_Dawson_Text_2, Route116_EventScript_Dawson2
+	trainerbattle_single TRAINER_DAWSON, Route116_EventScript_Dawson_Text_0, Route116_EventScript_Dawson_Text_1, Route116_EventScript_Dawson2
 	clearflag FLAG_NO_BAG_USE
 	setflag FLAG_ROUTE_116_BOSS_DEFEATED
 	msgbox Route116_EventScript_Dawson2_Text_1, MSGBOX_NPC
@@ -537,31 +537,16 @@ Route116_EventScript_Dawson_17:
 
 
 Route116_EventScript_Dawson2_Text_0:
-	.string "Ok, fine! I lost! Here, take these,\n"
-	.string "they'll help you in your journey.$"
+	.string "Alrighty, fine! I lost!\pHere, take my stuff.$"
 
 Route116_EventScript_Dawson2_Text_1:
-	.string "Amulet Coin earn you more money in\n"
-	.string "trainer battles if your Pokémon is\l"
-	.string "holding it and participates in the\l"
-	.string "battle. And the TM, Nasty Plot, sharply\l"
-	.string "raises your Pokémon's Sp. Attack. If\l"
-	.string "you are good at battling, you can\l"
-	.string "efficiently make use of that move.$"
+	.string "Amulet Coin earns you more money in\ntrainer battles if your Pokémon\lholding it participates in the battle.\pAnd the TM, Nasty Plot,\nsharply raises your Pokémon's Sp. Attack.\pIf you are good at battling,\nyou can efficiently make use of that\lmove.$"
 
 Route116_EventScript_Dawson_Text_0:
-	.string "When you lay your eyes on my Pokémon's\n"
-	.string "gorgeous fur, their beauty will render\l"
-	.string "you helpless!$"
+	.string "When you lay your eyes on my\nPokémon's gorgeous fur,\ltheir beauty will render you helpless!$"
 
 Route116_EventScript_Dawson_Text_1:
 	.string "Oh, baby, say it isn't so!$"
 
 Route116_EventScript_Dawson_Text_2:
-	.string "Come on, partner! Get another Pokémon,\n"
-	.string "at least! My gorgeous Pokémon would\l"
-	.string "like a fair battle.$"
-
-Route116_EventScript_Dawson_Text_3:
-	.string "Why don't you beat every Trainer here\n"
-	.string "before approaching me again?$"
+	.string "Why don't you beat every Trainer here\nbefore approaching me again?$"
