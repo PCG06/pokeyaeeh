@@ -125,7 +125,9 @@ Route102_EventScript_Tiana_1:
 	end
 
 Route102_EventScript_Tiana_2:
+	setflag FLAG_NO_BAG_USE
 	trainerbattle_double TRAINER_TIANA, Route102_EventScript_Tiana_Text_0, Route102_EventScript_Tiana_Text_1, Route102_EventScript_Tiana_Text_2, Route102_EventScript_Tiana2
+	clearflag FLAG_NO_BAG_USE
 	setflag FLAG_ROUTE_102_BOSS_DEFEATED
 	msgbox Route102_EventScript_Tiana2_Text_1, MSGBOX_NPC
 	goto Route102_EventScript_Tiana_1
