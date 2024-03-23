@@ -142,7 +142,7 @@ Route117_EventScript_RegisterAnna::
 	end
 
 Route117_EventScript_RematchAnna::
-	trainerbattle_rematch_double TRAINER_ANNA_AND_MEG_1, Route117_Text_AnnaRematchIntro, Route117_Text_AnnaRematchDefeat, Route117_Text_AnnaRematchNotEnoughMons
+	trainerbattle_rematch TRAINER_ANNA_AND_MEG_1, Route117_Text_AnnaRematchIntro, Route117_Text_AnnaRematchDefeat
 	msgbox Route117_Text_AnnaPostRematch, MSGBOX_AUTOCLOSE
 	end
 
@@ -161,7 +161,7 @@ Route117_EventScript_RegisterMeg::
 	end
 
 Route117_EventScript_RematchMeg::
-	trainerbattle_rematch_double TRAINER_ANNA_AND_MEG_1, Route117_Text_MegRematchIntro, Route117_Text_MegRematchDefeat, Route117_Text_MegRematchNotEnoughMons
+	trainerbattle_rematch TRAINER_ANNA_AND_MEG_1, Route117_Text_MegRematchIntro, Route117_Text_MegRematchDefeat
 	msgbox Route117_Text_MegPostRematch, MSGBOX_AUTOCLOSE
 	end
 

@@ -67,7 +67,7 @@ Route124_EventScript_RegisterLila::
 	end
 
 Route124_EventScript_RematchLila::
-	trainerbattle_rematch_double TRAINER_LILA_AND_ROY_1, Route124_Text_LilaRematchIntro, Route124_Text_LilaRematchDefeat, Route124_Text_LilaRematchNotEnoughMons
+	trainerbattle_rematch TRAINER_LILA_AND_ROY_1, Route124_Text_LilaRematchIntro, Route124_Text_LilaRematchDefeat
 	msgbox Route124_Text_LilaPostRematch, MSGBOX_AUTOCLOSE
 	end
 
@@ -86,7 +86,7 @@ Route124_EventScript_RegisterRoy::
 	end
 
 Route124_EventScript_RematchRoy::
-	trainerbattle_rematch_double TRAINER_LILA_AND_ROY_1, Route124_Text_RoyRematchIntro, Route124_Text_RoyRematchDefeat, Route124_Text_RoyRematchNotEnoughMons
+	trainerbattle_rematch TRAINER_LILA_AND_ROY_1, Route124_Text_RoyRematchIntro, Route124_Text_RoyRematchDefeat
 	msgbox Route124_Text_RoyPostRematch, MSGBOX_AUTOCLOSE
 	end
 
