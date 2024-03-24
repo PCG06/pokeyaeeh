@@ -1985,95 +1985,19 @@ static void MoveSelectionDisplayMoveTypeDoubles(u8 targetId, u32 battler)
 static void MoveSelectionDisplayMoveType(u32 battler)
 {
     u8 *txtPtr;
+    u8 type;
+    u32 battlerAtk = battler;
+    struct Pokemon *mon;
     struct ChooseMoveStruct *moveInfo = (struct ChooseMoveStruct *)(&gBattleResources->bufferA[battler][4]);
-    u32 move = moveInfo->moves[gMoveSelectionCursor[battler]];
-    u32 moveType = gBattleMoves[move].type;
-    u32 atkAbility = GetBattlerAbility(battler);
-    u32 ateAbility = atkAbility;
+    u16 move = moveInfo->moves[gMoveSelectionCursor[battler]];
+    u8 moveType = GetTypeBeforeUsingMove(move, battlerAtk);
 
     txtPtr = StringCopy(gDisplayedStringBattle, gText_MoveInterfaceType);
     *(txtPtr)++ = EXT_CTRL_CODE_BEGIN;
     *(txtPtr)++ = EXT_CTRL_CODE_FONT;
     *(txtPtr)++ = FONT_NORMAL;
 
-    if (moveInfo->moves[gMoveSelectionCursor[battler]] == MOVE_HIDDEN_POWER)
-    {
-        u8 typeBits  = ((GetMonData(&gPlayerParty[gBattlerPartyIndexes[battler]], MON_DATA_HP_IV) & 1) << 0)
-                     | ((GetMonData(&gPlayerParty[gBattlerPartyIndexes[battler]], MON_DATA_ATK_IV) & 1) << 1)
-                     | ((GetMonData(&gPlayerParty[gBattlerPartyIndexes[battler]], MON_DATA_DEF_IV) & 1) << 2)
-                     | ((GetMonData(&gPlayerParty[gBattlerPartyIndexes[battler]], MON_DATA_SPEED_IV) & 1) << 3)
-                     | ((GetMonData(&gPlayerParty[gBattlerPartyIndexes[battler]], MON_DATA_SPATK_IV) & 1) << 4)
-                     | ((GetMonData(&gPlayerParty[gBattlerPartyIndexes[battler]], MON_DATA_SPDEF_IV) & 1) << 5);
-
-        u8 type = (15 * typeBits) / 63 + 1;
-        if (type >= TYPE_MYSTERY)
-            type++;
-        type |= 0xC0;
-        StringCopy(txtPtr, gTypeNames[type & 0x3F]);
-    }
-
-    else if ((gBattleMoves[move].type != TYPE_NORMAL)
-        && gBattleMoves[move].effect != EFFECT_HIDDEN_POWER
-        && gBattleMoves[move].effect != EFFECT_WEATHER_BALL
-        && gBattleMoves[move].effect != EFFECT_CHANGE_TYPE_ON_ITEM
-        && gBattleMoves[move].effect != EFFECT_NATURAL_GIFT
-        && gBattleMoves[move].effect != EFFECT_TERRAIN_PULSE
-        && gBattleMoves[move].effect != EFFECT_CHANGE_TYPE_ON_ITEM
-        && (ateAbility == ABILITY_NORMALIZE))
-    {
-        StringCopy(txtPtr, gTypeNames[TYPE_NORMAL]);
-    }
-
-    else if ((gBattleMoves[move].soundMove == TRUE) && (atkAbility == ABILITY_LIQUID_VOICE))
-    {
-        StringCopy(txtPtr, gTypeNames[TYPE_WATER]);
-    }
-
-    else if ((moveType == TYPE_NORMAL)
-        && gBattleMoves[move].effect != EFFECT_HIDDEN_POWER
-        && gBattleMoves[move].effect != EFFECT_WEATHER_BALL
-        && gBattleMoves[move].effect != EFFECT_CHANGE_TYPE_ON_ITEM
-        && gBattleMoves[move].effect != EFFECT_NATURAL_GIFT)
-    {
-        if (ateAbility == ABILITY_PIXILATE)
-        {
-            StringCopy(txtPtr, gTypeNames[TYPE_FAIRY]);
-        }
-        else if (ateAbility == ABILITY_REFRIGERATE)
-        {
-            StringCopy(txtPtr, gTypeNames[TYPE_ICE]);
-        }
-        else if (ateAbility == ABILITY_AERILATE)
-        {
-            StringCopy(txtPtr, gTypeNames[TYPE_FLYING]);
-        }
-        else if (ateAbility == ABILITY_GALVANIZE)
-        {
-            StringCopy(txtPtr, gTypeNames[TYPE_ELECTRIC]);
-        }
-        else if (ateAbility == ABILITY_HERBIVATE)
-        {
-            StringCopy(txtPtr, gTypeNames[TYPE_GRASS]);
-        }
-        else if (ateAbility == ABILITY_SCORCHATE)
-        {
-            StringCopy(txtPtr, gTypeNames[TYPE_FIRE]);
-        }
-        else if (ateAbility == ABILITY_OCEANATE)
-        {
-            StringCopy(txtPtr, gTypeNames[TYPE_WATER]);
-        }
-        else
-        {
-            StringCopy(txtPtr, gTypeNames[gBattleMoves[moveInfo->moves[gMoveSelectionCursor[battler]]].type]);
-        }
-    }
-
-    else
-    {
-        StringCopy(txtPtr, gTypeNames[gBattleMoves[moveInfo->moves[gMoveSelectionCursor[battler]]].type]);
-    }
-
+    StringCopy(txtPtr, gTypeNames[moveType]);
     BattlePutTextOnWindow(gDisplayedStringBattle, TypeEffectiveness(moveInfo, 1, battler));
     MoveSelectionDisplaySplitIcon(battler);
 }
