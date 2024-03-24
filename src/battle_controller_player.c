@@ -1976,24 +1976,82 @@ u8 TypeEffectiveness(struct ChooseMoveStruct *moveInfo, u8 targetId, u32 battler
 u8 TypeEffectiveness(u8 targetId, u32 battler)
 {
     u16 move = gBattleMons[battler].moves[gMoveSelectionCursor[battler]];
-    u32 moveType;
-    uq4_12_t modifier;
     u32 battlerAtk = battler;
-    moveType = GetTypeBeforeUsingMove(move, battlerAtk);
+    u32 moveType = GetTypeBeforeUsingMove(move, battlerAtk);
+    u32 defAbility = GetBattlerAbility(targetId);
 
-    modifier = CalcTypeEffectivenessMultiplier(move, moveType, battler, targetId, GetBattlerAbility(targetId), TRUE);
+    struct ChooseMoveStruct *moveInfo;
+    u16 mod1 = sTypeEffectivenessTable[gBattleMoves[moveInfo->moves[gMoveSelectionCursor[battler]]].type][gBattleMons[targetId].type1];
+	u16 mod2 = sTypeEffectivenessTable[gBattleMoves[moveInfo->moves[gMoveSelectionCursor[battler]]].argument][gBattleMons[targetId].type1];
+    u16 mod3 = sTypeEffectivenessTable[gBattleMoves[moveInfo->moves[gMoveSelectionCursor[battler]]].argument][gBattleMons[targetId].type2];
+    u16 tempMod = 0;
+    uq4_12_t modifier = CalcTypeEffectivenessMultiplier(move, moveType, battler, targetId, defAbility, TRUE);
 
-    if (modifier == UQ_4_12(0.0)) {
-			return COLOR_IMMUNE; // 26 - no effect
+    if (gBattleMoves[moveInfo->moves[gMoveSelectionCursor[battler]]].effect == EFFECT_TWO_TYPED_MOVE)
+	{
+		MulModifier(&mod1, mod2);
+
+		if (gBattleMons[targetId].type2 != gBattleMons[targetId].type1)
+		{
+		    MulModifier(&mod1, mod3);
+		}
+	}
+
+    switch ((gBattleWeather & B_WEATHER_PRIMAL_ANY) && WEATHER_HAS_EFFECT)
+    {
+        case B_WEATHER_STRONG_WINDS:
+            {
+                if (((gBattleMons[targetId].type1 == TYPE_FLYING) && (GetTypeModifier(moveType, gBattleMons[targetId].type1) >= UQ_4_12(2.0)))
+                || ((gBattleMons[targetId].type2 == TYPE_FLYING) && (GetTypeModifier(moveType, gBattleMons[targetId].type2) >= UQ_4_12(2.0)))
+                || ((gBattleMons[targetId].type3 == TYPE_FLYING) && (GetTypeModifier(moveType, gBattleMons[targetId].type3) >= UQ_4_12(2.0))))
+                {
+                    tempMod = UQ_4_12(0.5);
+                    MulModifier(&mod1, tempMod);
+                }
+            }
+        break;
+        case B_WEATHER_GHOSTLY_WINDS:
+            {
+                if (((gBattleMons[targetId].type1 == TYPE_GHOST) && (GetTypeModifier(moveType, gBattleMons[targetId].type1) >= UQ_4_12(2.0)))
+                || ((gBattleMons[targetId].type2 == TYPE_GHOST) && (GetTypeModifier(moveType, gBattleMons[targetId].type2) >= UQ_4_12(2.0)))
+                || ((gBattleMons[targetId].type3 == TYPE_GHOST) && (GetTypeModifier(moveType, gBattleMons[targetId].type3) >= UQ_4_12(2.0))))
+                {
+                    tempMod = UQ_4_12(0.5);
+                    MulModifier(&mod1, tempMod);
+                }
+            }
+        break;
+        //  These both don't work and I don't know why
+        case B_WEATHER_SUN_PRIMAL:
+            {
+                if (moveType == TYPE_WATER)
+                    tempMod = UQ_4_12(0.0);
+                    MulModifier(&mod1, tempMod);
+            }
+        break;
+        case B_WEATHER_RAIN_PRIMAL:
+            {
+                if (moveType == TYPE_FIRE)
+                    tempMod = UQ_4_12(0.0);
+                    MulModifier(&mod1, tempMod);
+            }
+        break;
     }
-    else if (modifier <= UQ_4_12(0.5)) {
-            return COLOR_NOT_VERY_EFFECTIVE; // 25 - not very effective
+
+    if (modifier == UQ_4_12(0.0))
+    {
+	    return COLOR_IMMUNE;
     }
-    else if (modifier >= UQ_4_12(2.0)) {
-            return COLOR_SUPER_EFFECTIVE; // 24 - super effective
+    else if (modifier <= UQ_4_12(0.5))
+    {
+        return COLOR_NOT_VERY_EFFECTIVE;
+    }
+    else if (modifier >= UQ_4_12(2.0))
+    {
+        return COLOR_SUPER_EFFECTIVE;
     }
     else
-        return COLOR_EFFECTIVE; // 10 - normal effectiveness
+        return COLOR_EFFECTIVE;
 }
 
 static void MoveSelectionDisplayMoveTypeDoubles(u8 targetId, u32 battler)
