@@ -1780,7 +1780,7 @@ static void MoveSelectionDisplayPpNumber(u32 battler)
     BattlePutTextOnWindow(gDisplayedStringBattle, B_WIN_PP_REMAINING);
 }
 
-static void MulModifier(u16 *modifier, u16 val)
+static void MulModifier(u32 *modifier, u32 val)
 {
 	*modifier = UQ_4_12_TO_INT((*modifier * val) + UQ_4_12_ROUND);
 }
@@ -1978,14 +1978,18 @@ u8 TypeEffectiveness(u8 targetId, u32 battler)
     u16 move = gBattleMons[battler].moves[gMoveSelectionCursor[battler]];
     u32 battlerAtk = battler;
     u32 moveType = GetTypeBeforeUsingMove(move, battlerAtk);
+    u32 atkAbility = GetBattlerAbility(battlerAtk);
     u32 defAbility = GetBattlerAbility(targetId);
+    u32 contactMove = IsMoveMakingContact(move, battlerAtk);
+    u32 attackingMove = !(gBattleMoves[move].split == SPLIT_STATUS); // or gBattleMoves[move].power > 0;
+    u32 moldBreaker = IsMoldBreakerTypeAbility(atkAbility);
 
     struct ChooseMoveStruct *moveInfo;
-    u16 mod1 = sTypeEffectivenessTable[gBattleMoves[moveInfo->moves[gMoveSelectionCursor[battler]]].type][gBattleMons[targetId].type1];
-	u16 mod2 = sTypeEffectivenessTable[gBattleMoves[moveInfo->moves[gMoveSelectionCursor[battler]]].argument][gBattleMons[targetId].type1];
-    u16 mod3 = sTypeEffectivenessTable[gBattleMoves[moveInfo->moves[gMoveSelectionCursor[battler]]].argument][gBattleMons[targetId].type2];
-    u16 tempMod = 0;
-    uq4_12_t modifier = CalcTypeEffectivenessMultiplier(move, moveType, battler, targetId, defAbility, TRUE);
+    u32 mod1 = sTypeEffectivenessTable[gBattleMoves[moveInfo->moves[gMoveSelectionCursor[battler]]].type][gBattleMons[targetId].type1];
+	u32 mod2 = sTypeEffectivenessTable[gBattleMoves[moveInfo->moves[gMoveSelectionCursor[battler]]].argument][gBattleMons[targetId].type1];
+    u32 mod3 = sTypeEffectivenessTable[gBattleMoves[moveInfo->moves[gMoveSelectionCursor[battler]]].argument][gBattleMons[targetId].type2];
+    u32 tempMod = 0;
+    u32 modifier = CalcTypeEffectivenessMultiplier(move, moveType, battler, targetId, defAbility, TRUE);
 
     if (gBattleMoves[moveInfo->moves[gMoveSelectionCursor[battler]]].effect == EFFECT_TWO_TYPED_MOVE)
 	{
@@ -1996,59 +2000,246 @@ u8 TypeEffectiveness(u8 targetId, u32 battler)
 		    MulModifier(&mod1, mod3);
 		}
 	}
-
-    switch ((gBattleWeather & B_WEATHER_PRIMAL_ANY) && WEATHER_HAS_EFFECT)
+    
+    // Moves against specific Abilities and Weather
+    switch (moveType)
     {
-        case B_WEATHER_STRONG_WINDS:
-            {
-                if (((gBattleMons[targetId].type1 == TYPE_FLYING) && (GetTypeModifier(moveType, gBattleMons[targetId].type1) >= UQ_4_12(2.0)))
-                || ((gBattleMons[targetId].type2 == TYPE_FLYING) && (GetTypeModifier(moveType, gBattleMons[targetId].type2) >= UQ_4_12(2.0)))
-                || ((gBattleMons[targetId].type3 == TYPE_FLYING) && (GetTypeModifier(moveType, gBattleMons[targetId].type3) >= UQ_4_12(2.0))))
+        case TYPE_FIRE:
+        {
+            // Target Ability
+            if (((defAbility == ABILITY_FLASH_FIRE) || (defAbility == ABILITY_WELL_BAKED_BODY))
+                && !(moldBreaker))
+                return COLOR_IMMUNE;
+
+            if (((defAbility == ABILITY_HEATPROOF) || (defAbility == ABILITY_THICK_FAT) || (defAbility == ABILITY_WATER_BUBBLE))
+                && (!(moldBreaker) && attackingMove))
                 {
                     tempMod = UQ_4_12(0.5);
-                    MulModifier(&mod1, tempMod);
+                    MulModifier(&modifier, tempMod);
                 }
-            }
+
+            if (((defAbility == ABILITY_DRY_SKIN) || ((defAbility == ABILITY_FLUFFY) && !contactMove))
+                && ((!moldBreaker) && attackingMove))
+                {
+                    tempMod = UQ_4_12(2.0); // even though dry skin is just 1.25x its still more than 1.0x
+                    MulModifier(&modifier, tempMod);
+                }
+
+            // Weather (primal)
+            if ((gBattleWeather & B_WEATHER_RAIN_PRIMAL) && WEATHER_HAS_EFFECT)
+                return COLOR_IMMUNE;
+        }
         break;
-        case B_WEATHER_GHOSTLY_WINDS:
-            {
-                if (((gBattleMons[targetId].type1 == TYPE_GHOST) && (GetTypeModifier(moveType, gBattleMons[targetId].type1) >= UQ_4_12(2.0)))
-                || ((gBattleMons[targetId].type2 == TYPE_GHOST) && (GetTypeModifier(moveType, gBattleMons[targetId].type2) >= UQ_4_12(2.0)))
-                || ((gBattleMons[targetId].type3 == TYPE_GHOST) && (GetTypeModifier(moveType, gBattleMons[targetId].type3) >= UQ_4_12(2.0))))
+        case TYPE_WATER:
+        {
+            // Target Ability
+            if (((defAbility == ABILITY_WATER_ABSORB) || (defAbility == ABILITY_STORM_DRAIN) || (defAbility == ABILITY_STEAM_ENGINE))
+                && (!moldBreaker))
+                return COLOR_IMMUNE;
+
+            // Weather (primal)
+            if ((gBattleWeather & B_WEATHER_SUN_PRIMAL) && WEATHER_HAS_EFFECT)
+                return COLOR_IMMUNE;
+        }
+        break;
+        case TYPE_GRASS:
+        {
+            // Target Ability
+            if (((defAbility == ABILITY_SAP_SIPPER))
+                && (!moldBreaker))
+                return COLOR_IMMUNE;
+        }
+        break;
+        case TYPE_ELECTRIC:
+        {
+            // Target Ability
+            if (((defAbility == ABILITY_VOLT_ABSORB) || (defAbility == ABILITY_LIGHTNING_ROD) || (defAbility == ABILITY_MOTOR_DRIVE))
+                && (!moldBreaker))
+                return COLOR_IMMUNE;
+        }
+        break;
+        case TYPE_GROUND:
+        {
+            // Target Ability
+            if ((((defAbility == ABILITY_LEVITATE) && !(IsBattlerGrounded)) || (defAbility == ABILITY_EARTH_EATER))
+                && (!moldBreaker))
+                return COLOR_IMMUNE;
+        }
+        break;
+        case TYPE_GHOST:
+        {
+            // Target Ability
+            if ((defAbility == ABILITY_PURIFYING_SALT)
+                && (!moldBreaker))
                 {
                     tempMod = UQ_4_12(0.5);
-                    MulModifier(&mod1, tempMod);
+                    MulModifier(&modifier, tempMod);
                 }
-            }
-        break;
-        //  These both don't work and I don't know why
-        case B_WEATHER_SUN_PRIMAL:
-            {
-                if (moveType == TYPE_WATER)
-                    tempMod = UQ_4_12(0.0);
-                    MulModifier(&mod1, tempMod);
-            }
-        break;
-        case B_WEATHER_RAIN_PRIMAL:
-            {
-                if (moveType == TYPE_FIRE)
-                    tempMod = UQ_4_12(0.0);
-                    MulModifier(&mod1, tempMod);
-            }
+        }
         break;
     }
 
-    if (modifier == UQ_4_12(0.0))
+    // Move Effects
+    switch (gBattleMoves[move].effect)
     {
-	    return COLOR_IMMUNE;
+        case EFFECT_SLEEP:
+        case EFFECT_DARK_VOID:
+        {    
+            if (!CanSleep(targetId))
+                return COLOR_IMMUNE;
+        }
+        break;
+        case EFFECT_TOXIC:
+        case EFFECT_POISON:
+        {
+            if (!CanBePoisoned(battlerAtk, targetId))
+                return COLOR_IMMUNE;
+        }
+        break;
+        case EFFECT_WILL_O_WISP:
+        {   
+            if (!CanBeBurned(targetId))
+                return COLOR_IMMUNE;
+        }
+        break;
+        case EFFECT_PARALYZE:
+        {
+            if (!CanBeParalyzed(targetId))
+                return COLOR_IMMUNE;
+        }
+        break;
+        case EFFECT_CONFUSE:
+        {
+            if (!CanBeConfused(targetId))
+                    return COLOR_IMMUNE;
+        }
+        break;
+        case EFFECT_LEECH_SEED:
+        {
+            if (IS_BATTLER_OF_TYPE(targetId, TYPE_GRASS))
+                return COLOR_IMMUNE;
+        }
+        break;
+        case EFFECT_SKILL_SWAP:
+        {
+            if (IsSkillSwapBannedAbility(defAbility))
+                return COLOR_IMMUNE;
+        }
+        break;
+        case EFFECT_ROLE_PLAY:
+        case EFFECT_DOODLE:
+        {
+            if (IsRolePlayDoodleBannedAbility(defAbility))
+                return COLOR_IMMUNE;
+        }
+        break;
+        case EFFECT_WORRY_SEED:
+        {
+            if (IsWorrySeedBannedAbility(defAbility))
+                return COLOR_IMMUNE;
+        }
+        break;
+        case EFFECT_GASTRO_ACID:
+        {
+            if (IsGastroAcidBannedAbility(defAbility))
+                return COLOR_IMMUNE;
+        }
+        break;
+        case EFFECT_ENTRAINMENT:
+        {
+            if (IsEntrainmentBannedAbility(defAbility))
+                return COLOR_IMMUNE;
+        }
+        break;
+        case EFFECT_SIMPLE_BEAM:
+        {
+            if (IsSimpleBeamBannedAbility(defAbility))
+                return COLOR_IMMUNE;
+        }
+        break;
     }
-    else if (modifier <= UQ_4_12(0.5))
+
+    // Ability cases
+    switch (defAbility)
     {
-        return COLOR_NOT_VERY_EFFECTIVE;
+        case ABILITY_SOUNDPROOF:
+        {
+            if ((gBattleMoves[move].soundMove) && (!moldBreaker))
+                return COLOR_IMMUNE;
+        }
+        break;
+        case ABILITY_BULLETPROOF:
+        {
+            if ((gBattleMoves[move].ballisticMove) && (!moldBreaker))
+                return COLOR_IMMUNE;
+        }
+        break;
+        case ABILITY_OVERCOAT:
+        {
+            if ((gBattleMoves[move].powderMove) && (!moldBreaker))
+                return COLOR_IMMUNE;
+        }
+        break;
+        case ABILITY_WIND_RIDER:
+        case ABILITY_WIND_POWER:
+        {
+            if ((gBattleMoves[move].windMove) && (!moldBreaker))
+                return COLOR_IMMUNE;
+        }
+        break;
     }
-    else if (modifier >= UQ_4_12(2.0))
+
+    // I don't know how to keep these inside the switch case lol
+    if ((gBattleMons[targetId].ability == ABILITY_QUEENLY_MAJESTY) ||
+        ((gBattleMons[BATTLE_PARTNER(targetId)].ability == ABILITY_QUEENLY_MAJESTY) && (IsBattlerAlive(BATTLE_PARTNER(targetId)))))
     {
-        return COLOR_SUPER_EFFECTIVE;
+        if (GetMovePriority(battlerAtk, move) > 0 && gBattleMoves[move].target != MOVE_TARGET_USER)
+            return COLOR_IMMUNE;
+    }
+
+    if ((gBattleMons[targetId].ability == ABILITY_DAZZLING) ||
+        ((gBattleMons[BATTLE_PARTNER(targetId)].ability == ABILITY_DAZZLING) && (IsBattlerAlive(BATTLE_PARTNER(targetId)))))
+    {
+        if (GetMovePriority(battlerAtk, move) > 0 && gBattleMoves[move].target != MOVE_TARGET_USER)
+            return COLOR_IMMUNE;
+    }
+
+    if ((gBattleMons[targetId].ability == ABILITY_ARMOR_TAIL) ||
+        ((gBattleMons[BATTLE_PARTNER(targetId)].ability == ABILITY_ARMOR_TAIL) && (IsBattlerAlive(BATTLE_PARTNER(targetId)))))
+    {
+        if (GetMovePriority(battlerAtk, move) > 0 && gBattleMoves[move].target != MOVE_TARGET_USER)
+            return COLOR_IMMUNE;
+    }
+
+    // Type specific cases
+    if (IS_BATTLER_OF_TYPE(targetId, TYPE_GRASS))
+    {
+        if (gBattleMoves[move].powderMove == TRUE)
+            return COLOR_IMMUNE;
+    }
+
+    if (IS_BATTLER_OF_TYPE(targetId, TYPE_GROUND))
+    {
+        if (move == MOVE_THUNDER_WAVE)
+            return COLOR_IMMUNE;
+    }
+    
+    if (attackingMove)
+    {
+        if(modifier == UQ_4_12(0.0))
+        {
+	        return COLOR_IMMUNE;
+        }
+        else if (modifier <= UQ_4_12(0.5))
+        {
+            return COLOR_NOT_VERY_EFFECTIVE;
+        }
+        else if (modifier >= UQ_4_12(2.0))
+        {
+            return COLOR_SUPER_EFFECTIVE;
+        }
+        else
+            return COLOR_EFFECTIVE;
     }
     else
         return COLOR_EFFECTIVE;
@@ -2066,7 +2257,7 @@ static void MoveSelectionDisplayMoveTypeDoubles(u8 targetId, u32 battler)
     u8 battlerType1 = gBattleMons[battler].type1;
     u8 battlerType2 = gBattleMons[battler].type2;
 
-	txtPtr = StringCopy(gDisplayedStringBattle, gTypeNames[moveType]);
+	txtPtr = StringCopy(gDisplayedStringBattle, gFullTypeNames[moveType]);
 
     if (typeColor != COLOR_EFFECTIVE) {
         *(txtPtr)++ = EXT_CTRL_CODE_BEGIN;
@@ -2107,7 +2298,7 @@ static void MoveSelectionDisplayMoveType(u32 battler)
     u8 battlerType1 = gBattleMons[battler].type1;
     u8 battlerType2 = gBattleMons[battler].type2;
 
-    txtPtr = StringCopy(gDisplayedStringBattle, gTypeNames[moveType]);
+    txtPtr = StringCopy(gDisplayedStringBattle, gFullTypeNames[moveType]);
 
     if (typeColor != COLOR_EFFECTIVE) {
         *(txtPtr)++ = EXT_CTRL_CODE_BEGIN;
