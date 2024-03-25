@@ -2100,9 +2100,9 @@ const u8 gText_BattleSwitchWhich2[] = _("{PALETTE 5}{COLOR_HIGHLIGHT_SHADOW DYNA
 const u8 gText_BattleSwitchWhich3[] = _("{UP_ARROW}");
 const u8 gText_BattleSwitchWhich4[] = _("{ESCAPE 4}");
 const u8 gText_BattleSwitchWhich5[] = _("-");
-const u8 gText_MoveInterfaceSuperEffective[] = _("{CLEAR_TO 44} {UP_ARROW}");
-const u8 gText_MoveInterfaceNotVeryEffective[] = _("{CLEAR_TO 44} {DOWN_ARROW}");
-const u8 gText_MoveInterfaceImmune[] = _("{CLEAR_TO 44} ×");
+const u8 gText_MoveInterfaceSuperEffective[] = _("{CLEAR_TO 42} {UP_ARROW_2}");
+const u8 gText_MoveInterfaceNotVeryEffective[] = _("{CLEAR_TO 42} {DOWN_ARROW_2}");
+const u8 gText_MoveInterfaceImmune[] = _("{CLEAR_TO 42} {BIG_MULT_X}");
 const u8 gText_MoveInterfaceSTAB[] = _("+");
 
 // Unused
