@@ -14710,6 +14710,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
         .priority = 0,
         .split = SPLIT_SPECIAL,
         .zMoveEffect = Z_EFFECT_NONE,
+        .windMove = TRUE,
         .sheerForceBoost = TRUE,
     },
 
