@@ -976,6 +976,9 @@ static void HandleEditingStatInput(u32 input)
                     sStatEditorDataPtr->editingStat += EV_MAX_TOTAL - sStatEditorDataPtr->evTotal;
                 else
                     sStatEditorDataPtr->editingStat = EV_MAX_SINGLE_STAT;
+
+                if (sStatEditorDataPtr->editingStat > EV_MAX_SINGLE_STAT)
+                    sStatEditorDataPtr->editingStat = EV_MAX_SINGLE_STAT;
             }
             else
             {
