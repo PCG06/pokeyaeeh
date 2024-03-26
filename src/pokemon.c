@@ -4549,7 +4549,8 @@ void CalculateMonStats(struct Pokemon *mon)
 
     SetMonData(mon, MON_DATA_LEVEL, &level);
 
-    if(B_PERFECT_IVS == TRUE){
+    if(B_PERFECT_IVS == TRUE)
+    {
         hpIV 		= 31;
 		attackIV 	= 31;
 		defenseIV 	= 31;
@@ -8104,7 +8105,8 @@ u8 GetNumberOfEggMoves(struct Pokemon *mon)
     {
         hasMonMove = FALSE;
         
-        for (j = 0; j < MAX_MON_MOVES; j++){
+        for (j = 0; j < MAX_MON_MOVES; j++)
+        {
             if(learnedMoves[j] == eggMoveBuffer[i])
                 hasMonMove = TRUE;
         }
@@ -8135,7 +8137,8 @@ u8 GetEggMoveTutorMoves(struct Pokemon *mon, u16 *moves)
     {
         hasMonMove = FALSE;
 
-        for (j = 0; j < MAX_MON_MOVES; j++){
+        for (j = 0; j < MAX_MON_MOVES; j++)
+        {
             if(learnedMoves[j] == eggMoveBuffer[i])
                 hasMonMove = TRUE;
         }

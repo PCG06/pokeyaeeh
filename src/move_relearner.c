@@ -682,11 +682,10 @@ static void DoMoveRelearnerMain(void)
 		break;
     case MENU_STATE_FADE_AND_RETURN:
         BeginNormalPaletteFade(PALETTES_ALL, 0, 0, 16, RGB_BLACK);
-        if(FlagGet(FLAG_MOVE_RELEARNER) == TRUE){
+        if(FlagGet(FLAG_MOVE_RELEARNER) == TRUE)
             sMoveRelearnerStruct->state++;
-        } else {
+        else
             sMoveRelearnerStruct->state = MENU_STATE_RETURN_TO_PARTY_MENU;
-        }
         break;
     case MENU_STATE_RETURN_TO_FIELD:
         if (!gPaletteFade.active)
@@ -756,11 +755,10 @@ static void DoMoveRelearnerMain(void)
         if (JOY_NEW(A_BUTTON))
         {
             PlaySE(SE_SELECT);
-            if(FlagGet(FLAG_MOVE_RELEARNER) == TRUE){
+            if(FlagGet(FLAG_MOVE_RELEARNER) == TRUE)
                 sMoveRelearnerStruct->state = MENU_STATE_FADE_AND_RETURN;
-            } else {
-                sMoveRelearnerStruct->state = MENU_STATE_CHOOSE_AGAIN;
-            }
+            else
+                sMoveRelearnerStruct->state = MENU_STATE_RETURN_TO_PARTY_MENU;
         }
         break;
     }
