@@ -8280,7 +8280,8 @@ void ItemUseCB_HiddenPowerCrystals(u8 taskId, TaskFunc task)
 
     tState = 0;
     tMonId = gPartyMenu.slotId;
-    switch(ItemId_GetSecondaryId(gSpecialVar_ItemId)){
+    switch(ItemId_GetSecondaryId(gSpecialVar_ItemId))
+    {
 		case TYPE_BUG:
 			tnewHPIV	= 31;
 			tnewAtkIV	= 30;

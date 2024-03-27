@@ -436,12 +436,14 @@ void CB2_DoHallOfFameScreenDontSaveData(void)
     }
 }
 
-u16 getHallofFameSpecies(u8 num){
+u16 getHallofFameSpecies(u8 num)
+{
     u8 i;
     u16 item = GetMonData(&gPlayerParty[num], MON_DATA_HELD_ITEM);
     u16 species = GetMonData(&gPlayerParty[num], MON_DATA_SPECIES);
 
-    switch(species){
+    switch (species)
+    {
         case SPECIES_ABOMASNOW:
             if(item == ITEM_ABOMASITE)
                 return SPECIES_ABOMASNOW_MEGA;
@@ -635,7 +637,8 @@ u16 getHallofFameSpecies(u8 num){
                 return SPECIES_KYOGRE_PRIMAL;
         break;
         case SPECIES_RAYQUAZA:
-            for(i = 0; i < MAX_MON_MOVES; i++){
+            for(i = 0; i < MAX_MON_MOVES; i++)
+            {
                 if(GetMonData(&gPlayerParty[num], MON_DATA_MOVE1 + i) == MOVE_DRAGON_ASCENT)
                     return SPECIES_RAYQUAZA_MEGA;
                 else

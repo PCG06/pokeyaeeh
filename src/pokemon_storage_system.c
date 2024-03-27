@@ -1842,7 +1842,8 @@ static void ChooseBoxMenu_CreateSprites(u8 curBox)
     struct OamData oamData = {};
     oamData.size = SPRITE_SIZE(64x64);
     oamData.paletteNum = 1;
-    template = (struct SpriteTemplate){
+    template = (struct SpriteTemplate)
+    {
         0, 0, &oamData, gDummySpriteAnimTable, NULL, gDummySpriteAffineAnimTable, SpriteCallbackDummy
     };
 

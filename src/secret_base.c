@@ -1304,7 +1304,8 @@ void SecretBasePerStepCallback(u8 taskId)
 
             ShatterSecretBaseBreakableDoor(x, y);
         }
-        else if (MetatileBehavior_IsSecretBaseSoundMat(behavior) == TRUE){
+        else if (MetatileBehavior_IsSecretBaseSoundMat(behavior) == TRUE)
+        {
             if (sInFriendSecretBase == TRUE)
                 VarSet(VAR_SECRET_BASE_LOW_TV_FLAGS, VarGet(VAR_SECRET_BASE_LOW_TV_FLAGS) | SECRET_BASE_USED_NOTE_MAT);
         }

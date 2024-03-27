@@ -229,7 +229,8 @@ static void ReadAllCurrentSettings(u8 taskId)
 {
     gTasks[taskId].tMenuSelection = 0;
     
-    switch (sCurrentPage){
+    switch (sCurrentPage)
+    {
         case PAGE_1:
             gTasks[taskId].tTextSpeed = gSaveBlock2Ptr->optionsTextSpeed;
             gTasks[taskId].tBattleSceneOff = gSaveBlock2Ptr->optionsBattleSceneOff;
@@ -572,7 +573,8 @@ static void Task_OptionMenuProcessInput_Page2(u8 taskId)
 // Edit this to account for saving the data of your options
 static void SaveOptionMenuDataFromTask(u8 taskId)
 {
-    switch (sCurrentPage){
+    switch (sCurrentPage)
+    {
         case PAGE_1:
             gSaveBlock2Ptr->optionsTextSpeed = gTasks[taskId].tTextSpeed;
             gSaveBlock2Ptr->optionsBattleSceneOff = gTasks[taskId].tBattleSceneOff;

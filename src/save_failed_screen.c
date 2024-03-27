@@ -422,16 +422,17 @@ void CB2_FlashNotDetectedScreen(void)
         "and My Boy!\n"
     );
 
-    if (!gMain.state){
+    if (!gMain.state)
+    {
         SetGpuReg(REG_OFFSET_DISPCNT, 0);
-	SetGpuReg(REG_OFFSET_BLDCNT, 0);
+	    SetGpuReg(REG_OFFSET_BLDCNT, 0);
         SetGpuReg(REG_OFFSET_BG0CNT, 0);
         SetGpuReg(REG_OFFSET_BG0HOFS, 0);
         SetGpuReg(REG_OFFSET_BG0VOFS, 0);
         DmaFill16(3, 0, VRAM, VRAM_SIZE);
         DmaFill32(3, 0, OAM, OAM_SIZE);
         DmaFill16(3, 0, PLTT, PLTT_SIZE);
-	ResetBgsAndClearDma3BusyFlags(0);
+	    ResetBgsAndClearDma3BusyFlags(0);
         InitBgsFromTemplates(0, sBgTemplates, ARRAY_COUNT(sBgTemplates));
         LoadBgTiles(0, gTextWindowFrame1_Gfx, 0x120, 0x214);
         DeactivateAllTextPrinters();
