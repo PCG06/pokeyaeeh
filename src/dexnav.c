@@ -33,6 +33,7 @@
 #include "pokemon.h"
 #include "pokemon_icon.h"
 #include "pokemon_summary_screen.h"
+#include "pokenav.h"
 #include "random.h"
 #include "region_map.h"
 #include "rtc.h"
@@ -1907,6 +1908,7 @@ static void Task_DexNavFadeAndExit(u8 taskId)
 {
     if (!gPaletteFade.active)
     {
+        FreePokenavResources();
         SetMainCallback2(sDexNavUiDataPtr->savedCallback);
         DexNavGuiFreeResources();
         DestroyTask(taskId);
@@ -2389,6 +2391,23 @@ void Task_OpenDexNavFromStartMenu(u8 taskId)
         DexNavGuiInit(CB2_ReturnToFieldWithOpenMenu);
         DestroyTask(taskId);
     }
+}
+
+void Task_OpenDexNavFromPokenav(u8 taskId)
+{
+    if (!gPaletteFade.active)
+    {
+        CleanupOverworldWindowsAndTilemaps();
+        DexNavGuiInit(CB2_InitPokeNav);
+        DestroyTask(taskId);
+    }
+}
+
+u32 PokeNavMenuDexNavCallback(void)
+{
+    FlagSet(FLAG_TEMP_1);
+    CreateTask(Task_OpenDexNavFromPokenav, 0);
+    return TRUE;
 }
 
 static void Task_DexNavWaitFadeIn(u8 taskId)

@@ -1,4 +1,5 @@
 #include "global.h"
+#include "dexnav.h"
 #include "malloc.h"
 #include "task.h"
 #include "main.h"
@@ -41,7 +42,6 @@ static bool32 SetActivePokenavMenu(u32);
 static bool32 AnyMonHasRibbon(void);
 static void InitPokenavResources(struct PokenavResources *);
 static void InitKeys_(void);
-static void FreePokenavResources(void);
 static void VBlankCB_Pokenav(void);
 static void CB2_Pokenav(void);
 static void Task_RunLoopedTask_LinkMode(u8);
@@ -49,7 +49,7 @@ static void Task_RunLoopedTask(u8);
 static void Task_Pokenav(u8);
 static void CB2_InitPokenavForTutorial(void);
 
-const struct PokenavCallbacks PokenavMenuCallbacks[15] =
+const struct PokenavCallbacks PokenavMenuCallbacks[17] =
 {
     [POKENAV_MAIN_MENU - POKENAV_MENU_IDS_START] =
     {
@@ -64,6 +64,16 @@ const struct PokenavCallbacks PokenavMenuCallbacks[15] =
     [POKENAV_MAIN_MENU_CURSOR_ON_MAP - POKENAV_MENU_IDS_START] =
     {
         .init = PokenavCallback_Init_MainMenuCursorOnMap,
+        .callback = GetMenuHandlerCallback,
+        .open = OpenPokenavMenuNotInitial,
+        .createLoopTask = CreateMenuHandlerLoopedTask,
+        .isLoopTaskActive = IsMenuHandlerLoopedTaskActive,
+        .free1 = FreeMenuHandlerSubstruct1,
+        .free2 = FreeMenuHandlerSubstruct2,
+    },
+    [POKENAV_MAIN_MENU_CURSOR_ON_DEXNAV - POKENAV_MENU_IDS_START] =
+    {
+        .init = PokenavCallback_Init_MainMenuCursorOnDexNav,
         .callback = GetMenuHandlerCallback,
         .open = OpenPokenavMenuNotInitial,
         .createLoopTask = CreateMenuHandlerLoopedTask,
@@ -120,6 +130,16 @@ const struct PokenavCallbacks PokenavMenuCallbacks[15] =
         .isLoopTaskActive = IsRegionMapLoopedTaskActive,
         .free1 = FreeRegionMapSubstruct1,
         .free2 = FreeRegionMapSubstruct2,
+    },
+    [POKENAV_DEXNAV - POKENAV_MENU_IDS_START] =
+    {
+        .init = PokeNavMenuDexNavCallback,
+        .callback = GetConditionGraphMenuCallback,
+        .open = OpenConditionGraphMenu,
+        .createLoopTask = CreateConditionGraphMenuLoopedTask,
+        .isLoopTaskActive = IsConditionGraphMenuLoopedTaskActive,
+        .free1 = FreeConditionGraphMenuSubstruct1,
+        .free2 = FreeConditionGraphMenuSubstruct2,
     },
     [POKENAV_CONDITION_GRAPH_PARTY - POKENAV_MENU_IDS_START] =
     {
@@ -361,7 +381,7 @@ static void CB2_InitPokenavForTutorial(void)
     }
 }
 
-static void FreePokenavResources(void)
+void FreePokenavResources(void)
 {
     int i;
 
@@ -574,7 +594,7 @@ void SetSelectedConditionSearch(u32 cursorPos)
 {
     u32 searchId = cursorPos;
 
-    if (searchId > POKENAV_MENUITEM_CONDITION_SEARCH_TOUGH - POKENAV_MENUITEM_CONDITION_SEARCH_COOL)
+    if (searchId > POKENAV_MENUITEM_CONDITION_SEARCH_TOUGH - POKENAV_MENUITEM_CONDITION_SEARCH_COOL - 1)
         searchId = 0;
     gPokenavResources->conditionSearchId = searchId;
 }
