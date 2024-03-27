@@ -24674,6 +24674,7 @@ static const u16 sKyogreTeachableLearnset[] = {
     MOVE_UPROAR,
     MOVE_WATER_PULSE,
     MOVE_WATERFALL,
+    MOVE_WEATHER_BALL,
     MOVE_WHIRLPOOL,
     MOVE_UNAVAILABLE,
 };
@@ -24764,6 +24765,7 @@ static const u16 sGroudonTeachableLearnset[] = {
     MOVE_TOXIC,
     MOVE_U_TURN,
     MOVE_UPROAR,
+    MOVE_WEATHER_BALL,
     MOVE_WILL_O_WISP,
     MOVE_ZEN_HEADBUTT,
     MOVE_UNAVAILABLE,
@@ -24862,6 +24864,7 @@ static const u16 sRayquazaTeachableLearnset[] = {
     MOVE_UPROAR,
     MOVE_WATER_PULSE,
     MOVE_WATERFALL,
+    MOVE_WEATHER_BALL,
     MOVE_WHIRLPOOL,
     MOVE_WILD_CHARGE,
     MOVE_UNAVAILABLE,
