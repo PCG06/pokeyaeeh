@@ -6979,7 +6979,7 @@ BattleScript_FogContinues::
 	end2
 
 BattleScript_FogEnded::
-	printstring STRINGID_FOGENDED
+	printstring STRINGID_FOGBLOWNAWAY
 	waitmessage B_WAIT_TIME_LONG
 	call BattleScript_ActivateWeatherAbilities
 	end2

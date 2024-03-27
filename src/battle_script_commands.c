@@ -1635,7 +1635,10 @@ u32 GetTotalAccuracy(u32 battlerAtk, u32 battlerDef, u32 move, u32 atkAbility, u
     u32 atkParam = GetBattlerHoldEffectParam(battlerAtk);
     u32 defParam = GetBattlerHoldEffectParam(battlerDef);
     u32 atkAlly = BATTLE_PARTNER(battlerAtk);
+    u32 defAlly = BATTLE_PARTNER(battlerDef);
     u32 atkAllyAbility = GetBattlerAbility(atkAlly);
+    u32 defAllyAbility = GetBattlerAbility(defAlly);
+    u32 atkSide = GetBattlerSide(battlerAtk);
 
     gPotentialItemEffectBattler = battlerDef;
     accStage = gBattleMons[battlerAtk].statStages[STAT_ACC];
@@ -1762,10 +1765,19 @@ u32 GetTotalAccuracy(u32 battlerAtk, u32 battlerDef, u32 move, u32 atkAbility, u
     if (B_AFFECTION_MECHANICS == TRUE && GetBattlerAffectionHearts(battlerDef) == AFFECTION_FIVE_HEARTS)
         calc = (calc * 90) / 100;
 
-    if (gBattleWeather & B_WEATHER_FOG)
+    if (gBattleWeather & B_WEATHER_FOG) 
 	{
-		if ((atkAbility != ABILITY_KEEN_EYE) && (atkAbility != ABILITY_ILLUMINATE) && (atkAbility != ABILITY_INFILTRATOR) && (atkAbility != ABILITY_MINDS_EYE))
-		calc = (calc * 60) / 100; // 1.4 fog loss
+        if (((atkAbility != ABILITY_AIR_LOCK) && (atkAbility != ABILITY_CLOUD_NINE))
+        && ((atkAllyAbility != ABILITY_AIR_LOCK) && (atkAllyAbility != ABILITY_CLOUD_NINE))
+        && ((defAbility != ABILITY_AIR_LOCK) && (defAbility != ABILITY_CLOUD_NINE))
+        && ((defAllyAbility != ABILITY_AIR_LOCK) && (defAllyAbility != ABILITY_CLOUD_NINE)))
+        {
+		    if ((atkAbility != ABILITY_KEEN_EYE) && (atkAbility != ABILITY_ILLUMINATE)
+            && (atkAbility != ABILITY_INFILTRATOR) && (atkAbility != ABILITY_MINDS_EYE))
+            {
+		        calc = (calc * 60) / 100; // 1.4 fog loss
+            }
+        }
 	}
 
     return calc;
@@ -8287,6 +8299,15 @@ static bool32 TryDefogClear(u32 battlerAtk, bool32 clear)
         DEFOG_CLEAR(SIDE_STATUS_TOXIC_SPIKES, toxicSpikesAmount, BattleScript_ToxicSpikesDefog, 0);
         DEFOG_CLEAR(SIDE_STATUS_STICKY_WEB, stickyWebAmount, BattleScript_StickyWebDefog, 0);
         DEFOG_CLEAR(SIDE_STATUS_STEELSURGE, steelsurgeAmount, BattleScript_SteelsurgeDefog, 0);
+
+        if (gBattleWeather & B_WEATHER_FOG)
+        {
+            gBattleWeather &= ~B_WEATHER_FOG;
+            BattleScriptPushCursor();
+            gBattlescriptCurrInstr = BattleScript_FogEnded;
+            return TRUE;
+        }
+
         if (B_DEFOG_CLEARS_TERRAIN >= GEN_8 && (gFieldStatuses & STATUS_FIELD_TERRAIN_ANY))
         {
             RemoveAllTerrains();

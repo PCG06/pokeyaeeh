@@ -712,7 +712,7 @@
 #define STRINGID_BIZARREAREACREATED                   710
 #define STRINGID_SHEDITSTAIL                          711
 #define STRINGID_FOGISDEEP                            712
-#define STRINGID_FOGENDED                             713
+#define STRINGID_FOGBLOWNAWAY                         713
 
 #define BATTLESTRINGS_COUNT                           714
 
@@ -1004,7 +1004,6 @@
 #define B_MSG_SET_TAILWIND_PLAYER   7
 #define B_MSG_SET_TAILWIND_OPPONENT 8
 #define B_MSG_STARTING_STATUS_COUNT 9
-
 
 // gWrappedStringIds
 #define B_MSG_WRAPPED_BIND         0
