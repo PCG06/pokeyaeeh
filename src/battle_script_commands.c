@@ -1762,6 +1762,12 @@ u32 GetTotalAccuracy(u32 battlerAtk, u32 battlerDef, u32 move, u32 atkAbility, u
     if (B_AFFECTION_MECHANICS == TRUE && GetBattlerAffectionHearts(battlerDef) == AFFECTION_FIVE_HEARTS)
         calc = (calc * 90) / 100;
 
+    if (gBattleWeather & B_WEATHER_FOG)
+	{
+		if ((atkAbility != ABILITY_KEEN_EYE) && (atkAbility != ABILITY_ILLUMINATE) && (atkAbility != ABILITY_INFILTRATOR) && (atkAbility != ABILITY_MINDS_EYE))
+		calc = (calc * 60) / 100; // 1.4 fog loss
+	}
+
     return calc;
 }
 
@@ -5014,7 +5020,8 @@ static void PlayAnimation(u32 battler, u8 animId, const u16 *argPtr, const u8 *n
           || animId == B_ANIM_SUN_CONTINUES
           || animId == B_ANIM_SANDSTORM_CONTINUES
           || animId == B_ANIM_HAIL_CONTINUES
-          || animId == B_ANIM_SNOW_CONTINUES)
+          || animId == B_ANIM_SNOW_CONTINUES
+          || animId == B_ANIM_FOG_CONTINUES)
     {
         BtlController_EmitBattleAnimation(battler, BUFFER_A, animId, &gDisableStructs[battler], *argPtr);
         MarkBattlerForControllerExec(battler);

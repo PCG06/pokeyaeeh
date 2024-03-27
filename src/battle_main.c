@@ -204,7 +204,7 @@ EWRAM_DATA u8 gBattleCommunication[BATTLE_COMMUNICATION_ENTRIES_COUNT] = {0};
 EWRAM_DATA u8 gBattleOutcome = 0;
 EWRAM_DATA struct ProtectStruct gProtectStructs[MAX_BATTLERS_COUNT] = {0};
 EWRAM_DATA struct SpecialStatus gSpecialStatuses[MAX_BATTLERS_COUNT] = {0};
-EWRAM_DATA u16 gBattleWeather = 0;
+EWRAM_DATA u32 gBattleWeather = 0;
 EWRAM_DATA struct WishFutureKnock gWishFutureKnock = {0};
 EWRAM_DATA u16 gIntroSlideFlags = 0;
 EWRAM_DATA u8 gSentPokesToOpponent[2] = {0};
@@ -5833,8 +5833,12 @@ u8 GetTypeBeforeUsingMove(u16 move, u8 battlerAtk)
                 return TYPE_ROCK;
             else if (gBattleWeather & B_WEATHER_SUN && holdEffect != HOLD_EFFECT_UTILITY_UMBRELLA)
                 return TYPE_FIRE;
-            else if (gBattleWeather & B_WEATHER_SNOW)
+            else if (gBattleWeather & (B_WEATHER_HAIL | B_WEATHER_SNOW))
                 return TYPE_ICE;
+            else if (gBattleWeather & (B_WEATHER_STRONG_WINDS | B_WEATHER_FOG))
+                return TYPE_FLYING;
+            else if (gBattleWeather & B_WEATHER_GHOSTLY_WINDS)
+                return TYPE_GHOST;
             else
                 return TYPE_NORMAL;
         }
@@ -5960,7 +5964,7 @@ void SetTypeBeforeUsingMove(u32 move, u32 battlerAtk)
                 gBattleStruct->dynamicMoveType = TYPE_FIRE | F_DYNAMIC_TYPE_2;
             else if (gBattleWeather & (B_WEATHER_HAIL | B_WEATHER_SNOW))
                 gBattleStruct->dynamicMoveType = TYPE_ICE | F_DYNAMIC_TYPE_2;
-            else if (gBattleWeather & B_WEATHER_STRONG_WINDS)
+            else if (gBattleWeather & (B_WEATHER_STRONG_WINDS | B_WEATHER_FOG))
                 gBattleStruct->dynamicMoveType = TYPE_FLYING | F_DYNAMIC_TYPE_2;
             else if (gBattleWeather & B_WEATHER_GHOSTLY_WINDS)
                 gBattleStruct->dynamicMoveType = TYPE_GHOST | F_DYNAMIC_TYPE_2;
