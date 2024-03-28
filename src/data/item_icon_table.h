@@ -927,7 +927,6 @@ const u32 *const gItemIconTable[ITEMS_COUNT + 1][2] =
     [ITEM_DRAGON_CRYSTAL] = {gItemIcon_Revive, gItemIconPalette_DragonGem},
     [ITEM_DARK_CRYSTAL] = {gItemIcon_Revive, gItemIconPalette_DarkGem},
     [ITEM_STEEL_CRYSTAL] = {gItemIcon_Revive, gItemIconPalette_SteelGem},
-    [ITEM_CANDY_BOX] = {gItemIcon_OaksParcel, gItemIconPalette_OaksParcel},
     [ITEM_STEEL_ARMOR] = {gItemIcon_MetalAlloy, gItemIconPalette_MetalCoat},
     // Return to field arrow
     [ITEMS_COUNT] = {gItemIcon_ReturnToFieldArrow, gItemIconPalette_ReturnToFieldArrow},
