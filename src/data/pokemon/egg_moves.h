@@ -4172,6 +4172,7 @@ const u16 gEggMoves[] = {
               MOVE_CRUNCH,
               MOVE_FAKE_OUT,
               MOVE_HEAT_WAVE,
+              MOVE_HELPING_HAND,
               MOVE_NASTY_PLOT,
               MOVE_PARTING_SHOT,
               MOVE_POWER_TRIP,
