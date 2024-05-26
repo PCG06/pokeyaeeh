@@ -94,6 +94,18 @@ Sceptile
     tags = Physical Attacker, Offensive
 }
 
+Sceptile Mega
+{
+    name = Sharpness Sweeper
+    item = Sceptilite
+    ability = Sharpness
+    evs = 0, 252, 0, 0, 4, 252
+    nature = Adamant
+    moves = Leaf Blade, Dual Chop, Sacred Sword / X-Scissor, Swords Dance / Dragon Dance
+    comment = A reliable fast physical sweeper. Mega Sceptile does it nicely! Super fast, super strong, strong ability with good moves.
+    tags = Physical Attacker, Offensive, Sweeper
+}
+
 Mawile Mega
 { 
     name = Heavy Hitter
