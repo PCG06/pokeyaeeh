@@ -357,10 +357,10 @@
 #define ITEM_BLUE_ORB 291
 
 // Mega Stones
-#define ITEM_VENUSAURITE 292
-#define ITEM_CHARIZARDITE_X 293
-#define ITEM_CHARIZARDITE_Y 294
-#define ITEM_BLASTOISINITE 295
+#define ITEM_VENUSAURITE 292 // Petalburg City (after Gym 5)
+#define ITEM_CHARIZARDITE_X 293 // Petalburg City (after Gym 5)
+#define ITEM_CHARIZARDITE_Y 294 // Petalburg City (after Gym 5)
+#define ITEM_BLASTOISINITE 295 // Petalburg City (after Gym 5)
 #define ITEM_BEEDRILLITE 296
 #define ITEM_PIDGEOTITE 297
 #define ITEM_ALAKAZITE 298
@@ -378,9 +378,9 @@
 #define ITEM_HERACRONITE 310
 #define ITEM_HOUNDOOMINITE 311
 #define ITEM_TYRANITARITE 312
-#define ITEM_SCEPTILITE 313
-#define ITEM_BLAZIKENITE 314
-#define ITEM_SWAMPERTITE 315
+#define ITEM_SCEPTILITE 313 // Petalburg City (after Gym 5)
+#define ITEM_BLAZIKENITE 314 // Petalburg City (after Gym 5)
+#define ITEM_SWAMPERTITE 315 // Petalburg City (after Gym 5)
 #define ITEM_GARDEVOIRITE 316
 #define ITEM_SABLENITE 317 // Cave Of Origin 1F
 #define ITEM_MAWILITE 318
@@ -1190,9 +1190,9 @@
 #define ITEM_LAPRASITE 889
 #define ITEM_GARBODORITE 890
 #define ITEM_MELMETALITE 891
-#define ITEM_RILLABOOMITE 892
-#define ITEM_CINDERACITE 893
-#define ITEM_INTELEONITE 894
+#define ITEM_RILLABOOMITE 892 // Petalburg City (after Gym 5)
+#define ITEM_CINDERACITE 893 // Petalburg City (after Gym 5)
+#define ITEM_INTELEONITE 894 // Petalburg City (after Gym 5)
 #define ITEM_CORVIKNIGHTITE 895
 #define ITEM_ORBEETLITE 896
 #define ITEM_DREDNITE 897

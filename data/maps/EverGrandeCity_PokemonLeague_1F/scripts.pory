@@ -53,8 +53,6 @@ EverGrandeCity_PokemonLeague_1F_Pokemart:
 
 	.align 2
 EverGrandeCity_PokemonLeague_1F_Pokemart_Postgame:
-    .2byte ITEM_RED_ORB
-	.2byte ITEM_BLUE_ORB
 	.2byte ITEM_ADAMANT_ORB
     .2byte ITEM_ADAMANT_CRYSTAL
     .2byte ITEM_LUSTROUS_ORB

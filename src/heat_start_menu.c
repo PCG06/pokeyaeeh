@@ -758,7 +758,7 @@ static void HeatStartMenu_ShowTimeWindow(void)
 	StringExpandPlaceholders(gStringVar4, gText_CurrentTime);
     if (gClockMode == TWELVE_HOUR_MODE)
     {
-        if (gLocalTime.hours >= 13 && gLocalTime.hours <= 24)
+        if (gLocalTime.hours >= 12 && gLocalTime.hours <= 24)
             StringExpandPlaceholders(gStringVar4, gText_CurrentTimePM); 
         else
             StringExpandPlaceholders(gStringVar4, gText_CurrentTimeAM);  

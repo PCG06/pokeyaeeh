@@ -2384,14 +2384,6 @@ bool8 ScrCmd_hideitemdesc(struct ScriptContext *ctx)
 
 bool8 ScrCmd_giveformchangeitems(struct ScriptContext *ctx)
 {
-    AddBagItem(ITEM_EXP_CANDY_XS, 100);
-    AddBagItem(ITEM_EXP_CANDY_S, 100);
-    AddBagItem(ITEM_EXP_CANDY_M, 100);
-    AddBagItem(ITEM_EXP_CANDY_L, 100);
-    AddBagItem(ITEM_EXP_CANDY_XL, 100);
-    AddBagItem(ITEM_RARE_CANDY, 100);
-    AddBagItem(ITEM_RED_ORB, 1);
-    AddBagItem(ITEM_BLUE_ORB, 1);
     AddBagItem(ITEM_ADAMANT_ORB, 1);
     AddBagItem(ITEM_ADAMANT_CRYSTAL, 1);
     AddBagItem(ITEM_LUSTROUS_ORB, 1);
