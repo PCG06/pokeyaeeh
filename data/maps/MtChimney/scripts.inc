@@ -4,6 +4,7 @@
 .set LOCALID_TABITHA, 3
 .set LOCALID_MAGMA_GRUNT_2, 22
 .set LOCALID_MAGMA_GRUNT_1, 29
+.set LOCALID_COURTNEY, 31
 
 
 MtChimney_MapScripts::
@@ -60,6 +61,7 @@ MtChimney_EventScript_Maxie::
 	removeobject LOCALID_MAXIE
 	removeobject LOCALID_MAGMA_GRUNT_1
 	removeobject LOCALID_TABITHA
+	removeobject LOCALID_COURTNEY
 	removeobject LOCALID_MAGMA_GRUNT_2
 	setflag FLAG_HIDE_MT_CHIMNEY_TEAM_MAGMA
 	fadescreen FADE_FROM_BLACK

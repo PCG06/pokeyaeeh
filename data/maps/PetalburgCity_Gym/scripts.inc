@@ -2,69 +2,19 @@
 .set LOCALID_NORMAN, 1
 
 PetalburgCity_Gym_MapScripts::
-	map_script MAP_SCRIPT_ON_LOAD, PetalburgCity_Gym_OnLoad
-	map_script MAP_SCRIPT_ON_TRANSITION, PetalburgCity_Gym_OnTransition
-	map_script MAP_SCRIPT_ON_WARP_INTO_MAP_TABLE, PetalburgCity_Gym_OnWarp
-	map_script MAP_SCRIPT_ON_FRAME_TABLE, PetalburgCity_Gym_OnFrame
 	.byte 0
 
-PetalburgCity_Gym_OnLoad:
-	end
-
-PetalburgCity_Gym_OnTransition:
-	call_if_set FLAG_SYS_GAME_CLEAR, PetalburgCity_Gym_EventScript_CheckNormanForRematch
-	end
-
-PetalburgCity_Gym_EventScript_CheckNormanForRematch::
-	setorcopyvar VAR_TRAINER_BATTLE_OPPONENT_A, TRAINER_NORMAN_1
-	specialvar VAR_RESULT, IsTrainerReadyForRematch
-	goto_if_eq VAR_RESULT, TRUE, PetalburgCity_Gym_EventScript_DontMoveNormanToFront
-	goto_if_eq VAR_PETALBURG_GYM_STATE, 8, PetalburgCity_Gym_EventScript_DontMoveNormanToFront
-	setobjectxyperm LOCALID_NORMAN, 4, 107
-	return
-
-PetalburgCity_Gym_EventScript_DontMoveNormanToFront::
-	setvar VAR_PETALBURG_GYM_STATE, 8
-	end
-
-PetalburgCity_Gym_OnWarp:
-	.2byte 0
-
-PetalburgCity_Gym_OnFrame:
-	.2byte 0
-
 PetalburgCity_Gym_EventScript_Norman::
-	lock
-	faceplayer
-	switch VAR_PETALBURG_GYM_STATE
-	case 6, PetalburgCity_Gym_EventScript_NormanBattle
-	case 7, PetalburgCity_Gym_EventScript_NormanPostBattle
-	case 8, PetalburgCity_Gym_EventScript_NormanRematch
-	msgbox PetalburgCity_Gym_Text_DadYoureHereWithYourPokemon, MSGBOX_DEFAULT
-	closemessage
-	end
-
-PetalburgCity_Gym_EventScript_NormanPostBattle::
-	goto_if_unset FLAG_RECEIVED_TM_DRAIN_PUNCH, PetalburgCity_Gym_EventScript_GiveDrainPunch2
-	goto_if_set FLAG_SYS_GAME_CLEAR, PetalburgCity_Gym_EventScript_NoAmountOfTrainingIsEnough
+	dotimebasedevents
+    setflag B_FLAG_NO_BAG_USE
+	trainerbattle_single TRAINER_NORMAN_1, PetalburgCity_Gym_Text_NormanIntro, PetalburgCity_Gym_Text_NormanDefeat, PetalburgCity_Gym_EventScript_NormanDefeated, NO_MUSIC
+	shouldtryrematchbattle TRAINER_NORMAN_1, PetalburgCity_Gym_EventScript_NormanRematch
+	goto_if_unset FLAG_RECEIVED_TM_DRAIN_PUNCH, PetalburgCity_Gym_EventScript_GiveDrainPunch
 	msgbox PetalburgCity_Gym_Text_DadHappyAndSad, MSGBOX_DEFAULT
 	release
 	end
 
-PetalburgCity_Gym_EventScript_GiveDrainPunch2::
-	call PetalburgCity_Gym_EventScript_GiveDrainPunch
-	release
-	end
-
-PetalburgCity_Gym_EventScript_NormanRematch::
-	trainerbattle_rematch TRAINER_NORMAN_1, PetalburgCity_Gym_Text_NormanPreRematch, PetalburgCity_Gym_Text_NormanRematchDefeat
-	msgbox PetalburgCity_Gym_Text_NormanPostRematch, MSGBOX_AUTOCLOSE
-	end
-
-PetalburgCity_Gym_EventScript_NormanBattle::
-	msgbox PetalburgCity_Gym_Text_NormanIntro, MSGBOX_DEFAULT
-	setflag B_FLAG_NO_BAG_USE
-	trainerbattle_no_intro TRAINER_NORMAN_1, PetalburgCity_Gym_Text_NormanDefeat
+PetalburgCity_Gym_EventScript_NormanDefeated::
 	msgbox PetalburgCity_Gym_Text_NormanAfterDefeat, MSGBOX_DEFAULT
 	message PetalburgCity_Gym_Text_ReceivedBalanceBadge
 	waitmessage
@@ -102,9 +52,9 @@ PetalburgCity_Gym_EventScript_GiveDrainPunch::
 	msgbox PetalburgCity_Gym_Text_ExplainGalladite, MSGBOX_DEFAULT
 	return
 
-PetalburgCity_Gym_EventScript_NoAmountOfTrainingIsEnough::
-	msgbox PetalburgCity_Gym_Text_DadNoAmountOfTrainingIsEnough, MSGBOX_DEFAULT
-	release
+PetalburgCity_Gym_EventScript_NormanRematch::
+	trainerbattle_rematch TRAINER_NORMAN_1, PetalburgCity_Gym_Text_NormanPreRematch, PetalburgCity_Gym_Text_NormanRematchDefeat
+	msgbox PetalburgCity_Gym_Text_NormanPostRematch, MSGBOX_AUTOCLOSE
 	end
 
 PetalburgCity_Gym_EventScript_Randall::
@@ -283,7 +233,7 @@ PetalburgCity_Gym_Text_YouHaveGottenStronger:
 	.string "that you've earned.$"
 
 PetalburgCity_Gym_Text_NormanIntro:
-	.string "Welcome to the Petalburg City Gym\p"
+	.string "Welcome to the Petalburg City Gym!\p"
 	.string "I am Chrizz, the Fighting-type Gym\n"
 	.string "Leader!\p"
 	.string "Now, let's not waste our time in\n"
@@ -295,8 +245,7 @@ PetalburgCity_Gym_Text_NormanDefeat:
 	.string "more training.$"
 
 PetalburgCity_Gym_Text_NormanAfterDefeat:
-	.string "Chrizz: You fought honorably,\n"
-	.string "{PLAYER}!"
+	.string "Chrizz: You fought honorably, {PLAYER}!\p"
 	.string "For that I give you this.$"
 
 PetalburgCity_Gym_Text_ReceivedBalanceBadge:
@@ -337,14 +286,8 @@ PetalburgCity_Gym_Text_ExplainGalladite:
 
 PetalburgCity_Gym_Text_DadHappyAndSad:
 	.string "Chrizz: That was an amazing battle,\n"
-	.string "{PLAYER}.\l"
+	.string "{PLAYER}.\p"
 	.string "We should fight again, sometimes.$"
-
-PetalburgCity_Gym_Text_DadNoAmountOfTrainingIsEnough:
-	.string "Chrizz: {PLAYER}, how are things going?\p"
-	.string "The world of Pokémon is deep.\p"
-	.string "I honestly think that no amount of\n"
-	.string "training would ever be enough.$"
 
 PetalburgCity_Gym_Text_GymGuideAdvice:
 	.string "Hey, how's it going, Champion-\n"

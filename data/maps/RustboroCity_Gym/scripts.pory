@@ -7,7 +7,6 @@ RustboroCity_Gym_EventScript_Roxanne::
     setflag B_FLAG_NO_BAG_USE
 	trainerbattle_single TRAINER_ROXANNE_1, RustboroCity_Gym_Text_RoxanneIntro, RustboroCity_Gym_Text_RoxanneDefeat, RustboroCity_Gym_EventScript_RoxanneDefeated, NO_MUSIC
 	shouldtryrematchbattle TRAINER_ROXANNE_1, RustboroCity_Gym_EventScript_RoxanneRematch
-	goto_if_eq VAR_RESULT, TRUE, RustboroCity_Gym_EventScript_RoxanneRematch
 	goto_if_unset FLAG_RECEIVED_TM_CHARM, RustboroCity_Gym_EventScript_GiveRockTomb
 	msgbox RustboroCity_Gym_Text_RoxannePostBattle, MSGBOX_DEFAULT
 	release

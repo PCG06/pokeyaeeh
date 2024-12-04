@@ -17845,7 +17845,7 @@
               }
             ]
           },
-"water_mons": {
+          "water_mons": {
             "encounter_rate": 4,
             "mons": [
               {

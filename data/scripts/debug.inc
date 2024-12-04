@@ -125,7 +125,6 @@ Text_Route114TrainersCleared:
 	.string "Route 114 Trainers cleared!$"
 
 Debug_EventScript_Script_1:: @ testing scripts and stuff
-	special TryRespawnLegendaryEncounters
 	end
 
 Debug_EventScript_Script_2:: @ regular single battle

@@ -7288,13 +7288,13 @@ static const struct TrainerMon sParty_Brawly1[] = { // Oisin
     },
     {
         .species = SPECIES_LUDICOLO,
-        .heldItem = ITEM_EXPERT_BELT,
-        .ability = ABILITY_SWIFT_SWIM,
+        .heldItem = ITEM_MIRACLE_SEED,
+        .ability = ABILITY_OWN_TEMPO,
         .lvl = 1,
-        .ev = TRAINER_PARTY_EVS(0, 0, 0, 240, 252, 16),
-        .nature = TRAINER_PARTY_NATURE(NATURE_MODEST),
+        .ev = TRAINER_PARTY_EVS(0, 240, 0, 252, 0, 16),
+        .nature = TRAINER_PARTY_NATURE(NATURE_ADAMANT),
         .iv = TRAINER_PARTY_IVS(31, 30, 31, 30, 30, 31),
-        .moves = {MOVE_SURF, MOVE_ICE_BEAM, MOVE_GIGA_DRAIN, MOVE_HIDDEN_POWER}
+        .moves = {MOVE_LIQUIDATION, MOVE_ICE_SPINNER, MOVE_LEAF_LEAP, MOVE_HIDDEN_POWER}
     },
     {
         .species = SPECIES_BRAMBLEGHAST,
@@ -15452,8 +15452,8 @@ static const struct TrainerMon sParty_Lilith[] = {
     .ev = TRAINER_PARTY_EVS(0, 152, 4, 152, 0, 0),
     .lvl = 1,
     .species = SPECIES_FLORAGATO,
-    .heldItem = ITEM_CHOICE_BAND,
-    .ability = ABILITY_TINTED_LENS,
+    .heldItem = ITEM_MIRACLE_SEED,
+    .ability = ABILITY_OVERGROW,
     .moves = {MOVE_GRASSY_GLIDE, MOVE_KNOCK_OFF, MOVE_SHADOW_CLAW, MOVE_STUNNING_BLOW},
     .nature = TRAINER_PARTY_NATURE(NATURE_ADAMANT)
     }
