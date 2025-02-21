@@ -64057,6 +64057,8 @@ static const u16 sScreamTailTeachableLearnset[] = {
     MOVE_TRICK_ROOM,
     MOVE_WATER_PULSE,
     MOVE_ZEN_HEADBUTT,
+    MOVE_DARK_PULSE,
+    MOVE_TAUNT,
     MOVE_UNAVAILABLE,
 };
 

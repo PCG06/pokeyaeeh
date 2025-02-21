@@ -1225,8 +1225,8 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
 
     [MOVE_STRENGTH] =
     {
-        .effect = EFFECT_HIT,
-        .power = 90,
+        .effect = EFFECT_SUPERPOWER,
+        .power = 120,
         .type = TYPE_ROCK,
         .accuracy = 100,
         .pp = 24,
