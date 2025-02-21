@@ -25062,6 +25062,7 @@ static const struct LevelUpMove sTarountulaLevelUpLearnset[] = {
 
 static const struct LevelUpMove sSpidopsLevelUpLearnset[] = {
     LEVEL_UP_MOVE( 0, MOVE_SILK_TRAP),
+    LEVEL_UP_MOVE(0, MOVE_STICKY_WEB),
     LEVEL_UP_MOVE( 1, MOVE_SILK_TRAP),
     LEVEL_UP_MOVE( 1, MOVE_TACKLE),
     LEVEL_UP_MOVE( 1, MOVE_STRING_SHOT),
@@ -25072,7 +25073,6 @@ static const struct LevelUpMove sSpidopsLevelUpLearnset[] = {
     LEVEL_UP_MOVE(19, MOVE_BLOCK),
     LEVEL_UP_MOVE(24, MOVE_COUNTER),
     LEVEL_UP_MOVE(28, MOVE_HEADBUTT),
-    LEVEL_UP_MOVE(33, MOVE_STICKY_WEB),
     LEVEL_UP_MOVE(37, MOVE_GASTRO_ACID),
     LEVEL_UP_MOVE(41, MOVE_CIRCLE_THROW),
     LEVEL_UP_MOVE(45, MOVE_THROAT_CHOP),

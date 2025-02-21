@@ -829,9 +829,9 @@
 #define MORPEKO_SPECIES_INFO                               \
     {                                                      \
         .baseHP        = 58,                               \
-        .baseAttack    = 95,                               \
+        .baseAttack    = 101,                               \
         .baseDefense   = 58,                               \
-        .baseSpeed     = 97,                               \
+        .baseSpeed     = 101,                               \
         .baseSpAttack  = 70,                               \
         .baseSpDefense = 58,                               \
         .types = { TYPE_ELECTRIC, TYPE_DARK},              \
@@ -20296,9 +20296,9 @@ const struct SpeciesInfo gSpeciesInfo[] =
     [SPECIES_MR_RIME] =
     {
         .baseHP        = 80,
-        .baseAttack    = 85,
+        .baseAttack    = 65,
         .baseDefense   = 75,
-        .baseSpeed     = 70,
+        .baseSpeed     = 100,
         .baseSpAttack  = 110,
         .baseSpDefense = 100,
         .types = { TYPE_ICE, TYPE_PSYCHIC},
@@ -20310,7 +20310,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroups = { EGG_GROUP_HUMAN_LIKE, EGG_GROUP_HUMAN_LIKE},
-        .abilities = {ABILITY_TANGLED_FEET, ABILITY_SCREEN_CLEANER, ABILITY_ICE_BODY},
+        .abilities = {ABILITY_ESCAPE_ARTIST, ABILITY_SCREEN_CLEANER, ABILITY_TINTED_LENS},
         .bodyColor = BODY_COLOR_PURPLE,
         .noFlip = FALSE,
     },
@@ -20476,7 +20476,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
     [SPECIES_EISCUE_ICE_FACE] =
     {
         .baseHP        = 75,
-        .baseAttack    = 80,
+        .baseAttack    = 90,
         .baseDefense   = 110,
         .baseSpeed     = 50,
         .baseSpAttack  = 65,
@@ -24635,7 +24635,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
     [SPECIES_EISCUE_NOICE_FACE] =
     {
         .baseHP        = 75,
-        .baseAttack    = 80,
+        .baseAttack    = 90,
         .baseDefense   = 70,
         .baseSpeed     = 130,
         .baseSpAttack  = 65,
@@ -25595,8 +25595,8 @@ const struct SpeciesInfo gSpeciesInfo[] =
 
     [SPECIES_SPIDOPS] =
     {
-        .baseHP        = 60,
-        .baseAttack    = 79,
+        .baseHP        = 85,
+        .baseAttack    = 91,
         .baseDefense   = 92,
         .baseSpeed     = 35,
         .baseSpAttack  = 52,
@@ -25610,7 +25610,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .friendship = 50,
         .growthRate = GROWTH_ERRATIC,
         .eggGroups = { EGG_GROUP_BUG, EGG_GROUP_BUG},
-        .abilities = {ABILITY_INSOMNIA, ABILITY_NONE, ABILITY_STAKEOUT},
+        .abilities = {ABILITY_PRANKSTER, ABILITY_FILTER, ABILITY_STAKEOUT},
         .bodyColor = BODY_COLOR_GREEN,
         .noFlip = FALSE,
     },
@@ -25708,7 +25708,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .baseHP        = 70,
         .baseAttack    = 115,
         .baseDefense   = 70,
-        .baseSpeed     = 105,
+        .baseSpeed     = 115,
         .baseSpAttack  = 70,
         .baseSpDefense = 60,
         .types = { TYPE_ELECTRIC, TYPE_FIGHTING },
@@ -26911,10 +26911,10 @@ const struct SpeciesInfo gSpeciesInfo[] =
 
     [SPECIES_VELUZA] =
     {
-        .baseHP        =      90,
+        .baseHP        =      100,
         .baseAttack    =  102,
         .baseDefense   = 73,
-        .baseSpeed     =   70,
+        .baseSpeed     =   80,
         .baseSpAttack  =   78,
         .baseSpDefense =   65,
         .types = { TYPE_WATER, TYPE_PSYCHIC },
@@ -26926,7 +26926,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .friendship = 50,
         .growthRate = GROWTH_FAST,
         .eggGroups = { EGG_GROUP_WATER_2, EGG_GROUP_WATER_2},
-        .abilities = {ABILITY_MOLD_BREAKER, ABILITY_NONE, ABILITY_SHARPNESS},
+        .abilities = {ABILITY_MOLD_BREAKER, ABILITY_SHARPNESS, ABILITY_SPEED_BOOST},
         .bodyColor = BODY_COLOR_GRAY,
         .noFlip = FALSE,
     },
