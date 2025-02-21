@@ -14159,6 +14159,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
         .split = SPLIT_PHYSICAL,
         .zMoveEffect = Z_EFFECT_NONE,
         .cantUseTwice = TRUE,
+        .slammingMove = TRUE,
     },
 
     [MOVE_COMEUPPANCE] =
