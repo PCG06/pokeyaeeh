@@ -435,7 +435,8 @@
 #define EFFECT_LUNAR_BEAM                   427
 #define EFFECT_STEAM_ERUPTION               428 // new effect for an old move
 #define EFFECT_SHELTER                      429 // new effect for an old move
+#define EFFECT_GIGATON_HAMMER               430
 
-#define NUM_BATTLE_MOVE_EFFECTS             429
+#define NUM_BATTLE_MOVE_EFFECTS             430
 
 #endif  // GUARD_CONSTANTS_BATTLE_MOVE_EFFECTS_H

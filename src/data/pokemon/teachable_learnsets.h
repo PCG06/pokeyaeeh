@@ -62853,6 +62853,12 @@ static const u16 sTinkatonTeachableLearnset[] = {
     MOVE_THIEF,
     MOVE_THUNDER_WAVE,
     MOVE_TOXIC,
+    MOVE_EARTHQUAKE,
+    MOVE_SUPERCELL_SLAM,
+    MOVE_TAUNT,
+    MOVE_IRON_HEAD,
+    MOVE_BODY_SLAM,
+    MOVE_STRENGTH,
     MOVE_UNAVAILABLE,
 };
 

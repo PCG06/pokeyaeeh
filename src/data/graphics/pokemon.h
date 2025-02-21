@@ -7959,7 +7959,7 @@ const u32 gMonShinyPalette_Kingambit[] = INCBIN_U32("graphics/pokemon/kingambit/
 const u8 gMonIcon_Kingambit[] = INCBIN_U8("graphics/pokemon/kingambit/icon.4bpp");
 const u8 gMonFootprint_Kingambit[] = INCBIN_U8("graphics/pokemon/kingambit/footprint.1bpp");
 
-const u32 gMonFrontPic_GreatTusk[] = INCBIN_U32("graphics/pokemon/great_tusk/anim_front.4bpp.lz");
+const u32 gMonFrontPic_GreatTusk[] = INCBIN_U32("graphics/pokemon/great_tusk/front.4bpp.lz");
 const u32 gMonPalette_GreatTusk[] = INCBIN_U32("graphics/pokemon/great_tusk/normal.gbapal.lz");
 const u32 gMonBackPic_GreatTusk[] = INCBIN_U32("graphics/pokemon/great_tusk/back.4bpp.lz");
 const u32 gMonShinyPalette_GreatTusk[] = INCBIN_U32("graphics/pokemon/great_tusk/shiny.gbapal.lz");
@@ -8297,16 +8297,16 @@ const u8 gMonFootprint_IronCrown[] = INCBIN_U8("graphics/pokemon/iron_crown/foot
 const u8 gMonIcon_TerapagosNormal[] = INCBIN_U8("graphics/pokemon/terapagos/icon.4bpp");
 const u8 gMonFootprint_Terapagos[] = INCBIN_U8("graphics/pokemon/terapagos/footprint.1bpp");
 
-// const u32 gMonFrontPic_TerapagosTerastal[] = INCBIN_U32("graphics/pokemon/terapagos/terastal/front.4bpp.lz");
-// const u32 gMonPalette_TerapagosTerastal[] = INCBIN_U32("graphics/pokemon/terapagos/terastal/normal.gbapal.lz");
-// const u32 gMonBackPic_TerapagosTerastal[] = INCBIN_U32("graphics/pokemon/terapagos/terastal/back.4bpp.lz");
-// const u32 gMonShinyPalette_TerapagosTerastal[] = INCBIN_U32("graphics/pokemon/terapagos/terastal/shiny.gbapal.lz");
+const u32 gMonFrontPic_TerapagosTerastal[] = INCBIN_U32("graphics/pokemon/terapagos/terastal/front.4bpp.lz");
+const u32 gMonPalette_TerapagosTerastal[] = INCBIN_U32("graphics/pokemon/terapagos/terastal/normal.gbapal.lz");
+const u32 gMonBackPic_TerapagosTerastal[] = INCBIN_U32("graphics/pokemon/terapagos/terastal/back.4bpp.lz");
+const u32 gMonShinyPalette_TerapagosTerastal[] = INCBIN_U32("graphics/pokemon/terapagos/terastal/shiny.gbapal.lz");
 const u8 gMonIcon_TerapagosTerastal[] = INCBIN_U8("graphics/pokemon/terapagos/terastal/icon.4bpp");
 
-// const u32 gMonFrontPic_TerapagosStellar[] = INCBIN_U32("graphics/pokemon/terapagos/stellar/front.4bpp.lz");
-// const u32 gMonPalette_TerapagosStellar[] = INCBIN_U32("graphics/pokemon/terapagos/stellar/normal.gbapal.lz");
-// const u32 gMonBackPic_TerapagosStellar[] = INCBIN_U32("graphics/pokemon/terapagos/stellar/back.4bpp.lz");
-// const u32 gMonShinyPalette_TerapagosStellar[] = INCBIN_U32("graphics/pokemon/terapagos/stellar/shiny.gbapal.lz");
+const u32 gMonFrontPic_TerapagosStellar[] = INCBIN_U32("graphics/pokemon/terapagos/stellar/front.4bpp.lz");
+const u32 gMonPalette_TerapagosStellar[] = INCBIN_U32("graphics/pokemon/terapagos/stellar/normal.gbapal.lz");
+const u32 gMonBackPic_TerapagosStellar[] = INCBIN_U32("graphics/pokemon/terapagos/stellar/back.4bpp.lz");
+const u32 gMonShinyPalette_TerapagosStellar[] = INCBIN_U32("graphics/pokemon/terapagos/stellar/shiny.gbapal.lz");
 const u8 gMonIcon_TerapagosStellar[] = INCBIN_U8("graphics/pokemon/terapagos/stellar/icon.4bpp");
 
 const u32 gMonFrontPic_Pecharunt[] = INCBIN_U32("graphics/pokemon/pecharunt/front.4bpp.lz");

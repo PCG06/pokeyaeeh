@@ -456,6 +456,7 @@ gBattleScriptsForMoveEffects::
 	.4byte BattleScript_EffectLunarBeam               @ EFFECT_LUNAR_BEAM
 	.4byte BattleScript_EffectBurnHit                 @ EFFECT_STEAM_ERUPTION
 	.4byte BattleScript_EffectDefenseUpUserAlly       @ EFFECT_SHELTER
+	.4byte BattleScript_EffectHit       			  @ EFFECT_GIGATON_HAMMER
 
 BattleScript_EffectShedTail::
 	attackcanceler

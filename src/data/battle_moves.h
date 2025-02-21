@@ -1226,8 +1226,8 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
     [MOVE_STRENGTH] =
     {
         .effect = EFFECT_HIT,
-        .power = 80,
-        .type = TYPE_NORMAL,
+        .power = 90,
+        .type = TYPE_ROCK,
         .accuracy = 100,
         .pp = 24,
         .secondaryEffectChance = 0,
@@ -13257,6 +13257,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
         .zMoveEffect = Z_EFFECT_NONE,
         .makesContact = TRUE,
         .punchingMove = TRUE,
+        .slammingMove = TRUE,
     },
 
     [MOVE_BARB_BARRAGE] =
@@ -14147,8 +14148,8 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
 
     [MOVE_GIGATON_HAMMER] =
     {
-        .effect = EFFECT_HIT,
-        .power = 160,
+        .effect = EFFECT_GIGATON_HAMMER,
+        .power = 135,
         .type = TYPE_STEEL,
         .accuracy = 100,
         .pp = 8,
@@ -14689,7 +14690,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
     [MOVE_STUNNING_BLOW] =
     {
         .effect = EFFECT_FLINCH_HIT,
-        .power = 60,
+        .power = 75,
         .type = TYPE_FAIRY,
         .accuracy = 100,
         .pp = 24,
