@@ -1057,7 +1057,7 @@ const struct MonCoords gMonFrontPicCoords[NUM_SPECIES + 1] =
     [SPECIES_HYDRAPPLE]                         = { .size = MON_COORDS_SIZE(64, 64), .y_offset =  0 },
     [SPECIES_GOUGING_FIRE]                      = { .size = MON_COORDS_SIZE(64, 64), .y_offset =  0 },
     [SPECIES_RAGING_BOLT]                       = { .size = MON_COORDS_SIZE(64, 64), .y_offset =  0 },
-    [SPECIES_IRON_BOULDER]                      = { .size = MON_COORDS_SIZE(64, 64), .y_offset =  0 },
+    [SPECIES_IRON_BOULDER]                      = { .size = MON_COORDS_SIZE(64, 64), .y_offset =  5 },
     [SPECIES_IRON_CROWN]                        = { .size = MON_COORDS_SIZE(64, 64), .y_offset =  0 },
     [SPECIES_TERAPAGOS_NORMAL]                  = { .size = MON_COORDS_SIZE(64, 64), .y_offset =  0 },
     [SPECIES_TERAPAGOS_TERASTAL]                = { .size = MON_COORDS_SIZE(64, 64), .y_offset =  0 },
