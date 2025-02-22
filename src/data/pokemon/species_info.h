@@ -26547,11 +26547,11 @@ const struct SpeciesInfo gSpeciesInfo[] =
     [SPECIES_TINKATON_MEGA] =
     {
         .baseHP        = 90,
-        .baseAttack    = 95,
-        .baseDefense   = 87,
-        .baseSpeed     = 99,
-        .baseSpAttack  = 60,
-        .baseSpDefense = 105,
+        .baseAttack    = 125,
+        .baseDefense   = 107,
+        .baseSpeed     = 114,
+        .baseSpAttack  = 85,
+        .baseSpDefense = 115,
         .types = { TYPE_FAIRY, TYPE_STEEL },
         .catchRate = 45,
         .expYield = 253,
