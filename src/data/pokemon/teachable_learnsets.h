@@ -61610,6 +61610,7 @@ static const u16 sDachsbunTeachableLearnset[] = {
     MOVE_THUNDER_FANG,
     MOVE_TOXIC,
     MOVE_TRAILBLAZE,
+    MOVE_FLAME_CHARGE,
     MOVE_UNAVAILABLE,
 };
 
