@@ -672,6 +672,10 @@ u16 getHallofFameSpecies(u8 num)
             if(item == ITEM_RAICHUNITE)
                 return SPECIES_RAICHU_MEGA;
         break;
+        case SPECIES_TINKATON:
+            if(item == ITEM_TINKATITE)
+                return SPECIES_TINKATON_MEGA;
+        break;
         case SPECIES_RILLABOOM:
             if(item == ITEM_RILLABOOMITE)
                 return SPECIES_RILLABOOM_MEGA;

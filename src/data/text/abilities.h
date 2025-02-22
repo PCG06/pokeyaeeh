@@ -327,6 +327,7 @@ static const u8 sDragonsFuryDescription[] = _("“Super effective” hits raise 
 static const u8 sReboundDescription[] = _("Bounces back special damage. (25%)");
 static const u8 sJuggernautDescription[] = _("Boosts slamming moves. (50%)");
 static const u8 sIceColdDescription[] = _("Powers up Ice-type moves. (50%)");
+static const u8 sTerminatorDescription[] = _("Mold Breaker + Juggernaut.");
 
 #if B_EXPANDED_ABILITY_NAMES == TRUE
 const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
@@ -673,6 +674,7 @@ const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
     [ABILITY_REBOUND] = _("Rebound"),
     [ABILITY_JUGGERNAUT] = _("Juggernaut"),
     [ABILITY_ICE_COLD] = _("Ice Cold"),
+    [ABILITY_TERMINATOR] = _("Terminator"),
 };
 #else   // 12 characters
 const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
@@ -1366,4 +1368,5 @@ const u8 *const gAbilityDescriptionPointers[ABILITIES_COUNT] =
     [ABILITY_REBOUND] = sReboundDescription,
     [ABILITY_JUGGERNAUT] = sJuggernautDescription,
     [ABILITY_ICE_COLD] = sIceColdDescription,
+    [ABILITY_TERMINATOR] = sTerminatorDescription,
 };

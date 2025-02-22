@@ -1532,4 +1532,5 @@ const u16 *const gTeachableLearnsets[NUM_SPECIES] =
     [SPECIES_RAICHU_MEGA] = sRaichuTeachableLearnset,
     [SPECIES_TROPIUS_MEGA] = sTropiusTeachableLearnset,
     [SPECIES_KINGDRA_MEGA] = sKingdraTeachableLearnset,
+    [SPECIES_TINKATON_MEGA] = sTinkatonTeachableLearnset,
 };

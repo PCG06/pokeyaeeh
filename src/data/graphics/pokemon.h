@@ -8352,3 +8352,9 @@ const u32 gMonBackPic_KingdraMega[] = INCBIN_U32("graphics/pokemon/kingdra/mega/
 const u8 gMonIcon_KingdraMega[] = INCBIN_U8("graphics/pokemon/kingdra/mega/icon.4bpp");
 const u32 gMonPalette_KingdraMega[] = INCBIN_U32("graphics/pokemon/kingdra/mega/normal.gbapal.lz");
 const u32 gMonShinyPalette_KingdraMega[] = INCBIN_U32("graphics/pokemon/kingdra/mega/shiny.gbapal.lz");
+
+const u32 gMonFrontPic_TinkatonMega[] = INCBIN_U32("graphics/pokemon/tinkaton/mega/front.4bpp.lz");
+const u32 gMonBackPic_TinkatonMega[] = INCBIN_U32("graphics/pokemon/tinkaton/mega/back.4bpp.lz");
+const u8 gMonIcon_TinkatonMega[] = INCBIN_U8("graphics/pokemon/tinkaton/mega/icon.4bpp");
+const u32 gMonPalette_TinkatonMega[] = INCBIN_U32("graphics/pokemon/tinkaton/mega/normal.gbapal.lz");
+const u32 gMonShinyPalette_TinkatonMega[] = INCBIN_U32("graphics/pokemon/tinkaton/mega/shiny.gbapal.lz");

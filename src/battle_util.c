@@ -4721,6 +4721,15 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                 effect++;
             }
             break;
+        case ABILITY_TERMINATOR:
+            if (!gSpecialStatuses[battler].switchInAbilityDone)
+            {
+                gBattleCommunication[MULTISTRING_CHOOSER] = B_MSG_SWITCHIN_MOLDBREAKER;
+                gSpecialStatuses[battler].switchInAbilityDone = TRUE;
+                BattleScriptPushCursorAndCallback(BattleScript_SwitchInAbilityMsg);
+                effect++;
+            }
+            break;
         case ABILITY_TERAVOLT:
             if (!gSpecialStatuses[battler].switchInAbilityDone)
             {
@@ -6774,7 +6783,7 @@ bool32 IsMyceliumMightOnField(void)
 
 bool32 IsMoldBreakerTypeAbility(u32 ability)
 {
-    return (ability == ABILITY_MOLD_BREAKER || ability == ABILITY_TERAVOLT || ability == ABILITY_TURBOBLAZE);
+    return (ability == ABILITY_MOLD_BREAKER || ability == ABILITY_TERAVOLT || ability == ABILITY_TERMINATOR || ability == ABILITY_TURBOBLAZE);
 }
 
 u32 GetBattlerAbility(u32 battler)
@@ -6804,7 +6813,7 @@ bool32 IsMoldBreakerTypeAbilityEff(u32 battler)
 {
     u32 ability = GetBattlerAbility(battler);
 
-    return (ability == ABILITY_MOLD_BREAKER || ability == ABILITY_TERAVOLT || ability == ABILITY_TURBOBLAZE);
+    return (ability == ABILITY_MOLD_BREAKER || ability == ABILITY_TERAVOLT || ability == ABILITY_TERMINATOR || ability == ABILITY_TURBOBLAZE);
 }
 
 u32 IsAbilityOnSide(u32 battler, u32 ability)
@@ -9616,6 +9625,10 @@ u32 CalcMoveBasePowerAfterModifiers(u32 move, u32 battlerAtk, u32 battlerDef, u3
            modifier = uq4_12_multiply(modifier, UQ_4_12(1.5));
         break;
     case ABILITY_JUGGERNAUT:
+        if (gBattleMoves[move].slammingMove)
+           modifier = uq4_12_multiply(modifier, UQ_4_12(1.5));
+        break;
+    case ABILITY_TERMINATOR:
         if (gBattleMoves[move].slammingMove)
            modifier = uq4_12_multiply(modifier, UQ_4_12(1.5));
         break;

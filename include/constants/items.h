@@ -1262,8 +1262,9 @@
 #define ITEM_RAICHUNITE 934
 #define ITEM_TROPIUSITE 935 // ROute 123 Boss Violet
 #define ITEM_KINGDRITE 936
+#define ITEM_TINKATITE 937 // will be tied to something
 
-#define ITEMS_COUNT 937
+#define ITEMS_COUNT 938
 #define ITEM_FIELD_ARROW ITEMS_COUNT
 
 // A special item id associated with "Cancel"/"Exit" etc. in a list of items or decorations

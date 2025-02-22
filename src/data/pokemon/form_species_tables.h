@@ -1383,3 +1383,9 @@ static const u16 sKingdraFormSpeciesIdTable[] = {
     SPECIES_KINGDRA_MEGA,
     FORM_SPECIES_END,
 };
+
+static const u16 sTinkatonFormSpeciesIdTable[] = {
+    SPECIES_TINKATON,
+    SPECIES_TINKATON_MEGA,
+    FORM_SPECIES_END,
+};

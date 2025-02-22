@@ -26544,6 +26544,28 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .noFlip = FALSE,
     },
 
+    [SPECIES_TINKATON_MEGA] =
+    {
+        .baseHP        = 90,
+        .baseAttack    = 95,
+        .baseDefense   = 87,
+        .baseSpeed     = 99,
+        .baseSpAttack  = 60,
+        .baseSpDefense = 105,
+        .types = { TYPE_FAIRY, TYPE_STEEL },
+        .catchRate = 45,
+        .expYield = 253,
+        .evYield_SpDefense = 3,
+        .genderRatio = MON_FEMALE,
+        .eggCycles = 20,
+        .friendship = 50,
+        .growthRate = GROWTH_MEDIUM_SLOW,
+        .eggGroups = { EGG_GROUP_FAIRY, EGG_GROUP_FAIRY},
+        .abilities = {ABILITY_TERMINATOR, ABILITY_TERMINATOR, ABILITY_TERMINATOR},
+        .bodyColor = BODY_COLOR_PINK,
+        .noFlip = FALSE,
+    },
+
     [SPECIES_WIGLETT] =
     {
         .baseHP        = 10,

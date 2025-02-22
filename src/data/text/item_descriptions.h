@@ -4693,3 +4693,8 @@ static const u8 sKingdriteDesc[] = _(
     "This stone enables\n"
     "Tropius to Mega\n"
     "Evolve in battle.");
+
+static const u8 sTinkatiteDesc[] = _(
+    "This stone enables\n"
+    "Tinkaton to Mega\n"
+    "Evolve in battle.");

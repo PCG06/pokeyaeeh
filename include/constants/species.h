@@ -1654,8 +1654,9 @@
 #define SPECIES_RAICHU_MEGA                      FORMS_START + 379
 #define SPECIES_TROPIUS_MEGA                     FORMS_START + 380
 #define SPECIES_KINGDRA_MEGA                     FORMS_START + 381
+#define SPECIES_TINKATON_MEGA                    FORMS_START + 382
 
-#define FORMS_END                                SPECIES_KINGDRA_MEGA + 1
+#define FORMS_END                                SPECIES_TINKATON_MEGA + 1
 
 #define SPECIES_EGG                              FORMS_END
 

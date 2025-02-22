@@ -11298,4 +11298,16 @@ const struct Item gItems[] =
         .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
         .flingPower = 80,
     },
+
+    [ITEM_TINKATITE] =
+    {
+        .name = _("Tinkatite"),
+        .price = 0,
+        .holdEffect = HOLD_EFFECT_MEGA_STONE,
+        .description = sTinkatiteDesc,
+        .pocket = POCKET_MEGA_STONES,
+        .type = ITEM_USE_BAG_MENU,
+        .fieldUseFunc = ItemUseOutOfBattle_CannotUse,
+        .flingPower = 80,
+    },
 };

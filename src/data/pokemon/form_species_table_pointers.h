@@ -699,4 +699,6 @@ const u16 *const gFormSpeciesIdTables[NUM_SPECIES] =
     [SPECIES_RAICHU_MEGA] = sRaichuFormSpeciesIdTable,
     [SPECIES_TROPIUS_MEGA] = sTropiusFormSpeciesIdTable,
     [SPECIES_KINGDRA_MEGA] = sKingdraFormSpeciesIdTable,
+    [SPECIES_TINKATON] = sTinkatonFormSpeciesIdTable,
+    [SPECIES_TINKATON_MEGA] = sTinkatonFormSpeciesIdTable,
 };
