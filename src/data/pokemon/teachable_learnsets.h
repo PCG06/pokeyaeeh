@@ -62490,6 +62490,7 @@ static const u16 sKlawfTeachableLearnset[] = {
     MOVE_TOXIC,
     MOVE_TRAILBLAZE,
     MOVE_X_SCISSOR,
+    MOVE_U_TURN,
     MOVE_UNAVAILABLE,
 };
 
