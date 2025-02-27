@@ -7099,14 +7099,14 @@ static const struct TrainerMon sParty_Glacia1[] = { // Wiggles
         .lvl = 1
     },
     {
-        .species = SPECIES_TOGEDEMARU,
-        .heldItem = ITEM_SHELL_BELL,
-        .ability = ABILITY_STURDY,
+        .species = SPECIES_TINKATON,
+        .heldItem = ITEM_TINKATITE,
+        .ability = ABILITY_JUGGERNAUT,
         .lvl = 1,
-        .ev = TRAINER_PARTY_EVS(0, 252, 0, 0, 0, 0),
-        .nature = TRAINER_PARTY_NATURE(NATURE_ADAMANT),
-        .iv = TRAINER_PARTY_IVS(0, 31, 31, 31, 31, 31),
-        .moves = {MOVE_ENDEAVOR, MOVE_SPARK, MOVE_SPIKY_SHIELD, MOVE_ENCORE}
+        .ev = TRAINER_PARTY_EVS(0, 252, 0, 0, 0, 252),
+        .nature = TRAINER_PARTY_NATURE(NATURE_JOLLY),
+        .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
+        .moves = {MOVE_GIGATON_HAMMER, MOVE_STUNNING_BLOW, MOVE_PROTECT, MOVE_ENCORE}
     },
     {
         .species = SPECIES_NECROZMA_DAWN_WINGS,

@@ -5520,7 +5520,7 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                 gBattlescriptCurrInstr = BattleScript_GoodAsGoldActivates;
                 effect = 1;
             }
-            else if (gLastUsedAbility == ABILITY_ICE_FACE && IS_MOVE_PHYSICAL(move) && gBattleMons[gBattlerTarget].species == SPECIES_EISCUE_ICE_FACE)
+            else if (gLastUsedAbility == ABILITY_ICE_FACE && gBattleMons[gBattlerTarget].species == SPECIES_EISCUE_ICE_FACE)
             {
                 gBattleMons[gBattlerTarget].species = SPECIES_EISCUE_NOICE_FACE;
                 if (gBattleMons[gBattlerAttacker].status2 & STATUS2_MULTIPLETURNS)
@@ -10325,6 +10325,13 @@ static inline uq4_12_t GetParentalBondModifier(u32 battlerAtk)
     return B_PARENTAL_BOND_DMG >= GEN_7 ? UQ_4_12(0.25) : UQ_4_12(0.5);
 }
 
+static inline uq4_12_t GetFrenzyModifier(u32 battlerAtk)
+{
+    if (gSpecialStatuses[battlerAtk].parentalBondState != PARENTAL_BOND_2ND_HIT)
+        return UQ_4_12(1.0);
+    return B_PARENTAL_BOND_DMG >= GEN_7 ? UQ_4_12(0.25) : UQ_4_12(0.25);
+}
+
 static inline uq4_12_t GetBoxerBarrageModifier(u32 battlerAtk)
 {
     if (gSpecialStatuses[battlerAtk].boxerBarrageState != BOXER_2ND_HIT)
@@ -10486,6 +10493,7 @@ static inline uq4_12_t GetDefenderAbilitiesModifier(u32 move, u32 moveType, u32 
     case ABILITY_MULTISCALE:
     case ABILITY_SHADOW_SHIELD:
     case ABILITY_DRAGON_SHEEN:
+    case ABILITY_PRECAUTIOUS:
         if (BATTLER_MAX_HP(battlerDef))
             return UQ_4_12(0.5);
         break;

@@ -328,6 +328,7 @@ static const u8 sReboundDescription[] = _("Bounces back special damage. (25%)");
 static const u8 sJuggernautDescription[] = _("Boosts slamming moves. (50%)");
 static const u8 sIceColdDescription[] = _("Powers up Ice-type moves. (50%)");
 static const u8 sTerminatorDescription[] = _("Mold Breaker + Juggernaut.");
+static const u8 sFrenzyDescription[] = _("Moves hit twice. (25%)");
 
 #if B_EXPANDED_ABILITY_NAMES == TRUE
 const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
@@ -1021,6 +1022,9 @@ const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
     [ABILITY_REBOUND] = _("Rebound"),
     [ABILITY_JUGGERNAUT] = _("Juggernaut"),
     [ABILITY_ICE_COLD] = _("Ice Cold"),
+    [ABILITY_VERSATILITY] = _("Versatility"),
+    [ABILITY_FRENZY] = _("Frenzy"),
+    [ABILITY_PRECAUTIOUS] = _("Precautious"),
 };
 #endif
 
@@ -1369,4 +1373,7 @@ const u8 *const gAbilityDescriptionPointers[ABILITIES_COUNT] =
     [ABILITY_JUGGERNAUT] = sJuggernautDescription,
     [ABILITY_ICE_COLD] = sIceColdDescription,
     [ABILITY_TERMINATOR] = sTerminatorDescription,
+    [ABILITY_VERSATILITY] = sProteanDescription,
+    [ABILITY_FRENZY] = sFrenzyDescription,
+    [ABILITY_PRECAUTIOUS] = sMultiscaleDescription,
 };
