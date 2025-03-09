@@ -326,7 +326,7 @@
         .noFlip = FALSE,                                                             \
     }
 
-#define SAWSBUCK_SPRING_SPECIES_INFO                                                        \
+#define SAWSBUCK_SUMMER_SPECIES_INFO                                                        \
     {                                                                                \
         .baseHP        = 80,                                                         \
         .baseAttack    = 110,                                                        \
@@ -14434,6 +14434,9 @@ const struct SpeciesInfo gSpeciesInfo[] =
     [SPECIES_DEERLING_SPRING] = DEERLING_SPECIES_INFO(BODY_COLOR_PINK),
 
     [SPECIES_SAWSBUCK_SPRING] = SAWSBUCK_SPECIES_INFO,
+    [SPECIES_SAWSBUCK_SUMMER] = SAWSBUCK_SUMMER_SPECIES_INFO,
+    [SPECIES_SAWSBUCK_WINTER] = SAWSBUCK_WINTER_SPECIES_INFO,
+    [SPECIES_SAWSBUCK_AUTUMN] = SAWSBUCK_AUTUMN_SPECIES_INFO,
 
     [SPECIES_EMOLGA] =
     {
