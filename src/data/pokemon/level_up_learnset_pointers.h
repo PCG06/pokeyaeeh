@@ -1275,9 +1275,9 @@ const struct LevelUpMove *const gLevelUpLearnsets[NUM_SPECIES] =
     [SPECIES_DEERLING_AUTUMN] = sDeerlingLevelUpLearnset,
     [SPECIES_DEERLING_WINTER] = sDeerlingLevelUpLearnset,
     // Sawsbuck
-    [SPECIES_SAWSBUCK_SUMMER] = sSawsbuckLevelUpLearnset,
-    [SPECIES_SAWSBUCK_AUTUMN] = sSawsbuckLevelUpLearnset,
-    [SPECIES_SAWSBUCK_WINTER] = sSawsbuckLevelUpLearnset,
+    [SPECIES_SAWSBUCK_SUMMER] = sSawsbuckSummerLevelUpLearnset,
+    [SPECIES_SAWSBUCK_AUTUMN] = sSawsbuckAutumnLevelUpLearnset,
+    [SPECIES_SAWSBUCK_WINTER] = sSawsbuckWinterLevelUpLearnset,
     // Therian Forms
     [SPECIES_TORNADUS_THERIAN] = sTornadusLevelUpLearnset,
     [SPECIES_THUNDURUS_THERIAN] = sThundurusLevelUpLearnset,
