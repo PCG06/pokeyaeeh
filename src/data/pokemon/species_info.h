@@ -326,72 +326,6 @@
         .noFlip = FALSE,                                                             \
     }
 
-#define SAWSBUCK_SUMMER_SPECIES_INFO                                                        \
-    {                                                                                \
-        .baseHP        = 80,                                                         \
-        .baseAttack    = 110,                                                        \
-        .baseDefense   = 65,                                                         \
-        .baseSpeed     = 115,                                                         \
-        .baseSpAttack  = 60,                                                         \
-        .baseSpDefense = 65,                                                         \
-        .types = { TYPE_FIRE, TYPE_GRASS},                                         \
-        .catchRate = 75,                                                             \
-        .expYield = 166,                                                             \
-        .evYield_Attack    = 2,                                                      \
-        .genderRatio = PERCENT_FEMALE(50),                                           \
-        .eggCycles = 20,                                                             \
-        .friendship = STANDARD_FRIENDSHIP,                                                            \
-        .growthRate = GROWTH_MEDIUM_FAST,                                            \
-        .eggGroups = { EGG_GROUP_FIELD, EGG_GROUP_FIELD},                                                \
-        .abilities = {ABILITY_CHLOROPHYLL, ABILITY_SOLAR_POWER, ABILITY_SCORCHATE},\
-        .bodyColor = BODY_COLOR_BROWN,                                               \
-        .noFlip = FALSE,                                                             \
-    }
-
-#define SAWSBUCK_WINTER_SPECIES_INFO                                                        \
-    {                                                                                \
-        .baseHP        = 80,                                                         \
-        .baseAttack    = 115,                                                        \
-        .baseDefense   = 65,                                                         \
-        .baseSpeed     = 95,                                                         \
-        .baseSpAttack  = 60,                                                         \
-        .baseSpDefense = 70,                                                         \
-        .types = { TYPE_ICE, TYPE_GRASS},                                         \
-        .catchRate = 75,                                                             \
-        .expYield = 166,                                                             \
-        .evYield_Attack    = 2,                                                      \
-        .genderRatio = PERCENT_FEMALE(50),                                           \
-        .eggCycles = 20,                                                             \
-        .friendship = STANDARD_FRIENDSHIP,                                                            \
-        .growthRate = GROWTH_MEDIUM_FAST,                                            \
-        .eggGroups = { EGG_GROUP_FIELD, EGG_GROUP_FIELD},                                                \
-        .abilities = {ABILITY_SLUSH_RUSH, ABILITY_REBOUND, ABILITY_ICE_COLD},\
-        .bodyColor = BODY_COLOR_BROWN,                                               \
-        .noFlip = FALSE,                                                             \
-    }
-
-#define SAWSBUCK_AUTUMN_SPECIES_INFO                                                        \
-    {                                                                                \
-        .baseHP        = 80,                                                         \
-        .baseAttack    = 120,                                                        \
-        .baseDefense   = 60,                                                         \
-        .baseSpeed     = 110,                                                         \
-        .baseSpAttack  = 60,                                                         \
-        .baseSpDefense = 65,                                                         \
-        .types = { TYPE_GROUND, TYPE_GRASS},                                         \
-        .catchRate = 75,                                                             \
-        .expYield = 166,                                                             \
-        .evYield_Attack    = 2,                                                      \
-        .genderRatio = PERCENT_FEMALE(50),                                           \
-        .eggCycles = 20,                                                             \
-        .friendship = STANDARD_FRIENDSHIP,                                                            \
-        .growthRate = GROWTH_MEDIUM_FAST,                                            \
-        .eggGroups = { EGG_GROUP_FIELD, EGG_GROUP_FIELD},                                                \
-        .abilities = {ABILITY_SAND_RUSH, ABILITY_FRENZY, ABILITY_SERENE_GRACE},\
-        .bodyColor = BODY_COLOR_BROWN,                                               \
-        .noFlip = FALSE,                                                             \
-    }
-
 #define GENESECT_SPECIES_INFO(type)                   \
     {                                                 \
         .baseHP        = 71,                          \
@@ -28311,5 +28245,93 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .bodyColor = BODY_COLOR_BLUE,
         .noFlip = FALSE,
         .flags = SPECIES_FLAG_MEGA_EVOLUTION,
+    },
+
+    [SPECIES_SAWSBUCK_AUTUMN] =
+    {
+        .baseHP        = 80,
+        .baseAttack    = 120,
+        .baseDefense   = 60,
+        .baseSpeed     = 110,
+        .baseSpAttack  = 60,
+        .baseSpDefense = 65,
+        .types = { TYPE_GROUND, TYPE_GRASS },
+        .catchRate = 75,
+        .expYield = 166,
+        .evYield_Attack = 2,
+        .genderRatio = PERCENT_FEMALE(50),
+        .eggCycles = 20,
+        .friendship = STANDARD_FRIENDSHIP,
+        .growthRate = GROWTH_MEDIUM_FAST,
+        .eggGroups = { EGG_GROUP_FIELD, EGG_GROUP_FIELD},
+        .abilities = {ABILITY_SAND_RUSH, ABILITY_FRENZY, ABILITY_OPPORTUNIST},
+        .bodyColor = BODY_COLOR_BROWN,
+        .noFlip = FALSE,
+    },
+
+    [SPECIES_SAWSBUCK_AUTUMN] =
+    {
+        .baseHP        = 80,
+        .baseAttack    = 120,
+        .baseDefense   = 60,
+        .baseSpeed     = 110,
+        .baseSpAttack  = 60,
+        .baseSpDefense = 65,
+        .types = { TYPE_GROUND, TYPE_GRASS },
+        .catchRate = 75,
+        .expYield = 166,
+        .evYield_Attack = 2,
+        .genderRatio = PERCENT_FEMALE(50),
+        .eggCycles = 20,
+        .friendship = STANDARD_FRIENDSHIP,
+        .growthRate = GROWTH_MEDIUM_FAST,
+        .eggGroups = { EGG_GROUP_FIELD, EGG_GROUP_FIELD},
+        .abilities = {ABILITY_SAND_RUSH, ABILITY_FRENZY, ABILITY_OPPORTUNIST},
+        .bodyColor = BODY_COLOR_BROWN,
+        .noFlip = FALSE,
+    },
+
+    [SPECIES_SAWSBUCK_WINTER] =
+    {
+        .baseHP        = 90,
+        .baseAttack    = 115,
+        .baseDefense   = 65,
+        .baseSpeed     = 95,
+        .baseSpAttack  = 60,
+        .baseSpDefense = 70,
+        .types = { TYPE_ICE, TYPE_GRASS },
+        .catchRate = 75,
+        .expYield = 166,
+        .evYield_Attack = 2,
+        .genderRatio = PERCENT_FEMALE(50),
+        .eggCycles = 20,
+        .friendship = STANDARD_FRIENDSHIP,
+        .growthRate = GROWTH_MEDIUM_FAST,
+        .eggGroups = { EGG_GROUP_FIELD, EGG_GROUP_FIELD},
+        .abilities = {ABILITY_SLUSH_RUSH, ABILITY_REBOUND, ABILITY_ICE_COLD},
+        .bodyColor = BODY_COLOR_BROWN,
+        .noFlip = FALSE,
+    },
+
+    [SPECIES_SAWSBUCK_SUMMER] =
+    {
+        .baseHP        = 80,
+        .baseAttack    = 110,
+        .baseDefense   = 65,
+        .baseSpeed     = 115,
+        .baseSpAttack  = 60,
+        .baseSpDefense = 65,
+        .types = { TYPE_FIRE, TYPE_GRASS },
+        .catchRate = 75,
+        .expYield = 166,
+        .evYield_Attack = 2,
+        .genderRatio = PERCENT_FEMALE(50),
+        .eggCycles = 20,
+        .friendship = STANDARD_FRIENDSHIP,
+        .growthRate = GROWTH_MEDIUM_FAST,
+        .eggGroups = { EGG_GROUP_FIELD, EGG_GROUP_FIELD},
+        .abilities = {ABILITY_CHLOROPHYLL, ABILITY_SOLAR_POWER, ABILITY_SCORCHATE},
+        .bodyColor = BODY_COLOR_BROWN,
+        .noFlip = FALSE,
     },
 };
