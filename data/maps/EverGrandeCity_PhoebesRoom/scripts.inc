@@ -21,16 +21,20 @@ EverGrandeCity_PhoebesRoom_EventScript_Phoebe::
 	faceplayer
 	dotimebasedevents
 	goto_if_set FLAG_DEFEATED_ELITE_4_PHOEBE, EverGrandeCity_PhoebesRoom_EventScript_PostBattleSpeech
+	goto_if_not_defeated TRAINER_PHOEBE_1, EverGrandeCity_PhoebesRoom_EventScript_PhoebeBattle
+	shouldtryrematchbattle TRAINER_PHOEBE_1, EverGrandeCity_PhoebesRoom_EventScript_PhoebeRematch
+	end
+
+EverGrandeCity_PhoebesRoom_EventScript_PhoebeBattle::
 	playbgm MUS_ENCOUNTER_ELITE_FOUR, FALSE
 	trainerbattle_single TRAINER_PHOEBE_1, EverGrandeCity_PhoebesRoom_Text_IntroSpeech, EverGrandeCity_PhoebesRoom_Text_Defeat
-	shouldtryrematchbattle TRAINER_PHOEBE_1, EverGrandeCity_PhoebesRoom_EventScript_PhoebeRematch
 	goto EverGrandeCity_PhoebesRoom_EventScript_Defeated
 	end
 
-EverGrandeCity_PhoebesRoom_EventScript_PostBattleSpeech::
-	goto_if_eq VAR_ELITE_4_STATE, 4, EverGrandeCity_PhoebesRoom_EventScript_EliteFourDefeated
-	msgbox EverGrandeCity_PhoebesRoom_Text_PostBattleSpeech, MSGBOX_DEFAULT
-	release
+EverGrandeCity_PhoebesRoom_EventScript_PhoebeRematch::
+	playbgm MUS_ENCOUNTER_ELITE_FOUR, FALSE
+	trainerbattle_rematch TRAINER_PHOEBE_1, RustboroCity_Gym_Text_RoxannePreRematch, RustboroCity_Gym_Text_RoxanneRematchDefeat
+	msgbox RustboroCity_Gym_Text_RoxannePostRematch, MSGBOX_AUTOCLOSE
 	end
 
 EverGrandeCity_PhoebesRoom_EventScript_Defeated::
@@ -41,14 +45,15 @@ EverGrandeCity_PhoebesRoom_EventScript_Defeated::
 	release
 	end
 
-EverGrandeCity_PhoebesRoom_EventScript_EliteFourDefeated::
+EverGrandeCity_PhoebesRoom_EventScript_PostBattleSpeech::
+	goto_if_eq VAR_ELITE_4_STATE, 4, EverGrandeCity_PhoebesRoom_EventScript_EliteFourDefeated
 	msgbox EverGrandeCity_PhoebesRoom_Text_PostBattleSpeech, MSGBOX_DEFAULT
 	release
 	end
 
-EverGrandeCity_PhoebesRoom_EventScript_PhoebeRematch::
-	trainerbattle_rematch TRAINER_PHOEBE_1, RustboroCity_Gym_Text_RoxannePreRematch, RustboroCity_Gym_Text_RoxanneRematchDefeat
-	msgbox RustboroCity_Gym_Text_RoxannePostRematch, MSGBOX_AUTOCLOSE
+EverGrandeCity_PhoebesRoom_EventScript_EliteFourDefeated::
+	msgbox EverGrandeCity_PhoebesRoom_Text_PostBattleSpeech, MSGBOX_DEFAULT
+	release
 	end
 
 EverGrandeCity_PhoebesRoom_Text_IntroSpeech:

@@ -321,7 +321,7 @@
         .friendship = STANDARD_FRIENDSHIP,                                                            \
         .growthRate = GROWTH_MEDIUM_FAST,                                            \
         .eggGroups = { EGG_GROUP_FIELD, EGG_GROUP_FIELD},                                                \
-        .abilities = {ABILITY_CHLOROPHYLL, ABILITY_SAP_SIPPER, ABILITY_VERSATILITY},\
+        .abilities = {ABILITY_CHLOROPHYLL, ABILITY_SAP_SIPPER, ABILITY_SERENE_GRACE},\
         .bodyColor = BODY_COLOR_BROWN,                                               \
         .noFlip = FALSE,                                                             \
     }
@@ -23968,6 +23968,10 @@ const struct SpeciesInfo gSpeciesInfo[] =
     [SPECIES_DEERLING_AUTUMN] = DEERLING_SPECIES_INFO(BODY_COLOR_RED),
     [SPECIES_DEERLING_WINTER] = DEERLING_SPECIES_INFO(BODY_COLOR_BROWN),
 
+    [SPECIES_SAWSBUCK_SUMMER] = SAWSBUCK_SPECIES_INFO,
+    [SPECIES_SAWSBUCK_AUTUMN] = SAWSBUCK_SPECIES_INFO,
+    [SPECIES_SAWSBUCK_WINTER] = SAWSBUCK_SPECIES_INFO,
+
     [SPECIES_TORNADUS_THERIAN] =
     {
         .baseHP        = 79,
@@ -27150,7 +27154,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .friendship = 0,
         .growthRate = GROWTH_SLOW,
         .eggGroups = { EGG_GROUP_UNDISCOVERED, EGG_GROUP_UNDISCOVERED},
-        .abilities = {ABILITY_PROTOSYNTHESIS, ABILITY_CRYPTIC_POWER, ABILITY_FLUFFY},
+        .abilities = {ABILITY_PROTOSYNTHESIS, ABILITY_NONE, ABILITY_CRYPTIC_POWER},
         .bodyColor = BODY_COLOR_PINK,
         .noFlip = FALSE,
         .flags = SPECIES_FLAG_PARADOX,

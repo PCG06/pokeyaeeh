@@ -9124,11 +9124,11 @@ static const struct TrainerMon sParty_Wallace1[] = { // PCG
     },
     {
         .species = SPECIES_INCINEROAR,
-        .heldItem = ITEM_ASSAULT_VEST,
+        .heldItem = ITEM_AGUAV_BERRY,
         .ability = ABILITY_INTIMIDATE,
-        .ev = TRAINER_PARTY_EVS(252, 32, 112, 0, 0, 112),
+        .ev = TRAINER_PARTY_EVS(252, 32, 92, 0, 0, 132),
         .nature = TRAINER_PARTY_NATURE(NATURE_ADAMANT),
-        .moves = {MOVE_FAKE_OUT, MOVE_BLAZE_KICK, MOVE_KNOCK_OFF, MOVE_DRAIN_PUNCH},
+        .moves = {MOVE_FAKE_OUT, MOVE_BLAZE_KICK, MOVE_KNOCK_OFF, MOVE_PARTING_SHOT},
         .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
         .lvl = 1
     },

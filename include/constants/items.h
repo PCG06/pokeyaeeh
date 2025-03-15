@@ -1254,17 +1254,18 @@
 #define ITEM_HATTERENITE 928 // Route 123
 #define ITEM_GRIMMSNARLITE 929 // Mt Pyre F6
 #define ITEM_COPPERAJAHITE 930
+#define ITEM_URSHIFUNITE 931
 
 // Custom Mega Stones
-#define ITEM_NIDOQUEENITE 931 // Route 121 Boss Yuuki
-#define ITEM_NIDOKINGITE 932 // Route 121 Boss Himari
-#define ITEM_MILOTICITE 933
-#define ITEM_RAICHUNITE 934
-#define ITEM_TROPIUSITE 935 // ROute 123 Boss Violet
-#define ITEM_KINGDRITE 936
-#define ITEM_TINKATITE 937 // will be tied to something
+#define ITEM_NIDOQUEENITE 932 // Route 121 Boss Yuuki
+#define ITEM_NIDOKINGITE 933 // Route 121 Boss Himari
+#define ITEM_MILOTICITE 934
+#define ITEM_RAICHUNITE 935
+#define ITEM_TROPIUSITE 936 // ROute 123 Boss Violet
+#define ITEM_KINGDRITE 937
+#define ITEM_TINKATITE 938 // will be tied to something
 
-#define ITEMS_COUNT 938
+#define ITEMS_COUNT 939
 #define ITEM_FIELD_ARROW ITEMS_COUNT
 
 // A special item id associated with "Cancel"/"Exit" etc. in a list of items or decorations

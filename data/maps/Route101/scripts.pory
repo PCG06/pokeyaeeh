@@ -366,9 +366,7 @@ script EventScript_PartyHasGogoat{
 	lock
 	faceplayer
 	msgbox("Hmm.", MSGBOX_DEFAULT)
-	setvar(VAR_0x8000, SPECIES_GOGOAT)
-	special(HasSpecies)
-	if(var(VAR_RESULT) == TRUE){
+	if(checkpartyspecies(SPECIES_GOGOAT) == TRUE){
 		msgbox("You are the goat!", MSGBOX_NPC)
 	}
 	else{
@@ -379,8 +377,8 @@ script EventScript_PartyHasGogoat{
 script EventScript_GetDayFromTime{
 	lock
 	faceplayer
-	gettime()
-	switch (var(VAR_0x8003))
+	gettime
+	switch(var(VAR_0x8003))
 	{
 		case DAY_SUNDAY:
 			msgbox("It's Sunday!", MSGBOX_NPC)
@@ -408,7 +406,7 @@ script EventScript_GetDayFromTime{
 	}
 }
 
-script TryEmoting{
+script EventScript_TryEmoting{
 	lock
 	random(3)
 	switch(var(VAR_RESULT))

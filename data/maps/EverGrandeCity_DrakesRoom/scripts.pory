@@ -21,16 +21,19 @@ EverGrandeCity_DrakesRoom_EventScript_Drake::
 	faceplayer
 	dotimebasedevents
 	goto_if_set FLAG_DEFEATED_ELITE_4_DRAKE, EverGrandeCity_DrakesRoom_EventScript_PostBattleSpeech
+	goto_if_not_defeated TRAINER_DRAKE_1, EverGrandeCity_DrakesRoom_EventScript_DrakeBattle
+	shouldtryrematchbattle TRAINER_DRAKE_1, EverGrandeCity_DrakesRoom_EventScript_DrakeRematch
+	end
+
+EverGrandeCity_DrakesRoom_EventScript_DrakeBattle::
 	playbgm MUS_ENCOUNTER_ELITE_FOUR, FALSE
 	trainerbattle_single TRAINER_DRAKE_1, EverGrandeCity_DrakesRoom_Text_IntroSpeech, EverGrandeCity_DrakesRoom_Text_Defeat
-	shouldtryrematchbattle TRAINER_DRAKE_1, EverGrandeCity_DrakesRoom_EventScript_DrakeRematch
 	goto EverGrandeCity_DrakesRoom_EventScript_Defeated
 	end
 
-EverGrandeCity_DrakesRoom_EventScript_PostBattleSpeech::
-	goto_if_eq VAR_ELITE_4_STATE, 4, EverGrandeCity_DrakesRoom_EventScript_EliteFourDefeated
-	msgbox EverGrandeCity_DrakesRoom_Text_PostBattleSpeech, MSGBOX_DEFAULT
-	release
+EverGrandeCity_DrakesRoom_EventScript_DrakeRematch::
+	trainerbattle_rematch TRAINER_DRAKE_1, EverGrandeCity_DrakesRoom_Text_IntroSpeech, EverGrandeCity_DrakesRoom_Text_Defeat
+	goto EverGrandeCity_DrakesRoom_EventScript_Defeated
 	end
 
 EverGrandeCity_DrakesRoom_EventScript_Defeated::
@@ -43,14 +46,15 @@ EverGrandeCity_DrakesRoom_EventScript_Defeated::
 	release
 	end
 
-EverGrandeCity_DrakesRoom_EventScript_EliteFourDefeated::
+EverGrandeCity_DrakesRoom_EventScript_PostBattleSpeech::
+	goto_if_eq VAR_ELITE_4_STATE, 4, EverGrandeCity_DrakesRoom_EventScript_EliteFourDefeated
 	msgbox EverGrandeCity_DrakesRoom_Text_PostBattleSpeech, MSGBOX_DEFAULT
 	release
 	end
 
-EverGrandeCity_DrakesRoom_EventScript_DrakeRematch::
-	trainerbattle_rematch TRAINER_DRAKE_1, RustboroCity_Gym_Text_RoxannePreRematch, RustboroCity_Gym_Text_RoxanneRematchDefeat
-	msgbox RustboroCity_Gym_Text_RoxannePostRematch, MSGBOX_AUTOCLOSE
+EverGrandeCity_DrakesRoom_EventScript_EliteFourDefeated::
+	msgbox EverGrandeCity_DrakesRoom_Text_PostBattleSpeech, MSGBOX_DEFAULT
+	release
 	end
 
 EverGrandeCity_DrakesRoom_Text_IntroSpeech:

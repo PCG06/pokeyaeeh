@@ -385,6 +385,7 @@ const u32 *const gItemIconTable[ITEMS_COUNT + 1][2] =
     [ITEM_HATTERENITE] = {gItemIcon_Salamencite, gItemIconPalette_Salamencite},
     [ITEM_GRIMMSNARLITE] = {gItemIcon_Salamencite, gItemIconPalette_Salamencite},
     [ITEM_COPPERAJAHITE] = {gItemIcon_Salamencite, gItemIconPalette_Salamencite},
+    [ITEM_URSHIFUNITE] = {gItemIcon_Salamencite, gItemIconPalette_Salamencite},
     [ITEM_NIDOQUEENITE] = {gItemIcon_Salamencite, gItemIconPalette_Salamencite},
     [ITEM_NIDOKINGITE] = {gItemIcon_Salamencite, gItemIconPalette_Salamencite},
     [ITEM_MILOTICITE] = {gItemIcon_Salamencite, gItemIconPalette_Salamencite},

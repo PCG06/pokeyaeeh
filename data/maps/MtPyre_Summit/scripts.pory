@@ -23,28 +23,26 @@ MtPyre_Summit_EventScript_SetArchieMaxiePositions::
 MtPyre_Summit_EventScript_TeamAquaTrigger0::
 	lockall
 	setvar VAR_0x8008, 0
-	goto MtPyre_Summit_EventScript_TeamAquaExits
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkUpFaceRight
+	waitmovement 0
+	goto MtPyre_Summit_EventScript_Archie
 	end
 
 MtPyre_Summit_EventScript_TeamAquaTrigger1::
 	lockall
 	setvar VAR_0x8008, 1
-	goto MtPyre_Summit_EventScript_TeamAquaExits
+	goto MtPyre_Summit_EventScript_Archie
 	end
 
 MtPyre_Summit_EventScript_TeamAquaTrigger2::
 	lockall
 	setvar VAR_0x8008, 2
-	goto MtPyre_Summit_EventScript_TeamAquaExits
+	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_WalkUpFaceLeft
+	waitmovement 0
+	goto MtPyre_Summit_EventScript_Archie
 	end
 
-MtPyre_Summit_EventScript_ArchieBattle::
-	msgbox MtPyre_Summit_Text_ArchieWhatAreYouDoingHere, MSGBOX_DEFAULT
-	trainerbattle_no_intro TRAINER_ARCHIE_MT_PYRE, MtPyre_Summit_Text_ArchieDefeat
-	playbgm MUS_ENCOUNTER_AQUA, FALSE
-	return
-
-MtPyre_Summit_EventScript_TeamAquaExits::
+MtPyre_Summit_EventScript_Archie::
 	delay 4
 	playse SE_PIN
 	applymovement LOCALID_ARCHIE, Common_Movement_ExclamationMark
@@ -54,7 +52,9 @@ MtPyre_Summit_EventScript_TeamAquaExits::
 	applymovement LOCALID_ARCHIE, Common_Movement_FacePlayer
 	waitmovement 0
 	playbgm MUS_ENCOUNTER_AQUA, FALSE
-	call MtPyre_Summit_EventScript_ArchieBattle
+	msgbox MtPyre_Summit_Text_ArchieWhatAreYouDoingHere, MSGBOX_DEFAULT
+	trainerbattle_no_intro TRAINER_ARCHIE_MT_PYRE, MtPyre_Summit_Text_ArchieDefeat
+	playbgm MUS_ENCOUNTER_AQUA, FALSE
 	applymovement OBJ_EVENT_ID_PLAYER, Common_Movement_FaceUp
 	waitmovement 0
 	applymovement LOCALID_ARCHIE, Common_Movement_WalkInPlaceFasterDown

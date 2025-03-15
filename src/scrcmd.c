@@ -1709,7 +1709,7 @@ extern const u8 gText_None[];
 bool8 ScrCmd_bufferdayofweekstring(struct ScriptContext *ctx)
 {
     u8 stringVarIndex = ScriptReadByte(ctx);
-    u8 dayOfWeek = ScriptReadByte(ctx);
+    u8 dayOfWeek = VarGet(ScriptReadByte(ctx));
 
     if (dayOfWeek <= DAY_SATURDAY)
         StringCopy(sScriptStringVars[stringVarIndex], gDayNameStringsTable[dayOfWeek]);
