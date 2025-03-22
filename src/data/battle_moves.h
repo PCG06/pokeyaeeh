@@ -14724,7 +14724,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
     [MOVE_AQUA_FANGS] =
     {
         .effect = EFFECT_DEFENSE_DOWN_HIT,
-        .power = 85,
+        .power = 80,
         .type = TYPE_WATER,
         .accuracy = 100,
         .pp = 16,
@@ -14782,7 +14782,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
     [MOVE_FROST_BLADE] =
     {
         .effect = EFFECT_FROSTBITE_HIT,
-        .power = 85,
+        .power = 70,
         .type = TYPE_ICE,
         .accuracy = 100,
         .pp = 24,
