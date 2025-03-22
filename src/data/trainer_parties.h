@@ -15840,9 +15840,44 @@ static const struct TrainerMon sParty_Nate[] = {
 
 static const struct TrainerMon sParty_Kathleen[] = {
     {
-    .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-    .lvl = 1,
-    .species = SPECIES_KADABRA,
+        .species = SPECIES_ROSERADE,
+        .heldItem = ITEM_FOCUS_SASH,
+        .ability = ABILITY_TECHNICIAN,
+        .lvl = 1,
+        .ev = TRAINER_PARTY_EVS(0, 0, 0, 252, 4, 252),
+        .nature = TRAINER_PARTY_NATURE(NATURE_TIMID),
+        .iv = TRAINER_PARTY_IVS(31, 0, 31, 31, 31, 31),
+        .moves = {MOVE_LEAF_STORM, MOVE_SLUDGE_BOMB, MOVE_TOXIC_SPIKES, MOVE_SLEEP_POWDER}
+    },
+    {
+        .species = SPECIES_TOXTRICITY_LOW_KEY,
+        .heldItem = ITEM_THROAT_SPRAY,
+        .ability = ABILITY_PUNK_ROCK,
+        .lvl = 1,
+        .ev = TRAINER_PARTY_EVS(0, 0, 0, 252, 4, 252),
+        .nature = TRAINER_PARTY_NATURE(NATURE_MODEST),
+        .iv = TRAINER_PARTY_IVS(31, 0, 31, 31, 31, 31),
+        .moves = {MOVE_BOOMBURST, MOVE_SLUDGE_BOMB, MOVE_OVERDRIVE, MOVE_VENOM_DRENCH}
+    },
+    {
+        .species = SPECIES_CROBAT,
+        .heldItem = ITEM_CHOICE_BAND,
+        .ability = ABILITY_INFILTRATOR,
+        .lvl = 1,
+        .ev = TRAINER_PARTY_EVS(0, 252, 4, 0, 0, 252),
+        .nature = TRAINER_PARTY_NATURE(NATURE_JOLLY),
+        .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
+        .moves = {MOVE_BRAVE_BIRD, MOVE_CROSS_POISON, MOVE_LEECH_LIFE, MOVE_U_TURN}
+    },
+    {
+        .species = SPECIES_DRAPION,
+        .heldItem = ITEM_BLACK_SLUDGE,
+        .ability = ABILITY_BATTLE_ARMOR,
+        .lvl = 1,
+        .ev = TRAINER_PARTY_EVS(252, 0, 0, 56, 0, 200),
+        .nature = TRAINER_PARTY_NATURE(NATURE_CAREFUL),
+        .moves = {MOVE_KNOCK_OFF, MOVE_POISON_JAB, MOVE_PROTECT, MOVE_WHIRLWIND},
+        .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31)
     }
 };
 
