@@ -32547,6 +32547,7 @@ static const u16 sSamurottTeachableLearnset[] = {
     MOVE_DOUBLE_TEAM,
     MOVE_ENCORE,
     MOVE_FLING,
+    MOVE_FOCUS_BLAST,
     MOVE_HELPING_HAND,
     MOVE_HYDRO_CANNON,
     MOVE_ROUND,

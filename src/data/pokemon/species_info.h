@@ -12470,7 +12470,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
     {
         .baseHP        = 95,
         .baseAttack    = 85,
-        .baseDefense   = 85,
+        .baseDefense   = 90,
         .baseSpeed     = 85,
         .baseSpAttack  = 110,
         .baseSpDefense = 70,
@@ -23372,7 +23372,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .baseDefense   = 80,
         .baseSpeed     = 100,
         .baseSpAttack  = 85,
-        .baseSpDefense = 65,
+        .baseSpDefense = 70,
         .types = { TYPE_WATER, TYPE_DARK},
         .catchRate = 45,
         .expYield = 238,
