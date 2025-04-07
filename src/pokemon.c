@@ -7943,6 +7943,166 @@ bool8 TryIncrementMonLevel(struct Pokemon *mon)
     }
 }
 
+const u16 gTutorMoves[MAX_RELEARNER_MOVES] = {
+    MOVE_ACID_SPRAY,
+    MOVE_AFTER_YOU,
+    MOVE_AIR_CUTTER,
+    MOVE_ALLY_SWITCH,
+    MOVE_ASSURANCE,
+    MOVE_AURA_SPHERE,
+    MOVE_AURORA_VEIL,
+    MOVE_AVALANCHE,
+    MOVE_BABY_DOLL_EYES,
+    MOVE_BEAT_UP,
+    MOVE_BIND,
+    MOVE_BLAST_BURN,
+    MOVE_BLOCK,
+    MOVE_BODY_SLAM,
+    MOVE_BRAVE_BIRD,
+    MOVE_BREAKING_SWIPE,
+    MOVE_BRINE,
+    MOVE_BRUTAL_SWING,
+    MOVE_BUG_BITE,
+    MOVE_BULLDOZE,
+    MOVE_BURNING_JEALOUSY,
+    MOVE_CHARGE,
+    MOVE_CLOSE_COMBAT,
+    MOVE_COACHING,
+    MOVE_CONFUSE_RAY,
+    MOVE_CORROSIVE_GAS,
+    MOVE_COSMIC_POWER,
+    MOVE_COUNTER,
+    MOVE_COVET,
+    MOVE_CURSE,
+    MOVE_DISARMING_VOICE,
+    MOVE_DOUBLE_EDGE,
+    MOVE_DOUBLE_TEAM,
+    MOVE_DRACO_METEOR,
+    MOVE_DRAGON_ASCENT,
+    MOVE_DREAM_EATER,
+    MOVE_DUAL_CHOP,
+    MOVE_ECHOED_VOICE,
+    MOVE_ELECTRO_BALL,
+    MOVE_EMBARGO,
+    MOVE_ENCORE,
+    MOVE_ENDEAVOR,
+    MOVE_ENDURE,
+    MOVE_EXPANDING_FORCE,
+    MOVE_EXPLOSION,
+    MOVE_FAKE_TEARS,
+    MOVE_FIRE_PLEDGE,
+    MOVE_FIRE_SPIN,
+    MOVE_FISHIOUS_REND,
+    MOVE_FISSURE,
+    MOVE_FLARE_BLITZ,
+    MOVE_FLING,
+    MOVE_FOCUS_BLAST,
+    MOVE_FOCUS_ENERGY,
+    MOVE_FOUL_PLAY,
+    MOVE_FRENZY_PLANT,
+    MOVE_FROST_BREATH,
+    MOVE_FUTURE_SIGHT,
+    MOVE_GASTRO_ACID,
+    MOVE_GRASSY_GLIDE,
+    MOVE_GRASS_PLEDGE,
+    MOVE_GRAVITY,
+    MOVE_GUARD_SWAP,
+    MOVE_HEADBUTT,
+    MOVE_HEAL_BELL,
+    MOVE_HELPING_HAND,
+    MOVE_HYDRO_CANNON,
+    MOVE_ICE_BALL,
+    MOVE_ICE_SPINNER,
+    MOVE_INCINERATE,
+    MOVE_INFESTATION,
+    MOVE_LASER_FOCUS,
+    MOVE_LASH_OUT,
+    MOVE_LAST_RESORT,
+    MOVE_LEAF_STORM,
+    MOVE_LOW_KICK,
+    MOVE_LOW_SWEEP,
+    MOVE_MAGIC_COAT,
+    MOVE_MAGNET_RISE,
+    MOVE_MEGAHORN,
+    MOVE_MEGA_DRAIN,
+    MOVE_MEGA_KICK,
+    MOVE_MEGA_PUNCH,
+    MOVE_METAL_CLAW,
+    MOVE_METAL_SOUND,
+    MOVE_METEOR_BEAM,
+    MOVE_METRONOME,
+    MOVE_MISTY_EXPLOSION,
+    MOVE_MUD_SLAP,
+    MOVE_NIGHT_SHADE,
+    MOVE_OUTRAGE,
+    MOVE_OVERHEAT,
+    MOVE_PAIN_SPLIT,
+    MOVE_PAYBACK,
+    MOVE_PAY_DAY,
+    MOVE_PIN_MISSILE,
+    MOVE_POISON_TAIL,
+    MOVE_POUNCE,
+    MOVE_POWER_SHIFT,
+    MOVE_POWER_SWAP,
+    MOVE_PSYBEAM,
+    MOVE_PSYCHIC_NOISE,
+    MOVE_PSYCHO_CUT,
+    MOVE_PSYCH_UP,
+    MOVE_QUASH,
+    MOVE_RAZOR_SHELL,
+    MOVE_RECYCLE,
+    MOVE_RELIC_SONG,
+    MOVE_RETALIATE,
+    MOVE_REVENGE,
+    MOVE_RISING_VOLTAGE,
+    MOVE_ROAR,
+    MOVE_ROCK_BLAST,
+    MOVE_ROCK_CLIMB,
+    MOVE_ROCK_POLISH,
+    MOVE_ROCK_TOMB,
+    MOVE_ROLE_PLAY,
+    MOVE_ROLLOUT,
+    MOVE_ROUND,
+    MOVE_SAND_TOMB,
+    MOVE_SCARY_FACE,
+    MOVE_SCORCHING_SANDS,
+    MOVE_SCREECH,
+    MOVE_SECRET_SWORD,
+    MOVE_SEISMIC_TOSS,
+    MOVE_SELF_DESTRUCT,
+    MOVE_SHEER_COLD,
+    MOVE_SIGNAL_BEAM,
+    MOVE_SKITTER_SMACK,
+    MOVE_SKY_ATTACK,
+    MOVE_SKY_DROP,
+    MOVE_SNATCH,
+    MOVE_SNORE,
+    MOVE_SPEED_SWAP,
+    MOVE_SPITE,
+    MOVE_STEEL_BEAM,
+    MOVE_STEEL_ROLLER,
+    MOVE_STONE_EDGE,
+    MOVE_STORED_POWER,
+    MOVE_STRUGGLE_BUG,
+    MOVE_SUPERPOWER,
+    MOVE_SUPER_FANG,
+    MOVE_SWAGGER,
+    MOVE_SWIFT,
+    MOVE_SYNTHESIS,
+    MOVE_TAIL_SLAP,
+    MOVE_TAKE_DOWN,
+    MOVE_TELEKINESIS,
+    MOVE_TELEPORT,
+    MOVE_VENOM_DRENCH,
+    MOVE_VOLT_TACKLE,
+    MOVE_WATER_PLEDGE,
+    MOVE_WATER_PULSE,
+    MOVE_WHIRLPOOL,
+    MOVE_WILD_CHARGE,
+    MOVE_WORRY_SEED,
+    MOVE_UNAVAILABLE
+};
+
 u8 CanLearnTeachableMove(u16 species, u16 move)
 {
     if (species == SPECIES_EGG)
@@ -7993,59 +8153,6 @@ u8 CanLearnTeachableMove(u16 species, u16 move)
     }
 }
 
-
-
-static const u16 gTutorMoves[MAX_RELEARNER_MOVES] = {
-    MOVE_BUG_BITE,
-    MOVE_COVET,
-    MOVE_WATER_PULSE,
-    MOVE_DUAL_CHOP,
-    MOVE_MUD_SLAP,
-    MOVE_SWAGGER,
-    MOVE_ICE_BALL,
-    MOVE_FURY_CUTTER,
-    MOVE_METRONOME,
-    MOVE_MIMIC,
-    MOVE_SLEEP_TALK,
-    MOVE_OVERHEAT,
-    MOVE_LEAF_STORM,
-    MOVE_SHEER_COLD,
-    MOVE_DRACO_METEOR,
-    MOVE_FOUL_PLAY,
-    MOVE_SKY_ATTACK,
-    MOVE_INFESTATION,
-    MOVE_FIRE_SPIN,
-    MOVE_WHIRLPOOL,
-    MOVE_PAIN_SPLIT,
-    MOVE_SUPERPOWER,
-    MOVE_SUBSTITUTE,
-    MOVE_CLOSE_COMBAT,
-    MOVE_EXPLOSION,
-    MOVE_DOUBLE_EDGE,
-    MOVE_BRAVE_BIRD,
-    MOVE_SCORCHING_SANDS,
-    MOVE_RAZOR_SHELL,
-    MOVE_FLARE_BLITZ,
-    MOVE_ROCK_TOMB,
-    MOVE_GRASSY_GLIDE,
-    MOVE_WILD_CHARGE,
-    MOVE_SKITTER_SMACK,
-    MOVE_RISING_VOLTAGE,
-    MOVE_EXPANDING_FORCE
-};
-
-bool8 IsMoveTM(u16 move)
-{
-    u32 i;
-
-    for (i = ITEM_TM01; i < ITEM_HM08; i++)
-    {
-        if (ItemIdToBattleMoveId(i) == move)
-            return TRUE;
-    }
-    return FALSE;
-}
-
 static void SortMovesAlphabetically(u16 *moves, u8 numMoves)
 {
     int i, j;
@@ -8073,7 +8180,7 @@ static void SortMovesAlphabetically(u16 *moves, u8 numMoves)
     }
 }
 
-u8 GetMoveRelearnerMoves(struct Pokemon *mon, u16 *moves)
+u16 GetRelearnerLevelUpMoves(struct Pokemon *mon, u16 *moves)
 {
     u16 learnedMoves[4];
     u8 numMoves = 0;
@@ -8123,7 +8230,7 @@ u8 GetLevelUpMovesBySpecies(u16 species, u16 *moves)
      return numMoves;
 }
 
-u8 GetNumberOfRelearnableMoves(struct Pokemon *mon)
+u16 GetNumberOfLevelUpMoves(struct Pokemon *mon)
 {
     u16 learnedMoves[MAX_MON_MOVES];
     u16 moves[MAX_LEVEL_UP_MOVES];
@@ -8166,7 +8273,7 @@ u8 GetNumberOfRelearnableMoves(struct Pokemon *mon)
     return numMoves;
 }
 
-u8 GetEggMoveMoves(struct Pokemon *mon, u16 *moves)
+u16 GetRelearnerEggMoves(struct Pokemon *mon, u16 *moves)
 {
     u16 learnedMoves[4];
     u8 numMoves = 0;
@@ -8198,41 +8305,18 @@ u8 GetEggMoveMoves(struct Pokemon *mon, u16 *moves)
     return numMoves;
 }
 
-u8 GetNumberOfEggMoves(struct Pokemon *mon)
+u16 GetNumberOfEggMoves(struct Pokemon *mon)
 {
-    u16 eggMoveBuffer[EGG_MOVES_ARRAY_COUNT];
-    u16 learnedMoves[MAX_MON_MOVES];
-    u8 numMoves = 0;
+    u16 moves[MAX_RELEARNER_MOVES];
     u16 species = GetMonData(mon, MON_DATA_SPECIES_OR_EGG, 0);
-    u16 firstStage = GetEggSpecies(species);
-    u8 numEggMoves = GetEggMovesSpecies(firstStage, eggMoveBuffer);
-    u16 moves[numEggMoves];
-    int i, j;
-    bool8 hasMonMove = FALSE;
 
     if (species == SPECIES_EGG)
         return 0;
-    for (i = 0; i < MAX_MON_MOVES; i++)
-        learnedMoves[i] = GetMonData(mon, MON_DATA_MOVE1 + i, 0);
 
-    for (i = 0; i < numEggMoves; i++)
-    {
-        hasMonMove = FALSE;
-        
-        for (j = 0; j < MAX_MON_MOVES; j++)
-        {
-            if(learnedMoves[j] == eggMoveBuffer[i])
-                hasMonMove = TRUE;
-        }
-                
-        if(!hasMonMove)
-            moves[numMoves++] = eggMoveBuffer[i];
-    }
-            
-    return numMoves;
+    return GetRelearnerEggMoves(mon, moves);
 }
 
-u8 GetTMMoves(struct Pokemon *mon, u16 *moves)
+u16 GetRelearnerTMMoves(struct Pokemon *mon, u16 *moves)
 {
     u16 learnedMoves[MAX_MON_MOVES];
     u8 numMoves = 0;
@@ -8268,7 +8352,7 @@ u8 GetTMMoves(struct Pokemon *mon, u16 *moves)
     return numMoves;
 }
 
-u8 GetNumberOfTMMoves(struct Pokemon *mon)
+u16 GetNumberOfTMMoves(struct Pokemon *mon)
 {
     u16 moves[MAX_RELEARNER_MOVES];
     u16 species = GetMonData(mon, MON_DATA_SPECIES_OR_EGG, 0);
@@ -8276,68 +8360,47 @@ u8 GetNumberOfTMMoves(struct Pokemon *mon)
     if (species == SPECIES_EGG)
         return 0;
 
-    return GetTMMoves(mon, moves);
+    return GetRelearnerTMMoves(mon, moves);
 }
 
-u8 GetTutorMoves(struct Pokemon *mon, u16 *moves)
+u16 GetRelearnerTutorMoves(struct Pokemon *mon, u16 *moves)
 {
-    u16 learnedMoves[MAX_MON_MOVES] = {0};
-    u8 numMoves = 0;
-    u16 species = GetMonData(mon, MON_DATA_SPECIES, 0);
+    u16 learnedMoves[MAX_MON_MOVES];
+    u16 species = GetMonData(mon, MON_DATA_SPECIES);
     u32 i, j;
-    bool8 isTM;
+    u8 numMoves = 0;
 
     for (i = 0; i < MAX_MON_MOVES; i++)
-        learnedMoves[i] = GetMonData(mon, MON_DATA_MOVE1 + i, 0);
+        learnedMoves[i] = GetMonData(mon, MON_DATA_MOVE1 + i);
 
-    // Iterate over all possible moves and check if they're tutor moves (teachable but not a TM)
-    for (i = 1; i < MOVES_COUNT; i++)
+    for (i = 0; i < ARRAY_COUNT(gTutorMoves); i++)
     {
-        if (CanLearnTeachableMove(species, i))
-        {
-            isTM = IsMoveTM(i);
+        u16 move = gTutorMoves[i];
+        if (move == MOVE_UNAVAILABLE)
+            break;
 
-            if (!isTM)
-            {
-                // If move is learnt, don't add it on the list
-                bool8 alreadyLearned = FALSE;
+        if (!CanLearnTeachableMove(species, move))
+            continue;
 
-                for (j = 0; j < MAX_MON_MOVES; j++)
-                {
-                    if (learnedMoves[j] == i)
-                    {
-                        alreadyLearned = TRUE;
-                        break;
-                    }
-                }
+        for (j = 0; j < MAX_MON_MOVES; j++)
+            if (learnedMoves[j] == move)
+                break;
 
-                if (!alreadyLearned)
-                {
-                    bool8 moveAlreadyInList = FALSE;
+        if (j != MAX_MON_MOVES)
+            continue;
 
-                    for (j = 0; j < numMoves; j++)
-                    {
-                        if (moves[j] == i)
-                        {
-                            moveAlreadyInList = TRUE;
-                            break;
-                        }
-                    }
+        for (j = 0; j < numMoves; j++)
+            if (moves[j] == move)
+                break;
 
-                    if (!moveAlreadyInList)
-                        moves[numMoves++] = i;
-                }
-            }
-        }
+        if (j == numMoves)
+            moves[numMoves++] = move;
     }
-
-    // Sort the moves in ascending order because that's how they are listed in teachable learnsets.
-    SortMovesAlphabetically(moves, numMoves);
 
     return numMoves;
 }
 
-u8 GetNumberOfTutorMoves(struct Pokemon *mon)
+u16 GetNumberOfTutorMoves(struct Pokemon *mon)
 {
     u16 moves[MAX_RELEARNER_MOVES];
     u16 species = GetMonData(mon, MON_DATA_SPECIES_OR_EGG, 0);
@@ -8345,7 +8408,7 @@ u8 GetNumberOfTutorMoves(struct Pokemon *mon)
     if (species == SPECIES_EGG)
         return 0;
 
-    return GetTutorMoves(mon, moves);
+    return GetRelearnerTutorMoves(mon, moves);
 }
 
 u16 GetSpeciesPreEvolution(u16 species)

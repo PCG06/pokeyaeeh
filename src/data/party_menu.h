@@ -860,7 +860,7 @@ struct
     [MENU_REGISTER] = {gText_Register, CursorCb_Register},
     [MENU_TRADE1] = {gText_Trade4, CursorCb_Trade1},
     [MENU_TRADE2] = {gText_Trade4, CursorCb_Trade2},
-    [MENU_RELEARN_MOVES] = {gText_RelearnMoves, CursorCb_ChangeMoves},
+    [MENU_LEVEL_MOVES] = {gText_LevelMoves, CursorCb_ChangeLevelUpMoves},
 	[MENU_EGG_MOVES] = {gText_EggMoves, CursorCb_ChangeEggMoves},
 	[MENU_TM_MOVES] = {gText_TMMoves, CursorCb_ChangeTMMoves},
 	[MENU_TUTOR_MOVES] = {gText_TutorMoves, CursorCb_ChangeTutorMoves},

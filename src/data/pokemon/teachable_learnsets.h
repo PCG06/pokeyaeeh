@@ -1,4 +1,3 @@
-
 static const u16 sBulbasaurTeachableLearnset[] = {
     MOVE_HIDDEN_POWER,
     MOVE_SUNNY_DAY,

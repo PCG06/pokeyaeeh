@@ -102,7 +102,7 @@ enum {
     MENU_TRADE2,
     MENU_TOSS,
     MENU_STAT_EDIT,
-    MENU_RELEARN_MOVES,
+    MENU_LEVEL_MOVES,
 	MENU_EGG_MOVES,
     MENU_TM_MOVES,
     MENU_TUTOR_MOVES,
@@ -505,7 +505,7 @@ static void CursorCb_Trade1(u8);
 static void CursorCb_Trade2(u8);
 static void CursorCb_Toss(u8);
 static void CursorCb_StatEdit(u8);
-static void CursorCb_ChangeMoves(u8);
+static void CursorCb_ChangeLevelUpMoves(u8);
 static void CursorCb_ChangeEggMoves(u8);
 static void CursorCb_ChangeTMMoves(u8);
 static void CursorCb_ChangeTutorMoves(u8);
@@ -1121,7 +1121,7 @@ static void DisplayPartyPokemonDataForContest(u8 slot)
 
 static void DisplayPartyPokemonDataForRelearner(u8 slot)
 {
-    if (GetNumberOfRelearnableMoves(&gPlayerParty[slot]) == 0)
+    if (GetNumberOfLevelUpMoves(&gPlayerParty[slot]) == 0)
         DisplayPartyPokemonDescriptionData(slot, PARTYBOX_DESC_NOT_ABLE_2);
     else
         DisplayPartyPokemonDescriptionData(slot, PARTYBOX_DESC_ABLE_2);
@@ -2900,7 +2900,7 @@ static u8 DisplaySelectionWindow(u8 windowType)
         if ((sPartyMenuInternal->actions[i] >= MENU_FIELD_MOVES) || (sPartyMenuInternal->actions[i] == MENU_SUB_FIELD_MOVES))
             fontColorsId = 4;
         if (sPartyMenuInternal->actions[i] == MENU_SUB_MOVES
-        || sPartyMenuInternal->actions[i] == MENU_RELEARN_MOVES || sPartyMenuInternal->actions[i] == MENU_EGG_MOVES
+        || sPartyMenuInternal->actions[i] == MENU_LEVEL_MOVES || sPartyMenuInternal->actions[i] == MENU_EGG_MOVES
         || sPartyMenuInternal->actions[i] == MENU_TM_MOVES || sPartyMenuInternal->actions[i] == MENU_TUTOR_MOVES)
             fontColorsId = 6;
         if (sPartyMenuInternal->actions[i] == MENU_STAT_EDIT)
@@ -2968,18 +2968,18 @@ static void SetPartyMonSelectionActions(struct Pokemon *mons, u8 slotId, u8 acti
 static void SetPartyMonLearnMoveSelectionActions(struct Pokemon *mons, u8 slotId)
 {
     u32 i,j, targetspecies;
-    u32 species = GetMonData(&mons[slotId], MON_DATA_SPECIES, NULL);
+    u16 species = GetMonData(&mons[slotId], MON_DATA_SPECIES);
 
-    if (GetMonData(&mons[slotId], MON_DATA_SPECIES) != SPECIES_NONE && GetNumberOfRelearnableMoves(&mons[slotId]) > 0)
-        AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, MENU_RELEARN_MOVES);
-    if (GetMonData(&mons[slotId], MON_DATA_SPECIES) != SPECIES_NONE && GetNumberOfTMMoves(&mons[slotId]) > 0)
+    if (species != SPECIES_NONE && GetNumberOfLevelUpMoves(&mons[slotId]))
+        AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, MENU_LEVEL_MOVES);
+    if (species != SPECIES_NONE && GetNumberOfTMMoves(&mons[slotId]))
         AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, MENU_TM_MOVES);
 
     if (FlagGet(FLAG_SYS_ENABLE_EGG_AND_TUTOR_MOVES))
     {
-	    if (GetMonData(&mons[slotId], MON_DATA_SPECIES) != SPECIES_NONE && GetNumberOfEggMoves(&mons[slotId]) > 0)
+	    if (species != SPECIES_NONE && GetNumberOfEggMoves(&mons[slotId]))
             AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, MENU_EGG_MOVES);
-        if (GetMonData(&mons[slotId], MON_DATA_SPECIES) != SPECIES_NONE && GetNumberOfTutorMoves(&mons[slotId]) > 0)
+        if (species != SPECIES_NONE && GetNumberOfTutorMoves(&mons[slotId]))
             AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, MENU_TUTOR_MOVES);
     }
 
@@ -3036,6 +3036,7 @@ static void SetPartyMonFieldSelectionActions(struct Pokemon *mons, u8 slotId)
 {
     u8 i, j;
     u16 move;
+    u16 species = GetMonData(&mons[slotId], MON_DATA_SPECIES);
     u16 targetSpecies = GetEvolutionTargetSpecies(&gPlayerParty[gPartyMenu.slotId], EVO_MODE_NORMAL, ITEM_NONE, NULL);
 
     sPartyMenuInternal->numActions = 0;
@@ -3051,10 +3052,10 @@ static void SetPartyMonFieldSelectionActions(struct Pokemon *mons, u8 slotId)
         || (CanUseDigOrEscapeRopeOnCurMap() == TRUE)) || (DoesMonKnowFieldMove() == TRUE))
             AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, MENU_SUB_FIELD_MOVES);
 
-        if ((GetMonData(&mons[slotId], MON_DATA_SPECIES) != SPECIES_NONE && GetNumberOfRelearnableMoves(&mons[slotId]) > 0)
-        || (GetMonData(&mons[slotId], MON_DATA_SPECIES) != SPECIES_NONE && GetNumberOfEggMoves(&mons[slotId]) > 0)
-        || (GetMonData(&mons[slotId], MON_DATA_SPECIES) != SPECIES_NONE && GetNumberOfTMMoves(&mons[slotId]) > 0)
-        || (GetMonData(&mons[slotId], MON_DATA_SPECIES) != SPECIES_NONE && GetNumberOfTutorMoves(&mons[slotId]) > 0))
+        if ((species != SPECIES_NONE && GetNumberOfLevelUpMoves(&mons[slotId]))
+        || (species != SPECIES_NONE && GetNumberOfEggMoves(&mons[slotId]))
+        || (species != SPECIES_NONE && GetNumberOfTMMoves(&mons[slotId]))
+        || (species != SPECIES_NONE && GetNumberOfTutorMoves(&mons[slotId])))
             AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, MENU_SUB_MOVES);
 
         if (FlagGet(FLAG_RECEIVED_STAT_EDITOR))
@@ -3949,10 +3950,10 @@ static void Task_HandleLoseMailMessageYesNoInput(u8 taskId)
     }
 }
 
-static void CursorCb_ChangeMoves(u8 taskId)
+static void CursorCb_ChangeLevelUpMoves(u8 taskId)
 {
     PlaySE(SE_SELECT);
-	VarSet(VAR_PARTY_MENU_TUTOR_STATE, MOVE_TUTOR_LEVEL_UP_MOVES);
+	VarSet(VAR_PARTY_MENU_TUTOR_STATE, MOVE_RELEARNER_LEVEL_UP_MOVES);
     gLastViewedMonIndex =  gPartyMenu.slotId;
     VarSet(VAR_0x8004, gPartyMenu.slotId);
     TeachMoveRelearnerMove();
@@ -3962,7 +3963,7 @@ static void CursorCb_ChangeMoves(u8 taskId)
 static void CursorCb_ChangeEggMoves(u8 taskId)
 {
     PlaySE(SE_SELECT);
-	VarSet(VAR_PARTY_MENU_TUTOR_STATE, MOVE_TUTOR_EGG_MOVES);
+	VarSet(VAR_PARTY_MENU_TUTOR_STATE, MOVE_RELEARNER_EGG_MOVES);
     gLastViewedMonIndex =  gPartyMenu.slotId;
     VarSet(VAR_0x8004, gPartyMenu.slotId);
     TeachMoveRelearnerMove();
@@ -3972,7 +3973,7 @@ static void CursorCb_ChangeEggMoves(u8 taskId)
 static void CursorCb_ChangeTMMoves(u8 taskId)
 {
     PlaySE(SE_SELECT);
-	VarSet(VAR_PARTY_MENU_TUTOR_STATE, MOVE_TUTOR_TM_MOVES);
+	VarSet(VAR_PARTY_MENU_TUTOR_STATE, MOVE_RELEARNER_TM_MOVES);
     gLastViewedMonIndex =  gPartyMenu.slotId;
     VarSet(VAR_0x8004, gPartyMenu.slotId);
     TeachMoveRelearnerMove();
@@ -3982,7 +3983,7 @@ static void CursorCb_ChangeTMMoves(u8 taskId)
 static void CursorCb_ChangeTutorMoves(u8 taskId)
 {
     PlaySE(SE_SELECT);
-	VarSet(VAR_PARTY_MENU_TUTOR_STATE, MOVE_TUTOR_TUTOR_MOVES);
+	VarSet(VAR_PARTY_MENU_TUTOR_STATE, MOVE_RELEARNER_TUTOR_MOVES);
     gLastViewedMonIndex =  gPartyMenu.slotId;
     VarSet(VAR_0x8004, gPartyMenu.slotId);
     TeachMoveRelearnerMove();
@@ -7991,7 +7992,7 @@ static void CB2_ChooseMonForMoveRelearner(void)
     if (gSpecialVar_0x8004 >= PARTY_SIZE)
         gSpecialVar_0x8004 = PARTY_NOTHING_CHOSEN;
     else
-        gSpecialVar_0x8005 = GetNumberOfRelearnableMoves(&gPlayerParty[gSpecialVar_0x8004]);
+        gSpecialVar_0x8005 = GetNumberOfLevelUpMoves(&gPlayerParty[gSpecialVar_0x8004]);
     gFieldCallback2 = CB2_FadeFromPartyMenu;
     SetMainCallback2(CB2_ReturnToField);
 }
