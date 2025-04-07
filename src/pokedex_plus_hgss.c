@@ -5162,6 +5162,7 @@ static void PrintStatsScreen_DestroyMoveItemIcon(u8 taskId)
 static bool8 CalculateMoves(void)
 {
     u16 species = NationalPokedexNumToSpeciesHGSS(sPokedexListItem->dexNum);
+    u16 preSpecies = species;
 
     u16 statsMovesEgg[EGG_MOVES_ARRAY_COUNT] = {0};
     u16 statsMovesLevelUp[MAX_LEVEL_UP_MOVES] = {0};
@@ -5172,47 +5173,59 @@ static bool8 CalculateMoves(void)
     u8 numTMHMMoves = 0;
     u8 numTutorMoves = 0;
     u16 movesTotal = 0;
-    u8 i,j;
+    u8 i;
+    u16 isTMMove[MOVES_COUNT] = {0};
 
     // Mega pokemon don't have distinct learnsets from their base form; so use base species for calculation
     if ((species >= SPECIES_VENUSAUR_MEGA && species <= SPECIES_GROUDON_PRIMAL) || (species >= SPECIES_BUTTERFREE_MEGA && species <= SPECIES_KINGDRA_MEGA))
         species = GetFormSpeciesId(species, 0);
 
-    //Calculate amount of Egg and LevelUp moves
-    numEggMoves = GetEggMovesSpecies(species, statsMovesEgg);
-    numLevelUpMoves = GetLevelUpMovesBySpecies(species, statsMovesLevelUp);
-
     //Egg moves
-    for (i=0; i < numEggMoves; i++)
+    while (preSpecies != SPECIES_NONE)
+    {
+        numEggMoves += GetEggMovesSpecies(preSpecies, statsMovesEgg);
+        preSpecies = GetSpeciesPreEvolution(preSpecies);
+    }
+
+    for (i = 0; i < numEggMoves; i++)
     {
         sStatsMoves[movesTotal] = statsMovesEgg[i];
         movesTotal++;
     }
 
     //Level up moves
+    numLevelUpMoves = GetLevelUpMovesBySpecies(species, statsMovesLevelUp);
     for (i=0; i < numLevelUpMoves; i++)
     {
         sStatsMoves[movesTotal] = statsMovesLevelUp[i];
         movesTotal++;
     }
 
+    //TM moves
+    for (i = 0; i < NUM_TECHNICAL_MACHINES + NUM_HIDDEN_MACHINES; i++)
+    {
+        move = ItemIdToBattleMoveId(ITEM_TM01 + i);
+        if (move != MOVE_NONE && CanLearnTeachableMove(species, move))
+        {
+            isTMMove[move] = TRUE;
+            sStatsMovesTMHM_ID[numTMHMMoves] = ITEM_TM01 + i;
+            numTMHMMoves++;
+
+            sStatsMoves[movesTotal] = move;
+            movesTotal++;
+        }
+    }
+
+    //Tutor moves
     for (i = 0; gTeachableLearnsets[species][i] != MOVE_UNAVAILABLE; i++)
     {
         move = gTeachableLearnsets[species][i];
-        for (j = 0; j < NUM_TECHNICAL_MACHINES + NUM_HIDDEN_MACHINES; j++)
+        if (!isTMMove[move])
         {
-            if (ItemIdToBattleMoveId(ITEM_TM01 + j) == move)
-            {
-                sStatsMovesTMHM_ID[numTMHMMoves] = (ITEM_TM01 + j);
-                numTMHMMoves++;
-                break;
-            }
-        }
-        if (j >= NUM_TECHNICAL_MACHINES + NUM_HIDDEN_MACHINES)
             numTutorMoves++;
-
-        sStatsMoves[movesTotal] = move;
-        movesTotal++;
+            sStatsMoves[movesTotal] = move;
+            movesTotal++;
+        }
     }
 
     sPokedexView->numEggMoves = numEggMoves;

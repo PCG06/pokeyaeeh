@@ -609,6 +609,7 @@ u8 GetNumberOfRelearnableMoves(struct Pokemon *mon);
 u8 GetNumberOfEggMoves(struct Pokemon *mon);
 u8 GetNumberOfTMMoves(struct Pokemon *mon);
 u8 GetNumberOfTutorMoves(struct Pokemon *mon);
+u16 GetSpeciesPreEvolution(u16 species);
 u16 SpeciesToPokedexNum(u16 species);
 bool32 IsSpeciesInHoennDex(u16 species);
 u16 GetBattleBGM(void);

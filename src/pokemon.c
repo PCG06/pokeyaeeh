@@ -8348,6 +8348,22 @@ u8 GetNumberOfTutorMoves(struct Pokemon *mon)
     return GetTutorMoves(mon, moves);
 }
 
+u16 GetSpeciesPreEvolution(u16 species)
+{
+    int i, j;
+
+    for (i = SPECIES_BULBASAUR; i <= NATIONAL_DEX_COUNT; i++)
+    {
+        for (j = 0; j < EVOS_PER_MON; j++)
+        {
+            if (gEvolutionTable[i][j].targetSpecies == species)
+                return i;
+        }
+    }
+
+    return SPECIES_NONE;
+}
+
 u16 SpeciesToPokedexNum(u16 species)
 {
     if (IsNationalPokedexEnabled())
