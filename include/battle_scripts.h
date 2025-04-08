@@ -549,6 +549,8 @@ extern const u8 BattleScript_EffectCureStatusAllies[];
 extern const u8 BattleScript_EffectRecycleBerriesAllies[];
 extern const u8 BattleScript_WildBattleVictory[];
 extern const u8 BattleScript_FaintWildMon[];
+extern const u8 BattleScript_TemporalityActivates[];
+extern const u8 BattleScript_GravitalityActivates[];
 
 // dynamax and max raids
 extern const u8 BattleScript_DynamaxBegins[];

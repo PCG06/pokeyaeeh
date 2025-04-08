@@ -11543,3 +11543,20 @@ BattleScript_EffectLunarBeam::
 	jumpifweatheraffected BS_ATTACKER, B_WEATHER_MOON, BattleScript_SolarBeamOnFirstTurn
 	goto BattleScript_SolarBeamDecideTurn
 	end
+
+BattleScript_TemporalityActivates::
+	pause B_WAIT_TIME_SHORT
+	call BattleScript_AbilityPopUp
+	printstring STRINGID_DIMENSIONSWERETWISTED
+	waitstate
+	playanimation BS_BATTLER_0, B_ANIM_TRICK_ROOM
+	call BattleScript_TryRoomServiceLoop
+	end3
+
+BattleScript_GravitalityActivates::
+	pause B_WAIT_TIME_SHORT
+	call BattleScript_AbilityPopUp
+	printstring STRINGID_GRAVITYINTENSIFIED
+	waitstate
+	playanimation BS_BATTLER_0, B_ANIM_GRAVITY
+	end3

@@ -329,6 +329,8 @@ static const u8 sJuggernautDescription[] = _("Boosts slamming moves. (50%)");
 static const u8 sIceColdDescription[] = _("Powers up Ice-type moves. (50%)");
 static const u8 sTerminatorDescription[] = _("Mold Breaker + Juggernaut.");
 static const u8 sFrenzyDescription[] = _("Moves hit twice. (25%)");
+static const u8 sTemporalityDescription[] = _("Sets up Trick Room on entry.");
+static const u8 sGravitalityDescription[] = _("Sets up Gravity on entry.");
 
 #if B_EXPANDED_ABILITY_NAMES == TRUE
 const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
@@ -676,6 +678,10 @@ const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
     [ABILITY_JUGGERNAUT] = _("Juggernaut"),
     [ABILITY_ICE_COLD] = _("Ice Cold"),
     [ABILITY_TERMINATOR] = _("Terminator"),
+    [ABILITY_VERSATILITY] = _("Versatility"),
+    [ABILITY_FRENZY] = _("Frenzy"),
+    [ABILITY_TEMPORALITY] = _("Temporality"),
+    [ABILITY_GRAVITALITY] = _("Gravitality"),
 };
 #else   // 12 characters
 const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
@@ -1022,9 +1028,12 @@ const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
     [ABILITY_REBOUND] = _("Rebound"),
     [ABILITY_JUGGERNAUT] = _("Juggernaut"),
     [ABILITY_ICE_COLD] = _("Ice Cold"),
+    [ABILITY_TERMINATOR] = _("Terminator"),
     [ABILITY_VERSATILITY] = _("Versatility"),
     [ABILITY_FRENZY] = _("Frenzy"),
     [ABILITY_PRECAUTIOUS] = _("Precautious"),
+    [ABILITY_TEMPORALITY] = _("Temporality"),
+    [ABILITY_GRAVITALITY] = _("Gravitality"),
 };
 #endif
 
@@ -1376,4 +1385,6 @@ const u8 *const gAbilityDescriptionPointers[ABILITIES_COUNT] =
     [ABILITY_VERSATILITY] = sProteanDescription,
     [ABILITY_FRENZY] = sFrenzyDescription,
     [ABILITY_PRECAUTIOUS] = sMultiscaleDescription,
+    [ABILITY_TEMPORALITY] = sTemporalityDescription,
+    [ABILITY_GRAVITALITY] = sGravitalityDescription,
 };

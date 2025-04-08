@@ -571,6 +571,7 @@
 #define B_ANIM_TAILWIND                 49
 #define B_ANIM_FOG_CONTINUES            50
 #define B_ANIM_MOON_CONTINUES           51
+#define B_ANIM_GRAVITY                  52
 
 // special animations table (gBattleAnims_Special)
 #define B_ANIM_LVL_UP                   0
