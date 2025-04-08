@@ -77,6 +77,7 @@
 #include "constants/party_menu.h"
 #include "constants/rgb.h"
 #include "constants/songs.h"
+#include "constants/weather.h"
 
 enum {
     MENU_SUMMARY,
@@ -157,6 +158,7 @@ enum {
     FIELD_MOVE_SOFT_BOILED,
     FIELD_MOVE_SWEET_SCENT,
     FIELD_MOVE_ROCK_CLIMB,
+    FIELD_MOVE_DEFOG,
     FIELD_MOVES_COUNT
 };
 
@@ -2993,12 +2995,14 @@ static void SetPartyMonFieldMoveSelectionActions(struct Pokemon *mons, u8 slotId
     u32 i,j, move;
 
     // Adds field moves to the Pokémon's field moves list without knowing them
-    if ((CheckBagHasItem(ITEM_HM_FLY, 1)) && (Overworld_MapTypeAllowsTeleportAndFly(gMapHeader.mapType) == TRUE)) // Player gets Fly from May after Petalburg fight.
+    if ((CheckBagHasItem(ITEM_HM_FLY, 1)) && (Overworld_MapTypeAllowsTeleportAndFly(gMapHeader.mapType))) // Player gets Fly from May after Petalburg fight.
         AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, FIELD_MOVE_FLY + MENU_FIELD_MOVES);
-    if ((FlagGet(FLAG_BADGE02_GET)) && (CheckBagHasItem(ITEM_HM_FLASH, 1)) && (gMapHeader.cave == TRUE) && !(FlagGet(FLAG_SYS_USE_FLASH)))
+    if ((FlagGet(FLAG_BADGE02_GET)) && (CheckBagHasItem(ITEM_HM_FLASH, 1)) && gMapHeader.cave && !(FlagGet(FLAG_SYS_USE_FLASH)))
         AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, FIELD_MOVE_FLASH + MENU_FIELD_MOVES);
-    if (CanUseDigOrEscapeRopeOnCurMap() == TRUE)
+    if (CheckBagHasItem(ITEM_TM_DIG, 1) && CanUseDigOrEscapeRopeOnCurMap())
         AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, FIELD_MOVE_DIG + MENU_FIELD_MOVES);
+    if (CheckBagHasItem(ITEM_TM_DEFOG, 1) && (gWeather.currWeather == WEATHER_FOG_HORIZONTAL || gWeather.currWeather == WEATHER_FOG_DIAGONAL))
+        AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, FIELD_MOVE_DEFOG + MENU_FIELD_MOVES);
     
     // Add field moves to action list
     for (i = 0; i < MAX_MON_MOVES; i++)
