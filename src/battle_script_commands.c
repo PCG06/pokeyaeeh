@@ -10308,7 +10308,7 @@ static void Cmd_various(void)
             if (((ability == ABILITY_DESOLATE_LAND && gBattleWeather & B_WEATHER_SUN_PRIMAL)
              || (ability == ABILITY_PRIMORDIAL_SEA && gBattleWeather & B_WEATHER_RAIN_PRIMAL)
              || (ability == ABILITY_DELTA_STREAM && gBattleWeather & B_WEATHER_STRONG_WINDS)
-             || (ability == ABILITY_PHANTOM_GALE && gBattleWeather & B_WEATHER_GHOSTLY_WINDS))
+             || (ability == ABILITY_OMINOUSITY && gBattleWeather & B_WEATHER_GHOSTLY_WINDS))
              && IsBattlerAlive(i))
                 shouldNotClear = TRUE;
         }

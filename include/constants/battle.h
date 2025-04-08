@@ -300,7 +300,7 @@
 #define B_WEATHER_SNOW_TEMPORARY      (1 << 12)
 #define B_WEATHER_SNOW_PERMANENT      (1 << 13)
 #define B_WEATHER_SNOW                (B_WEATHER_SNOW_TEMPORARY | B_WEATHER_SNOW_PERMANENT)
-#define B_WEATHER_GHOSTLY_WINDS       (1 << 14) // Phantom Gale
+#define B_WEATHER_GHOSTLY_WINDS       (1 << 14) // Ominousity
 #define B_WEATHER_FOG_TEMPORARY       (1 << 15)
 #define B_WEATHER_FOG_PERMANENT       (1 << 16)
 #define B_WEATHER_FOG                 (B_WEATHER_FOG_TEMPORARY | B_WEATHER_FOG_PERMANENT)

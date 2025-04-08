@@ -503,7 +503,7 @@ extern const u8 BattleScript_TailstreamActivated[];
 extern const u8 BattleScript_GrassPeltHealing[];
 extern const u8 BattleScript_SyrupBombEndTurn[];
 extern const u8 BattleScript_SyrupBombActivates[];
-extern const u8 BattleScript_PhantomGaleActivates[];
+extern const u8 BattleScript_OminousityActivates[];
 extern const u8 BattleScript_OminousAirCurrentBlowsOn[];
 extern const u8 BattleScript_AttackWeakenedByGhostlyWinds[];
 extern const u8 BattleScript_EffectCombinedPledge_Water[];

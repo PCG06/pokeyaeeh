@@ -11416,7 +11416,7 @@ BattleScript_TailstreamActivated::
 	call BattleScript_TryTailwindAbilitiesLoop
 	end3
 
-BattleScript_PhantomGaleActivates::
+BattleScript_OminousityActivates::
 	pause B_WAIT_TIME_SHORT
 	call BattleScript_AbilityPopUp
 	printstring STRINGID_OMINOUSAIRCURRENT

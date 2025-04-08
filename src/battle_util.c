@@ -5007,10 +5007,10 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                 effect++;
             }
             break;
-        case ABILITY_PHANTOM_GALE:
+        case ABILITY_OMINOUSITY:
             if (TryChangeBattleWeather(battler, ENUM_WEATHER_GHOSTLY_WINDS, TRUE))
             {
-                BattleScriptPushCursorAndCallback(BattleScript_PhantomGaleActivates);
+                BattleScriptPushCursorAndCallback(BattleScript_OminousityActivates);
                 effect++;
             }
             break;
