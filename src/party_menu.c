@@ -441,7 +441,7 @@ static void UpdateMonDisplayInfoAfterRareCandy(u8, struct Pokemon *);
 static void Task_DisplayLevelUpStatsPg1(u8);
 static void DisplayLevelUpStatsPg1(u8);
 static void Task_DisplayLevelUpStatsPg2(u8);
-static void Task_TryEvolveLateClose(u8);
+static void Task_TryEvolutionFromParty(u8);
 static void DisplayLevelUpStatsPg2(u8);
 static void Task_TryLearnNewMoves(u8);
 static void PartyMenuTryEvolution(u8);
@@ -6054,11 +6054,11 @@ static void Task_DisplayLevelUpStatsPg2(u8 taskId)
         PlaySE(SE_SELECT);
         DisplayLevelUpStatsPg2(taskId);
         sInitialLevel += 1; // so the Pokemon doesn't learn a move meant for its previous level
-        gTasks[taskId].func = Task_TryEvolveLateClose;
+        gTasks[taskId].func = Task_TryEvolutionFromParty;
     }
 }
 
-static void Task_TryEvoFromParty(u8 taskId)
+static void Task_TryEvolutionFromParty(u8 taskId)
 {
     if (WaitFanfare(FALSE) && ((JOY_NEW(A_BUTTON)) || (JOY_NEW(B_BUTTON))))
     {
