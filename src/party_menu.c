@@ -441,6 +441,7 @@ static void UpdateMonDisplayInfoAfterRareCandy(u8, struct Pokemon *);
 static void Task_DisplayLevelUpStatsPg1(u8);
 static void DisplayLevelUpStatsPg1(u8);
 static void Task_DisplayLevelUpStatsPg2(u8);
+static void Task_TryEvolveLateClose(u8);
 static void DisplayLevelUpStatsPg2(u8);
 static void Task_TryLearnNewMoves(u8);
 static void PartyMenuTryEvolution(u8);
@@ -6053,7 +6054,16 @@ static void Task_DisplayLevelUpStatsPg2(u8 taskId)
         PlaySE(SE_SELECT);
         DisplayLevelUpStatsPg2(taskId);
         sInitialLevel += 1; // so the Pokemon doesn't learn a move meant for its previous level
-        gTasks[taskId].func = Task_TryLearnNewMoves;
+        gTasks[taskId].func = Task_TryEvolveLateClose;
+    }
+}
+
+static void Task_TryEvoFromParty(u8 taskId)
+{
+    if (WaitFanfare(FALSE) && ((JOY_NEW(A_BUTTON)) || (JOY_NEW(B_BUTTON))))
+    {
+        RemoveLevelUpStatsWindow();
+        gTasks[taskId].func = PartyMenuTryEvolution;
     }
 }
 
@@ -6076,11 +6086,10 @@ static void DisplayLevelUpStatsPg2(u8 taskId)
     ScheduleBgCopyTilemapToVram(2);
 }
 
+// This is now unused :)
 static void Task_TryLearnNewMoves(u8 taskId)
 {
     u16 learnMove;
-    u16 *itemPtr = &gSpecialVar_ItemId;
-    u8 holdEffectParam = ItemId_GetHoldEffectParam(*itemPtr);
 
     if (WaitFanfare(FALSE) && ((JOY_NEW(A_BUTTON)) || (JOY_NEW(B_BUTTON))))
     {
@@ -6090,19 +6099,11 @@ static void Task_TryLearnNewMoves(u8 taskId)
             SetMonData(&gPlayerParty[gPartyMenu.slotId], MON_DATA_LEVEL, &sInitialLevel);
             learnMove = MonTryLearningNewMove(&gPlayerParty[gPartyMenu.slotId], TRUE);
             gPartyMenu.learnMoveState = 1;
-
-            ESCAPE:
-                gTasks[taskId].func = Task_LearnNextMoveOrClosePartyMenu;
-                break;
-
             switch (learnMove)
             {
             case 0: // No moves to learn
                 if (sInitialLevel >= sFinalLevel)
                     PartyMenuTryEvolution(taskId);
-
-                if (holdEffectParam == 10)
-                    goto ESCAPE;
                 break;
             case MON_HAS_MAX_MOVES:
                 DisplayMonNeedsToReplaceMove(taskId);
