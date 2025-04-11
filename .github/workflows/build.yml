@@ -80,11 +80,11 @@ jobs:
       - name: Download pokeemerald
         run: git clone https://github.com/pret/pokeemerald
         working-directory: tools
-  
+
       - name: Install agbcc to pokeemerald
         run: cp -r agbcc pokeemerald/tools/
         working-directory: tools
-  
+
       - name: Build pokeemerald
         run: make -j8
         working-directory: tools/pokeemerald
@@ -97,14 +97,18 @@ jobs:
           PATCH_NAME="pokeyaeeh_${COMMIT_HASH}.bps"
           cp tools/flips-linux tools/flips
           ./tools/flips --create tools/pokeemerald/pokeemerald.gba pokeyaeeh.gba "$PATCH_NAME"
-          zip -j patch.zip "$PATCH_NAME"
-          echo "COMMIT_HASH=$COMMIT_HASH" >> $GITHUB_ENV  
+          zip -j Pokemon_YAEEH.zip "$PATCH_NAME"
+          echo "COMMIT_HASH=$COMMIT_HASH" >> $GITHUB_ENV
 
-      - name: Upload to Catbox
+      - name: Upload to Pixeldrain
         id: upload
         run: |
-          RESPONSE=$(curl -s -F "reqtype=fileupload" -F "fileToUpload=@patch.zip" https://catbox.moe/user/api.php)
-          echo "DOWNLOAD_URL=$RESPONSE" >> $GITHUB_ENV
+          echo "Uploading Pokemon_YAEEH.zip to Pixeldrain..."
+          RESPONSE=$(curl -s -u user:${{ secrets.PXDRAN_API }} -F "file=@Pokemon_YAEEH.zip" https://pixeldrain.com/api/file)
+          echo "$RESPONSE" | jq .
+          DOWNLOAD_ID=$(echo "$RESPONSE" | jq -r '.id')
+          DOWNLOAD_URL="https://pixeldrain.com/api/file/${DOWNLOAD_ID}?download"
+          echo "DOWNLOAD_URL=$DOWNLOAD_URL" >> $GITHUB_ENV
 
       - name: Send patch notification to Discord
         if: success()
