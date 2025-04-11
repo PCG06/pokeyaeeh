@@ -78,13 +78,15 @@ jobs:
                ${{ secrets.DISCORD_BUILD_SECRET }}
 
       - name: Download pokeemerald
-        run: git clone https://github.com/pret/pokeemerald tools/pokeemerald
-
+        run: pwd && cd tools && git clone https://github.com/pret/pokeemerald
+  
       - name: Install agbcc to pokeemerald
-        run: cp -r agbcc tools/pokeemerald/tools/
-
+        run: pwd && cd tools && ls && cp -r agbcc pokeemerald/tools/ && cd pokeemerald && pwd
+  
       - name: Build pokeemerald
-        run: make -C tools/pokeemerald -j8
+        run: |
+          cd tools/pokeemerald
+          make -j8
 
       - name: Create and zip patch
         run: |
