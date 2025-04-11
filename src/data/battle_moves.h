@@ -68,7 +68,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
     {
         .effect = EFFECT_MULTI_HIT,
         .power = 25,
-        .type = TYPE_NORMAL,
+        .type = TYPE_FIGHTING,
         .accuracy = 100,
         .pp = 24,
         .secondaryEffectChance = 0,
@@ -718,11 +718,11 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
     [MOVE_TWINEEDLE] =
     {
         .effect = EFFECT_POISON_HIT,
-        .power = 25,
+        .power = 40,
         .type = TYPE_BUG,
         .accuracy = 100,
-        .pp = 32,
-        .secondaryEffectChance = 20,
+        .pp = 48,
+        .secondaryEffectChance = 50,
         .target = MOVE_TARGET_SELECTED,
         .priority = 0,
         .split = SPLIT_PHYSICAL,
@@ -2741,7 +2741,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
         .effect = EFFECT_MULTI_HIT,
         .power = 30,
         .type = TYPE_NORMAL,
-        .accuracy = 100,
+        .accuracy = 90,
         .pp = 24,
         .secondaryEffectChance = 0,
         .target = MOVE_TARGET_SELECTED,
@@ -10358,7 +10358,6 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
         .target = MOVE_TARGET_SELECTED,
         .priority = 1,
         .zMoveEffect = Z_EFFECT_NONE,
-
     },
 
     [MOVE_MYSTICAL_FIRE] =
