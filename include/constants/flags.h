@@ -214,7 +214,7 @@
 #define FLAG_DEFEATED_WALLY_MAUVILLE         0xBE
 #define FLAG_DEFEATED_GRUNT_SPACE_CENTER_1F  0xBF
 #define FLAG_RECEIVED_SUN_STONE_MOSSDEEP     0xC0
-#define FLAG_UNUSED_0x1C1                    0xC1 // Unused Flag
+#define FLAG_DEFEATED_WALLY_PETALBURG_WOODS  0xC1
 #define FLAG_TRICK_HOUSE_PUZZLE_7_SWITCH_1   0xC2 // Leftover from the RS version of Puzzle Room 7, functionally unused
 #define FLAG_TRICK_HOUSE_PUZZLE_7_SWITCH_2   0xC3 //
 #define FLAG_TRICK_HOUSE_PUZZLE_7_SWITCH_3   0xC4 //
@@ -824,7 +824,7 @@
 #define FLAG_HIDE_ROUTE_111_VICTORIA_WINSTRATE                      0x301
 #define FLAG_HIDE_ROUTE_111_VIVI_WINSTRATE                          0x302
 #define FLAG_HIDE_ROUTE_111_VICKY_WINSTRATE                         0x303
-#define FLAG_UNUSED_0x304                                           0x304
+#define FLAG_HIDE_PETALBURG_WOODS_WALLY                             0x304
 #define FLAG_HIDE_SKY_PILLAR_TOP_RAYQUAZA                           0x305
 #define FLAG_HIDE_LILYCOVE_CONTEST_HALL_CONTEST_ATTENDANT_1         0x306
 #define FLAG_HIDE_LILYCOVE_MUSEUM_CURATOR                           0x307

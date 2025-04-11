@@ -125,8 +125,7 @@ Text_Route114TrainersCleared:
 	.string "Route 114 Trainers cleared!$"
 
 Debug_EventScript_Script_1:: @ testing scripts and stuff
-	setwildbattle SPECIES_DIALGA_ORIGIN, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, SPECIES_PALKIA_ORIGIN, 0, 0, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
-	dowildbattle
+	setflag FLAG_HIDE_PETALBURG_WOODS_WALLY
 	end
 
 Debug_EventScript_Script_2:: @ regular single battle

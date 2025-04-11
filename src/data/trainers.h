@@ -7342,15 +7342,17 @@ const struct Trainer gTrainers[] = {
         .party = TRAINER_PARTY(sParty_WallyVR3),
     },
 
-    [TRAINER_WALLY_VR_4] =
+    [TRAINER_WALLY_PETALBURG_WOODS] =
     {
         .trainerClass = TRAINER_CLASS_RIVAL,
         .encounterMusic_gender = TRAINER_ENCOUNTER_MUSIC_MALE,
         .trainerPic = TRAINER_PIC_WALLY,
         .trainerName = _("Wally"),
         .doubleBattle = TRUE,
-        .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_PREFER_STRONGEST_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_OMNISCIENT | AI_FLAG_CHECK_VIABILITY,
-        .party = TRAINER_PARTY(sParty_WallyVR4),
+        .mugshotEnabled = TRUE,
+        .mugshotColor = MUGSHOT_COLOR_GREEN,
+        .aiFlags = AI_FLAG_CHECK_BAD_MOVE | AI_FLAG_PREFER_STRONGEST_MOVE | AI_FLAG_TRY_TO_FAINT | AI_FLAG_OMNISCIENT | AI_FLAG_CHECK_VIABILITY | AI_FLAG_PREFER_STATUS_MOVES,
+        .party = TRAINER_PARTY(sParty_WallyPetalburgWoods),
     },
 
     [TRAINER_WALLY_VR_5] =

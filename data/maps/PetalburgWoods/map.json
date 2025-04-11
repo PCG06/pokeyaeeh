@@ -208,6 +208,19 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "PetalburgWoods_EventScript_ItemTMSilverWind",
       "flag": "FLAG_ITEM_PETALBURG_WOODS_TM_SILVER_WIND"
+    },
+    {
+      "graphics_id": "OBJ_EVENT_GFX_WALLY",
+      "x": 14,
+      "y": 13,
+      "elevation": 0,
+      "movement_type": "MOVEMENT_TYPE_FACE_UP",
+      "movement_range_x": 0,
+      "movement_range_y": 0,
+      "trainer_type": "TRAINER_TYPE_NONE",
+      "trainer_sight_or_berry_tree_id": "0",
+      "script": "0x0",
+      "flag": "FLAG_HIDE_PETALBURG_WOODS_WALLY"
     }
   ],
   "warp_events": [
@@ -272,6 +285,24 @@
       "var": "VAR_PETALBURG_WOODS_STATE",
       "var_value": "0",
       "script": "PetalburgWoods_EventScript_DevonResearcherRight"
+    },
+    {
+      "type": "trigger",
+      "x": 14,
+      "y": 6,
+      "elevation": 0,
+      "var": "VAR_PETALBURG_WOODS_STATE",
+      "var_value": "1",
+      "script": "PetalburgCity_EventScript_TriggerWally0"
+    },
+    {
+      "type": "trigger",
+      "x": 15,
+      "y": 6,
+      "elevation": 0,
+      "var": "VAR_PETALBURG_WOODS_STATE",
+      "var_value": "1",
+      "script": "PetalburgCity_EventScript_TriggerWally1"
     }
   ],
   "bg_events": [

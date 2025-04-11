@@ -272,16 +272,16 @@ MauvilleCity_EventScript_RegisterWallyCall::
 	end
 
 MauvilleCity_Text_WallyGreetAndBattle:
-	.string "Oh?\n"
-	.string "Sorry, I'm blocking your way.\p"
-	.string "Hello, my name is Wally.\p"
-	.string "I'm a Pokémon Trainer, from Petalburg\n"
-	.string "City.\p"
-	.string "I see you're a Pokémon Trainer, too.\p"
-	.string "Whaddya say,\n"
-	.string "how about a quick battle?\p"
+	.string "Wally: Oof!\n"
+	.string "Hey, {PLAYER}.\l"
+	.string "Here to take on Ydarissep, huh?\p"
+	.string "Don't let his age fool you-\n"
+	.string "the guy's still sharp as ever.\p"
+	.string "But I managed to beat him.\l"
+	.string "Felt pretty good, not gonna lie.\p"
+	.string "So, how about a quick battle?\n"
 	.string "… … …\p"
-	.string "That's the spirit! Here I come!$"
+	.string "Alright then. Let's do this!$"
 
 MauvilleCity_Text_WallyDefeat:
 	.string "Wally: … … … … … … …\p"
@@ -289,7 +289,7 @@ MauvilleCity_Text_WallyDefeat:
 	.string "I lost…$"
 
 MauvilleCity_Text_WallyThankYou:
-	.string "Boy, was that fun!\p"
+	.string "Wally: Boy, was that fun!\p"
 	.string "Being a Trainer is tough, isn't it?\p"
 	.string "It's not enough just to have Pokémon\n"
 	.string "and make them battle.\p"

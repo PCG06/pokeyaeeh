@@ -1,6 +1,7 @@
 raw `
 .set LOCALID_GRUNT, 3
 .set LOCALID_DEVON_EMPLOYEE, 4
+.set LOCALID_WALLY, 16
 
 PetalburgWoods_MapScripts::
 	.byte 0
@@ -431,3 +432,53 @@ PetalburgWoods_Text_TrainerTipsPP:
 	.string "taken to a Pokémon Center.$"
 
 `
+script PetalburgCity_EventScript_ShowWally {
+	lock
+	delay(16)
+	addobject(LOCALID_WALLY)
+	msgbox("???: Hey! Wait up!", MSGBOX_AUTOCLOSE)
+	turnobject(OBJ_EVENT_ID_PLAYER, DIR_SOUTH)
+	emoteplayer(EMOTE_EXCLAIM)
+	waitse
+	return
+}
+
+script PetalburgCity_EventScript_TriggerWally0 {
+	call(PetalburgCity_EventScript_ShowWally)
+	applymovement(LOCALID_WALLY, moves(walk_up * 6))
+	goto(PetalburgWoods_EventScript_Wally)
+}
+
+script PetalburgCity_EventScript_TriggerWally1 {
+	setflag(FLAG_TEMP_1)
+	call(PetalburgCity_EventScript_ShowWally)
+	applymovement(LOCALID_WALLY, moves(walk_right, walk_up * 6))
+	goto(PetalburgWoods_EventScript_Wally)
+}
+
+script PetalburgWoods_EventScript_Wally {
+	waitmovement(0)
+	msgbox("???: You're a Trainer, right?\p"
+	       "Wally: Name's Wally.\n"
+		   "The next Pokémon League champion!\p"
+		   "I just got my first Pokémon-\n"
+	       "my dad helped me build a team.\p"
+	       "You look like a newbie, too.\n"
+		   "Let's see what I've got!", MSGBOX_AUTOCLOSE)
+	trainerbattle_no_intro(TRAINER_WALLY_PETALBURG_WOODS, "Not bad for a rookie!")
+	msgbox("Wally: That was awesome!\p"
+	       "I'm gonna keep training until I can\n"
+		   "keep up with you!\l"
+	       "Next time, I'll win for sure!", MSGBOX_AUTOCLOSE)
+	setvar(VAR_PETALBURG_WOODS_STATE, 2)
+	setflag(FLAG_DEFEATED_WALLY_PETALBURG_WOODS)
+	if (flag(FLAG_TEMP_1) == true) {
+		applymovement(LOCALID_WALLY, moves(walk_left, walk_up * 2))
+	} else {
+		applymovement(LOCALID_WALLY, moves(walk_right, walk_up * 2))
+	}
+	waitmovement(0)
+	delay(16)
+	removeobject(LOCALID_WALLY)
+	release
+}
