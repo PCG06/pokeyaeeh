@@ -2042,6 +2042,7 @@ static void Task_ReturnToChooseMonAfterText(u8 taskId)
 {
     if (IsPartyMenuTextPrinterActive() != TRUE)
     {
+        FlagClear(FLAG_TEMP_1);
         ClearStdWindowAndFrameToTransparent(WIN_MSG, FALSE);
         ClearWindowTilemap(WIN_MSG);
         if (MenuHelpers_IsLinkActive() == TRUE)
