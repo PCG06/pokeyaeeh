@@ -185,6 +185,7 @@ const u8 gMenuText_Use[] = _("Use");
 const u8 gMenuText_Toss[] = _("Toss");
 const u8 gText_LearnMoves[] = _("Learn Moves");
 const u8 gText_FieldMoves[] = _("Field Moves");
+const u8 gText_LevelUp[] = _("Level Up");
 const u8 gText_StatEditor[] = _("Stat Editor");
 const u8 gText_Evolution[] = _("Evolution");
 const u8 gText_Nickname[] = _("Nickname");

@@ -102,6 +102,7 @@ enum {
     MENU_TRADE2,
     MENU_TOSS,
     MENU_STAT_EDIT,
+    MENU_LEVEL_UP,
     MENU_LEVEL_MOVES,
 	MENU_EGG_MOVES,
     MENU_TM_MOVES,
@@ -506,6 +507,7 @@ static void CursorCb_Trade1(u8);
 static void CursorCb_Trade2(u8);
 static void CursorCb_Toss(u8);
 static void CursorCb_StatEdit(u8);
+static void CursorCb_LevelUp(u8);
 static void CursorCb_ChangeLevelUpMoves(u8);
 static void CursorCb_ChangeEggMoves(u8);
 static void CursorCb_ChangeTMMoves(u8);
@@ -2900,6 +2902,8 @@ static u8 DisplaySelectionWindow(u8 windowType)
         u8 fontColorsId = 3;
         if ((sPartyMenuInternal->actions[i] >= MENU_FIELD_MOVES) || (sPartyMenuInternal->actions[i] == MENU_SUB_FIELD_MOVES))
             fontColorsId = 4;
+        if (sPartyMenuInternal->actions[i] == MENU_LEVEL_UP)
+            fontColorsId = 5;
         if (sPartyMenuInternal->actions[i] == MENU_SUB_MOVES
         || sPartyMenuInternal->actions[i] == MENU_LEVEL_MOVES || sPartyMenuInternal->actions[i] == MENU_EGG_MOVES
         || sPartyMenuInternal->actions[i] == MENU_TM_MOVES || sPartyMenuInternal->actions[i] == MENU_TUTOR_MOVES)
@@ -3038,6 +3042,7 @@ static void SetPartyMonFieldSelectionActions(struct Pokemon *mons, u8 slotId)
     u8 i, j;
     u16 move;
     u16 species = GetMonData(&mons[slotId], MON_DATA_SPECIES);
+    u16 speciesLevel = GetMonData(&mons[slotId], MON_DATA_LEVEL);
     u16 targetSpecies = GetEvolutionTargetSpecies(&gPlayerParty[gPartyMenu.slotId], EVO_MODE_NORMAL, ITEM_NONE, NULL);
 
     sPartyMenuInternal->numActions = 0;
@@ -3061,6 +3066,9 @@ static void SetPartyMonFieldSelectionActions(struct Pokemon *mons, u8 slotId)
 
         if (FlagGet(FLAG_RECEIVED_STAT_EDITOR))
             AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, MENU_STAT_EDIT);
+
+        if ((speciesLevel < GetLevelCap()) && CheckBagHasItem(ITEM_CANDY_BOX, 1))
+            AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, MENU_LEVEL_UP);
 
         if (ItemIsMail(GetMonData(&mons[slotId], MON_DATA_HELD_ITEM)))
             AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, MENU_MAIL);
@@ -4807,6 +4815,16 @@ static void CursorCb_StatEdit(u8 taskId)
     Task_ClosePartyMenu(taskId);
 }
 
+static void CursorCb_LevelUp(u8 taskId)
+{
+    PlaySE(SE_SELECT);
+    FlagSet(FLAG_TEMP_1);
+    gSpecialVar_0x8004 = gPartyMenu.slotId;
+    PartyMenuRemoveWindow(&sPartyMenuInternal->windowId[0]); // Close the menu options, causes a small graphical glitch otherwise
+    PartyMenuRemoveWindow(&sPartyMenuInternal->windowId[1]);
+    ItemUseCB_RareCandy(taskId, gTasks[taskId].func);
+}
+
 void LoadPartyMenuAilmentGfx(void)
 {
     LoadCompressedSpriteSheet(&sSpriteSheet_StatusIcons);
@@ -5929,9 +5947,14 @@ void ItemUseCB_RareCandy(u8 taskId, TaskFunc task)
     struct Pokemon *mon = &gPlayerParty[gPartyMenu.slotId];
     struct PartyMenuInternal *ptr = sPartyMenuInternal;
     s16 *arrayPtr = ptr->data;
-    u16 *itemPtr = &gSpecialVar_ItemId;
+    bool8 fromParty = FlagGet(FLAG_TEMP_1);
+    u16 *itemPtr;
     bool8 cannotUseEffect;
-    u8 holdEffectParam = ItemId_GetHoldEffectParam(*itemPtr);
+    u8 holdEffectParam;
+
+    gSpecialVar_ItemId = fromParty ? ITEM_CANDY_BOX : gSpecialVar_ItemId;
+    itemPtr = &gSpecialVar_ItemId;
+    holdEffectParam = fromParty ? 0xFF : ItemId_GetHoldEffectParam(*itemPtr);
 
     sInitialLevel = GetMonData(mon, MON_DATA_LEVEL);
     if (sInitialLevel != MAX_LEVEL && sInitialLevel < GetLevelCap())
@@ -5963,6 +5986,8 @@ void ItemUseCB_RareCandy(u8 taskId, TaskFunc task)
                 evoModeNormal = FALSE;
             }
         }
+        else if (fromParty) // TODO: Evolve along with level up option
+            targetSpecies = SPECIES_NONE;
 
         if (targetSpecies != SPECIES_NONE)
         {
@@ -5990,7 +6015,7 @@ void ItemUseCB_RareCandy(u8 taskId, TaskFunc task)
         if (sFinalLevel > sInitialLevel)
         {
             PlayFanfareByFanfareNum(FANFARE_LEVEL_UP);
-            if (holdEffectParam == 0 || holdEffectParam == 10) // Rare Candy and Candy Box
+            if (holdEffectParam == 0 || holdEffectParam == 10 || fromParty) // Rare Candy and Candy Box
             {
                 ConvertIntToDecimalStringN(gStringVar2, sFinalLevel, STR_CONV_MODE_LEFT_ALIGN, 3);
                 StringExpandPlaceholders(gStringVar4, gText_PkmnElevatedToLvVar2);
@@ -6060,10 +6085,14 @@ static void Task_DisplayLevelUpStatsPg2(u8 taskId)
 
 static void Task_TryEvolutionFromParty(u8 taskId)
 {
+    bool8 fromParty = FlagGet(FLAG_TEMP_1);
     if (WaitFanfare(FALSE) && ((JOY_NEW(A_BUTTON)) || (JOY_NEW(B_BUTTON))))
     {
         RemoveLevelUpStatsWindow();
-        gTasks[taskId].func = PartyMenuTryEvolution;
+        if (fromParty)
+            gTasks[taskId].func = Task_ReturnToChooseMonAfterText;
+        else
+            gTasks[taskId].func = PartyMenuTryEvolution;
     }
 }
 
