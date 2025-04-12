@@ -152,6 +152,7 @@ enum FlagsVarsMenu
     DEBUG_FLAGVAR_MENU_ITEM_TOGGLE_BAG_USE,
     DEBUG_FLAGVAR_MENU_ITEM_TOGGLE_CATCHING,
     DEBUG_FLAGVAR_MENU_ITEM_TOGGLE_SET_BATTLE,
+    DEBUG_FLAGVAR_MENU_ITEM_TOGGLE_STAT_EDITOR,
     DEBUG_FLAGVAR_MENU_ITEM_TOGGLE_EGG_TUTOR,
 };
 
@@ -399,6 +400,7 @@ static void DebugAction_FlagsVars_TrainerSeeOnOff(u8 taskId);
 static void DebugAction_FlagsVars_BagUseOnOff(u8 taskId);
 static void DebugAction_FlagsVars_CatchingOnOff(u8 taskId);
 static void DebugAction_FlagsVars_SetBattleOnOff(u8 taskId);
+static void DebugAction_FlagsVars_StatEditorOnOff(u8 taskId);
 static void DebugAction_FlagsVars_EggTutorOnOff(u8 taskId);
 
 static void Debug_InitializeBattle(u8 taskId);
@@ -564,6 +566,7 @@ static const u8 sDebugText_FlagsVars_SwitchTrainerSee[] =       _("Toggle {STR_V
 static const u8 sDebugText_FlagsVars_SwitchBagUse[] =           _("Toggle {STR_VAR_1}BagUse OFF");
 static const u8 sDebugText_FlagsVars_SwitchCatching[] =         _("Toggle {STR_VAR_1}Catching OFF");
 static const u8 sDebugText_FlagsVars_SwitchSetBattle[] =        _("Toggle {STR_VAR_1}SetBattle OFF");
+static const u8 sDebugText_FlagsVars_SwitchStatEditor[] =      _("Toggle {STR_VAR_1}Stat Editor OFF");
 static const u8 sDebugText_FlagsVars_SwitchEggTutor[] =        _("Toggle {STR_VAR_1}Egg Tutor OFF");
 // Battle
 static const u8 sDebugText_Battle_0_Wild[] =        _("Wild…{CLEAR_TO 110}{RIGHT_ARROW}");
@@ -762,6 +765,7 @@ static const struct ListMenuItem sDebugMenu_Items_FlagsVars[] =
     [DEBUG_FLAGVAR_MENU_ITEM_TOGGLE_BAG_USE]       = {sDebugText_FlagsVars_SwitchBagUse,       DEBUG_FLAGVAR_MENU_ITEM_TOGGLE_BAG_USE},
     [DEBUG_FLAGVAR_MENU_ITEM_TOGGLE_CATCHING]      = {sDebugText_FlagsVars_SwitchCatching,     DEBUG_FLAGVAR_MENU_ITEM_TOGGLE_CATCHING},
     [DEBUG_FLAGVAR_MENU_ITEM_TOGGLE_SET_BATTLE]    = {sDebugText_FlagsVars_SwitchSetBattle,    DEBUG_FLAGVAR_MENU_ITEM_TOGGLE_SET_BATTLE},
+    [DEBUG_FLAGVAR_MENU_ITEM_TOGGLE_STAT_EDITOR]   = {sDebugText_FlagsVars_SwitchStatEditor,   DEBUG_FLAGVAR_MENU_ITEM_TOGGLE_STAT_EDITOR},
     [DEBUG_FLAGVAR_MENU_ITEM_TOGGLE_EGG_TUTOR]     = {sDebugText_FlagsVars_SwitchEggTutor,     DEBUG_FLAGVAR_MENU_ITEM_TOGGLE_EGG_TUTOR},
 };
 
@@ -928,6 +932,7 @@ static void (*const sDebugMenu_Actions_Flags[])(u8) =
     [DEBUG_FLAGVAR_MENU_ITEM_TOGGLE_BAG_USE]       = DebugAction_FlagsVars_BagUseOnOff,
     [DEBUG_FLAGVAR_MENU_ITEM_TOGGLE_CATCHING]      = DebugAction_FlagsVars_CatchingOnOff,
     [DEBUG_FLAGVAR_MENU_ITEM_TOGGLE_SET_BATTLE]    = DebugAction_FlagsVars_SetBattleOnOff,
+    [DEBUG_FLAGVAR_MENU_ITEM_TOGGLE_STAT_EDITOR]   = DebugAction_FlagsVars_StatEditorOnOff,
     [DEBUG_FLAGVAR_MENU_ITEM_TOGGLE_EGG_TUTOR]     = DebugAction_FlagsVars_EggTutorOnOff,
 };
 static void (*const sDebugMenu_Actions_Give[])(u8) =
@@ -1304,6 +1309,9 @@ static u8 Debug_CheckToggleFlags(u8 id)
             result = FlagGet(B_FLAG_FORCED_SET_BATTLE);
             break;
     #endif
+        case DEBUG_FLAGVAR_MENU_ITEM_TOGGLE_STAT_EDITOR:
+            result = FlagGet(FLAG_RECEIVED_STAT_EDITOR);
+            break;
         case DEBUG_FLAGVAR_MENU_ITEM_TOGGLE_EGG_TUTOR:
             result = FlagGet(FLAG_SYS_ENABLE_EGG_AND_TUTOR_MOVES);
             break;
@@ -2911,6 +2919,15 @@ static void DebugAction_FlagsVars_SetBattleOnOff(u8 taskId)
         PlaySE(SE_PC_LOGIN);
     FlagToggle(B_FLAG_FORCED_SET_BATTLE);
 #endif
+}
+
+static void DebugAction_FlagsVars_StatEditorOnOff(u8 taskId)
+{
+    if (FlagGet(FLAG_RECEIVED_STAT_EDITOR))
+        PlaySE(SE_PC_OFF);
+    else
+        PlaySE(SE_PC_LOGIN);
+    FlagToggle(FLAG_RECEIVED_STAT_EDITOR);
 }
 
 static void DebugAction_FlagsVars_EggTutorOnOff(u8 taskId)
