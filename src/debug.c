@@ -1310,7 +1310,7 @@ static u8 Debug_CheckToggleFlags(u8 id)
             break;
     #endif
         case DEBUG_FLAGVAR_MENU_ITEM_TOGGLE_STAT_EDITOR:
-            result = FlagGet(FLAG_RECEIVED_STAT_EDITOR);
+            result = FlagGet(FLAG_SYS_STAT_EDITOR_GET);
             break;
         case DEBUG_FLAGVAR_MENU_ITEM_TOGGLE_EGG_TUTOR:
             result = FlagGet(FLAG_SYS_ENABLE_EGG_AND_TUTOR_MOVES);
@@ -2923,11 +2923,11 @@ static void DebugAction_FlagsVars_SetBattleOnOff(u8 taskId)
 
 static void DebugAction_FlagsVars_StatEditorOnOff(u8 taskId)
 {
-    if (FlagGet(FLAG_RECEIVED_STAT_EDITOR))
+    if (FlagGet(FLAG_SYS_STAT_EDITOR_GET))
         PlaySE(SE_PC_OFF);
     else
         PlaySE(SE_PC_LOGIN);
-    FlagToggle(FLAG_RECEIVED_STAT_EDITOR);
+    FlagToggle(FLAG_SYS_STAT_EDITOR_GET);
 }
 
 static void DebugAction_FlagsVars_EggTutorOnOff(u8 taskId)

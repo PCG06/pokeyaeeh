@@ -73,7 +73,7 @@ RustboroCity_EventScript_ScientistAddMatchCall::
 	closemessage
 	delay 20
 	setflag FLAG_HAS_MATCH_CALL
-	setflag FLAG_RECEIVED_STAT_EDITOR
+	setflag FLAG_SYS_STAT_EDITOR_GET
 	setflag FLAG_ADDED_MATCH_CALL_TO_POKENAV
 	msgbox RustboroCity_Text_IdBetterGetBackToWork, MSGBOX_DEFAULT
 	closemessage

@@ -279,7 +279,7 @@
 #define FLAG_RECEIVED_DURIN_BERRY            0xFB
 #define FLAG_RECEIVED_BELUE_BERRY            0xFC
 #define FLAG_ENABLE_RIVAL_MATCH_CALL         0xFD
-#define FLAG_RECEIVED_STAT_EDITOR            0xFE
+#define FLAG_UNUSED_0xFE                     0xFE // Unused Flag
 #define FLAG_LATIOS_OR_LATIAS_ROAMING        0xFF
 #define FLAG_RECEIVED_REPEAT_BALL            0x100
 #define FLAG_RECEIVED_OLD_ROD                0x101
@@ -1507,13 +1507,13 @@
 #define FLAG_ARRIVED_AT_NAVEL_ROCK                  (SYSTEM_FLAGS + 0x81)
 #define FLAG_LANDMARK_TRAINER_HILL                  (SYSTEM_FLAGS + 0x82)
 
-#define FLAG_LANDMARK_EMBER_RIDGE                   (SYSTEM_FLAGS + 0x83) // Unused Flag
+#define FLAG_LANDMARK_EMBER_RIDGE                   (SYSTEM_FLAGS + 0x83)
 
 #define FLAG_RECEIVED_POKEDEX_FROM_BIRCH            (SYSTEM_FLAGS + 0x84)
 
-#define FLAG_SYS_ENABLE_EGG_AND_TUTOR_MOVES         (SYSTEM_FLAGS + 0x85) // Enables egg move and tutor move relearner options in the party menu
-#define FLAG_UNUSED_0x8E6                           (SYSTEM_FLAGS + 0x86) // Unused Flag
-#define FLAG_UNUSED_0x8E7                           (SYSTEM_FLAGS + 0x87) // Unused Flag
+#define FLAG_SYS_ENABLE_EGG_AND_TUTOR_MOVES         (SYSTEM_FLAGS + 0x85)
+#define FLAG_SYS_USED_PARTY_LEVEL_UP                (SYSTEM_FLAGS + 0x86)
+#define FLAG_SYS_STAT_EDITOR_GET                    (SYSTEM_FLAGS + 0x87)
 #define FLAG_UNUSED_0x8E8                           (SYSTEM_FLAGS + 0x88) // Unused Flag
 #define FLAG_UNUSED_0x8E9                           (SYSTEM_FLAGS + 0x89) // Unused Flag
 #define FLAG_UNUSED_0x8EA                           (SYSTEM_FLAGS + 0x8A) // Unused Flag

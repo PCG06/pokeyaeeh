@@ -866,7 +866,7 @@ struct
 	[MENU_TUTOR_MOVES] = {gText_TutorMoves, CursorCb_ChangeTutorMoves},
     [MENU_SUB_MOVES] = {gText_LearnMoves, CursorCb_LearnMovesSubMenu},
     [MENU_TOSS] = {gMenuText_Toss, CursorCb_Toss},
-    [MENU_STAT_EDIT] = {gText_StatEditor, CursorCb_StatEdit},
+    [MENU_STAT_EDITOR] = {gText_StatEditor, CursorCb_StatEditor},
     [MENU_LEVEL_UP] = {gText_LevelUp, CursorCb_LevelUp},
     [MENU_SUB_FIELD_MOVES] = {gText_FieldMoves, CursorCb_FieldMovesSubMenu},
     [MENU_NICKNAME] = {gText_Nickname, CursorCb_Nickname},
