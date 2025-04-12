@@ -78,8 +78,6 @@
 #include "constants/rgb.h"
 #include "constants/songs.h"
 
-extern struct Evolution gEvolutionTable[][EVOS_PER_MON];
-
 enum {
     MENU_SUMMARY,
     MENU_SWITCH,
@@ -109,7 +107,6 @@ enum {
     MENU_TUTOR_MOVES,
 	MENU_SUB_MOVES,
     MENU_SUB_FIELD_MOVES,
-    MENU_EVOLUTION,
     MENU_NICKNAME,
     MENU_CATALOG_BULB,
     MENU_CATALOG_OVEN,
@@ -515,7 +512,6 @@ static void CursorCb_ChangeTutorMoves(u8);
 static void CursorCb_LearnMovesSubMenu(u8);
 static void CursorCb_FieldMovesSubMenu(u8);
 static void CursorCb_FieldMove(u8);
-static void CursorCb_Evolution(u8 taskId);
 static void CursorCb_Nickname(u8);
 static void CursorCb_CatalogBulb(u8);
 static void CursorCb_CatalogOven(u8);
@@ -3043,7 +3039,6 @@ static void SetPartyMonFieldSelectionActions(struct Pokemon *mons, u8 slotId)
     u16 move;
     u16 species = GetMonData(&mons[slotId], MON_DATA_SPECIES);
     u16 speciesLevel = GetMonData(&mons[slotId], MON_DATA_LEVEL);
-    u16 targetSpecies = GetEvolutionTargetSpecies(&gPlayerParty[gPartyMenu.slotId], EVO_MODE_NORMAL, ITEM_NONE, NULL);
 
     sPartyMenuInternal->numActions = 0;
     AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, MENU_SUMMARY);
@@ -3074,9 +3069,6 @@ static void SetPartyMonFieldSelectionActions(struct Pokemon *mons, u8 slotId)
             AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, MENU_MAIL);
         else
             AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, MENU_ITEM);
-
-        if (targetSpecies != SPECIES_NONE)
-            AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, MENU_EVOLUTION);
 
         if (GetMonData(&mons[1], MON_DATA_SPECIES) != SPECIES_NONE)
             AppendToList(sPartyMenuInternal->actions, &sPartyMenuInternal->numActions, MENU_NICKNAME);
@@ -4021,25 +4013,6 @@ static void CursorCb_FieldMovesSubMenu(u8 taskId)
     DisplayPartyMenuStdMessage(PARTY_MSG_DO_WHAT_WITH_MON);
     gTasks[taskId].data[0] = 0xFF;
     gTasks[taskId].func = Task_HandleSelectionMenuInput;
-}
-
-
-static void CursorCb_Evolution(u8 taskId)
-{
-    u16 targetSpecies = GetEvolutionTargetSpecies(&gPlayerParty[gPartyMenu.slotId], EVO_MODE_NORMAL, ITEM_NONE, NULL);
-
-    PlaySE(SE_SELECT);
-    if (targetSpecies != SPECIES_NONE)
-    {
-        gPartyMenu.exitCallback = CB2_ReturnToPartyMenuFromFlyMap;
-        PartyMenuTryEvolution(taskId);
-    }
-    else
-    {
-        DisplayPartyMenuMessage(gText_WontHaveEffect, FALSE);
-        ScheduleBgCopyTilemapToVram(2);
-        gTasks[taskId].func = Task_ReturnToChooseMonAfterText;
-    }
 }
 
 static void CursorCb_Cancel2(u8 taskId)

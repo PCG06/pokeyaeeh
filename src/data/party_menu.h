@@ -869,7 +869,6 @@ struct
     [MENU_STAT_EDIT] = {gText_StatEditor, CursorCb_StatEdit},
     [MENU_LEVEL_UP] = {gText_LevelUp, CursorCb_LevelUp},
     [MENU_SUB_FIELD_MOVES] = {gText_FieldMoves, CursorCb_FieldMovesSubMenu},
-    [MENU_EVOLUTION] = {gText_Evolution, CursorCb_Evolution},
     [MENU_NICKNAME] = {gText_Nickname, CursorCb_Nickname},
     [MENU_CATALOG_BULB] = {gText_LightBulb, CursorCb_CatalogBulb},
     [MENU_CATALOG_OVEN] = {gText_MicrowaveOven, CursorCb_CatalogOven},
