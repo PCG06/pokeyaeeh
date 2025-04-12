@@ -75,6 +75,8 @@ RustboroCity_EventScript_ScientistAddMatchCall::
 	setflag FLAG_HAS_MATCH_CALL
 	setflag FLAG_SYS_STAT_EDITOR_GET
 	setflag FLAG_ADDED_MATCH_CALL_TO_POKENAV
+	applymovement LOCALID_SCIENTIST, RustboroCity_Movement_ScientistFaceRightLeft
+	waitmovement 0
 	msgbox RustboroCity_Text_IdBetterGetBackToWork, MSGBOX_DEFAULT
 	closemessage
 	applymovement LOCALID_SCIENTIST, RustboroCity_Movement_ScientistLeave
@@ -108,6 +110,15 @@ RustboroCity_Movement_ScientistWalkAroundPlayer:
 	walk_down
 	walk_right
 	walk_in_place_faster_up
+	delay_16
+	step_end
+
+RustboroCity_Movement_ScientistFaceRightLeft:
+	face_right
+	delay_16
+	face_left
+	delay_16
+	face_down
 	delay_16
 	step_end
 
@@ -1247,7 +1258,7 @@ RustboroCity_Text_DevelopedNewPokenavFeature:
 
 RustboroCity_Text_AddedMatchCallPleaseCallMrStone:
 	.string "There you go, {PLAYER}!\p"
-	.string "Now you can edit your Pokémon's\n"
+	.string "Now you can edit your Pokémon's stats\n"
 	.string "freely!\p"
 	.string "It does seem a little unethical, but\n"
 	.string "don't worry, it doesn't hurt the\l"
