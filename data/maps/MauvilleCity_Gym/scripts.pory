@@ -43,8 +43,8 @@ MauvilleCity_Gym_EventScript_WattsonDefeated::
 	end
 
 MauvilleCity_Gym_EventScript_GiveShockWave2::
-	giveitem ITEM_TM_HEAT_WAVE
-	givetmstoplayer 2
+	buffertrainername STR_VAR_1, TRAINER_WATTSON_1
+	giveplayertms 2
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
 	msgbox MauvilleCity_Gym_Text_ExplainShockWave, MSGBOX_DEFAULT
 	setflag FLAG_RECEIVED_TM_FIRE_BLAST
@@ -52,8 +52,8 @@ MauvilleCity_Gym_EventScript_GiveShockWave2::
 	end
 
 MauvilleCity_Gym_EventScript_GiveShockWave::
-	giveitem ITEM_TM_HEAT_WAVE
-	givetmstoplayer 2
+	buffertrainername STR_VAR_1, TRAINER_WATTSON_1
+	giveplayertms 2
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_BagIsFull
 	msgbox MauvilleCity_Gym_Text_ExplainShockWave, MSGBOX_DEFAULT
 	setflag FLAG_RECEIVED_TM_FIRE_BLAST
@@ -253,17 +253,14 @@ MauvilleCity_Gym_Text_ReceivedDynamoBadge:
 MauvilleCity_Gym_Text_ExplainDynamoBadgeTakeThis:
 	.string "With the Inferno Badge, Pokémon can\n"
 	.string "use Rock Smash out of battle.\p"
-	.string "You should take this TM too,\n"
-	.string "this is my favorite move!$"
+	.string "You should take these TMs too,\n"  
+	.string "including my favorite battle\l"
+	.string "techniques!$"  
 
 MauvilleCity_Gym_Text_ExplainShockWave:
-	.string "That TM84 there contains Heat Wave.\p"
-	.string "It's a reliable move that never misses\n"
-	.string "under sun!\p"
-	.string "It can deal significant damage to both\n"
-	.string "both of your opponents and\l"
-	.string "occasionally inflict a burn!\p"
-	.string "… … … … … …$"
+	.string "They're just some moves I picked out.\n"
+	.string "Maybe you'll find them handy.\p"
+	.string "… … … … … …$"  
 
 MauvilleCity_Gym_Text_RegisteredWattson:
 	.string "Registered Gym Leader Ydarissep\n"

@@ -53,7 +53,8 @@ FortreeCity_Gym_EventScript_WinonaDefeated::
 
 FortreeCity_Gym_EventScript_GiveFlashCannon2::
 	msgbox FortreeCity_Gym_Text_GiveFlashCannon, MSGBOX_AUTOCLOSE
-	giveitem ITEM_TM_FLASH_CANNON
+	buffertrainername STR_VAR_1, TRAINER_WINONA_1
+	giveplayertms 5
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
 	msgbox FortreeCity_Gym_Text_ExplainFlashCannon, MSGBOX_DEFAULT
 	setflag FLAG_RECEIVED_TM_FLASH_CANNON
@@ -62,7 +63,8 @@ FortreeCity_Gym_EventScript_GiveFlashCannon2::
 
 FortreeCity_Gym_EventScript_GiveFlashCannon::
 	msgbox FortreeCity_Gym_Text_GiveFlashCannon, MSGBOX_AUTOCLOSE
-	giveitem ITEM_TM_FLASH_CANNON
+	buffertrainername STR_VAR_1, TRAINER_WINONA_1
+	giveplayertms 5
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_BagIsFull
 	msgbox FortreeCity_Gym_Text_ExplainFlashCannon, MSGBOX_DEFAULT
 	setflag FLAG_RECEIVED_TM_FLASH_CANNON
@@ -274,12 +276,10 @@ FortreeCity_Gym_Text_GiveFlashCannon:
 	.string "And this is another gift from me.$"
 
 FortreeCity_Gym_Text_ExplainFlashCannon:
-	.string "TM20 contains Flash Cannon.\p"
-	.string "A powerful Steel-type attack that has a\n"
-	.string "chance to lower the foe's Special\l"
-	.string "Defense.\p"
-	.string "A reliable and powerful move.\p"
-	.string "… … … … … …$"
+    .string "You've earned this.\n"
+    .string "Steel yourself for what's next.\p"
+    .string "No one said the path forward was easy.\p"
+    .string "… … … … … …$"
 
 FortreeCity_Gym_Text_RegisteredWinona:
 	.string "Registered Gym Leader Krypto\n"

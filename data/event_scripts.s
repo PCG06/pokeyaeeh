@@ -1387,6 +1387,10 @@ MysteryGift_Text_EnterNewCode:
 MysteryGift_Text_ReceivedGiftMon:
 	.string "{PLAYER} received a {STR_VAR_1}!$"
 
+Text_PlayerReceivedTMs:
+	.string "{PLAYER} received TMs from\n"
+	.string "Leader {STR_VAR_1}!$"
+
 	.include "data/scripts/pc_transfer.inc"
 	.include "data/scripts/questionnaire.inc"
 	.include "data/scripts/abnormal_weather.inc"

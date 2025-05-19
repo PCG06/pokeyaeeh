@@ -69,7 +69,8 @@ MossdeepCity_Gym_NicholasMove::
 	return
 
 MossdeepCity_Gym_EventScript_GiveCalmMind2::
-	giveitem ITEM_TM_VENOSHOCK
+	buffertrainername STR_VAR_1, TRAINER_TATE_AND_LIZA_1
+	giveplayertms 6
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
 	msgbox MossdeepCity_Gym_Text_ExplainCalmMind, MSGBOX_DEFAULT
 	setflag FLAG_RECEIVED_TM_VENOSHOCK
@@ -77,7 +78,8 @@ MossdeepCity_Gym_EventScript_GiveCalmMind2::
 	end
 
 MossdeepCity_Gym_EventScript_GiveCalmMind::
-	giveitem ITEM_TM_VENOSHOCK
+	buffertrainername STR_VAR_1, TRAINER_TATE_AND_LIZA_1
+	giveplayertms 6
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_BagIsFull
 	msgbox MossdeepCity_Gym_Text_ExplainCalmMind, MSGBOX_DEFAULT
 	setflag FLAG_RECEIVED_TM_VENOSHOCK
@@ -309,14 +311,15 @@ MossdeepCity_Gym_Text_ExplainMindBadgeTakeThis:
 	.string "all Pokémon upto Lv 70 will obey you\l"
 	.string "without question.\p"
 	.string "You can also use Dive outside of battle.\p"
-	.string "Take this with you, too!$"
+    .string "Take these with you.\n"
+    .string "They'll serve you well.$"
 
 MossdeepCity_Gym_Text_ExplainCalmMind:
-	.string "Light: TM107 contains Venoshock!\p"
-	.string "A strong special Poison-type attack\n"
-	.string "that deals double damage if the foe is\l"
-	.string "poisoned.\p"
-	.string "… … … … … …$"
+    .string "Light: Poison spreads in silence.\n"
+    .string "So does power.\p"
+    .string "Use this to end battles before they\n"
+    .string "truly begin.\p"
+    .string "… … … … … …$"
 
 MossdeepCity_Gym_Text_RegisteredTateAndLiza:
 	.string "Registered Gym Leader Light\n"

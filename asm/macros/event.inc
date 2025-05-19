@@ -2413,9 +2413,13 @@
 	.endm
 
 	@ TMs to give to player after a gym
-	.macro givetmstoplayer flagVal:req
+	.macro giveplayertms flagVal:req
 	setvar VAR_0x8000 \flagVal
-	special GiveTMsToPlayer
+	special GivePlayerTMs
+	playfanfare MUS_OBTAIN_TMHM
+	message Text_PlayerReceivedTMs
+	waitmessage
+	waitfanfare
 	.endm
 
 	@ Rematch macro

@@ -550,4 +550,4 @@ gSpecials::
 	def_special GetCurrentTime
 	def_special HasSpecies
 	def_special ShowHideObjectsBasedOnDay
-	def_special GiveTMsToPlayer
+	def_special GivePlayerTMs

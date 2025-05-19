@@ -71,14 +71,16 @@ SootopolisCity_Gym_1F_EventScript_JuanDefeated::
 	end
 
 SootopolisCity_Gym_1F_EventScript_GiveWaterPulse::
-	giveitem ITEM_TM_KNOCK_OFF
+	buffertrainername STR_VAR_1, TRAINER_JUAN_1
+	giveplayertms 7
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_BagIsFull
 	msgbox SootopolisCity_Gym_1F_Text_ExplainWaterPulse, MSGBOX_DEFAULT
 	setflag FLAG_RECEIVED_TM_WATER_PULSE
 	return
 
 SootopolisCity_Gym_1F_EventScript_GiveWaterPulse2::
-	giveitem ITEM_TM_KNOCK_OFF
+	buffertrainername STR_VAR_1, TRAINER_JUAN_1
+	giveplayertms 7
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
 	msgbox SootopolisCity_Gym_1F_Text_ExplainWaterPulse, MSGBOX_DEFAULT
 	setflag FLAG_RECEIVED_TM_WATER_PULSE
@@ -340,20 +342,18 @@ SootopolisCity_Gym_1F_Text_ReceivedRainBadge:
 	.string "from Chal.$"
 
 SootopolisCity_Gym_1F_Text_ExplainRainBadgeTakeThis:
-	.string "Chal: Having the Noir Badge shall\n"
-	.string "assure you the full obedience of all\l"
-	.string "your Pokémon to your every command.\p"
-	.string "The Noir Badge also allows the use\n"
-	.string "of the HM move Waterfall to scale\l"
-	.string "walls of cascading water.\p"
-	.string "Take this as well…$"
+    .string "Chal: Having the Noir Badge shall\n"
+    .string "assure you full obedience from all\l"
+    .string "your Pokémon.\p"
+    .string "It also grants use of Waterfall to\n"
+    .string "ascend walls of cascading water.\p"
+    .string "Take these as well…$"
 
 SootopolisCity_Gym_1F_Text_ExplainWaterPulse:
-	.string "Chal: TM151 contains Knock Off.\p"
-	.string "It deals more damage if the enemy\n"
-	.string "is holding an item, and then knocks it\l"
-	.string "down.\p"
-	.string "… … … … … …$"
+    .string "Chal: Do not squander this gift.\p"
+    .string "When used wisely, it can turn the tide\n"
+    .string "of battle with brutal precision.\p"
+    .string "… … … … … …$"
 
 SootopolisCity_Gym_1F_Text_RegisteredJuan:
 	.string "Registered Gym Leader Chal\n"
