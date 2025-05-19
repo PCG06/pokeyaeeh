@@ -21568,26 +21568,26 @@ static const struct TrainerMon sParty_Devan[] = {
         .ability = ABILITY_GALVANIZE,
         .heldItem = ITEM_FOCUS_SASH,
         .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-        .ev = TRAINER_PARTY_EVS(100, 100, 0, 0, 0, 4),
+        .ev = TRAINER_PARTY_EVS(0, 0, 0, 0, 0, 4),
         .lvl = 1,
-        .moves = {MOVE_SMACK_DOWN, MOVE_SELF_DESTRUCT, MOVE_TACKLE, MOVE_NONE},
+        .moves = {MOVE_SELF_DESTRUCT, MOVE_NONE, MOVE_NONE, MOVE_NONE},
         .nature = TRAINER_PARTY_NATURE(NATURE_JOLLY)
     },
     {
         .species = SPECIES_CLODSIRE,
-        .ability = ABILITY_WATER_ABSORB,
+        .ability = ABILITY_POISON_POINT,
         .heldItem = ITEM_LEFTOVERS,
         .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-        .ev = TRAINER_PARTY_EVS(0, 100, 0, 0, 0, 100),
+        .ev = TRAINER_PARTY_EVS(0, 0, 0, 0, 0, 0),
         .lvl = 1,
-        .moves = {MOVE_LIQUIDATION, MOVE_STOMPING_TANTRUM, MOVE_YAWN, MOVE_POISON_JAB},
+        .moves = {MOVE_CHILLING_WATER, MOVE_BULLDOZE, MOVE_POISON_TAIL, MOVE_NONE},
         .nature = TRAINER_PARTY_NATURE(NATURE_IMPISH)
     },
     {
         .species = SPECIES_TYRUNT,
         .ability = ABILITY_STRONG_JAW,
         .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-        .ev = TRAINER_PARTY_EVS(0, 100, 0, 160, 0, 0),
+        .ev = TRAINER_PARTY_EVS(0, 0, 0, 160, 0, 0),
         .lvl = 1,
         .moves = {MOVE_BITE, MOVE_POISON_FANG, MOVE_FIRE_FANG, MOVE_NONE},
         .nature = TRAINER_PARTY_NATURE(NATURE_JOLLY)

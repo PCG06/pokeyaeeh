@@ -36,7 +36,6 @@ Route108_EventScript_Jerome2::
 	waitfanfare
 	msgbox Route108_EventScript_Jerome2_Text_1
 	giveitem ITEM_TM_BUBBLE_BEAM, 1
-	playfanfare MUS_OBTAIN_ITEM
 	setflag FLAG_ROUTE_108_BOSS_DEFEATED
 	msgbox Route108_EventScript_Jerome2_Text_2, MSGBOX_NPC
 	return

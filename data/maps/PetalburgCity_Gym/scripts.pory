@@ -45,6 +45,7 @@ PetalburgCity_Gym_EventScript_NormanDefeated::
 
 PetalburgCity_Gym_EventScript_GiveDrainPunch::
 	giveitem ITEM_TM_DRAIN_PUNCH
+	givetmstoplayer 4
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_BagIsFull
 	setflag FLAG_RECEIVED_TM_DRAIN_PUNCH
 	msgbox PetalburgCity_Gym_Text_ExplainFacade, MSGBOX_DEFAULT

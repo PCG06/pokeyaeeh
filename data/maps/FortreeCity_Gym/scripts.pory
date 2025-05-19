@@ -54,6 +54,7 @@ FortreeCity_Gym_EventScript_WinonaDefeated::
 FortreeCity_Gym_EventScript_GiveFlashCannon2::
 	msgbox FortreeCity_Gym_Text_GiveFlashCannon, MSGBOX_AUTOCLOSE
 	giveitem ITEM_TM_FLASH_CANNON
+	givetmstoplayer 5
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
 	msgbox FortreeCity_Gym_Text_ExplainFlashCannon, MSGBOX_DEFAULT
 	setflag FLAG_RECEIVED_TM_FLASH_CANNON
@@ -63,6 +64,7 @@ FortreeCity_Gym_EventScript_GiveFlashCannon2::
 FortreeCity_Gym_EventScript_GiveFlashCannon::
 	msgbox FortreeCity_Gym_Text_GiveFlashCannon, MSGBOX_AUTOCLOSE
 	giveitem ITEM_TM_FLASH_CANNON
+	givetmstoplayer 5
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_BagIsFull
 	msgbox FortreeCity_Gym_Text_ExplainFlashCannon, MSGBOX_DEFAULT
 	setflag FLAG_RECEIVED_TM_FLASH_CANNON

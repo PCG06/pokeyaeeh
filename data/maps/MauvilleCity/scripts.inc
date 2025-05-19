@@ -13,7 +13,7 @@ MauvilleCity_OnTransition:
 	setflag FLAG_SYS_TV_START
 	clearflag FLAG_MAUVILLE_GYM_BARRIERS_STATE
 	setvar VAR_MAUVILLE_GYM_STATE, 0
-	call_if_set FLAG_GOT_TM_THUNDERBOLT_FROM_WATTSON, MauvilleCity_EventScript_MoveWattsonBackToGym
+	call_if_set FLAG_RECEIVED_FLYING_GEM, MauvilleCity_EventScript_MoveWattsonBackToGym
 	call_if_unset FLAG_DEFEATED_WALLY_MAUVILLE, MauvilleCity_EventScript_BattleWally
 	end
 
@@ -225,7 +225,7 @@ MauvilleCity_Movement_ScottExitEast:
 MauvilleCity_EventScript_Wattson::
 	lock
 	faceplayer
-	goto_if_set FLAG_GOT_TM_THUNDERBOLT_FROM_WATTSON, MauvilleCity_EventScript_ReceivedThunderbolt
+	goto_if_set FLAG_RECEIVED_FLYING_GEM, MauvilleCity_EventScript_ReceivedThunderbolt
 	goto_if_eq VAR_NEW_MAUVILLE_STATE, 2, MauvilleCity_EventScript_CompletedNewMauville
 	goto_if_set FLAG_GOT_BASEMENT_KEY_FROM_WATTSON, MauvilleCity_EventScript_BegunNewMauville
 	msgbox MauvilleCity_Text_WattsonNeedFavorTakeKey, MSGBOX_DEFAULT
@@ -243,9 +243,9 @@ MauvilleCity_EventScript_BegunNewMauville::
 
 MauvilleCity_EventScript_CompletedNewMauville::
 	msgbox MauvilleCity_Text_WattsonThanksTakeTM, MSGBOX_DEFAULT
-	giveitem ITEM_TM_PLAY_ROUGH
+	giveitem ITEM_FLYING_GEM
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
-	setflag FLAG_GOT_TM_THUNDERBOLT_FROM_WATTSON
+	setflag FLAG_RECEIVED_FLYING_GEM
 	clearflag FLAG_HIDE_NEW_MAUVILLE_SCIENTISTS
 	msgbox MauvilleCity_Text_WattsonYoungTakeCharge, MSGBOX_DEFAULT
 	release

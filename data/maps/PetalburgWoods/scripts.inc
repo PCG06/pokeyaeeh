@@ -462,6 +462,8 @@ PetalburgWoods_EventScript_Wally::
 	msgbox PetalburgWoods_EventScript_Wally_Text_0, MSGBOX_AUTOCLOSE
 	trainerbattle_no_intro TRAINER_WALLY_PETALBURG_WOODS, PetalburgWoods_EventScript_Wally_Text_1
 	msgbox PetalburgWoods_EventScript_Wally_Text_2, MSGBOX_AUTOCLOSE
+	giveitem ITEM_TM_RETURN, 1
+	msgbox PetalburgWoods_EventScript_Wally_Text_3, MSGBOX_AUTOCLOSE
 	setvar VAR_PETALBURG_WOODS_STATE, 2
 	setflag FLAG_DEFEATED_WALLY_PETALBURG_WOODS
 	goto_if_set FLAG_TEMP_1, PetalburgWoods_EventScript_Wally_2
@@ -526,6 +528,9 @@ PetalburgWoods_EventScript_Wally_Text_1:
 
 PetalburgWoods_EventScript_Wally_Text_2:
 	.string "Wally: That was awesome!\p"
-	.string "I'm gonna keep training until I can\n"
-	.string "keep up with you!\l"
+	.string "You can have this as a reward!$"
+
+PetalburgWoods_EventScript_Wally_Text_3:
+	.string "Wally: I'm gonna keep training until\n"
+	.string "I can keep up with you!\l"
 	.string "Next time, I'll win for sure!$"

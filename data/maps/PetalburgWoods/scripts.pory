@@ -467,8 +467,10 @@ script PetalburgWoods_EventScript_Wally {
 		   "Let's see what I've got!", MSGBOX_AUTOCLOSE)
 	trainerbattle_no_intro(TRAINER_WALLY_PETALBURG_WOODS, "Not bad for a rookie!")
 	msgbox("Wally: That was awesome!\p"
-	       "I'm gonna keep training until I can\n"
-		   "keep up with you!\l"
+		   "You can have this as a reward!", MSGBOX_AUTOCLOSE)
+	giveitem(ITEM_TM_RETURN, 1)
+	msgbox("Wally: I'm gonna keep training until\n"
+		   "I can keep up with you!\l"
 	       "Next time, I'll win for sure!", MSGBOX_AUTOCLOSE)
 	setvar(VAR_PETALBURG_WOODS_STATE, 2)
 	setflag(FLAG_DEFEATED_WALLY_PETALBURG_WOODS)

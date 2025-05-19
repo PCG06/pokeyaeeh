@@ -15,19 +15,6 @@
   "connections": 0,
   "object_events": [
     {
-      "graphics_id": "OBJ_EVENT_GFX_TMHM_BALL",
-      "x": 14,
-      "y": 22,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "GraniteCave_B2F_EventScript_ItemTMSteelWing",
-      "flag": "FLAG_ITEM_GRANITE_CAVE_B2F_TM_STEEL_WING"
-    },
-    {
       "graphics_id": "OBJ_EVENT_GFX_MEGA_STONE",
       "x": 28,
       "y": 7,
@@ -130,19 +117,6 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "EventScript_RockSmash",
       "flag": "FLAG_TEMP_17"
-    },
-    {
-      "graphics_id": "OBJ_EVENT_GFX_TMHM_BALL",
-      "x": 18,
-      "y": 3,
-      "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_NONE",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "GraniteCave_B2F_EventScript_ItemTMDrillRun",
-      "flag": "FLAG_ITEM_GRANITE_CAVE_B2F_TM_DRILL_RUN"
     }
   ],
   "warp_events": [

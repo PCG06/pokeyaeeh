@@ -28,7 +28,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_TMHM_BALL",
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
       "x": 6,
       "y": 9,
       "elevation": 3,
@@ -37,8 +37,8 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "MtPyre_6F_EventScript_ItemTMReturn",
-      "flag": "FLAG_ITEM_MT_PYRE_6F_TM_RETURN"
+      "script": "MtPyre_6F_EventScript_ItemHeartScale",
+      "flag": "FLAG_ITEM_MT_PYRE_6F_HEART_SCALE"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_PSYCHIC_M",

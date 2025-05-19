@@ -225,20 +225,8 @@ LavaridgeTown_EventScript_HotSpringsOldWoman1::
 	msgbox LavaridgeTown_Text_IfPokemonInHotSprings, MSGBOX_NPC
 	end
 
-LavaridgeTown_EventScript_HotSpringsOldWomanScald::
-	lockall
-	faceplayer
-	goto_if_set FLAG_ITEM_LAVARIDGE_TOWN_TM_SCALD, LavaridgeTown_EventScript_HotSpringsClaims
-	msgbox LavaridgeTown_Text_HotSpringsGiveScald, MSGBOX_NPC
-	giveitem ITEM_TM_SCALD, 1
-	msgbox LavaridgeTown_Text_HotSpringsExplainScald, MSGBOX_NPC
-	setflag FLAG_ITEM_LAVARIDGE_TOWN_TM_SCALD
-	releaseall
-	end
-
-LavaridgeTown_EventScript_HotSpringsClaims::
+LavaridgeTown_EventScript_HotSpringsOldWoman2::
 	msgbox LavaridgeTown_Text_HotSpringsClaims, MSGBOX_NPC
-	releaseall
 	end
 
 LavaridgeTown_EventScript_ExpertF::
@@ -401,23 +389,6 @@ LavaridgeTown_Text_HotSpringsClaims:
 	.string "relieving aching muscles, solving\l"
 	.string "romantic problems, and attracting\l"
 	.string "money…$"
-
-LavaridgeTown_Text_HotSpringsGiveScald:
-	.string "They're claiming that these hot springs\n"
-	.string "are good for calming nervous tension,\l"
-	.string "relieving aching muscles, solving\l"
-	.string "romantic problems, and attracting\l"
-	.string "money…\p"
-	.string "Do you have any romantic problems?\p"
-	.string "… … … …\p"
-	.string "Ha ha, I'm only joking!\n"
-	.string "Here, have this gift from me.$"
-
-LavaridgeTown_Text_HotSpringsExplainScald:
-	.string "Like the hot springs, Scald, is burning\n"
-	.string "hot water.\p"
-	.string "Be careful with it, our you'll burn\n"
-	.string "yourself, ha ha.$"
 
 LavaridgeTown_Text_TownSign:
 	.string "Lavaridge Town\p"

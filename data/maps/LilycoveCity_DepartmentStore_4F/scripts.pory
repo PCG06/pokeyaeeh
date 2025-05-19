@@ -36,6 +36,7 @@ LilycoveCity_DepartmentStore_4F_Pokemart_AttackTMs:
 	.2byte ITEM_TM_HURRICANE
 	.2byte ITEM_TM_POLTERGEIST
 	.2byte ITEM_TM_POWER_WHIP
+	.2byte ITEM_TM_SOLAR_BLADE
 	.2byte ITEM_TM_GUNK_SHOT
 	.2byte ITEM_NONE
 	release

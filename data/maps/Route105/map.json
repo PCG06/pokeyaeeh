@@ -135,7 +135,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_TMHM_BALL",
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
       "x": 13,
       "y": 72,
       "elevation": 0,
@@ -144,8 +144,8 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "Route105_EventScript_ItemTMXScissor",
-      "flag": "FLAG_ITEM_ROUTE_105_TM_X_SCISSOR"
+      "script": "Route105_EventScript_ItemBugGem",
+      "flag": "FLAG_ITEM_ROUTE_105_BUG_GEM"
     }
   ],
   "warp_events": [

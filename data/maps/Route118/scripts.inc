@@ -94,27 +94,6 @@ Route118_EventScript_Deandre::
 	msgbox Route118_Text_DeandrePostBattle, MSGBOX_AUTOCLOSE
 	end
 
-Route118_EventScript_AmnesiaGiver::
-	lock
-	faceplayer
-	goto_if_set FLAG_RECEIVED_TM_AMNESIA, Route118_EventScript_DontForgot
-	msgbox Route118_Text_Hmm, MSGBOX_DEFAULT
-	playse SE_PIN
-	applymovement LOCALID_FATMAN, Common_Movement_QuestionMark
-	waitmovement 0
-	applymovement LOCALID_FATMAN, Common_Movement_Delay48
-	waitmovement 0
-	msgbox Route118_Text_Forgor, MSGBOX_DEFAULT
-	giveitem ITEM_TM_AMNESIA
-	msgbox Route118_Text_DontForgot, MSGBOX_NPC
-	setflag FLAG_RECEIVED_TM_AMNESIA
-	release
-	end
-
-Route118_EventScript_DontForgot:
-	msgbox Route118_Text_DontForgot, MSGBOX_NPC
-	end
-
 Route118_Text_StevenQuestions:
 	.string "Mystic: Hi, {PLAYER}{KUN}!\p"
 	.string "It's me, Mystic!\n"
@@ -174,13 +153,6 @@ Route118_Text_Hmm:
 	.string "Hmm…\p"
 	.string "… … … … …\p"
 	.string "… … … … …$"
-
-Route118_Text_Forgor:
-	.string "I forgor……$"
-
-Route118_Text_DontForgot:
-	.string "Here's a piece of advice:\n"
-	.string "Don't forgor.$"
 
 Route118_EventScript_Chester2::
 	msgbox Route118_EventScript_Chester2_Text_0, MSGBOX_AUTOCLOSE

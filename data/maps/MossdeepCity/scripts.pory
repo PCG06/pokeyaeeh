@@ -252,26 +252,6 @@ MossdeepCity_EventScript_DeclineKingsRock::
 	release
 	end
 
-MossdeepCity_EventScript_BlackBelt::
-	lock
-	faceplayer
-	goto_if_set FLAG_RECEIVED_TM_BULK_UP, MossdeepCity_EventScript_ExplainBulkUp
-	msgbox MossdeepCity_Text_WannaBulkWithMe, MSGBOX_YESNO
-	goto_if_eq VAR_RESULT, FALSE, MossdeepCity_EventScript_TooBad
-	msgbox MossdeepCity_Text_ThatsAwesome, MSGBOX_DEFAULT
-	giveitem ITEM_TM_BULK_UP
-	msgbox MossdeepCity_Text_ExplainBulkUp, MSGBOX_NPC
-	setflag FLAG_RECEIVED_TM_BULK_UP
-	end
-
-MossdeepCity_EventScript_TooBad::
-	msgbox MossdeepCity_Text_TooBad, MSGBOX_NPC
-	end
-
-MossdeepCity_EventScript_ExplainBulkUp::
-	msgbox MossdeepCity_Text_ExplainBulkUp, MSGBOX_NPC
-	end
-
 MossdeepCity_EventScript_Scott::
 	lock
 	faceplayer

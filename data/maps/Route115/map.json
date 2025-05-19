@@ -143,7 +143,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_TMHM_BALL",
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
       "x": 20,
       "y": 60,
       "elevation": 3,
@@ -152,21 +152,8 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "Route115_EventScript_ItemTMMagicalLeaf",
-      "flag": "FLAG_ITEM_ROUTE_115_TM_MAGICAL_LEAF"
-    },
-    {
-      "graphics_id": "OBJ_EVENT_GFX_TMHM_BALL",
-      "x": 18,
-      "y": 7,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "Route115_EventScript_ItemTMFocusPunch",
-      "flag": "FLAG_ITEM_ROUTE_115_TM_FOCUS_PUNCH"
+      "script": "Route115_EventScript_ItemPoisonGem",
+      "flag": "FLAG_ITEM_ROUTE_115_POISON_GEM"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_GIMMIGHOUL_COIN",
@@ -325,7 +312,7 @@
       "flag": "FLAG_ITEM_ROUTE_115_HEAL_POWDER"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_TMHM_BALL",
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
       "x": 24,
       "y": 19,
       "elevation": 0,
@@ -334,8 +321,8 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "Route115_EventScript_ItemTMCalmMind",
-      "flag": "FLAG_ITEM_ROUTE_115_TM_CALM_MIND"
+      "script": "Route115_EventScript_ItemRockGem",
+      "flag": "FLAG_ITEM_ROUTE_115_ROCK_GEM"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_NINJA_BOY",
