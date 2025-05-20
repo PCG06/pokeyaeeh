@@ -189,9 +189,7 @@ static const u8 sText_HeldItem[] = _("{STR_VAR_1}");
 static const u8 sText_StartExit[] = _("{START_BUTTON} Exit");
 static const u8 sText_DexNavChain[] = _("{NO} {STR_VAR_1}");
 static const u8 sText_DexNavChainLong[] = _("{NO}{STR_VAR_1}");
-static const u8 gText_DexNavMorning[] = _(" - Morning");
 static const u8 gText_DexNavDay[] = _(" - Day");
-static const u8 gText_DexNavEvening[] = _(" - Evening");
 static const u8 gText_DexNavNight[] = _(" - Night");
 
 static const u8 sText_ArrowLeft[] = _("{LEFT_ARROW}");
@@ -2214,25 +2212,13 @@ static void PrintMapName(void)
     GetMapName(gStringVar3, GetCurrentRegionMapSectionId(), 0);
 
     RtcCalcLocalTime();
-    if (gLocalTime.hours >= 4 && gLocalTime.hours < 10)
-    {
-        StringAppend(gStringVar3, gText_DexNavMorning);
-        mapStringLength += StringLength(gText_DexNavMorning);
-        left = 65;
-    }
-    else if (gLocalTime.hours >= 10 && gLocalTime.hours < 18)
+    if (gLocalTime.hours >= 5 && gLocalTime.hours < 17)
     {
         StringAppend(gStringVar3, gText_DexNavDay);
         mapStringLength += StringLength(gText_DexNavDay);
-        left = 85;
-    }
-    else if (gLocalTime.hours >= 18 && gLocalTime.hours < 20)
-    {
-        StringAppend(gStringVar3, gText_DexNavEvening);
-        mapStringLength += StringLength(gText_DexNavEvening);
         left = 65;
     }
-    else // if (gLocalTime.hours >= 20 && gLocalTime.hours < 4)
+    else // if (gLocalTime.hours >= 17 && gLocalTime.hours < 5)
     {
         StringAppend(gStringVar3, gText_DexNavNight);
         mapStringLength += StringLength(gText_DexNavNight);
