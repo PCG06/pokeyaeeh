@@ -27,6 +27,22 @@ RustboroCity_Gym_EventScript_RoxanneDefeated::
 	goto RustboroCity_Gym_EventScript_GiveRockTomb
 	end
 
+@ giveitem ITEM_TM_TORMENT
+@ giveitem ITEM_TM_IMPRISON
+@ giveitem ITEM_TM_MUD_SHOT
+@ giveitem ITEM_TM_DRAGON_TAIL
+@ giveitem ITEM_TM_REST
+@ giveitem ITEM_TM_SMACK_DOWN
+@ giveitem ITEM_TM_THIEF
+@ giveitem ITEM_TM_AERIAL_ACE
+@ giveitem ITEM_TM_SLEEP_TALK
+@ giveitem ITEM_TM_FALSE_SWIPE
+@ giveitem ITEM_TM_MAGICAL_LEAF
+@ giveitem ITEM_TM_TRI_ATTACK
+@ giveitem ITEM_TM_ICICLE_SPEAR
+@ giveitem ITEM_TM_BULLET_SEED
+@ giveitem ITEM_TM_DRAINING_KISS
+
 RustboroCity_Gym_EventScript_GiveRockTomb::
 	buffertrainername STR_VAR_1, TRAINER_ROXANNE_1
 	giveplayertms 0

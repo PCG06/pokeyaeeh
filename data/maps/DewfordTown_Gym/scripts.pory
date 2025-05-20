@@ -46,6 +46,22 @@ DewfordTown_Gym_EventScript_BrawlyDefeated::
 	release
 	end
 
+@ giveitem ITEM_TM_PLUCK
+@ giveitem ITEM_TM_DIG
+@ giveitem ITEM_TM_STEEL_WING
+@ giveitem ITEM_TM_TRICK
+@ giveitem ITEM_TM_ICE_FANG
+@ giveitem ITEM_TM_FIRE_FANG
+@ giveitem ITEM_TM_THUNDER_FANG
+@ giveitem ITEM_TM_ATTRACT
+@ giveitem ITEM_TM_SKILL_SWAP
+@ giveitem ITEM_TM_UPROAR
+@ giveitem ITEM_TM_SNARL
+@ giveitem ITEM_TM_SILVER_WIND
+@ giveitem ITEM_TM_ANCIENT_POWER
+@ giveitem ITEM_TM_OMINOUS_WIND
+@ giveitem ITEM_TM_SEED_BOMB
+
 DewfordTown_Gym_EventScript_GiveBulkUp::
 	buffertrainername STR_VAR_1, TRAINER_BRAWLY_1
 	giveplayertms 1

@@ -70,6 +70,22 @@ SootopolisCity_Gym_1F_EventScript_JuanDefeated::
 	release
 	end
 
+@ giveitem ITEM_TM_DRAGON_PULSE
+@ giveitem ITEM_TM_JETSTREAM
+@ giveitem ITEM_TM_GIGA_IMPACT
+@ giveitem ITEM_TM_HYPER_BEAM
+@ giveitem ITEM_TM_BULK_UP
+@ giveitem ITEM_TM_CALM_MIND
+@ giveitem ITEM_TM_SCALD
+@ giveitem ITEM_TM_SCALE_SHOT
+@ giveitem ITEM_TM_TRIPLE_AXEL
+@ giveitem ITEM_TM_BODY_PRESS
+@ giveitem ITEM_TM_HARD_PRESS
+@ giveitem ITEM_TM_EARTH_POWER
+@ giveitem ITEM_TM_U_TURN
+@ giveitem ITEM_TM_VOLT_SWITCH
+@ giveitem ITEM_TM_KNOCK_OFF
+
 SootopolisCity_Gym_1F_EventScript_GiveWaterPulse::
 	buffertrainername STR_VAR_1, TRAINER_JUAN_1
 	giveplayertms 7

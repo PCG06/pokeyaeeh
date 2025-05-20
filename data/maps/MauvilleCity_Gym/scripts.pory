@@ -42,6 +42,22 @@ MauvilleCity_Gym_EventScript_WattsonDefeated::
 	release
 	end
 
+@ giveitem ITEM_TM_THUNDER_PUNCH
+@ giveitem ITEM_TM_ICE_PUNCH
+@ giveitem ITEM_TM_FIRE_PUNCH
+@ giveitem ITEM_TM_AQUA_FANGS
+@ giveitem ITEM_TM_AIR_SLASH
+@ giveitem ITEM_TM_SHADOW_CLAW
+@ giveitem ITEM_TM_X_SCISSOR
+@ giveitem ITEM_TM_ICY_WIND
+@ giveitem ITEM_TM_ELECTROWEB
+@ giveitem ITEM_TM_ZEN_HEADBUTT
+@ giveitem ITEM_TM_GRASS_KNOT
+@ giveitem ITEM_TM_CROSS_POISON
+@ giveitem ITEM_TM_ALLURING_VOICE
+@ giveitem ITEM_TM_BRICK_BREAK
+@ giveitem ITEM_TM_HEAT_WAVE
+
 MauvilleCity_Gym_EventScript_GiveShockWave2::
 	buffertrainername STR_VAR_1, TRAINER_WATTSON_1
 	giveplayertms 2

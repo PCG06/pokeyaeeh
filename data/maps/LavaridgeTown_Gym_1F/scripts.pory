@@ -34,6 +34,22 @@ LavaridgeTown_Gym_1F_EventScript_FlanneryDefeated::
 	release
 	end
 
+@ giveitem ITEM_TM_RETURN
+@ giveitem ITEM_TM_FRUSTRATION
+@ giveitem ITEM_TM_STOMPING_TANTRUM
+@ giveitem ITEM_TM_TEMPER_FLARE
+@ giveitem ITEM_TM_TAUNT
+@ giveitem ITEM_TM_SHADOW_BALL
+@ giveitem ITEM_TM_TOXIC
+@ giveitem ITEM_TM_WILL_O_WISP
+@ giveitem ITEM_TM_FROST_GLARE
+@ giveitem ITEM_TM_THUNDER_WAVE
+@ giveitem ITEM_TM_CRUNCH
+@ giveitem ITEM_TM_HEX
+@ giveitem ITEM_TM_DRILL_RUN
+@ giveitem ITEM_TM_DRAGON_CLAW
+@ giveitem ITEM_TM_GIGA_IMPACT
+
 LavaridgeTown_Gym_1F_EventScript_GiveOverheat2::
 	buffertrainername STR_VAR_1, TRAINER_FLANNERY_1
 	giveplayertms 3

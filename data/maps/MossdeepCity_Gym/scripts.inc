@@ -68,6 +68,22 @@ MossdeepCity_Gym_NicholasMove::
 	setobjectmovementtype LOCALID_CAMPER, MOVEMENT_TYPE_FACE_DOWN
 	return
 
+@ giveitem ITEM_TM_HEAVY_SLAM
+@ giveitem ITEM_TM_MYSTICAL_FIRE
+@ giveitem ITEM_TM_PHANTOM_FORCE
+@ giveitem ITEM_TM_STEALTH_ROCK
+@ giveitem ITEM_TM_SUPERCELL_SLAM
+@ giveitem ITEM_TM_REVERSAL
+@ giveitem ITEM_TM_HIGH_HORSEPOWER
+@ giveitem ITEM_TM_LEECH_LIFE
+@ giveitem ITEM_TM_TAILWIND
+@ giveitem ITEM_TM_LIQUIDATION
+@ giveitem ITEM_TM_PSYCHIC_FANGS
+@ giveitem ITEM_TM_IRON_TAIL
+@ giveitem ITEM_TM_MOONBLAST
+@ giveitem ITEM_TM_POWER_GEM
+@ giveitem ITEM_TM_VENOSHOCK
+
 MossdeepCity_Gym_EventScript_GiveCalmMind2::
 	buffertrainername STR_VAR_1, TRAINER_TATE_AND_LIZA_1
 	giveplayertms 6

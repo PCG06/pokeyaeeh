@@ -43,6 +43,22 @@ PetalburgCity_Gym_EventScript_NormanDefeated::
 	setflag FLAG_ENABLE_NORMAN_MATCH_CALL
 	end
 
+@ giveitem ITEM_TM_FLAMETHROWER
+@ giveitem ITEM_TM_THUNDERBOLT
+@ giveitem ITEM_TM_ICE_BEAM
+@ giveitem ITEM_TM_DARK_PULSE
+@ giveitem ITEM_TM_ROCK_SLIDE
+@ giveitem ITEM_TM_BUG_BUZZ
+@ giveitem ITEM_TM_IRON_HEAD
+@ giveitem ITEM_TM_THROAT_CHOP
+@ giveitem ITEM_TM_AQUA_TAIL
+@ giveitem ITEM_TM_POISON_JAB
+@ giveitem ITEM_TM_DUAL_WINGBEAT
+@ giveitem ITEM_TM_HYPER_VOICE
+@ giveitem ITEM_TM_PLAY_ROUGH
+@ giveitem ITEM_TM_PSYSHOCK
+@ giveitem ITEM_TM_DRAIN_PUNCH
+
 PetalburgCity_Gym_EventScript_GiveDrainPunch::
 	buffertrainername STR_VAR_1, TRAINER_NORMAN_1
 	giveplayertms 4

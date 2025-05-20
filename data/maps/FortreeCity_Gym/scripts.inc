@@ -51,6 +51,22 @@ FortreeCity_Gym_EventScript_WinonaDefeated::
 	release
 	end
 
+@ giveitem ITEM_TM_POLLEN_PUFF
+@ giveitem ITEM_TM_SPIKES
+@ giveitem ITEM_TM_TOXIC_SPIKES
+@ giveitem ITEM_TM_AGILITY
+@ giveitem ITEM_TM_BATON_PASS
+@ giveitem ITEM_TM_SUBSTITUTE
+@ giveitem ITEM_TM_AMNESIA
+@ giveitem ITEM_TM_IRON_DEFENSE
+@ giveitem ITEM_TM_CHARM
+@ giveitem ITEM_TM_EERIE_IMPULSE
+@ giveitem ITEM_TM_FOCUS_PUNCH
+@ giveitem ITEM_TM_DEFOG
+@ giveitem ITEM_TM_GYRO_BALL
+@ giveitem ITEM_TM_HEAT_CRASH
+@ giveitem ITEM_TM_FLASH_CANNON
+
 FortreeCity_Gym_EventScript_GiveFlashCannon2::
 	msgbox FortreeCity_Gym_Text_GiveFlashCannon, MSGBOX_AUTOCLOSE
 	buffertrainername STR_VAR_1, TRAINER_WINONA_1
