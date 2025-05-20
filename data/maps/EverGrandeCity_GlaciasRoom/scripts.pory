@@ -29,7 +29,8 @@ EverGrandeCity_GlaciasRoom_EventScript_GlaciaBattle::
 	playbgm MUS_ENCOUNTER_ELITE_FOUR, FALSE
 	setweather WEATHER_FOG_HORIZONTAL
 	doweather
-	trainerbattle_single TRAINER_GLACIA_1, EverGrandeCity_GlaciasRoom_Text_IntroSpeech, EverGrandeCity_GlaciasRoom_Text_Defeat
+	msgbox EverGrandeCity_GlaciasRoom_Text_IntroSpeech, MSGBOX_DEFAULT
+	trainerbattle_no_intro TRAINER_GLACIA_2, EverGrandeCity_GlaciasRoom_Text_Defeat
 	goto EverGrandeCity_GlaciasRoom_EventScript_Defeated
 	end
 
@@ -37,7 +38,8 @@ EverGrandeCity_GlaciasRoom_EventScript_GlaciaRematch::
 	playbgm MUS_ENCOUNTER_ELITE_FOUR, FALSE
 	setweather WEATHER_FOG_HORIZONTAL
 	doweather
-	trainerbattle_rematch TRAINER_GLACIA_1, EverGrandeCity_GlaciasRoom_Text_IntroSpeech, EverGrandeCity_GlaciasRoom_Text_Defeat
+	msgbox EverGrandeCity_GlaciasRoom_Text_IntroSpeech, MSGBOX_DEFAULT
+	trainerbattle_no_intro TRAINER_GLACIA_2, EverGrandeCity_GlaciasRoom_Text_Defeat
 	goto EverGrandeCity_GlaciasRoom_EventScript_Defeated
 	end
 

@@ -27,13 +27,15 @@ EverGrandeCity_PhoebesRoom_EventScript_Phoebe::
 
 EverGrandeCity_PhoebesRoom_EventScript_PhoebeBattle::
 	playbgm MUS_ENCOUNTER_ELITE_FOUR, FALSE
-	trainerbattle_single TRAINER_PHOEBE_1, EverGrandeCity_PhoebesRoom_Text_IntroSpeech, EverGrandeCity_PhoebesRoom_Text_Defeat
+	msgbox EverGrandeCity_PhoebesRoom_Text_IntroSpeech, MSGBOX_DEFAULT
+	trainerbattle_no_intro TRAINER_PHOEBE_1, EverGrandeCity_PhoebesRoom_Text_Defeat
 	goto EverGrandeCity_PhoebesRoom_EventScript_Defeated
 	end
 
 EverGrandeCity_PhoebesRoom_EventScript_PhoebeRematch::
 	playbgm MUS_ENCOUNTER_ELITE_FOUR, FALSE
-	trainerbattle_rematch TRAINER_PHOEBE_1, RustboroCity_Gym_Text_RoxannePreRematch, RustboroCity_Gym_Text_RoxanneRematchDefeat
+	msgbox EverGrandeCity_PhoebesRoom_Text_IntroSpeech, MSGBOX_DEFAULT
+	trainerbattle_no_intro TRAINER_PHOEBE_2, EverGrandeCity_PhoebesRoom_Text_Defeat
 	msgbox RustboroCity_Gym_Text_RoxannePostRematch, MSGBOX_AUTOCLOSE
 	end
 

@@ -92,7 +92,8 @@ VictoryRoad_1F_EventScript_ExitWally::
 	end
 
 VictoryRoad_1F_EventScript_RematchWally::
-	trainerbattle_rematch TRAINER_WALLY_VR_2, VictoryRoad_1F_Text_WallyIntro, VictoryRoad_1F_Text_WallyDefeat
+	msgbox VictoryRoad_1F_Text_WallyIntro, MSGBOX_DEFAULT
+	trainerbattle_no_intro TRAINER_WALLY_VR_3, VictoryRoad_1F_Text_WallyDefeat
 	msgbox VictoryRoad_1F_Text_WallyPostBattle, MSGBOX_AUTOCLOSE
 	end
 

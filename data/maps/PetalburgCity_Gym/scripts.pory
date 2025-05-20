@@ -54,7 +54,8 @@ PetalburgCity_Gym_EventScript_GiveDrainPunch::
 	return
 
 PetalburgCity_Gym_EventScript_NormanRematch::
-	trainerbattle_rematch TRAINER_NORMAN_1, PetalburgCity_Gym_Text_NormanPreRematch, PetalburgCity_Gym_Text_NormanRematchDefeat
+	msgbox PetalburgCity_Gym_Text_NormanPreRematch, MSGBOX_DEFAULT
+	trainerbattle_no_intro TRAINER_NORMAN_2, PetalburgCity_Gym_Text_NormanRematchDefeat
 	msgbox PetalburgCity_Gym_Text_NormanPostRematch, MSGBOX_AUTOCLOSE
 	end
 

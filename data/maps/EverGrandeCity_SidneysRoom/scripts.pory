@@ -40,7 +40,8 @@ EverGrandeCity_SidneysRoom_EventScript_SidneyBattle::
 	playbgm MUS_ENCOUNTER_ELITE_FOUR, FALSE
 	setweather WEATHER_RAIN_THUNDERSTORM
 	doweather
-	trainerbattle_single TRAINER_SIDNEY_1, EverGrandeCity_SidneysRoom_Text_IntroSpeech, EverGrandeCity_SidneysRoom_Text_Defeat
+	msgbox EverGrandeCity_SidneysRoom_Text_IntroSpeech, MSGBOX_DEFAULT
+	trainerbattle_no_intro TRAINER_SIDNEY_1, EverGrandeCity_SidneysRoom_Text_Defeat
 	goto EverGrandeCity_SidneysRoom_EventScript_Defeated
 	end
 
@@ -48,7 +49,8 @@ EverGrandeCity_SidneysRoom_EventScript_SidneyRematch::
 	playbgm MUS_ENCOUNTER_ELITE_FOUR, FALSE
 	setweather WEATHER_RAIN_THUNDERSTORM
 	doweather
-	trainerbattle_rematch TRAINER_SIDNEY_1, EverGrandeCity_SidneysRoom_Text_IntroSpeech, EverGrandeCity_SidneysRoom_Text_Defeat
+	msgbox EverGrandeCity_SidneysRoom_Text_IntroSpeech, MSGBOX_DEFAULT
+	trainerbattle_no_intro TRAINER_SIDNEY_2, EverGrandeCity_SidneysRoom_Text_Defeat
 	goto EverGrandeCity_SidneysRoom_EventScript_Defeated
 	end
 

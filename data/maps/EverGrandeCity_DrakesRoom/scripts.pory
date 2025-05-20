@@ -27,12 +27,14 @@ EverGrandeCity_DrakesRoom_EventScript_Drake::
 
 EverGrandeCity_DrakesRoom_EventScript_DrakeBattle::
 	playbgm MUS_ENCOUNTER_ELITE_FOUR, FALSE
-	trainerbattle_single TRAINER_DRAKE_1, EverGrandeCity_DrakesRoom_Text_IntroSpeech, EverGrandeCity_DrakesRoom_Text_Defeat
+	msgbox EverGrandeCity_DrakesRoom_Text_IntroSpeech, MSGBOX_DEFAULT
+	trainerbattle_no_intro TRAINER_DRAKE_1, EverGrandeCity_DrakesRoom_Text_Defeat
 	goto EverGrandeCity_DrakesRoom_EventScript_Defeated
 	end
 
 EverGrandeCity_DrakesRoom_EventScript_DrakeRematch::
-	trainerbattle_rematch TRAINER_DRAKE_1, EverGrandeCity_DrakesRoom_Text_IntroSpeech, EverGrandeCity_DrakesRoom_Text_Defeat
+	msgbox EverGrandeCity_DrakesRoom_Text_IntroSpeech, MSGBOX_DEFAULT
+	trainerbattle_no_intro TRAINER_DRAKE_2, EverGrandeCity_DrakesRoom_Text_Defeat
 	goto EverGrandeCity_DrakesRoom_EventScript_Defeated
 	end
 
