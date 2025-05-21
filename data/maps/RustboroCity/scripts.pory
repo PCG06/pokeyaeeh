@@ -590,8 +590,14 @@ RustboroCity_EventScript_ReturnGoods::
 	call_if_eq VAR_TEMP_1, 3, RustboroCity_EventScript_EmployeeApproachPlayerDown2
 	call_if_eq VAR_TEMP_1, 4, RustboroCity_EventScript_EmployeeFacePlayerRight
 	msgbox RustboroCity_Text_YouGotItThankYou, MSGBOX_DEFAULT
-	giveitem ITEM_TM_CHARGE_BEAM
-	call_if_eq VAR_RESULT, FALSE, RustboroCity_EventScript_BagFull
+	givemon SPECIES_EEVEE, 0, ITEM_EVIOLITE, 26, NATURE_MODEST, 2, MON_MALE, 0, 0, 0, 252, 252, 0, 31, 31, 31, 31, 31, 31, MOVE_COVET, MOVE_BABY_DOLL_EYES, MOVE_QUICK_ATTACK, MOVE_BATON_PASS, TRUE
+	playfanfare MUS_OBTAIN_ITEM
+	message RustboroCity_Text_ReceivedEevee
+	waitmessage
+	waitfanfare
+	bufferspeciesname STR_VAR_1, SPECIES_EEVEE
+	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_EEVEE
+	call Common_EventScript_Nickname
 	msgbox RustboroCity_Text_PleaseComeWithMe, MSGBOX_DEFAULT
 	closemessage
 	setflag FLAG_RETURNED_DEVON_GOODS
@@ -1115,7 +1121,10 @@ RustboroCity_Text_YouGotItThankYou:
 	.string "You got them back!\p"
 	.string "You really are a great Trainer!\p"
 	.string "I know! As my thanks, I'll give you\n"
-	.string "another TM!$"
+	.string "my Pokémon!$"
+
+RustboroCity_Text_ReceivedEevee:
+    .string "{PLAYER} received Eevee!$"
 
 RustboroCity_Text_YoureLoadedWithItems:
 	.string "You debug using lil bro!\n"
