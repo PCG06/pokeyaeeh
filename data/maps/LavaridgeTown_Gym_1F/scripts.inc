@@ -34,8 +34,8 @@ LavaridgeTown_Gym_1F_EventScript_FlanneryDefeated::
 	release
 	end
 
-@ giveitem ITEM_TM_RETURN
-@ giveitem ITEM_TM_FRUSTRATION
+@ giveitem ITEM_TM_SLUDGE_BOMB
+@ giveitem ITEM_TM_CHARGE_BEAM
 @ giveitem ITEM_TM_STOMPING_TANTRUM
 @ giveitem ITEM_TM_TEMPER_FLARE
 @ giveitem ITEM_TM_TAUNT

@@ -70,7 +70,7 @@ MossdeepCity_Gym_NicholasMove::
 
 @ giveitem ITEM_TM_HEAVY_SLAM
 @ giveitem ITEM_TM_MYSTICAL_FIRE
-@ giveitem ITEM_TM_PHANTOM_FORCE
+@ giveitem ITEM_TM_GIGA_DRAIN
 @ giveitem ITEM_TM_STEALTH_ROCK
 @ giveitem ITEM_TM_SUPERCELL_SLAM
 @ giveitem ITEM_TM_REVERSAL

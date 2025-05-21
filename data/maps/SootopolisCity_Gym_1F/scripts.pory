@@ -71,14 +71,14 @@ SootopolisCity_Gym_1F_EventScript_JuanDefeated::
 	end
 
 @ giveitem ITEM_TM_DRAGON_PULSE
-@ giveitem ITEM_TM_JETSTREAM
-@ giveitem ITEM_TM_GIGA_IMPACT
-@ giveitem ITEM_TM_HYPER_BEAM
+@ giveitem ITEM_TM_GYRO_BALL
+@ giveitem ITEM_TM_ROOST
+@ giveitem ITEM_TM_PHANTOM_FORCE
 @ giveitem ITEM_TM_BULK_UP
 @ giveitem ITEM_TM_CALM_MIND
 @ giveitem ITEM_TM_SCALD
 @ giveitem ITEM_TM_SCALE_SHOT
-@ giveitem ITEM_TM_TRIPLE_AXEL
+@ giveitem ITEM_TM_FLIP_TURN
 @ giveitem ITEM_TM_BODY_PRESS
 @ giveitem ITEM_TM_HARD_PRESS
 @ giveitem ITEM_TM_EARTH_POWER
