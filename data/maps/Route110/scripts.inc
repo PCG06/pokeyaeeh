@@ -957,7 +957,6 @@ Route110_EventScript_Jaclyn_1:
 Route110_EventScript_Jaclyn_2:
 	setflag B_FLAG_NO_BAG_USE
 	trainerbattle_single TRAINER_JACLYN, Route110_Text_JaclynIntro, Route110_Text_JaclynDefeated, Route110_EventScript_Jaclyn2
-	clearflag B_FLAG_NO_BAG_USE
 	msgbox Route110_EventScript_Jaclyn_Text_0, MSGBOX_AUTOCLOSE
 	goto Route110_EventScript_Jaclyn_1
 

@@ -171,7 +171,6 @@ script Route123_EventScript_Violet{
 	   defeated(TRAINER_FERNANDO_1)){
 		setflag(B_FLAG_NO_BAG_USE)
 		trainerbattle_single(TRAINER_VIOLET, Route123_Text_VioletIntro, Route123_Text_VioletDefeat, Route123_EventScript_Violet2)
-		clearflag(B_FLAG_NO_BAG_USE)
 	    msgbox("Holding Tropiusite,\nyour Tropius will Mega Evolve!\pIt'll be much stronger and bulkier!", MSGBOX_AUTOCLOSE)
 	}
 	else{

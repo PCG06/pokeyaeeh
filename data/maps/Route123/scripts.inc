@@ -165,7 +165,6 @@ Route123_EventScript_Violet_1:
 Route123_EventScript_Violet_2:
 	setflag B_FLAG_NO_BAG_USE
 	trainerbattle_single TRAINER_VIOLET, Route123_Text_VioletIntro, Route123_Text_VioletDefeat, Route123_EventScript_Violet2
-	clearflag B_FLAG_NO_BAG_USE
 	msgbox Route123_EventScript_Violet2_Text_4, MSGBOX_AUTOCLOSE
 	goto Route123_EventScript_Violet_1
 

@@ -88,7 +88,6 @@ Route127_EventScript_Athena_1:
 Route127_EventScript_Athena_2:
 	setflag B_FLAG_NO_BAG_USE
 	trainerbattle_single TRAINER_ATHENA, Route127_Text_AthenaIntro, Route127_Text_AthenaDefeat, Route127_EventScript_Athena2
-	clearflag B_FLAG_NO_BAG_USE
 	msgbox Route127_EventScript_Athena2_Text_3, MSGBOX_AUTOCLOSE
 	goto Route127_EventScript_Athena_1
 

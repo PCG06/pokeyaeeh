@@ -213,7 +213,8 @@
               }
             ]
           }
-        },        {
+        },
+        {
           "map": "MAP_ROUTE102",
           "base_label": "gRoute102_Day",
           "land_mons": {
@@ -1469,7 +1470,7 @@
             ]
           }
         },
-                {
+        {
           "map": "MAP_ROUTE110",
           "base_label": "gRoute110_Night",
           "land_mons": {
@@ -3949,57 +3950,57 @@
               {
                 "min_level": 1,
                 "max_level": 1,
-                "species": "SPECIES_WHISMUR"
+                "species": "SPECIES_ZUBAT"
               },
               {
                 "min_level": 1,
                 "max_level": 1,
-                "species": "SPECIES_WHISMUR"
+                "species": "SPECIES_SOLROCK"
               },
               {
                 "min_level": 1,
                 "max_level": 1,
-                "species": "SPECIES_WHISMUR"
+                "species": "SPECIES_LUNATONE"
               },
               {
                 "min_level": 1,
                 "max_level": 1,
-                "species": "SPECIES_WHISMUR"
+                "species": "SPECIES_BALTOY"
               },
               {
                 "min_level": 1,
                 "max_level": 1,
-                "species": "SPECIES_WHISMUR"
+                "species": "SPECIES_ONIX"
               },
               {
                 "min_level": 1,
                 "max_level": 1,
-                "species": "SPECIES_WHISMUR"
+                "species": "SPECIES_GEODUDE"
               },
               {
                 "min_level": 1,
                 "max_level": 1,
-                "species": "SPECIES_WHISMUR"
+                "species": "SPECIES_ROGGENROLA"
               },
               {
                 "min_level": 1,
                 "max_level": 1,
-                "species": "SPECIES_WHISMUR"
+                "species": "SPECIES_DRILBUR"
               },
               {
                 "min_level": 1,
                 "max_level": 1,
-                "species": "SPECIES_WHISMUR"
+                "species": "SPECIES_CHIMECHO"
               },
               {
                 "min_level": 1,
                 "max_level": 1,
-                "species": "SPECIES_WHISMUR"
+                "species": "SPECIES_SOLOSIS"
               },
               {
                 "min_level": 1,
                 "max_level": 1,
-                "species": "SPECIES_WHISMUR"
+                "species": "SPECIES_SIGILYPH"
               }
             ]
           }
@@ -4919,7 +4920,7 @@
         },
         {
           "map": "MAP_METEOR_FALLS_B1F_2R",
-          "base_label": "gMeteorFalls_B1F_2R_Day",
+          "base_label": "gMeteorFalls_B1F_2R",
           "land_mons": {
             "encounter_rate": 10,
             "mons": [
@@ -5012,160 +5013,6 @@
                 "min_level": 1,
                 "max_level": 1,
                 "species": "SPECIES_SOLROCK"
-              }
-            ]
-          },
-          "fishing_mons": {
-            "encounter_rate": 30,
-            "mons": [
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_MAGIKARP"
-              },
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_GOLDEEN"
-              },
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_MAGIKARP"
-              },
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_GOLDEEN"
-              },
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_BARBOACH"
-              },
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_BARBOACH"
-              },
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_BARBOACH"
-              },
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_WHISCASH"
-              },
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_WHISCASH"
-              },
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_WHISCASH"
-              }
-            ]
-          }
-        },
-        {
-          "map": "MAP_METEOR_FALLS_B1F_2R",
-          "base_label": "gMeteorFalls_B1F_2R_Night",
-          "land_mons": {
-            "encounter_rate": 10,
-            "mons": [
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_GOLBAT"
-              },
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_GOLBAT"
-              },
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_BAGON"
-              },
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_LUNATONE"
-              },
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_BAGON"
-              },
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_LUNATONE"
-              },
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_BAGON"
-              },
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_LUNATONE"
-              },
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_GOLBAT"
-              },
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_GOLBAT"
-              },
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_GOLBAT"
-              },
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_GOLBAT"
-              }
-            ]
-          },
-          "water_mons": {
-            "encounter_rate": 4,
-            "mons": [
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_GOLBAT"
-              },
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_GOLBAT"
-              },
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_LUNATONE"
-              },
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_LUNATONE"
-              },
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_LUNATONE"
               }
             ]
           },
@@ -12796,7 +12643,7 @@
         },
         {
           "map": "MAP_METEOR_FALLS_1F_1R",
-          "base_label": "gMeteorFalls_1F_1R_Day",
+          "base_label": "gMeteorFalls_1F_1R",
           "land_mons": {
             "encounter_rate": 10,
             "mons": [
@@ -12889,160 +12736,6 @@
                 "min_level": 1,
                 "max_level": 1,
                 "species": "SPECIES_SOLROCK"
-              }
-            ]
-          },
-          "fishing_mons": {
-            "encounter_rate": 30,
-            "mons": [
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_MAGIKARP"
-              },
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_GOLDEEN"
-              },
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_MAGIKARP"
-              },
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_GOLDEEN"
-              },
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_BARBOACH"
-              },
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_BARBOACH"
-              },
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_BARBOACH"
-              },
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_BARBOACH"
-              },
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_BARBOACH"
-              },
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_BARBOACH"
-              }
-            ]
-          }
-        },
-        {
-          "map": "MAP_METEOR_FALLS_1F_1R",
-          "base_label": "gMeteorFalls_1F_1R_Night",
-          "land_mons": {
-            "encounter_rate": 10,
-            "mons": [
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_ZUBAT"
-              },
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_ZUBAT"
-              },
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_ZUBAT"
-              },
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_ZUBAT"
-              },
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_ZUBAT"
-              },
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_LUNATONE"
-              },
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_LUNATONE"
-              },
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_LUNATONE"
-              },
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_ZUBAT"
-              },
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_ZUBAT"
-              },
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_ZUBAT"
-              },
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_ZUBAT"
-              }
-            ]
-          },
-          "water_mons": {
-            "encounter_rate": 4,
-            "mons": [
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_ZUBAT"
-              },
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_ZUBAT"
-              },
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_LUNATONE"
-              },
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_LUNATONE"
-              },
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_LUNATONE"
               }
             ]
           },
@@ -13104,315 +12797,7 @@
         },
         {
           "map": "MAP_METEOR_FALLS_1F_2R",
-          "base_label": "gMeteorFalls_1F_2R_Day",
-          "land_mons": {
-            "encounter_rate": 10,
-            "mons": [
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_GOLBAT"
-              },
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_GOLBAT"
-              },
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_GOLBAT"
-              },
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_SOLROCK"
-              },
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_SOLROCK"
-              },
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_SOLROCK"
-              },
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_GOLBAT"
-              },
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_SOLROCK"
-              },
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_GOLBAT"
-              },
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_GOLBAT"
-              },
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_GOLBAT"
-              },
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_GOLBAT"
-              }
-            ]
-          },
-          "water_mons": {
-            "encounter_rate": 4,
-            "mons": [
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_GOLBAT"
-              },
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_GOLBAT"
-              },
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_SOLROCK"
-              },
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_SOLROCK"
-              },
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_SOLROCK"
-              }
-            ]
-          },
-          "fishing_mons": {
-            "encounter_rate": 30,
-            "mons": [
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_MAGIKARP"
-              },
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_GOLDEEN"
-              },
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_MAGIKARP"
-              },
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_GOLDEEN"
-              },
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_BARBOACH"
-              },
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_BARBOACH"
-              },
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_BARBOACH"
-              },
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_WHISCASH"
-              },
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_WHISCASH"
-              },
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_WHISCASH"
-              }
-            ]
-          }
-        },
-        {
-          "map": "MAP_METEOR_FALLS_1F_2R",
-          "base_label": "gMeteorFalls_1F_2R_Night",
-          "land_mons": {
-            "encounter_rate": 10,
-            "mons": [
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_GOLBAT"
-              },
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_GOLBAT"
-              },
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_GOLBAT"
-              },
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_LUNATONE"
-              },
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_LUNATONE"
-              },
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_LUNATONE"
-              },
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_GOLBAT"
-              },
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_LUNATONE"
-              },
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_GOLBAT"
-              },
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_GOLBAT"
-              },
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_GOLBAT"
-              },
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_GOLBAT"
-              }
-            ]
-          },
-          "water_mons": {
-            "encounter_rate": 4,
-            "mons": [
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_GOLBAT"
-              },
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_GOLBAT"
-              },
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_LUNATONE"
-              },
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_LUNATONE"
-              },
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_LUNATONE"
-              }
-            ]
-          },
-          "fishing_mons": {
-            "encounter_rate": 30,
-            "mons": [
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_MAGIKARP"
-              },
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_GOLDEEN"
-              },
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_MAGIKARP"
-              },
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_GOLDEEN"
-              },
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_BARBOACH"
-              },
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_BARBOACH"
-              },
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_BARBOACH"
-              },
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_WHISCASH"
-              },
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_WHISCASH"
-              },
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_WHISCASH"
-              }
-            ]
-          }
-        },
-        {
-          "map": "MAP_METEOR_FALLS_B1F_1R",
-          "base_label": "gMeteorFalls_B1F_1R_Day",
+          "base_label": "gMeteorFalls_1F_2R",
           "land_mons": {
             "encounter_rate": 10,
             "mons": [
@@ -13566,7 +12951,7 @@
         },
         {
           "map": "MAP_METEOR_FALLS_B1F_1R",
-          "base_label": "gMeteorFalls_B1F_1R_Night",
+          "base_label": "gMeteorFalls_B1F_1R",
           "land_mons": {
             "encounter_rate": 10,
             "mons": [
@@ -13588,17 +12973,17 @@
               {
                 "min_level": 1,
                 "max_level": 1,
-                "species": "SPECIES_LUNATONE"
+                "species": "SPECIES_SOLROCK"
               },
               {
                 "min_level": 1,
                 "max_level": 1,
-                "species": "SPECIES_LUNATONE"
+                "species": "SPECIES_SOLROCK"
               },
               {
                 "min_level": 1,
                 "max_level": 1,
-                "species": "SPECIES_LUNATONE"
+                "species": "SPECIES_SOLROCK"
               },
               {
                 "min_level": 1,
@@ -13608,7 +12993,7 @@
               {
                 "min_level": 1,
                 "max_level": 1,
-                "species": "SPECIES_LUNATONE"
+                "species": "SPECIES_SOLROCK"
               },
               {
                 "min_level": 1,
@@ -13648,17 +13033,17 @@
               {
                 "min_level": 1,
                 "max_level": 1,
-                "species": "SPECIES_LUNATONE"
+                "species": "SPECIES_SOLROCK"
               },
               {
                 "min_level": 1,
                 "max_level": 1,
-                "species": "SPECIES_LUNATONE"
+                "species": "SPECIES_SOLROCK"
               },
               {
                 "min_level": 1,
                 "max_level": 1,
-                "species": "SPECIES_LUNATONE"
+                "species": "SPECIES_SOLROCK"
               }
             ]
           },
@@ -18226,7 +17611,7 @@
         },
         {
           "map": "MAP_METEOR_FALLS_STEVENS_CAVE",
-          "base_label": "gMeteorFalls_StevensCave_Day",
+          "base_label": "gMeteorFalls_StevensCave",
           "land_mons": {
             "encounter_rate": 10,
             "mons": [
@@ -18269,75 +17654,6 @@
                 "min_level": 1,
                 "max_level": 1,
                 "species": "SPECIES_SOLROCK"
-              },
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_GOLBAT"
-              },
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_GOLBAT"
-              },
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_GOLBAT"
-              },
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_GOLBAT"
-              }
-            ]
-          }
-        },
-        {
-          "map": "MAP_METEOR_FALLS_STEVENS_CAVE",
-          "base_label": "gMeteorFalls_StevensCave_Night",
-          "land_mons": {
-            "encounter_rate": 10,
-            "mons": [
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_GOLBAT"
-              },
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_GOLBAT"
-              },
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_GOLBAT"
-              },
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_LUNATONE"
-              },
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_LUNATONE"
-              },
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_LUNATONE"
-              },
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_GOLBAT"
-              },
-              {
-                "min_level": 1,
-                "max_level": 1,
-                "species": "SPECIES_LUNATONE"
               },
               {
                 "min_level": 1,

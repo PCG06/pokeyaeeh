@@ -151,7 +151,6 @@ script Route117_EventScript_Isaac{
 	   defeated(TRAINER_AISHA)){
 		setflag(B_FLAG_NO_BAG_USE)
 		trainerbattle_single(TRAINER_ISAAC_1, Route117_Text_IsaacIntro, Route117_Text_IsaacDefeat, Route117_EventScript_Isaac2)
-		clearflag(B_FLAG_NO_BAG_USE)
 	    msgbox("Facade is a move that doubles in damage\nif the Pokémon using it is suffering\lfrom status. Pretty neat, eh?\pPair with a Pokémon who has Guts,\nand you get massive damage!", MSGBOX_AUTOCLOSE)
 	}
 	else{

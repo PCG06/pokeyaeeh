@@ -55,7 +55,6 @@ Route108_EventScript_Jerome_1:
 Route108_EventScript_Jerome_2:
 	setflag B_FLAG_NO_BAG_USE
 	trainerbattle_single TRAINER_JEROME, Route108_Text_JeromeIntro, Route108_Text_JeromeDefeated, Route108_EventScript_Jerome2
-	clearflag B_FLAG_NO_BAG_USE
 	msgbox Route108_EventScript_Jerome2_Text_2, MSGBOX_AUTOCLOSE
 	goto Route108_EventScript_Jerome_1
 

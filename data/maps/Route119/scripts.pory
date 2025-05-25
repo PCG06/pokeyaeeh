@@ -646,7 +646,6 @@ script Route119_EventScript_Donald{
 		defeated(TRAINER_RACHEL)){
 		setflag(B_FLAG_NO_BAG_USE)
 		trainerbattle_single(TRAINER_DONALD, Route119_Text_DonaldIntro, Route119_Text_DonaldDefeat, Route119_EventScript_Donald2)
-		clearflag(B_FLAG_NO_BAG_USE)
 		msgbox(("Holding that Mega Stone,\nPinsir will Mega Evolve and gain a lot of\lpower.\pIt's Normal-type attacks will become\nFlying-type and hit your foes real hard!"), MSGBOX_NPC)
 	}
 	else{

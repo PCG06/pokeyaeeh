@@ -89,7 +89,6 @@ Route124_EventScript_Chad_1:
 Route124_EventScript_Chad_2:
 	setflag B_FLAG_NO_BAG_USE
 	trainerbattle_single TRAINER_CHAD, Route124_Text_ChadIntro, Route124_Text_ChadDefeat, Route124_EventScript_Chad2
-	clearflag B_FLAG_NO_BAG_USE
 	msgbox Route124_EventScript_Chad2_Text_4, MSGBOX_AUTOCLOSE
 	goto Route124_EventScript_Chad_1
 

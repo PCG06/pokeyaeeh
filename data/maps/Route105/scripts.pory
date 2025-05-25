@@ -85,7 +85,6 @@ script Route105_EventScript_Foster2{
 	waitfanfare
 	msgbox(("And this, too!"))
 	giveitem(ITEM_TM_EARTHQUAKE, 1)
-	clearflag(B_FLAG_NO_BAG_USE)
 	playfanfare(MUS_OBTAIN_ITEM)
 	msgbox("Earthquake is an excellent move!\pIt also hurts your partner in battle\nthough.\pUnless its Flying-type or is floating,\nhehe.", MSGBOX_NPC)
 	return
@@ -101,7 +100,6 @@ script Route105_EventScript_Foster{
 	   defeated(TRAINER_LUIS)){
 		setflag(B_FLAG_NO_BAG_USE)
 		trainerbattle_single(TRAINER_FOSTER, Route105_Text_FosterIntro, Route105_Text_FosterDefeated, Route105_EventScript_Foster2)
-		clearflag(B_FLAG_NO_BAG_USE)
 		msgbox("Earthquake is an excellent move!\pIt also hurts your partner in battle\nthough.\pUnless its Flying-type or is floating,\nhehe.", MSGBOX_NPC)
 	}
 	else{

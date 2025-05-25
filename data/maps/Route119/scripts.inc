@@ -637,7 +637,6 @@ Route119_EventScript_Donald_1:
 Route119_EventScript_Donald_2:
 	setflag B_FLAG_NO_BAG_USE
 	trainerbattle_single TRAINER_DONALD, Route119_Text_DonaldIntro, Route119_Text_DonaldDefeat, Route119_EventScript_Donald2
-	clearflag B_FLAG_NO_BAG_USE
 	msgbox Route119_EventScript_Donald2_Text_3, MSGBOX_NPC
 	goto Route119_EventScript_Donald_1
 

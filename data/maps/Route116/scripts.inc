@@ -1,6 +1,6 @@
 
 .set LOCALID_BRINEY, 11
-.set LOCALID_WANDAS_BF_OUTSIDE, 21
+.set LOCALID_WANDAS_BF_OUTSIDE, 20
 
 Route116_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, Route116_OnTransition
@@ -421,7 +421,6 @@ Route116_EventScript_Dawson_1:
 Route116_EventScript_Dawson_2:
 	setflag B_FLAG_NO_BAG_USE
 	trainerbattle_single TRAINER_DAWSON, Route116_EventScript_Dawson_Text_0, Route116_EventScript_Dawson_Text_1, Route116_EventScript_Dawson2
-	clearflag B_FLAG_NO_BAG_USE
 	msgbox Route116_EventScript_Dawson2_Text_1, MSGBOX_NPC
 	goto Route116_EventScript_Dawson_1
 

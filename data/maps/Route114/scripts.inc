@@ -219,7 +219,6 @@ Route114_EventScript_Lenny_1:
 Route114_EventScript_Lenny_2:
 	setflag B_FLAG_NO_BAG_USE
 	trainerbattle_single TRAINER_LENNY, Route114_Text_LennyIntro, Route114_Text_LennyDefeat, Route114_EventScript_Lenny2
-	clearflag B_FLAG_NO_BAG_USE
 	msgbox Route114_EventScript_Lenny_Text_0, MSGBOX_AUTOCLOSE
 	goto Route114_EventScript_Lenny_1
 

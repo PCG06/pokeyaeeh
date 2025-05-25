@@ -560,7 +560,6 @@ Route109_EventScript_Huey_1:
 Route109_EventScript_Huey_2:
 	setflag B_FLAG_NO_BAG_USE
 	trainerbattle_single TRAINER_HUEY, Route109_Text_HueyIntro, Route109_Text_HueyDefeated, Route109_EventScript_Huey2
-	clearflag B_FLAG_NO_BAG_USE
 	msgbox Route109_EventScript_Huey_Text_0, MSGBOX_NPC
 	goto Route109_EventScript_Huey_1
 

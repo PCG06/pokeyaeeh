@@ -242,7 +242,6 @@ script Route128_EventScript_Ruben{
 	   defeated(TRAINER_CARLEE)){
 		setflag(B_FLAG_NO_BAG_USE)
 		trainerbattle_single(TRAINER_ATHENA, Route128_Text_RubenIntro, Route128_Text_RubenDefeat, Route128_EventScript_Ruben2)
-		clearflag(B_FLAG_NO_BAG_USE)
 	    msgbox("Holding a Copperajahite,\nyour Copperajah can slam harder!", MSGBOX_AUTOCLOSE)
 	}
 	else{

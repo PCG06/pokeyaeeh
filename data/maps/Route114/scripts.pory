@@ -222,7 +222,6 @@ script Route114_EventScript_Lenny{
 	   defeated(TRAINER_KAI)){
 		setflag(B_FLAG_NO_BAG_USE)
 		trainerbattle_single(TRAINER_LENNY, Route114_Text_LennyIntro, Route114_Text_LennyDefeat, Route114_EventScript_Lenny2)
-		clearflag(B_FLAG_NO_BAG_USE)
 	    msgbox("Ya happy now?", MSGBOX_AUTOCLOSE)
 	}
 	else{

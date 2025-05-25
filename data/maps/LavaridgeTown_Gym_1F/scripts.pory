@@ -14,8 +14,6 @@ LavaridgeTown_Gym_1F_EventScript_FlanneryDefeated::
 	msgbox LavaridgeTown_Gym_1F_Text_ExplainHeatBadgeTakeThis, MSGBOX_DEFAULT
 	setflag FLAG_WHITEOUT_TO_LAVARIDGE
 	setflag FLAG_DEFEATED_LAVARIDGE_GYM
-	clearflag B_FLAG_NO_BAG_USE
-    clearflag B_FLAG_INVERSE_BATTLE
 	setflag FLAG_BADGE04_GET
 	call_if_eq VAR_PETALBURG_GYM_STATE, 6, Common_EventScript_ReadyPetalburgGymForBattle
 	setvar VAR_0x8008, 4

@@ -164,7 +164,6 @@ script Route113_EventScript_Madeline{
 		defeated(TRAINER_WYATT)){
 		setflag(B_FLAG_NO_BAG_USE)
 		trainerbattle_single(TRAINER_MADELINE_1, Route113_Text_MadelineIntro, Route113_Text_MadelineDefeat, Route113_EventScript_Madeline2)
-		clearflag(B_FLAG_NO_BAG_USE)
 	msgbox(("Dazzling Gleam is a pretty strong move.\pEspecially in double battles,\nwhere hitting both your enemies is\lcrucial."), MSGBOX_NPC)
 	}
 	else{

@@ -89,7 +89,6 @@ script MtPyre_6F_EventScript_Valerie{
 	   defeated(TRAINER_ATSUSHI)){
 		setflag(B_FLAG_NO_BAG_USE)
 		trainerbattle_single(TRAINER_VALERIE_1, MtPyre_6F_Text_ValerieIntro, MtPyre_6F_Text_ValerieDefeat, MtPyre_6F_EventScript_Valerie2)
-		clearflag(B_FLAG_NO_BAG_USE)
 		msgbox("Holding a Banettite,\nyour Banette can become just as\lstrong as mine!", MSGBOX_AUTOCLOSE)
 	}
 	else{

@@ -163,7 +163,6 @@ Route113_EventScript_Madeline_1:
 Route113_EventScript_Madeline_2:
 	setflag B_FLAG_NO_BAG_USE
 	trainerbattle_single TRAINER_MADELINE_1, Route113_Text_MadelineIntro, Route113_Text_MadelineDefeat, Route113_EventScript_Madeline2
-	clearflag B_FLAG_NO_BAG_USE
 	msgbox Route113_EventScript_Madeline2_Text_4, MSGBOX_NPC
 	goto Route113_EventScript_Madeline_1
 

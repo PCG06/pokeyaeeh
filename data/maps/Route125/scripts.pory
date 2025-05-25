@@ -91,7 +91,6 @@ script Route125_EventScript_Presley{
 	   defeated(TRAINER_AURON)){
 		setflag(B_FLAG_NO_BAG_USE)
 		trainerbattle_single(TRAINER_PRESLEY, Route125_Text_PresleyIntro, Route125_Text_PresleyDefeat, Route125_EventScript_Presley2)
-		clearflag(B_FLAG_NO_BAG_USE)
 		msgbox("Holding a Corviknightite,\nyour Corviknight can become just as\lstrong as mine!\pMaybe even stronger.", MSGBOX_AUTOCLOSE)
 	}
 	else{

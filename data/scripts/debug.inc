@@ -125,7 +125,7 @@ Text_Route114TrainersCleared:
 	.string "Route 114 Trainers cleared!$"
 
 Debug_EventScript_Script_1:: @ testing scripts and stuff
-	setflag FLAG_HIDE_PETALBURG_WOODS_WALLY
+	giveitem ITEM_TM_DEFOG
 	end
 
 Debug_EventScript_Script_2:: @ regular single battle

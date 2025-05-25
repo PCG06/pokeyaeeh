@@ -1064,7 +1064,6 @@ Route104_EventScript_Ivan_1:
 Route104_EventScript_Ivan_2:
 	setflag B_FLAG_NO_BAG_USE
 	trainerbattle_single TRAINER_IVAN, Route104_EventScript_Ivan_Text_0, Route104_EventScript_Ivan_Text_1, Route104_EventScript_Ivan2
-	clearflag B_FLAG_NO_BAG_USE
 	msgbox Route104_EventScript_Ivan2_Text_2
 	goto Route104_EventScript_Ivan_1
 

@@ -160,7 +160,6 @@ Route121_EventScript_RouteBossCouple_1:
 Route121_EventScript_RouteBossCouple_2:
 	setflag B_FLAG_NO_BAG_USE
 	trainerbattle_single TRAINER_KATE_AND_JOY, Route121_Text_RouteBossCoupleIntro, Route121_Text_RouteBossCoupleDefeat, Route121_EventScript_RouteBossCouple2
-	clearflag B_FLAG_NO_BAG_USE
 	msgbox Route121_EventScript_RouteBossCouple_Text_0, MSGBOX_AUTOCLOSE
 	goto Route121_EventScript_RouteBossCouple_1
 

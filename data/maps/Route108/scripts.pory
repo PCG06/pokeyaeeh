@@ -59,7 +59,6 @@ script Route108_EventScript_Jerome{
 	   defeated(TRAINER_CORY_1)){
 		setflag(B_FLAG_NO_BAG_USE)
 		trainerbattle_single(TRAINER_JEROME, Route108_Text_JeromeIntro, Route108_Text_JeromeDefeated, Route108_EventScript_Jerome2)
-		clearflag(B_FLAG_NO_BAG_USE)
 		msgbox("Bubble Beam is an excellent move!\pIt can also lower the foe's speed.", MSGBOX_AUTOCLOSE)
 	}
 	else{

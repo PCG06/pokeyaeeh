@@ -87,7 +87,6 @@ script Route127_EventScript_Athena{
 	   defeated(TRAINER_KOJI_1)){
 		setflag(B_FLAG_NO_BAG_USE)
 		trainerbattle_single(TRAINER_ATHENA, Route127_Text_AthenaIntro, Route127_Text_AthenaDefeat, Route127_EventScript_Athena2)
-		clearflag(B_FLAG_NO_BAG_USE)
 	    msgbox("Holding a Gardevoirite,\nyour Gardevoir can wreak havoc,\ljust like mine!", MSGBOX_AUTOCLOSE)
 	}
 	else{

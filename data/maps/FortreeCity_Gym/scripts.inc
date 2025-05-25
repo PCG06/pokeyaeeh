@@ -62,7 +62,7 @@ FortreeCity_Gym_EventScript_WinonaDefeated::
 @ giveitem ITEM_TM_CHARM
 @ giveitem ITEM_TM_EERIE_IMPULSE
 @ giveitem ITEM_TM_FOCUS_PUNCH
-@ giveitem ITEM_TM_DEFOG
+@ giveitem ITEM_TM_DRAGON_TAIL
 @ giveitem ITEM_TM_JETSTREAM
 @ giveitem ITEM_TM_HEAT_CRASH
 @ giveitem ITEM_TM_FLASH_CANNON

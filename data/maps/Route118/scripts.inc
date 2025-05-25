@@ -185,7 +185,6 @@ Route118_EventScript_Chester_1:
 Route118_EventScript_Chester_2:
 	setflag B_FLAG_NO_BAG_USE
 	trainerbattle_single TRAINER_CHESTER, Route118_Text_ChesterIntro, Route118_Text_ChesterDefeat, Route118_EventScript_Chester2
-	clearflag B_FLAG_NO_BAG_USE
 	msgbox Route118_EventScript_Chester_Text_0, MSGBOX_NPC
 	goto Route118_EventScript_Chester_1
 

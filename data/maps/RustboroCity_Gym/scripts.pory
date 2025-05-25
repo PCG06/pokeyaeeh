@@ -19,7 +19,6 @@ RustboroCity_Gym_EventScript_RoxanneDefeated::
 	msgbox RustboroCity_Gym_Text_StoneBadgeInfoTakeThis, MSGBOX_DEFAULT
 	setflag FLAG_DEFEATED_RUSTBORO_GYM
 	setflag FLAG_BADGE01_GET
-	clearflag B_FLAG_NO_BAG_USE
 	setvar VAR_RUSTBORO_CITY_STATE, 1
 	setvar VAR_0x8008, 1
 	call Common_EventScript_SetGymTrainers
@@ -30,7 +29,7 @@ RustboroCity_Gym_EventScript_RoxanneDefeated::
 @ giveitem ITEM_TM_TORMENT
 @ giveitem ITEM_TM_IMPRISON
 @ giveitem ITEM_TM_MUD_SHOT
-@ giveitem ITEM_TM_DRAGON_TAIL
+@ giveitem ITEM_TM_DEFOG
 @ giveitem ITEM_TM_REST
 @ giveitem ITEM_TM_SMACK_DOWN
 @ giveitem ITEM_TM_THIEF
@@ -244,8 +243,8 @@ RustboroCity_Gym_Text_StoneBadgeInfoTakeThis:
 
 RustboroCity_Gym_Text_ExplainRockTomb:
     .string "I dumped a bunch of TMs on you.\n"
-    .string "Stop whining about the count and just\n"
-	.string "use 'em! They don't break.\p"
+    .string "Stop whining about the count and\l"
+	.string "just use 'em! They don't break.\p"
     .string "TMs teach moves instantly and you can\n"
     .string "spam 'em all you want.\p"
     .string "Try not to screw it up, rookie.$"

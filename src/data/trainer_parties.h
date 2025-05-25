@@ -16948,27 +16948,19 @@ static const struct TrainerMon sParty_Lyle[] = {
     },
     {
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-    .ev = TRAINER_PARTY_EVS(0, 0, 100, 100, 0, 0),
-    .lvl = 1,
-    .species = SPECIES_SCYTHER,
-    .ability = ABILITY_TECHNICIAN,
-    .moves = {MOVE_U_TURN, MOVE_DUAL_WINGBEAT, MOVE_THIEF, MOVE_QUICK_ATTACK},
-    },
-    {
-    .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
     .ev = TRAINER_PARTY_EVS(0, 0, 0, 100, 100, 50),
     .lvl = 1,
     .species = SPECIES_BUTTERFREE,
     .ability = ABILITY_TINTED_LENS,
-    .moves = {MOVE_PSYBEAM, MOVE_BUG_BUZZ, MOVE_QUIVER_DANCE, MOVE_AIR_SLASH},
+    .moves = {MOVE_PSYBEAM, MOVE_STRUGGLE_BUG, MOVE_STRING_SHOT, MOVE_SLEEP_POWDER},
     },
     {
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-    .ev = TRAINER_PARTY_EVS(0, 50, 100, 100, 0, 0),
+    .ev = TRAINER_PARTY_EVS(0, 100, 0, 100, 0, 0),
     .lvl = 1,
     .species = SPECIES_DURANT,
-    .ability = ABILITY_HUSTLE,
-    .moves = {MOVE_IRON_HEAD, MOVE_BUG_BITE, MOVE_FURY_CUTTER, MOVE_NONE},
+    .ability = ABILITY_TRUANT,
+    .moves = {MOVE_METAL_CLAW, MOVE_BUG_BITE, MOVE_VISE_GRIP, MOVE_NONE},
     }
 };
 
@@ -17164,7 +17156,7 @@ static const struct TrainerMon sParty_James1[] = {
     },
     {
     .iv = TRAINER_PARTY_IVS(31, 31, 31, 31, 31, 31),
-    .ev = TRAINER_PARTY_EVS(0, 0, 0, 0, 0, 252),
+    .ev = TRAINER_PARTY_EVS(0, 0, 0, 252, 0, 0),
     .lvl = 1,
     .species = SPECIES_SHEDINJA,
     .ability = ABILITY_WONDER_GUARD,
