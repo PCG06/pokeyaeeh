@@ -614,6 +614,10 @@ u16 getHallofFameSpecies(u8 num)
             if(item == ITEM_LUCARIONITE)
                 return SPECIES_LUCARIO_MEGA;
         break;
+        case SPECIES_LUXRAY:
+            if(item == ITEM_LUXRAYNITE)
+                return SPECIES_LUXRAY_MEGA;
+        break;
         case SPECIES_MACHAMP:
             if(item == ITEM_MACHAMPITE)
                 return SPECIES_MACHAMP_MEGA;
@@ -671,14 +675,6 @@ u16 getHallofFameSpecies(u8 num)
         case SPECIES_RAICHU:
             if(item == ITEM_RAICHUNITE)
                 return SPECIES_RAICHU_MEGA;
-        break;
-        case SPECIES_TINKATON:
-            if(item == ITEM_TINKATITE)
-                return SPECIES_TINKATON_MEGA;
-        break;
-        case SPECIES_LUXRAY:
-            if(item == ITEM_LUXRAYNITE)
-                return SPECIES_LUXRAY_MEGA;
         break;
         case SPECIES_RILLABOOM:
             if(item == ITEM_RILLABOOMITE)

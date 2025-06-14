@@ -1266,7 +1266,7 @@
 #define ITEM_TINKATITE 938 // will be tied to something
 #define ITEM_LUXRAYNITE 939 // will be tied to something
 
-#define ITEMS_COUNT 939
+#define ITEMS_COUNT 940
 #define ITEM_FIELD_ARROW ITEMS_COUNT
 
 // A special item id associated with "Cancel"/"Exit" etc. in a list of items or decorations
