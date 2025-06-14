@@ -701,4 +701,6 @@ const u16 *const gFormSpeciesIdTables[NUM_SPECIES] =
     [SPECIES_KINGDRA_MEGA] = sKingdraFormSpeciesIdTable,
     [SPECIES_TINKATON] = sTinkatonFormSpeciesIdTable,
     [SPECIES_TINKATON_MEGA] = sTinkatonFormSpeciesIdTable,
+    [SPECIES_LUXRAY] = sLuxrayFormSpeciesIdTable,
+    [SPECIES_LUXRAY_MEGA] = sLuxrayFormSpeciesIdTable,
 };

@@ -4951,6 +4951,12 @@ static const union AnimCmd sAnim_Luxray_2[] =
     ANIMCMD_END,
 };
 
+static const union AnimCmd sAnim_LuxrayMega_1[] =
+{
+    ANIMCMD_FRAME(0, 1),
+    ANIMCMD_END,
+};
+
 static const union AnimCmd sAnim_Budew_1[] =
 {
     ANIMCMD_FRAME(0, 30),
@@ -13612,6 +13618,7 @@ const union AnimCmd *const *const gMonFrontAnimsPtrTable[NUM_SPECIES + 1] =
     [SPECIES_NIDOKING_MEGA]                  = sAnims_NidokingMega,
     [SPECIES_MILOTIC_MEGA]                   = sAnims_MiloticMega,
     [SPECIES_RAICHU_MEGA]                    = sAnims_RaichuMega,
+    [SPECIES_LUXRAY_MEGA]                    = sAnims_LuxrayMega,
     [SPECIES_TROPIUS_MEGA]                   = sAnims_TropiusMega,
     [SPECIES_KINGDRA_MEGA]                   = sAnims_KingdraMega,
     [SPECIES_TINKATON_MEGA]                  = sAnims_TinkatonMega,

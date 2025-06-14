@@ -1879,6 +1879,7 @@ static const u16 sSpeciesToNationalPokedexNum[NUM_SPECIES - 1] =
     [SPECIES_TROPIUS_MEGA - 1] = NATIONAL_DEX_TROPIUS,
     [SPECIES_KINGDRA_MEGA - 1] = NATIONAL_DEX_KINGDRA,
     [SPECIES_TINKATON_MEGA - 1] = NATIONAL_DEX_TINKATON,
+    [SPECIES_LUXRAY_MEGA - 1] = NATIONAL_DEX_LUXRAY,
 };
 
 // Assigns all Hoenn Dex Indexes to a National Dex Index

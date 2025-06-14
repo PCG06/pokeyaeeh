@@ -1655,8 +1655,9 @@
 #define SPECIES_TROPIUS_MEGA                     FORMS_START + 380
 #define SPECIES_KINGDRA_MEGA                     FORMS_START + 381
 #define SPECIES_TINKATON_MEGA                    FORMS_START + 382
+#define SPECIES_LUXRAY_MEGA                     FORMS_START + 383
 
-#define FORMS_END                                SPECIES_TINKATON_MEGA + 1
+#define FORMS_END                                SPECIES_LUXRAY_MEGA + 1
 
 #define SPECIES_EGG                              FORMS_END
 

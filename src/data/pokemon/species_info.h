@@ -10335,6 +10335,28 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .noFlip = FALSE,
     },
 
+    [SPECIES_LUXRAY_MEGA] =
+    {
+        .baseHP        = 80,
+        .baseAttack    = 120,
+        .baseDefense   = 79,
+        .baseSpeed     = 90,
+        .baseSpAttack  = 75,
+        .baseSpDefense = 79,
+        .types = { TYPE_ELECTRIC, TYPE_ELECTRIC},
+        .catchRate = 45,
+        .expYield = 235,
+        .evYield_Attack    = 3,
+        .genderRatio = PERCENT_FEMALE(50),
+        .eggCycles = 20,
+        .friendship = STANDARD_FRIENDSHIP,
+        .growthRate = GROWTH_MEDIUM_SLOW,
+        .eggGroups = { EGG_GROUP_FIELD, EGG_GROUP_FIELD},
+        .abilities = {ABILITY_STRONG_JAW, ABILITY_INTIMIDATE, ABILITY_GUTS},
+        .bodyColor = BODY_COLOR_BLUE,
+        .noFlip = FALSE,
+    },
+
     [SPECIES_BUDEW] =
     {
         .baseHP        = 40,
@@ -13712,10 +13734,10 @@ const struct SpeciesInfo gSpeciesInfo[] =
     [SPECIES_MARACTUS] =
     {
         .baseHP        = 75,
-        .baseAttack    = 86,
+        .baseAttack    = 111,
         .baseDefense   = 67,
-        .baseSpeed     = 60,
-        .baseSpAttack  = 126,
+        .baseSpeed     = 95,
+        .baseSpAttack  = 111,
         .baseSpDefense = 67,
         .types = { TYPE_GRASS, TYPE_GRASS},
         .catchRate = 255,
@@ -13727,7 +13749,7 @@ const struct SpeciesInfo gSpeciesInfo[] =
         .friendship = STANDARD_FRIENDSHIP,
         .growthRate = GROWTH_MEDIUM_FAST,
         .eggGroups = { EGG_GROUP_GRASS, EGG_GROUP_GRASS},
-        .abilities = {ABILITY_WATER_ABSORB, ABILITY_CHLOROPHYLL, ABILITY_STORM_DRAIN},
+        .abilities = {ABILITY_VERSATILITY, ABILITY_CHLOROPHYLL, ABILITY_STORM_DRAIN},
         .bodyColor = BODY_COLOR_GREEN,
         .noFlip = FALSE,
     },

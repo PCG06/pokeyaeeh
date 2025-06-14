@@ -1510,6 +1510,7 @@ const struct CompressedSpritePalette gMonShinyPaletteTable[NUM_SPECIES + 1] =
     SPECIES_SHINY_PAL(TROPIUS_MEGA, gMonShinyPalette_TropiusMega),
     SPECIES_SHINY_PAL(KINGDRA_MEGA, gMonShinyPalette_KingdraMega),
     SPECIES_SHINY_PAL(TINKATON_MEGA, gMonShinyPalette_TinkatonMega),
+    SPECIES_SHINY_PAL(LUXRAY_MEGA, gMonShinyPalette_LuxrayMega),
     SPECIES_SHINY_PAL(EGG, gMonPalette_Egg),
 };
 

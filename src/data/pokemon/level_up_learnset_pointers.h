@@ -1528,4 +1528,5 @@ const struct LevelUpMove *const gLevelUpLearnsets[NUM_SPECIES] =
     [SPECIES_TROPIUS_MEGA] = sTropiusLevelUpLearnset,
     [SPECIES_KINGDRA_MEGA] = sKingdraLevelUpLearnset,
     [SPECIES_TINKATON_MEGA] = sTinkatonLevelUpLearnset,
+    [SPECIES_LUXRAY_MEGA] = sLuxrayLevelUpLearnset,
 };

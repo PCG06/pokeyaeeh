@@ -1471,6 +1471,7 @@ const u8 *const gMonIconTable[NUM_SPECIES + 1] =
     [SPECIES_TROPIUS_MEGA] = gMonIcon_TropiusMega,
     [SPECIES_KINGDRA_MEGA] = gMonIcon_KingdraMega,
     [SPECIES_TINKATON_MEGA] = gMonIcon_TinkatonMega,
+    [SPECIES_LUXRAY_MEGA] = gMonIcon_LuxrayMega,
     [SPECIES_EGG] = gMonIcon_Egg,
 };
 

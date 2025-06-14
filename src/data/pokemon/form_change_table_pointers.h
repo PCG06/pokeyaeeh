@@ -310,6 +310,8 @@ const struct FormChange *const gFormChangeTablePointers[NUM_SPECIES] =
     [SPECIES_TERAPAGOS_STELLAR] = sTerapagosFormChangeTable,
     [SPECIES_TINKATON] = sTinkatonFormChangeTable,
     [SPECIES_TINKATON_MEGA] = sTinkatonFormChangeTable,
+    [SPECIES_LUXRAY] = sLuxrayFormChangeTable,
+    [SPECIES_LUXRAY_MEGA] = sLuxrayFormChangeTable,
 #endif
 };
 

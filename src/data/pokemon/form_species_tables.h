@@ -1389,3 +1389,9 @@ static const u16 sTinkatonFormSpeciesIdTable[] = {
     SPECIES_TINKATON_MEGA,
     FORM_SPECIES_END,
 };
+
+static const u16 sLuxrayFormSpeciesIdTable[] = {
+    SPECIES_LUXRAY,
+    SPECIES_LUXRAY_MEGA,
+    FORM_SPECIES_END,
+};

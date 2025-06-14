@@ -8358,3 +8358,9 @@ const u32 gMonBackPic_TinkatonMega[] = INCBIN_U32("graphics/pokemon/tinkaton/meg
 const u8 gMonIcon_TinkatonMega[] = INCBIN_U8("graphics/pokemon/tinkaton/mega/icon.4bpp");
 const u32 gMonPalette_TinkatonMega[] = INCBIN_U32("graphics/pokemon/tinkaton/mega/normal.gbapal.lz");
 const u32 gMonShinyPalette_TinkatonMega[] = INCBIN_U32("graphics/pokemon/tinkaton/mega/shiny.gbapal.lz");
+
+const u32 gMonFrontPic_LuxrayMega[] = INCBIN_U32("graphics/pokemon/luxray/mega/front.4bpp.lz");
+const u32 gMonBackPic_LuxrayMega[] = INCBIN_U32("graphics/pokemon/luxray/mega/back.4bpp.lz");
+const u8 gMonIcon_LuxrayMega[] = INCBIN_U8("graphics/pokemon/luxray/mega/icon.4bpp");
+const u32 gMonPalette_LuxrayMega[] = INCBIN_U32("graphics/pokemon/luxray/mega/normal.gbapal.lz");
+const u32 gMonShinyPalette_LuxrayMega[] = INCBIN_U32("graphics/pokemon/luxray/mega/shiny.gbapal.lz");

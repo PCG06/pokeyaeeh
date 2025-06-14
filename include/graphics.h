@@ -8294,6 +8294,12 @@ extern const u8 gMonIcon_TinkatonMega[];
 extern const u32 gMonPalette_TinkatonMega[];
 extern const u32 gMonShinyPalette_TinkatonMega[];
 
+extern const u32 gMonFrontPic_LuxrayMega[];
+extern const u32 gMonBackPic_LuxrayMega[];
+extern const u8 gMonIcon_LuxrayMega[];
+extern const u32 gMonPalette_LuxrayMega[];
+extern const u32 gMonShinyPalette_LuxrayMega[];
+
 // pokeblock
 extern const u32 gMenuPokeblock_Gfx[];
 extern const u32 gMenuPokeblock_Pal[];
