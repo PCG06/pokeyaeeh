@@ -161,7 +161,6 @@ script Route121_EventScript_RouteBossCouple{
 	   defeated(TRAINER_CRISTIN_1)){
 		setflag(B_FLAG_NO_BAG_USE)
 		trainerbattle_single(TRAINER_KATE_AND_JOY, Route121_Text_RouteBossCoupleIntro, Route121_Text_RouteBossCoupleDefeat, Route121_EventScript_RouteBossCouple2)
-		clearflag(B_FLAG_NO_BAG_USE)
 	    msgbox("That was an amazing battle!\pMega Power rocks!", MSGBOX_AUTOCLOSE)
 	}
 	else{

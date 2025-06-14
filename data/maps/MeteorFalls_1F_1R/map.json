@@ -28,19 +28,6 @@
       "flag": "FLAG_ITEM_METEOR_FALLS_1F_1R_MOON_STONE"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_TMHM_BALL",
-      "x": 27,
-      "y": 5,
-      "elevation": 3,
-      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "MeteorFalls_1F_1R_EventScript_ItemTMFrostGlare",
-      "flag": "FLAG_ITEM_METEOR_FALLS_1F_1R_TM_FROST_GLARE"
-    },
-    {
       "graphics_id": "OBJ_EVENT_GFX_GIMMIGHOUL_COIN",
       "x": 26,
       "y": 32,
@@ -132,7 +119,7 @@
       "flag": "FLAG_HIDE_METEOR_FALLS_1F_1R_COZMO"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_TMHM_BALL",
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
       "x": 16,
       "y": 34,
       "elevation": 0,
@@ -141,8 +128,8 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "MeteorFalls_1F_1R_EventScript_ItemTMDragonClaw",
-      "flag": "FLAG_ITEM_METEOR_FALLS_1F_1R_TM_DRAGON_PULSE"
+      "script": "MeteorFalls_1F_1R_EventScript_ItemDragonGem",
+      "flag": "FLAG_ITEM_METEOR_FALLS_1F_1R_DRAGON_GEM"
     }
   ],
   "warp_events": [

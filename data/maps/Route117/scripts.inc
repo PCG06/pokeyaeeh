@@ -147,7 +147,6 @@ Route117_EventScript_Isaac_1:
 Route117_EventScript_Isaac_2:
 	setflag B_FLAG_NO_BAG_USE
 	trainerbattle_single TRAINER_ISAAC_1, Route117_Text_IsaacIntro, Route117_Text_IsaacDefeat, Route117_EventScript_Isaac2
-	clearflag B_FLAG_NO_BAG_USE
 	msgbox Route117_EventScript_Isaac2_Text_4, MSGBOX_AUTOCLOSE
 	goto Route117_EventScript_Isaac_1
 

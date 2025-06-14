@@ -93,7 +93,6 @@ Route125_EventScript_Presley_1:
 Route125_EventScript_Presley_2:
 	setflag B_FLAG_NO_BAG_USE
 	trainerbattle_single TRAINER_PRESLEY, Route125_Text_PresleyIntro, Route125_Text_PresleyDefeat, Route125_EventScript_Presley2
-	clearflag B_FLAG_NO_BAG_USE
 	msgbox Route125_EventScript_Presley2_Text_3, MSGBOX_AUTOCLOSE
 	goto Route125_EventScript_Presley_1
 

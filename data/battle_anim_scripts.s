@@ -1049,6 +1049,7 @@ gBattleAnims_General::
 	.4byte General_Tailwind					@ B_ANIM_TAILWIND
 	.4byte General_Fog                      @ B_ANIM_FOG_CONTINUES
 	.4byte General_Moon                     @ B_ANIM_MOON_CONTINUES
+	.4byte General_Gravity   				@ B_ANIM_GRAVITY
 
 	.align 2
 gBattleAnims_Special::
@@ -1087,6 +1088,7 @@ Move_ROOST:
 	waitforvisualfinish
 	end
 
+General_Gravity:
 Move_GRAVITY:
 	fadetobg BG_COSMIC
 	waitbgfadein

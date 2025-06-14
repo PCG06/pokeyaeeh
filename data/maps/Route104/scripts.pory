@@ -330,11 +330,11 @@ Route104_EventScript_Woman::
 Route104_EventScript_Boy2::
 	lock
 	faceplayer
-	goto_if_set FLAG_RECEIVED_TM_BULLET_SEED, Route104_EventScript_ReceivedBulletSeed
+	goto_if_set FLAG_RECEIVED_ROUTE_104_LOADED_DICE, Route104_EventScript_ReceivedBulletSeed
 	msgbox Route104_Text_LikeFillingMouthWithSeedsTakeThis, MSGBOX_DEFAULT
-	giveitem ITEM_TM_BULLET_SEED
+	giveitem ITEM_LOADED_DICE
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
-	setflag FLAG_RECEIVED_TM_BULLET_SEED
+	setflag FLAG_RECEIVED_ROUTE_104_LOADED_DICE
 	release
 	end
 
@@ -1061,7 +1061,6 @@ script Route104_EventScript_Ivan{
 	   defeated(TRAINER_GINA_AND_MIA_1)){
 		setflag(B_FLAG_NO_BAG_USE)
 		trainerbattle_single(TRAINER_IVAN, ("Why keep it a secret?\pI'm the Water Pokémon expert!\pHuh?\nYou don't know me?"), ("I thought I wasn't too bad,\nif I may say so, but I guess not\p… Bleah…"), Route104_EventScript_Ivan2)
-		clearflag(B_FLAG_NO_BAG_USE)
 		msgbox("Bouncy! Bouncy! Bouncy!\pBounce is the strongest Water-type\nmove!")
 	}
 	else{

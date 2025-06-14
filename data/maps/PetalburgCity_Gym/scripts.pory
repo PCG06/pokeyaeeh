@@ -43,8 +43,25 @@ PetalburgCity_Gym_EventScript_NormanDefeated::
 	setflag FLAG_ENABLE_NORMAN_MATCH_CALL
 	end
 
+@ giveitem ITEM_TM_FLAMETHROWER
+@ giveitem ITEM_TM_THUNDERBOLT
+@ giveitem ITEM_TM_ICE_BEAM
+@ giveitem ITEM_TM_DARK_PULSE
+@ giveitem ITEM_TM_ROCK_SLIDE
+@ giveitem ITEM_TM_BUG_BUZZ
+@ giveitem ITEM_TM_IRON_HEAD
+@ giveitem ITEM_TM_THROAT_CHOP
+@ giveitem ITEM_TM_AQUA_TAIL
+@ giveitem ITEM_TM_POISON_JAB
+@ giveitem ITEM_TM_DUAL_WINGBEAT
+@ giveitem ITEM_TM_HYPER_VOICE
+@ giveitem ITEM_TM_PLAY_ROUGH
+@ giveitem ITEM_TM_PSYSHOCK
+@ giveitem ITEM_TM_DRAIN_PUNCH
+
 PetalburgCity_Gym_EventScript_GiveDrainPunch::
-	giveitem ITEM_TM_DRAIN_PUNCH
+	buffertrainername STR_VAR_1, TRAINER_NORMAN_1
+	giveplayertms 4
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_BagIsFull
 	setflag FLAG_RECEIVED_TM_DRAIN_PUNCH
 	msgbox PetalburgCity_Gym_Text_ExplainFacade, MSGBOX_DEFAULT
@@ -53,7 +70,8 @@ PetalburgCity_Gym_EventScript_GiveDrainPunch::
 	return
 
 PetalburgCity_Gym_EventScript_NormanRematch::
-	trainerbattle_rematch TRAINER_NORMAN_1, PetalburgCity_Gym_Text_NormanPreRematch, PetalburgCity_Gym_Text_NormanRematchDefeat
+	msgbox PetalburgCity_Gym_Text_NormanPreRematch, MSGBOX_DEFAULT
+	trainerbattle_no_intro TRAINER_NORMAN_2, PetalburgCity_Gym_Text_NormanRematchDefeat
 	msgbox PetalburgCity_Gym_Text_NormanPostRematch, MSGBOX_AUTOCLOSE
 	end
 
@@ -257,17 +275,18 @@ PetalburgCity_Gym_Text_ExplainBalanceBadgeTakeThis:
 	.string "Pokémon upto Lv 55 will obey your\l"
 	.string "command, even the ones you get from\l"
 	.string "trades.\p"
-	.string "It is customary for a Gym Leader to\n"
-	.string "give a TM to the victor.\p"
-	.string "Here is a TM.$"
+    .string "It is customary for a Gym Leader to\n"
+    .string "give a TM to the victor.\p"
+    .string "Here's a few.\n"
+	.string "Put them to good use.$"
 
 PetalburgCity_Gym_Text_ExplainFacade:
-	.string "Chrizz: TM122 contains Drain Punch.\p"
-	.string "It heals your Pokémon for half the\n"
-	.string "damage done!\p"
-	.string "Dealing damage and healing!\n"
-	.string "Awesome, huh?\p"
-	.string "Oh!\p"
+	.string "Chrizz: Take them and sharpen your\n"
+	.string "edge.\l"
+    .string "The real tests are still ahead.\p"
+    .string "Push harder. Fight smarter.\n"
+    .string "No room for hesitation.\p"
+	.string "Chrizz: Oh!\p"
 	.string "Here, a souvenir from Kalos.$"
 
 PetalburgCity_Gym_Text_ExplainGalladite:

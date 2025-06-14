@@ -42,8 +42,25 @@ MauvilleCity_Gym_EventScript_WattsonDefeated::
 	release
 	end
 
+@ giveitem ITEM_TM_THUNDER_PUNCH
+@ giveitem ITEM_TM_ICE_PUNCH
+@ giveitem ITEM_TM_FIRE_PUNCH
+@ giveitem ITEM_TM_AQUA_FANGS
+@ giveitem ITEM_TM_AIR_SLASH
+@ giveitem ITEM_TM_SHADOW_CLAW
+@ giveitem ITEM_TM_X_SCISSOR
+@ giveitem ITEM_TM_ICY_WIND
+@ giveitem ITEM_TM_ELECTROWEB
+@ giveitem ITEM_TM_ZEN_HEADBUTT
+@ giveitem ITEM_TM_GRASS_KNOT
+@ giveitem ITEM_TM_CROSS_POISON
+@ giveitem ITEM_TM_ALLURING_VOICE
+@ giveitem ITEM_TM_BRICK_BREAK
+@ giveitem ITEM_TM_HEAT_WAVE
+
 MauvilleCity_Gym_EventScript_GiveShockWave2::
-	giveitem ITEM_TM_HEAT_WAVE
+	buffertrainername STR_VAR_1, TRAINER_WATTSON_1
+	giveplayertms 2
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
 	msgbox MauvilleCity_Gym_Text_ExplainShockWave, MSGBOX_DEFAULT
 	setflag FLAG_RECEIVED_TM_FIRE_BLAST
@@ -51,7 +68,8 @@ MauvilleCity_Gym_EventScript_GiveShockWave2::
 	end
 
 MauvilleCity_Gym_EventScript_GiveShockWave::
-	giveitem ITEM_TM_HEAT_WAVE
+	buffertrainername STR_VAR_1, TRAINER_WATTSON_1
+	giveplayertms 2
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_BagIsFull
 	msgbox MauvilleCity_Gym_Text_ExplainShockWave, MSGBOX_DEFAULT
 	setflag FLAG_RECEIVED_TM_FIRE_BLAST
@@ -63,7 +81,8 @@ MauvilleCity_Gym_EventScript_CompletedNewMauville::
 	end
 
 MauvilleCity_Gym_EventScript_WattsonRematch::
-	trainerbattle_rematch TRAINER_WATTSON_1, MauvilleCity_Gym_Text_WattsonPreRematch, MauvilleCity_Gym_Text_WattsonRematchDefeat
+	msgbox MauvilleCity_Gym_Text_WattsonPreRematch, MSGBOX_DEFAULT
+	trainerbattle_no_intro TRAINER_WATTSON_2, MauvilleCity_Gym_Text_WattsonRematchDefeat
 	msgbox MauvilleCity_Gym_Text_WattsonPostRematch, MSGBOX_AUTOCLOSE
 	end
 
@@ -251,17 +270,14 @@ MauvilleCity_Gym_Text_ReceivedDynamoBadge:
 MauvilleCity_Gym_Text_ExplainDynamoBadgeTakeThis:
 	.string "With the Inferno Badge, Pokémon can\n"
 	.string "use Rock Smash out of battle.\p"
-	.string "You should take this TM too,\n"
-	.string "this is my favorite move!$"
+	.string "You should take these TMs too,\n"  
+	.string "including my favorite battle\l"
+	.string "techniques!$"  
 
 MauvilleCity_Gym_Text_ExplainShockWave:
-	.string "That TM84 there contains Heat Wave.\p"
-	.string "It's a reliable move that never misses\n"
-	.string "under sun!\p"
-	.string "It can deal significant damage to both\n"
-	.string "both of your opponents and\l"
-	.string "occasionally inflict a burn!\p"
-	.string "… … … … … …$"
+	.string "They're just some moves I picked out.\n"
+	.string "Maybe you'll find them handy.\p"
+	.string "… … … … … …$"  
 
 MauvilleCity_Gym_Text_RegisteredWattson:
 	.string "Registered Gym Leader Ydarissep\n"

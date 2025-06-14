@@ -705,7 +705,6 @@ script Route111_EventScript_Daisuke{
 		defeated(TRAINER_BRANDEN)){
 		setflag(B_FLAG_NO_BAG_USE)
 		trainerbattle_single(TRAINER_DAISUKE, Route111_Text_DaisukeIntro, Route111_Text_DaisukeDefeat, Route111_EventScript_Daisuke2)
-		clearflag(B_FLAG_NO_BAG_USE)
 		if (flag(FLAG_BADGE07_GET == TRUE))
 		{
 			msgbox("I hope you made the right choice.", MSGBOX_NPC)

@@ -153,7 +153,7 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_TMHM_BALL",
+      "graphics_id": "OBJ_EVENT_GFX_GIMMIGHOUL_COIN",
       "x": 64,
       "y": 32,
       "elevation": 0,
@@ -162,8 +162,8 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "Route128_EventScript_ItemTMAncientPower",
-      "flag": "FLAG_ITEM_ROUTE_128_TM_ANCIENT_POWER"
+      "script": "Route128_EventScript_ItemGimmighoulCoins",
+      "flag": "FLAG_ITEM_ROUTE_128_GIMMIGHOUL_COINS"
     }
   ],
   "warp_events": [

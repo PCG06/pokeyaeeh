@@ -26,7 +26,7 @@
   ],
   "object_events": [
     {
-      "graphics_id": "OBJ_EVENT_GFX_TMHM_BALL",
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
       "x": 25,
       "y": 28,
       "elevation": 0,
@@ -35,8 +35,8 @@
       "movement_range_y": 0,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "Route122_EventScript_ItemTMMoonblast",
-      "flag": "FLAG_ITEM_ROUTE_122_TM_MOONBLAST"
+      "script": "Route122_EventScript_ItemPoisonGem",
+      "flag": "FLAG_ITEM_ROUTE_122_POISON_GEM"
     }
   ],
   "warp_events": [

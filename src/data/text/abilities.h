@@ -182,7 +182,7 @@ static const u8 sFairyAuraDescription[] = _("Boosts Fairy moves. (33%)");
 static const u8 sAuraBreakDescription[] = _("Reverse aura abilities.");
 static const u8 sPrimordialSeaDescription[] = _("Summons heavy rain. Fire is nullified.");
 static const u8 sDesolateLandDescription[] = _("Summons intense sunlight. Water is nullified.");
-static const u8 sDeltaStreamDescription[] = _("Summons strong winds.");
+static const u8 sDeltaStreamDescription[] = _("Summons strong winds in battle.");
 static const u8 sStaminaDescription[] = _("Raises Defense when hit.");
 static const u8 sWimpOutDescription[] = _("Flees at half HP.");
 static const u8 sWaterCompactionDescription[] = _("Water moves raise Defense.");
@@ -300,7 +300,7 @@ static const u8 sPoisonPuppeteerDescription[] = _("Confuses the foes it poisons.
 static const u8 sBrutalLegsDescription[] = _("Boosts kicking moves. (50%)");
 static const u8 sHardSpinnerDescription[] = _("Boosts spinning moves. (50%)");
 static const u8 sTailstreamDescription[] = _("Sets up tailwind for 3 turns.");
-static const u8 sPhantomGaleDescription[] = _("Summons ominous airs.");
+static const u8 sOminousityDescription[] = _("Summons ominous winds in battle.");
 static const u8 sHerbivateDescription[] = _("Normal moves become Grass. (20%)");
 static const u8 sScorchateDescription[] = _("Normal moves become Fire. (20%)");
 static const u8 sOceanateDescription[] = _("Normal moves become Water. (20%)");
@@ -329,6 +329,8 @@ static const u8 sJuggernautDescription[] = _("Boosts slamming moves. (50%)");
 static const u8 sIceColdDescription[] = _("Powers up Ice-type moves. (50%)");
 static const u8 sTerminatorDescription[] = _("Mold Breaker + Juggernaut.");
 static const u8 sFrenzyDescription[] = _("Moves hit twice. (25%)");
+static const u8 sTemporalityDescription[] = _("Sets up Trick Room on entry.");
+static const u8 sGravitalityDescription[] = _("Sets up Gravity on entry.");
 
 #if B_EXPANDED_ABILITY_NAMES == TRUE
 const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
@@ -647,7 +649,7 @@ const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
     [ABILITY_BRUTAL_LEGS] = _("Brutal Legs"),
     [ABILITY_HARD_SPINNER] = _("Hard Spinner"),
     [ABILITY_TAILSTREAM] = _("Tailstream"),
-    [ABILITY_PHANTOM_GALE] = _("Phantom Gale"),
+    [ABILITY_OMINOUSITY] = _("Ominousity"),
     [ABILITY_HERBIVATE] = _("Herbivate"),
     [ABILITY_SCORCHATE] = _("Scorchate"),
     [ABILITY_OCEANATE] = _("Oceanate"),
@@ -676,6 +678,10 @@ const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
     [ABILITY_JUGGERNAUT] = _("Juggernaut"),
     [ABILITY_ICE_COLD] = _("Ice Cold"),
     [ABILITY_TERMINATOR] = _("Terminator"),
+    [ABILITY_VERSATILITY] = _("Versatility"),
+    [ABILITY_FRENZY] = _("Frenzy"),
+    [ABILITY_TEMPORALITY] = _("Temporality"),
+    [ABILITY_GRAVITALITY] = _("Gravitality"),
 };
 #else   // 12 characters
 const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
@@ -994,7 +1000,7 @@ const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
     [ABILITY_BRUTAL_LEGS] = _("Brutal Legs"),
     [ABILITY_HARD_SPINNER] = _("Hard Spinner"),
     [ABILITY_TAILSTREAM] = _("Tailstream"),
-    [ABILITY_PHANTOM_GALE] = _("Phantom Gale"),
+    [ABILITY_OMINOUSITY] = _("Ominousity"),
     [ABILITY_HERBIVATE] = _("Herbivate"),
     [ABILITY_SCORCHATE] = _("Scorchate"),
     [ABILITY_OCEANATE] = _("Oceanate"),
@@ -1022,9 +1028,12 @@ const u8 gAbilityNames[ABILITIES_COUNT][ABILITY_NAME_LENGTH + 1] =
     [ABILITY_REBOUND] = _("Rebound"),
     [ABILITY_JUGGERNAUT] = _("Juggernaut"),
     [ABILITY_ICE_COLD] = _("Ice Cold"),
+    [ABILITY_TERMINATOR] = _("Terminator"),
     [ABILITY_VERSATILITY] = _("Versatility"),
     [ABILITY_FRENZY] = _("Frenzy"),
     [ABILITY_PRECAUTIOUS] = _("Precautious"),
+    [ABILITY_TEMPORALITY] = _("Temporality"),
+    [ABILITY_GRAVITALITY] = _("Gravitality"),
 };
 #endif
 
@@ -1344,7 +1353,7 @@ const u8 *const gAbilityDescriptionPointers[ABILITIES_COUNT] =
     [ABILITY_BRUTAL_LEGS] = sBrutalLegsDescription,
     [ABILITY_HARD_SPINNER] = sHardSpinnerDescription,
     [ABILITY_TAILSTREAM] = sTailstreamDescription,
-    [ABILITY_PHANTOM_GALE] = sPhantomGaleDescription,
+    [ABILITY_OMINOUSITY] = sOminousityDescription,
     [ABILITY_HERBIVATE] = sHerbivateDescription,
     [ABILITY_SCORCHATE] = sScorchateDescription,
     [ABILITY_OCEANATE] = sOceanateDescription,
@@ -1376,4 +1385,6 @@ const u8 *const gAbilityDescriptionPointers[ABILITIES_COUNT] =
     [ABILITY_VERSATILITY] = sProteanDescription,
     [ABILITY_FRENZY] = sFrenzyDescription,
     [ABILITY_PRECAUTIOUS] = sMultiscaleDescription,
+    [ABILITY_TEMPORALITY] = sTemporalityDescription,
+    [ABILITY_GRAVITALITY] = sGravitalityDescription,
 };

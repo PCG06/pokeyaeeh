@@ -371,8 +371,7 @@ EventScript_PartyHasGogoat::
 	lock
 	faceplayer
 	msgbox EventScript_PartyHasGogoat_Text_0, MSGBOX_DEFAULT
-	setvar VAR_0x8000, SPECIES_GOGOAT
-	special HasSpecies
+	checkpartyspecies SPECIES_GOGOAT
 	compare VAR_RESULT, TRUE
 	goto_if_eq EventScript_PartyHasGogoat_1
 	msgbox EventScript_PartyHasGogoat_Text_2, MSGBOX_NPC
@@ -427,26 +426,26 @@ EventScript_GetDayFromTime_8:
 	return
 
 
-TryEmoting::
+EventScript_TryEmoting::
 	lock
 	random 3
 	switch VAR_RESULT
-	case 1, TryEmoting_3
-	case 2, TryEmoting_4
-	case 3, TryEmoting_5
-TryEmoting_5:
+	case 1, EventScript_TryEmoting_3
+	case 2, EventScript_TryEmoting_4
+	case 3, EventScript_TryEmoting_5
+EventScript_TryEmoting_5:
 	emoteplayer EMOTE_HEART
-TryEmoting_1:
+EventScript_TryEmoting_1:
 	release
 	end
 
-TryEmoting_3:
+EventScript_TryEmoting_3:
 	emoteplayer EMOTE_EXCLAM
-	goto TryEmoting_1
+	goto EventScript_TryEmoting_1
 
-TryEmoting_4:
+EventScript_TryEmoting_4:
 	emoteplayer EMOTE_QUESTION
-	goto TryEmoting_1
+	goto EventScript_TryEmoting_1
 
 
 EventScript_GetCurrentTime_Text_0:

@@ -245,7 +245,6 @@ Route128_EventScript_Ruben_1:
 Route128_EventScript_Ruben_2:
 	setflag B_FLAG_NO_BAG_USE
 	trainerbattle_single TRAINER_ATHENA, Route128_Text_RubenIntro, Route128_Text_RubenDefeat, Route128_EventScript_Ruben2
-	clearflag B_FLAG_NO_BAG_USE
 	msgbox Route128_EventScript_Ruben2_Text_3, MSGBOX_AUTOCLOSE
 	goto Route128_EventScript_Ruben_1
 

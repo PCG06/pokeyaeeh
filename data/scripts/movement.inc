@@ -119,3 +119,13 @@ Common_Movement_WalkUp2::
 	walk_up
 	walk_up
 	step_end
+
+Common_Movement_WalkUpFaceLeft:
+	walk_up
+	face_left
+	step_end
+
+Common_Movement_WalkUpFaceRight:
+	walk_up
+	face_right
+	step_end

@@ -114,7 +114,7 @@
       "flag": "FLAG_HIDE_MAUVILLE_CITY_WATTSON"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_TMHM_BALL",
+      "graphics_id": "OBJ_EVENT_GFX_ITEM_BALL",
       "x": 28,
       "y": 19,
       "elevation": 3,
@@ -123,8 +123,8 @@
       "movement_range_y": 1,
       "trainer_type": "TRAINER_TYPE_NONE",
       "trainer_sight_or_berry_tree_id": "0",
-      "script": "MauvilleCity_EventScript_ItemTMLiquidation",
-      "flag": "FLAG_ITEM_MAUVILLE_CITY_TM_LIQUIDATION"
+      "script": "MauvilleCity_EventScript_ItemWaterGem",
+      "flag": "FLAG_ITEM_MAUVILLE_CITY_WATER_GEM"
     },
     {
       "graphics_id": "OBJ_EVENT_GFX_FAT_MAN",

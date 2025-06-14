@@ -19,6 +19,7 @@ jobs:
       MODERN: 0
       COMPARE: 0
       UNUSED_ERROR: 1
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -32,13 +33,7 @@ jobs:
       - name: Install dependencies
         run: |
           sudo apt update
-          sudo apt-get update
-          sudo apt install -y build-essential libpng-dev libelf-dev libgtk-3-dev jq curl
-          # Install GitHub CLI
-          curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo tee /usr/share/keyrings/githubcli-archive-keyring.gpg >/dev/null
-          echo "deb [signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list >/dev/null
-          sudo apt-get update
-          sudo apt-get install -y gh
+          sudo apt-get install -y build-essential libpng-dev libelf-dev libgtk-3-dev jq curl zip
 
       - name: Install agbcc
         run: |
@@ -47,7 +42,7 @@ jobs:
         working-directory: agbcc
 
       - name: ROM
-        run: make -j${nproc} -O all
+        run: make -j$(nproc) -O all
 
       - name: Send failure notification to Discord
         if: failure()
@@ -82,60 +77,62 @@ jobs:
                }" \
                ${{ secrets.DISCORD_BUILD_SECRET }}
 
-      # Creating a patch file online
       - name: Download pokeemerald
-        run: pwd && cd tools && git clone https://github.com/pret/pokeemerald
-  
-      - name: Install agbcc to pokeemerald
-        run: pwd && cd tools && ls && cp -r agbcc pokeemerald/tools/ && cd pokeemerald && pwd
-  
-      - name: Build pokeemerald
-        run: |
-          cd tools/pokeemerald
-          make -j8
+        run: git clone https://github.com/pret/pokeemerald
+        working-directory: tools
 
-      - name: Build pokeemerald.bps
+      - name: Install agbcc to pokeemerald
+        run: cp -r agbcc pokeemerald/tools/
+        working-directory: tools
+
+      - name: Build pokeemerald
+        run: make -j8
+        working-directory: tools/pokeemerald
+
+      - name: Create and zip patch
+        shell: bash
         run: |
           chmod -R 755 ./tools/flips-linux
-          ./tools/flips-linux --create tools/pokeemerald/pokeemerald.gba pokeyaeeh.gba Pokemon_YAEEH.bps
+          COMMIT_HASH="${GITHUB_SHA:0:7}"
+          PATCH_NAME="pokeyaeeh_${COMMIT_HASH}.bps"
+          cp tools/flips-linux tools/flips
+          ./tools/flips --create tools/pokeemerald/pokeemerald.gba pokeyaeeh.gba "$PATCH_NAME"
+          zip -j Pokemon_YAEEH.zip "$PATCH_NAME"
+          echo "COMMIT_HASH=$COMMIT_HASH" >> $GITHUB_ENV
 
-      - name: Upload patch
-        uses: actions/upload-artifact@v4
-        with:
-          name: Pokemon_YAEEH
-          path: Pokemon_YAEEH.bps
-
-      - name: Get artifact ID
-        id: artifact
+      - name: Upload to Pixeldrain
+        id: upload
         run: |
-          artifact_id=$(gh api repos/${{ github.repository }}/actions/runs/${{ github.run_id }}/artifacts | jq -r '.artifacts[0].id')
-          echo "artifact_id=$artifact_id" >> $GITHUB_ENV
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          echo "Uploading Pokemon_YAEEH.zip to Pixeldrain..."
+          RESPONSE=$(curl -s -u user:${{ secrets.PXDRAN_API }} -F "file=@Pokemon_YAEEH.zip" https://pixeldrain.com/api/file)
+          echo "$RESPONSE" | jq .
+          DOWNLOAD_ID=$(echo "$RESPONSE" | jq -r '.id')
+          DOWNLOAD_URL="https://pixeldrain.com/api/file/${DOWNLOAD_ID}?download"
+          echo "DOWNLOAD_URL=$DOWNLOAD_URL" >> $GITHUB_ENV
 
-      - name: Send patch creation notification to Discord
+      - name: Send patch notification to Discord
         if: success()
         run: |
           curl -H "Content-Type: application/json" \
                -X POST \
-               -d "$(jq -n '{
-                  embeds: [
-                    {
-                      title: "Patch created!",
-                      color: 65280,
-                      fields: [
-                        {
-                          name: "Download:",
-                          value: "[__**Click here**__](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}/artifacts/${{ env.artifact_id }})",
-                          inline: false
-                        },
-                        {
-                          name: "Commit hash:",
-                          value: "[${{ github.sha }}](https://github.com/${{ github.repository }}/commit/${{ github.sha }})",
-                          inline: false
-                        }
-                      ]
-                    }
-                  ]
-                }')" \
+               -d "{
+                 \"embeds\": [
+                   {
+                     \"title\": \"Patch created!\",
+                     \"color\": 65280,
+                     \"fields\": [
+                       {
+                         \"name\": \"Download:\",
+                         \"value\": \"[__**Click here**__](${{ env.DOWNLOAD_URL }})\",
+                         \"inline\": false
+                       },
+                       {
+                         \"name\": \"Commit hash:\",
+                         \"value\": \"[\`${{ env.COMMIT_HASH }}\`](https://github.com/${{ github.repository }}/commit/${{ github.sha }})\",
+                         \"inline\": false
+                       }
+                     ]
+                   }
+                 ]
+               }" \
                ${{ secrets.DISCORD_PATCH_SECRET }}

@@ -19,7 +19,6 @@ RustboroCity_Gym_EventScript_RoxanneDefeated::
 	msgbox RustboroCity_Gym_Text_StoneBadgeInfoTakeThis, MSGBOX_DEFAULT
 	setflag FLAG_DEFEATED_RUSTBORO_GYM
 	setflag FLAG_BADGE01_GET
-	clearflag B_FLAG_NO_BAG_USE
 	setvar VAR_RUSTBORO_CITY_STATE, 1
 	setvar VAR_0x8008, 1
 	call Common_EventScript_SetGymTrainers
@@ -27,8 +26,25 @@ RustboroCity_Gym_EventScript_RoxanneDefeated::
 	goto RustboroCity_Gym_EventScript_GiveRockTomb
 	end
 
+@ giveitem ITEM_TM_TORMENT
+@ giveitem ITEM_TM_IMPRISON
+@ giveitem ITEM_TM_MUD_SHOT
+@ giveitem ITEM_TM_DEFOG
+@ giveitem ITEM_TM_REST
+@ giveitem ITEM_TM_SMACK_DOWN
+@ giveitem ITEM_TM_THIEF
+@ giveitem ITEM_TM_AERIAL_ACE
+@ giveitem ITEM_TM_SLEEP_TALK
+@ giveitem ITEM_TM_FALSE_SWIPE
+@ giveitem ITEM_TM_MAGICAL_LEAF
+@ giveitem ITEM_TM_TRI_ATTACK
+@ giveitem ITEM_TM_ICICLE_SPEAR
+@ giveitem ITEM_TM_BULLET_SEED
+@ giveitem ITEM_TM_DRAINING_KISS
+
 RustboroCity_Gym_EventScript_GiveRockTomb::
-	giveitem ITEM_TM_DRAINING_KISS
+	buffertrainername STR_VAR_1, TRAINER_ROXANNE_1
+	giveplayertms 0
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
 	setflag FLAG_RECEIVED_TM_CHARM
 	msgbox RustboroCity_Gym_Text_ExplainRockTomb, MSGBOX_DEFAULT
@@ -36,7 +52,8 @@ RustboroCity_Gym_EventScript_GiveRockTomb::
 	end
 
 RustboroCity_Gym_EventScript_RoxanneRematch::
-	trainerbattle_rematch TRAINER_ROXANNE_1, RustboroCity_Gym_Text_RoxannePreRematch, RustboroCity_Gym_Text_RoxanneRematchDefeat
+	msgbox RustboroCity_Gym_Text_RoxannePreRematch, MSGBOX_DEFAULT
+	trainerbattle_no_intro TRAINER_ROXANNE_2, RustboroCity_Gym_Text_RoxanneRematchDefeat
 	msgbox RustboroCity_Gym_Text_RoxannePostRematch, MSGBOX_AUTOCLOSE
 	end
 
@@ -222,19 +239,15 @@ RustboroCity_Gym_Text_ReceivedStoneBadge:
 RustboroCity_Gym_Text_StoneBadgeInfoTakeThis:
 	.string "The Charm Badge enables your Pokémon\n"
 	.string "to use HM Cut outside of battle.\p"
-	.string "Well, take this, too.$"
+	.string "Well, take these, too.$"
 
 RustboroCity_Gym_Text_ExplainRockTomb:
-	.string "That Technical Machine, TM113,\n"
-	.string "contains Draining Kiss.\p"
-	.string "A move which inflicts some damage and\n"
-	.string "also heals you for half the damage that\l"
-	.string "you deal!\p"
-	.string "If you use a TM, it instantly teaches\n"
-	.string "the move to a Pokémon.\p"
-	.string "A TM can be used as many times as you\n"
-	.string "want, so don't worry about it.\p"
-	.string "See ya around, loser!$"
+    .string "I dumped a bunch of TMs on you.\n"
+    .string "Stop whining about the count and\l"
+	.string "just use 'em! They don't break.\p"
+    .string "TMs teach moves instantly and you can\n"
+    .string "spam 'em all you want.\p"
+    .string "Try not to screw it up, rookie.$"
 
 RustboroCity_Gym_Text_RoxannePostBattle:
 	.string "Since you think you are so strong,\n"

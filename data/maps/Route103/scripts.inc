@@ -338,7 +338,6 @@ Route103_EventScript_Daisy_1:
 Route103_EventScript_Daisy_2:
 	setflag B_FLAG_NO_BAG_USE
 	trainerbattle_single TRAINER_DAISY, Route103_Text_DaisyIntro, Route103_Text_DaisyDefeated, Route103_EventScript_Daisy2
-	clearflag B_FLAG_NO_BAG_USE
 	msgbox Route103_EventScript_Daisy2_Text_3, MSGBOX_NPC
 	goto Route103_EventScript_Daisy_1
 

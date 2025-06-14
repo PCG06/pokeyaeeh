@@ -4664,6 +4664,11 @@ static const u8 sCopperajahiteDesc[] = _(
     "Copperajah to Mega\n"
     "Evolve in battle.");
 
+static const u8 sUrshifuniteDesc[] = _(
+    "This stone enables\n"
+    "Urshifu to Mega\n"
+    "Evolve in battle.");
+
 static const u8 sNidoqueeniteDesc[] = _(
     "This stone enables\n"
     "Nidoqueen to Mega\n"

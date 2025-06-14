@@ -291,19 +291,6 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_FAT_MAN",
-      "x": 58,
-      "y": 11,
-      "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_LOOK_AROUND",
-      "movement_range_x": 1,
-      "movement_range_y": 1,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "Route118_EventScript_AmnesiaGiver",
-      "flag": "0"
-    },
-    {
       "graphics_id": "OBJ_EVENT_GFX_BREAKABLE_ROCK",
       "x": 10,
       "y": 15,
@@ -315,19 +302,6 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "EventScript_RockSmash",
       "flag": "FLAG_TEMP_1"
-    },
-    {
-      "graphics_id": "OBJ_EVENT_GFX_TMHM_BALL",
-      "x": 9,
-      "y": 15,
-      "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_NONE",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "Route118_EventScript_ItemTMTaunt",
-      "flag": "FLAG_ITEM_ROUTE_118_TM_TAUNT"
     }
   ],
   "warp_events": [

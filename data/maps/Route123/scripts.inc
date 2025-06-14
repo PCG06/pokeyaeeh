@@ -7,14 +7,14 @@ Route123_OnTransition:
 	special SetRoute123Weather
 	end
 
-Route123_EventScript_GigaDrainGirl::
+Route123_EventScript_GrassGemGirl::
 	lock
 	faceplayer
-	goto_if_set FLAG_RECEIVED_TM_GIGA_DRAIN, Route123_EventScript_ReceivedGigaDrain
+	goto_if_set FLAG_RECEIVED_GRASS_GEM, Route123_EventScript_ReceivedGigaDrain
 	msgbox Route123_Text_LoveGrassMonsHaveThis, MSGBOX_DEFAULT
-	giveitem ITEM_TM_GIGA_DRAIN
+	giveitem ITEM_GRASS_GEM
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
-	setflag FLAG_RECEIVED_TM_GIGA_DRAIN
+	setflag FLAG_RECEIVED_GRASS_GEM
 	msgbox Route123_Text_CheckTreesWithMyGrassMon, MSGBOX_DEFAULT
 	release
 	end
@@ -165,7 +165,6 @@ Route123_EventScript_Violet_1:
 Route123_EventScript_Violet_2:
 	setflag B_FLAG_NO_BAG_USE
 	trainerbattle_single TRAINER_VIOLET, Route123_Text_VioletIntro, Route123_Text_VioletDefeat, Route123_EventScript_Violet2
-	clearflag B_FLAG_NO_BAG_USE
 	msgbox Route123_EventScript_Violet2_Text_4, MSGBOX_AUTOCLOSE
 	goto Route123_EventScript_Violet_1
 

@@ -2412,6 +2412,16 @@
 	special HasSpecies
 	.endm
 
+	@ TMs to give to player after a gym
+	.macro giveplayertms flagVal:req
+	setvar VAR_0x8000 \flagVal
+	special GivePlayerTMs
+	playfanfare MUS_OBTAIN_TMHM
+	message Text_PlayerReceivedTMs
+	waitmessage
+	waitfanfare
+	.endm
+
 	@ Rematch macro
 	.macro shouldtryrematchbattle trainer:req, destination:req
 	.byte 0xe6

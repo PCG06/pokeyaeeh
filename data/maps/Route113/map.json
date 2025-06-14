@@ -239,19 +239,6 @@
       "flag": "0"
     },
     {
-      "graphics_id": "OBJ_EVENT_GFX_TMHM_BALL",
-      "x": 40,
-      "y": 13,
-      "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_NONE",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "Route113_EventScript_ItemTMIronDefense",
-      "flag": "FLAG_ITEM_ROUTE_113_TM_IRON_DEFENSE"
-    },
-    {
       "graphics_id": "OBJ_EVENT_GFX_LANDORUS",
       "x": 61,
       "y": 3,

@@ -116,12 +116,13 @@ PetalburgCity_EventScript_Scott::
 	delay 30
 	msgbox PetalburgCity_Text_WellMaybeNot, MSGBOX_DEFAULT
 	closemessage
-	giveitem ITEM_TM_TRAILBLAZE
-	giveitem ITEM_TM_FLAME_CHARGE
-	giveitem ITEM_TM_CHILLING_WATER
 	applymovement LOCALID_SCOTT, Common_Movement_WalkInPlaceFasterLeft
 	waitmovement 0
 	delay 30
+	msgbox PetalburgCity_Text_TheseMayHelp, MSGBOX_DEFAULT
+	giveitem ITEM_TM_TRAILBLAZE
+	giveitem ITEM_TM_FLAME_CHARGE
+	giveitem ITEM_TM_CHILLING_WATER
 	msgbox PetalburgCity_Text_ImLookingForTalentedTrainers, MSGBOX_DEFAULT
 	closemessage
 	call_if_eq VAR_0x8008, 0, PetalburgCity_EventScript_ScottExit0
@@ -328,7 +329,9 @@ PetalburgCity_Text_WellMaybeNot:
 	.string "Well, maybe not.\n"
 	.string "Your clothes aren't all that dirty.\p"
 	.string "You're either a rookie Trainer,\n"
-	.string "or maybe you're just an ordinary kid.\p"
+	.string "or maybe you're just an ordinary kid.$"
+
+PetalburgCity_Text_TheseMayHelp:
 	.string "These may be of help for you, then.$"
 
 PetalburgCity_Text_ImLookingForTalentedTrainers:

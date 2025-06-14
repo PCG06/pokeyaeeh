@@ -143,19 +143,6 @@
       "trainer_sight_or_berry_tree_id": "0",
       "script": "RusturfTunnel_EventScript_Wanda",
       "flag": "FLAG_HIDE_RUSTURF_TUNNEL_WANDA"
-    },
-    {
-      "graphics_id": "OBJ_EVENT_GFX_TMHM_BALL",
-      "x": 6,
-      "y": 10,
-      "elevation": 0,
-      "movement_type": "MOVEMENT_TYPE_NONE",
-      "movement_range_x": 0,
-      "movement_range_y": 0,
-      "trainer_type": "TRAINER_TYPE_NONE",
-      "trainer_sight_or_berry_tree_id": "0",
-      "script": "RusturfTunnel_EventScript_ItemTMDefog",
-      "flag": "FLAG_ITEM_RUSTURF_TUNNEL_DEFOG"
     }
   ],
   "warp_events": [

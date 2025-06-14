@@ -47,17 +47,17 @@ Route114_EventScript_ReceivedBerry::
 Route114_EventScript_RoarGentleman::
 	lock
 	faceplayer
-	goto_if_set FLAG_RECEIVED_TM_SNARL, Route114_EventScript_ReceivedSnarl
-	msgbox Route114_Text_AllMyMonDoesIsSnarlTakeThis, MSGBOX_DEFAULT
-	giveitem ITEM_TM_SNARL
+	goto_if_set FLAG_ROUTE_114_RECEIVED_THROAT_SPRAY, Route114_EventScript_ReceivedThroatSpray
+	msgbox Route114_Text_AllMyMonDoesIsRoarTakeThis, MSGBOX_DEFAULT
+	giveitem ITEM_THROAT_SPRAY
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
-	setflag FLAG_RECEIVED_TM_SNARL
-	msgbox Route114_Text_ExplainSnarl, MSGBOX_DEFAULT
+	setflag FLAG_ROUTE_114_RECEIVED_THROAT_SPRAY
+	msgbox Route114_Text_ExplainThroatSpray, MSGBOX_DEFAULT
 	release
 	end
 
-Route114_EventScript_ReceivedSnarl::
-	msgbox Route114_Text_ExplainSnarl, MSGBOX_DEFAULT
+Route114_EventScript_ReceivedThroatSpray::
+	msgbox Route114_Text_ExplainThroatSpray, MSGBOX_DEFAULT
 	release
 	end
 
@@ -145,16 +145,16 @@ Route114_EventScript_Kai::
 	msgbox Route114_Text_KaiPostBattle, MSGBOX_AUTOCLOSE
 	end
 
-Route114_Text_AllMyMonDoesIsSnarlTakeThis:
-	.string "All my Pokémon does is Snarl…\n"
+Route114_Text_AllMyMonDoesIsRoarTakeThis:
+	.string "All my Pokémon does is Roar…\n"
 	.string "No one dares to come near me…\p"
 	.string "Sigh… If you would, please take\n"
-	.string "this TM away…$"
+	.string "this item away…$"
 
-Route114_Text_ExplainSnarl:
-	.string "TM112 contains Snarl.\n"
-	.string "A ranting scream that hits both enemies\l"
-	.string "and lowers their Sp. Attack.$"
+Route114_Text_ExplainThroatSpray:
+	.string "Throat Spray ups your Sp. Attack once,\n"
+	.string "if you use a sound based move.\p"
+	.string "Roar is a sound based move!$"
 
 Route114_Text_Poochyena:
 	.string "Bow! Bowwow!$"
@@ -222,7 +222,6 @@ script Route114_EventScript_Lenny{
 	   defeated(TRAINER_KAI)){
 		setflag(B_FLAG_NO_BAG_USE)
 		trainerbattle_single(TRAINER_LENNY, Route114_Text_LennyIntro, Route114_Text_LennyDefeat, Route114_EventScript_Lenny2)
-		clearflag(B_FLAG_NO_BAG_USE)
 	    msgbox("Ya happy now?", MSGBOX_AUTOCLOSE)
 	}
 	else{

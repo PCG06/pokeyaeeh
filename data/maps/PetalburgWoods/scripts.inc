@@ -1,6 +1,7 @@
 
 .set LOCALID_GRUNT, 3
 .set LOCALID_DEVON_EMPLOYEE, 4
+.set LOCALID_WALLY, 16
 
 PetalburgWoods_MapScripts::
 	.byte 0
@@ -429,3 +430,107 @@ PetalburgWoods_Text_TrainerTipsPP:
 	.string "make moves during battle.\p"
 	.string "If a Pokémon runs out of PP, it must be\n"
 	.string "taken to a Pokémon Center.$"
+
+PetalburgCity_EventScript_ShowWally::
+	lock
+	delay 16
+	addobject LOCALID_WALLY
+	msgbox PetalburgCity_EventScript_ShowWally_Text_0, MSGBOX_AUTOCLOSE
+	turnobject OBJ_EVENT_ID_PLAYER, DIR_SOUTH
+	emoteplayer EMOTE_EXCLAIM
+	waitse
+	return
+
+
+PetalburgCity_EventScript_TriggerWally0::
+	call PetalburgCity_EventScript_ShowWally
+	applymovement LOCALID_WALLY, PetalburgCity_EventScript_TriggerWally0_Movement_0
+	goto PetalburgWoods_EventScript_Wally
+	return
+
+
+PetalburgCity_EventScript_TriggerWally1::
+	setflag FLAG_TEMP_1
+	call PetalburgCity_EventScript_ShowWally
+	applymovement LOCALID_WALLY, PetalburgCity_EventScript_TriggerWally1_Movement_0
+	goto PetalburgWoods_EventScript_Wally
+	return
+
+
+PetalburgWoods_EventScript_Wally::
+	waitmovement 0
+	msgbox PetalburgWoods_EventScript_Wally_Text_0, MSGBOX_AUTOCLOSE
+	trainerbattle_no_intro TRAINER_WALLY_PETALBURG_WOODS, PetalburgWoods_EventScript_Wally_Text_1
+	msgbox PetalburgWoods_EventScript_Wally_Text_2, MSGBOX_AUTOCLOSE
+	giveitem ITEM_TM_RETURN, 1
+	msgbox PetalburgWoods_EventScript_Wally_Text_3, MSGBOX_AUTOCLOSE
+	setvar VAR_PETALBURG_WOODS_STATE, 2
+	setflag FLAG_DEFEATED_WALLY_PETALBURG_WOODS
+	goto_if_set FLAG_TEMP_1, PetalburgWoods_EventScript_Wally_2
+	applymovement LOCALID_WALLY, PetalburgWoods_EventScript_Wally_Movement_1
+PetalburgWoods_EventScript_Wally_1:
+	waitmovement 0
+	delay 16
+	removeobject LOCALID_WALLY
+	release
+	return
+
+PetalburgWoods_EventScript_Wally_2:
+	applymovement LOCALID_WALLY, PetalburgWoods_EventScript_Wally_Movement_0
+	goto PetalburgWoods_EventScript_Wally_1
+
+
+PetalburgCity_EventScript_TriggerWally0_Movement_0:
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	step_end
+
+PetalburgCity_EventScript_TriggerWally1_Movement_0:
+	walk_right
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	walk_up
+	step_end
+
+PetalburgWoods_EventScript_Wally_Movement_0:
+	walk_left
+	walk_up
+	walk_up
+	step_end
+
+PetalburgWoods_EventScript_Wally_Movement_1:
+	walk_right
+	walk_up
+	walk_up
+	step_end
+
+PetalburgCity_EventScript_ShowWally_Text_0:
+	.string "???: Hey! Wait up!$"
+
+PetalburgWoods_EventScript_Wally_Text_0:
+	.string "???: You're a Trainer, right?\p"
+	.string "Wally: Name's Wally.\n"
+	.string "The next Pokémon League champion!\p"
+	.string "I just got my first Pokémon-\n"
+	.string "my dad helped me build a team.\p"
+	.string "You look like a newbie, too.\n"
+	.string "Let's see what I've got!$"
+
+PetalburgWoods_EventScript_Wally_Text_1:
+	.string "Not bad for a rookie!$"
+
+PetalburgWoods_EventScript_Wally_Text_2:
+	.string "Wally: That was awesome!\p"
+	.string "You can have this as a reward!$"
+
+PetalburgWoods_EventScript_Wally_Text_3:
+	.string "Wally: I'm gonna keep training until\n"
+	.string "I can keep up with you!\l"
+	.string "Next time, I'll win for sure!$"

@@ -85,7 +85,6 @@ Route105_EventScript_Foster2::
 	waitfanfare
 	msgbox Route105_EventScript_Foster2_Text_1
 	giveitem ITEM_TM_EARTHQUAKE, 1
-	clearflag B_FLAG_NO_BAG_USE
 	playfanfare MUS_OBTAIN_ITEM
 	msgbox Route105_EventScript_Foster2_Text_2, MSGBOX_NPC
 	return
@@ -105,7 +104,6 @@ Route105_EventScript_Foster_1:
 Route105_EventScript_Foster_2:
 	setflag B_FLAG_NO_BAG_USE
 	trainerbattle_single TRAINER_FOSTER, Route105_Text_FosterIntro, Route105_Text_FosterDefeated, Route105_EventScript_Foster2
-	clearflag B_FLAG_NO_BAG_USE
 	msgbox Route105_EventScript_Foster2_Text_2, MSGBOX_NPC
 	goto Route105_EventScript_Foster_1
 

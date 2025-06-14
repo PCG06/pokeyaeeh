@@ -264,7 +264,6 @@ Route120_EventScript_Ydarissep_1:
 Route120_EventScript_Ydarissep_2:
 	setflag B_FLAG_NO_BAG_USE
 	trainerbattle_single TRAINER_YDARISSEP, Route120_Text_YdarissepIntro, Route120_Text_YdarissepDefeat, Route120_EventScript_Ydarissep2
-	clearflag B_FLAG_NO_BAG_USE
 	msgbox Route120_EventScript_Ydarissep2_Text_3, MSGBOX_AUTOCLOSE
 	goto Route120_EventScript_Ydarissep_1
 

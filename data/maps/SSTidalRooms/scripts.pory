@@ -2,23 +2,6 @@ raw `
 SSTidalRooms_MapScripts::
 	.byte 0
 
-SSTidalRooms_EventScript_TrickGiver::
-	lock
-	faceplayer
-	goto_if_set FLAG_RECEIVED_TM_TRICK, SSTidalRooms_EventScript_ExplainTrick
-	msgbox SSTidalRooms_Text_NotSuspiciousTakeThis, MSGBOX_DEFAULT
-	giveitem ITEM_TM_TRICK
-	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
-	setflag FLAG_RECEIVED_TM_TRICK
-	msgbox SSTidalRooms_Text_ExplainTrick, MSGBOX_DEFAULT
-	release
-	end
-
-SSTidalRooms_EventScript_ExplainTrick::
-	msgbox SSTidalRooms_Text_ExplainTrick, MSGBOX_DEFAULT
-	release
-	end
-
 SSTidalRooms_EventScript_Bed::
 	lockall
 	msgbox SSTidalRooms_Text_TakeRestOnBed, MSGBOX_DEFAULT
@@ -161,18 +144,5 @@ SSTidalRooms_Text_NaomiPostBattle:
 	.string "charms, I must say…\p"
 	.string "But, I will admit there is an appealing\n"
 	.string "side to touring Hoenn by ferry.$"
-
-SSTidalRooms_Text_NotSuspiciousTakeThis:
-	.string "Uh… Hi! I… I'm not acting suspicious!\n"
-	.string "Uh… You can have this! For free!\p"
-	.string "It… Honestly, I didn't steal it from\n"
-	.string "someone! I'd never do such a thing!\l"
-	.string "It's clean! You can use it!$"
-
-SSTidalRooms_Text_ExplainTrick:
-	.string "Trick fools your enemy into trading\n"
-	.string "its held item with you.\p"
-	.string "You can use this to destroy certain\n"
-	.string "strategies!$"
 
 `

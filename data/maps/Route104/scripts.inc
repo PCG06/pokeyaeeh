@@ -330,11 +330,11 @@ Route104_EventScript_Woman::
 Route104_EventScript_Boy2::
 	lock
 	faceplayer
-	goto_if_set FLAG_RECEIVED_TM_BULLET_SEED, Route104_EventScript_ReceivedBulletSeed
+	goto_if_set FLAG_RECEIVED_ROUTE_104_LOADED_DICE, Route104_EventScript_ReceivedBulletSeed
 	msgbox Route104_Text_LikeFillingMouthWithSeedsTakeThis, MSGBOX_DEFAULT
-	giveitem ITEM_TM_BULLET_SEED
+	giveitem ITEM_LOADED_DICE
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
-	setflag FLAG_RECEIVED_TM_BULLET_SEED
+	setflag FLAG_RECEIVED_ROUTE_104_LOADED_DICE
 	release
 	end
 
@@ -1064,7 +1064,6 @@ Route104_EventScript_Ivan_1:
 Route104_EventScript_Ivan_2:
 	setflag B_FLAG_NO_BAG_USE
 	trainerbattle_single TRAINER_IVAN, Route104_EventScript_Ivan_Text_0, Route104_EventScript_Ivan_Text_1, Route104_EventScript_Ivan2
-	clearflag B_FLAG_NO_BAG_USE
 	msgbox Route104_EventScript_Ivan2_Text_2
 	goto Route104_EventScript_Ivan_1
 

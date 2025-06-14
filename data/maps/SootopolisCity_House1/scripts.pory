@@ -5,11 +5,11 @@ SootopolisCity_House1_MapScripts::
 SootopolisCity_House1_EventScript_BrickBreakBlackBelt::
 	lock
 	faceplayer
-	goto_if_set FLAG_RECEIVED_TM_BRICK_BREAK, SootopolisCity_House1_EventScript_ReceivedBrickBreak
+	goto_if_set FLAG_RECEIVED_FIGHTING_GEM, SootopolisCity_House1_EventScript_ReceivedBrickBreak
 	msgbox SootopolisCity_House1_Text_DevelopedThisTM, MSGBOX_DEFAULT
-	giveitem ITEM_TM_BRICK_BREAK
+	giveitem ITEM_FIGHTING_GEM
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
-	setflag FLAG_RECEIVED_TM_BRICK_BREAK
+	setflag FLAG_RECEIVED_FIGHTING_GEM
 	msgbox SootopolisCity_House1_Text_ExplainBrickBreak, MSGBOX_DEFAULT
 	release
 	end
@@ -32,12 +32,14 @@ SootopolisCity_House1_EventScript_Kecleon::
 SootopolisCity_House1_Text_DevelopedThisTM:
 	.string "For thirty years I've remained in\n"
 	.string "Sootopolis honing my skills.\p"
-	.string "I developed a shattering TM.\n"
+	.string "Crafting this furious item.\n"
 	.string "I bequeath it to you!$"
 
 SootopolisCity_House1_Text_ExplainBrickBreak:
-	.string "TM31 contains Brick Break! It's a move\n"
-	.string "so horrible that I can't describe it.$"
+	.string "The Fighting Gem strengthens your\n"
+	.string "Pokemon's Fighting-type moves.\p"
+	.string "But, it can only be used once in\n"
+	.string "battle.$"
 
 SootopolisCity_House1_Text_Kecleon:
 	.string "Kecleon: Puu puhyaah.$"

@@ -261,7 +261,19 @@ Text_MonUsedRockClimb:
 Text_CantRockClimb:
     .string "The cliff is steep.\n"
     .string "A Pokémon may be able to climb it.$"
-    
+
+EventScript_UseDefog::
+	lockall
+	bufferpartymonnick STR_VAR_1, VAR_RESULT
+	buffermovename STR_VAR_2, MOVE_DEFOG
+	msgbox Text_MonUsedFieldMove, MSGBOX_DEFAULT
+	closemessage
+	waitmovement 0
+	setfieldeffectargument 0, VAR_RESULT
+	dofieldeffect FLDEFF_DEFOG
+	waitstate
+	releaseall
+	end
     
 EventScript_DisableAutoRun::
     msgbox AutoRunDisabled MSGBOX_SIGN

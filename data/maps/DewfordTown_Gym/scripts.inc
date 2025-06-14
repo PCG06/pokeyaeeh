@@ -46,15 +46,33 @@ DewfordTown_Gym_EventScript_BrawlyDefeated::
 	release
 	end
 
+@ giveitem ITEM_TM_PLUCK
+@ giveitem ITEM_TM_DIG
+@ giveitem ITEM_TM_STEEL_WING
+@ giveitem ITEM_TM_TRICK
+@ giveitem ITEM_TM_ICE_FANG
+@ giveitem ITEM_TM_FIRE_FANG
+@ giveitem ITEM_TM_THUNDER_FANG
+@ giveitem ITEM_TM_ATTRACT
+@ giveitem ITEM_TM_SKILL_SWAP
+@ giveitem ITEM_TM_UPROAR
+@ giveitem ITEM_TM_SNARL
+@ giveitem ITEM_TM_SILVER_WIND
+@ giveitem ITEM_TM_ANCIENT_POWER
+@ giveitem ITEM_TM_OMINOUS_WIND
+@ giveitem ITEM_TM_SEED_BOMB
+
 DewfordTown_Gym_EventScript_GiveBulkUp::
-	giveitem ITEM_TM_SEED_BOMB
+	buffertrainername STR_VAR_1, TRAINER_BRAWLY_1
+	giveplayertms 1
 	goto_if_eq VAR_RESULT, 0, Common_EventScript_BagIsFull
 	msgbox DewfordTown_Gym_Text_ExplainBulkUp, MSGBOX_DEFAULT
 	setflag FLAG_RECEIVED_TM_SEED_BOMB
 	return
 
 DewfordTown_Gym_EventScript_GiveBulkUp2:
-	giveitem ITEM_TM_SEED_BOMB
+	buffertrainername STR_VAR_1, TRAINER_BRAWLY_1
+	giveplayertms 1
 	goto_if_eq VAR_RESULT, 0, Common_EventScript_ShowBagIsFull
 	msgbox DewfordTown_Gym_Text_ExplainBulkUp, MSGBOX_DEFAULT
 	setflag FLAG_RECEIVED_TM_SEED_BOMB
@@ -62,7 +80,8 @@ DewfordTown_Gym_EventScript_GiveBulkUp2:
 	end
 
 DewfordTown_Gym_EventScript_BrawlyRematch::
-	trainerbattle_rematch TRAINER_BRAWLY_1, DewfordTown_Gym_Text_BrawlyPreRematch, DewfordTown_Gym_Text_BrawlyRematchDefeat
+	msgbox DewfordTown_Gym_Text_BrawlyPreRematch, MSGBOX_DEFAULT
+	trainerbattle_no_intro TRAINER_BRAWLY_2, DewfordTown_Gym_Text_BrawlyRematchDefeat
 	msgbox DewfordTown_Gym_Text_BrawlyPostRematch, MSGBOX_AUTOCLOSE
 	end
 
@@ -252,13 +271,14 @@ DewfordTown_Gym_Text_KnuckleBadgeInfoTakeThis:
 	.string "trades, obey without question.\p"
 	.string "And, you'll be able to use the HM move\n"
 	.string "Flash outside of battle.\p"
-	.string "Also, a TM.$"
+	.string "Here's some TMs for you to try.$"
 
 DewfordTown_Gym_Text_ExplainBulkUp:
-	.string "That TM123 contains Seed Bomb.\p"
-	.string "never underestimate the persistence of\n"
-	.string "Grass-types.\p"
-	.string "… … … … … …$"
+    .string "Don't expect them to do all the work.\n"
+    .string "Use them as you desire.\l"
+	.string "TMs are reliable and don't break,\l"
+	.string "after all!\p"
+    .string "… … … … … …$"
 
 DewfordTown_Gym_Text_RegisteredBrawly:
 	.string "Registered Gym Leader Oisin\n"

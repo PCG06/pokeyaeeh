@@ -68,7 +68,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
     {
         .effect = EFFECT_MULTI_HIT,
         .power = 25,
-        .type = TYPE_NORMAL,
+        .type = TYPE_FIGHTING,
         .accuracy = 100,
         .pp = 24,
         .secondaryEffectChance = 0,
@@ -718,11 +718,11 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
     [MOVE_TWINEEDLE] =
     {
         .effect = EFFECT_POISON_HIT,
-        .power = 25,
+        .power = 40,
         .type = TYPE_BUG,
         .accuracy = 100,
-        .pp = 32,
-        .secondaryEffectChance = 20,
+        .pp = 48,
+        .secondaryEffectChance = 50,
         .target = MOVE_TARGET_SELECTED,
         .priority = 0,
         .split = SPLIT_PHYSICAL,
@@ -2741,7 +2741,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
         .effect = EFFECT_MULTI_HIT,
         .power = 30,
         .type = TYPE_NORMAL,
-        .accuracy = 100,
+        .accuracy = 90,
         .pp = 24,
         .secondaryEffectChance = 0,
         .target = MOVE_TARGET_SELECTED,
@@ -5282,7 +5282,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
     [MOVE_LUSTER_PURGE] =
     {
         .effect = EFFECT_SPECIAL_DEFENSE_DOWN_HIT,
-        .power = (B_UPDATED_MOVE_DATA >= GEN_9) ? 95 : 70,
+        .power = 95,
         .type = TYPE_PSYCHIC,
         .accuracy = 100,
         .pp = 8,
@@ -5297,7 +5297,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
     [MOVE_MIST_BALL] =
     {
         .effect = EFFECT_SPECIAL_ATTACK_DOWN_HIT,
-        .power = (B_UPDATED_MOVE_DATA >= GEN_9) ? 95 : 70,
+        .power = 95,
         .type = TYPE_PSYCHIC,
         .accuracy = 100,
         .pp = 8,
@@ -10358,7 +10358,6 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
         .target = MOVE_TARGET_SELECTED,
         .priority = 1,
         .zMoveEffect = Z_EFFECT_NONE,
-
     },
 
     [MOVE_MYSTICAL_FIRE] =
@@ -14724,7 +14723,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
     [MOVE_AQUA_FANGS] =
     {
         .effect = EFFECT_DEFENSE_DOWN_HIT,
-        .power = 85,
+        .power = 80,
         .type = TYPE_WATER,
         .accuracy = 100,
         .pp = 16,
@@ -14782,7 +14781,7 @@ const struct BattleMove gBattleMoves[MOVES_COUNT_DYNAMAX] =
     [MOVE_FROST_BLADE] =
     {
         .effect = EFFECT_FROSTBITE_HIT,
-        .power = 85,
+        .power = 70,
         .type = TYPE_ICE,
         .accuracy = 100,
         .pp = 24,

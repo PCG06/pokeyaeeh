@@ -267,7 +267,6 @@ script Route120_EventScript_Ydarissep{
 	   defeated(TRAINER_CALLIE)){
 		setflag(B_FLAG_NO_BAG_USE)
 		trainerbattle_single(TRAINER_YDARISSEP, Route120_Text_YdarissepIntro, Route120_Text_YdarissepDefeat, Route120_EventScript_Ydarissep2)
-		clearflag(B_FLAG_NO_BAG_USE)
 	    msgbox("Holding a Scizorite,\nyour Scizor can get it's Justice!", MSGBOX_AUTOCLOSE)
 	}
 	else{

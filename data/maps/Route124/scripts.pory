@@ -88,7 +88,6 @@ script Route124_EventScript_Chad{
 	   defeated(TRAINER_ISABELLA)){
 		setflag(B_FLAG_NO_BAG_USE)
 		trainerbattle_single(TRAINER_CHAD, Route124_Text_ChadIntro, Route124_Text_ChadDefeat, Route124_EventScript_Chad2)
-		clearflag(B_FLAG_NO_BAG_USE)
 	    msgbox("Holding Drednite,\nyour Drednaw will Mega Evolve!\pIt's bites will be even more powerful!", MSGBOX_AUTOCLOSE)
 	}
 	else{

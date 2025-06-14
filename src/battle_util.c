@@ -5007,10 +5007,10 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                 effect++;
             }
             break;
-        case ABILITY_PHANTOM_GALE:
+        case ABILITY_OMINOUSITY:
             if (TryChangeBattleWeather(battler, ENUM_WEATHER_GHOSTLY_WINDS, TRUE))
             {
-                BattleScriptPushCursorAndCallback(BattleScript_PhantomGaleActivates);
+                BattleScriptPushCursorAndCallback(BattleScript_OminousityActivates);
                 effect++;
             }
             break;
@@ -5247,7 +5247,6 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
             break;
         case ABILITY_HOSPITALITY:
             partner = BATTLE_PARTNER(battler);
-
             if (!gSpecialStatuses[battler].switchInAbilityDone && IsDoubleBattle() && gBattleMons[partner].hp < gBattleMons[partner].maxHP)
             {
                 gBattlerTarget = partner;
@@ -5282,6 +5281,30 @@ u32 AbilityBattleEffects(u32 caseID, u32 battler, u32 ability, u32 special, u32 
                 gSpecialStatuses[battler].switchInAbilityDone = TRUE;
                 SET_STATCHANGER(stat, 1, FALSE);
                 BattleScriptPushCursorAndCallback(BattleScript_BattlerAbilityStatRaiseOnSwitchIn);
+                effect++;
+            }
+            break;
+        case ABILITY_TEMPORALITY:
+            if (!gSpecialStatuses[battler].switchInAbilityDone
+                && !(gFieldStatuses & STATUS_FIELD_TRICK_ROOM))
+            {
+                gBattleScripting.abilityPopupOverwrite = ABILITY_TEMPORALITY;
+                gLastUsedAbility = ABILITY_TEMPORALITY;
+                gFieldStatuses |= STATUS_FIELD_TRICK_ROOM;
+                gFieldTimers.trickRoomTimer = 5;
+                BattleScriptPushCursorAndCallback(BattleScript_TemporalityActivates);
+                effect++;
+            }
+            break;
+        case ABILITY_GRAVITALITY:
+            if (!gSpecialStatuses[battler].switchInAbilityDone
+                && !(gFieldStatuses & STATUS_FIELD_GRAVITY))
+            {
+                gBattleScripting.abilityPopupOverwrite = ABILITY_GRAVITALITY;
+                gLastUsedAbility = ABILITY_GRAVITALITY;
+                gFieldStatuses |= STATUS_FIELD_GRAVITY;
+                gFieldTimers.gravityTimer = 5;
+                BattleScriptPushCursorAndCallback(BattleScript_GravitalityActivates);
                 effect++;
             }
             break;

@@ -14,8 +14,6 @@ LavaridgeTown_Gym_1F_EventScript_FlanneryDefeated::
 	msgbox LavaridgeTown_Gym_1F_Text_ExplainHeatBadgeTakeThis, MSGBOX_DEFAULT
 	setflag FLAG_WHITEOUT_TO_LAVARIDGE
 	setflag FLAG_DEFEATED_LAVARIDGE_GYM
-	clearflag B_FLAG_NO_BAG_USE
-    clearflag B_FLAG_INVERSE_BATTLE
 	setflag FLAG_BADGE04_GET
 	call_if_eq VAR_PETALBURG_GYM_STATE, 6, Common_EventScript_ReadyPetalburgGymForBattle
 	setvar VAR_0x8008, 4
@@ -34,8 +32,25 @@ LavaridgeTown_Gym_1F_EventScript_FlanneryDefeated::
 	release
 	end
 
+@ giveitem ITEM_TM_SLUDGE_BOMB
+@ giveitem ITEM_TM_CHARGE_BEAM
+@ giveitem ITEM_TM_STOMPING_TANTRUM
+@ giveitem ITEM_TM_TEMPER_FLARE
+@ giveitem ITEM_TM_TAUNT
+@ giveitem ITEM_TM_SHADOW_BALL
+@ giveitem ITEM_TM_TOXIC
+@ giveitem ITEM_TM_WILL_O_WISP
+@ giveitem ITEM_TM_FROST_GLARE
+@ giveitem ITEM_TM_THUNDER_WAVE
+@ giveitem ITEM_TM_CRUNCH
+@ giveitem ITEM_TM_HEX
+@ giveitem ITEM_TM_DRILL_RUN
+@ giveitem ITEM_TM_DRAGON_CLAW
+@ giveitem ITEM_TM_GIGA_IMPACT
+
 LavaridgeTown_Gym_1F_EventScript_GiveOverheat2::
-	giveitem ITEM_TM_GIGA_IMPACT
+	buffertrainername STR_VAR_1, TRAINER_FLANNERY_1
+	giveplayertms 3
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_ShowBagIsFull
 	msgbox LavaridgeTown_Gym_1F_Text_ExplainOverheat, MSGBOX_DEFAULT
 	setflag FLAG_RECEIVED_TM_RETURN
@@ -43,14 +58,16 @@ LavaridgeTown_Gym_1F_EventScript_GiveOverheat2::
 	end
 
 LavaridgeTown_Gym_1F_EventScript_GiveOverheat::
-	giveitem ITEM_TM_GIGA_IMPACT
+	buffertrainername STR_VAR_1, TRAINER_FLANNERY_1
+	giveplayertms 3
 	goto_if_eq VAR_RESULT, FALSE, Common_EventScript_BagIsFull
 	msgbox LavaridgeTown_Gym_1F_Text_ExplainOverheat, MSGBOX_DEFAULT
 	setflag FLAG_RECEIVED_TM_RETURN
 	return
 
 LavaridgeTown_Gym_1F_EventScript_FlanneryRematch::
-	trainerbattle_rematch TRAINER_FLANNERY_1, LavaridgeTown_Gym_1F_Text_FlanneryPreRematch, LavaridgeTown_Gym_1F_Text_FlanneryRematchDefeat
+	msgbox LavaridgeTown_Gym_1F_Text_FlanneryPreRematch, MSGBOX_DEFAULT
+	trainerbattle_no_intro TRAINER_FLANNERY_2, LavaridgeTown_Gym_1F_Text_FlanneryRematchDefeat
 	msgbox LavaridgeTown_Gym_1F_Text_FlanneryPostRematch, MSGBOX_AUTOCLOSE
 	end
 
@@ -240,12 +257,13 @@ LavaridgeTown_Gym_1F_Text_ExplainHeatBadgeTakeThis:
 	.string "you completely.\p"
 	.string "And, it lets Pokémon use the HM move\n"
 	.string "Strength outside of battle.\p"
-	.string "Besides the badge, here is a TM.$"
+	.string "Besides the badge, here's a few TMs.$"
 
 LavaridgeTown_Gym_1F_Text_ExplainOverheat:
-	.string "That TM130 contains Giga Impact.\p"
-	.string "It ain't special, but it packs one\n"
-	.string "hell of a punch.$"
+	.string "You have gotten so far, you must know\n"
+	.string "how good TMs are!\p"
+    .string "Make every battle count with these.\n"
+    .string "Use them wisely.$"
 
 LavaridgeTown_Gym_1F_Text_RegisteredFlannery:
 	.string "Registered Gym Leader Qanak\n"

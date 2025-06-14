@@ -720,6 +720,10 @@ u16 getHallofFameSpecies(u8 num)
             if(item == ITEM_SWAMPERTITE)
                 return SPECIES_SWAMPERT_MEGA;
         break;
+        case SPECIES_TINKATON:
+            if(item == ITEM_TINKATITE)
+                return SPECIES_TINKATON_MEGA;
+        break;
         case SPECIES_TROPIUS:
             if(item == ITEM_TROPIUSITE)
                 return SPECIES_TROPIUS_MEGA;
@@ -727,6 +731,14 @@ u16 getHallofFameSpecies(u8 num)
         case SPECIES_TYRANITAR:
             if(item == ITEM_TYRANITARITE)
                 return SPECIES_TYRANITAR_MEGA;
+        break;
+        case SPECIES_URSHIFU_SINGLE_STRIKE_STYLE:
+            if(item == ITEM_URSHIFUNITE)
+                return SPECIES_URSHIFU_SINGLE_STRIKE_STYLE_MEGA;
+        break;
+        case SPECIES_URSHIFU_RAPID_STRIKE_STYLE:
+            if(item == ITEM_URSHIFUNITE)
+                return SPECIES_URSHIFU_RAPID_STRIKE_STYLE_MEGA;
         break;
         case SPECIES_VENUSAUR:
             if(item == ITEM_VENUSAURITE)
@@ -747,24 +759,6 @@ u16 getHallofFameSpecies(u8 num)
                     return SPECIES_RAYQUAZA_MEGA;
                 else
                     return SPECIES_RAYQUAZA;
-            }
-        break;
-        case SPECIES_URSHIFU_SINGLE_STRIKE_STYLE:
-            for(i = 0; i < MAX_MON_MOVES; i++)
-            {
-                if(GetMonData(&gPlayerParty[num], MON_DATA_MOVE1 + i) == MOVE_WICKED_BLOW)
-                    return SPECIES_URSHIFU_SINGLE_STRIKE_STYLE_MEGA;
-                else
-                    return SPECIES_URSHIFU_SINGLE_STRIKE_STYLE;
-            }
-        break;
-        case SPECIES_URSHIFU_RAPID_STRIKE_STYLE:
-            for(i = 0; i < MAX_MON_MOVES; i++)
-            {
-                if(GetMonData(&gPlayerParty[num], MON_DATA_MOVE1 + i) == MOVE_SURGING_STRIKES)
-                    return SPECIES_URSHIFU_RAPID_STRIKE_STYLE_MEGA;
-                else
-                    return SPECIES_URSHIFU_RAPID_STRIKE_STYLE;
             }
         break;
         case SPECIES_ZACIAN:

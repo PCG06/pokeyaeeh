@@ -169,7 +169,7 @@ static EWRAM_DATA struct
     u8 partyMon;                                         /*0x044*/
     u8 moveSlot;                                         /*0x045*/
     struct ListMenuItem menuItems[MAX_RELEARNER_MOVES];  /*0x0E8*/
-    u8 numMenuChoices;                                   /*0x110*/
+    u16 numMenuChoices;                                   /*0x110*/
     u8 numToShowAtOnce;                                  /*0x111*/
     u8 moveListMenuTask;                                 /*0x112*/
     u8 moveListScrollArrowTask;                          /*0x113*/
@@ -871,17 +871,17 @@ static void CreateLearnableMovesList(void)
 
     switch(VarGet(VAR_PARTY_MENU_TUTOR_STATE))
     {
-		case MOVE_TUTOR_LEVEL_UP_MOVES:
-			sMoveRelearnerStruct->numMenuChoices = GetMoveRelearnerMoves(&gPlayerParty[sMoveRelearnerStruct->partyMon], sMoveRelearnerStruct->movesToLearn);
+		case MOVE_RELEARNER_LEVEL_UP_MOVES:
+			sMoveRelearnerStruct->numMenuChoices = GetRelearnerLevelUpMoves(&gPlayerParty[sMoveRelearnerStruct->partyMon], sMoveRelearnerStruct->movesToLearn);
 		break;
-		case MOVE_TUTOR_EGG_MOVES:
-			sMoveRelearnerStruct->numMenuChoices = GetEggMoveMoves(&gPlayerParty[sMoveRelearnerStruct->partyMon], sMoveRelearnerStruct->movesToLearn);
+		case MOVE_RELEARNER_EGG_MOVES:
+			sMoveRelearnerStruct->numMenuChoices = GetRelearnerEggMoves(&gPlayerParty[sMoveRelearnerStruct->partyMon], sMoveRelearnerStruct->movesToLearn);
         break;
-        case MOVE_TUTOR_TM_MOVES:
-			sMoveRelearnerStruct->numMenuChoices = GetTMMoves(&gPlayerParty[sMoveRelearnerStruct->partyMon], sMoveRelearnerStruct->movesToLearn);
+        case MOVE_RELEARNER_TM_MOVES:
+			sMoveRelearnerStruct->numMenuChoices = GetRelearnerTMMoves(&gPlayerParty[sMoveRelearnerStruct->partyMon], sMoveRelearnerStruct->movesToLearn);
 		break;
-        case MOVE_TUTOR_TUTOR_MOVES:
-			sMoveRelearnerStruct->numMenuChoices = GetTutorMoves(&gPlayerParty[sMoveRelearnerStruct->partyMon], sMoveRelearnerStruct->movesToLearn);
+        case MOVE_RELEARNER_TUTOR_MOVES:
+			sMoveRelearnerStruct->numMenuChoices = GetRelearnerTutorMoves(&gPlayerParty[sMoveRelearnerStruct->partyMon], sMoveRelearnerStruct->movesToLearn);
 		break;
 	}
 

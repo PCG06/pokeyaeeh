@@ -3,8 +3,8 @@ raw `
 .set LOCALID_LITTLE_GIRL, 8
 .set LOCALID_DEVON_EMPLOYEE, 9
 .set LOCALID_GRUNT, 10
-.set LOCALID_RIVAL, 14
-.set LOCALID_SCIENTIST, 15
+.set LOCALID_RIVAL, 13
+.set LOCALID_SCIENTIST, 14
 
 RustboroCity_MapScripts::
 	map_script MAP_SCRIPT_ON_TRANSITION, RustboroCity_OnTransition
@@ -73,8 +73,10 @@ RustboroCity_EventScript_ScientistAddMatchCall::
 	closemessage
 	delay 20
 	setflag FLAG_HAS_MATCH_CALL
-	setflag FLAG_RECEIVED_STAT_EDITOR
+	setflag FLAG_SYS_STAT_EDITOR_GET
 	setflag FLAG_ADDED_MATCH_CALL_TO_POKENAV
+	applymovement LOCALID_SCIENTIST, RustboroCity_Movement_ScientistFaceRightLeft
+	waitmovement 0
 	msgbox RustboroCity_Text_IdBetterGetBackToWork, MSGBOX_DEFAULT
 	closemessage
 	applymovement LOCALID_SCIENTIST, RustboroCity_Movement_ScientistLeave
@@ -108,6 +110,15 @@ RustboroCity_Movement_ScientistWalkAroundPlayer:
 	walk_down
 	walk_right
 	walk_in_place_faster_up
+	delay_16
+	step_end
+
+RustboroCity_Movement_ScientistFaceRightLeft:
+	face_right
+	delay_16
+	face_left
+	delay_16
+	face_down
 	delay_16
 	step_end
 
@@ -579,8 +590,14 @@ RustboroCity_EventScript_ReturnGoods::
 	call_if_eq VAR_TEMP_1, 3, RustboroCity_EventScript_EmployeeApproachPlayerDown2
 	call_if_eq VAR_TEMP_1, 4, RustboroCity_EventScript_EmployeeFacePlayerRight
 	msgbox RustboroCity_Text_YouGotItThankYou, MSGBOX_DEFAULT
-	giveitem ITEM_TM_CHARGE_BEAM
-	call_if_eq VAR_RESULT, FALSE, RustboroCity_EventScript_BagFull
+	givemon SPECIES_EEVEE, 0, ITEM_EVIOLITE, 26, NATURE_MODEST, 2, MON_MALE, 0, 0, 0, 252, 252, 0, 31, 31, 31, 31, 31, 31, MOVE_COVET, MOVE_BABY_DOLL_EYES, MOVE_QUICK_ATTACK, MOVE_BATON_PASS, TRUE
+	playfanfare MUS_OBTAIN_ITEM
+	message RustboroCity_Text_ReceivedEevee
+	waitmessage
+	waitfanfare
+	bufferspeciesname STR_VAR_1, SPECIES_EEVEE
+	setvar VAR_TEMP_TRANSFERRED_SPECIES, SPECIES_EEVEE
+	call Common_EventScript_Nickname
 	msgbox RustboroCity_Text_PleaseComeWithMe, MSGBOX_DEFAULT
 	closemessage
 	setflag FLAG_RETURNED_DEVON_GOODS
@@ -1104,7 +1121,10 @@ RustboroCity_Text_YouGotItThankYou:
 	.string "You got them back!\p"
 	.string "You really are a great Trainer!\p"
 	.string "I know! As my thanks, I'll give you\n"
-	.string "another TM!$"
+	.string "my Pokémon!$"
+
+RustboroCity_Text_ReceivedEevee:
+    .string "{PLAYER} received Eevee!$"
 
 RustboroCity_Text_YoureLoadedWithItems:
 	.string "You debug using lil bro!\n"
@@ -1247,7 +1267,7 @@ RustboroCity_Text_DevelopedNewPokenavFeature:
 
 RustboroCity_Text_AddedMatchCallPleaseCallMrStone:
 	.string "There you go, {PLAYER}!\p"
-	.string "Now you can edit your Pokémon's\n"
+	.string "Now you can edit your Pokémon's stats\n"
 	.string "freely!\p"
 	.string "It does seem a little unethical, but\n"
 	.string "don't worry, it doesn't hurt the\l"

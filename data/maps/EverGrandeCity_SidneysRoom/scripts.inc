@@ -32,18 +32,26 @@ EverGrandeCity_SidneysRoom_EventScript_Sidney::
 	faceplayer
 	dotimebasedevents
 	goto_if_set FLAG_DEFEATED_ELITE_4_SIDNEY, EverGrandeCity_SidneysRoom_EventScript_PostBattleSpeech
+	goto_if_not_defeated TRAINER_SIDNEY_1, EverGrandeCity_SidneysRoom_EventScript_SidneyBattle
+	shouldtryrematchbattle TRAINER_SIDNEY_1, EverGrandeCity_SidneysRoom_EventScript_SidneyRematch
+	end
+
+EverGrandeCity_SidneysRoom_EventScript_SidneyBattle::
 	playbgm MUS_ENCOUNTER_ELITE_FOUR, FALSE
 	setweather WEATHER_RAIN_THUNDERSTORM
 	doweather
-	trainerbattle_single TRAINER_SIDNEY_1, EverGrandeCity_SidneysRoom_Text_IntroSpeech, EverGrandeCity_SidneysRoom_Text_Defeat
-	shouldtryrematchbattle TRAINER_SIDNEY_1, EverGrandeCity_SidneysRoom_EventScript_SidneyRematch
+	msgbox EverGrandeCity_SidneysRoom_Text_IntroSpeech, MSGBOX_DEFAULT
+	trainerbattle_no_intro TRAINER_SIDNEY_1, EverGrandeCity_SidneysRoom_Text_Defeat
 	goto EverGrandeCity_SidneysRoom_EventScript_Defeated
 	end
 
-EverGrandeCity_SidneysRoom_EventScript_PostBattleSpeech::
-	goto_if_eq VAR_ELITE_4_STATE, 4, EverGrandeCity_SidneysRoom_EventScript_EliteFourDefeated
-	msgbox EverGrandeCity_SidneysRoom_Text_PostBattleSpeech, MSGBOX_DEFAULT
-	release
+EverGrandeCity_SidneysRoom_EventScript_SidneyRematch::
+	playbgm MUS_ENCOUNTER_ELITE_FOUR, FALSE
+	setweather WEATHER_RAIN_THUNDERSTORM
+	doweather
+	msgbox EverGrandeCity_SidneysRoom_Text_IntroSpeech, MSGBOX_DEFAULT
+	trainerbattle_no_intro TRAINER_SIDNEY_2, EverGrandeCity_SidneysRoom_Text_Defeat
+	goto EverGrandeCity_SidneysRoom_EventScript_Defeated
 	end
 
 EverGrandeCity_SidneysRoom_EventScript_Defeated::
@@ -56,14 +64,15 @@ EverGrandeCity_SidneysRoom_EventScript_Defeated::
 	release
 	end
 
-EverGrandeCity_SidneysRoom_EventScript_EliteFourDefeated::
+EverGrandeCity_SidneysRoom_EventScript_PostBattleSpeech::
+	goto_if_eq VAR_ELITE_4_STATE, 4, EverGrandeCity_SidneysRoom_EventScript_EliteFourDefeated
 	msgbox EverGrandeCity_SidneysRoom_Text_PostBattleSpeech, MSGBOX_DEFAULT
 	release
 	end
 
-EverGrandeCity_SidneysRoom_EventScript_SidneyRematch::
-	trainerbattle_rematch TRAINER_SIDNEY_1, RustboroCity_Gym_Text_RoxannePreRematch, RustboroCity_Gym_Text_RoxanneRematchDefeat
-	msgbox RustboroCity_Gym_Text_RoxannePostRematch, MSGBOX_AUTOCLOSE
+EverGrandeCity_SidneysRoom_EventScript_EliteFourDefeated::
+	msgbox EverGrandeCity_SidneysRoom_Text_PostBattleSpeech, MSGBOX_DEFAULT
+	release
 	end
 
 EverGrandeCity_SidneysRoom_Text_IntroSpeech:

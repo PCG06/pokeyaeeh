@@ -337,7 +337,6 @@ script Route103_EventScript_Daisy{
 		defeated(TRAINER_ISABELLE)){
 		setflag(B_FLAG_NO_BAG_USE)
 		trainerbattle_single(TRAINER_DAISY, Route103_Text_DaisyIntro, Route103_Text_DaisyDefeated, Route103_EventScript_Daisy2)
-		clearflag(B_FLAG_NO_BAG_USE)
 		msgbox(("Energy Ball is a strong Grass-type\nattack that might lower the foe's\lSpecial Defense.\pIt's a really reliable move that'll\nnever let you down."), MSGBOX_NPC)
 	}
 	else{

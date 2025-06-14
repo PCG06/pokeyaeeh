@@ -503,7 +503,7 @@ extern const u8 BattleScript_TailstreamActivated[];
 extern const u8 BattleScript_GrassPeltHealing[];
 extern const u8 BattleScript_SyrupBombEndTurn[];
 extern const u8 BattleScript_SyrupBombActivates[];
-extern const u8 BattleScript_PhantomGaleActivates[];
+extern const u8 BattleScript_OminousityActivates[];
 extern const u8 BattleScript_OminousAirCurrentBlowsOn[];
 extern const u8 BattleScript_AttackWeakenedByGhostlyWinds[];
 extern const u8 BattleScript_EffectCombinedPledge_Water[];
@@ -549,6 +549,8 @@ extern const u8 BattleScript_EffectCureStatusAllies[];
 extern const u8 BattleScript_EffectRecycleBerriesAllies[];
 extern const u8 BattleScript_WildBattleVictory[];
 extern const u8 BattleScript_FaintWildMon[];
+extern const u8 BattleScript_TemporalityActivates[];
+extern const u8 BattleScript_GravitalityActivates[];
 
 // dynamax and max raids
 extern const u8 BattleScript_DynamaxBegins[];

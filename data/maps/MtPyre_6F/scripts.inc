@@ -91,7 +91,6 @@ MtPyre_6F_EventScript_Valerie_1:
 MtPyre_6F_EventScript_Valerie_2:
 	setflag B_FLAG_NO_BAG_USE
 	trainerbattle_single TRAINER_VALERIE_1, MtPyre_6F_Text_ValerieIntro, MtPyre_6F_Text_ValerieDefeat, MtPyre_6F_EventScript_Valerie2
-	clearflag B_FLAG_NO_BAG_USE
 	msgbox MtPyre_6F_EventScript_Valerie2_Text_3, MSGBOX_AUTOCLOSE
 	goto MtPyre_6F_EventScript_Valerie_1
 
