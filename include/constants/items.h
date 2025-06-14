@@ -1264,6 +1264,7 @@
 #define ITEM_TROPIUSITE 936 // ROute 123 Boss Violet
 #define ITEM_KINGDRITE 937
 #define ITEM_TINKATITE 938 // will be tied to something
+#define ITEM_LUXRAYNITE 939 // will be tied to something
 
 #define ITEMS_COUNT 939
 #define ITEM_FIELD_ARROW ITEMS_COUNT
